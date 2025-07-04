@@ -1,0 +1,103 @@
+.button {
+  --_br: 100vi;
+  --_min-font-size: 0.875rem;
+  --_max-font-size: 1.125rem;
+  --_font-size: 1.5vi;
+  --_letter-spacing: 0.025rem;
+
+  --_button-color: transparent;
+  --_button-text: transparent;
+  --_border-color: var(--_button-color);
+  --_bg: var(--_button-color);
+  --_color: var(--_button-text);
+
+  border-radius: var(--_br);
+  cursor: pointer;
+
+  font-weight: 600;
+  font-size: clamp(
+    var(--_min-font-size),
+    var(--_font-size),
+    var(--_max-font-size)
+  );
+  letter-spacing: var(--_letter-spacing);
+
+  padding-inline: 1.125em;
+  padding-block: 0.625em;
+
+  border: 0.125rem solid var(--_border-color);
+
+  background-color: var(--_bg);
+  color: var(--_color);
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    background-color 250ms,
+    color 250ms;
+
+  &[data-hovered="true"] {
+    --_bg: hsl(from var(--_button-color) h s calc(l + 8));
+    --_color: hsl(from var(--_button-text) h s calc(l + 8));
+  }
+}
+
+/* button theme */
+.primary {
+  --_button-color: var(--color-primary);
+  --_button-text: var(--color-on-primary);
+}
+
+.primary-variant {
+  --_button-color: var(--color-primary-variant);
+  --_button-text: var(--color-on-primary-variant);
+}
+
+.secondary {
+  --_button-color: var(--color-secondary);
+  --_button-text: var(--color-on-secondary);
+}
+
+.error {
+  --_button-color: var(--color-error);
+  --_button-text: var(--color-on-error);
+}
+
+.disabled {
+  opacity: 0.425;
+  cursor: not-allowed;
+}
+
+/* button variant */
+.outlined {
+  --_bg: transparent;
+  --_color: var(--color-on-surface);
+}
+
+.text {
+  --_bg: transparent;
+  --_border-color: transparent;
+  --_color: var(--_button-color);
+}
+
+/* on click splash */
+.splash {
+  position: absolute;
+  width: 2rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: hsl(from white h s l / 0.75);
+  animation: ripple 600ms linear;
+  opacity: 0;
+}
+
+@keyframes ripple {
+  from {
+    scale: 0;
+    opacity: 1;
+  }
+  to {
+    scale: 8;
+    opacity: 0;
+  }
+}
