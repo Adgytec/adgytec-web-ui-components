@@ -1,9 +1,7 @@
 .button {
-  --_br: 100vi;
   --_min-font-size: 0.875rem;
   --_max-font-size: 1.125rem;
   --_font-size: 1.5vi;
-  --_letter-spacing: 0.025rem;
 
   --_button-color: transparent;
   --_button-text: transparent;
@@ -11,16 +9,14 @@
   --_bg: var(--_button-color);
   --_color: var(--_button-text);
 
-  border-radius: var(--_br);
   cursor: pointer;
 
-  font-weight: 600;
+  font-weight: 500;
   font-size: clamp(
     var(--_min-font-size),
     var(--_font-size),
     var(--_max-font-size)
   );
-  letter-spacing: var(--_letter-spacing);
 
   padding-inline: 1.125em;
   padding-block: 0.625em;
@@ -38,8 +34,8 @@
 
   &[data-hovered="true"],
   &[data-focused="true"] {
-    --_bg: hsl(from var(--_button-color) h s calc(l + 8));
-    --_color: hsl(from var(--_button-text) h s calc(l + 8));
+    --_bg: hsl(from var(--_button-color) h s calc(l - 8));
+    --_color: hsl(from var(--_button-text) h s calc(l - 8));
   }
 }
 

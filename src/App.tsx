@@ -1,6 +1,6 @@
-import FilledButton from "./components/button/FilledButton";
-import OutlinedButton from "./components/button/OutlinedButton";
-import TextButton from "./components/button/TextButton";
+import FilledButton from "./components/Button/FilledButton";
+import OutlinedButton from "./components/Button/OutlinedButton";
+import TextButton from "./components/Button/TextButton";
 import { ButtonTheme } from "./components/button/types";
 
 const App = () => {
