@@ -2,7 +2,7 @@ import { Fragment, type ReactNode } from "react";
 import FilledButton from "./components/Button/FilledButton";
 import OutlinedButton from "./components/Button/OutlinedButton";
 import TextButton from "./components/Button/TextButton";
-import { ButtonTheme } from "./components/button/types";
+import { ButtonTheme } from "./components/Button/types";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
