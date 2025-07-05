@@ -34,4 +34,5 @@ export interface ButtonLinkProps {
   theme: ButtonTheme;
   disabled?: boolean;
   variant: ButtonVariant;
+  slot?: string;
 }

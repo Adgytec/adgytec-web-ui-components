@@ -13,4 +13,5 @@ export interface LinkProps {
   target?: string;
   theme: LinkTheme;
   disabled?: boolean;
+  slot?: string;
 }
