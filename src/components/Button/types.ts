@@ -31,3 +31,12 @@ export type Splash = {
   x: number;
   y: number;
 };
+
+export interface ButtonLinkProps {
+  children: ReactNode;
+  href: string;
+  target?: string;
+  theme: ButtonTheme;
+  disabled?: boolean;
+  variant: ButtonVariant;
+}

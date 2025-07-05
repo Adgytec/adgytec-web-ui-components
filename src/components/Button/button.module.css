@@ -40,6 +40,11 @@
   }
 }
 
+.button-link {
+  text-underline-offset: 0.125em;
+  text-decoration-thickness: 0.075em;
+}
+
 /* button theme */
 .primary {
   --_button-color: var(--color-primary);

@@ -5,6 +5,8 @@ import TextButton from "./components/Button/TextButton";
 import { ButtonTheme } from "./components/Button/types";
 import { LinkTheme } from "./components/Link/types";
 import Link from "./components/Link/Link";
+import FilledButtonLink from "./components/Link/FilledButtonLink";
+import OutlinedButtonLink from "./components/Link/OutlinedButtonLink";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -74,37 +76,47 @@ const ButtonPreview = () => {
 
 const LinkPreview = () => {
   const linkTheme = [
+    LinkTheme.primary,
+    LinkTheme.primaryVariant,
+    LinkTheme.secondary,
+  ];
+
+  const linkElements = [
     {
-      label: "Primary link",
-      theme: LinkTheme.primary,
+      element: Link,
+      label: "Normal Link",
     },
     {
-      label: "Primary Variant link",
-      theme: LinkTheme.primaryVariant,
+      element: FilledButtonLink,
+      label: "Filled Button Link",
     },
     {
-      label: "Secondary link",
-      theme: LinkTheme.secondary,
+      element: OutlinedButtonLink,
+      label: "Outlined Button Link",
     },
   ];
 
   return (
-    <PreviewContainer label="Links">
-      <div className="item-container">
-        {linkTheme.map((theme) => {
-          return (
-            <Fragment key={theme.label}>
-              <Link href="/" theme={theme.theme}>
-                {theme.label}
-              </Link>
+    <PreviewContainer label="Buttons">
+      {linkTheme.map((theme) => {
+        return (
+          <div className="item-container" key={theme}>
+            {linkElements.map((LinkElement, index) => {
+              return (
+                <Fragment key={theme + index}>
+                  <LinkElement.element href="/" theme={theme}>
+                    {LinkElement.label}
+                  </LinkElement.element>
 
-              <Link href="/" theme={theme.theme} disabled>
-                {theme.label}
-              </Link>
-            </Fragment>
-          );
-        })}
-      </div>
+                  <LinkElement.element href="/" theme={theme} disabled>
+                    {LinkElement.label}
+                  </LinkElement.element>
+                </Fragment>
+              );
+            })}
+          </div>
+        );
+      })}
     </PreviewContainer>
   );
 };
