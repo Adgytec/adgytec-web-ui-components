@@ -79,6 +79,7 @@ const LinkPreview = () => {
     LinkTheme.primary,
     LinkTheme.primaryVariant,
     LinkTheme.secondary,
+    LinkTheme.error,
   ];
 
   const linkElements = [
@@ -97,7 +98,7 @@ const LinkPreview = () => {
   ];
 
   return (
-    <PreviewContainer label="Buttons">
+    <PreviewContainer label="Links">
       {linkTheme.map((theme) => {
         return (
           <div className="item-container" key={theme}>

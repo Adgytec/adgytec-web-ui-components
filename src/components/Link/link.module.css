@@ -36,5 +36,9 @@
 }
 
 .secondary {
-  --_link-text: var(--_color-secondary);
+  --_link-text: var(--color-secondary);
+}
+
+.error {
+  --_link-text: var(--color-error);
 }

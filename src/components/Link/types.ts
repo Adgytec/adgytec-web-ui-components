@@ -4,6 +4,7 @@ export enum LinkTheme {
   primary = "primary",
   primaryVariant = "primary-variant",
   secondary = "secondary",
+  error = "error",
 }
 
 export interface LinkProps {
