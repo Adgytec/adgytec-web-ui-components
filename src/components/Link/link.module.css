@@ -1,0 +1,40 @@
+.link {
+  --_link-text: transparent;
+  --_color: var(--_link-text);
+
+  cursor: pointer;
+
+  font-weight: 500;
+  text-underline-offset: 0.125em;
+  text-decoration-thickness: 0.075em;
+
+  color: var(--_color);
+  transition: color 250ms;
+
+  &[data-hovered="true"],
+  &[data-focused="true"] {
+    --_color: hsl(from var(--_link-text) h s calc(l + 10));
+  }
+
+  &[data-pressed="true"] {
+    --_color: hsl(from var(--_link-text) h s calc(l - 5));
+  }
+
+  &[data-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+/* link theme */
+.primary {
+  --_link-text: var(--color-primary);
+}
+
+.primary-variant {
+  --_link-text: var(--color-primary-variant);
+}
+
+.secondary {
+  --_link-text: var(--_color-secondary);
+}

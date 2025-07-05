@@ -1,8 +1,4 @@
 .button {
-  --_min-font-size: 0.875rem;
-  --_max-font-size: 1.125rem;
-  --_font-size: 1.5vi;
-
   --_button-color: transparent;
   --_button-text: transparent;
   --_border-color: var(--_button-color);
@@ -12,12 +8,6 @@
   cursor: pointer;
 
   font-weight: 500;
-  font-size: 1rem;
-  /* font-size: clamp( */
-  /*   var(--_min-font-size), */
-  /*   var(--_font-size), */
-  /*   var(--_max-font-size) */
-  /* ); */
 
   padding-inline: 1.125em;
   padding-block: 0.625em;
