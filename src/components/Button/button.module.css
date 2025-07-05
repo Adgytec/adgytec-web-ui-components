@@ -34,13 +34,19 @@
 
   &[data-hovered="true"],
   &[data-focused="true"] {
-    --_bg: hsl(from var(--_button-color) h s calc(l - 5));
-    --_color: hsl(from var(--_button-text) h s calc(l - 5));
+    /* --_bg: hsl(from var(--_button-color) h s calc(l - 5)); */
+    /* --_color: hsl(from var(--_button-text) h s calc(l - 5)); */
+
+    --_bg: hsl(from var(--_button-color) h s calc(l + 10));
+    --_color: hsl(from var(--_button-text) h s calc(l + 10));
   }
 
   &[data-pressed="true"] {
-    --_bg: hsl(from var(--_button-color) h s calc(l + 10));
-    --_color: hsl(from var(--_button-text) h s calc(l + 10));
+    /* --_bg: hsl(from var(--_button-color) h s calc(l + 10)); */
+    /* --_color: hsl(from var(--_button-text) h s calc(l + 10)); */
+
+    --_bg: hsl(from var(--_button-color) h s calc(l - 5));
+    --_color: hsl(from var(--_button-text) h s calc(l - 5));
   }
 }
 
@@ -88,7 +94,7 @@
   width: 2rem;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  background-color: hsl(from white h s l / 0.75);
+  background-color: hsl(from var(--color-surface-variant) h s l / 0.5);
   animation: ripple 600ms linear;
   opacity: 0;
 }
