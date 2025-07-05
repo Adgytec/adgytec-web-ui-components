@@ -15,12 +15,8 @@ export enum ButtonTheme {
 
 type ButtonOnPressHandler = () => void;
 
-export interface ButtonProps {
-  onPress: ButtonOnPressHandler;
-  disabled: boolean;
+export interface ButtonProps extends ButtonVariantProps {
   variant: ButtonVariant;
-  theme: ButtonTheme;
-  children: ReactNode;
 }
 
 export interface ButtonVariantProps {
@@ -29,3 +25,9 @@ export interface ButtonVariantProps {
   theme: ButtonTheme;
   children: ReactNode;
 }
+
+export type Splash = {
+  id: number;
+  x: number;
+  y: number;
+};

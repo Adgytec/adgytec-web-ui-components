@@ -1,10 +1,12 @@
+// used splash from react-aria library example splash
+
 import styles from "./button.module.css";
 import {
   Button as UnstyledButton,
   type PressEvent,
 } from "react-aria-components";
 
-import type { ButtonProps } from "./types.ts";
+import type { ButtonProps, Splash } from "./types.ts";
 import { useEffect, useRef, useState } from "react";
 
 const Button = ({
@@ -14,11 +16,12 @@ const Button = ({
   children,
   disabled,
 }: ButtonProps) => {
-  const [coords, setCoords] = useState<{ x: number; y: number } | null>(null);
-
+  const [coords, setCoords] = useState<Splash | null>(null);
+  const idRef = useRef(0);
   let timeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
   let handleOnPress = (e: PressEvent) => {
-    setCoords({ x: e.x, y: e.y });
+    setCoords({ id: idRef.current++, x: e.x, y: e.y });
     if (e.x !== -1 && e.y !== -1) {
       clearTimeout(timeout.current);
       timeout.current = setTimeout(() => setCoords(null), 600);
@@ -40,7 +43,7 @@ const Button = ({
     >
       {coords && (
         <div
-          key={`${coords.x},${coords.y}`}
+          key={`${coords.id}`}
           className={`${styles["splash"]}`}
           style={{
             left: coords.x - 15,
