@@ -37,7 +37,7 @@ const Button = ({
 
   return (
     <UnstyledButton
-      className={`${styles["button"]} ${disabled && styles["disabled"]} ${styles[variant]} ${styles[theme]}`}
+      className={`${styles["button"]} ${styles[variant]} ${styles[theme]}`}
       onPress={handleOnPress}
       isDisabled={disabled}
     >
@@ -46,8 +46,9 @@ const Button = ({
           key={`${coords.id}`}
           className={`${styles["splash"]}`}
           style={{
-            left: coords.x - 15,
-            top: coords.y - 15,
+            left: coords.x,
+            top: coords.y,
+            translate: "-50% -50%",
           }}
         />
       )}

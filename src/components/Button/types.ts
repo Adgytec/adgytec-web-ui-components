@@ -21,7 +21,7 @@ export interface ButtonProps extends ButtonVariantProps {
 
 export interface ButtonVariantProps {
   onPress: ButtonOnPressHandler;
-  disabled: boolean;
+  disabled?: boolean;
   theme: ButtonTheme;
   children: ReactNode;
 }
