@@ -22,7 +22,10 @@ const App = () => {
     >
       {buttonTheme.map((theme) => {
         return (
-          <div style={{ display: "flex", gap: "1rem" }} key={theme}>
+          <div
+            style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}
+            key={theme}
+          >
             <FilledButton onPress={onPress} disabled={false} theme={theme}>
               really really really long long long long button button
             </FilledButton>

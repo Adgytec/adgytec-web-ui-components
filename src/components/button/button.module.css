@@ -36,7 +36,8 @@
     background-color 250ms,
     color 250ms;
 
-  &[data-hovered="true"] {
+  &[data-hovered="true"],
+  &[data-focused="true"] {
     --_bg: hsl(from var(--_button-color) h s calc(l + 8));
     --_color: hsl(from var(--_button-text) h s calc(l + 8));
   }
@@ -71,7 +72,7 @@
 /* button variant */
 .outlined {
   --_bg: transparent;
-  --_color: var(--color-on-surface);
+  --_color: var(--_button-color);
 }
 
 .text {
