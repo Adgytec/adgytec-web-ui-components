@@ -2,8 +2,8 @@ import styles from "./button.module.css";
 import { Link as UnstyledLink } from "react-aria-components";
 
 import type { ButtonLinkProps } from "./types.ts";
-import { useSplash } from "./useSplash.ts";
-import Splash from "./Splash.tsx";
+import Splash from "../Splash/Splash.tsx";
+import { useSplash } from "../Splash/useSplash.ts";
 
 const ButtonLink = ({
   href,

@@ -2,8 +2,8 @@ import styles from "./button.module.css";
 import { Button as UnstyledButton } from "react-aria-components";
 
 import type { ButtonProps } from "./types.ts";
-import Splash from "./Splash.tsx";
-import { useSplash } from "./useSplash.ts";
+import Splash from "../Splash/Splash.tsx";
+import { useSplash } from "../Splash/useSplash.ts";
 
 const Button = ({
   onPress,

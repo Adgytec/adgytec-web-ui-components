@@ -1,5 +1,5 @@
 import type { SplashProps } from "./types";
-import styles from "./button.module.css";
+import styles from "./splash.module.css";
 
 const Splash = ({ id, x, y }: SplashProps) => {
   return (
