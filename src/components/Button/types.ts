@@ -13,7 +13,7 @@ export enum ButtonTheme {
   error = "error",
 }
 
-type ButtonOnPressHandler = () => void;
+export type ButtonOnPressHandler = () => void;
 
 export interface ButtonProps extends ButtonVariantProps {
   variant: ButtonVariant;
@@ -26,12 +26,6 @@ export interface ButtonVariantProps {
   children: ReactNode;
 }
 
-export type Splash = {
-  id: number;
-  x: number;
-  y: number;
-};
-
 export interface ButtonLinkProps {
   children: ReactNode;
   href: string;
@@ -40,3 +34,13 @@ export interface ButtonLinkProps {
   disabled?: boolean;
   variant: ButtonVariant;
 }
+
+export interface SplashState {
+  id: number;
+  x: number;
+  y: number;
+}
+
+export type SetTimeoutReturnType = ReturnType<typeof setTimeout>;
+
+export interface SplashProps extends SplashState {}
