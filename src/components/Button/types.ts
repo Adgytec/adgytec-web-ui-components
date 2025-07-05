@@ -20,10 +20,11 @@ export interface ButtonProps extends ButtonVariantProps {
 }
 
 export interface ButtonVariantProps {
-  onPress: ButtonOnPressHandler;
+  onPress?: ButtonOnPressHandler;
   disabled?: boolean;
   theme: ButtonTheme;
   children: ReactNode;
+  slot?: string; // check react-aria library documentation for its use in multiple other components
 }
 
 export interface ButtonLinkProps {
