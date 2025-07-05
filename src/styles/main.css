@@ -121,3 +121,36 @@ body {
   color: var(--color-on-surface);
   font-family: "Poppins", sans-serif;
 }
+
+.preview-parent {
+  display: grid;
+  gap: 2rem;
+
+  padding-inline: 1rem;
+  padding-block: 1rem;
+}
+
+.preview-container {
+  display: grid;
+  gap: 1.5rem;
+  outline: 0.125rem solid var(--color-outline);
+
+  padding-inline: 1rem;
+  padding-block: 1rem;
+
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.preview-container__items {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.item-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

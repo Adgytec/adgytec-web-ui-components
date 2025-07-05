@@ -3,7 +3,8 @@ import {
   Button as UnstyledButton,
   type PressEvent,
 } from "react-aria-components";
-import type { ButtonProps } from "./types";
+
+import type { ButtonProps } from "./types.ts";
 import { useEffect, useRef, useState } from "react";
 
 const Button = ({
