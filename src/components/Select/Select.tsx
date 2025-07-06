@@ -1,29 +1,28 @@
 import FilledButton from "../Button/FilledButton";
-import {
-  ButtonTheme,
-  ButtonVariant,
-  type ButtonVariantProps,
-} from "../Button/types";
+import styles from "./select.module.css";
+import { ButtonVariant, type ButtonVariantProps } from "../Button/types";
 import type { SelectProps } from "./types";
 import {
   Select as UnstyledSelect,
+  Label,
   ListBox,
   ListBoxItem,
   Popover,
   SelectValue,
+  Text,
 } from "react-aria-components";
-import { ChevronsUpDown } from "lucide-react";
+import { ChevronsUpDown, Check } from "lucide-react";
 import type { ComponentType } from "react";
 import OutlinedButton from "../Button/OutlinedButton";
 import TextButton from "../Button/TextButton";
-("lucide-react");
 
 const Select = ({
   options,
   label,
   name,
   disabled,
-  triggerTheme,
+  required,
+  colorTheme,
   triggerVariant,
   placeholder,
 }: SelectProps) => {
@@ -41,10 +40,11 @@ const Select = ({
   }
 
   return (
-    <UnstyledSelect isDisabled={disabled}>
-      <Trigger theme={triggerTheme}>
+    <UnstyledSelect isDisabled={disabled} isRequired={required} name={name}>
+      {label && <Label>{label}</Label>}
+      <Trigger theme={colorTheme}>
         {placeholder ? (
-          <SelectValue>
+          <SelectValue className={`${styles["selected-value"]}`}>
             {({ defaultChildren, isPlaceholder }) => {
               return isPlaceholder ? placeholder : defaultChildren;
             }}
@@ -54,6 +54,39 @@ const Select = ({
         )}
         <ChevronsUpDown size={16} strokeWidth={3} />
       </Trigger>
+      <Popover className={`${styles["options-popover"]} ${styles[colorTheme]}`}>
+        <ListBox className={`${styles["options-list"]}`} items={options}>
+          {options.map((option) => {
+            const ItemComp = (
+              <>
+                <Text slot="label">{option.displayValue}</Text>
+                {option.description && (
+                  <Text slot="description">{option.description}</Text>
+                )}
+              </>
+            );
+
+            return (
+              <ListBoxItem
+                className={`${styles["options-item-group"]}`}
+                key={option.key}
+                id={option.key}
+                textValue={option.displayValue}
+                isDisabled={option.disabled}
+              >
+                {({ isSelected }) => (
+                  <>
+                    <div className={`${styles["options-item"]}`}>
+                      {ItemComp}
+                    </div>
+                    {isSelected && <Check strokeWidth={3} />}
+                  </>
+                )}
+              </ListBoxItem>
+            );
+          })}
+        </ListBox>
+      </Popover>
     </UnstyledSelect>
   );
 };

@@ -145,22 +145,33 @@ const SelectPreview = () => {
     {
       key: "cakes",
       displayValue: "Cakes 🎂",
+      description:
+        "A cake is a baked sweet food, traditionally made with flour, sugar, and eggs, often with added fats and leavening agents.",
     },
     {
       key: "cookies",
       displayValue: "Cookies 🍪",
+      description:
+        "Cookies are small, sweet baked goods made with flour, sugar, and fat, often featuring additions like chocolate chips, nuts, or fruit. ",
+      disabled: true,
     },
     {
-      key: "biscuits",
-      displayValue: "Biscuits",
+      key: "donuts",
+      displayValue: "Donuts 🍩",
+      description:
+        "Donuts are a type of fried or baked pastry, typically made from flour, sugar, and eggs, and often shaped like a ring with a hole in the center. ",
     },
     {
       key: "pastries",
       displayValue: "Pastries 🍰",
+      description:
+        "Pastries are baked goods made from dough, often with a flaky or crumbly texture, and can be sweet or savory.",
     },
     {
       key: "ice-cream",
       displayValue: "Icecream 🍨",
+      description:
+        "A frozen dairy dessert made mainly of sweetened cream or a mixture of milk and cream and frozen in a churn to whip in air and keep the ice crystals small.",
     },
   ];
 
@@ -173,17 +184,19 @@ const SelectPreview = () => {
               return (
                 <Fragment key={"select" + theme + variant}>
                   <Select
+                    label="Desserts"
                     options={options}
-                    triggerTheme={theme}
+                    colorTheme={theme}
                     triggerVariant={variant}
-                    placeholder="Select your favorite dessert."
+                    placeholder="Select your favorite dessert"
                   />
 
                   <Select
+                    label="Desserts"
                     options={options}
-                    triggerTheme={theme}
+                    colorTheme={theme}
                     triggerVariant={variant}
-                    placeholder="Select your favorite dessert."
+                    placeholder="Select your favorite dessert"
                     disabled
                   />
                 </Fragment>
