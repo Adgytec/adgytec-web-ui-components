@@ -1,7 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
 @import "reset.css";
 
 :root {
+  --font-normal: "Lexend", sans-serif;
+  --font-heading: "Lexend", sans-serif;
+
   --color-primary: rgb(0 103 125);
   --color-surface-tint: rgb(0 103 125);
   --color-on-primary: rgb(255 255 255);
@@ -119,7 +122,7 @@
 body {
   background-color: var(--color-surface);
   color: var(--color-on-surface);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-normal);
 }
 
 .preview-parent {

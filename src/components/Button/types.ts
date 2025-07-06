@@ -10,6 +10,7 @@ export enum ButtonTheme {
   primary = "primary",
   primaryVariant = "primary-variant",
   secondary = "secondary",
+  tertiary = "tertiary",
   error = "error",
 }
 
@@ -29,7 +30,7 @@ export interface ButtonVariantProps {
 
 export interface ButtonLinkProps {
   children: ReactNode;
-  href: string;
+  href?: string;
   target?: string;
   theme: ButtonTheme;
   disabled?: boolean;

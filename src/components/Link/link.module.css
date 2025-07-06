@@ -39,6 +39,10 @@
   --_link-text: var(--color-secondary);
 }
 
+.tertiary {
+  --_link-text: var(--color-tertiary);
+}
+
 .error {
   --_link-text: var(--color-error);
 }

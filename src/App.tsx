@@ -2,11 +2,13 @@ import { Fragment, type ReactNode } from "react";
 import FilledButton from "./components/Button/FilledButton";
 import OutlinedButton from "./components/Button/OutlinedButton";
 import TextButton from "./components/Button/TextButton";
-import { ButtonTheme } from "./components/Button/types";
+import { ButtonTheme, ButtonVariant } from "./components/Button/types";
 import { LinkTheme } from "./components/Link/types";
 import Link from "./components/Link/Link";
 import FilledButtonLink from "./components/Link/FilledButtonLink";
 import OutlinedButtonLink from "./components/Link/OutlinedButtonLink";
+import type { SelectOptions } from "./components/Select/types";
+import Select from "./components/Select/Select";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -25,6 +27,7 @@ const ButtonPreview = () => {
     ButtonTheme.primary,
     ButtonTheme.primaryVariant,
     ButtonTheme.secondary,
+    ButtonTheme.tertiary,
     ButtonTheme.error,
   ];
 
@@ -79,6 +82,7 @@ const LinkPreview = () => {
     LinkTheme.primary,
     LinkTheme.primaryVariant,
     LinkTheme.secondary,
+    LinkTheme.tertiary,
     LinkTheme.error,
   ];
 
@@ -122,8 +126,69 @@ const LinkPreview = () => {
   );
 };
 
+const SelectPreview = () => {
+  const buttonTheme = [
+    ButtonTheme.primary,
+    ButtonTheme.primaryVariant,
+    ButtonTheme.secondary,
+    ButtonTheme.tertiary,
+    ButtonTheme.error,
+  ];
+
+  const buttonVariants = [
+    ButtonVariant.filled,
+    ButtonVariant.outlined,
+    ButtonVariant.text,
+  ];
+
+  const options: SelectOptions[] = [
+    {
+      key: "cakes",
+      displayValue: "Cakes 🎂",
+    },
+    {
+      key: "cookies",
+      displayValue: "Cookies 🍪",
+    },
+    {
+      key: "biscuits",
+      displayValue: "Biscuits",
+    },
+    {
+      key: "pastries",
+      displayValue: "Pastries 🍰",
+    },
+    {
+      key: "ice-cream",
+      displayValue: "Icecream 🍨",
+    },
+  ];
+
+  return (
+    <PreviewContainer label="Select">
+      {buttonTheme.map((theme) => {
+        return (
+          <div className="item-container">
+            {buttonVariants.map((variant) => {
+              return (
+                <Select
+                  key={"select" + theme + variant}
+                  options={options}
+                  triggerTheme={theme}
+                  triggerVariant={variant}
+                  placeholder="Select your favorite dessert."
+                />
+              );
+            })}
+          </div>
+        );
+      })}
+    </PreviewContainer>
+  );
+};
+
 const App = () => {
-  const previewElements = [ButtonPreview, LinkPreview];
+  const previewElements = [ButtonPreview, LinkPreview, SelectPreview];
 
   return (
     <div className="preview-parent">

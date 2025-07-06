@@ -9,6 +9,8 @@ export const getButtonThemeFromLinkTheme = (theme: LinkTheme) => {
       return ButtonTheme.primaryVariant;
     case LinkTheme.secondary:
       return ButtonTheme.secondary;
+    case LinkTheme.tertiary:
+      return ButtonTheme.tertiary;
     case LinkTheme.error:
       return ButtonTheme.error;
   }
