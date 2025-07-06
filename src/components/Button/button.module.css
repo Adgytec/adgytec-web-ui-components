@@ -26,13 +26,13 @@
     background-color 250ms,
     color 250ms;
 
-  &[data-hovered="true"],
-  &[data-focused="true"] {
+  &[data-hovered],
+  &[data-focused] {
     --_bg: hsl(from var(--_button-color) h s calc(l + 10));
     --_color: hsl(from var(--_button-text) h s calc(l + 10));
   }
 
-  &[data-pressed="true"] {
+  &[data-pressed] {
     --_bg: hsl(from var(--_button-color) h s calc(l - 5));
     --_color: hsl(from var(--_button-text) h s calc(l - 5));
   }
