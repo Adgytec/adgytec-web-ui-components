@@ -5,7 +5,7 @@ export interface LinkProps {
   children: ReactNode;
   href: string;
   target?: string;
-  theme: ColorTheme;
+  theme?: ColorTheme;
   disabled?: boolean;
   slot?: string;
 }
