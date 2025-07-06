@@ -121,10 +121,12 @@
   accent-color: var(--color-primary);
 }
 
-[data-disabled="true"]:not([data-disabled="true"] [data-disabled="true"]) {
-  opacity: var(--disabled-opacity);
-  /* filter: grayscale(100%); */
+[data-disabled] {
   cursor: not-allowed;
+}
+
+[data-disabled]:not([data-disabled] [data-disabled]) {
+  opacity: var(--disabled-opacity);
 }
 
 body {
