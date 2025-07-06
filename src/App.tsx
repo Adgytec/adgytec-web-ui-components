@@ -9,6 +9,8 @@ import FilledButtonLink from "./components/Link/FilledButtonLink";
 import OutlinedButtonLink from "./components/Link/OutlinedButtonLink";
 import type { SelectOptions } from "./components/Select/types";
 import Select from "./components/Select/Select";
+import { AvatarSize, type AvatarProps } from "./components/Avatar/types";
+import Avatar from "./components/Avatar/Avatar";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -209,8 +211,38 @@ const SelectPreview = () => {
   );
 };
 
+const AvatarPreview = () => {
+  const avatarSrc =
+    "https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
+  const avatarChildren = "RV";
+
+  const avatarSizes = [AvatarSize.small, AvatarSize.normal, AvatarSize.large];
+
+  return (
+    <PreviewContainer label="Avatar">
+      {avatarSizes.map((size) => {
+        return (
+          <div className="item-container">
+            <Fragment key={"avatar" + size}>
+              <Avatar size={size} src={avatarSrc} label="dog-smile" />
+
+              <Avatar size={size}>{avatarChildren}</Avatar>
+            </Fragment>
+          </div>
+        );
+      })}
+    </PreviewContainer>
+  );
+};
+
 const App = () => {
-  const previewElements = [ButtonPreview, LinkPreview, SelectPreview];
+  const previewElements = [
+    ButtonPreview,
+    LinkPreview,
+    SelectPreview,
+    AvatarPreview,
+  ];
 
   return (
     <div className="preview-parent">
