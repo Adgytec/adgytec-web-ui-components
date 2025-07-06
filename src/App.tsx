@@ -9,7 +9,7 @@ import FilledButtonLink from "./components/Link/FilledButtonLink";
 import OutlinedButtonLink from "./components/Link/OutlinedButtonLink";
 import type { SelectOptions } from "./components/Select/types";
 import Select from "./components/Select/Select";
-import { AvatarSize, type AvatarProps } from "./components/Avatar/types";
+import { AvatarSize } from "./components/Avatar/types";
 import Avatar from "./components/Avatar/Avatar";
 
 // preview container

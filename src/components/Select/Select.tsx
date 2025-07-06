@@ -15,6 +15,7 @@ import { ChevronsUpDown, Check } from "lucide-react";
 import type { ComponentType } from "react";
 import OutlinedButton from "../Button/OutlinedButton";
 import TextButton from "../Button/TextButton";
+import { ColorTheme } from "../../utils/types";
 
 const Select = ({
   options,
@@ -22,8 +23,8 @@ const Select = ({
   name,
   disabled,
   required,
-  colorTheme,
-  triggerVariant,
+  colorTheme = ColorTheme.primary,
+  triggerVariant = ButtonVariant.filled,
   placeholder,
 }: SelectProps) => {
   let Trigger: ComponentType<ButtonVariantProps>;

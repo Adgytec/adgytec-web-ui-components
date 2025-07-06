@@ -1,4 +1,9 @@
-import { AvatarType, type AvatarBaseProps, type AvatarProps } from "./types";
+import {
+  AvatarSize,
+  AvatarType,
+  type AvatarBaseProps,
+  type AvatarProps,
+} from "./types";
 import Error from "../Error/Error";
 import styles from "./avatar.module.css";
 
@@ -10,7 +15,12 @@ const AvatarBase = ({ children, size, type }: AvatarBaseProps) => {
   );
 };
 
-const Avatar = ({ src, children, size, label }: AvatarProps) => {
+const Avatar = ({
+  src,
+  children,
+  size = AvatarSize.normal,
+  label,
+}: AvatarProps) => {
   if (!src && !children) {
     return <Error>Either image source or child elements are required</Error>;
   }

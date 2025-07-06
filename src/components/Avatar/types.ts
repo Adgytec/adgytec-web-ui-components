@@ -14,7 +14,7 @@ export enum AvatarType {
 export interface AvatarProps {
   src?: string;
   children?: ReactNode;
-  size: AvatarSize;
+  size?: AvatarSize;
   label?: string;
 }
 

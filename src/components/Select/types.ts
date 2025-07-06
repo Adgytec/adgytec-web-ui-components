@@ -15,6 +15,6 @@ export interface SelectProps {
   name?: string;
   disabled?: boolean;
   placeholder?: string;
-  colorTheme: ColorTheme;
-  triggerVariant: ButtonVariant;
+  colorTheme?: ColorTheme;
+  triggerVariant?: ButtonVariant;
 }
