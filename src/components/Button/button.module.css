@@ -7,8 +7,8 @@
 
   font-weight: 500;
 
-  padding-inline: 1.125em;
-  padding-block: 0.625em;
+  padding-inline: var(--_pi);
+  padding-block: var(--_pb);
 
   border: 0.125rem solid var(--_border-color);
 
@@ -41,6 +41,19 @@
 .button-link {
   text-underline-offset: 0.125em;
   text-decoration-thickness: 0.075em;
+}
+
+/* button shape */
+.square {
+  --_pi: 0.625em;
+  --_pb: 0.625em;
+
+  aspect-ratio: 1/1;
+}
+
+.rectangle {
+  --_pi: 1.125em;
+  --_pb: 0.625em;
 }
 
 /* button theme */

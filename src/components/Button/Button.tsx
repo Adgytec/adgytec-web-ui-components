@@ -1,14 +1,16 @@
 import styles from "./button.module.css";
 import { Button as UnstyledButton } from "react-aria-components";
 
-import type { ButtonProps } from "./types.ts";
+import { ButtonShape, type ButtonProps } from "./types.ts";
 import Splash from "../Splash/Splash.tsx";
 import { useSplash } from "../Splash/useSplash.ts";
+import { ColorTheme } from "../../utils/types.ts";
 
 const Button = ({
   onPress,
   variant,
-  theme,
+  theme = ColorTheme.primary,
+  shape = ButtonShape.rectangle,
   children,
   disabled,
   slot,
@@ -17,7 +19,7 @@ const Button = ({
 
   return (
     <UnstyledButton
-      className={`${styles["button"]} ${styles[variant]} ${styles[theme]}`}
+      className={`${styles["button"]} ${styles[variant]} ${styles[theme]} ${styles[shape]}`}
       onPress={handlePress}
       isDisabled={disabled}
       slot={slot}

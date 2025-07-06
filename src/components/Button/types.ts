@@ -7,6 +7,11 @@ export enum ButtonVariant {
   text = "text",
 }
 
+export enum ButtonShape {
+  rectangle = "rectangle",
+  square = "square",
+}
+
 export type ButtonOnPressHandler = () => void;
 
 export interface ButtonProps extends ButtonVariantProps {
@@ -16,7 +21,8 @@ export interface ButtonProps extends ButtonVariantProps {
 export interface ButtonVariantProps {
   onPress?: ButtonOnPressHandler;
   disabled?: boolean;
-  theme: ColorTheme;
+  theme?: ColorTheme;
+  shape?: ButtonShape;
   children: ReactNode;
   slot?: string; // check react-aria library documentation for its use in multiple other components
 }
@@ -25,8 +31,9 @@ export interface ButtonLinkProps {
   children: ReactNode;
   href?: string;
   target?: string;
-  theme: ColorTheme;
+  theme?: ColorTheme;
   disabled?: boolean;
-  variant: ButtonVariant;
+  variant?: ButtonVariant;
+  shape?: ButtonShape;
   slot?: string;
 }
