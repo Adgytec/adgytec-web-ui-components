@@ -78,6 +78,7 @@ const ButtonPreview = () => {
                     theme={theme}
                     onPress={onPress}
                     shape={ButtonShape.square}
+                    description="Copy"
                   >
                     <Copy strokeWidth={3} size={18} />
                   </ButtonElement.element>

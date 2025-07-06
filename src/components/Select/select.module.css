@@ -66,15 +66,15 @@
   }
 
   &[data-entering] {
-    animation: options-entry 250ms;
+    animation: options-animation 250ms;
   }
 
   &[data-exiting] {
-    animation: options-entry 250ms reverse;
+    animation: options-animation 250ms reverse;
   }
 }
 
-@keyframes options-entry {
+@keyframes options-animation {
   from {
     opacity: 0;
     scale: 0;

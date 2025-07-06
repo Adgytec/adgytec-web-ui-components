@@ -1,6 +1,6 @@
 import styles from "./button.module.css";
 import { Link as UnstyledLink } from "react-aria-components";
-
+import Tooltip from "../Tooltip/Tooltip.tsx";
 import { ButtonShape, ButtonVariant, type ButtonLinkProps } from "./types.ts";
 import Splash from "../Splash/Splash.tsx";
 import { useSplash } from "../Splash/useSplash.ts";
@@ -14,11 +14,12 @@ const ButtonLink = ({
   shape = ButtonShape.rectangle,
   children,
   disabled,
+  description,
   slot,
 }: ButtonLinkProps) => {
   const { coords, handlePress } = useSplash();
 
-  return (
+  const button = (
     <UnstyledLink
       className={`${styles["button"]} ${styles["button-link"]} ${styles[variant]} ${styles[theme]} ${styles[shape]}`}
       onPress={handlePress}
@@ -31,6 +32,16 @@ const ButtonLink = ({
 
       {children}
     </UnstyledLink>
+  );
+
+  if (!description) {
+    return button;
+  }
+
+  return (
+    <Tooltip theme={theme} description={description}>
+      {button}
+    </Tooltip>
   );
 };
 

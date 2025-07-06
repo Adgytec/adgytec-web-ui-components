@@ -1,0 +1,87 @@
+.tooltip {
+  font-size: 0.875rem;
+
+  background-color: var(--_bg);
+  color: var(--_color);
+
+  padding-inline: 0.75em;
+  padding-block: 0.25em;
+
+  forced-color-adjust: none;
+  outline: none;
+  max-width: 10rem;
+
+  margin: 0.625rem;
+
+  transition:
+    transform 200ms,
+    opacity 200ms;
+  transform: translate3d(0, 0, 0);
+
+  &[data-placement="bottom"] {
+    --origin: translateY(-0.25rem);
+
+    .tooltip-arrow svg {
+      rotate: 180deg;
+    }
+  }
+
+  &[data-placement="top"] {
+    --origin: translateY(0.25rem);
+  }
+
+  &[data-placement="right"] {
+    --origin: translateX(-0.25rem);
+    .tooltip-arrow svg {
+      rotate: 90deg;
+    }
+  }
+
+  &[data-placement="left"] {
+    --origin: translateX(0.25rem);
+    .tooltip-arrow svg {
+      rotate: -90deg;
+    }
+  }
+
+  &[data-entering],
+  &[data-exiting] {
+    transform: var(--origin);
+    opacity: 0;
+  }
+}
+
+.tooltip-arrow {
+  svg {
+    display: block;
+    fill: var(--_bg);
+    width: 0.625rem;
+    aspect-ratio: 1/1;
+  }
+}
+
+/* tooltip theme */
+.primary {
+  --_bg: var(--color-primary-container);
+  --_color: var(--color-on-primary-container);
+}
+
+.primary-variant {
+  --_bg: var(--color-primary-variant-container);
+  --_color: var(--color-on-primary-variant-container);
+}
+
+.secondary {
+  --_bg: var(--color-secondary-container);
+  --_color: var(--color-on-secondary-container);
+}
+
+.tertiary {
+  --_bg: var(--color-tertiary-container);
+  --_color: var(--color-on-tertiary-container);
+}
+
+.error {
+  --_bg: var(--color-error-container);
+  --_color: var(--color-on-error-container);
+}
