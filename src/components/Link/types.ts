@@ -1,18 +1,11 @@
 import type { ReactNode } from "react";
-
-export enum LinkTheme {
-  primary = "primary",
-  primaryVariant = "primary-variant",
-  secondary = "secondary",
-  tertiary = "tertiary",
-  error = "error",
-}
+import type { ColorTheme } from "../../utils/types";
 
 export interface LinkProps {
   children: ReactNode;
   href: string;
   target?: string;
-  theme: LinkTheme;
+  theme: ColorTheme;
   disabled?: boolean;
   slot?: string;
 }

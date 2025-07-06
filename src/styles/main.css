@@ -5,6 +5,8 @@
   --font-normal: "Lexend", sans-serif;
   --font-heading: "Lexend", sans-serif;
 
+  --disabled-opacity: 0.5;
+
   --color-primary: rgb(0 103 125);
   --color-surface-tint: rgb(0 103 125);
   --color-on-primary: rgb(255 255 255);
@@ -117,6 +119,12 @@
 
   caret-color: var(--color-primary);
   accent-color: var(--color-primary);
+}
+
+[data-disabled="true"]:not([data-disabled="true"] [data-disabled="true"]) {
+  opacity: var(--disabled-opacity);
+  /* filter: grayscale(100%); */
+  cursor: not-allowed;
 }
 
 body {

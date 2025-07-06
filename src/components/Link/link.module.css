@@ -19,11 +19,6 @@
   &[data-pressed="true"] {
     --_color: hsl(from var(--_link-text) h s calc(l - 5));
   }
-
-  &[data-disabled="true"] {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
 }
 
 /* link theme */

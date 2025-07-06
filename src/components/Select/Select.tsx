@@ -41,7 +41,7 @@ const Select = ({
   }
 
   return (
-    <UnstyledSelect>
+    <UnstyledSelect isDisabled={disabled}>
       <Trigger theme={triggerTheme}>
         {placeholder ? (
           <SelectValue>

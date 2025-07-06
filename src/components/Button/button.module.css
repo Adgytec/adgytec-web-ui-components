@@ -2,8 +2,6 @@
   --_button-color: transparent;
   --_button-text: transparent;
   --_border-color: var(--_button-color);
-  --_bg: var(--_button-color);
-  --_color: var(--_button-text);
 
   cursor: pointer;
 
@@ -37,11 +35,6 @@
   &[data-pressed="true"] {
     --_bg: hsl(from var(--_button-color) h s calc(l - 5));
     --_color: hsl(from var(--_button-text) h s calc(l - 5));
-  }
-
-  &[data-disabled="true"] {
-    opacity: 0.5;
-    cursor: not-allowed;
   }
 }
 
@@ -77,6 +70,11 @@
 }
 
 /* button variant */
+.filled {
+  --_bg: var(--_button-color);
+  --_color: var(--_button-text);
+}
+
 .outlined {
   --_bg: transparent;
   --_color: var(--_button-color);

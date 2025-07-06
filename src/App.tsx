@@ -1,9 +1,9 @@
 import { Fragment, type ReactNode } from "react";
+import { ColorTheme } from "./utils/types";
 import FilledButton from "./components/Button/FilledButton";
 import OutlinedButton from "./components/Button/OutlinedButton";
 import TextButton from "./components/Button/TextButton";
-import { ButtonTheme, ButtonVariant } from "./components/Button/types";
-import { LinkTheme } from "./components/Link/types";
+import { ButtonVariant } from "./components/Button/types";
 import Link from "./components/Link/Link";
 import FilledButtonLink from "./components/Link/FilledButtonLink";
 import OutlinedButtonLink from "./components/Link/OutlinedButtonLink";
@@ -24,11 +24,11 @@ const PreviewContainer = (props: { label: string; children: ReactNode }) => {
 // button component preview
 const ButtonPreview = () => {
   const buttonTheme = [
-    ButtonTheme.primary,
-    ButtonTheme.primaryVariant,
-    ButtonTheme.secondary,
-    ButtonTheme.tertiary,
-    ButtonTheme.error,
+    ColorTheme.primary,
+    ColorTheme.primaryVariant,
+    ColorTheme.secondary,
+    ColorTheme.tertiary,
+    ColorTheme.error,
   ];
 
   const buttonElements = [
@@ -79,11 +79,11 @@ const ButtonPreview = () => {
 
 const LinkPreview = () => {
   const linkTheme = [
-    LinkTheme.primary,
-    LinkTheme.primaryVariant,
-    LinkTheme.secondary,
-    LinkTheme.tertiary,
-    LinkTheme.error,
+    ColorTheme.primary,
+    ColorTheme.primaryVariant,
+    ColorTheme.secondary,
+    ColorTheme.tertiary,
+    ColorTheme.error,
   ];
 
   const linkElements = [
@@ -128,11 +128,11 @@ const LinkPreview = () => {
 
 const SelectPreview = () => {
   const buttonTheme = [
-    ButtonTheme.primary,
-    ButtonTheme.primaryVariant,
-    ButtonTheme.secondary,
-    ButtonTheme.tertiary,
-    ButtonTheme.error,
+    ColorTheme.primary,
+    ColorTheme.primaryVariant,
+    ColorTheme.secondary,
+    ColorTheme.tertiary,
+    ColorTheme.error,
   ];
 
   const buttonVariants = [
@@ -171,13 +171,22 @@ const SelectPreview = () => {
           <div className="item-container">
             {buttonVariants.map((variant) => {
               return (
-                <Select
-                  key={"select" + theme + variant}
-                  options={options}
-                  triggerTheme={theme}
-                  triggerVariant={variant}
-                  placeholder="Select your favorite dessert."
-                />
+                <Fragment key={"select" + theme + variant}>
+                  <Select
+                    options={options}
+                    triggerTheme={theme}
+                    triggerVariant={variant}
+                    placeholder="Select your favorite dessert."
+                  />
+
+                  <Select
+                    options={options}
+                    triggerTheme={theme}
+                    triggerVariant={variant}
+                    placeholder="Select your favorite dessert."
+                    disabled
+                  />
+                </Fragment>
               );
             })}
           </div>

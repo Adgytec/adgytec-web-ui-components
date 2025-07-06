@@ -1,4 +1,5 @@
-import type { ButtonTheme, ButtonVariant } from "../Button/types";
+import type { ColorTheme } from "../../utils/types";
+import type { ButtonVariant } from "../Button/types";
 
 export type SelectOptions = {
   key: string;
@@ -11,6 +12,6 @@ export interface SelectProps {
   name?: string;
   disabled?: boolean;
   placeholder?: string;
-  triggerTheme: ButtonTheme;
+  triggerTheme: ColorTheme;
   triggerVariant: ButtonVariant;
 }
