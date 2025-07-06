@@ -1,9 +1,6 @@
 import { useRef, useState, useEffect } from "react";
-import type {
-  SetTimeoutReturnType,
-  ButtonOnPressHandler,
-  SplashState,
-} from "./types";
+import type { SetTimeoutReturnType, SplashState } from "./types";
+import type { ButtonOnPressHandler } from "../Button/types";
 import type { PressEvent } from "react-aria-components";
 
 export const useSplash = (onPress?: ButtonOnPressHandler) => {
@@ -15,7 +12,7 @@ export const useSplash = (onPress?: ButtonOnPressHandler) => {
     setCoords({ id: idRef.current++, x: e.x, y: e.y });
     if (e.x !== -1 && e.y !== -1) {
       clearTimeout(timeout.current);
-      timeout.current = setTimeout(() => setCoords(null), 600);
+      timeout.current = setTimeout(() => setCoords(null), 500);
     }
     onPress?.();
   };

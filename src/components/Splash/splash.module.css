@@ -4,7 +4,7 @@
   aspect-ratio: 1/1;
   border-radius: 50%;
   background-color: hsl(from var(--color-surface-variant) h s l / 0.5);
-  animation: ripple 600ms linear;
+  animation: ripple 500ms linear;
   opacity: 0;
 }
 

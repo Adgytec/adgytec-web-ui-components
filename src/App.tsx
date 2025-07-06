@@ -210,12 +210,7 @@ const SelectPreview = () => {
 };
 
 const App = () => {
-  const previewElements = [
-    ButtonPreview,
-    LinkPreview,
-    SelectPreview,
-    ButtonPreview,
-  ];
+  const previewElements = [ButtonPreview, LinkPreview, SelectPreview];
 
   return (
     <div className="preview-parent">
