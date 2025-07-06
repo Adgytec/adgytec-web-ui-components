@@ -3,7 +3,7 @@ import { ColorTheme } from "./utils/types";
 import FilledButton from "./components/Button/FilledButton";
 import OutlinedButton from "./components/Button/OutlinedButton";
 import TextButton from "./components/Button/TextButton";
-import { ButtonVariant } from "./components/Button/types";
+import { ButtonShape, ButtonVariant } from "./components/Button/types";
 import Link from "./components/Link/Link";
 import FilledButtonLink from "./components/Link/FilledButtonLink";
 import OutlinedButtonLink from "./components/Link/OutlinedButtonLink";
@@ -11,6 +11,7 @@ import type { SelectOptions } from "./components/Select/types";
 import Select from "./components/Select/Select";
 import { AvatarSize } from "./components/Avatar/types";
 import Avatar from "./components/Avatar/Avatar";
+import { Copy } from "lucide-react";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -48,6 +49,9 @@ const ButtonPreview = () => {
     },
   ];
 
+  const avatarSrc =
+    "https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
   const onPress = () => {};
 
   return (
@@ -68,6 +72,30 @@ const ButtonPreview = () => {
                     disabled
                   >
                     {ButtonElement.label}
+                  </ButtonElement.element>
+
+                  <ButtonElement.element
+                    theme={theme}
+                    onPress={onPress}
+                    shape={ButtonShape.square}
+                  >
+                    <Copy strokeWidth={3} size={18} />
+                  </ButtonElement.element>
+
+                  <ButtonElement.element
+                    theme={theme}
+                    onPress={onPress}
+                    shape={ButtonShape.avatar}
+                  >
+                    <Avatar src={avatarSrc} size={AvatarSize.large} />
+                  </ButtonElement.element>
+
+                  <ButtonElement.element
+                    theme={theme}
+                    onPress={onPress}
+                    shape={ButtonShape.avatar}
+                  >
+                    <Avatar theme={theme}>RV</Avatar>
                   </ButtonElement.element>
                 </Fragment>
               );
@@ -219,6 +247,14 @@ const AvatarPreview = () => {
 
   const avatarSizes = [AvatarSize.small, AvatarSize.normal, AvatarSize.large];
 
+  const avatarTheme = [
+    ColorTheme.primary,
+    ColorTheme.primaryVariant,
+    ColorTheme.secondary,
+    ColorTheme.tertiary,
+    ColorTheme.error,
+  ];
+
   return (
     <PreviewContainer label="Avatar">
       {avatarSizes.map((size) => {
@@ -227,7 +263,17 @@ const AvatarPreview = () => {
             <Fragment key={"avatar" + size}>
               <Avatar size={size} src={avatarSrc} label="dog-smile" />
 
-              <Avatar size={size}>{avatarChildren}</Avatar>
+              {avatarTheme.map((theme) => {
+                return (
+                  <Avatar
+                    size={size}
+                    theme={theme}
+                    key={"avatar" + size + theme}
+                  >
+                    {avatarChildren}
+                  </Avatar>
+                );
+              })}
             </Fragment>
           </div>
         );

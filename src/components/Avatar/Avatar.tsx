@@ -6,10 +6,13 @@ import {
 } from "./types";
 import Error from "../Error/Error";
 import styles from "./avatar.module.css";
+import { ColorTheme } from "../../utils/types";
 
-const AvatarBase = ({ children, size, type }: AvatarBaseProps) => {
+const AvatarBase = ({ children, size, type, theme }: AvatarBaseProps) => {
   return (
-    <div className={`${styles["avatar"]} ${styles[size]} ${styles[type]}`}>
+    <div
+      className={`${styles["avatar"]} ${styles[size]} ${styles[type]} ${styles[theme]}`}
+    >
       {children}
     </div>
   );
@@ -20,6 +23,7 @@ const Avatar = ({
   children,
   size = AvatarSize.normal,
   label,
+  theme = ColorTheme.primary,
 }: AvatarProps) => {
   if (!src && !children) {
     return <Error>Either image source or child elements are required</Error>;
@@ -27,14 +31,14 @@ const Avatar = ({
 
   if (children) {
     return (
-      <AvatarBase type={AvatarType.node} size={size}>
+      <AvatarBase type={AvatarType.node} size={size} theme={theme}>
         {children}
       </AvatarBase>
     );
   }
 
   return (
-    <AvatarBase size={size} type={AvatarType.image}>
+    <AvatarBase size={size} type={AvatarType.image} theme={theme}>
       <img src={src} alt={label} />
     </AvatarBase>
   );

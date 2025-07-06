@@ -10,6 +10,7 @@ export enum ButtonVariant {
 export enum ButtonShape {
   rectangle = "rectangle",
   square = "square",
+  avatar = "avatar",
 }
 
 export type ButtonOnPressHandler = () => void;

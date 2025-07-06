@@ -8,8 +8,6 @@
   width: var(--_width);
   font-size: var(--_font-size);
   aspect-ratio: 1/1;
-
-  cursor: context-menu;
 }
 
 /* avatar type */
@@ -17,10 +15,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
 
-  background-color: var(--color-tertiary-fixed-dim);
-  color: var(--color-on-tertiary-fixed-variant);
+  font-weight: 600;
+  text-transform: uppercase;
+
+  background-color: var(--_avatar-bg);
+  color: var(--_avatar-color);
 }
 
 .image {
@@ -45,4 +45,30 @@
 .large {
   --_width-multiplier: 3;
   --_font-multiplier: 1.125;
+}
+
+/* avatar theme */
+.primary {
+  --_avatar-bg: var(--color-primary);
+  --_avatar-color: var(--color-on-primary);
+}
+
+.primary-variant {
+  --_avatar-bg: var(--color-primary-variant);
+  --_avatar-color: var(--color-on-primary-variant);
+}
+
+.secondary {
+  --_avatar-bg: var(--color-secondary);
+  --_avatar-color: var(--color-on-secondary);
+}
+
+.tertiary {
+  --_avatar-bg: var(--color-tertiary);
+  --_avatar-color: var(--color-on-tertiary);
+}
+
+.error {
+  --_avatar-bg: var(--color-error);
+  --_avatar-color: var(--color-on-error);
 }
