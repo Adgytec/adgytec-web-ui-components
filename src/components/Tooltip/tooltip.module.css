@@ -1,15 +1,15 @@
 .tooltip {
   font-size: 0.875rem;
+  text-align: center;
 
   background-color: var(--_bg);
   color: var(--_color);
 
   padding-inline: 0.75em;
-  padding-block: 0.25em;
+  padding-block: 0.5em;
 
-  forced-color-adjust: none;
   outline: none;
-  max-width: 10rem;
+  max-width: 15rem;
 
   margin: 0.625rem;
 
@@ -19,7 +19,7 @@
   transform: translate3d(0, 0, 0);
 
   &[data-placement="bottom"] {
-    --origin: translateY(-0.25rem);
+    --_origin: translateY(-0.25rem);
 
     .tooltip-arrow svg {
       rotate: 180deg;
@@ -27,18 +27,18 @@
   }
 
   &[data-placement="top"] {
-    --origin: translateY(0.25rem);
+    --_origin: translateY(0.25rem);
   }
 
   &[data-placement="right"] {
-    --origin: translateX(-0.25rem);
+    --_origin: translateX(-0.25rem);
     .tooltip-arrow svg {
       rotate: 90deg;
     }
   }
 
   &[data-placement="left"] {
-    --origin: translateX(0.25rem);
+    --_origin: translateX(0.25rem);
     .tooltip-arrow svg {
       rotate: -90deg;
     }
@@ -46,7 +46,7 @@
 
   &[data-entering],
   &[data-exiting] {
-    transform: var(--origin);
+    transform: var(--_origin);
     opacity: 0;
   }
 }
