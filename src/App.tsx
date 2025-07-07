@@ -96,6 +96,16 @@ const ButtonPreview = () => {
                   <ButtonElement.element
                     theme={theme}
                     onPress={onPress}
+                    shape={ButtonShape.square}
+                    description="Copy"
+                    disabled
+                  >
+                    <Copy strokeWidth={3} size={18} />
+                  </ButtonElement.element>
+
+                  <ButtonElement.element
+                    theme={theme}
+                    onPress={onPress}
                     shape={ButtonShape.avatar}
                     description={descriptionAvatar}
                   >
@@ -107,6 +117,26 @@ const ButtonPreview = () => {
                     onPress={onPress}
                     shape={ButtonShape.avatar}
                     description={descriptionAvatar}
+                    disabled
+                  >
+                    <Avatar src={avatarSrc} size={AvatarSize.large} />
+                  </ButtonElement.element>
+
+                  <ButtonElement.element
+                    theme={theme}
+                    onPress={onPress}
+                    shape={ButtonShape.avatar}
+                    description={descriptionAvatar}
+                  >
+                    <Avatar theme={theme}>RV</Avatar>
+                  </ButtonElement.element>
+
+                  <ButtonElement.element
+                    theme={theme}
+                    onPress={onPress}
+                    shape={ButtonShape.avatar}
+                    description={descriptionAvatar}
+                    disabled
                   >
                     <Avatar theme={theme}>RV</Avatar>
                   </ButtonElement.element>
