@@ -14,8 +14,8 @@
   margin: 0.625rem;
 
   transition:
-    transform 200ms,
-    opacity 200ms;
+    transform 250ms,
+    opacity 250ms;
   transform: translate3d(0, 0, 0);
 
   &[data-placement="bottom"] {

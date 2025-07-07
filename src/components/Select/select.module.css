@@ -59,28 +59,31 @@
     --_options-text: var(--color-on-success-container);
   }
 
+  transition:
+    transform 250ms,
+    opacity 250ms;
+  transform: translate3d(0, 0, 0);
+
   &[data-placement="bottom"] {
-    transform-origin: top left;
+    --_origin: translateY(-0.25rem);
   }
 
   &[data-placement="top"] {
-    transform-origin: bottom left;
+    --_origin: translateY(0.25rem);
   }
 
   &[data-placement="right"] {
-    transform-origin: top left;
+    --_origin: translateX(-0.25rem);
   }
 
   &[data-placement="left"] {
-    transform-origin: top right;
+    --_origin: translateX(0.25rem);
   }
 
-  &[data-entering] {
-    animation: options-animation 250ms;
-  }
-
+  &[data-entering],
   &[data-exiting] {
-    animation: options-animation 250ms reverse;
+    transform: var(--_origin);
+    opacity: 0;
   }
 }
 
