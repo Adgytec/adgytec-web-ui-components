@@ -16,6 +16,7 @@ import type { ComponentType } from "react";
 import OutlinedButton from "../Button/OutlinedButton";
 import TextButton from "../Button/TextButton";
 import { ColorTheme } from "../../utils/types";
+import Tooltip from "../Tooltip/Tooltip";
 
 const Select = ({
   options,
@@ -25,36 +26,50 @@ const Select = ({
   required,
   colorTheme = ColorTheme.primary,
   triggerVariant = ButtonVariant.filled,
+  description,
   placeholder,
 }: SelectProps) => {
-  let Trigger: ComponentType<ButtonVariantProps>;
+  let TriggerVariant: ComponentType<ButtonVariantProps>;
   switch (triggerVariant) {
     case ButtonVariant.filled:
-      Trigger = FilledButton;
+      TriggerVariant = FilledButton;
       break;
     case ButtonVariant.outlined:
-      Trigger = OutlinedButton;
+      TriggerVariant = OutlinedButton;
       break;
     case ButtonVariant.text:
-      Trigger = TextButton;
+      TriggerVariant = TextButton;
       break;
+  }
+
+  let Trigger = (
+    <TriggerVariant theme={colorTheme}>
+      {placeholder ? (
+        <SelectValue className={`${styles["selected-value"]}`}>
+          {({ defaultChildren, isPlaceholder }) => {
+            return isPlaceholder ? placeholder : defaultChildren;
+          }}
+        </SelectValue>
+      ) : (
+        <SelectValue />
+      )}
+      <ChevronsUpDown size={16} strokeWidth={3} />
+    </TriggerVariant>
+  );
+
+  if (description) {
+    Trigger = (
+      <Tooltip description={description} theme={colorTheme}>
+        {Trigger}
+      </Tooltip>
+    );
   }
 
   return (
     <UnstyledSelect isDisabled={disabled} isRequired={required} name={name}>
       {label && <Label>{label}</Label>}
-      <Trigger theme={colorTheme}>
-        {placeholder ? (
-          <SelectValue className={`${styles["selected-value"]}`}>
-            {({ defaultChildren, isPlaceholder }) => {
-              return isPlaceholder ? placeholder : defaultChildren;
-            }}
-          </SelectValue>
-        ) : (
-          <SelectValue />
-        )}
-        <ChevronsUpDown size={16} strokeWidth={3} />
-      </Trigger>
+      {Trigger}
+
       <Popover className={`${styles["options-popover"]} ${styles[colorTheme]}`}>
         <ListBox className={`${styles["options-list"]}`} items={options}>
           {options.map((option) => {

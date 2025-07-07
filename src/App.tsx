@@ -54,6 +54,9 @@ const ButtonPreview = () => {
 
   const onPress = () => {};
 
+  let description = "This is a simple button";
+  let descriptionAvatar = "This is a avatar button";
+
   return (
     <PreviewContainer label="Buttons">
       {buttonTheme.map((theme) => {
@@ -62,7 +65,11 @@ const ButtonPreview = () => {
             {buttonElements.map((ButtonElement, index) => {
               return (
                 <Fragment key={theme + index}>
-                  <ButtonElement.element onPress={onPress} theme={theme}>
+                  <ButtonElement.element
+                    onPress={onPress}
+                    theme={theme}
+                    description={description}
+                  >
                     {ButtonElement.label}
                   </ButtonElement.element>
 
@@ -70,6 +77,7 @@ const ButtonPreview = () => {
                     onPress={onPress}
                     theme={theme}
                     disabled
+                    description={description}
                   >
                     {ButtonElement.label}
                   </ButtonElement.element>
@@ -87,6 +95,7 @@ const ButtonPreview = () => {
                     theme={theme}
                     onPress={onPress}
                     shape={ButtonShape.avatar}
+                    description={descriptionAvatar}
                   >
                     <Avatar src={avatarSrc} size={AvatarSize.large} />
                   </ButtonElement.element>
@@ -95,6 +104,7 @@ const ButtonPreview = () => {
                     theme={theme}
                     onPress={onPress}
                     shape={ButtonShape.avatar}
+                    description={descriptionAvatar}
                   >
                     <Avatar theme={theme}>RV</Avatar>
                   </ButtonElement.element>
@@ -140,11 +150,20 @@ const LinkPreview = () => {
             {linkElements.map((LinkElement, index) => {
               return (
                 <Fragment key={theme + index}>
-                  <LinkElement.element href="/" theme={theme}>
+                  <LinkElement.element
+                    href="/"
+                    theme={theme}
+                    description="This is a simple link"
+                  >
                     {LinkElement.label}
                   </LinkElement.element>
 
-                  <LinkElement.element href="/" theme={theme} disabled>
+                  <LinkElement.element
+                    href="/"
+                    theme={theme}
+                    disabled
+                    description="This is a simple link"
+                  >
                     {LinkElement.label}
                   </LinkElement.element>
                 </Fragment>
@@ -206,6 +225,8 @@ const SelectPreview = () => {
     },
   ];
 
+  let description = "Who doesn't like desserts?";
+
   return (
     <PreviewContainer label="Select">
       {buttonTheme.map((theme) => {
@@ -220,6 +241,7 @@ const SelectPreview = () => {
                     colorTheme={theme}
                     triggerVariant={variant}
                     placeholder="Select your favorite dessert"
+                    description={description}
                   />
 
                   <Select
@@ -229,6 +251,7 @@ const SelectPreview = () => {
                     triggerVariant={variant}
                     placeholder="Select your favorite dessert"
                     disabled
+                    description={description}
                   />
                 </Fragment>
               );
