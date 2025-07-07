@@ -4,4 +4,6 @@ export enum ColorTheme {
   secondary = "secondary",
   tertiary = "tertiary",
   error = "error",
+  inverseSurface = "inverse-surface",
+  success = "success",
 }

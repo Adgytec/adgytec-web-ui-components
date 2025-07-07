@@ -32,6 +32,8 @@ const ButtonPreview = () => {
     ColorTheme.secondary,
     ColorTheme.tertiary,
     ColorTheme.error,
+    ColorTheme.inverseSurface,
+    ColorTheme.success,
   ];
 
   const buttonElements = [
@@ -125,6 +127,8 @@ const LinkPreview = () => {
     ColorTheme.secondary,
     ColorTheme.tertiary,
     ColorTheme.error,
+    ColorTheme.inverseSurface,
+    ColorTheme.success,
   ];
 
   const linkElements = [
@@ -183,6 +187,8 @@ const SelectPreview = () => {
     ColorTheme.secondary,
     ColorTheme.tertiary,
     ColorTheme.error,
+    ColorTheme.inverseSurface,
+    ColorTheme.success,
   ];
 
   const buttonVariants = [
@@ -277,6 +283,8 @@ const AvatarPreview = () => {
     ColorTheme.secondary,
     ColorTheme.tertiary,
     ColorTheme.error,
+    ColorTheme.inverseSurface,
+    ColorTheme.success,
   ];
 
   return (

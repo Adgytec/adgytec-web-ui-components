@@ -89,6 +89,16 @@
   --_button-text: var(--color-on-error);
 }
 
+.inverse-surface {
+  --_button-color: var(--color-inverse-surface);
+  --_button-text: var(--color-inverse-on-surface);
+}
+
+.success {
+  --_button-color: var(--color-success);
+  --_button-text: var(--color-on-success);
+}
+
 /* button variant */
 .filled {
   --_bg: var(--_button-color);

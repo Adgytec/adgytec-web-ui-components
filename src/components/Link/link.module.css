@@ -41,3 +41,11 @@
 .error {
   --_link-text: var(--color-error);
 }
+
+.inverse-surface {
+  --_link-text: var(--color-inverse-surface);
+}
+
+.success {
+  --_link-text: var(--color-success);
+}

@@ -72,3 +72,13 @@
   --_avatar-bg: var(--color-error);
   --_avatar-color: var(--color-on-error);
 }
+
+.inverse-surface {
+  --_avatar-bg: var(--color-inverse-surface);
+  --_avatar-color: var(--color-inverse-on-surface);
+}
+
+.success {
+  --_avatar-bg: var(--color-success);
+  --_avatar-color: var(--color-on-success);
+}

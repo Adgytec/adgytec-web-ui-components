@@ -5,7 +5,7 @@
   --font-normal: "Lexend", sans-serif;
   --font-heading: "Lexend", sans-serif;
 
-  --disabled-opacity: 0.5;
+  --disabled-opacity: 0.75;
 
   --color-primary: rgb(0 103 125);
   --color-surface-tint: rgb(0 103 125);
@@ -24,6 +24,10 @@
   --color-on-error: rgb(255 255 255);
   --color-error-container: rgb(255 218 214);
   --color-on-error-container: rgb(147 0 10);
+  --color-success: rgb(58 105 58);
+  --color-on-success: rgb(255 255 255);
+  --color-success-container: rgb(187 240 181);
+  --color-on-success-container: rgb(34 80 37);
   --color-background: rgb(245 250 253);
   --color-on-background: rgb(23 28 30);
   --color-surface: rgb(245 250 253);
@@ -79,6 +83,10 @@
     --color-on-error: rgb(105 0 5);
     --color-error-container: rgb(147 0 10);
     --color-on-error-container: rgb(255 218 214);
+    --color-success: rgb(160 212 155);
+    --color-on-success: rgb(7 57 16);
+    --color-success-container: rgb(34 80 37);
+    --color-on-success-container: rgb(187 240 181);
     --color-background: rgb(15 20 22);
     --color-on-background: rgb(222 227 230);
     --color-surface: rgb(15 20 22);
@@ -127,6 +135,7 @@
 
 [data-disabled]:not([data-disabled] [data-disabled]) {
   opacity: var(--disabled-opacity);
+  filter: grayscale(75%);
 }
 
 body {

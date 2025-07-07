@@ -49,6 +49,16 @@
     --_options-text: var(--color-on-error-container);
   }
 
+  &.inverse-surface {
+    --_options-color: var(--color-surface-container);
+    --_options-text: var(--color-on-surface);
+  }
+
+  &.success {
+    --_options-color: var(--color-success-container);
+    --_options-text: var(--color-on-success-container);
+  }
+
   &[data-placement="bottom"] {
     transform-origin: top left;
   }

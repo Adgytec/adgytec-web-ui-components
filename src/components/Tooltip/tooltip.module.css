@@ -85,3 +85,13 @@
   --_bg: var(--color-error-container);
   --_color: var(--color-on-error-container);
 }
+
+.inverse-surface {
+  --_bg: var(--color-surface-container);
+  --_color: var(--color-on-surface);
+}
+
+.success {
+  --_bg: var(--color-success-container);
+  --_color: var(--color-on-success-container);
+}
