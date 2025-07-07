@@ -7,5 +7,6 @@ export interface LinkProps {
   target?: string;
   theme?: ColorTheme;
   disabled?: boolean;
+  description?: string; // this only applies to button links
   slot?: string;
 }
