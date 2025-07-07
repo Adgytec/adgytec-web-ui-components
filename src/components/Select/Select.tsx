@@ -7,10 +7,10 @@ import {
   Label,
   ListBox,
   ListBoxItem,
-  Popover,
   SelectValue,
   Text,
 } from "react-aria-components";
+import Popover from "../Popover/Popover.tsx";
 import { ChevronsUpDown, Check } from "lucide-react";
 import type { ComponentType } from "react";
 import OutlinedButton from "../Button/OutlinedButton";
@@ -70,7 +70,7 @@ const Select = ({
       {label && <Label>{label}</Label>}
       {Trigger}
 
-      <Popover className={`${styles["options-popover"]} ${styles[colorTheme]}`}>
+      <Popover theme={colorTheme}>
         <ListBox className={`${styles["options-list"]}`} items={options}>
           {options.map((option) => {
             const ItemComp = (

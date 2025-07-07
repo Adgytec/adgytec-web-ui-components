@@ -1,0 +1,76 @@
+.popover {
+  --_popover-bg: transparent;
+  --_popover-color: transparent;
+
+  background-color: var(--_popover-bg);
+  color: var(--_popover-color);
+
+  padding-inline: 0.5em;
+  padding-block: 0.5em;
+  overflow: scroll;
+
+  max-width: min(90vi, 50rem);
+
+  transition:
+    transform 250ms,
+    opacity 250ms;
+  transform: translate3d(0, 0, 0);
+
+  &[data-placement="bottom"] {
+    --_origin: translateY(-0.25rem);
+  }
+
+  &[data-placement="top"] {
+    --_origin: translateY(0.25rem);
+  }
+
+  &[data-placement="right"] {
+    --_origin: translateX(-0.25rem);
+  }
+
+  &[data-placement="left"] {
+    --_origin: translateX(0.25rem);
+  }
+
+  &[data-entering],
+  &[data-exiting] {
+    transform: var(--_origin);
+    opacity: 0;
+  }
+}
+
+/* popover color theme */
+.primary {
+  --_popover-bg: var(--color-primary-container);
+  --_popover-color: var(--color-on-primary-container);
+}
+
+.primary-variant {
+  --_popover-bg: var(--color-primary-variant-container);
+  --_popover-color: var(--color-on-primary-variant-container);
+}
+
+.secondary {
+  --_popover-bg: var(--color-secondary-container);
+  --_popover-color: var(--color-on-secondary-container);
+}
+
+.tertiary {
+  --_popover-bg: var(--color-tertiary-container);
+  --_popover-color: var(--color-on-tertiary-container);
+}
+
+.error {
+  --_popover-bg: var(--color-error-container);
+  --_popover-color: var(--color-on-error-container);
+}
+
+.inverse-surface {
+  --_popover-bg: var(--color-surface-container);
+  --_popover-color: var(--colol-on-surface);
+}
+
+.success {
+  --_popover-bg: var(--color-success);
+  --_popover-color: var(--color-success-container);
+}
