@@ -26,6 +26,8 @@
   max-height: 90dvb;
   overflow: scroll;
 
+  border-radius: var(--radius);
+
   box-shadow: var(--elevation-1);
   padding-inline: clamp(1rem, 2vi, 1.5rem);
   padding-block: clamp(1rem, 2vi, 1.5rem);

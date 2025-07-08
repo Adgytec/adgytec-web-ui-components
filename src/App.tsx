@@ -106,7 +106,7 @@ const ButtonPreview = () => {
                     shape={ButtonShape.square}
                     description="This is square button"
                   >
-                    <Copy strokeWidth={3} size={18} />
+                    <Copy strokeWidth={3} size={16} />
                   </ButtonElement.element>
 
                   <ButtonElement.element
@@ -359,7 +359,6 @@ const ModalActionPreview = () => {
           return (
             <ModalAction
               trigger={trigger(theme)}
-              theme={theme}
               key={theme}
               header="Simple Modal"
               actionPlacement={ModalActionPlacement.end}

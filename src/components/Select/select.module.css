@@ -11,6 +11,7 @@
 .options-list {
   display: grid;
   gap: 1rem;
+  border-radius: inherit;
 }
 
 .options-item-group {
@@ -20,6 +21,7 @@
   justify-content: space-between;
 
   cursor: pointer;
+  border-radius: inherit;
 
   padding-inline: 0.75rem;
   padding-block: 0.5rem;

@@ -4,7 +4,6 @@ import {
   type AvatarBaseProps,
   type AvatarProps,
 } from "./types";
-import Error from "../Error/Error";
 import styles from "./avatar.module.css";
 import { ColorTheme } from "../../utils/types";
 
@@ -25,9 +24,9 @@ const Avatar = ({
   label,
   theme = ColorTheme.primary,
 }: AvatarProps) => {
-  if (!src && !children) {
-    return <Error>Either image source or child elements are required</Error>;
-  }
+  // if (!src && !children) {
+  //   return <Error>Either image source or child elements are required</Error>;
+  // }
 
   if (children) {
     return (

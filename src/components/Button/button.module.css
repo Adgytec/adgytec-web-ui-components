@@ -3,6 +3,8 @@
   --_button-text: transparent;
   --_border-color: var(--_button-color);
 
+  border-radius: var(--_radius);
+
   cursor: pointer;
 
   font-weight: 500;
@@ -49,6 +51,7 @@
   --_pb: 0.625em;
 
   aspect-ratio: 1/1;
+  --_radius: var(--radius-circular);
 }
 
 .avatar {
@@ -56,11 +59,13 @@
   --_pb: 0.125em;
 
   aspect-ratio: 1/1;
+  --_radius: var(--radius-circular);
 }
 
 .rectangle {
   --_pi: 1.125em;
   --_pb: 0.625em;
+  --_radius: var(--radius-button);
 }
 
 .shrink {
