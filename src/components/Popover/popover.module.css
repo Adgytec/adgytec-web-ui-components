@@ -11,6 +11,8 @@
 
   max-width: min(90vi, 50rem);
 
+  box-shadow: var(--elevation-2);
+
   transition:
     transform 250ms,
     opacity 250ms;

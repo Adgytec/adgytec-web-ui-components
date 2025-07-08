@@ -125,6 +125,9 @@
     --color-on-primary-variant-container: rgb(249 226 135);
   }
 
+  --elevation-1: 0px 2px 6px 1.5px hsl(from var(--color-shadow) h s l / 0.375);
+  --elevation-2: 0px 4px 12px 1.5px hsl(from var(--color-shadow) h s l / 0.375);
+
   caret-color: var(--color-primary);
   accent-color: var(--color-primary);
 }
