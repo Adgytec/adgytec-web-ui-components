@@ -1,4 +1,3 @@
-import type { ColorTheme } from "../../utils/types";
 import type { ReactElement, ReactNode } from "react";
 import type { ButtonVariantProps } from "../Button/types";
 import type { DialogRenderProps } from "react-aria-components";
@@ -14,7 +13,6 @@ export enum ModalCloseText {
 }
 
 export interface ModalActionProps {
-  theme?: ColorTheme;
   trigger: ReactElement<ButtonVariantProps>;
   header?: string;
   children: ReactNode;

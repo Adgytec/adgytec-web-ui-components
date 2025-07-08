@@ -9,7 +9,6 @@ import TextButton from "../Button/TextButton";
 import { ColorTheme } from "../../utils/types";
 
 const ModalAction = ({
-  theme,
   trigger,
   header,
   children,
@@ -24,7 +23,6 @@ const ModalAction = ({
   return (
     <ModalBase
       trigger={trigger}
-      theme={theme}
       isDismissable={isDismissable}
       isKeyboardDismissableDisabled={isKeyboardDismissableDisabled}
     >

@@ -24,7 +24,6 @@ const Select = ({
   name,
   disabled,
   required,
-  colorTheme = ColorTheme.primary,
   triggerVariant = ButtonVariant.filled,
   description,
   placeholder,
@@ -43,7 +42,7 @@ const Select = ({
   }
 
   let Trigger = (
-    <TriggerVariant theme={colorTheme}>
+    <TriggerVariant theme={ColorTheme.inverseSurface}>
       {placeholder ? (
         <SelectValue className={`${styles["selected-value"]}`}>
           {({ defaultChildren, isPlaceholder }) => {
@@ -59,7 +58,7 @@ const Select = ({
 
   if (description) {
     Trigger = (
-      <Tooltip description={description} theme={colorTheme}>
+      <Tooltip description={description} theme={ColorTheme.inverseSurface}>
         {Trigger}
       </Tooltip>
     );
@@ -70,7 +69,7 @@ const Select = ({
       {label && <Label>{label}</Label>}
       {Trigger}
 
-      <Popover theme={colorTheme}>
+      <Popover theme={ColorTheme.inverseSurface}>
         <ListBox className={`${styles["options-list"]}`} items={options}>
           {(option) => {
             const ItemComp = (

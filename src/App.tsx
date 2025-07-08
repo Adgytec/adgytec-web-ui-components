@@ -200,15 +200,7 @@ const LinkPreview = () => {
 };
 
 const SelectPreview = () => {
-  const buttonTheme = [
-    ColorTheme.primary,
-    ColorTheme.primaryVariant,
-    ColorTheme.secondary,
-    ColorTheme.tertiary,
-    ColorTheme.error,
-    ColorTheme.inverseSurface,
-    ColorTheme.success,
-  ];
+  const buttonTheme = [ColorTheme.inverseSurface];
 
   const buttonVariants = [
     ButtonVariant.filled,
@@ -254,36 +246,30 @@ const SelectPreview = () => {
 
   return (
     <PreviewContainer label="Select">
-      {buttonTheme.map((theme) => {
-        return (
-          <div className="item-container" key={theme}>
-            {buttonVariants.map((variant) => {
-              return (
-                <Fragment key={"select" + theme + variant}>
-                  <Select
-                    label="Desserts"
-                    options={options}
-                    colorTheme={theme}
-                    triggerVariant={variant}
-                    placeholder="Select your favorite dessert"
-                    description={description}
-                  />
+      <div className="item-container">
+        {buttonVariants.map((variant) => {
+          return (
+            <Fragment key={"select" + variant}>
+              <Select
+                label="Desserts"
+                options={options}
+                triggerVariant={variant}
+                placeholder="Select your favorite dessert"
+                description={description}
+              />
 
-                  <Select
-                    label="Desserts"
-                    options={options}
-                    colorTheme={theme}
-                    triggerVariant={variant}
-                    placeholder="Select your favorite dessert"
-                    disabled
-                    description={description}
-                  />
-                </Fragment>
-              );
-            })}
-          </div>
-        );
-      })}
+              <Select
+                label="Desserts"
+                options={options}
+                triggerVariant={variant}
+                placeholder="Select your favorite dessert"
+                disabled
+                description={description}
+              />
+            </Fragment>
+          );
+        })}
+      </div>
     </PreviewContainer>
   );
 };
@@ -328,35 +314,22 @@ const AvatarPreview = () => {
 };
 
 const ModalPreview = () => {
-  const modalTheme = [
-    ColorTheme.primary,
-    ColorTheme.primaryVariant,
-    ColorTheme.secondary,
-    ColorTheme.tertiary,
-    ColorTheme.error,
-    ColorTheme.inverseSurface,
-    ColorTheme.success,
-  ];
-
-  const trigger = (theme: ColorTheme) => (
-    <FilledButton theme={theme}>Open modal</FilledButton>
-  );
-
   return (
     <PreviewContainer label="Modal Base">
       <div className="item-container">
-        {modalTheme.map((theme) => {
-          return (
-            <ModalBase
-              trigger={trigger(theme)}
-              theme={theme}
-              key={theme}
-              isDismissable
+        <ModalBase
+          trigger={
+            <FilledButton
+              theme={ColorTheme.primary}
+              description="Open modal base"
             >
-              <LinkPreview />
-            </ModalBase>
-          );
-        })}
+              Open modal
+            </FilledButton>
+          }
+          isDismissable
+        >
+          <AvatarPreview />
+        </ModalBase>
       </div>
     </PreviewContainer>
   );
@@ -374,7 +347,9 @@ const ModalActionPreview = () => {
   ];
 
   const trigger = (theme: ColorTheme) => (
-    <OutlinedButton theme={theme}>Open modal</OutlinedButton>
+    <OutlinedButton theme={theme} description="Open modal action">
+      Open modal
+    </OutlinedButton>
   );
 
   return (
