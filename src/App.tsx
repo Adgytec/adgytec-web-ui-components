@@ -86,6 +86,17 @@ const ButtonPreview = () => {
                     {ButtonElement.label}
                   </ButtonElement.element>
 
+                  {ButtonElement.label === "Text Button" && (
+                    <ButtonElement.element
+                      onPress={onPress}
+                      theme={theme}
+                      description={"This is button is shrinked"}
+                      shape={ButtonShape.shrink}
+                    >
+                      {ButtonElement.label}
+                    </ButtonElement.element>
+                  )}
+
                   <ButtonElement.element
                     theme={theme}
                     onPress={onPress}

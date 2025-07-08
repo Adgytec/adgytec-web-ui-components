@@ -11,6 +11,7 @@ export enum ButtonShape {
   rectangle = "rectangle",
   square = "square",
   avatar = "avatar",
+  shrink = "shrink", // removes all the button padding. Use this shape along with ButtonVariant.text. For other ButtonVariant rectangle shape is applied
 }
 
 export interface ButtonProps extends ButtonVariantProps {

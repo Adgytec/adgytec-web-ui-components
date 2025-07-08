@@ -7,3 +7,5 @@ export enum ColorTheme {
   inverseSurface = "inverse-surface",
   success = "success",
 }
+
+export type OnPressHandler = () => void;

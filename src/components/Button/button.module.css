@@ -63,6 +63,11 @@
   --_pb: 0.625em;
 }
 
+.shrink {
+  --_pi: 0;
+  --_pb: 0;
+}
+
 /* button theme */
 .primary {
   --_button-color: var(--color-primary);
