@@ -72,7 +72,7 @@ const Select = ({
 
       <Popover theme={colorTheme}>
         <ListBox className={`${styles["options-list"]}`} items={options}>
-          {options.map((option) => {
+          {(option) => {
             const ItemComp = (
               <>
                 <Text slot="label">{option.displayValue}</Text>
@@ -100,7 +100,7 @@ const Select = ({
                 )}
               </ListBoxItem>
             );
-          })}
+          }}
         </ListBox>
       </Popover>
     </UnstyledSelect>
