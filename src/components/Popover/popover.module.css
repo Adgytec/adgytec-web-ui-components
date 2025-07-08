@@ -73,6 +73,6 @@
 }
 
 .success {
-  --_popover-bg: var(--color-success);
-  --_popover-color: var(--color-success-container);
+  --_popover-bg: var(--color-success-container);
+  --_popover-color: var(--color-on-success-container);
 }

@@ -12,6 +12,7 @@ import Select from "./components/Select/Select";
 import { AvatarSize } from "./components/Avatar/types";
 import Avatar from "./components/Avatar/Avatar";
 import { Copy } from "lucide-react";
+import ModalBase from "./components/ModalBase/ModalBase";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -324,12 +325,48 @@ const AvatarPreview = () => {
   );
 };
 
+const ModalPreview = () => {
+  const modalTheme = [
+    ColorTheme.primary,
+    ColorTheme.primaryVariant,
+    ColorTheme.secondary,
+    ColorTheme.tertiary,
+    ColorTheme.error,
+    ColorTheme.inverseSurface,
+    ColorTheme.success,
+  ];
+
+  const trigger = (theme: ColorTheme) => (
+    <FilledButton theme={theme}>Open modal</FilledButton>
+  );
+
+  return (
+    <PreviewContainer label="Modal Base">
+      <div className="item-container">
+        {modalTheme.map((theme) => {
+          return (
+            <ModalBase
+              trigger={trigger(theme)}
+              theme={theme}
+              key={theme}
+              isDismissable
+            >
+              <LinkPreview />
+            </ModalBase>
+          );
+        })}
+      </div>
+    </PreviewContainer>
+  );
+};
+
 const App = () => {
   const previewElements = [
     ButtonPreview,
     LinkPreview,
     SelectPreview,
     AvatarPreview,
+    ModalPreview,
   ];
 
   return (
