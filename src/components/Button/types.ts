@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { ColorTheme } from "../../utils/types";
+import type { ColorTheme, OnPressHandler } from "../../utils/types";
 
 export enum ButtonVariant {
   filled = "filled",
@@ -13,14 +13,12 @@ export enum ButtonShape {
   avatar = "avatar",
 }
 
-export type ButtonOnPressHandler = () => void;
-
 export interface ButtonProps extends ButtonVariantProps {
   variant: ButtonVariant;
 }
 
 export interface ButtonVariantProps {
-  onPress?: ButtonOnPressHandler;
+  onPress?: OnPressHandler;
   disabled?: boolean;
   theme?: ColorTheme;
   shape?: ButtonShape;

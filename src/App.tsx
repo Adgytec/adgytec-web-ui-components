@@ -40,14 +40,17 @@ const ButtonPreview = () => {
     {
       element: FilledButton,
       label: "Filled Button",
+      description: "This is filled button",
     },
     {
       element: OutlinedButton,
       label: "Outlined Button",
+      description: "This is outlined button",
     },
     {
       element: TextButton,
       label: "Text Button",
+      description: "This is text button",
     },
   ];
 
@@ -56,7 +59,6 @@ const ButtonPreview = () => {
 
   const onPress = () => {};
 
-  let description = "This is a simple button";
   let descriptionAvatar = "This is a avatar button";
 
   return (
@@ -70,7 +72,7 @@ const ButtonPreview = () => {
                   <ButtonElement.element
                     onPress={onPress}
                     theme={theme}
-                    description={description}
+                    description={ButtonElement.description}
                   >
                     {ButtonElement.label}
                   </ButtonElement.element>
@@ -79,7 +81,7 @@ const ButtonPreview = () => {
                     onPress={onPress}
                     theme={theme}
                     disabled
-                    description={description}
+                    description={ButtonElement.description}
                   >
                     {ButtonElement.label}
                   </ButtonElement.element>
@@ -88,17 +90,7 @@ const ButtonPreview = () => {
                     theme={theme}
                     onPress={onPress}
                     shape={ButtonShape.square}
-                    description="Copy"
-                  >
-                    <Copy strokeWidth={3} size={18} />
-                  </ButtonElement.element>
-
-                  <ButtonElement.element
-                    theme={theme}
-                    onPress={onPress}
-                    shape={ButtonShape.square}
-                    description="Copy"
-                    disabled
+                    description="This is square button"
                   >
                     <Copy strokeWidth={3} size={18} />
                   </ButtonElement.element>
@@ -109,7 +101,7 @@ const ButtonPreview = () => {
                     shape={ButtonShape.avatar}
                     description={descriptionAvatar}
                   >
-                    <Avatar src={avatarSrc} size={AvatarSize.large} />
+                    <Avatar src={avatarSrc} />
                   </ButtonElement.element>
 
                   <ButtonElement.element
@@ -117,26 +109,6 @@ const ButtonPreview = () => {
                     onPress={onPress}
                     shape={ButtonShape.avatar}
                     description={descriptionAvatar}
-                    disabled
-                  >
-                    <Avatar src={avatarSrc} size={AvatarSize.large} />
-                  </ButtonElement.element>
-
-                  <ButtonElement.element
-                    theme={theme}
-                    onPress={onPress}
-                    shape={ButtonShape.avatar}
-                    description={descriptionAvatar}
-                  >
-                    <Avatar theme={theme}>RV</Avatar>
-                  </ButtonElement.element>
-
-                  <ButtonElement.element
-                    theme={theme}
-                    onPress={onPress}
-                    shape={ButtonShape.avatar}
-                    description={descriptionAvatar}
-                    disabled
                   >
                     <Avatar theme={theme}>RV</Avatar>
                   </ButtonElement.element>
@@ -165,14 +137,17 @@ const LinkPreview = () => {
     {
       element: Link,
       label: "Normal Link",
+      description: "This is regular link",
     },
     {
       element: FilledButtonLink,
       label: "Filled Button Link",
+      description: "This is filled button link",
     },
     {
       element: OutlinedButtonLink,
       label: "Outlined Button Link",
+      description: "This is outlined button link",
     },
   ];
 
@@ -187,7 +162,7 @@ const LinkPreview = () => {
                   <LinkElement.element
                     href="/"
                     theme={theme}
-                    description="This is a simple link"
+                    description={LinkElement.description}
                   >
                     {LinkElement.label}
                   </LinkElement.element>
@@ -196,7 +171,7 @@ const LinkPreview = () => {
                     href="/"
                     theme={theme}
                     disabled
-                    description="This is a simple link"
+                    description={LinkElement.description}
                   >
                     {LinkElement.label}
                   </LinkElement.element>
@@ -267,7 +242,7 @@ const SelectPreview = () => {
     <PreviewContainer label="Select">
       {buttonTheme.map((theme) => {
         return (
-          <div className="item-container">
+          <div className="item-container" key={theme}>
             {buttonVariants.map((variant) => {
               return (
                 <Fragment key={"select" + theme + variant}>
@@ -321,22 +296,16 @@ const AvatarPreview = () => {
     <PreviewContainer label="Avatar">
       {avatarSizes.map((size) => {
         return (
-          <div className="item-container">
-            <Fragment key={"avatar" + size}>
-              <Avatar size={size} src={avatarSrc} label="dog-smile" />
+          <div className="item-container" key={"avatar" + size}>
+            <Avatar size={size} src={avatarSrc} label="dog-smile" />
 
-              {avatarTheme.map((theme) => {
-                return (
-                  <Avatar
-                    size={size}
-                    theme={theme}
-                    key={"avatar" + size + theme}
-                  >
-                    {avatarChildren}
-                  </Avatar>
-                );
-              })}
-            </Fragment>
+            {avatarTheme.map((theme) => {
+              return (
+                <Avatar size={size} theme={theme} key={"avatar" + size + theme}>
+                  {avatarChildren}
+                </Avatar>
+              );
+            })}
           </div>
         );
       })}
