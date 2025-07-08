@@ -6,10 +6,8 @@ import {
   Dialog,
 } from "react-aria-components";
 import styles from "./modalBase.module.css";
-import { ColorTheme } from "../../utils/types";
 
 const ModalBase = ({
-  theme = ColorTheme.inverseSurface,
   trigger,
   children,
   isDismissable,
@@ -26,7 +24,7 @@ const ModalBase = ({
         isDismissable={isDismissable}
         isKeyboardDismissDisabled={isKeyboardDismissableDisabled}
       >
-        <Modal className={`${styles["modal"]} ${styles[theme]}`}>
+        <Modal className={`${styles["modal"]}`}>
           <Dialog>
             {isChildrenFunction ? (opts) => children(opts) : children}
           </Dialog>

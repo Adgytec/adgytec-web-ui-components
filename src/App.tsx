@@ -13,6 +13,8 @@ import { AvatarSize } from "./components/Avatar/types";
 import Avatar from "./components/Avatar/Avatar";
 import { Copy } from "lucide-react";
 import ModalBase from "./components/ModalBase/ModalBase";
+import ModalAction from "./components/ModalAction/ModalAction";
+import { ModalActionPlacement } from "./components/ModalAction/types";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -360,6 +362,63 @@ const ModalPreview = () => {
   );
 };
 
+const ModalActionPreview = () => {
+  const modalTheme = [
+    ColorTheme.primary,
+    ColorTheme.primaryVariant,
+    ColorTheme.secondary,
+    ColorTheme.tertiary,
+    ColorTheme.error,
+    ColorTheme.inverseSurface,
+    ColorTheme.success,
+  ];
+
+  const trigger = (theme: ColorTheme) => (
+    <OutlinedButton theme={theme}>Open modal</OutlinedButton>
+  );
+
+  return (
+    <PreviewContainer label="Modal Action">
+      <div className="item-container">
+        {modalTheme.map((theme) => {
+          return (
+            <ModalAction
+              trigger={trigger(theme)}
+              theme={theme}
+              key={theme}
+              header="Simple Modal"
+              actionPlacement={ModalActionPlacement.end}
+              modalAction={({ close }) => (
+                <FilledButton onPress={close} theme={theme}>
+                  Okay
+                </FilledButton>
+              )}
+            >
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+                fermentum felis felis, non euismod ipsum convallis at. Curabitur
+                efficitur, lectus et molestie feugiat, ipsum justo euismod
+                dolor, at dictum mi diam eget sem. Donec at dui suscipit magna
+                rhoncus lobortis at quis ipsum. Curabitur mattis posuere libero,
+                a vehicula arcu sagittis in. Duis mollis quam in turpis porta
+                porta. Mauris quam orci, interdum sit amet purus ac, laoreet
+                accumsan mi. Aliquam nec vulputate quam. Donec neque mi,
+                bibendum eu est eu, aliquam condimentum diam.
+              </p>
+
+              <p>
+                Cras tristique lorem vel magna porttitor molestie. Ut pretium
+                ullamcorper tellus. Phasellus euismod neque non finibus
+                pharetra.
+              </p>
+            </ModalAction>
+          );
+        })}
+      </div>
+    </PreviewContainer>
+  );
+};
+
 const App = () => {
   const previewElements = [
     ButtonPreview,
@@ -367,6 +426,7 @@ const App = () => {
     SelectPreview,
     AvatarPreview,
     ModalPreview,
+    ModalActionPreview,
   ];
 
   return (
