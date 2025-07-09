@@ -4,25 +4,19 @@
   --_border-color: var(--_button-color);
 
   border-radius: var(--_radius);
-
   cursor: pointer;
+  border: 0.125rem solid var(--_border-color);
 
   font-weight: 500;
+  text-align: center;
 
   padding-inline: var(--_pi);
   padding-block: var(--_pb);
-
-  border: 0.125rem solid var(--_border-color);
 
   background-color: var(--_bg);
   color: var(--_color);
   position: relative;
   overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  justify-content: space-between;
 
   transition:
     background-color 250ms,

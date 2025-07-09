@@ -22,25 +22,17 @@ const Button = ({
     shape = ButtonShape.rectangle;
   }
 
-  const button = (
-    <UnstyledButton
-      className={`${styles["button"]} ${styles[variant]} ${styles[theme]} ${styles[shape]}`}
-      onPress={handlePress}
-      isDisabled={disabled}
-      slot={slot}
-    >
-      {coords && <Splash {...coords} />}
-      {children}
-    </UnstyledButton>
-  );
-
-  if (!description) {
-    return button;
-  }
-
   return (
     <Tooltip theme={theme} description={description}>
-      {button}
+      <UnstyledButton
+        className={`${styles["button"]} ${styles[variant]} ${styles[theme]} ${styles[shape]}`}
+        onPress={handlePress}
+        isDisabled={disabled}
+        slot={slot}
+      >
+        {coords && <Splash {...coords} />}
+        {children}
+      </UnstyledButton>
     </Tooltip>
   );
 };

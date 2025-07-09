@@ -24,10 +24,6 @@ const Avatar = ({
   label,
   theme = ColorTheme.primary,
 }: AvatarProps) => {
-  // if (!src && !children) {
-  //   return <Error>Either image source or child elements are required</Error>;
-  // }
-
   if (children) {
     return (
       <AvatarBase type={AvatarType.node} size={size} theme={theme}>

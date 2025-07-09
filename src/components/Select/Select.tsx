@@ -41,35 +41,28 @@ const Select = ({
       break;
   }
 
-  let Trigger = (
-    <TriggerVariant theme={ColorTheme.inverseSurface}>
-      {placeholder ? (
-        <SelectValue className={`${styles["selected-value"]}`}>
-          {({ defaultChildren, isPlaceholder }) => {
-            return isPlaceholder ? placeholder : defaultChildren;
-          }}
-        </SelectValue>
-      ) : (
-        <SelectValue />
-      )}
-      <ChevronsUpDown size={16} strokeWidth={3} />
-    </TriggerVariant>
-  );
-
-  if (description) {
-    Trigger = (
-      <Tooltip description={description} theme={ColorTheme.inverseSurface}>
-        {Trigger}
-      </Tooltip>
-    );
-  }
-
   return (
     <UnstyledSelect isDisabled={disabled} isRequired={required} name={name}>
-      {label && <Label>{label}</Label>}
-      {Trigger}
+      {label && <Label className={styles["label"]}>{label}</Label>}
 
-      <Popover theme={ColorTheme.inverseSurface}>
+      <Tooltip description={description} theme={ColorTheme.inverseSurface}>
+        <TriggerVariant theme={ColorTheme.inverseSurface}>
+          <span className={styles["trigger"]}>
+            {placeholder ? (
+              <SelectValue className={`${styles["selected-value"]}`}>
+                {({ defaultChildren, isPlaceholder }) => {
+                  return isPlaceholder ? placeholder : defaultChildren;
+                }}
+              </SelectValue>
+            ) : (
+              <SelectValue />
+            )}
+            <ChevronsUpDown size={16} strokeWidth={3} />
+          </span>
+        </TriggerVariant>
+      </Tooltip>
+
+      <Popover>
         <ListBox className={`${styles["options-list"]}`} items={options}>
           {(option) => {
             const ItemComp = (

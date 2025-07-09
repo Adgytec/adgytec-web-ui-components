@@ -1,6 +1,6 @@
 .popover {
-  --_popover-bg: transparent;
-  --_popover-color: transparent;
+  --_popover-bg: var(--color-surface-container);
+  --_popover-color: var(--colol-on-surface);
 
   background-color: var(--_popover-bg);
   color: var(--_popover-color);
@@ -10,9 +10,9 @@
   overflow: scroll;
 
   max-width: min(90vi, 50rem);
+  min-width: min(25vi, 10rem);
 
   box-shadow: var(--elevation-2);
-
   border-radius: var(--radius);
 
   transition:
@@ -41,40 +41,4 @@
     transform: var(--_origin);
     opacity: 0;
   }
-}
-
-/* popover color theme */
-.primary {
-  --_popover-bg: var(--color-primary-container);
-  --_popover-color: var(--color-on-primary-container);
-}
-
-.primary-variant {
-  --_popover-bg: var(--color-primary-variant-container);
-  --_popover-color: var(--color-on-primary-variant-container);
-}
-
-.secondary {
-  --_popover-bg: var(--color-secondary-container);
-  --_popover-color: var(--color-on-secondary-container);
-}
-
-.tertiary {
-  --_popover-bg: var(--color-tertiary-container);
-  --_popover-color: var(--color-on-tertiary-container);
-}
-
-.error {
-  --_popover-bg: var(--color-error-container);
-  --_popover-color: var(--color-on-error-container);
-}
-
-.inverse-surface {
-  --_popover-bg: var(--color-surface-container);
-  --_popover-color: var(--colol-on-surface);
-}
-
-.success {
-  --_popover-bg: var(--color-success-container);
-  --_popover-color: var(--color-on-success-container);
 }

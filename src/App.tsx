@@ -15,13 +15,18 @@ import { Copy } from "lucide-react";
 import ModalBase from "./components/ModalBase/ModalBase";
 import ModalAction from "./components/ModalAction/ModalAction";
 import { ModalActionPlacement } from "./components/ModalAction/types";
+import type { MenuItemType } from "./components/Menu/types";
+import MenuButton from "./components/Menu/MenuButton";
+import MenuLabel from "./components/Menu/MenuLabel";
+import Tooltip from "./components/Tooltip/Tooltip";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
   return (
     <div className="preview-container">
-      <h2>{props.label}</h2>
-
+      <Tooltip description="hello label">
+        <h2>{props.label}</h2>
+      </Tooltip>
       <div className="preview-container__items">{props.children}</div>
     </div>
   );
@@ -200,8 +205,6 @@ const LinkPreview = () => {
 };
 
 const SelectPreview = () => {
-  const buttonTheme = [ColorTheme.inverseSurface];
-
   const buttonVariants = [
     ButtonVariant.filled,
     ButtonVariant.outlined,
@@ -393,6 +396,88 @@ const ModalActionPreview = () => {
   );
 };
 
+const MenuPreview = () => {
+  const menuItems: MenuItemType[][] = [
+    [
+      {
+        href: "/",
+        type: "link",
+        node: "first",
+      },
+      {
+        type: "sub-menu",
+        node: "sub-menu",
+        subMenuItems: [
+          [
+            {
+              href: "/",
+              type: "link",
+              node: "hello",
+            },
+            {
+              href: "/",
+              type: "link",
+              node: "world",
+            },
+          ],
+          [
+            {
+              href: "/",
+              type: "link",
+              node: "another-hello",
+            },
+            {
+              href: "/",
+              type: "link",
+              node: "another-world",
+            },
+          ],
+        ],
+      },
+      {
+        href: "/",
+        type: "link",
+        node: "second",
+      },
+    ],
+
+    [
+      {
+        href: "/",
+        type: "link",
+        node: "hello",
+      },
+      {
+        type: "item-node",
+        node: (
+          <OutlinedButton
+            theme={ColorTheme.error}
+            onPress={() => {
+              console.log("Signing out user");
+            }}
+          >
+            Sign out
+          </OutlinedButton>
+        ),
+      },
+    ],
+  ];
+
+  return (
+    <PreviewContainer label="Menu">
+      <div className="item-container">
+        <MenuButton menuItems={menuItems}>
+          <FilledButton>Open Menu</FilledButton>
+        </MenuButton>
+
+        <MenuLabel menuItems={menuItems} description="avatar menu">
+          <Avatar theme={ColorTheme.inverseSurface}>RV</Avatar>
+        </MenuLabel>
+      </div>
+    </PreviewContainer>
+  );
+};
+
 const App = () => {
   const previewElements = [
     ButtonPreview,
@@ -401,6 +486,7 @@ const App = () => {
     AvatarPreview,
     ModalPreview,
     ModalActionPreview,
+    MenuPreview,
   ];
 
   return (

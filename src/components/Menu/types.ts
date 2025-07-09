@@ -3,7 +3,7 @@ import type { OnPressHandler } from "../../utils/types";
 import type { ButtonVariantProps } from "../Button/types";
 
 interface MenuItemBase {
-  node: ReactNode;
+  node: string;
 }
 
 interface MenuItemButton extends MenuItemBase {
@@ -27,12 +27,37 @@ interface MenuItemSubMenu extends MenuItemBase {
   href?: never;
   target?: never;
   onPress?: never;
-  subMenuItems: MenuItem[];
+  subMenuItems: MenuItemType[][];
 }
 
-export type MenuItem = MenuItemButton | MenuItemLink | MenuItemSubMenu;
+interface MenuItemNode {
+  type: "item-node";
+  node: ReactElement;
+  href?: never;
+  target?: never;
+  onPress?: never;
+  // not sure about this for now it will be never and later on can change it if required
+  subMenuItems?: never;
+}
+
+export type MenuItemType =
+  | MenuItemButton
+  | MenuItemLink
+  | MenuItemSubMenu
+  | MenuItemNode;
 
 export interface MenuProps {
+  children: ReactNode;
+  menuItems: MenuItemType[][];
+}
+
+export interface MenuButtonProps {
   children: ReactElement<ButtonVariantProps>;
-  menuItems: MenuItem[];
+  menuItems: MenuItemType[][];
+}
+
+export interface MenuLabelProps {
+  children: ReactNode;
+  description?: string;
+  menuItems: MenuItemType[][];
 }

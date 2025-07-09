@@ -3,6 +3,6 @@ import type { ColorTheme } from "../../utils/types";
 
 export interface TooltipProps {
   children: ReactNode;
-  description: string;
+  description?: string;
   theme?: ColorTheme;
 }

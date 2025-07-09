@@ -8,6 +8,17 @@
   }
 }
 
+.label {
+  display: block;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
 .options-list {
   display: grid;
   gap: 1rem;

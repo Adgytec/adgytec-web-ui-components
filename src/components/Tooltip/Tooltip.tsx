@@ -10,8 +10,12 @@ import { ColorTheme } from "../../utils/types";
 const Tooltip = ({
   children,
   description,
-  theme = ColorTheme.primary,
+  theme = ColorTheme.inverseSurface,
 }: TooltipProps) => {
+  if (!description) {
+    return children;
+  }
+
   return (
     <TooltipTrigger delay={500}>
       {children}

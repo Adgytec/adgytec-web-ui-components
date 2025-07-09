@@ -19,28 +19,20 @@ const ButtonLink = ({
 }: ButtonLinkProps) => {
   const { coords, handlePress } = useSplash();
 
-  const button = (
-    <UnstyledLink
-      className={`${styles["button"]} ${styles["button-link"]} ${styles[variant]} ${styles[theme]} ${styles[shape]}`}
-      onPress={handlePress}
-      href={href}
-      target={target}
-      isDisabled={disabled}
-      slot={slot}
-    >
-      {coords && <Splash {...coords} />}
-
-      {children}
-    </UnstyledLink>
-  );
-
-  if (!description) {
-    return button;
-  }
-
   return (
     <Tooltip theme={theme} description={description}>
-      {button}
+      <UnstyledLink
+        className={`${styles["button"]} ${styles["button-link"]} ${styles[variant]} ${styles[theme]} ${styles[shape]}`}
+        onPress={handlePress}
+        href={href}
+        target={target}
+        isDisabled={disabled}
+        slot={slot}
+      >
+        {coords && <Splash {...coords} />}
+
+        {children}
+      </UnstyledLink>
     </Tooltip>
   );
 };

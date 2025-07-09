@@ -12,24 +12,16 @@ const Link = ({
   disabled,
   description,
 }: LinkProps) => {
-  const link = (
-    <UnstyledLink
-      className={`${styles["link"]} ${styles[theme]}`}
-      href={href}
-      target={target}
-      isDisabled={disabled}
-    >
-      {children}
-    </UnstyledLink>
-  );
-
-  if (!description) {
-    return link;
-  }
-
   return (
     <Tooltip description={description} theme={theme}>
-      {link}
+      <UnstyledLink
+        className={`${styles["link"]} ${styles[theme]}`}
+        href={href}
+        target={target}
+        isDisabled={disabled}
+      >
+        {children}
+      </UnstyledLink>
     </Tooltip>
   );
 };
