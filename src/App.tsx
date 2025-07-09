@@ -419,6 +419,66 @@ const MenuPreview = () => {
               type: "link",
               node: "world",
             },
+            {
+              type: "sub-menu",
+              node: "sub-menu",
+              subMenuItems: [
+                [
+                  {
+                    href: "/",
+                    type: "link",
+                    node: "hello",
+                  },
+                  {
+                    href: "/",
+                    type: "link",
+                    node: "world",
+                  },
+                ],
+                [
+                  {
+                    href: "/",
+                    type: "link",
+                    node: "another-hello",
+                  },
+                  {
+                    href: "/",
+                    type: "link",
+                    node: "another-world",
+                  },
+                  {
+                    type: "sub-menu",
+                    node: "sub-menu",
+                    subMenuItems: [
+                      [
+                        {
+                          href: "/",
+                          type: "link",
+                          node: "hello",
+                        },
+                        {
+                          href: "/",
+                          type: "link",
+                          node: "world",
+                        },
+                      ],
+                      [
+                        {
+                          href: "/",
+                          type: "link",
+                          node: "another-hello",
+                        },
+                        {
+                          href: "/",
+                          type: "link",
+                          node: "another-world",
+                        },
+                      ],
+                    ],
+                  },
+                ],
+              ],
+            },
           ],
           [
             {

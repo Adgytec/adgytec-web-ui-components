@@ -6,10 +6,10 @@
   --font-heading: "Lexend", sans-serif;
 
   --disabled-opacity: 0.625;
-  --radius: 0.5rem;
-  --radius-button: 100vi;
-  --radius-button: 0.5rem;
-  --radius-circular: 50%;
+  /* --radius: 0.5rem; */
+  /* --radius-button: 100vi; */
+  /* --radius-button: 0.5rem; */
+  /* --radius-circular: 50%; */
 
   --color-primary: rgb(0 103 125);
   --color-surface-tint: rgb(0 103 125);
