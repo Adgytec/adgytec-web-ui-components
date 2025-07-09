@@ -25,7 +25,6 @@ export interface ButtonVariantProps {
   shape?: ButtonShape;
   children: ReactNode;
   description?: string;
-  slot?: string; // check react-aria library documentation for its use in multiple other components
 }
 
 export interface ButtonLinkProps {
@@ -37,5 +36,4 @@ export interface ButtonLinkProps {
   variant?: ButtonVariant;
   shape?: ButtonShape;
   description?: string;
-  slot?: string;
 }

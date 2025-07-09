@@ -1,5 +1,5 @@
 .selected-value {
-  [slot="description"] {
+  .option-description {
     display: none;
   }
 
@@ -60,7 +60,7 @@
   display: grid;
   gap: 0.25em;
 
-  [slot="description"] {
+  .option-description {
     font-size: 0.875em;
     font-style: italic;
   }

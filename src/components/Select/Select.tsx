@@ -67,9 +67,11 @@ const Select = ({
           {(option) => {
             const ItemComp = (
               <>
-                <Text slot="label">{option.displayValue}</Text>
+                <Text>{option.displayValue}</Text>
                 {option.description && (
-                  <Text slot="description">{option.description}</Text>
+                  <Text className={styles["option-description"]}>
+                    {option.description}
+                  </Text>
                 )}
               </>
             );
