@@ -7,8 +7,8 @@ const Splash = ({ id, x, y }: SplashProps) => {
       key={`${id}`}
       className={`${styles["splash"]}`}
       style={{
-        left: x,
-        top: y,
+        insetInlineStart: x,
+        insetBlockStart: y,
         translate: "-50% -50%",
       }}
     />

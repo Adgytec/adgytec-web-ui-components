@@ -1,11 +1,13 @@
 .avatar {
-  --_base-width: 1rem;
+  --_base-inline-size: 1rem;
   --_base-font-size: 1rem;
 
-  --_width: calc(var(--_base-width) * var(--_width-multiplier));
+  --_inline-size: calc(
+    var(--_base-inline-size) * var(--_inline-size-multiplier)
+  );
   --_font-size: calc(var(--_base-font-size) * var(--_font-multiplier));
 
-  width: var(--_width);
+  inline-size: var(--_inline-size);
   font-size: var(--_font-size);
   aspect-ratio: 1/1;
 
@@ -29,24 +31,24 @@
 .image {
   img {
     object-fit: cover;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
   }
 }
 
 /* avatar sizes */
 .small {
-  --_width-multiplier: 2;
+  --_inline-size-multiplier: 2;
   --_font-multiplier: 0.875;
 }
 
 .normal {
-  --_width-multiplier: 2.5;
+  --_inline-size-multiplier: 2.5;
   --_font-multiplier: 1;
 }
 
 .large {
-  --_width-multiplier: 3;
+  --_inline-size-multiplier: 3;
   --_font-multiplier: 1.125;
 }
 

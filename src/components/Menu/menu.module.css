@@ -5,7 +5,7 @@
 }
 
 .menu-item {
-  width: 100%;
+  inline-size: 100%;
   display: grid;
   border-radius: inherit;
 
@@ -42,7 +42,7 @@
 
 .separator {
   background-color: var(--color-outline);
-  height: 0.075rem;
+  block-size: 0.075rem;
 
   margin-block: 0.25rem;
 }

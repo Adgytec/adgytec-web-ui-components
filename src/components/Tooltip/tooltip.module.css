@@ -58,7 +58,7 @@
   svg {
     display: block;
     fill: var(--_bg);
-    width: 0.625rem;
+    inline-size: 0.625rem;
     aspect-ratio: 1/1;
   }
 }

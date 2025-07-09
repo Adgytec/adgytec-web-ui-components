@@ -22,8 +22,8 @@
   --_modal-bg: var(--color-surface-container);
   --_modal-text: var(--colol-on-surface);
 
-  max-width: min(90dvi, 60rem);
-  max-height: 90dvb;
+  max-inline-size: min(90dvi, 60rem);
+  max-block-size: 90dvb;
   overflow: scroll;
 
   border-radius: var(--radius);

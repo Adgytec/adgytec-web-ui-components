@@ -9,8 +9,8 @@
   padding-block: 0.5em;
   overflow: scroll;
 
-  max-width: min(90vi, 50rem);
-  min-width: min(25vi, 10rem);
+  max-inline-size: min(90vi, 50rem);
+  min-inline-size: min(25vi, 10rem);
 
   box-shadow: var(--elevation-2);
   border-radius: var(--radius);
