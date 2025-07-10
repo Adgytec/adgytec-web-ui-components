@@ -19,6 +19,8 @@ import type { MenuItemType } from "./components/Menu/types";
 import MenuButton from "./components/Menu/MenuButton";
 import MenuLabel from "./components/Menu/MenuLabel";
 import Tooltip from "./components/Tooltip/Tooltip";
+import { SidebarPosition, SidebarSize } from "./components/Sidebar/types";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -538,6 +540,66 @@ const MenuPreview = () => {
   );
 };
 
+const SidebarPreview = () => {
+  const sidebarPositions = [
+    SidebarPosition.inlineStart,
+    SidebarPosition.inlineEnd,
+    SidebarPosition.blockStart,
+    SidebarPosition.blockEnd,
+  ];
+
+  const sidebarSizes = [
+    SidebarSize.full,
+    SidebarSize.threeQuarters,
+    SidebarSize.half,
+    SidebarSize.quarter,
+  ];
+
+  const getTrigger = (size: SidebarSize) => {
+    let colorTheme;
+    switch (size) {
+      case SidebarSize.full:
+        colorTheme = ColorTheme.primary;
+        break;
+      case SidebarSize.threeQuarters:
+        colorTheme = ColorTheme.primaryVariant;
+        break;
+      case SidebarSize.half:
+        colorTheme = ColorTheme.secondary;
+        break;
+      case SidebarSize.quarter:
+        colorTheme = ColorTheme.tertiary;
+        break;
+    }
+
+    return <OutlinedButton theme={colorTheme}>Open sidebar</OutlinedButton>;
+  };
+
+  return (
+    <PreviewContainer label="Sidebar">
+      {sidebarPositions.map((position) => {
+        return (
+          <div className="item-container" key={position}>
+            {sidebarSizes.map((size) => {
+              return (
+                <Sidebar
+                  key={size + position}
+                  sidebarSize={size}
+                  sidebarPosition={position}
+                  isDismissable
+                  trigger={getTrigger(size)}
+                >
+                  Sidebar content
+                </Sidebar>
+              );
+            })}
+          </div>
+        );
+      })}
+    </PreviewContainer>
+  );
+};
+
 const App = () => {
   const previewElements = [
     ButtonPreview,
@@ -547,6 +609,7 @@ const App = () => {
     ModalPreview,
     ModalActionPreview,
     MenuPreview,
+    SidebarPreview,
   ];
 
   return (
