@@ -15,7 +15,6 @@ const ButtonLink = ({
   children,
   disabled,
   description,
-  slot,
 }: ButtonLinkProps) => {
   const { coords, handlePress } = useSplash();
 
@@ -27,7 +26,6 @@ const ButtonLink = ({
         href={href}
         target={target}
         isDisabled={disabled}
-        slot={slot}
       >
         {coords && <Splash {...coords} />}
 

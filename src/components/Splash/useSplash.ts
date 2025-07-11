@@ -1,9 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 import type { SetTimeoutReturnType, SplashState } from "./types";
-import type { ButtonOnPressHandler } from "../Button/types";
 import type { PressEvent } from "react-aria-components";
+import type { OnPressHandler } from "../../utils/types";
 
-export const useSplash = (onPress?: ButtonOnPressHandler) => {
+export const useSplash = (onPress?: OnPressHandler) => {
   const [coords, setCoords] = useState<SplashState | null>(null);
   const idRef = useRef(0);
   let timeout = useRef<SetTimeoutReturnType | undefined>(undefined);
