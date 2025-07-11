@@ -20,7 +20,6 @@ import MenuLabel from "./components/Menu/MenuLabel";
 import Tooltip from "./components/Tooltip/Tooltip";
 import { SidebarPosition, SidebarSize } from "./components/Sidebar/types";
 import Sidebar from "./components/Sidebar/Sidebar";
-import type { TreeItemType } from "./components/Tree/types";
 import Tree from "./components/Tree/Tree";
 
 // preview container
@@ -751,11 +750,11 @@ const SidebarPreview = () => {
 };
 
 const TreePreview = () => {
-  const tree: TreeItemType[] = [
+  const tree: HierarchyItemType[] = [
     {
       id: "1",
       type: "link",
-      value: "Dashboard",
+      node: "Dashboard",
       href: "https://www.google.com",
       target: "_blank",
       active: true,
@@ -763,24 +762,24 @@ const TreePreview = () => {
     {
       id: "2",
       type: "button",
-      value: "Actions",
+      node: "Actions",
       onPress: () => alert("Main action triggered"),
     },
     {
       id: "3",
       type: "sub-items",
-      value: "Settings",
-      children: [
+      node: "Settings",
+      subItems: [
         {
           id: "3.1",
           type: "link",
-          value: "Account",
+          node: "Account",
           href: "/settings/account",
         },
         {
           id: "3.2",
           type: "button",
-          value: "Logout",
+          node: "Logout",
           onPress: () => alert("Logging out"),
         },
       ],
@@ -788,18 +787,18 @@ const TreePreview = () => {
     {
       id: "4",
       type: "sub-items",
-      value: "Support",
-      children: [
+      node: "Support",
+      subItems: [
         {
           id: "4.1",
           type: "link",
-          value: "FAQ",
+          node: "FAQ",
           href: "/support/faq",
         },
         {
           id: "4.2",
           type: "link",
-          value: "Contact Us",
+          node: "Contact Us",
           href: "/support/contact",
           target: "_blank",
         },
@@ -807,8 +806,8 @@ const TreePreview = () => {
     },
     {
       id: "5",
-      type: "node",
-      value: (
+      type: "item-node",
+      node: (
         <OutlinedButton
           theme={ColorTheme.error}
           onPress={() => {
