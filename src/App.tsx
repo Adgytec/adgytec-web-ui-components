@@ -1,5 +1,5 @@
 import { Fragment, type ReactNode } from "react";
-import { ColorTheme } from "./utils/types";
+import { ColorTheme, type HierarchyItemType } from "./utils/types";
 import FilledButton from "./components/Button/FilledButton";
 import OutlinedButton from "./components/Button/OutlinedButton";
 import TextButton from "./components/Button/TextButton";
@@ -15,7 +15,6 @@ import { Copy } from "lucide-react";
 import ModalBase from "./components/ModalBase/ModalBase";
 import ModalAction from "./components/ModalAction/ModalAction";
 import { ModalActionPlacement } from "./components/ModalAction/types";
-import type { MenuItemType } from "./components/Menu/types";
 import MenuButton from "./components/Menu/MenuButton";
 import MenuLabel from "./components/Menu/MenuLabel";
 import Tooltip from "./components/Tooltip/Tooltip";
@@ -401,130 +400,271 @@ const ModalActionPreview = () => {
 };
 
 const MenuPreview = () => {
-  const menuItems: MenuItemType[][] = [
-    [
-      {
-        href: "/",
-        type: "link",
-        node: "first",
-      },
-      {
-        type: "sub-menu",
-        node: "sub-menu",
-        subMenuItems: [
-          [
+  const menuItems: HierarchyItemType[] = [
+    {
+      id: "1",
+      type: "link",
+      href: "https://google.com",
+      target: "_blank",
+      node: "Google",
+    },
+    {
+      id: "2",
+      type: "link",
+      href: "https://adgytec.in",
+      target: "_blank",
+      node: "Adgytec",
+    },
+    {
+      id: "3",
+      type: "separator",
+    },
+    {
+      id: "4",
+      type: "button",
+      onPress: () => alert("hmm i am pressed"),
+      node: "Press me",
+    },
+    {
+      id: "5",
+      type: "button",
+      onPress: () => {},
+      node: "I will not do anything",
+    },
+    {
+      id: "6",
+      type: "separator",
+    },
+    {
+      id: "7",
+      type: "sub-items",
+      subItems: [
+        {
+          id: "1",
+          type: "link",
+          href: "https://google.com",
+          target: "_blank",
+          node: "Google",
+        },
+        {
+          id: "2",
+          type: "link",
+          href: "https://adgytec.in",
+          target: "_blank",
+          node: "Adgytec",
+        },
+        {
+          id: "3",
+          type: "separator",
+        },
+        {
+          id: "4",
+          type: "button",
+          onPress: () => alert("hmm i am pressed"),
+          node: "Press me",
+        },
+        {
+          id: "5",
+          type: "button",
+          onPress: () => {},
+          node: "I will not do anything",
+        },
+        {
+          id: "6",
+          type: "separator",
+        },
+        {
+          id: "7",
+          type: "sub-items",
+          subItems: [
             {
-              href: "/",
+              id: "1",
               type: "link",
-              node: "hello",
+              href: "https://google.com",
+              target: "_blank",
+              node: "Google",
             },
             {
-              href: "/",
+              id: "2",
               type: "link",
-              node: "world",
+              href: "https://adgytec.in",
+              target: "_blank",
+              node: "Adgytec",
             },
             {
-              type: "sub-menu",
-              node: "sub-menu",
-              subMenuItems: [
-                [
-                  {
-                    href: "/",
-                    type: "link",
-                    node: "hello",
-                  },
-                  {
-                    href: "/",
-                    type: "link",
-                    node: "world",
-                  },
-                ],
-                [
-                  {
-                    href: "/",
-                    type: "link",
-                    node: "another-hello",
-                  },
-                  {
-                    href: "/",
-                    type: "link",
-                    node: "another-world",
-                  },
-                  {
-                    type: "sub-menu",
-                    node: "sub-menu",
-                    subMenuItems: [
-                      [
-                        {
-                          href: "/",
-                          type: "link",
-                          node: "hello",
-                        },
-                        {
-                          href: "/",
-                          type: "link",
-                          node: "world",
-                        },
-                      ],
-                      [
-                        {
-                          href: "/",
-                          type: "link",
-                          node: "another-hello",
-                        },
-                        {
-                          href: "/",
-                          type: "link",
-                          node: "another-world",
-                        },
-                      ],
-                    ],
-                  },
-                ],
+              id: "3",
+              type: "separator",
+            },
+            {
+              id: "4",
+              type: "button",
+              onPress: () => alert("hmm i am pressed"),
+              node: "Press me",
+            },
+            {
+              id: "5",
+              type: "button",
+              onPress: () => {},
+              node: "I will not do anything",
+            },
+            {
+              id: "6",
+              type: "separator",
+            },
+            {
+              id: "7",
+              type: "sub-items",
+              subItems: [
+                {
+                  id: "1",
+                  type: "link",
+                  href: "https://google.com",
+                  target: "_blank",
+                  node: "Google",
+                },
+                {
+                  id: "2",
+                  type: "link",
+                  href: "https://adgytec.in",
+                  target: "_blank",
+                  node: "Adgytec",
+                },
+                {
+                  id: "3",
+                  type: "separator",
+                },
+                {
+                  id: "4",
+                  type: "button",
+                  onPress: () => alert("hmm i am pressed"),
+                  node: "Press me",
+                },
+                {
+                  id: "5",
+                  type: "button",
+                  onPress: () => {},
+                  node: "I will not do anything",
+                },
+                {
+                  id: "6",
+                  type: "separator",
+                },
+                {
+                  id: "7",
+                  type: "sub-items",
+                  subItems: [
+                    {
+                      id: "1",
+                      type: "link",
+                      href: "https://google.com",
+                      target: "_blank",
+                      node: "Google",
+                    },
+                    {
+                      id: "2",
+                      type: "link",
+                      href: "https://adgytec.in",
+                      target: "_blank",
+                      node: "Adgytec",
+                    },
+                    {
+                      id: "3",
+                      type: "separator",
+                    },
+                    {
+                      id: "4",
+                      type: "button",
+                      onPress: () => alert("hmm i am pressed"),
+                      node: "Press me",
+                    },
+                    {
+                      id: "5",
+                      type: "button",
+                      onPress: () => {},
+                      node: "I will not do anything",
+                    },
+                    {
+                      id: "6",
+                      type: "separator",
+                    },
+                    {
+                      id: "7",
+                      type: "sub-items",
+                      subItems: [],
+                      node: "Sub Items",
+                    },
+                    {
+                      id: "8",
+                      type: "item-node",
+                      node: (
+                        <OutlinedButton
+                          onPress={() => alert("sign out pressed")}
+                          theme={ColorTheme.error}
+                        >
+                          Sign Out
+                        </OutlinedButton>
+                      ),
+                    },
+                  ],
+                  node: "Sub Items",
+                },
+                {
+                  id: "8",
+                  type: "item-node",
+                  node: (
+                    <OutlinedButton
+                      onPress={() => alert("sign out pressed")}
+                      theme={ColorTheme.error}
+                    >
+                      Sign Out
+                    </OutlinedButton>
+                  ),
+                },
               ],
-            },
-          ],
-          [
-            {
-              href: "/",
-              type: "link",
-              node: "another-hello",
+              node: "Sub Items",
             },
             {
-              href: "/",
-              type: "link",
-              node: "another-world",
+              id: "8",
+              type: "item-node",
+              node: (
+                <OutlinedButton
+                  onPress={() => alert("sign out pressed")}
+                  theme={ColorTheme.error}
+                >
+                  Sign Out
+                </OutlinedButton>
+              ),
             },
           ],
-        ],
-      },
-      {
-        href: "/",
-        type: "link",
-        node: "second",
-      },
-    ],
-
-    [
-      {
-        href: "/",
-        type: "link",
-        node: "hello",
-      },
-      {
-        type: "item-node",
-        node: (
-          <OutlinedButton
-            theme={ColorTheme.error}
-            onPress={() => {
-              alert("Signing out user");
-            }}
-          >
-            Sign out
-          </OutlinedButton>
-        ),
-      },
-    ],
+          node: "Sub Items",
+        },
+        {
+          id: "8",
+          type: "item-node",
+          node: (
+            <OutlinedButton
+              onPress={() => alert("sign out pressed")}
+              theme={ColorTheme.error}
+            >
+              Sign Out
+            </OutlinedButton>
+          ),
+        },
+      ],
+      node: "Sub Items",
+    },
+    {
+      id: "8",
+      type: "item-node",
+      node: (
+        <OutlinedButton
+          onPress={() => alert("sign out pressed")}
+          theme={ColorTheme.error}
+        >
+          Sign Out
+        </OutlinedButton>
+      ),
+    },
   ];
 
   return (

@@ -1,4 +1,4 @@
-import type { MenuItemType, MenuProps } from "./types";
+import type { MenuProps, RenderMenuProps } from "./types";
 import {
   MenuTrigger,
   Menu as UnstyledMenu,
@@ -8,62 +8,51 @@ import {
 } from "react-aria-components";
 import styles from "./menu.module.css";
 import Popover from "../Popover/Popover";
-import { Fragment } from "react";
 import { ChevronRight } from "lucide-react";
 
+const RenderMenu = ({ menuItem }: RenderMenuProps) => {
+  if (menuItem.type === "separator") {
+    return <Separator className={`${styles["separator"]}`} />;
+  }
+
+  const hasSubmenu = !!menuItem.subItems?.length;
+  const menuComp = (
+    <MenuItem
+      className={`${styles["menu-item"]} ${styles[menuItem.type]}`}
+      onAction={menuItem.onPress}
+      href={menuItem.href}
+      target={menuItem.target}
+    >
+      {menuItem.node}
+
+      {hasSubmenu && <ChevronRight size={18} strokeWidth={3} />}
+    </MenuItem>
+  );
+
+  if (!hasSubmenu) return menuComp;
+
+  return (
+    <SubmenuTrigger>
+      {menuComp}
+      <Popover>
+        <UnstyledMenu className={`${styles["menu"]}`}>
+          {menuItem.subItems!.map((subMenu) => {
+            return <RenderMenu key={subMenu.id} menuItem={subMenu} />;
+          })}
+        </UnstyledMenu>
+      </Popover>
+    </SubmenuTrigger>
+  );
+};
+
 const Menu = ({ children, menuItems }: MenuProps) => {
-  const renderMenu = (item: MenuItemType[], index: number, length: number) => {
-    const showSeparator = index !== length - 1;
-
-    return (
-      <Fragment key={item.toString()}>
-        {item.map((menuItem) => {
-          const hasSubmenu = !!menuItem.subMenuItems?.length;
-          const menuItemComp = (
-            <MenuItem
-              className={`${styles["menu-item"]} ${styles[menuItem.type]}`}
-              onAction={menuItem.onPress}
-              href={menuItem.href}
-              target={menuItem.target}
-            >
-              {menuItem.node}
-
-              {hasSubmenu && <ChevronRight size={18} strokeWidth={3} />}
-            </MenuItem>
-          );
-
-          if (!hasSubmenu) return menuItemComp;
-
-          return (
-            <SubmenuTrigger>
-              {menuItemComp}
-              <Popover>
-                <UnstyledMenu className={`${styles["menu"]}`}>
-                  {menuItem.subMenuItems!.map((subMenuItems, ind) => {
-                    return renderMenu(
-                      subMenuItems,
-                      ind,
-                      menuItem.subMenuItems!.length,
-                    );
-                  })}
-                </UnstyledMenu>
-              </Popover>
-            </SubmenuTrigger>
-          );
-        })}
-
-        {showSeparator && <Separator className={`${styles["separator"]}`} />}
-      </Fragment>
-    );
-  };
-
   return (
     <MenuTrigger>
       {children}
       <Popover>
         <UnstyledMenu className={`${styles["menu"]}`}>
-          {menuItems.map((item, index) => {
-            return renderMenu(item, index, menuItems.length);
+          {menuItems.map((item) => {
+            return <RenderMenu key={item.id} menuItem={item} />;
           })}
         </UnstyledMenu>
       </Popover>
