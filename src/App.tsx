@@ -21,6 +21,8 @@ import MenuLabel from "./components/Menu/MenuLabel";
 import Tooltip from "./components/Tooltip/Tooltip";
 import { SidebarPosition, SidebarSize } from "./components/Sidebar/types";
 import Sidebar from "./components/Sidebar/Sidebar";
+import type { TreeItemType } from "./components/Tree/types";
+import Tree from "./components/Tree/Tree";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -515,7 +517,7 @@ const MenuPreview = () => {
           <OutlinedButton
             theme={ColorTheme.error}
             onPress={() => {
-              console.log("Signing out user");
+              alert("Signing out user");
             }}
           >
             Sign out
@@ -589,13 +591,98 @@ const SidebarPreview = () => {
                   isDismissable
                   trigger={getTrigger(size)}
                 >
-                  Sidebar content
+                  {({ close }) => {
+                    return (
+                      <div>
+                        <p>Sidebar content</p>
+
+                        <TextButton onPress={close}>Close</TextButton>
+                      </div>
+                    );
+                  }}
                 </Sidebar>
               );
             })}
           </div>
         );
       })}
+    </PreviewContainer>
+  );
+};
+
+const TreePreview = () => {
+  const tree: TreeItemType[] = [
+    {
+      id: "1",
+      type: "link",
+      value: "Dashboard",
+      href: "https://www.google.com",
+      target: "_blank",
+    },
+    {
+      id: "2",
+      type: "button",
+      value: "Actions",
+      onPress: () => alert("Main action triggered"),
+    },
+    {
+      id: "3",
+      type: "sub-items",
+      value: "Settings",
+      children: [
+        {
+          id: "3.1",
+          type: "link",
+          value: "Account",
+          href: "/settings/account",
+        },
+        {
+          id: "3.2",
+          type: "button",
+          value: "Logout",
+          onPress: () => alert("Logging out"),
+        },
+      ],
+    },
+    {
+      id: "4",
+      type: "sub-items",
+      value: "Support",
+      children: [
+        {
+          id: "4.1",
+          type: "link",
+          value: "FAQ",
+          href: "/support/faq",
+        },
+        {
+          id: "4.2",
+          type: "link",
+          value: "Contact Us",
+          href: "/support/contact",
+          target: "_blank",
+        },
+      ],
+    },
+    {
+      id: "5",
+      type: "node",
+      value: (
+        <OutlinedButton
+          theme={ColorTheme.error}
+          onPress={() => {
+            alert("Signing out user");
+          }}
+        >
+          Sign out
+        </OutlinedButton>
+      ),
+    },
+  ];
+
+  return (
+    <PreviewContainer label="Tree">
+      <Tree items={tree} />
     </PreviewContainer>
   );
 };
@@ -610,6 +697,7 @@ const App = () => {
     ModalActionPreview,
     MenuPreview,
     SidebarPreview,
+    TreePreview,
   ];
 
   return (

@@ -14,6 +14,7 @@ const Button = ({
   children,
   disabled,
   description,
+  slot,
 }: ButtonProps) => {
   const { coords, handlePress } = useSplash(onPress);
 
@@ -27,6 +28,7 @@ const Button = ({
         className={`${styles["button"]} ${styles[variant]} ${styles[theme]} ${styles[shape]}`}
         onPress={handlePress}
         isDisabled={disabled}
+        slot={slot}
       >
         {coords && <Splash {...coords} />}
         {children}

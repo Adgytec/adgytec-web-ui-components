@@ -25,6 +25,7 @@ export interface ButtonVariantProps {
   shape?: ButtonShape;
   children: ReactNode;
   description?: string;
+  slot?: string;
 }
 
 export interface ButtonLinkProps {
