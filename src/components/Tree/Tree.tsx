@@ -12,6 +12,7 @@ const Tree = ({ items }: TreeProps) => {
     const isLink = item.type === "link";
     const isButton = item.type === "button";
     const isNode = item.type === "node";
+    const isActive = item.active;
 
     return (
       <TreeItem
@@ -24,6 +25,7 @@ const Tree = ({ items }: TreeProps) => {
         {...(isLink && { "data-link": true })}
         {...(isButton && { "data-button": true })}
         {...(isNode && { "data-node": true })}
+        {...(isActive && { "data-active": true })}
       >
         <TreeItemContent>
           {item.value}

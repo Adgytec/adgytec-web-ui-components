@@ -12,6 +12,7 @@ interface TreeItemLink extends TreeItemBase {
   target?: string;
   onPress?: never;
   children?: never;
+  active?: boolean;
 }
 
 interface TreeItemButton extends TreeItemBase {
@@ -21,6 +22,7 @@ interface TreeItemButton extends TreeItemBase {
   href?: never;
   target?: never;
   children?: never;
+  active?: never;
 }
 
 interface TreeItemSubItems extends TreeItemBase {
@@ -30,6 +32,7 @@ interface TreeItemSubItems extends TreeItemBase {
   href?: never;
   target?: never;
   children?: TreeItemType[];
+  active?: never;
 }
 
 interface TreeItemNode extends TreeItemBase {
@@ -39,6 +42,7 @@ interface TreeItemNode extends TreeItemBase {
   href?: never;
   target?: never;
   children?: never;
+  active?: never;
 }
 
 export type TreeItemType =

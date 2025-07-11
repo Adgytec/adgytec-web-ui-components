@@ -618,6 +618,7 @@ const TreePreview = () => {
       value: "Dashboard",
       href: "https://www.google.com",
       target: "_blank",
+      active: true,
     },
     {
       id: "2",
