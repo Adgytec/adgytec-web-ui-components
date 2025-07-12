@@ -11,7 +11,7 @@
 
   font-size: var(--_tree-font-size, 1rem);
   cursor: context-menu;
-  padding-inline-start: calc(calc(var(--tree-item-level) - 1) * 3em);
+  padding-inline-start: calc(calc(var(--tree-item-level) - 1) * 1.5em);
   transition: text-decoration-color 250ms;
 
   &[data-active] {

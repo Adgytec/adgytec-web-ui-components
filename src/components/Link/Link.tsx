@@ -11,6 +11,7 @@ const Link = ({
   theme = ColorTheme.primary,
   disabled,
   description,
+  underline = true,
 }: LinkProps) => {
   return (
     <Tooltip description={description} theme={theme}>
@@ -19,6 +20,7 @@ const Link = ({
         href={href}
         target={target}
         isDisabled={disabled}
+        {...(underline && { "data-underline": true })}
       >
         {children}
       </UnstyledLink>

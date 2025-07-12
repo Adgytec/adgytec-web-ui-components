@@ -37,6 +37,16 @@
 .button-link {
   text-underline-offset: 0.125em;
   text-decoration-thickness: 0.075em;
+  text-decoration-color: transparent;
+
+  &[data-hovered],
+  &[data-focused] {
+    text-decoration-color: currentColor;
+  }
+
+  &[data-underline] {
+    text-decoration-color: currentColor;
+  }
 }
 
 /* button shape */

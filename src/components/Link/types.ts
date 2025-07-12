@@ -9,4 +9,5 @@ export interface LinkProps {
   disabled?: boolean;
   description?: string; // this only applies to button links
   slot?: string;
+  underline?: boolean;
 }

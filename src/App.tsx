@@ -22,6 +22,7 @@ import { SidebarPosition, SidebarSize } from "./components/Sidebar/types";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Tree from "./components/Tree/Tree";
 import NavigationAppbar from "./components/Navigation/NavigationSidebar/NavigationSidebar";
+import NavigationMenu from "./components/Navigation/NavigationMenu/NavigationMenu";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -828,7 +829,7 @@ const TreePreview = () => {
   );
 };
 
-const NavAppbarPreview = () => {
+const NavSidebarPreview = () => {
   const tree: HierarchyItemType[] = [
     {
       id: "1",
@@ -900,10 +901,88 @@ const NavAppbarPreview = () => {
   ];
 
   return (
-    <PreviewContainer label="Nav Appbar">
+    <PreviewContainer label="Nav Sidebar">
       <div className="items-container">
         <NavigationAppbar items={tree} />
       </div>
+    </PreviewContainer>
+  );
+};
+
+const NavMenuPreview = () => {
+  const tree: HierarchyItemType[] = [
+    {
+      id: "1",
+      type: "link",
+      node: "Dashboard",
+      href: "https://www.google.com",
+      target: "_blank",
+      active: true,
+    },
+    {
+      id: "2",
+      type: "button",
+      node: "Actions",
+      onPress: () => alert("Main action triggered"),
+    },
+    {
+      id: "3",
+      type: "sub-items",
+      node: "Settings",
+      subItems: [
+        {
+          id: "3.1",
+          type: "link",
+          node: "Account",
+          href: "/settings/account",
+        },
+        {
+          id: "3.2",
+          type: "button",
+          node: "Logout",
+          onPress: () => alert("Logging out"),
+        },
+      ],
+    },
+    {
+      id: "4",
+      type: "sub-items",
+      node: "Support",
+      subItems: [
+        {
+          id: "4.1",
+          type: "link",
+          node: "FAQ",
+          href: "/support/faq",
+        },
+        {
+          id: "4.2",
+          type: "link",
+          node: "Contact Us",
+          href: "/support/contact",
+          target: "_blank",
+        },
+      ],
+    },
+    {
+      id: "5",
+      type: "item-node",
+      node: (
+        <OutlinedButton
+          theme={ColorTheme.error}
+          onPress={() => {
+            alert("Signing out user");
+          }}
+        >
+          Sign out
+        </OutlinedButton>
+      ),
+    },
+  ];
+
+  return (
+    <PreviewContainer label="Nav Menu">
+      <NavigationMenu items={tree} />
     </PreviewContainer>
   );
 };
@@ -919,7 +998,8 @@ const App = () => {
     MenuPreview,
     SidebarPreview,
     TreePreview,
-    NavAppbarPreview,
+    NavSidebarPreview,
+    NavMenuPreview,
   ];
 
   return (

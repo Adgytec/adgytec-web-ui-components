@@ -37,4 +37,5 @@ export interface ButtonLinkProps {
   variant?: ButtonVariant;
   shape?: ButtonShape;
   description?: string;
+  underline?: boolean;
 }

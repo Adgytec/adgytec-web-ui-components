@@ -170,6 +170,8 @@ body {
   padding-inline: 1rem;
   padding-block: 1rem;
 
+  overflow: scroll;
+
   h2 {
     margin: 0;
     padding: 0;

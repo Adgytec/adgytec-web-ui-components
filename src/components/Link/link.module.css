@@ -7,17 +7,25 @@
   font-weight: 500;
   text-underline-offset: 0.125em;
   text-decoration-thickness: 0.075em;
+  text-decoration-color: transparent;
 
   color: var(--_color);
-  transition: color 250ms;
+  transition:
+    color 250ms,
+    text-decoration-color 250ms;
 
   &[data-hovered="true"],
   &[data-focused="true"] {
     --_color: hsl(from var(--_link-text) h s calc(l + 10));
+    text-decoration-color: currentColor;
   }
 
   &[data-pressed="true"] {
     --_color: hsl(from var(--_link-text) h s calc(l - 5));
+  }
+
+  &[data-underline] {
+    text-decoration-color: currentColor;
   }
 }
 

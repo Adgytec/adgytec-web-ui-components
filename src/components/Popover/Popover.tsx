@@ -4,7 +4,7 @@ import styles from "./popover.module.css";
 
 const Popover = ({ children }: PopoverProps) => {
   return (
-    <UnstyledPopover className={`${styles["popover"]}`}>
+    <UnstyledPopover className={`${styles["popover"]}`} placement="bottom">
       {children}
     </UnstyledPopover>
   );
