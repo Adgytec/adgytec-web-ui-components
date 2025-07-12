@@ -1,0 +1,30 @@
+.disclosure {
+  display: grid;
+  gap: 0.5rem;
+
+  &[data-expanded] {
+    svg {
+      rotate: 90deg;
+    }
+  }
+}
+
+.trigger {
+  font-size: var(--_trigger-font-size, 1.125rem);
+
+  [slot="trigger"] {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  svg {
+    width: 0.875em;
+
+    transition: rotate 250ms;
+  }
+}
+
+.panel {
+  font-size: var(--_panel-font-size);
+}

@@ -24,6 +24,7 @@ import Tree from "./components/Tree/Tree";
 import NavigationAppbar from "./components/Navigation/NavigationSidebar/NavigationSidebar";
 import NavigationMenu from "./components/Navigation/NavigationMenu/NavigationMenu";
 import NavigationResponsive from "./components/Navigation/NavigationResponsive/NavigationResponsive";
+import Disclosure from "./components/Disclosure/Disclosure/Disclosure";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1068,6 +1069,17 @@ const NavResponsivePreview = () => {
   );
 };
 
+const DisclosurePreview = () => {
+  return (
+    <PreviewContainer label="Disclosure">
+      <Disclosure heading="Hello click this to open">
+        A cake is a baked sweet food, traditionally made with flour, sugar, and
+        eggs, often with added fats and leavening agents.
+      </Disclosure>
+    </PreviewContainer>
+  );
+};
+
 const App = () => {
   const previewElements = [
     ButtonPreview,
@@ -1082,6 +1094,7 @@ const App = () => {
     NavSidebarPreview,
     NavMenuPreview,
     NavResponsivePreview,
+    DisclosurePreview,
   ];
 
   return (
