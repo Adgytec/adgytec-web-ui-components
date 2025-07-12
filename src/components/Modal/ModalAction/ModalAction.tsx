@@ -5,8 +5,8 @@ import {
   type ModalActionProps,
 } from "./types";
 import styles from "./modalAction.module.css";
-import TextButton from "../Button/TextButton";
-import { ColorTheme } from "../../utils/types";
+import TextButton from "../../Button/TextButton";
+import { ColorTheme } from "../../../utils/types";
 
 const ModalAction = ({
   trigger,
