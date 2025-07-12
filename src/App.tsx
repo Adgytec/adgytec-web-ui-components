@@ -25,6 +25,8 @@ import NavigationAppbar from "./components/Navigation/NavigationSidebar/Navigati
 import NavigationMenu from "./components/Navigation/NavigationMenu/NavigationMenu";
 import NavigationResponsive from "./components/Navigation/NavigationResponsive/NavigationResponsive";
 import Disclosure from "./components/Disclosure/Disclosure/Disclosure";
+import DisclosureGroup from "./components/Disclosure/DisclousureGroup/DisclousreGroup";
+import type { DisclosureProps } from "./components/Disclosure/Disclosure/types";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1080,6 +1082,35 @@ const DisclosurePreview = () => {
   );
 };
 
+const DisclosureGroupPreview = () => {
+  const items: DisclosureProps[] = [
+    {
+      id: "1",
+      heading: "hello click this to open",
+      children:
+        "A cake is a baked sweet food, traditionally made with flour, sugar, and eggs, often with added fats and leavening agents.",
+    },
+    {
+      id: "2",
+      heading: "hello click this to open",
+      children:
+        "A cake is a baked sweet food, traditionally made with flour, sugar, and eggs, often with added fats and leavening agents.",
+    },
+    {
+      id: "3",
+      heading: "hello click this to open",
+      children:
+        "A cake is a baked sweet food, traditionally made with flour, sugar, and eggs, often with added fats and leavening agents.",
+    },
+  ];
+
+  return (
+    <PreviewContainer label="Disclosure Group">
+      <DisclosureGroup items={items} />
+    </PreviewContainer>
+  );
+};
+
 const App = () => {
   const previewElements = [
     ButtonPreview,
@@ -1095,6 +1126,7 @@ const App = () => {
     NavMenuPreview,
     NavResponsivePreview,
     DisclosurePreview,
+    DisclosureGroupPreview,
   ];
 
   return (

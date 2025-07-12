@@ -9,16 +9,16 @@ import TextButton from "../../Button/TextButton";
 import { ColorTheme } from "../../../utils/types";
 import { ButtonShape } from "../../Button/types";
 
-const Disclosure = ({ heading, children }: DisclosureProps) => {
+const Disclosure = ({ heading, children, id }: DisclosureProps) => {
   return (
-    <UnstyledDisclousre className={styles["disclosure"]}>
+    <UnstyledDisclousre className={styles["disclosure"]} id={id}>
       <h2 className={styles["trigger"]}>
         <TextButton
           slot="trigger"
           theme={ColorTheme.inverseSurface}
           shape={ButtonShape.shrink}
         >
-          <ChevronRight />
+          <ChevronRight strokeWidth={3} />
           {heading}
         </TextButton>
       </h2>
