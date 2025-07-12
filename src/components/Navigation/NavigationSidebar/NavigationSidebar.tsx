@@ -7,9 +7,13 @@ import { Menu, X } from "lucide-react";
 import styles from "./navigationSidebar.module.css";
 import { ColorTheme } from "../../../utils/types";
 
-const NavigationSidebar = ({ items }: NavigationSidebarProps) => {
+const NavigationSidebar = ({
+  items,
+  ...sidebarProps
+}: NavigationSidebarProps) => {
   return (
     <Sidebar
+      {...sidebarProps}
       trigger={
         <TextButton shape={ButtonShape.square}>
           <Menu />
