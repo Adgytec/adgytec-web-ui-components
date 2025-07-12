@@ -827,6 +827,10 @@ const TreePreview = () => {
   );
 };
 
+const NavAppbarPreview = () => {
+  return <PreviewContainer label="Nav Appbar"> </PreviewContainer>;
+};
+
 const App = () => {
   const previewElements = [
     ButtonPreview,
@@ -838,6 +842,7 @@ const App = () => {
     MenuPreview,
     SidebarPreview,
     TreePreview,
+    NavAppbarPreview,
   ];
 
   return (
