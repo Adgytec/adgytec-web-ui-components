@@ -1,13 +1,8 @@
-import type { ReactNode } from "react";
 import type { ColorTheme } from "../../utils/types";
+import type { LinkProps as AriaLinkProps } from "react-aria-components";
 
-export interface LinkProps {
-  children: ReactNode;
-  href: string;
-  target?: string;
+export interface LinkProps extends AriaLinkProps {
   theme?: ColorTheme;
-  disabled?: boolean;
   description?: string; // this only applies to button links
-  slot?: string;
   underline?: boolean;
 }

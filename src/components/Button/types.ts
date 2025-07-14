@@ -1,5 +1,8 @@
-import type { ReactNode } from "react";
-import type { ColorTheme, OnPressHandler } from "../../utils/types";
+import type { ColorTheme } from "../../utils/types";
+import type {
+  ButtonProps as AriaButtonProps,
+  LinkProps,
+} from "react-aria-components";
 
 export enum ButtonVariant {
   filled = "filled",
@@ -18,22 +21,14 @@ export interface ButtonProps extends ButtonVariantProps {
   variant: ButtonVariant;
 }
 
-export interface ButtonVariantProps {
-  onPress?: OnPressHandler;
-  disabled?: boolean;
+export interface ButtonVariantProps extends AriaButtonProps {
   theme?: ColorTheme;
   shape?: ButtonShape;
-  children: ReactNode;
   description?: string;
-  slot?: string;
 }
 
-export interface ButtonLinkProps {
-  children: ReactNode;
-  href?: string;
-  target?: string;
+export interface ButtonLinkProps extends LinkProps {
   theme?: ColorTheme;
-  disabled?: boolean;
   variant?: ButtonVariant;
   shape?: ButtonShape;
   description?: string;

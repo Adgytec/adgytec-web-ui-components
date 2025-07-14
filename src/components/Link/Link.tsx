@@ -5,21 +5,17 @@ import { ColorTheme } from "../../utils/types";
 import Tooltip from "../Tooltip/Tooltip";
 
 const Link = ({
-  children,
-  href,
-  target,
   theme = ColorTheme.primary,
-  disabled,
   description,
   underline = true,
+  children,
+  ...props
 }: LinkProps) => {
   return (
     <Tooltip description={description} theme={theme}>
       <UnstyledLink
-        className={`${styles["link"]} ${styles[theme]}`}
-        href={href}
-        target={target}
-        isDisabled={disabled}
+        {...props}
+        className={props.className ?? `${styles["link"]} ${styles[theme]}`}
         {...(underline && { "data-underline": true })}
       >
         {children}

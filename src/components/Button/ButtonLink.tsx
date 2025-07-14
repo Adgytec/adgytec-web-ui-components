@@ -7,31 +7,38 @@ import { useSplash } from "../Splash/useSplash.ts";
 import { ColorTheme } from "../../utils/types.ts";
 
 const ButtonLink = ({
-  href,
-  target,
   variant = ButtonVariant.filled,
   theme = ColorTheme.primary,
   shape = ButtonShape.rectangle,
-  children,
-  disabled,
   description,
   underline = true,
+  children,
+  ...props
 }: ButtonLinkProps) => {
-  const { coords, handlePress } = useSplash();
+  const { coords, handlePress } = useSplash(props.onPress);
+  const isChildFunc = typeof children === "function";
 
   return (
     <Tooltip theme={theme} description={description}>
       <UnstyledLink
-        className={`${styles["button"]} ${styles["button-link"]} ${styles[variant]} ${styles[theme]} ${styles[shape]}`}
-        onPress={handlePress}
-        href={href}
-        target={target}
-        isDisabled={disabled}
+        {...props}
         {...(underline && { "data-underline": true })}
+        onPress={handlePress}
+        className={`${styles["button"]} ${styles["button-link"]} ${styles[variant]} ${styles[theme]} ${styles[shape]}`}
       >
-        {coords && <Splash {...coords} />}
-
-        {children}
+        {isChildFunc ? (
+          (values) => (
+            <>
+              {coords && <Splash {...coords} />}
+              {children(values)}
+            </>
+          )
+        ) : (
+          <>
+            {coords && <Splash {...coords} />}
+            {children}
+          </>
+        )}
       </UnstyledLink>
     </Tooltip>
   );
