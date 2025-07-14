@@ -9,6 +9,7 @@ import {
   ListBoxItem,
   SelectValue,
   Text,
+  FieldError,
 } from "react-aria-components";
 import Popover from "../Popover/Popover.tsx";
 import { ChevronsUpDown, Check } from "lucide-react";
@@ -23,10 +24,12 @@ const Select = ({
   label,
   name,
   disabled,
-  required,
+  isRequired,
   triggerVariant = ButtonVariant.filled,
   description,
   placeholder,
+  selectedKey,
+  onSelectionChange,
 }: SelectProps) => {
   let TriggerVariant: ComponentType<ButtonVariantProps>;
   switch (triggerVariant) {
@@ -42,7 +45,13 @@ const Select = ({
   }
 
   return (
-    <UnstyledSelect isDisabled={disabled} isRequired={required} name={name}>
+    <UnstyledSelect
+      isDisabled={disabled}
+      isRequired={isRequired}
+      name={name}
+      selectedKey={selectedKey}
+      onSelectionChange={onSelectionChange}
+    >
       {label && <Label className={styles["label"]}>{label}</Label>}
 
       <Tooltip description={description} theme={ColorTheme.inverseSurface}>
@@ -61,6 +70,8 @@ const Select = ({
           </span>
         </TriggerVariant>
       </Tooltip>
+
+      <FieldError />
 
       <Popover>
         <ListBox className={`${styles["options-list"]}`} items={options}>
