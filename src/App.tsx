@@ -27,7 +27,9 @@ import NavigationResponsive from "./components/Navigation/NavigationResponsive/N
 import Disclosure from "./components/Disclosure/Disclosure/Disclosure";
 import DisclosureGroup from "./components/Disclosure/DisclousureGroup/DisclousreGroup";
 import type { DisclosureProps } from "./components/Disclosure/Disclosure/types";
-import type { Key } from "react-aria-components";
+import { type Key } from "react-aria-components";
+import Input from "./components/Form/Input/Input";
+import Textarea from "./components/Form/Textarea/Textarea";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1128,6 +1130,16 @@ const DisclosureGroupPreview = () => {
   );
 };
 
+const FormInputPreview = () => {
+  return (
+    <PreviewContainer label="Form Input">
+      <Input label="Email" name="email" type="email" isRequired />
+
+      <Textarea label="Email" name="email" type="email" isRequired />
+    </PreviewContainer>
+  );
+};
+
 const App = () => {
   const previewElements = [
     ButtonPreview,
@@ -1144,6 +1156,7 @@ const App = () => {
     NavResponsivePreview,
     DisclosurePreview,
     DisclosureGroupPreview,
+    FormInputPreview,
   ];
 
   return (

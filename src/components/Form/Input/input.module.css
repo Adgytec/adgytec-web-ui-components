@@ -1,0 +1,22 @@
+.input {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.editor {
+  font-weight: 500;
+  border-radius: var(--radius);
+
+  padding-inline: 0.625em;
+  padding-block: 0.625em;
+
+  max-inline-size: 100%;
+  border-style: solid;
+
+  background-color: var(--color-surface-container-highest);
+  color: var(--color-on-surface);
+
+  &[data-invalid] {
+    border-color: var(--color-error);
+  }
+}

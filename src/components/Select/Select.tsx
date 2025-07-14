@@ -8,7 +8,6 @@ import {
   ListBoxItem,
   SelectValue,
   Text,
-  FieldError,
 } from "react-aria-components";
 import Popover from "../Popover/Popover.tsx";
 import { ChevronsUpDown, Check } from "lucide-react";
@@ -18,6 +17,7 @@ import TextButton from "../Button/TextButton";
 import { ColorTheme } from "../../utils/types";
 import Tooltip from "../Tooltip/Tooltip";
 import Label from "../Form/Label/Label.tsx";
+import FieldError from "../Form/FieldError/FieldError.tsx";
 
 const Select = ({
   options,
