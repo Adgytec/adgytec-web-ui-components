@@ -1,4 +1,4 @@
-import { Fragment, type ReactNode } from "react";
+import { Fragment, useState, type ReactNode } from "react";
 import { ColorTheme, type HierarchyItemType } from "./utils/types";
 import FilledButton from "./components/Button/FilledButton";
 import OutlinedButton from "./components/Button/OutlinedButton";
@@ -27,6 +27,7 @@ import NavigationResponsive from "./components/Navigation/NavigationResponsive/N
 import Disclosure from "./components/Disclosure/Disclosure/Disclosure";
 import DisclosureGroup from "./components/Disclosure/DisclousureGroup/DisclousreGroup";
 import type { DisclosureProps } from "./components/Disclosure/Disclosure/types";
+import type { Key } from "react-aria-components";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -255,6 +256,8 @@ const SelectPreview = () => {
 
   let description = "Who doesn't like desserts?";
 
+  const [dessert, setDessert] = useState<Key>("cookies");
+
   return (
     <PreviewContainer label="Select">
       <div className="item-container">
@@ -263,10 +266,24 @@ const SelectPreview = () => {
             <Fragment key={"select" + variant}>
               <Select
                 label="Desserts"
+                name="dessert"
                 options={options}
                 triggerVariant={variant}
                 placeholder="Select your favorite dessert"
                 description={description}
+              />
+
+              <Select
+                label="Desserts"
+                options={options}
+                triggerVariant={variant}
+                placeholder="Select your favorite dessert"
+                description={description}
+                selectedKey={dessert}
+                onSelectionChange={(key) => {
+                  if (!key) return;
+                  setDessert(key);
+                }}
               />
 
               <Select
