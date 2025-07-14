@@ -46,6 +46,7 @@ const Select = ({
 
   return (
     <UnstyledSelect
+      className={styles["select"]}
       isDisabled={disabled}
       isRequired={isRequired}
       name={name}
