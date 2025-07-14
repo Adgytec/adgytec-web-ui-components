@@ -9,15 +9,15 @@ import {
   SelectValue,
   Text,
 } from "react-aria-components";
-import Popover from "../Popover/Popover.tsx";
+import { Popover } from "../Popover/Popover.tsx";
 import { ChevronsUpDown, Check } from "lucide-react";
 import type { ComponentType } from "react";
 import { OutlinedButton } from "../Button/OutlinedButton";
 import { TextButton } from "../Button/TextButton";
 import { ColorTheme } from "../../utils/types";
 import { Tooltip } from "../Tooltip/Tooltip";
-import Label from "../Form/Label/Label.tsx";
-import FieldError from "../Form/FieldError/FieldError.tsx";
+import { Label } from "../Form/Label/Label.tsx";
+import { FieldError } from "../Form/FieldError/FieldError.tsx";
 
 export const Select = ({
   options,

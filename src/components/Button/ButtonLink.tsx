@@ -2,7 +2,7 @@ import styles from "./button.module.css";
 import { Link as UnstyledLink } from "react-aria-components";
 import { Tooltip } from "../Tooltip/Tooltip.tsx";
 import { ButtonShape, ButtonVariant, type ButtonLinkProps } from "./types.ts";
-import Splash from "../Splash/Splash.tsx";
+import { Splash } from "../Splash/Splash.tsx";
 import { useSplash } from "../Splash/useSplash.ts";
 import { ColorTheme } from "../../utils/types.ts";
 

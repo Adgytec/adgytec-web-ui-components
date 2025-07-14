@@ -4,7 +4,7 @@ import {
 } from "react-aria-components";
 import styles from "./fieldError.module.css";
 
-const FieldError = (props: FieldErrorProps) => {
+export const FieldError = (props: FieldErrorProps) => {
   return (
     <UnstyledFieldError
       {...props}
@@ -12,5 +12,3 @@ const FieldError = (props: FieldErrorProps) => {
     />
   );
 };
-
-export default FieldError;

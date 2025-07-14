@@ -1,7 +1,7 @@
 import type { SplashProps } from "./types";
 import styles from "./splash.module.css";
 
-const Splash = ({ id, x, y }: SplashProps) => {
+export const Splash = ({ id, x, y }: SplashProps) => {
   return (
     <div
       key={`${id}`}
@@ -14,5 +14,3 @@ const Splash = ({ id, x, y }: SplashProps) => {
     />
   );
 };
-
-export default Splash;

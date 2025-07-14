@@ -4,7 +4,7 @@ import {
 } from "react-aria-components";
 import styles from "./popover.module.css";
 
-const Popover = (props: PopoverProps) => {
+export const Popover = (props: PopoverProps) => {
   return (
     <UnstyledPopover
       {...props}
@@ -12,5 +12,3 @@ const Popover = (props: PopoverProps) => {
     />
   );
 };
-
-export default Popover;
