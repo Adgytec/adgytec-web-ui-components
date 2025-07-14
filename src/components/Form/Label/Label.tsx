@@ -1,9 +1,12 @@
-import type { LabelProps } from "./types";
-import { Label as UnstyledLabel } from "react-aria-components";
+import { Label as UnstyledLabel, type LabelProps } from "react-aria-components";
 import styles from "./label.module.css";
 
-const Label = ({ children }: LabelProps) => {
-  return <UnstyledLabel className={styles["label"]}>{children}</UnstyledLabel>;
+const Label = (props: LabelProps) => {
+  return (
+    <UnstyledLabel {...props} className={props.className ?? styles["label"]}>
+      {props.children}
+    </UnstyledLabel>
+  );
 };
 
 export default Label;

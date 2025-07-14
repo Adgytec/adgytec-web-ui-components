@@ -1,7 +1,3 @@
 .label {
-  display: block;
-
-  &[data-invalid] {
-    outline-color: var(--color-error);
-  }
+  font-weight: 500;
 }
