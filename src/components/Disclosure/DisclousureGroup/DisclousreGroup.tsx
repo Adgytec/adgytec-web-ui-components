@@ -3,15 +3,14 @@ import type { DisclosureGroupProps } from "./types";
 import { DisclosureGroup as UnstyledDisclosureGroup } from "react-aria-components";
 import styles from "./disclosureGroup.module.css";
 
-const DisclosureGroup = ({ items }: DisclosureGroupProps) => {
+const DisclosureGroup = ({ items, ...props }: DisclosureGroupProps) => {
   return (
-    <UnstyledDisclosureGroup className={styles["disclosure-group"]}>
+    <UnstyledDisclosureGroup
+      {...props}
+      className={props.className ?? styles["disclosure-group"]}
+    >
       {items.map((item) => {
-        return (
-          <Disclosure key={item.id} heading={item.heading} id={item.id}>
-            {item.children}
-          </Disclosure>
-        );
+        return <Disclosure key={item.id} {...item} />;
       })}
     </UnstyledDisclosureGroup>
   );
