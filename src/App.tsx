@@ -29,7 +29,7 @@ import DisclosureGroup from "./components/Disclosure/DisclousureGroup/Disclousre
 import type { DisclosureProps } from "./components/Disclosure/Disclosure/types";
 import { type Key } from "react-aria-components";
 import Input from "./components/Form/Input/Input";
-import Textarea from "./components/Form/Textarea/Textarea";
+import Textarea from "./components/Form/TextArea/TextArea";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -99,7 +99,7 @@ const ButtonPreview = () => {
                   <ButtonElement.element
                     onPress={onPress}
                     theme={theme}
-                    disabled
+                    isDisabled
                     description={ButtonElement.description}
                   >
                     {ButtonElement.label}
@@ -200,7 +200,7 @@ const LinkPreview = () => {
                   <LinkElement.element
                     href="/"
                     theme={theme}
-                    disabled
+                    isDisabled
                     description={LinkElement.description}
                   >
                     {LinkElement.label}

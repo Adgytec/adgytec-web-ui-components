@@ -1,7 +1,7 @@
-import type { DisclosureProps as AriaDisclosureProps } from "react-aria-components";
+import type { ReactNode } from "react";
 
-// heading and content are required for default styled disclosure
-export interface DisclosureProps extends AriaDisclosureProps {
-  heading?: string;
-  content?: string;
+export interface DisclosureProps {
+  id?: string;
+  heading: string;
+  children: ReactNode;
 }

@@ -1,12 +1,15 @@
-import type { PopoverProps } from "./types";
-import { Popover as UnstyledPopover } from "react-aria-components";
+import {
+  Popover as UnstyledPopover,
+  type PopoverProps,
+} from "react-aria-components";
 import styles from "./popover.module.css";
 
-const Popover = ({ children }: PopoverProps) => {
+const Popover = (props: PopoverProps) => {
   return (
-    <UnstyledPopover className={`${styles["popover"]}`}>
-      {children}
-    </UnstyledPopover>
+    <UnstyledPopover
+      {...props}
+      className={props.className ?? styles["popover"]}
+    />
   );
 };
 
