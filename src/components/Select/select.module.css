@@ -8,10 +8,6 @@
   }
 }
 
-.label {
-  display: block;
-}
-
 .trigger {
   display: flex;
   align-items: center;

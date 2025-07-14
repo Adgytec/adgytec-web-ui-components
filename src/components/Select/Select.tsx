@@ -4,7 +4,6 @@ import { ButtonVariant, type ButtonVariantProps } from "../Button/types";
 import type { SelectProps } from "./types";
 import {
   Select as UnstyledSelect,
-  Label,
   ListBox,
   ListBoxItem,
   SelectValue,
@@ -18,6 +17,7 @@ import OutlinedButton from "../Button/OutlinedButton";
 import TextButton from "../Button/TextButton";
 import { ColorTheme } from "../../utils/types";
 import Tooltip from "../Tooltip/Tooltip";
+import Label from "../Form/Label/Label.tsx";
 
 const Select = ({
   options,
@@ -52,7 +52,7 @@ const Select = ({
       selectedKey={selectedKey}
       onSelectionChange={onSelectionChange}
     >
-      {label && <Label className={styles["label"]}>{label}</Label>}
+      {label && <Label>{label}</Label>}
 
       <Tooltip description={description} theme={ColorTheme.inverseSurface}>
         <TriggerVariant theme={ColorTheme.inverseSurface}>
