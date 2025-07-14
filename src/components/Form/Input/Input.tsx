@@ -4,7 +4,7 @@ import Label from "../Label/Label";
 import styles from "./input.module.css";
 import FieldError from "../FieldError/FieldError.tsx";
 
-const Input = ({
+export const Input = ({
   label,
   textFieldProps,
   inputProps,
@@ -25,5 +25,3 @@ const Input = ({
     </TextField>
   );
 };
-
-export default Input;

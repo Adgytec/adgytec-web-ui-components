@@ -42,7 +42,7 @@ const RenderTree = ({ item }: RenderTreeProps) => {
   );
 };
 
-const Tree = ({ items }: TreeProps) => {
+export const Tree = ({ items }: TreeProps) => {
   return (
     <UnstyledTree className={styles["tree"]}>
       {items.map((item) => {
@@ -51,5 +51,3 @@ const Tree = ({ items }: TreeProps) => {
     </UnstyledTree>
   );
 };
-
-export default Tree;

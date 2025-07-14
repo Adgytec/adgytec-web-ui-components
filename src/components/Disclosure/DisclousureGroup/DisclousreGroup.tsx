@@ -1,9 +1,9 @@
-import Disclosure from "../Disclosure/Disclosure";
+import { Disclosure } from "../Disclosure/Disclosure";
 import type { DisclosureGroupProps } from "./types";
 import { DisclosureGroup as UnstyledDisclosureGroup } from "react-aria-components";
 import styles from "./disclosureGroup.module.css";
 
-const DisclosureGroup = ({ items }: DisclosureGroupProps) => {
+export const DisclosureGroup = ({ items }: DisclosureGroupProps) => {
   return (
     <UnstyledDisclosureGroup className={styles["disclosure-group"]}>
       {items.map((item) => {
@@ -16,5 +16,3 @@ const DisclosureGroup = ({ items }: DisclosureGroupProps) => {
     </UnstyledDisclosureGroup>
   );
 };
-
-export default DisclosureGroup;

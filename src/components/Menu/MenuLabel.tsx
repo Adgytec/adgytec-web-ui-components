@@ -1,10 +1,14 @@
 import type { MenuLabelProps } from "./types";
-import Menu from "./Menu";
+import { Menu } from "./Menu";
 import { Pressable } from "react-aria-components";
-import Tooltip from "../Tooltip/Tooltip";
+import { Tooltip } from "../Tooltip/Tooltip";
 import styles from "./menu.module.css";
 
-const MenuLabel = ({ children, menuItems, description }: MenuLabelProps) => {
+export const MenuLabel = ({
+  children,
+  menuItems,
+  description,
+}: MenuLabelProps) => {
   return (
     <Menu menuItems={menuItems}>
       <Tooltip description={description}>
@@ -17,5 +21,3 @@ const MenuLabel = ({ children, menuItems, description }: MenuLabelProps) => {
     </Menu>
   );
 };
-
-export default MenuLabel;

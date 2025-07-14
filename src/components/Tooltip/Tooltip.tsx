@@ -7,7 +7,7 @@ import {
 import styles from "./tooltip.module.css";
 import { ColorTheme } from "../../utils/types";
 
-const Tooltip = ({
+export const Tooltip = ({
   children,
   description,
   theme = ColorTheme.inverseSurface,
@@ -32,5 +32,3 @@ const Tooltip = ({
     </TooltipTrigger>
   );
 };
-
-export default Tooltip;

@@ -17,7 +17,7 @@ const AvatarBase = ({ children, size, type, theme }: AvatarBaseProps) => {
   );
 };
 
-const Avatar = ({
+export const Avatar = ({
   src,
   children,
   size = AvatarSize.normal,
@@ -38,5 +38,3 @@ const Avatar = ({
     </AvatarBase>
   );
 };
-
-export default Avatar;

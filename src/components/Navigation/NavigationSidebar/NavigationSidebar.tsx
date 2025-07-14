@@ -1,13 +1,13 @@
-import TextButton from "../../Button/TextButton";
+import { TextButton } from "../../Button/TextButton";
 import { ButtonShape } from "../../Button/types";
-import Sidebar from "../../Sidebar/Sidebar";
-import Tree from "../../Tree/Tree";
+import { Sidebar } from "../../Sidebar/Sidebar";
+import { Tree } from "../../Tree/Tree";
 import type { NavigationSidebarProps } from "./types";
 import { Menu, X } from "lucide-react";
 import styles from "./navigationSidebar.module.css";
 import { ColorTheme } from "../../../utils/types";
 
-const NavigationSidebar = ({
+export const NavigationSidebar = ({
   items,
   ...sidebarProps
 }: NavigationSidebarProps) => {
@@ -39,5 +39,3 @@ const NavigationSidebar = ({
     </Sidebar>
   );
 };
-
-export default NavigationSidebar;

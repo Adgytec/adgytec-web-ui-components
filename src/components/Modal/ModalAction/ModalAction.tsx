@@ -1,14 +1,14 @@
-import ModalBase from "../ModalBase/ModalBase";
+import { ModalBase } from "../ModalBase/ModalBase";
 import {
   ModalActionPlacement,
   ModalCloseText,
   type ModalActionProps,
 } from "./types";
 import styles from "./modalAction.module.css";
-import TextButton from "../../Button/TextButton";
+import { TextButton } from "../../Button/TextButton";
 import { ColorTheme } from "../../../utils/types";
 
-const ModalAction = ({
+export const ModalAction = ({
   trigger,
   header,
   children,
@@ -50,5 +50,3 @@ const ModalAction = ({
     </ModalBase>
   );
 };
-
-export default ModalAction;

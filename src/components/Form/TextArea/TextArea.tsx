@@ -4,7 +4,7 @@ import Label from "../Label/Label";
 import FieldError from "../FieldError/FieldError";
 import styles from "./textarea.module.css";
 
-const TextArea = ({
+export const TextArea = ({
   label,
   textFieldProps,
   textAreaProps,
@@ -25,5 +25,3 @@ const TextArea = ({
     </TextField>
   );
 };
-
-export default TextArea;

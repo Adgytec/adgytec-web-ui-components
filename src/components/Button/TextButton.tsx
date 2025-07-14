@@ -1,7 +1,7 @@
-import Button from "./Button";
+import { Button } from "./Button";
 import { ButtonVariant, type ButtonVariantProps } from "./types";
 
-const TextButton = (props: ButtonVariantProps) => {
+export const TextButton = (props: ButtonVariantProps) => {
   const { children } = props;
   return (
     <Button {...props} variant={ButtonVariant.text}>
@@ -9,5 +9,3 @@ const TextButton = (props: ButtonVariantProps) => {
     </Button>
   );
 };
-
-export default TextButton;

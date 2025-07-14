@@ -1,13 +1,13 @@
 import type { NavigationMenuProps } from "./types";
 import styles from "./navigationMenu.module.css";
-import MenuLabel from "../../Menu/MenuLabel";
-import Link from "../../Link/Link";
-import TextButton from "../../Button/TextButton";
+import { MenuLabel } from "../../Menu/MenuLabel";
+import { Link } from "../../Link/Link";
+import { TextButton } from "../../Button/TextButton";
 import { ColorTheme } from "../../../utils/types";
 import { ButtonShape } from "../../Button/types";
 import { ChevronDown } from "lucide-react";
 
-const NavigationMenu = ({ items, className }: NavigationMenuProps) => {
+export const NavigationMenu = ({ items, className }: NavigationMenuProps) => {
   const normalizedItems = items.filter((item) => item.type !== "separator");
 
   return (
@@ -51,5 +51,3 @@ const NavigationMenu = ({ items, className }: NavigationMenuProps) => {
     </div>
   );
 };
-
-export default NavigationMenu;

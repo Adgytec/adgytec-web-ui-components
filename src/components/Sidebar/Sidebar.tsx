@@ -7,7 +7,7 @@ import {
 } from "react-aria-components";
 import styles from "./sidebar.module.css";
 
-const Sidebar = ({
+export const Sidebar = ({
   children,
   trigger,
   sidebarPosition = SidebarPosition.inlineStart,
@@ -37,5 +37,3 @@ const Sidebar = ({
     </DialogTrigger>
   );
 };
-
-export default Sidebar;

@@ -45,7 +45,7 @@ const RenderMenu = ({ menuItem }: RenderMenuProps) => {
   );
 };
 
-const Menu = ({ children, menuItems }: MenuProps) => {
+export const Menu = ({ children, menuItems }: MenuProps) => {
   return (
     <MenuTrigger>
       {children}
@@ -59,5 +59,3 @@ const Menu = ({ children, menuItems }: MenuProps) => {
     </MenuTrigger>
   );
 };
-
-export default Menu;

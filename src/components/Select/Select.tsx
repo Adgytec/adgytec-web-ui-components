@@ -1,4 +1,4 @@
-import FilledButton from "../Button/FilledButton";
+import { FilledButton } from "../Button/FilledButton";
 import styles from "./select.module.css";
 import { ButtonVariant, type ButtonVariantProps } from "../Button/types";
 import type { SelectProps } from "./types";
@@ -12,14 +12,14 @@ import {
 import Popover from "../Popover/Popover.tsx";
 import { ChevronsUpDown, Check } from "lucide-react";
 import type { ComponentType } from "react";
-import OutlinedButton from "../Button/OutlinedButton";
-import TextButton from "../Button/TextButton";
+import { OutlinedButton } from "../Button/OutlinedButton";
+import { TextButton } from "../Button/TextButton";
 import { ColorTheme } from "../../utils/types";
-import Tooltip from "../Tooltip/Tooltip";
+import { Tooltip } from "../Tooltip/Tooltip";
 import Label from "../Form/Label/Label.tsx";
 import FieldError from "../Form/FieldError/FieldError.tsx";
 
-const Select = ({
+export const Select = ({
   options,
   label,
   name,
@@ -112,5 +112,3 @@ const Select = ({
     </UnstyledSelect>
   );
 };
-
-export default Select;

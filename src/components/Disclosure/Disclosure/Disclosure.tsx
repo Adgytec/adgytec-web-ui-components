@@ -5,11 +5,11 @@ import {
 } from "react-aria-components";
 import styles from "./disclosure.module.css";
 import { ChevronRight } from "lucide-react";
-import TextButton from "../../Button/TextButton";
+import { TextButton } from "../../Button/TextButton";
 import { ColorTheme } from "../../../utils/types";
 import { ButtonShape } from "../../Button/types";
 
-const Disclosure = ({ heading, children, id }: DisclosureProps) => {
+export const Disclosure = ({ heading, children, id }: DisclosureProps) => {
   return (
     <UnstyledDisclousre className={styles["disclosure"]} id={id}>
       <h2 className={styles["trigger"]}>
@@ -29,5 +29,3 @@ const Disclosure = ({ heading, children, id }: DisclosureProps) => {
     </UnstyledDisclousre>
   );
 };
-
-export default Disclosure;

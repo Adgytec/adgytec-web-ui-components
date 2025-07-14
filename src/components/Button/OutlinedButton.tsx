@@ -1,7 +1,7 @@
-import Button from "./Button";
+import { Button } from "./Button";
 import { ButtonVariant, type ButtonVariantProps } from "./types";
 
-const OutlinedButton = (props: ButtonVariantProps) => {
+export const OutlinedButton = (props: ButtonVariantProps) => {
   const { children } = props;
   return (
     <Button {...props} variant={ButtonVariant.outlined}>
@@ -9,5 +9,3 @@ const OutlinedButton = (props: ButtonVariantProps) => {
     </Button>
   );
 };
-
-export default OutlinedButton;

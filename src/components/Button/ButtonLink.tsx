@@ -1,12 +1,12 @@
 import styles from "./button.module.css";
 import { Link as UnstyledLink } from "react-aria-components";
-import Tooltip from "../Tooltip/Tooltip.tsx";
+import { Tooltip } from "../Tooltip/Tooltip.tsx";
 import { ButtonShape, ButtonVariant, type ButtonLinkProps } from "./types.ts";
 import Splash from "../Splash/Splash.tsx";
 import { useSplash } from "../Splash/useSplash.ts";
 import { ColorTheme } from "../../utils/types.ts";
 
-const ButtonLink = ({
+export const ButtonLink = ({
   variant = ButtonVariant.filled,
   theme = ColorTheme.primary,
   shape = ButtonShape.rectangle,
@@ -43,5 +43,3 @@ const ButtonLink = ({
     </Tooltip>
   );
 };
-
-export default ButtonLink;

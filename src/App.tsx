@@ -1,35 +1,35 @@
 import { Fragment, useState, type ReactNode } from "react";
 import { ColorTheme, type HierarchyItemType } from "./utils/types";
-import FilledButton from "./components/Button/FilledButton";
-import OutlinedButton from "./components/Button/OutlinedButton";
-import TextButton from "./components/Button/TextButton";
+import { FilledButton } from "./components/Button/FilledButton";
+import { OutlinedButton } from "./components/Button/OutlinedButton";
+import { TextButton } from "./components/Button/TextButton";
 import { ButtonShape, ButtonVariant } from "./components/Button/types";
-import Link from "./components/Link/Link";
-import FilledButtonLink from "./components/Link/FilledButtonLink";
-import OutlinedButtonLink from "./components/Link/OutlinedButtonLink";
+import { Link } from "./components/Link/Link";
+import { FilledButtonLink } from "./components/Link/FilledButtonLink";
+import { OutlinedButtonLink } from "./components/Link/OutlinedButtonLink";
 import type { SelectOptions } from "./components/Select/types";
-import Select from "./components/Select/Select";
+import { Select } from "./components/Select/Select";
 import { AvatarSize } from "./components/Avatar/types";
-import Avatar from "./components/Avatar/Avatar";
+import { Avatar } from "./components/Avatar/Avatar";
 import { Copy } from "lucide-react";
-import ModalBase from "./components/Modal/ModalBase/ModalBase";
-import ModalAction from "./components/Modal/ModalAction/ModalAction";
+import { ModalBase } from "./components/Modal/ModalBase/ModalBase";
+import { ModalAction } from "./components/Modal/ModalAction/ModalAction";
 import { ModalActionPlacement } from "./components/Modal/ModalAction/types";
-import MenuButton from "./components/Menu/MenuButton";
-import MenuLabel from "./components/Menu/MenuLabel";
-import Tooltip from "./components/Tooltip/Tooltip";
+import { MenuButton } from "./components/Menu/MenuButton";
+import { MenuLabel } from "./components/Menu/MenuLabel";
+import { Tooltip } from "./components/Tooltip/Tooltip";
 import { SidebarPosition, SidebarSize } from "./components/Sidebar/types";
-import Sidebar from "./components/Sidebar/Sidebar";
-import Tree from "./components/Tree/Tree";
-import NavigationAppbar from "./components/Navigation/NavigationSidebar/NavigationSidebar";
-import NavigationMenu from "./components/Navigation/NavigationMenu/NavigationMenu";
-import NavigationResponsive from "./components/Navigation/NavigationResponsive/NavigationResponsive";
-import Disclosure from "./components/Disclosure/Disclosure/Disclosure";
-import DisclosureGroup from "./components/Disclosure/DisclousureGroup/DisclousreGroup";
+import { Sidebar } from "./components/Sidebar/Sidebar";
+import { Tree } from "./components/Tree/Tree";
+import { NavigationSidebar } from "./components/Navigation/NavigationSidebar/NavigationSidebar";
+import { NavigationMenu } from "./components/Navigation/NavigationMenu/NavigationMenu";
+import { NavigationResponsive } from "./components/Navigation/NavigationResponsive/NavigationResponsive";
+import { Disclosure } from "./components/Disclosure/Disclosure/Disclosure";
+import { DisclosureGroup } from "./components/Disclosure/DisclousureGroup/DisclousreGroup";
 import type { DisclosureProps } from "./components/Disclosure/Disclosure/types";
 import { type Key } from "react-aria-components";
-import Input from "./components/Form/Input/Input";
-import Textarea from "./components/Form/TextArea/TextArea";
+import { Input } from "./components/Form/Input/Input";
+import { TextArea } from "./components/Form/TextArea/TextArea";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -926,7 +926,7 @@ const NavSidebarPreview = () => {
   return (
     <PreviewContainer label="Nav Sidebar">
       <div className="items-container">
-        <NavigationAppbar items={tree} />
+        <NavigationSidebar items={tree} />
       </div>
     </PreviewContainer>
   );
@@ -1135,7 +1135,7 @@ const FormInputPreview = () => {
     <PreviewContainer label="Form Input">
       <Input label="Email" />
 
-      <Textarea label="More info" />
+      <TextArea label="More info" />
     </PreviewContainer>
   );
 };

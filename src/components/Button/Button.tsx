@@ -1,12 +1,12 @@
 import styles from "./button.module.css";
 import { Button as UnstyledButton } from "react-aria-components";
-import Tooltip from "../Tooltip/Tooltip.tsx";
+import { Tooltip } from "../Tooltip/Tooltip";
 import { ButtonShape, ButtonVariant, type ButtonProps } from "./types.ts";
 import Splash from "../Splash/Splash.tsx";
 import { useSplash } from "../Splash/useSplash.ts";
 import { ColorTheme } from "../../utils/types.ts";
 
-const Button = ({
+export const Button = ({
   variant,
   theme = ColorTheme.primary,
   shape = ButtonShape.rectangle,
@@ -48,5 +48,3 @@ const Button = ({
     </Tooltip>
   );
 };
-
-export default Button;

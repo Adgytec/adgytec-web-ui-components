@@ -7,7 +7,7 @@ import {
 } from "react-aria-components";
 import styles from "./modalBase.module.css";
 
-const ModalBase = ({
+export const ModalBase = ({
   trigger,
   children,
   isDismissable,
@@ -33,5 +33,3 @@ const ModalBase = ({
     </DialogTrigger>
   );
 };
-
-export default ModalBase;
