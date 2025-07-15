@@ -18,7 +18,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "dependencies": {
+  "peerDependencies": {
     "lucide-react": "^0.525.0",
     "react": "^19.1.0",
     "react-aria-components": "^1.10.1",

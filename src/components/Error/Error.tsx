@@ -1,4 +1,4 @@
-import type { ErrorProps } from "./type";
+import type { ErrorProps } from "./types";
 import styles from "./error.module.css";
 
 export const Error = ({ children }: ErrorProps) => {
