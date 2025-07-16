@@ -1,6 +1,5 @@
 .toggle-button-group {
   --_flex-direction: row;
-  --button-border-width: 0.075rem;
 
   display: flex;
   flex-direction: var(--_flex-direction);
