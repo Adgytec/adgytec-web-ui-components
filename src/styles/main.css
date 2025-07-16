@@ -7,11 +7,13 @@
   --font-heading: "Lexend", sans-serif;
 
   --disabled-opacity: 0.625;
-  /* --radius: 0.5rem; */
-  /* --radius-sidebar: 2.5rem; */
-  /* --radius-button: 100vi; */
-  /* --radius-button: 0.5rem; */
-  /* --radius-circular: 50%; */
+  --radius: 0.5rem;
+  --radius-sidebar: 2rem;
+  --radius-button: 100vi;
+  --radius-button: 0.5rem;
+  --radius-circular: 50%;
+
+  --button-border-width: 0.125rem;
 
   --color-primary: rgb(0 103 125);
   --color-surface-tint: rgb(0 103 125);

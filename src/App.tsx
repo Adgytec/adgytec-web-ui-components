@@ -30,6 +30,10 @@ import type { DisclosureProps } from "./components/Disclosure/Disclosure/types";
 import { type Key } from "react-aria-components";
 import { Input } from "./components/Form/Input/Input";
 import { TextArea } from "./components/Form/TextArea/TextArea";
+import {
+  type ToggleButtonGroupItem,
+  ToggleButtonGroup,
+} from "./components/ToggleButtonGroup";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1140,6 +1144,77 @@ const FormInputPreview = () => {
   );
 };
 
+const ToggleButtonPreview = () => {
+  const items: ToggleButtonGroupItem[] = [
+    {
+      id: "light",
+      value: "Light",
+    },
+    {
+      id: "dark",
+      value: "Dark",
+    },
+    {
+      id: "system",
+      value: "System",
+    },
+  ];
+
+  const buttonTheme = [
+    ColorTheme.primary,
+    ColorTheme.primaryVariant,
+    ColorTheme.secondary,
+    ColorTheme.tertiary,
+    ColorTheme.error,
+    ColorTheme.inverseSurface,
+    ColorTheme.success,
+  ];
+
+  return (
+    <PreviewContainer label="Toggle Button Group">
+      {buttonTheme.map((theme) => {
+        return (
+          <div className="item-container" key={theme}>
+            <ToggleButtonGroup
+              selectionMode="single"
+              items={items}
+              disallowEmptySelection
+              theme={theme}
+              orientation="horizontal"
+            />
+
+            <ToggleButtonGroup
+              selectionMode="single"
+              items={items}
+              disallowEmptySelection
+              theme={theme}
+              orientation="horizontal"
+              isDisabled
+            />
+
+            <ToggleButtonGroup
+              selectionMode="single"
+              items={items}
+              disallowEmptySelection
+              theme={theme}
+              orientation="vertical"
+            />
+
+            <ToggleButtonGroup
+              selectionMode="single"
+              items={items}
+              disallowEmptySelection
+              theme={theme}
+              orientation="vertical"
+              isDisabled
+            />
+          </div>
+        );
+      })}
+    </PreviewContainer>
+  );
+};
+
 const App = () => {
   const previewElements = [
     ButtonPreview,
@@ -1157,6 +1232,7 @@ const App = () => {
     DisclosurePreview,
     DisclosureGroupPreview,
     FormInputPreview,
+    ToggleButtonPreview,
   ];
 
   return (

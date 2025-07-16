@@ -2,6 +2,7 @@ import type { ColorTheme } from "../../utils/types";
 import type {
   ButtonProps as AriaButtonProps,
   LinkProps,
+  Key,
 } from "react-aria-components";
 
 export enum ButtonVariant {
@@ -33,4 +34,12 @@ export interface ButtonLinkProps extends LinkProps {
   shape?: ButtonShape;
   description?: string;
   underline?: boolean;
+}
+
+export interface ToggleButtonProps {
+  id: Key;
+  value: string;
+  description?: string;
+  theme?: ColorTheme;
+  isDisabled?: boolean;
 }
