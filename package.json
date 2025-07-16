@@ -1,7 +1,7 @@
 {
   "name": "@adgytec/adgytec-web-ui-components",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.4",
   "type": "module",
   "files": [
     "dist"
@@ -14,11 +14,13 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run generate:exports && tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate:exports": "node ./src/scripts/generate-exports.js",
+    "publish": "npm run build && npm publish --public"
   },
-  "peerDependencies": {
+  "dependencies": {
     "lucide-react": "^0.525.0",
     "react": "^19.1.0",
     "react-aria-components": "^1.10.1",
@@ -43,5 +45,16 @@
     "vite": "^7.0.0",
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-lib-inject-css": "^2.2.2"
-  }
+  },
+  "author": {
+    "name": "Adgytec",
+    "email": "rohan@adgytec.in",
+    "url": "https://adgytec.in"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Adgytec/adgytec-web-ui-components.git"
+  },
+  "homepage": "https://github.com/Adgytec/adgytec-web-ui-components/#/README.md"
 }
