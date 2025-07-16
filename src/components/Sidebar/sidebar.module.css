@@ -20,7 +20,7 @@
   --_modal-bg: var(--color-surface-container);
   --_modal-text: var(--colol-on-surface);
 
-  --_border-width: 0.025rem;
+  /* --_border-width: 0.025rem; */
 
   position: fixed;
   overflow: scroll;
@@ -65,7 +65,7 @@
   --_from: -100%;
   --_slide-animation: inline-slide;
 
-  border-inline-end-width: var(--_border-width);
+  /* border-inline-end-width: var(--_border-width); */
   border-start-end-radius: var(--radius-sidebar);
   border-end-end-radius: var(--radius-sidebar);
 }
@@ -79,7 +79,7 @@
   --_from: 100%;
   --_slide-animation: inline-slide;
 
-  border-inline-start-width: var(--_border-width);
+  /* border-inline-start-width: var(--_border-width); */
   border-start-start-radius: var(--radius-sidebar);
   border-end-start-radius: var(--radius-sidebar);
 }
@@ -93,7 +93,7 @@
   --_from: -100%;
   --_slide-animation: block-slide;
 
-  border-block-end-width: vaR(--_border-width);
+  /* border-block-end-width: vaR(--_border-width); */
   border-end-start-radius: var(--radius-sidebar);
   border-end-end-radius: var(--radius-sidebar);
 }
@@ -107,7 +107,7 @@
   --_from: 100%;
   --_slide-animation: block-slide;
 
-  border-block-start-width: vaR(--_border-width);
+  /* border-block-start-width: vaR(--_border-width); */
   border-start-end-radius: var(--radius-sidebar);
   border-start-start-radius: var(--radius-sidebar);
 }
