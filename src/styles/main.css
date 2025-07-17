@@ -2,7 +2,7 @@
 @import "reset.css";
 
 :root {
-  --_tree-font-size: 1rem;
+  --tree-font-size: 1rem;
   --font-normal: "Lexend", sans-serif;
   --font-heading: "Lexend", sans-serif;
 
@@ -138,6 +138,12 @@
 
   caret-color: var(--color-primary);
   accent-color: var(--color-primary);
+}
+
+.lucide {
+  width: 1rem;
+  aspect-ratio: 1/1;
+  stroke-width: 0.1875rem;
 }
 
 [data-disabled] {

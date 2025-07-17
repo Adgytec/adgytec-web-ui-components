@@ -31,7 +31,7 @@ const RenderTree = ({ item }: RenderTreeProps) => {
       <TreeItemContent>
         {item.node}
 
-        {item.subItems && <ChevronRight strokeWidth={3} />}
+        {item.subItems && <ChevronRight />}
       </TreeItemContent>
 
       {item.subItems &&

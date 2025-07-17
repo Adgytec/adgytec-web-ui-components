@@ -25,7 +25,7 @@ const RenderMenu = ({ menuItem }: RenderMenuProps) => {
     >
       {menuItem.node}
 
-      {hasSubmenu && <ChevronRight size={18} strokeWidth={3} />}
+      {hasSubmenu && <ChevronRight />}
     </MenuItem>
   );
 

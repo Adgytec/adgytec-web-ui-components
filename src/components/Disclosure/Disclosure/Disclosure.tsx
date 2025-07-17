@@ -18,7 +18,7 @@ export const Disclosure = ({ heading, children, id }: DisclosureProps) => {
           theme={ColorTheme.inverseSurface}
           shape={ButtonShape.shrink}
         >
-          <ChevronRight strokeWidth={3} />
+          <ChevronRight />
           {heading}
         </TextButton>
       </h2>

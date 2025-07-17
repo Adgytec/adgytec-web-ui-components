@@ -18,7 +18,7 @@ export const NavigationMenu = ({ items, className }: NavigationMenuProps) => {
             return (
               <MenuLabel key={item.id} menuItems={item.subItems}>
                 {item.node}
-                <ChevronDown strokeWidth={3} />
+                <ChevronDown />
               </MenuLabel>
             );
           case "item-node":

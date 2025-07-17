@@ -1,5 +1,5 @@
 .nav {
-  --_tree-font-size: 1.25rem;
+  --tree-font-size: 1.25rem;
   --_tree-gap: 1.5em;
 
   display: grid;

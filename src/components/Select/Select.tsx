@@ -67,7 +67,7 @@ export const Select = ({
             ) : (
               <SelectValue />
             )}
-            <ChevronsUpDown size={16} strokeWidth={3} />
+            <ChevronsUpDown />
           </span>
         </TriggerVariant>
       </Tooltip>
@@ -101,7 +101,7 @@ export const Select = ({
                     <div className={`${styles["options-item"]}`}>
                       {ItemComp}
                     </div>
-                    {isSelected && <Check strokeWidth={3} />}
+                    {isSelected && <Check />}
                   </>
                 )}
               </ListBoxItem>
