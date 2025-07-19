@@ -6,6 +6,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { libInjectCss } from "vite-plugin-lib-inject-css";
 import dts from "vite-plugin-dts";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,6 +15,14 @@ export default defineConfig({
     libInjectCss(),
     dts({
       tsconfigPath: "tsconfig.app.json",
+    }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: "./src/styles/main.css",
+          dest: "styles",
+        },
+      ],
     }),
   ],
   build: {

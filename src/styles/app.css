@@ -1,0 +1,36 @@
+.preview-parent {
+  display: grid;
+  gap: 2rem;
+
+  padding-inline: 1rem;
+  padding-block: 1rem;
+}
+
+.preview-container {
+  display: grid;
+  gap: 1.5rem;
+  outline: 0.125rem solid var(--color-outline);
+  border-radius: var(--radius);
+
+  padding-inline: 1rem;
+  padding-block: 1rem;
+
+  overflow: scroll;
+
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.preview-container__items {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.item-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}

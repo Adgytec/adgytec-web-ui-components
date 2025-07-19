@@ -34,6 +34,7 @@ import {
   type ToggleButtonGroupItem,
   ToggleButtonGroup,
 } from "./components/ToggleButtonGroup";
+import "./styles/app.css";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {

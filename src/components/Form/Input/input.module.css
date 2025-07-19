@@ -1,6 +1,6 @@
 .input {
   display: grid;
-  gap: 0.25rem;
+  gap: var(--form-input-gap, 0.25rem);
 }
 
 .editor {
@@ -15,6 +15,8 @@
 
   background-color: var(--color-surface-container-highest);
   color: var(--color-on-surface);
+
+  font-size: var(--form-input-text);
 
   &[data-invalid] {
     border-color: var(--color-error);
