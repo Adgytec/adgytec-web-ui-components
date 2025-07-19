@@ -1,7 +1,7 @@
 {
   "name": "@adgytec/adgytec-web-ui-components",
   "private": false,
-  "version": "0.0.6",
+  "version": "0.0.7",
   "type": "module",
   "files": [
     "dist"
@@ -25,7 +25,8 @@
     "react": "^19.1.0",
     "react-aria-components": "^1.10.1",
     "react-dom": "^19.1.0",
-    "usehooks-ts": "^3.1.1"
+    "usehooks-ts": "^3.1.1",
+    "zod": "^4.0.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",

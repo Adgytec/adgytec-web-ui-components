@@ -1,6 +1,5 @@
 import { writeFileSync } from "fs";
 import { globSync } from "glob";
-import path from "path";
 
 // ⬇️ Manual exports can be declared here
 const manualExports = ['export * from "./utils/types";'];

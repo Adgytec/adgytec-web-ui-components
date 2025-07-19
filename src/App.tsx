@@ -1138,7 +1138,13 @@ const DisclosureGroupPreview = () => {
 const FormInputPreview = () => {
   return (
     <PreviewContainer label="Form Input">
-      <Input label="Email" />
+      <Input
+        label="Email"
+        textFieldProps={{
+          isRequired: true,
+          type: "email",
+        }}
+      />
 
       <TextArea label="More info" />
     </PreviewContainer>
