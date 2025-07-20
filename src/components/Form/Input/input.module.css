@@ -4,6 +4,8 @@
 }
 
 .editor {
+  outline: none;
+
   font-weight: 500;
   border-radius: var(--radius);
 
@@ -11,12 +13,18 @@
   padding-block: 0.625em;
 
   max-inline-size: 100%;
-  border-style: solid;
+  border: 0.125rem solid var(--color-outline);
 
-  background-color: var(--color-surface-container-highest);
-  color: var(--color-on-surface);
+  background-color: inherit;
+  color: inherit;
 
   font-size: var(--form-input-text);
+
+  transition: border-color 250ms;
+
+  &[data-focused] {
+    border-color: var(--color-primary);
+  }
 
   &[data-invalid] {
     border-color: var(--color-error);

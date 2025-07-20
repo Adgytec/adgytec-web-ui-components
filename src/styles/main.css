@@ -160,8 +160,8 @@
 
 /* lucide icon global config */
 .lucide {
-  width: 1rem;
-  aspect-ratio: 1/1;
+  width: 1.125rem;
+  height: 1.125rem;
   stroke-width: 0.1875rem;
 }
 

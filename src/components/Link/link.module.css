@@ -15,7 +15,7 @@
     text-decoration-color 250ms;
 
   &[data-hovered="true"],
-  &[data-focused="true"] {
+  &[data-focus-visible="true"] {
     --_color: hsl(from var(--_link-text) h s calc(l + 10));
     text-decoration-color: currentColor;
   }

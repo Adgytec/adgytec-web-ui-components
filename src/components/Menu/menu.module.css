@@ -27,7 +27,7 @@
     }
 
     &[data-hovered],
-    &[data-focused],
+    &[data-focus-visible],
     &[data-open] {
       --_item-color: hsl(from var(--_popover-bg) h s calc(l + 10));
       --_item-text: hsl(from var(--_popover-text) h s calc(l + 10));
