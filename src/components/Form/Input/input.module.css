@@ -6,7 +6,7 @@
 .editor {
   outline: none;
 
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   border-radius: var(--radius);
 
   padding-inline: 0.625em;

@@ -154,6 +154,10 @@
   --form-input-gap: 0.5rem;
   --form-gap: 1rem;
 
+  --font-weight-regular: 400;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+
   caret-color: var(--color-primary);
   accent-color: var(--color-primary);
 }
@@ -182,11 +186,20 @@ body {
 
 [data-heading] {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 }
 
 em,
 i {
   font-family: var(--font-normal);
   font-style: italic;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-weight-bold);
 }

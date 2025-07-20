@@ -5,7 +5,7 @@
 
 .selected-value {
   font-size: var(--form-input-text);
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
 
   .option-description {
     display: none;

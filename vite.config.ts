@@ -52,6 +52,7 @@ export default defineConfig({
         "react-aria-components",
         "usehooks-ts",
         "lucide-react",
+        "zod",
       ],
       output: {
         entryFileNames: "[name].js",

@@ -4,7 +4,7 @@
 
   cursor: pointer;
 
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   text-underline-offset: 0.125em;
   text-decoration-thickness: 0.075em;
   text-decoration-color: transparent;

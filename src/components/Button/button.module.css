@@ -7,7 +7,7 @@
   cursor: pointer;
   border: var(--button-border-width) solid var(--_border-color);
 
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   text-align: center;
 
   padding-inline: var(--_pi);

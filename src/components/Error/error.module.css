@@ -1,6 +1,6 @@
 .error {
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   color: var(--color-error);
 }
