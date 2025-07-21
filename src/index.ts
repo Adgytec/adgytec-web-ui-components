@@ -4,6 +4,7 @@ export * from "./utils/types";
 
 export * from "./components/Avatar";
 export * from "./components/Button";
+export * from "./components/ButtonChild";
 export * from "./components/Disclosure/Disclosure";
 export * from "./components/Disclosure/DisclousureGroup";
 export * from "./components/Error";
@@ -11,6 +12,7 @@ export * from "./components/Form/Form";
 export * from "./components/Form/Input";
 export * from "./components/Form/TextArea";
 export * from "./components/Link";
+export * from "./components/Loader";
 export * from "./components/Menu";
 export * from "./components/Modal";
 export * from "./components/Modal/ModalAction";

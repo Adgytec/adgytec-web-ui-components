@@ -1,0 +1,11 @@
+.with-icon {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  justify-content: space-between;
+
+  svg {
+    width: 1.125em;
+    height: 1.125em;
+  }
+}
