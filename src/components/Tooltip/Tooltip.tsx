@@ -11,13 +11,15 @@ export const Tooltip = ({
   children,
   description,
   theme = ColorTheme.inverseSurface,
+  delay = 250,
+  closeDelay = 150,
 }: TooltipProps) => {
   if (!description) {
     return children;
   }
 
   return (
-    <TooltipTrigger delay={500}>
+    <TooltipTrigger delay={delay} closeDelay={closeDelay}>
       {children}
 
       <UnstyledTooltip className={`${styles["tooltip"]} ${styles[theme]}`}>
