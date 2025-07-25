@@ -23,8 +23,10 @@ export const ModalAction = ({
   return (
     <ModalBase
       trigger={trigger}
-      isDismissable={isDismissable}
-      isKeyboardDismissableDisabled={isKeyboardDismissableDisabled}
+      modalOverlayProps={{
+        isDismissable: isDismissable,
+        isKeyboardDismissDisabled: isKeyboardDismissableDisabled,
+      }}
     >
       {({ close }) => {
         return (
