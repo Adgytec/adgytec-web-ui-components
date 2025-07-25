@@ -13,6 +13,7 @@
   padding-block: 0.625em;
 
   max-inline-size: 100%;
+  inline-size: 100%;
   border: 0.125rem solid var(--color-outline);
 
   background-color: inherit;
