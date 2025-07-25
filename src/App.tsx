@@ -361,7 +361,9 @@ const ModalPreview = () => {
               Open modal
             </FilledButton>
           }
-          isDismissable
+          modalOverlayProps={{
+            isDismissable: true,
+          }}
         >
           <AvatarPreview />
         </ModalBase>

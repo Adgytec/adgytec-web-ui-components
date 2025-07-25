@@ -9,25 +9,21 @@ import styles from "./modalBase.module.css";
 
 export const ModalBase = ({
   trigger,
-  children,
-  isDismissable,
-  isKeyboardDismissableDisabled,
+  modalOverlayProps,
+  dialogTriggerProps,
+  modalProps,
+  ...dialogProps
 }: ModalBaseProps) => {
-  const isChildrenFunction = typeof children === "function";
-
   return (
-    <DialogTrigger>
+    <DialogTrigger {...dialogTriggerProps}>
       {trigger}
 
       <ModalOverlay
-        className={`${styles["modal-overlay"]}`}
-        isDismissable={isDismissable}
-        isKeyboardDismissDisabled={isKeyboardDismissableDisabled}
+        {...modalOverlayProps}
+        className={modalOverlayProps?.className ?? styles["modal-overlay"]}
       >
-        <Modal className={`${styles["modal"]}`}>
-          <Dialog>
-            {isChildrenFunction ? (opts) => children(opts) : children}
-          </Dialog>
+        <Modal {...modalProps} className={styles["modal"]}>
+          <Dialog {...dialogProps} />
         </Modal>
       </ModalOverlay>
     </DialogTrigger>

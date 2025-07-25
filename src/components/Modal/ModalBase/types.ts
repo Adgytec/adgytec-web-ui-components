@@ -1,10 +1,14 @@
-import type { ReactElement, ReactNode } from "react";
+import type { ReactElement } from "react";
 import type { ButtonVariantProps } from "../../Button/types";
-import type { DialogRenderProps } from "react-aria-components";
+import type {
+  DialogProps,
+  DialogTriggerProps,
+  ModalOverlayProps,
+} from "react-aria-components";
 
-export interface ModalBaseProps {
+export interface ModalBaseProps extends DialogProps {
   trigger: ReactElement<ButtonVariantProps>;
-  children: ReactNode | ((opts: DialogRenderProps) => ReactNode);
-  isDismissable?: boolean;
-  isKeyboardDismissableDisabled?: boolean;
+  modalOverlayProps?: Omit<ModalOverlayProps, "children">;
+  dialogTriggerProps?: Omit<DialogTriggerProps, "children">;
+  modalProps?: Omit<React.RefAttributes<HTMLDivElement>, "children">;
 }
