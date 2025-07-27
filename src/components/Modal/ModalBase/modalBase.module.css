@@ -24,7 +24,7 @@
 
   max-inline-size: min(90dvi, 60rem);
   max-block-size: 90dvb;
-  overflow: scroll;
+  overflow: auto;
 
   border-radius: var(--radius);
 

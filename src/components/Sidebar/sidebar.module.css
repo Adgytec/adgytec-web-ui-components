@@ -23,7 +23,7 @@
   /* --_border-width: 0.025rem; */
 
   position: fixed;
-  overflow: scroll;
+  overflow: auto;
 
   inset-inline-start: var(--_inline-start);
   inset-block-start: var(--_block-start);
