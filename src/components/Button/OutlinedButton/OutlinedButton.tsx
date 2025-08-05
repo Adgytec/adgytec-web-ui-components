@@ -1,5 +1,5 @@
-import { Button } from "./Button";
-import { ButtonVariant, type ButtonVariantProps } from "./types";
+import { ButtonVariant, type ButtonVariantProps } from "../ButtonBase";
+import { Button } from "../ButtonBase/Button";
 
 export const OutlinedButton = (props: ButtonVariantProps) => {
   const { children } = props;

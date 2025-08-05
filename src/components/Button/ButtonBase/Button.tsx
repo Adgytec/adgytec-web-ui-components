@@ -1,10 +1,10 @@
 import styles from "./button.module.css";
 import { Button as UnstyledButton } from "react-aria-components";
-import { Tooltip } from "../Tooltip/Tooltip";
+import { Tooltip } from "@/components/Tooltip";
 import { ButtonShape, ButtonVariant, type ButtonProps } from "./types.ts";
-import { Splash } from "../Splash/Splash.tsx";
-import { useSplash } from "../Splash/useSplash.ts";
-import { ColorTheme } from "../../utils/types.ts";
+import { Splash } from "@/components/Splash/Splash.tsx";
+import { useSplash } from "@/components/Splash/useSplash.ts";
+import { ColorTheme } from "@/utils/types.ts";
 
 export const Button = ({
   variant,

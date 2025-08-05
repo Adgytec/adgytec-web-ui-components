@@ -1,4 +1,4 @@
-import type { ColorTheme } from "../../utils/types";
+import type { ColorTheme } from "@/utils/types";
 import type {
   ButtonProps as AriaButtonProps,
   LinkProps,

@@ -1,10 +1,14 @@
 import { ToggleButton as UnstyledToggleButton } from "react-aria-components";
 import styles from "./button.module.css";
-import { useSplash } from "../Splash/useSplash";
-import { Splash } from "../Splash/Splash";
-import { Tooltip } from "../Tooltip/Tooltip";
-import { ButtonShape, ButtonVariant, type ToggleButtonProps } from "./types";
-import { ColorTheme } from "../../utils/types";
+import { useSplash } from "@/components/Splash/useSplash";
+import { ColorTheme } from "@/utils/types";
+import { Tooltip } from "@/components/Tooltip";
+import { Splash } from "@/components/Splash/Splash";
+import {
+  ButtonVariant,
+  type ToggleButtonProps,
+  ButtonShape,
+} from "@/components/Button/ButtonBase";
 
 export const ToggleButton = ({
   id,

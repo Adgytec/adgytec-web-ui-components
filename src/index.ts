@@ -3,7 +3,11 @@
 export * from "./utils/types";
 
 export * from "./components/Avatar";
-export * from "./components/Button";
+export * from "./components/Button/ButtonBase";
+export * from "./components/Button/FilledButton";
+export * from "./components/Button/OutlinedButton";
+export * from "./components/Button/TextButton";
+export * from "./components/Button/ToggleButton";
 export * from "./components/ButtonChild";
 export * from "./components/Disclosure/Disclosure";
 export * from "./components/Disclosure/DisclousureGroup";

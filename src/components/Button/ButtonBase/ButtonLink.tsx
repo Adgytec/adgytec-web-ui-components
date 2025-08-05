@@ -1,10 +1,10 @@
 import styles from "./button.module.css";
 import { Link as UnstyledLink } from "react-aria-components";
-import { Tooltip } from "../Tooltip/Tooltip.tsx";
+import { Tooltip } from "@/components/Tooltip/Tooltip.tsx";
 import { ButtonShape, ButtonVariant, type ButtonLinkProps } from "./types.ts";
-import { Splash } from "../Splash/Splash.tsx";
-import { useSplash } from "../Splash/useSplash.ts";
-import { ColorTheme } from "../../utils/types.ts";
+import { Splash } from "@/components/Splash/Splash.tsx";
+import { useSplash } from "@/components/Splash/useSplash.ts";
+import { ColorTheme } from "@/utils/types.ts";
 
 export const ButtonLink = ({
   variant = ButtonVariant.filled,
