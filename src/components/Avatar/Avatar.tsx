@@ -5,7 +5,7 @@ import {
   type AvatarProps,
 } from "./types";
 import styles from "./avatar.module.css";
-import { ColorTheme } from "../../utils/types";
+import { ColorTheme } from "@/utils/types";
 
 const AvatarBase = ({ children, size, type, theme }: AvatarBaseProps) => {
   return (

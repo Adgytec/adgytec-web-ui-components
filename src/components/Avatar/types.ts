@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { ColorTheme } from "../../utils/types";
+import type { ColorTheme } from "@/utils/types";
 
 export enum AvatarSize {
   small = "small",
