@@ -1,8 +1,8 @@
 import type { ToggleButtonGroupProps } from "./types";
 import { ToggleButtonGroup as UnstyledToggleButtonGroup } from "react-aria-components";
 import styles from "./toggleButtonGroup.module.css";
-import { ToggleButton } from "../Button/ToggleButton.tsx";
-import { ColorTheme } from "../../utils/types.ts";
+import { ToggleButton } from "@/components/Button/ToggleButton";
+import { ColorTheme } from "@/utils/types.ts";
 
 export const ToggleButtonGroup = ({
   items,

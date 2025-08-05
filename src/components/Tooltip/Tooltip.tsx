@@ -5,7 +5,7 @@ import {
   OverlayArrow,
 } from "react-aria-components";
 import styles from "./tooltip.module.css";
-import { ColorTheme } from "../../utils/types";
+import { ColorTheme } from "@/utils/types";
 
 export const Tooltip = ({
   children,

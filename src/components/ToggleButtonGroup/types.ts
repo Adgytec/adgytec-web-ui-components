@@ -2,7 +2,7 @@ import type {
   ToggleButtonGroupProps as AriaToggleButtonGroupProps,
   Key,
 } from "react-aria-components";
-import type { ColorTheme } from "../../utils/types";
+import type { ColorTheme } from "@/utils/types";
 
 export interface ToggleButtonGroupItem {
   id: Key;
