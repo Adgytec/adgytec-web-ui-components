@@ -7,6 +7,7 @@ import react from "@vitejs/plugin-react-swc";
 import { libInjectCss } from "vite-plugin-lib-inject-css";
 import dts from "vite-plugin-dts";
 import { viteStaticCopy } from "vite-plugin-static-copy";
+import optimizeLocales from "@react-aria/optimize-locales-plugin";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -24,6 +25,12 @@ export default defineConfig({
         },
       ],
     }),
+    {
+      ...optimizeLocales.vite({
+        locales: ["en-US", "fr-FR"],
+      }),
+      enforce: "pre",
+    },
   ],
   build: {
     lib: {

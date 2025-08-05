@@ -1,7 +1,7 @@
 {
   "name": "@adgytec/adgytec-web-ui-components",
   "private": false,
-  "version": "0.0.14",
+  "version": "0.0.15",
   "type": "module",
   "files": [
     "dist"
@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
+    "@react-aria/optimize-locales-plugin": "^1.1.5",
     "@types/node": "^24.0.14",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
