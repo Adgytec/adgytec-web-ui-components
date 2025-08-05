@@ -5,9 +5,9 @@ import {
 } from "react-aria-components";
 import styles from "./disclosure.module.css";
 import { ChevronRight } from "lucide-react";
-import { TextButton } from "../../Button/TextButton";
-import { ColorTheme } from "../../../utils/types";
-import { ButtonShape } from "../../Button/types";
+import { TextButton } from "@/components/Button/TextButton";
+import { ColorTheme } from "@/utils/types";
+import { ButtonShape } from "@/components/Button/ButtonBase";
 
 export const Disclosure = ({ heading, children, id }: DisclosureProps) => {
   return (

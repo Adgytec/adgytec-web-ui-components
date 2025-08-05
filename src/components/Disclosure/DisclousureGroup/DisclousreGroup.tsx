@@ -1,4 +1,4 @@
-import { Disclosure } from "../Disclosure/Disclosure";
+import { Disclosure } from "@/components/Disclosure/Disclosure";
 import type { DisclosureGroupProps } from "./types";
 import { DisclosureGroup as UnstyledDisclosureGroup } from "react-aria-components";
 import styles from "./disclosureGroup.module.css";
