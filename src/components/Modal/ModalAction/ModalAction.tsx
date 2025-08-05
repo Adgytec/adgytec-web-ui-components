@@ -1,9 +1,5 @@
 import { ModalBase } from "../ModalBase/ModalBase";
-import {
-  ModalActionPlacement,
-  ModalCloseText,
-  type ModalActionProps,
-} from "./types";
+import { ModalActionPlacement, type ModalActionProps } from "./types";
 import styles from "./modalAction.module.css";
 import { TextButton } from "../../Button/TextButton";
 import { ColorTheme } from "../../../utils/types";
@@ -14,7 +10,7 @@ export const ModalAction = ({
   children,
   actionPlacement = ModalActionPlacement.start,
   modalAction,
-  closeText = ModalCloseText.close,
+  closeText,
   isDismissable,
   isKeyboardDismissableDisabled,
 }: ModalActionProps) => {

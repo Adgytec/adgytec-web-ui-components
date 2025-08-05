@@ -395,6 +395,7 @@ const ModalActionPreview = () => {
         {modalTheme.map((theme) => {
           return (
             <ModalAction
+              closeText="Close"
               trigger={trigger(theme)}
               key={theme}
               header="Simple Modal"

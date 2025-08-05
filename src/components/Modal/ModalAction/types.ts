@@ -7,11 +7,6 @@ export enum ModalActionPlacement {
   end = "end",
 }
 
-export enum ModalCloseText {
-  close = "Close",
-  cancel = "Cancel",
-}
-
 export interface ModalActionProps {
   trigger: ReactElement<ButtonVariantProps>;
   header?: string;
@@ -20,7 +15,7 @@ export interface ModalActionProps {
   modalAction:
     | ReactElement<ButtonVariantProps>
     | ((opts: DialogRenderProps) => ReactElement<ButtonVariantProps>);
-  closeText?: ModalCloseText;
+  closeText: string;
   isDismissable?: boolean;
   isKeyboardDismissableDisabled?: boolean;
 }
