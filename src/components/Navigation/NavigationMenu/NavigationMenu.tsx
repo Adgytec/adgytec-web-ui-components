@@ -1,10 +1,10 @@
 import type { NavigationMenuProps } from "./types";
 import styles from "./navigationMenu.module.css";
 import { MenuLabel } from "../../Menu/MenuLabel";
-import { Link } from "../../Link/Link";
+import { Link } from "@/components/Link/LinkBase/Link";
 import { TextButton } from "../../Button/TextButton";
 import { ColorTheme } from "../../../utils/types";
-import { ButtonShape } from "../../Button/types";
+import { ButtonShape } from "@/components/Button/ButtonBase/types";
 import { ChevronDown } from "lucide-react";
 
 export const NavigationMenu = ({ items, className }: NavigationMenuProps) => {

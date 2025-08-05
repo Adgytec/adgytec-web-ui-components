@@ -1,7 +1,7 @@
 import { useMediaQuery } from "usehooks-ts";
 import type { NavigationResponsiveProps } from "./types";
-import { NavigationMenu } from "../NavigationMenu/NavigationMenu";
-import { NavigationSidebar } from "../NavigationSidebar/NavigationSidebar";
+import { NavigationMenu } from "@/components/Navigation/NavigationMenu/NavigationMenu";
+import { NavigationSidebar } from "@/components/Navigation/NavigationSidebar/NavigationSidebar";
 
 export const NavigationResponsive = ({
   items,
