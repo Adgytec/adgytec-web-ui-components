@@ -1,5 +1,5 @@
 import { ToggleButton as UnstyledToggleButton } from "react-aria-components";
-import styles from "./button.module.css";
+import styles from "@/components/Button/ButtonBase/button.module.css";
 import { useSplash } from "@/components/Splash/useSplash";
 import { ColorTheme } from "@/utils/types";
 import { Tooltip } from "@/components/Tooltip";

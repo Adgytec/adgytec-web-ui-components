@@ -3,8 +3,11 @@ import { ColorTheme, type HierarchyItemType } from "./utils/types";
 import { FilledButton } from "./components/Button/FilledButton";
 import { OutlinedButton } from "./components/Button/OutlinedButton";
 import { TextButton } from "./components/Button/TextButton";
-import { ButtonShape, ButtonVariant } from "./components/Button/types";
-import { Link } from "./components/Link/Link";
+import {
+  ButtonShape,
+  ButtonVariant,
+} from "@/components/Button/ButtonBase/types";
+import { Link } from "@/components/Link/LinkBase";
 import { FilledButtonLink } from "./components/Link/FilledButtonLink";
 import { OutlinedButtonLink } from "./components/Link/OutlinedButtonLink";
 import type { SelectOptions } from "./components/Select/types";
