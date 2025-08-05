@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import type { ButtonVariantProps } from "../../Button/types";
+import type { ButtonVariantProps } from "@/components/Button/ButtonBase/types";
 import type {
   DialogProps,
   DialogTriggerProps,

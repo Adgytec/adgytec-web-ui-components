@@ -1,8 +1,8 @@
-import { ModalBase } from "../ModalBase/ModalBase";
+import { ModalBase } from "@/components/Modal/ModalBase/ModalBase";
 import { ModalActionPlacement, type ModalActionProps } from "./types";
 import styles from "./modalAction.module.css";
-import { TextButton } from "../../Button/TextButton";
-import { ColorTheme } from "../../../utils/types";
+import { TextButton } from "@/components/Button/TextButton";
+import { ColorTheme } from "@/utils/types";
 
 export const ModalAction = ({
   trigger,
