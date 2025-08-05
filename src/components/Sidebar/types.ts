@@ -1,6 +1,6 @@
 import type { ReactNode, ReactElement } from "react";
 import type { DialogRenderProps } from "react-aria-components";
-import type { ButtonVariantProps } from "../Button/types";
+import { type ButtonVariantProps } from "@/components/Button/ButtonBase";
 
 export enum SidebarPosition {
   inlineStart = "inline-start",
