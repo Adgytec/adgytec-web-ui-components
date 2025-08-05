@@ -1,5 +1,5 @@
 import type { Key } from "react-aria-components";
-import type { ButtonVariant } from "../Button/types";
+import type { ButtonVariant } from "@/components/Button/ButtonBase/types";
 
 export type SelectOptions = {
   key: string;

@@ -1,6 +1,9 @@
-import { FilledButton } from "../Button/FilledButton";
+import { FilledButton } from "@/components/Button/FilledButton";
 import styles from "./select.module.css";
-import { ButtonVariant, type ButtonVariantProps } from "../Button/types";
+import {
+  ButtonVariant,
+  type ButtonVariantProps,
+} from "@/components/Button/ButtonBase/types.ts";
 import type { SelectProps } from "./types";
 import {
   Select as UnstyledSelect,
@@ -9,15 +12,15 @@ import {
   SelectValue,
   Text,
 } from "react-aria-components";
-import { Popover } from "../Popover/Popover.tsx";
+import { Popover } from "@/components/Popover/PopoverBase";
 import { ChevronsUpDown, Check } from "lucide-react";
 import type { ComponentType } from "react";
-import { OutlinedButton } from "../Button/OutlinedButton";
-import { TextButton } from "../Button/TextButton";
-import { ColorTheme } from "../../utils/types";
-import { Tooltip } from "../Tooltip/Tooltip";
-import { Label } from "../Form/Label/Label.tsx";
-import { FieldError } from "../Form/FieldError/FieldError.tsx";
+import { OutlinedButton } from "@/components/Button/OutlinedButton";
+import { TextButton } from "@/components/Button/TextButton";
+import { ColorTheme } from "@/utils/types";
+import { Tooltip } from "@/components/Tooltip/Tooltip";
+import { Label } from "@/components/Form/Label/Label.tsx";
+import { FieldError } from "@/components/Form/FieldError/FieldError.tsx";
 
 export const Select = ({
   options,
@@ -42,6 +45,8 @@ export const Select = ({
     case ButtonVariant.text:
       TriggerVariant = TextButton;
       break;
+    default:
+      TriggerVariant = FilledButton;
   }
 
   return (
