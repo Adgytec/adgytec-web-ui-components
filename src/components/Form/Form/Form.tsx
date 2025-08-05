@@ -3,7 +3,7 @@ import type { FormProps } from "./types";
 import { Form as UnstyledForm } from "react-aria-components";
 import styles from "./form.module.css";
 import { useState, type FormEvent } from "react";
-import { validateAndGetFormValues } from "../../../utils/form";
+import { validateAndGetFormValues } from "@/utils/form";
 
 export const Form = <T extends z.ZodObject<any>>({
   schema,
