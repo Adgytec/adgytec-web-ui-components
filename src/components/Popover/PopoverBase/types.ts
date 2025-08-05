@@ -4,7 +4,7 @@ import type {
   DialogProps,
   DialogTriggerProps,
 } from "react-aria-components";
-import type { ButtonVariantProps } from "../Button";
+import { type ButtonVariantProps } from "@/components/Button/ButtonBase";
 
 export interface PopoverDialogProps extends DialogProps {
   trigger: ReactElement<ButtonVariantProps>;

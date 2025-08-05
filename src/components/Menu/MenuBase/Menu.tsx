@@ -7,7 +7,7 @@ import {
   Separator,
 } from "react-aria-components";
 import styles from "./menu.module.css";
-import { Popover } from "@/components/Popover/Popover";
+import { Popover } from "@/components/Popover/PopoverBase";
 import { ChevronRight } from "lucide-react";
 
 const RenderMenu = ({ menuItem }: RenderMenuProps) => {
