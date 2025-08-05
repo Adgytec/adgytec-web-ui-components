@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from "react";
-import type { HierarchyItemType } from "../../utils/types";
-import type { ButtonVariantProps } from "../Button/types";
+import type { HierarchyItemType } from "@/utils/types";
+import type { ButtonVariantProps } from "@/components/Button/ButtonBase/types";
 
 export interface MenuProps {
   children: ReactNode;

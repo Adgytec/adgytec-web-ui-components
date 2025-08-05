@@ -1,8 +1,8 @@
-import type { MenuLabelProps } from "./types";
-import { Menu } from "./Menu";
+import type { MenuLabelProps } from "@/components/Menu/MenuBase/types";
+import { Menu } from "@/components/Menu/MenuBase/Menu";
 import { Pressable } from "react-aria-components";
-import { Tooltip } from "../Tooltip/Tooltip";
-import styles from "./menu.module.css";
+import { Tooltip } from "@/components/Tooltip/Tooltip";
+import styles from "./menu-label.module.css";
 
 export const MenuLabel = ({
   children,
