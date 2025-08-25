@@ -1,10 +1,17 @@
+import type React from "react";
+
 export enum CardBackground {
-  transparent,
-  solid,
-  gradient,
+  transparent = "transparent",
+  solid = "solid",
+  gradient = "gradient",
 }
 
 export enum CardPadding {
-  none,
-  default,
+  none = "none",
+  default = "default",
+}
+
+export interface BaseCardProps extends React.HTMLAttributes<HTMLDivElement> {
+  background?: CardBackground;
+  padding?: CardPadding;
 }

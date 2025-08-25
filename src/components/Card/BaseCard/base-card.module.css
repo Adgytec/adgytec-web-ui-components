@@ -1,0 +1,41 @@
+.card {
+  padding-inline: var(--_pi);
+  padding-block: var(--_pb);
+
+  border-radius: var(--radius);
+  box-shadow: var(--elevation-1);
+
+  background: var(--_bg);
+}
+
+.transparent {
+  --_bg: transparent;
+}
+
+.solid {
+  --_bg: var(--color-surface-container);
+}
+
+.gradient {
+  --_bg:
+    radial-gradient(
+      ellipse at top,
+      var(--color-surface-container-low),
+      transparent
+    ),
+    radial-gradient(
+      ellipse at bottom,
+      var(--color-surface-container-high),
+      transparent
+    );
+}
+
+.none {
+  --_pi: 0;
+  --_pb: 0;
+}
+
+.default {
+  --_pi: 1.25rem;
+  --_pb: 1rem;
+}
