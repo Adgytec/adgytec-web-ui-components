@@ -15,3 +15,6 @@ export interface BaseCardProps extends React.HTMLAttributes<HTMLDivElement> {
   background?: CardBackground;
   padding?: CardPadding;
 }
+
+export interface StyledBaseCardProps
+  extends Omit<BaseCardProps, "background"> {}
