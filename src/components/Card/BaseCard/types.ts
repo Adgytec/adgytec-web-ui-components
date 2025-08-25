@@ -23,7 +23,7 @@ export interface BaseCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export interface StyledBaseCardProps
   extends Omit<BaseCardProps, "background"> {}
 
-type SolidCardBackground =
+export type SolidCardBackground =
   | CardBackground.solid
   | CardBackground.solidLow
   | CardBackground.solidLowest
@@ -32,5 +32,5 @@ type SolidCardBackground =
 
 export interface StyledSolidCardProps
   extends Omit<BaseCardProps, "background"> {
-  background: SolidCardBackground;
+  background?: SolidCardBackground;
 }

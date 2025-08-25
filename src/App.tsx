@@ -41,7 +41,11 @@ import "./styles/app.css";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
 import { TransparentCard } from "./components/Card/TransparentCard";
-import { CardPadding } from "./components/Card/BaseCard";
+import {
+  CardBackground,
+  CardPadding,
+  type SolidCardBackground,
+} from "./components/Card/BaseCard";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1233,9 +1237,37 @@ const ToggleButtonPreview = () => {
 };
 
 const CardPreview = () => {
-  const cards = [GradientCard, SolidCard, TransparentCard];
+  const cards = [GradientCard, TransparentCard];
+  const solidBackgrounds = [
+    CardBackground.solid,
+    CardBackground.solidLow,
+    CardBackground.solidLowest,
+    CardBackground.solidHigh,
+    CardBackground.solidHighest,
+  ];
   const imgsrc =
     "https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
+  const cardChild = (
+    <>
+      <img
+        src={imgsrc}
+        width={360}
+        style={{
+          borderRadius: "inherit",
+        }}
+      />
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit
+        amet egestas justo. Integer lobortis vulputate finibus. Morbi eget
+        feugiat odio. Sed lectus massa, malesuada at laoreet non, porttitor non
+        elit. Maecenas imperdiet varius nisi, non gravida velit egestas quis.
+        Fusce tincidunt ac nulla ac condimentum. Integer auctor, libero vel
+        maximus laoreet, nisl erat rhoncus nunc, a facilisis risus libero a
+        felis.{" "}
+      </p>
+    </>
+  );
 
   return (
     <PreviewContainer label="Card Preview">
@@ -1243,24 +1275,19 @@ const CardPreview = () => {
         {cards.map((CardEl, ind) => {
           return (
             <CardEl key={ind} padding={CardPadding.default}>
-              <img
-                src={imgsrc}
-                width={360}
-                style={{
-                  borderRadius: "inherit",
-                }}
-              />
-
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                sit amet egestas justo. Integer lobortis vulputate finibus.
-                Morbi eget feugiat odio. Sed lectus massa, malesuada at laoreet
-                non, porttitor non elit. Maecenas imperdiet varius nisi, non
-                gravida velit egestas quis. Fusce tincidunt ac nulla ac
-                condimentum. Integer auctor, libero vel maximus laoreet, nisl
-                erat rhoncus nunc, a facilisis risus libero a felis.{" "}
-              </p>
+              {cardChild}
             </CardEl>
+          );
+        })}
+
+        {solidBackgrounds.map((background, ind) => {
+          return (
+            <SolidCard
+              key={"solid" + ind}
+              background={background as SolidCardBackground}
+            >
+              {cardChild}
+            </SolidCard>
           );
         })}
       </div>
