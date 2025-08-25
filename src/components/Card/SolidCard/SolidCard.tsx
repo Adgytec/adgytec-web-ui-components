@@ -3,14 +3,13 @@ import {
   BaseCard,
   CardBackground,
   CardPadding,
-  type StyledBaseCardProps,
+  type StyledSolidCardProps,
 } from "../BaseCard";
 
-export const SolidCard: React.FC<StyledBaseCardProps> = ({
+export const SolidCard: React.FC<StyledSolidCardProps> = ({
   padding = CardPadding.default,
+  background = CardBackground.solid,
   ...props
 }) => {
-  return (
-    <BaseCard {...props} padding={padding} background={CardBackground.solid} />
-  );
+  return <BaseCard {...props} padding={padding} background={background} />;
 };

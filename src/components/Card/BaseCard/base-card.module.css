@@ -16,6 +16,22 @@
   --_bg: var(--color-surface-container);
 }
 
+.solid-low {
+  --_bg: var(--color-surface-container-low);
+}
+
+.solid-lowest {
+  --_bg: var(--color-surface-container-lowest);
+}
+
+.solid-high {
+  --_bg: var(--color-surface-container-high);
+}
+
+.solid-highest {
+  --_bg: var(--color-surface-container-highest);
+}
+
 .gradient {
   --_bg:
     radial-gradient(
@@ -36,6 +52,6 @@
 }
 
 .default {
-  --_pi: 1.25rem;
+  --_pi: 1rem;
   --_pb: 1rem;
 }
