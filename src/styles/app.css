@@ -36,3 +36,13 @@
   flex-wrap: wrap;
   align-items: center;
 }
+
+.item-container [data-card="true"] {
+  max-width: 25rem;
+  display: grid;
+  gap: 1rem;
+
+  p {
+    text-align: justify;
+  }
+}
