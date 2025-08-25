@@ -42,6 +42,22 @@
       "import": "./dist/components/Button/ToggleButton/index.js",
       "types": "./dist/components/Button/ToggleButton/index.d.ts"
     },
+    "./Card/BaseCard": {
+      "import": "./dist/components/Card/BaseCard/index.js",
+      "types": "./dist/components/Card/BaseCard/index.d.ts"
+    },
+    "./Card/GradientCard": {
+      "import": "./dist/components/Card/GradientCard/index.js",
+      "types": "./dist/components/Card/GradientCard/index.d.ts"
+    },
+    "./Card/SolidCard": {
+      "import": "./dist/components/Card/SolidCard/index.js",
+      "types": "./dist/components/Card/SolidCard/index.d.ts"
+    },
+    "./Card/TransparentCard": {
+      "import": "./dist/components/Card/TransparentCard/index.js",
+      "types": "./dist/components/Card/TransparentCard/index.d.ts"
+    },
     "./Disclosure/Disclosure": {
       "import": "./dist/components/Disclosure/Disclosure/index.js",
       "types": "./dist/components/Disclosure/Disclosure/index.d.ts"
