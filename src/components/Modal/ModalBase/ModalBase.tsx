@@ -6,11 +6,7 @@ import {
   Dialog,
 } from "react-aria-components";
 import styles from "./modalBase.module.css";
-import {
-  BaseCard,
-  CardBackground,
-  CardPadding,
-} from "@/components/Card/BaseCard";
+import { BaseCard, CardBackground } from "@/components/Card/BaseCard";
 
 export const ModalBase = ({
   cardBackground = CardBackground.gradient,
@@ -29,7 +25,7 @@ export const ModalBase = ({
         className={modalOverlayProps?.className ?? styles["modal-overlay"]}
       >
         <Modal {...modalProps} className={styles["modal"]}>
-          <BaseCard background={cardBackground} padding={CardPadding.none}>
+          <BaseCard background={cardBackground}>
             <Dialog {...dialogProps} />
           </BaseCard>
         </Modal>

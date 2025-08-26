@@ -40,10 +40,8 @@ import {
 import "./styles/app.css";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
-import { TransparentCard } from "./components/Card/TransparentCard";
 import {
   CardBackground,
-  CardPadding,
   type SolidCardBackground,
 } from "./components/Card/BaseCard";
 
@@ -1237,7 +1235,6 @@ const ToggleButtonPreview = () => {
 };
 
 const CardPreview = () => {
-  const cards = [GradientCard, TransparentCard];
   const solidBackgrounds = [
     CardBackground.solid,
     CardBackground.solidLow,
@@ -1272,14 +1269,7 @@ const CardPreview = () => {
   return (
     <PreviewContainer label="Card Preview">
       <div className="item-container">
-        {cards.map((CardEl, ind) => {
-          return (
-            <CardEl key={ind} padding={CardPadding.default}>
-              {cardChild}
-            </CardEl>
-          );
-        })}
-
+        <GradientCard>{cardChild}</GradientCard>
         {solidBackgrounds.map((background, ind) => {
           return (
             <SolidCard

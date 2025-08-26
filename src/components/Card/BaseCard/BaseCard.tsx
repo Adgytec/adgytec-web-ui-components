@@ -1,17 +1,16 @@
 import type React from "react";
-import { CardBackground, CardPadding, type BaseCardProps } from "./types";
+import { CardBackground, type BaseCardProps } from "./types";
 import styles from "./base-card.module.css";
 
 export const BaseCard: React.FC<BaseCardProps> = ({
-  padding = CardPadding.none,
-  background = CardBackground.transparent,
+  background = CardBackground.solid,
   children,
   ...props
 }) => {
   return (
     <div
       {...props}
-      className={`${props.className ?? ""} ${styles["card"]} ${styles[padding]} ${styles[background]}`}
+      className={`${props.className ?? ""} ${styles["card"]}  ${styles[background]}`}
       data-card="true"
     >
       {children}

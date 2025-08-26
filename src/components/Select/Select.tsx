@@ -21,7 +21,7 @@ import { ColorTheme } from "@/utils/types";
 import { Tooltip } from "@/components/Tooltip/Tooltip";
 import { Label } from "@/components/Form/Label/Label.tsx";
 import { FieldError } from "@/components/Form/FieldError/FieldError.tsx";
-import { BaseCard, CardBackground, CardPadding } from "../Card/BaseCard";
+import { BaseCard, CardBackground } from "../Card/BaseCard";
 
 export const Select = ({
   options,
@@ -82,7 +82,7 @@ export const Select = ({
       <FieldError />
 
       <Popover>
-        <BaseCard background={cardBackground} padding={CardPadding.none}>
+        <BaseCard background={cardBackground}>
           <ListBox className={`${styles["options-list"]}`} items={options}>
             {(option) => {
               const ItemComp = (

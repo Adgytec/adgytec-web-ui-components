@@ -5,6 +5,9 @@
   --_card-elevation: var(--elevation-1);
   --_card-radius: var(--radius);
 
+  --_card-padding-inline: 1rem;
+  --_card-padding-block: 1rem;
+
   padding-inline: var(--_card-padding-inline);
   padding-block: var(--_card-padding-block);
 
@@ -13,10 +16,6 @@
 
   background-color: var(--_card-background);
   color: var(--_card-color);
-}
-
-.transparent {
-  --_card-background: transparent;
 }
 
 .solid {
@@ -51,14 +50,4 @@
       var(--color-surface-container-high),
       var(--color-surface)
     );
-}
-
-.none {
-  --_card-padding-inline: 0;
-  --_card-padding-block: 0;
-}
-
-.default {
-  --_card-padding-inline: 1rem;
-  --_card-padding-block: 1rem;
 }
