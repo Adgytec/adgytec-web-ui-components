@@ -11,7 +11,7 @@ export const BaseCard: React.FC<BaseCardProps> = ({
   return (
     <div
       {...props}
-      className={`${props.className} ${styles["card"]} ${styles[padding]} ${styles[background]}`}
+      className={`${props.className ?? ""} ${styles["card"]} ${styles[padding]} ${styles[background]}`}
       data-card="true"
     >
       {children}

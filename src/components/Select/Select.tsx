@@ -21,9 +21,12 @@ import { ColorTheme } from "@/utils/types";
 import { Tooltip } from "@/components/Tooltip/Tooltip";
 import { Label } from "@/components/Form/Label/Label.tsx";
 import { FieldError } from "@/components/Form/FieldError/FieldError.tsx";
+import { SolidCard } from "../Card/SolidCard";
+import { CardBackground, CardPadding } from "../Card/BaseCard";
 
 export const Select = ({
   options,
+  cardBackground = CardBackground.solid,
   label,
   name,
   disabled,
@@ -80,39 +83,41 @@ export const Select = ({
       <FieldError />
 
       <Popover>
-        <ListBox className={`${styles["options-list"]}`} items={options}>
-          {(option) => {
-            const ItemComp = (
-              <>
-                <Text>{option.displayValue}</Text>
-                {option.description && (
-                  <Text className={styles["option-description"]}>
-                    {option.description}
-                  </Text>
-                )}
-              </>
-            );
+        <SolidCard background={cardBackground} padding={CardPadding.none}>
+          <ListBox className={`${styles["options-list"]}`} items={options}>
+            {(option) => {
+              const ItemComp = (
+                <>
+                  <Text>{option.displayValue}</Text>
+                  {option.description && (
+                    <Text className={styles["option-description"]}>
+                      {option.description}
+                    </Text>
+                  )}
+                </>
+              );
 
-            return (
-              <ListBoxItem
-                className={`${styles["options-item-group"]}`}
-                key={option.key}
-                id={option.key}
-                textValue={option.displayValue}
-                isDisabled={option.disabled}
-              >
-                {({ isSelected }) => (
-                  <>
-                    <div className={`${styles["options-item"]}`}>
-                      {ItemComp}
-                    </div>
-                    {isSelected && <Check />}
-                  </>
-                )}
-              </ListBoxItem>
-            );
-          }}
-        </ListBox>
+              return (
+                <ListBoxItem
+                  className={`${styles["options-item-group"]}`}
+                  key={option.key}
+                  id={option.key}
+                  textValue={option.displayValue}
+                  isDisabled={option.disabled}
+                >
+                  {({ isSelected }) => (
+                    <>
+                      <div className={`${styles["options-item"]}`}>
+                        {ItemComp}
+                      </div>
+                      {isSelected && <Check />}
+                    </>
+                  )}
+                </ListBoxItem>
+              );
+            }}
+          </ListBox>
+        </SolidCard>
       </Popover>
     </UnstyledSelect>
   );

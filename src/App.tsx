@@ -1299,6 +1299,7 @@ const App = () => {
   const previewElements = [
     ButtonPreview,
     LinkPreview,
+    CardPreview,
     SelectPreview,
     AvatarPreview,
     ModalPreview,
@@ -1313,7 +1314,6 @@ const App = () => {
     DisclosureGroupPreview,
     FormInputPreview,
     ToggleButtonPreview,
-    CardPreview,
   ];
 
   return (

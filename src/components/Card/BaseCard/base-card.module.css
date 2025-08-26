@@ -1,39 +1,48 @@
 .card {
-  padding-inline: var(--_pi);
-  padding-block: var(--_pb);
+  --_card-color: var(--color-on-surface);
+  --_card-elevation: var(--elevation-1);
+
+  padding-inline: var(--_card-padding-inline);
+  padding-block: var(--_card-padding-block);
 
   border-radius: var(--radius);
-  box-shadow: var(--elevation-1);
+  box-shadow: var(--_card-elevation);
 
-  background: var(--_bg);
+  background: var(--_card-background);
+  color: var(--_card-color);
+
+  max-inline-size: 100%;
+  max-block-size: 100%;
+
+  overflow: auto;
 }
 
 .transparent {
-  --_bg: transparent;
+  --_card-background: transparent;
 }
 
 .solid {
-  --_bg: var(--color-surface-container);
+  --_card-background: var(--color-surface-container);
 }
 
 .solid-low {
-  --_bg: var(--color-surface-container-low);
+  --_card-background: var(--color-surface-container-low);
 }
 
 .solid-lowest {
-  --_bg: var(--color-surface-container-lowest);
+  --_card-background: var(--color-surface-container-lowest);
 }
 
 .solid-high {
-  --_bg: var(--color-surface-container-high);
+  --_card-background: var(--color-surface-container-high);
 }
 
 .solid-highest {
-  --_bg: var(--color-surface-container-highest);
+  --_card-background: var(--color-surface-container-highest);
 }
 
 .gradient {
-  --_bg:
+  --_card-background:
     radial-gradient(
       ellipse at top,
       var(--color-surface-container-low),
@@ -47,11 +56,11 @@
 }
 
 .none {
-  --_pi: 0;
-  --_pb: 0;
+  --_card-padding-inline: 0;
+  --_card-padding-block: 0;
 }
 
 .default {
-  --_pi: 1rem;
-  --_pb: 1rem;
+  --_card-padding-inline: 1rem;
+  --_card-padding-block: 1rem;
 }

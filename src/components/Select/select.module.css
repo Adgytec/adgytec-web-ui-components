@@ -41,8 +41,8 @@
   padding-inline: 0.75rem;
   padding-block: 0.5rem;
 
-  color: var(--_item-text);
-  background-color: var(--_item-color);
+  color: var(--_item-color);
+  background-color: var(--_item-background);
 
   transition:
     background-color 250ms,
@@ -50,13 +50,13 @@
 
   &[data-hovered],
   &[data-focus-visible] {
-    --_item-color: hsl(from var(--_popover-bg) h s calc(l + 10));
-    --_item-text: hsl(from var(--_popover-text) h s calc(l + 10));
+    --_item-background: hsl(from var(--_card-background) h s calc(l + 10));
+    --_item-color: hsl(from var(--_card-color) h s calc(l + 10));
   }
 
   &[data-selected] {
-    --_item-color: hsl(from var(--_popover-bg) h s calc(l - 10));
-    --_item-text: hsl(from var(--_popover-text) h s calc(l - 10));
+    --_item-background: hsl(from var(--_card-background) h s calc(l - 10));
+    --_item-color: hsl(from var(--_card-color) h s calc(l - 10));
   }
 }
 

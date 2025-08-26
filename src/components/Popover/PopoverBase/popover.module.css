@@ -1,19 +1,13 @@
 .popover {
-  --_popover-bg: var(--color-surface-container);
-  --_popover-color: var(--colol-on-surface);
-
-  background-color: var(--_popover-bg);
-  color: var(--_popover-color);
-
-  padding-inline: 0.5em;
-  padding-block: 0.5em;
-  overflow: auto;
-
   max-inline-size: min(90vi, 50rem);
   min-inline-size: min(25vi, 10rem);
 
-  box-shadow: var(--elevation-2);
-  border-radius: var(--radius);
+  [data-card="true"] {
+    --_card-padding-inline: 0.5rem;
+    --_card-padding-block: 0.5rem;
+
+    --_card-elevation: var(--elevation-2);
+  }
 
   transition:
     transform 250ms,
