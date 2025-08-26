@@ -1,6 +1,6 @@
 import type { Key } from "react-aria-components";
 import type { ButtonVariant } from "@/components/Button/ButtonBase/types";
-import type { SolidCardBackground } from "../Card/BaseCard";
+import type { CardBackground } from "../Card/BaseCard";
 
 export type SelectOptions = {
   key: string;
@@ -11,7 +11,7 @@ export type SelectOptions = {
 
 export interface SelectProps {
   options: SelectOptions[];
-  cardBackground?: SolidCardBackground;
+  cardBackground?: CardBackground;
   isRequired?: boolean;
   label?: string;
   name?: string;

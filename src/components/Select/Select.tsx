@@ -21,12 +21,11 @@ import { ColorTheme } from "@/utils/types";
 import { Tooltip } from "@/components/Tooltip/Tooltip";
 import { Label } from "@/components/Form/Label/Label.tsx";
 import { FieldError } from "@/components/Form/FieldError/FieldError.tsx";
-import { SolidCard } from "../Card/SolidCard";
-import { CardBackground, CardPadding } from "../Card/BaseCard";
+import { BaseCard, CardBackground, CardPadding } from "../Card/BaseCard";
 
 export const Select = ({
   options,
-  cardBackground = CardBackground.solid,
+  cardBackground = CardBackground.gradient,
   label,
   name,
   disabled,
@@ -83,7 +82,7 @@ export const Select = ({
       <FieldError />
 
       <Popover>
-        <SolidCard background={cardBackground} padding={CardPadding.none}>
+        <BaseCard background={cardBackground} padding={CardPadding.none}>
           <ListBox className={`${styles["options-list"]}`} items={options}>
             {(option) => {
               const ItemComp = (
@@ -117,7 +116,7 @@ export const Select = ({
               );
             }}
           </ListBox>
-        </SolidCard>
+        </BaseCard>
       </Popover>
     </UnstyledSelect>
   );

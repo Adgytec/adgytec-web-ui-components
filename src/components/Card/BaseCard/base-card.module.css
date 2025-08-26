@@ -1,5 +1,6 @@
 .card {
   --_card-color: var(--color-on-surface);
+  --_card-background: var(--color-surface-container);
 
   --_card-elevation: var(--elevation-1);
   --_card-radius: var(--radius);
@@ -10,7 +11,7 @@
   border-radius: var(--_card-radius);
   box-shadow: var(--_card-elevation);
 
-  background: var(--_card-background);
+  background-color: var(--_card-background);
   color: var(--_card-color);
 }
 
@@ -39,16 +40,16 @@
 }
 
 .gradient {
-  --_card-background:
+  background-image:
     radial-gradient(
       ellipse at top,
       var(--color-surface-container-low),
-      transparent
+      var(--color-surface)
     ),
     radial-gradient(
       ellipse at bottom,
       var(--color-surface-container-high),
-      transparent
+      var(--color-surface)
     );
 }
 
