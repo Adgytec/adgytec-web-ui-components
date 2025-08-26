@@ -1,6 +1,7 @@
 import type { ReactNode, ReactElement } from "react";
 import type { DialogRenderProps } from "react-aria-components";
 import { type ButtonVariantProps } from "@/components/Button/ButtonBase";
+import type { CardBackground } from "../Card/BaseCard";
 
 export enum SidebarPosition {
   inlineStart = "inline-start",
@@ -23,4 +24,5 @@ export interface SidebarProps {
   sidebarSize?: SidebarSize;
   isDismissable?: boolean;
   isKeyboardDismissableDisabled?: boolean;
+  cardBackground?: CardBackground;
 }

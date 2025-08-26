@@ -6,6 +6,7 @@ import {
   Dialog,
 } from "react-aria-components";
 import styles from "./sidebar.module.css";
+import { BaseCard, CardBackground } from "../Card/BaseCard";
 
 export const Sidebar = ({
   children,
@@ -14,6 +15,7 @@ export const Sidebar = ({
   sidebarSize = SidebarSize.full,
   isDismissable,
   isKeyboardDismissableDisabled,
+  cardBackground = CardBackground.gradient,
 }: SidebarProps) => {
   const isChildrenFunction = typeof children === "function";
 
@@ -29,9 +31,11 @@ export const Sidebar = ({
         <Modal
           className={`${styles["modal"]} ${styles[sidebarPosition]} ${styles[sidebarSize]}`}
         >
-          <Dialog>
-            {isChildrenFunction ? (opts) => children(opts) : children}
-          </Dialog>
+          <BaseCard background={cardBackground}>
+            <Dialog>
+              {isChildrenFunction ? (opts) => children(opts) : children}
+            </Dialog>
+          </BaseCard>
         </Modal>
       </ModalOverlay>
     </DialogTrigger>

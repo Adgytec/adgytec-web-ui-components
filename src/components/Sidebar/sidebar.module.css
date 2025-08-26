@@ -17,11 +17,6 @@
 }
 
 .modal {
-  --_modal-bg: var(--color-surface-container);
-  --_modal-text: var(--colol-on-surface);
-
-  /* --_border-width: 0.025rem; */
-
   position: fixed;
   overflow: auto;
 
@@ -30,17 +25,18 @@
   inset-inline-end: var(--_inline-end);
   inset-block-end: var(--_block-end);
 
-  padding-inline: clamp(1.5rem, 2.25vi, 2rem);
-  padding-block: clamp(1.5rem, 2.25vi, 2rem);
+  box-shadow: var(--elevation-2);
 
-  background-color: var(--_modal-bg);
-  color: var(--_modal-text);
+  [data-card="true"] {
+    --_card-padding-inline: clamp(1.5rem, 2.25vi, 2rem);
+    --_card-padding-block: clamp(1.5rem, 2.25vi, 2rem);
 
-  border-width: 0;
-  border-style: solid;
-  border-color: var(--color-outline);
+    --_card-elevation: none;
+    --_card-radius: 0;
 
-  box-shadow: var(--elevation-1);
+    inline-size: 100%;
+    block-size: 100%;
+  }
 
   &[data-entering] {
     animation-duration: var(--_animation-duration);
@@ -65,7 +61,6 @@
   --_from: -100%;
   --_slide-animation: inline-slide;
 
-  /* border-inline-end-width: var(--_border-width); */
   border-start-end-radius: var(--radius-sidebar);
   border-end-end-radius: var(--radius-sidebar);
 }
@@ -79,7 +74,6 @@
   --_from: 100%;
   --_slide-animation: inline-slide;
 
-  /* border-inline-start-width: var(--_border-width); */
   border-start-start-radius: var(--radius-sidebar);
   border-end-start-radius: var(--radius-sidebar);
 }
@@ -93,7 +87,6 @@
   --_from: -100%;
   --_slide-animation: block-slide;
 
-  /* border-block-end-width: vaR(--_border-width); */
   border-end-start-radius: var(--radius-sidebar);
   border-end-end-radius: var(--radius-sidebar);
 }
@@ -107,7 +100,6 @@
   --_from: 100%;
   --_slide-animation: block-slide;
 
-  /* border-block-start-width: vaR(--_border-width); */
   border-start-end-radius: var(--radius-sidebar);
   border-start-start-radius: var(--radius-sidebar);
 }

@@ -1,6 +1,6 @@
 .card {
   --_card-color: var(--color-on-surface);
-  --_card-background: var(--color-surface-container);
+  --_card-background: var(--color-surface);
 
   --_card-elevation: var(--elevation-1);
   --_card-radius: var(--radius);
@@ -43,11 +43,13 @@
     radial-gradient(
       ellipse at top,
       var(--color-surface-container-low),
-      var(--color-surface)
+      transparent
     ),
     radial-gradient(
       ellipse at bottom,
       var(--color-surface-container-high),
-      var(--color-surface)
+      transparent
     );
+
+  background-repeat: no-repeat;
 }
