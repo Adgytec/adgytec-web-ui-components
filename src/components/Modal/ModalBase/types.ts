@@ -5,10 +5,12 @@ import type {
   DialogTriggerProps,
   ModalOverlayProps,
 } from "react-aria-components";
+import type { CardBackground } from "@/components/Card/BaseCard";
 
 export interface ModalBaseProps extends DialogProps {
   trigger: ReactElement<ButtonVariantProps>;
   modalOverlayProps?: Omit<ModalOverlayProps, "children">;
   dialogTriggerProps?: Omit<DialogTriggerProps, "children">;
   modalProps?: Omit<React.RefAttributes<HTMLDivElement>, "children">;
+  cardBackground?: CardBackground;
 }
