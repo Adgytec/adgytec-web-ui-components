@@ -1,20 +1,17 @@
 .card {
   --_card-color: var(--color-on-surface);
+
   --_card-elevation: var(--elevation-1);
+  --_card-radius: var(--radius);
 
   padding-inline: var(--_card-padding-inline);
   padding-block: var(--_card-padding-block);
 
-  border-radius: var(--radius);
+  border-radius: var(--_card-radius);
   box-shadow: var(--_card-elevation);
 
   background: var(--_card-background);
   color: var(--_card-color);
-
-  max-inline-size: 100%;
-  max-block-size: 100%;
-
-  overflow: auto;
 }
 
 .transparent {

@@ -1,12 +1,17 @@
 .popover {
+  box-shadow: var(--elevation-2);
+  border-radius: var(--radius);
+  overflow: auto;
+
   max-inline-size: min(90vi, 50rem);
   min-inline-size: min(25vi, 10rem);
 
   [data-card="true"] {
-    --_card-padding-inline: 0.5rem;
-    --_card-padding-block: 0.5rem;
+    --_card-padding-inline: 0.5em;
+    --_card-padding-block: 0.5em;
 
-    --_card-elevation: var(--elevation-2);
+    --_card-elevation: none;
+    --_card-radius: var(--radius);
   }
 
   transition:
