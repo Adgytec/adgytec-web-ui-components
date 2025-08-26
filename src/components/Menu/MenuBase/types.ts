@@ -1,10 +1,12 @@
 import type { ReactElement, ReactNode } from "react";
 import type { HierarchyItemType } from "@/utils/types";
 import type { ButtonVariantProps } from "@/components/Button/ButtonBase/types";
+import type { CardBackground } from "@/components/Card/BaseCard";
 
 export interface MenuProps {
   children: ReactNode;
   menuItems: HierarchyItemType[];
+  cardBackground?: CardBackground;
 }
 
 export interface MenuButtonProps {
@@ -20,4 +22,5 @@ export interface MenuLabelProps {
 
 export interface RenderMenuProps {
   menuItem: HierarchyItemType;
+  cardBackground: CardBackground;
 }
