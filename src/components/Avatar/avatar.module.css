@@ -24,7 +24,7 @@
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
 
-  background-color: var(--_avatar-bg);
+  background-color: var(--_avatar-background);
   color: var(--_avatar-color);
 }
 
@@ -54,36 +54,36 @@
 
 /* avatar theme */
 .primary {
-  --_avatar-bg: var(--color-primary);
+  --_avatar-background: var(--color-primary);
   --_avatar-color: var(--color-on-primary);
 }
 
 .primary-variant {
-  --_avatar-bg: var(--color-primary-variant);
+  --_avatar-background: var(--color-primary-variant);
   --_avatar-color: var(--color-on-primary-variant);
 }
 
 .secondary {
-  --_avatar-bg: var(--color-secondary);
+  --_avatar-background: var(--color-secondary);
   --_avatar-color: var(--color-on-secondary);
 }
 
 .tertiary {
-  --_avatar-bg: var(--color-tertiary);
+  --_avatar-background: var(--color-tertiary);
   --_avatar-color: var(--color-on-tertiary);
 }
 
 .error {
-  --_avatar-bg: var(--color-error);
+  --_avatar-background: var(--color-error);
   --_avatar-color: var(--color-on-error);
 }
 
 .inverse-surface {
-  --_avatar-bg: var(--color-inverse-surface);
+  --_avatar-background: var(--color-inverse-surface);
   --_avatar-color: var(--color-inverse-on-surface);
 }
 
 .success {
-  --_avatar-bg: var(--color-success);
+  --_avatar-background: var(--color-success);
   --_avatar-color: var(--color-on-success);
 }

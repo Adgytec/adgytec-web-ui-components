@@ -2,8 +2,8 @@
   font-size: 0.875rem;
   text-align: center;
 
-  background-color: var(--_bg);
-  color: var(--_color);
+  background-color: var(--_tooltip-background);
+  color: var(--_tooltip-color);
 
   padding-inline: 0.75em;
   padding-block: 0.5em;
@@ -57,7 +57,7 @@
 .tooltip-arrow {
   svg {
     display: block;
-    fill: var(--_bg);
+    fill: var(--_tooltip-background);
     inline-size: 0.625rem;
     aspect-ratio: 1/1;
   }
@@ -65,36 +65,36 @@
 
 /* tooltip theme */
 .primary {
-  --_bg: var(--color-primary-container);
-  --_color: var(--color-on-primary-container);
+  --_tooltip-background: var(--color-primary-container);
+  --_tooltip-color: var(--color-on-primary-container);
 }
 
 .primary-variant {
-  --_bg: var(--color-primary-variant-container);
-  --_color: var(--color-on-primary-variant-container);
+  --_tooltip-background: var(--color-primary-variant-container);
+  --_tooltip-color: var(--color-on-primary-variant-container);
 }
 
 .secondary {
-  --_bg: var(--color-secondary-container);
-  --_color: var(--color-on-secondary-container);
+  --_tooltip-background: var(--color-secondary-container);
+  --_tooltip-color: var(--color-on-secondary-container);
 }
 
 .tertiary {
-  --_bg: var(--color-tertiary-container);
-  --_color: var(--color-on-tertiary-container);
+  --_tooltip-background: var(--color-tertiary-container);
+  --_tooltip-color: var(--color-on-tertiary-container);
 }
 
 .error {
-  --_bg: var(--color-error-container);
-  --_color: var(--color-on-error-container);
+  --_tooltip-background: var(--color-error-container);
+  --_tooltip-color: var(--color-on-error-container);
 }
 
 .inverse-surface {
-  --_bg: var(--color-surface-container);
-  --_color: var(--color-on-surface);
+  --_tooltip-background: var(--color-surface-container);
+  --_tooltip-color: var(--color-on-surface);
 }
 
 .success {
-  --_bg: var(--color-success-container);
-  --_color: var(--color-on-success-container);
+  --_tooltip-background: var(--color-success-container);
+  --_tooltip-color: var(--color-on-success-container);
 }

@@ -1,20 +1,20 @@
 .button {
-  --_button-color: transparent;
-  --_button-text: transparent;
-  --_border-color: var(--_button-color);
+  --_button-theme-background: transparent;
+  --_button-theme-color: transparent;
+  --_button-border-color: var(--_button-color);
 
-  border-radius: var(--_radius);
+  border-radius: var(--_button-radius);
   cursor: pointer;
-  border: var(--button-border-width) solid var(--_border-color);
+  border: var(--button-border-width) solid var(--_button-border-color);
 
   font-weight: var(--font-weight-medium);
   text-align: center;
 
-  padding-inline: var(--_pi);
-  padding-block: var(--_pb);
+  padding-inline: var(--_button-padding-inline);
+  padding-block: var(--_button-padding-block);
 
-  background-color: var(--_bg);
-  color: var(--_color);
+  background-color: var(--_button-background);
+  color: var(--_button-color);
   position: relative;
   overflow: hidden;
 
@@ -24,18 +24,22 @@
 
   &[data-hovered],
   &[data-focus-visible] {
-    --_bg: hsl(from var(--_button-color) h s calc(l + 10));
-    --_color: hsl(from var(--_button-text) h s calc(l + 10));
+    --_button-background: hsl(
+      from var(--_button-theme-background) h s calc(l + 10)
+    );
+    --_button-color: hsl(from var(--_button-theme-color) h s calc(l + 10));
   }
 
   &[data-pressed] {
-    --_bg: hsl(from var(--_button-color) h s calc(l - 5));
-    --_color: hsl(from var(--_button-text) h s calc(l - 5));
+    --_button-background: hsl(
+      from var(--_button-theme-background) h s calc(l - 5)
+    );
+    --_button-color: hsl(from var(--_button-theme-color) h s calc(l - 5));
   }
 
   &[data-selected] {
-    --_bg: var(--_button-color);
-    --_color: var(--_button-text);
+    --_button-background: var(--_button-theme-background);
+    --_button-color: var(--_button-theme-color);
   }
 }
 
@@ -56,81 +60,81 @@
 
 /* button shape */
 .square {
-  --_pi: 0.625em;
-  --_pb: 0.625em;
+  --_button-padding-inline: 0.625em;
+  --_button-padding-block: 0.625em;
 
   aspect-ratio: 1/1;
-  --_radius: var(--radius-circular);
+  --_button-radius: var(--radius-circular);
 }
 
 .avatar {
-  --_pi: 0.125em;
-  --_pb: 0.125em;
+  --_button-padding-inline: 0.125em;
+  --_button-padding-block: 0.125em;
 
   aspect-ratio: 1/1;
-  --_radius: var(--radius-circular);
+  --_button-radius: var(--radius-circular);
 }
 
 .rectangle {
-  --_pi: 1.125em;
-  --_pb: 0.625em;
-  --_radius: var(--radius-button);
+  --_button-padding-inline: 1.125em;
+  --_button-padding-block: 0.625em;
+  --_button-radius: var(--radius-button);
 }
 
 .shrink {
-  --_pi: 0;
-  --_pb: 0;
+  --_button-padding-inline: 0;
+  --_button-padding-block: 0;
 }
 
 /* button theme */
 .primary {
-  --_button-color: var(--color-primary);
-  --_button-text: var(--color-on-primary);
+  --_button-theme-background: var(--color-primary);
+  --_button-theme-color: var(--color-on-primary);
 }
 
 .primary-variant {
-  --_button-color: var(--color-primary-variant);
-  --_button-text: var(--color-on-primary-variant);
+  --_button-theme-background: var(--color-primary-variant);
+  --_button-theme-color: var(--color-on-primary-variant);
 }
 
 .secondary {
-  --_button-color: var(--color-secondary);
-  --_button-text: var(--color-on-secondary);
+  --_button-theme-background: var(--color-secondary);
+  --_button-theme-color: var(--color-on-secondary);
 }
 
 .tertiary {
-  --_button-color: var(--color-tertiary);
-  --_button-text: var(--color-on-tertiary);
+  --_button-theme-background: var(--color-tertiary);
+  --_button-theme-color: var(--color-on-tertiary);
 }
 
 .error {
-  --_button-color: var(--color-error);
-  --_button-text: var(--color-on-error);
+  --_button-theme-background: var(--color-error);
+  --_button-theme-color: var(--color-on-error);
 }
 
 .inverse-surface {
-  --_button-color: var(--color-inverse-surface);
-  --_button-text: var(--color-inverse-on-surface);
+  --_button-theme-background: var(--color-inverse-surface);
+  --_button-theme-color: var(--color-inverse-on-surface);
 }
 
 .success {
-  --_button-color: var(--color-success);
-  --_button-text: var(--color-on-success);
+  --_button-theme-background: var(--color-success);
+  --_button-theme-color: var(--color-on-success);
 }
 
 /* button variant */
 .filled {
-  --_bg: var(--_button-color);
-  --_color: var(--_button-text);
+  --_button-background: var(--_button-theme-background);
+  --_button-color: var(--_button-theme-color);
 }
 
 .outlined {
-  --_bg: transparent;
-  --_color: var(--_button-color);
+  --_button-background: transparent;
+  --_button-color: var(--_button-theme-background);
 }
 
 .text {
-  --_bg: transparent;
+  --_button-background: transparent;
   --_border-color: transparent;
-  --_color: var(--_button-color);
+  --_button-color: var(--_button-theme-background);
 }
