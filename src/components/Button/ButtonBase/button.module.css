@@ -1,7 +1,7 @@
 .button {
   --_button-theme-background: transparent;
   --_button-theme-color: transparent;
-  --_button-border-color: var(--_button-color);
+  --_button-border-color: var(--_button-theme-background);
 
   border-radius: var(--_button-radius);
   cursor: pointer;
@@ -135,6 +135,6 @@
 
 .text {
   --_button-background: transparent;
-  --_border-color: transparent;
+  --_button-border-color: transparent;
   --_button-color: var(--_button-theme-background);
 }
