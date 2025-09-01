@@ -8,14 +8,24 @@
   --_card-padding-inline: 1rem;
   --_card-padding-block: 1rem;
 
+  --_card-opacity: 1;
+
   padding-inline: var(--_card-padding-inline);
   padding-block: var(--_card-padding-block);
 
   border-radius: var(--_card-radius);
   box-shadow: var(--_card-elevation);
 
-  background-color: var(--_card-background);
+  background-color: hsl(
+    from var(--_card-background) h s l / var(--_card-opacity)
+  );
   color: var(--_card-color);
+}
+
+/* component style */
+.glass {
+  --_card-opacity: var(--glassmorphism-opacity);
+  backdrop-filter: var(--glassmorphism-filter);
 }
 
 .solid {
@@ -42,12 +52,14 @@
   background-image:
     radial-gradient(
       ellipse at top,
-      var(--color-surface-container-low),
+      hsl(from var(--color-surface-container-low) h s l / var(--_card-opacity)),
       transparent
     ),
     radial-gradient(
       ellipse at bottom,
-      var(--color-surface-container-high),
+      hsl(
+        from var(--color-surface-container-high) h s l / var(--_card-opacity)
+      ),
       transparent
     );
 

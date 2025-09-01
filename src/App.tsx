@@ -1249,7 +1249,6 @@ const CardPreview = () => {
     <>
       <img
         src={imgsrc}
-        width={360}
         style={{
           borderRadius: "inherit",
         }}
@@ -1269,7 +1268,6 @@ const CardPreview = () => {
   return (
     <PreviewContainer label="Card Preview">
       <div className="item-container">
-        <GradientCard>{cardChild}</GradientCard>
         {solidBackgrounds.map((background, ind) => {
           return (
             <SolidCard
@@ -1280,6 +1278,8 @@ const CardPreview = () => {
             </SolidCard>
           );
         })}
+
+        <GradientCard>{cardChild}</GradientCard>
       </div>
     </PreviewContainer>
   );

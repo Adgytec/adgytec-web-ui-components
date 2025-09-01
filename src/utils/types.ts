@@ -74,6 +74,6 @@ export type HierarchyItemType =
   | HierarchySeparator;
 
 export enum ComponentStyle {
-  "solid",
-  "glass",
+  normal = "normal",
+  glass = "glass",
 }

@@ -158,6 +158,9 @@
   --font-weight-medium: 600;
   --font-weight-bold: 700;
 
+  --glassmorphism-opacity: 0.625;
+  --glassmorphism-filter: blur(0.625rem) saturate(180%);
+
   caret-color: var(--color-primary);
   accent-color: var(--color-primary);
 }

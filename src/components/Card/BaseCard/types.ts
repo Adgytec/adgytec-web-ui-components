@@ -1,3 +1,4 @@
+import type { ComponentStyle } from "@/utils/types";
 import type React from "react";
 
 export enum CardBackground {
@@ -11,6 +12,7 @@ export enum CardBackground {
 
 export interface BaseCardProps extends React.HTMLAttributes<HTMLDivElement> {
   background?: CardBackground;
+  componentStyle?: ComponentStyle;
 }
 
 export interface StyledBaseCardProps

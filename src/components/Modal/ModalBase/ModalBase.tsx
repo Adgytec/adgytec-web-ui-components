@@ -9,7 +9,7 @@ import styles from "./modalBase.module.css";
 import { BaseCard, CardBackground } from "@/components/Card/BaseCard";
 
 export const ModalBase = ({
-  cardBackground = CardBackground.gradient,
+  cardBackground = CardBackground.solid,
   trigger,
   modalOverlayProps,
   dialogTriggerProps,
