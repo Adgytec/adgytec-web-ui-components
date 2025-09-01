@@ -5,7 +5,7 @@ import { ComponentStyle } from "@/utils/types";
 
 export const BaseCard: React.FC<BaseCardProps> = ({
   background = CardBackground.solid,
-  componentStyle = ComponentStyle.glass,
+  componentStyle = ComponentStyle.normal,
   children,
   ...props
 }) => {
