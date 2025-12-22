@@ -1,0 +1,14 @@
+.visual-settings {
+  display: grid;
+  gap: 1.5rem;
+
+  &[data-card="true"] {
+    --_card-padding-inline: 1rem;
+    --_card-padding-block: 1rem;
+  }
+}
+
+.settings-item {
+  display: grid;
+  gap: 0.5rem;
+}

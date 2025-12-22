@@ -2,7 +2,7 @@ import type { TextAreaProps } from "./types";
 import { TextField, TextArea as AriaTextArea } from "react-aria-components";
 import { Label } from "@/components/Form/Label/Label";
 import { FieldError } from "@/components/Form/FieldError/FieldError";
-import styles from "./textarea.module.css";
+import styles from "./textArea.module.css";
 
 export const TextArea = ({
   label,

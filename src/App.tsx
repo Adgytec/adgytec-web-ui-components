@@ -44,6 +44,7 @@ import {
   CardBackground,
   type SolidCardBackground,
 } from "./components/Card/BaseCard";
+import { VisualSettings } from "./components/VisualSettings/VisualSettings";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1285,8 +1286,17 @@ const CardPreview = () => {
   );
 };
 
+const VisualSettingsPreview = () => {
+  return (
+    <div>
+      <VisualSettings />
+    </div>
+  );
+};
+
 const App = () => {
   const previewElements = [
+    VisualSettingsPreview,
     ButtonPreview,
     LinkPreview,
     CardPreview,
