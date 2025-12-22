@@ -1,7 +1,7 @@
 {
   "name": "@adgytec/adgytec-web-ui-components",
   "private": false,
-  "version": "0.0.21",
+  "version": "0.0.22",
   "type": "module",
   "files": [
     "dist"
@@ -157,6 +157,18 @@
     "./Tree": {
       "import": "./dist/components/Tree/index.js",
       "types": "./dist/components/Tree/index.d.ts"
+    },
+    "./VisualSettings/ComponentShapeSwitcher": {
+      "import": "./dist/components/VisualSettings/ComponentShapeSwitcher/index.js",
+      "types": "./dist/components/VisualSettings/ComponentShapeSwitcher/index.d.ts"
+    },
+    "./VisualSettings/ThemeSwitcher": {
+      "import": "./dist/components/VisualSettings/ThemeSwitcher/index.js",
+      "types": "./dist/components/VisualSettings/ThemeSwitcher/index.d.ts"
+    },
+    "./VisualSettings/VisualSettings": {
+      "import": "./dist/components/VisualSettings/VisualSettings/index.js",
+      "types": "./dist/components/VisualSettings/VisualSettings/index.d.ts"
     }
   },
   "module": "./dist/index.js",

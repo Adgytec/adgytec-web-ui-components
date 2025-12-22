@@ -2,7 +2,11 @@ import { writeFileSync } from "fs";
 import { globSync } from "glob";
 
 // ⬇️ Manual exports can be declared here
-const manualExports = ['export * from "./utils/types";'];
+const manualExports = [
+  'export * from "./utils/types";',
+  'export * from "./utils/env";',
+  'export * from "./utils/apiError";',
+];
 
 // ⬇️ Auto-collect component exports
 // const files = globSync("src/components/**/index.ts");
