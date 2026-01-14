@@ -304,7 +304,7 @@ const SelectPreview = () => {
                     selectedKey={dessert}
                     triggerTheme={theme}
                     onSelectionChange={(key) => {
-                      if (!key) return;
+                      if (key === null) return;
                       setDessert(key);
                     }}
                   />
