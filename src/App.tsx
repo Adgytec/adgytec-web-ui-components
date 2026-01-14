@@ -237,6 +237,8 @@ const SelectPreview = () => {
     ButtonVariant.text,
   ];
 
+  const colorThemes = Object.values(ColorTheme);
+
   const options: SelectOptions[] = [
     {
       key: "cakes",
@@ -277,44 +279,53 @@ const SelectPreview = () => {
 
   return (
     <PreviewContainer label="Select">
-      <div className="item-container">
-        {buttonVariants.map((variant) => {
-          return (
-            <Fragment key={"select" + variant}>
-              <Select
-                label="Desserts"
-                name="dessert"
-                options={options}
-                triggerVariant={variant}
-                placeholder="Select your favorite dessert"
-                description={description}
-              />
+      {colorThemes.map((theme) => {
+        return (
+          <div className="item-container" key={theme}>
+            {buttonVariants.map((variant) => {
+              {
+                return (
+                  <Fragment key={"select" + variant + theme}>
+                    <Select
+                      label="Desserts"
+                      name="dessert"
+                      options={options}
+                      triggerVariant={variant}
+                      placeholder="Select your favorite dessert"
+                      description={description}
+                      triggerTheme={theme}
+                    />
 
-              <Select
-                label="Desserts"
-                options={options}
-                triggerVariant={variant}
-                placeholder="Select your favorite dessert"
-                description={description}
-                selectedKey={dessert}
-                onSelectionChange={(key) => {
-                  if (!key) return;
-                  setDessert(key);
-                }}
-              />
+                    <Select
+                      label="Desserts"
+                      options={options}
+                      triggerVariant={variant}
+                      placeholder="Select your favorite dessert"
+                      description={description}
+                      selectedKey={dessert}
+                      triggerTheme={theme}
+                      onSelectionChange={(key) => {
+                        if (!key) return;
+                        setDessert(key);
+                      }}
+                    />
 
-              <Select
-                label="Desserts"
-                options={options}
-                triggerVariant={variant}
-                placeholder="Select your favorite dessert"
-                disabled
-                description={description}
-              />
-            </Fragment>
-          );
-        })}
-      </div>
+                    <Select
+                      label="Desserts"
+                      options={options}
+                      triggerVariant={variant}
+                      placeholder="Select your favorite dessert"
+                      disabled
+                      description={description}
+                      triggerTheme={theme}
+                    />
+                  </Fragment>
+                );
+              }
+            })}
+          </div>
+        );
+      })}
     </PreviewContainer>
   );
 };
