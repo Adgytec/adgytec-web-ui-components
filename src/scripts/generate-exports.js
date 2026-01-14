@@ -1,11 +1,7 @@
 import { writeFileSync } from "fs";
 
 // ⬇️ Manual exports can be declared here
-const manualExports = [
-  'export * from "./utils/types";',
-  'export * from "./utils/env";',
-  'export * from "./utils/apiError";',
-];
+const manualExports = ['export * from "./utils/types";'];
 
 // Final output
 const outputPath = "src/index.ts";
