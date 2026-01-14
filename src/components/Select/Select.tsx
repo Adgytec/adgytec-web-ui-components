@@ -26,6 +26,7 @@ import { BaseCard, CardBackground } from "../Card/BaseCard";
 export const Select = ({
   options,
   cardBackground = CardBackground.gradient,
+  triggerTheme = ColorTheme.inverseSurface,
   label,
   name,
   disabled,
@@ -57,13 +58,13 @@ export const Select = ({
       isDisabled={disabled}
       isRequired={isRequired}
       name={name}
-      selectedKey={selectedKey}
-      onSelectionChange={onSelectionChange}
+      value={selectedKey}
+      onChange={onSelectionChange}
     >
       {label && <Label>{label}</Label>}
 
-      <Tooltip description={description} theme={ColorTheme.inverseSurface}>
-        <TriggerVariant theme={ColorTheme.inverseSurface}>
+      <Tooltip description={description} theme={triggerTheme}>
+        <TriggerVariant theme={triggerTheme}>
           <span className={styles["trigger"]}>
             {placeholder ? (
               <SelectValue className={`${styles["selected-value"]}`}>

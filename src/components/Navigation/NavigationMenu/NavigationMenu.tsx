@@ -6,6 +6,7 @@ import { TextButton } from "../../Button/TextButton";
 import { ColorTheme } from "../../../utils/types";
 import { ButtonShape } from "@/components/Button/ButtonBase/types";
 import { ChevronDown } from "lucide-react";
+import { Fragment } from "react/jsx-runtime";
 
 export const NavigationMenu = ({ items, className }: NavigationMenuProps) => {
   const normalizedItems = items.filter((item) => item.type !== "separator");
@@ -22,10 +23,11 @@ export const NavigationMenu = ({ items, className }: NavigationMenuProps) => {
               </MenuLabel>
             );
           case "item-node":
-            return item.node;
+            return <Fragment key={item.id}>{item.node}</Fragment>;
           case "link":
             return (
               <Link
+                key={item.id}
                 href={item.href}
                 target={item.target}
                 underline={item.active}
@@ -39,6 +41,7 @@ export const NavigationMenu = ({ items, className }: NavigationMenuProps) => {
           case "button":
             return (
               <TextButton
+                key={item.id}
                 onPress={item.onPress}
                 theme={ColorTheme.inverseSurface}
                 shape={ButtonShape.shrink}

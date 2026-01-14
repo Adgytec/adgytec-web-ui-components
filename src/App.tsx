@@ -124,7 +124,7 @@ const ButtonPreview = () => {
                     <ButtonElement.element
                       onPress={onPress}
                       theme={theme}
-                      description={"This is button is shrinked"}
+                      description={"This button is shrinked"}
                       shape={ButtonShape.shrink}
                     >
                       {ButtonElement.label}
@@ -237,6 +237,8 @@ const SelectPreview = () => {
     ButtonVariant.text,
   ];
 
+  const colorThemes = Object.values(ColorTheme);
+
   const options: SelectOptions[] = [
     {
       key: "cakes",
@@ -277,44 +279,51 @@ const SelectPreview = () => {
 
   return (
     <PreviewContainer label="Select">
-      <div className="item-container">
-        {buttonVariants.map((variant) => {
-          return (
-            <Fragment key={"select" + variant}>
-              <Select
-                label="Desserts"
-                name="dessert"
-                options={options}
-                triggerVariant={variant}
-                placeholder="Select your favorite dessert"
-                description={description}
-              />
+      {colorThemes.map((theme) => {
+        return (
+          <div className="item-container" key={theme}>
+            {buttonVariants.map((variant) => {
+              return (
+                <Fragment key={"select" + variant + theme}>
+                  <Select
+                    label="Desserts"
+                    name="dessert"
+                    options={options}
+                    triggerVariant={variant}
+                    placeholder="Select your favorite dessert"
+                    description={description}
+                    triggerTheme={theme}
+                  />
 
-              <Select
-                label="Desserts"
-                options={options}
-                triggerVariant={variant}
-                placeholder="Select your favorite dessert"
-                description={description}
-                selectedKey={dessert}
-                onSelectionChange={(key) => {
-                  if (!key) return;
-                  setDessert(key);
-                }}
-              />
+                  <Select
+                    label="Desserts"
+                    options={options}
+                    triggerVariant={variant}
+                    placeholder="Select your favorite dessert"
+                    description={description}
+                    selectedKey={dessert}
+                    triggerTheme={theme}
+                    onSelectionChange={(key) => {
+                      if (key === null) return;
+                      setDessert(key);
+                    }}
+                  />
 
-              <Select
-                label="Desserts"
-                options={options}
-                triggerVariant={variant}
-                placeholder="Select your favorite dessert"
-                disabled
-                description={description}
-              />
-            </Fragment>
-          );
-        })}
-      </div>
+                  <Select
+                    label="Desserts"
+                    options={options}
+                    triggerVariant={variant}
+                    placeholder="Select your favorite dessert"
+                    disabled
+                    description={description}
+                    triggerTheme={theme}
+                  />
+                </Fragment>
+              );
+            })}
+          </div>
+        );
+      })}
     </PreviewContainer>
   );
 };
@@ -471,7 +480,7 @@ const MenuPreview = () => {
       id: "5",
       type: "button",
       onPress: () => {},
-      node: "I will not do anything",
+      node: "It will not do anything",
     },
     {
       id: "6",
@@ -509,7 +518,7 @@ const MenuPreview = () => {
           id: "5",
           type: "button",
           onPress: () => {},
-          node: "I will not do anything",
+          node: "It will not do anything",
         },
         {
           id: "6",
@@ -547,7 +556,7 @@ const MenuPreview = () => {
               id: "5",
               type: "button",
               onPress: () => {},
-              node: "I will not do anything",
+              node: "It will not do anything",
             },
             {
               id: "6",
@@ -585,7 +594,7 @@ const MenuPreview = () => {
                   id: "5",
                   type: "button",
                   onPress: () => {},
-                  node: "I will not do anything",
+                  node: "It will not do anything",
                 },
                 {
                   id: "6",
@@ -623,7 +632,7 @@ const MenuPreview = () => {
                       id: "5",
                       type: "button",
                       onPress: () => {},
-                      node: "I will not do anything",
+                      node: "It will not do anything",
                     },
                     {
                       id: "6",
@@ -1289,6 +1298,7 @@ const CardPreview = () => {
 const VisualSettingsPreview = () => {
   return (
     <div>
+      <VisualSettings ui={false} />
       <VisualSettings />
     </div>
   );
