@@ -1300,6 +1300,7 @@ const CardPreview = () => {
 const VisualSettingsPreview = () => {
   return (
     <div>
+      <VisualSettings ui={false} />
       <VisualSettings />
     </div>
   );
