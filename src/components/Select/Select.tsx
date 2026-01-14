@@ -57,8 +57,8 @@ export const Select = ({
       isDisabled={disabled}
       isRequired={isRequired}
       name={name}
-      selectedKey={selectedKey}
-      onSelectionChange={onSelectionChange}
+      value={selectedKey}
+      onChange={onSelectionChange}
     >
       {label && <Label>{label}</Label>}
 
