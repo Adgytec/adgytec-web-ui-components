@@ -12,4 +12,4 @@ const finalContent = banner + manualExports.join("\n") + "\n";
 // Write to index.ts
 writeFileSync(outputPath, finalContent);
 
-console.log(`✅ Generated ${outputPath} component exports.`);
+console.log(`✅ Generated ${outputPath} manual exports.`);
