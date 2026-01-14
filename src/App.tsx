@@ -124,7 +124,7 @@ const ButtonPreview = () => {
                     <ButtonElement.element
                       onPress={onPress}
                       theme={theme}
-                      description={"This is button is shrinked"}
+                      description={"This button is shrinked"}
                       shape={ButtonShape.shrink}
                     >
                       {ButtonElement.label}
@@ -482,7 +482,7 @@ const MenuPreview = () => {
       id: "5",
       type: "button",
       onPress: () => {},
-      node: "I will not do anything",
+      node: "It will not do anything",
     },
     {
       id: "6",
@@ -520,7 +520,7 @@ const MenuPreview = () => {
           id: "5",
           type: "button",
           onPress: () => {},
-          node: "I will not do anything",
+          node: "It will not do anything",
         },
         {
           id: "6",
@@ -558,7 +558,7 @@ const MenuPreview = () => {
               id: "5",
               type: "button",
               onPress: () => {},
-              node: "I will not do anything",
+              node: "It will not do anything",
             },
             {
               id: "6",
@@ -596,7 +596,7 @@ const MenuPreview = () => {
                   id: "5",
                   type: "button",
                   onPress: () => {},
-                  node: "I will not do anything",
+                  node: "It will not do anything",
                 },
                 {
                   id: "6",
@@ -634,7 +634,7 @@ const MenuPreview = () => {
                       id: "5",
                       type: "button",
                       onPress: () => {},
-                      node: "I will not do anything",
+                      node: "It will not do anything",
                     },
                     {
                       id: "6",
