@@ -7,7 +7,7 @@ const manualExports = ['export * from "./utils/types";'];
 const outputPath = "src/index.ts";
 const banner = `// AUTO-GENERATED FILE — DO NOT EDIT MANUALLY\n\n`;
 
-const finalContent = banner + [...manualExports].join("\n") + "\n";
+const finalContent = banner + manualExports.join("\n") + "\n";
 
 // Write to index.ts
 writeFileSync(outputPath, finalContent);
