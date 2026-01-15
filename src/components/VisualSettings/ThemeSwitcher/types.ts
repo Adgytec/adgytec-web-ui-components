@@ -1,4 +1,4 @@
-import type { ColorTheme } from "@adgytec/adgytec-web-ui-components";
+import { ColorTheme } from "@/utils/types";
 
 export interface ThemeSwitcherProps {
   ui?: boolean;
