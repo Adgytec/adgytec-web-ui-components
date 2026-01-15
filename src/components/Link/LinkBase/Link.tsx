@@ -1,11 +1,10 @@
 import type { LinkProps } from "./types";
 import { Link as UnstyledLink } from "react-aria-components";
 import styles from "./link.module.css";
-import { ColorTheme } from "@/utils/types";
 import { Tooltip } from "@/components/Tooltip/Tooltip";
 
 export const Link = ({
-  theme = ColorTheme.primary,
+  theme = "primary",
   description,
   underline = true,
   children,

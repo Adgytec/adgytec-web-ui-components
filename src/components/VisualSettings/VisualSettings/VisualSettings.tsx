@@ -1,7 +1,5 @@
-import { ColorTheme } from "@/utils/types";
 import { PopoverDialog } from "@/components/Popover/PopoverDialog";
 import { TextButton } from "@/components/Button/TextButton";
-import { ButtonShape } from "@/components/Button/ButtonBase";
 import { SolidCard } from "@/components/Card/SolidCard";
 import { ComponentShapeSwitcher } from "../ComponentShapeSwitcher/ComponentShapeSwitcher";
 import { ThemeSwitcher } from "../ThemeSwitcher/ThemeSwitcher";
@@ -9,6 +7,7 @@ import { Settings } from "lucide-react";
 import styles from "./visual-settings.module.css";
 import type React from "react";
 import type { VisualSettingsProps } from "./types";
+import type { ColorTheme } from "@/utils/types";
 
 export const VisualSettings: React.FC<VisualSettingsProps> = ({
   ui = true,
@@ -35,13 +34,13 @@ export const VisualSettings: React.FC<VisualSettingsProps> = ({
     },
   ];
 
-  const itemTheme = ColorTheme.inverseSurface;
+  const itemTheme: ColorTheme = "inverse-surface";
 
   return (
     <PopoverDialog
       trigger={
         <TextButton
-          shape={ButtonShape.square}
+          shape="square"
           description="Visual Settings"
           theme={itemTheme}
         >

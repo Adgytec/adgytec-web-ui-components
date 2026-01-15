@@ -6,18 +6,12 @@ import {
 import styles from "./disclosure.module.css";
 import { ChevronRight } from "lucide-react";
 import { TextButton } from "@/components/Button/TextButton";
-import { ColorTheme } from "@/utils/types";
-import { ButtonShape } from "@/components/Button/ButtonBase";
 
 export const Disclosure = ({ heading, children, id }: DisclosureProps) => {
   return (
     <UnstyledDisclousre className={styles["disclosure"]} id={id}>
       <h2 className={styles["trigger"]}>
-        <TextButton
-          slot="trigger"
-          theme={ColorTheme.inverseSurface}
-          shape={ButtonShape.shrink}
-        >
+        <TextButton slot="trigger" theme="inverse-surface" shape="shrink">
           <ChevronRight />
           {heading}
         </TextButton>

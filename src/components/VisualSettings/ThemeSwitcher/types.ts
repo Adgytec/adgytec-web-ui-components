@@ -1,4 +1,4 @@
-import { ColorTheme } from "@/utils/types";
+import type { ColorTheme } from "@/utils/types";
 
 export interface ThemeSwitcherProps {
   ui?: boolean;

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ButtonState, type ButtonChildProps } from "./types";
+import type { ButtonChildProps } from "./types";
 import styles from "./buttonChild.module.css";
 import { Loader } from "@/components/Loader/Loader";
 import { Check, TriangleAlert } from "lucide-react";
@@ -15,14 +15,14 @@ export const ButtonChild = ({ buttonState, value }: ButtonChildProps) => {
 
   let child: ReactNode;
   switch (buttonState) {
-    case ButtonState.enabled:
+    case "enabled":
       child = enabled;
       break;
-    case ButtonState.disabled:
+    case "disabled":
       child = disabled;
       break;
 
-    case ButtonState.pending:
+    case "pending":
       child = (
         <span className={styles["with-icon"]}>
           <Loader /> {pending}
@@ -30,7 +30,7 @@ export const ButtonChild = ({ buttonState, value }: ButtonChildProps) => {
       );
       break;
 
-    case ButtonState.completed:
+    case "completed":
       child = (
         <span className={styles["with-icon"]}>
           <Check /> {completed}
@@ -38,7 +38,7 @@ export const ButtonChild = ({ buttonState, value }: ButtonChildProps) => {
       );
       break;
 
-    case ButtonState.error:
+    case "error":
       child = (
         <span className={styles["with-icon"]}>
           <TriangleAlert /> {error}

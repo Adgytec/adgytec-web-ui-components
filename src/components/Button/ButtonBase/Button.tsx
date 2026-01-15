@@ -1,15 +1,14 @@
 import styles from "./button.module.css";
 import { Button as UnstyledButton } from "react-aria-components";
 import { Tooltip } from "@/components/Tooltip";
-import { ButtonShape, ButtonVariant, type ButtonProps } from "./types.ts";
+import type { ButtonProps } from "./types.ts";
 import { Splash } from "@/components/Splash/Splash.tsx";
 import { useSplash } from "@/components/Splash/useSplash.ts";
-import { ColorTheme } from "@/utils/types.ts";
 
 export const Button = ({
   variant,
-  theme = ColorTheme.primary,
-  shape = ButtonShape.rectangle,
+  theme = "primary",
+  shape = "rectangle",
   description,
   children,
   ...props
@@ -17,8 +16,9 @@ export const Button = ({
   const { coords, handlePress } = useSplash(props.onPress);
   const isChildFunc = typeof children === "function";
 
-  if (shape === ButtonShape.shrink && variant !== ButtonVariant.text) {
-    shape = ButtonShape.rectangle;
+  // set default shape when unintended value is provided
+  if (shape === "shrink" && variant !== "text") {
+    shape = "rectangle";
   }
 
   return (
