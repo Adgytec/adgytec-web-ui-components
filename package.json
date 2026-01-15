@@ -3,6 +3,7 @@
   "private": false,
   "version": "1.0.0",
   "type": "module",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
@@ -11,8 +12,11 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./styles/main.css": {
-      "import": "./dist/styles/main.css"
+    "./styles/main": {
+      "import": "./dist/styles/index-main.js"
+    },
+    "./styles/reset": {
+      "import": "./dist/styles/index-reset.js"
     }
   },
   "module": "./dist/index.js",
