@@ -1,14 +1,14 @@
-import { ColorTheme } from "@adgytec/adgytec-web-ui-components";
-import { PopoverDialog } from "@adgytec/adgytec-web-ui-components/Popover/PopoverDialog";
-import { TextButton } from "@adgytec/adgytec-web-ui-components/Button/TextButton";
-import { ButtonShape } from "@adgytec/adgytec-web-ui-components/Button/ButtonBase";
+import { ColorTheme } from "@/utils/types";
+import { PopoverDialog } from "@/components/Popover/PopoverDialog";
+import { TextButton } from "@/components/Button/TextButton";
+import { ButtonShape } from "@/components/Button/ButtonBase";
+import { SolidCard } from "@/components/Card/SolidCard";
 import { ComponentShapeSwitcher } from "../ComponentShapeSwitcher/ComponentShapeSwitcher";
 import { ThemeSwitcher } from "../ThemeSwitcher/ThemeSwitcher";
 import { Settings } from "lucide-react";
 import styles from "./visual-settings.module.css";
 import type React from "react";
 import type { VisualSettingsProps } from "./types";
-import { SolidCard } from "@adgytec/adgytec-web-ui-components/Card/SolidCard";
 
 export const VisualSettings: React.FC<VisualSettingsProps> = ({
   ui = true,
