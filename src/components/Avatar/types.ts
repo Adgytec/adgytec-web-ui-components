@@ -1,16 +1,9 @@
 import type { ReactNode } from "react";
 import type { ColorTheme } from "@/utils/types";
 
-export enum AvatarSize {
-  small = "small",
-  normal = "normal",
-  large = "large",
-}
+export type AvatarSize = "small" | "normal" | "large";
 
-export enum AvatarType {
-  image = "image",
-  node = "node",
-}
+export type AvatarType = "image" | "node";
 
 interface AvatarRootProps {
   size?: AvatarSize;

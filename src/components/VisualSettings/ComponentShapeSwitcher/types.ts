@@ -1,9 +1,6 @@
-import { ColorTheme } from "@/utils/types";
+import { type ColorTheme } from "@/utils/types";
 
-export enum ComponentShapes {
-  sharp = "sharp",
-  round = "round",
-}
+export type ComponentShapes = "sharp" | "round";
 
 export const ComponentShapeKey = "component-shape-preference";
 

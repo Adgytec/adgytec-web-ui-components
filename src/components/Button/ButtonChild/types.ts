@@ -1,10 +1,9 @@
-export enum ButtonState {
-  enabled = "enabled",
-  disabled = "disabled",
-  pending = "pending",
-  completed = "completed",
-  error = "error",
-}
+export type ButtonState =
+  | "enabled"
+  | "disabled"
+  | "pending"
+  | "completed"
+  | "error";
 
 // deafult for disabled, pending, and completed is enabled text
 // default for error is Try again

@@ -5,18 +5,9 @@ import type {
   Key,
 } from "react-aria-components";
 
-export enum ButtonVariant {
-  filled = "filled",
-  outlined = "outlined",
-  text = "text",
-}
+export type ButtonVariant = "filled" | "outlined" | "text";
 
-export enum ButtonShape {
-  rectangle = "rectangle",
-  square = "square",
-  avatar = "avatar",
-  shrink = "shrink", // removes all the button padding. Use this shape along with ButtonVariant.text. For other ButtonVariant rectangle shape is applied
-}
+export type ButtonShape = "rectangle" | "square" | "avatar" | "shrink";
 
 export interface ButtonProps extends ButtonVariantProps {
   variant: ButtonVariant;

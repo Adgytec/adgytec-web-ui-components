@@ -1,14 +1,13 @@
 import type { ReactElement } from "react";
 
-export enum ColorTheme {
-  primary = "primary",
-  primaryVariant = "primary-variant",
-  secondary = "secondary",
-  tertiary = "tertiary",
-  error = "error",
-  inverseSurface = "inverse-surface",
-  success = "success",
-}
+export type ColorTheme =
+  | "primary"
+  | "primary-variant"
+  | "secondary"
+  | "tertiary"
+  | "error"
+  | "inverse-surface"
+  | "success";
 
 export type OnPressHandler = () => void;
 
@@ -73,7 +72,4 @@ export type HierarchyItemType =
   | HierarchyItemsubItems
   | HierarchySeparator;
 
-export enum ComponentStyle {
-  normal = "normal",
-  glass = "glass",
-}
+export type ComponentStyle = "normal" | "glass";

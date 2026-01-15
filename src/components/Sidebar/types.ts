@@ -3,19 +3,13 @@ import type { DialogRenderProps } from "react-aria-components";
 import { type ButtonVariantProps } from "@/components/Button/ButtonBase";
 import type { CardBackground } from "../Card/BaseCard";
 
-export enum SidebarPosition {
-  inlineStart = "inline-start",
-  inlineEnd = "inline-end",
-  blockStart = "block-start",
-  blockEnd = "block-end",
-}
+export type SidebarPosition =
+  | "inline-start"
+  | "inline-end"
+  | "block-start"
+  | "block-end";
 
-export enum SidebarSize {
-  full = "full",
-  threeQuarters = "three-quarters",
-  half = "half",
-  quarter = "quarter",
-}
+export type SidebarSize = "full" | "three-quarters" | "half" | "quarter";
 
 export interface SidebarProps {
   trigger: ReactElement<ButtonVariantProps>;
