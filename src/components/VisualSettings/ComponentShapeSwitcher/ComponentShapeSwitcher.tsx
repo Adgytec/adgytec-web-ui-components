@@ -6,11 +6,11 @@ import {
 } from "./types";
 import React, { useEffect } from "react";
 import { type Key } from "react-aria-components";
-import { ColorTheme } from "@adgytec/adgytec-web-ui-components";
+import { ColorTheme } from "@/utils/types";
 import {
   type ToggleButtonGroupItem,
   ToggleButtonGroup,
-} from "@adgytec/adgytec-web-ui-components/ToggleButtonGroup";
+} from "@/components/ToggleButtonGroup";
 
 export const ComponentShapeSwitcher: React.FC<ComponentShapeSwitcherProps> = ({
   ui = true,
