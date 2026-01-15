@@ -25,6 +25,11 @@ export default defineConfig({
     },
     cssCodeSplit: true,
     rollupOptions: {
+      input: {
+        index: "src/index.ts",
+        "styles/main": "src/styles/index-main.ts",
+        "styles/reset": "src/styles/index-reset.ts",
+      },
       output: {
         dir: "dist",
         preserveModules: true,
