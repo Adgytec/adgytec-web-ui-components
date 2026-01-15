@@ -26,7 +26,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "generate:index": "node src/scripts/generate-root-index.mjs",
+    "build": "npm run generate:index && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "release": "npm run build && npm publish --public"
