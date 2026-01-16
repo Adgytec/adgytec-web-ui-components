@@ -30,7 +30,8 @@
     "build": "npm run generate:index && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "release": "npm run build && npm publish --public"
+    "release": "npm run build && npm publish --public",
+    "test": "npm run build && npm pack"
   },
   "dependencies": {
     "lucide-react": "^0.562.0",
