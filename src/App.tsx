@@ -36,7 +36,7 @@ import {
 import "./styles/app.css";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
-import type { CardBackground } from "./components/Card/BaseCard";
+import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { VisualSettings } from "./components/VisualSettings/VisualSettings";
 
 // preview container
@@ -1236,7 +1236,7 @@ const ToggleButtonPreview = () => {
 };
 
 const CardPreview = () => {
-  const backgrounds: CardBackground[] = [
+  const backgrounds: SolidCardBackground[] = [
     "solid",
     "solid-high",
     "solid-highest",

@@ -9,6 +9,8 @@ export type CardBackground =
   | "solid-highest"
   | "gradient";
 
+export type SolidCardBackground = Exclude<CardBackground, "gradient">;
+
 export interface BaseCardProps extends React.HTMLAttributes<HTMLDivElement> {
   background?: CardBackground;
   componentStyle?: ComponentStyle;
@@ -23,5 +25,5 @@ export interface StyledSolidCardProps extends Omit<
   BaseCardProps,
   "background"
 > {
-  background?: Exclude<CardBackground, "gradient">;
+  background?: SolidCardBackground;
 }
