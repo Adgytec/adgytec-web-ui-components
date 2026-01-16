@@ -23,5 +23,5 @@ export interface StyledSolidCardProps extends Omit<
   BaseCardProps,
   "background"
 > {
-  background?: CardBackground;
+  background?: Exclude<CardBackground, "gradient">;
 }
