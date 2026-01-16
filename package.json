@@ -13,10 +13,10 @@
       "types": "./dist/index.d.ts"
     },
     "./styles/main": {
-      "import": "./dist/styles/index-main.js"
+      "import": "./dist/styles/main.js"
     },
     "./styles/reset": {
-      "import": "./dist/styles/index-reset.js"
+      "import": "./dist/styles/reset.js"
     }
   },
   "module": "./dist/index.js",

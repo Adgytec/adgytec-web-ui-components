@@ -1,15 +1,24 @@
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
+import { libInjectCss } from "vite-plugin-lib-inject-css";
 import dts from "vite-plugin-dts";
+import optimizeLocales from "@react-aria/optimize-locales-plugin";
 
 export default defineConfig({
   plugins: [
     react(),
+    libInjectCss(),
     dts({
       tsconfigPath: "tsconfig.app.json",
       insertTypesEntry: true,
     }),
+    {
+      ...optimizeLocales.vite({
+        locales: ["en-US", "fr-FR"],
+      }),
+      enforce: "pre",
+    },
   ],
   resolve: {
     alias: {
