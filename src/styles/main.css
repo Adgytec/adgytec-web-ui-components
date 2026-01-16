@@ -78,6 +78,7 @@
   --color-on-primary-variant-container: rgb(249 226 135);
 }
 
+:root,
 [data-theme="light"] {
   --color-primary: rgb(0 103 125);
   --color-surface-tint: rgb(0 103 125);
