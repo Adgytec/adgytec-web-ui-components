@@ -34,8 +34,8 @@ export default defineConfig({
         dir: "dist",
         preserveModules: true,
         preserveModulesRoot: "src",
-        entryFileNames: "[name]-[format]-[hash:10].js",
-        assetFileNames: "assets/[name]-[hash:10].[ext]",
+        entryFileNames: "[name].js",
+        assetFileNames: "assets/[name].[ext]",
       },
       external: [
         "react",
