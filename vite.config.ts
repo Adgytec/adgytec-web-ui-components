@@ -44,11 +44,12 @@ export default defineConfig({
         preserveModules: true,
         preserveModulesRoot: "src",
         entryFileNames: "[name].js",
-        assetFileNames: "assets/[name].[ext]",
+        assetFileNames: "[name].[ext]",
       },
       external: [
         "react",
         "react-dom",
+        "react/jsx-runtime",
         "react-aria-components",
         "lucide-react",
         "usehooks-ts",
