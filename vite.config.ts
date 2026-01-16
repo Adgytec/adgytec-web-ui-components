@@ -37,30 +37,18 @@ export default defineConfig({
     },
     cssCodeSplit: true,
     rollupOptions: {
-      input: Object.fromEntries([
+      input: Object.fromEntries(
         // 1️⃣ Auto-discovered entries (components + root index)
-        ...globSync(["src/components/**/index.ts", "src/index.ts"]).map(
-          (file) => [
-            // entry name: remove `src/` and extension
-            path.relative(
-              "src",
-              file.slice(0, file.length - path.extname(file).length),
-            ),
-            // absolute file path
-            fileURLToPath(new URL(file, import.meta.url)),
-          ],
-        ),
-
-        // 2️⃣ Explicit style entries
-        [
-          "styles/main",
-          fileURLToPath(new URL("src/styles/main.ts", import.meta.url)),
-        ],
-        [
-          "styles/reset",
-          fileURLToPath(new URL("src/styles/reset.ts", import.meta.url)),
-        ],
-      ]),
+        globSync(["src/components/**/index.ts", "src/index.ts"]).map((file) => [
+          // entry name: remove `src/` and extension
+          path.relative(
+            "src",
+            file.slice(0, file.length - path.extname(file).length),
+          ),
+          // absolute file path
+          fileURLToPath(new URL(file, import.meta.url)),
+        ]),
+      ),
       output: {
         entryFileNames: "[name].js",
         assetFileNames: "assets/[name].[ext]",
