@@ -6,10 +6,10 @@ import {
   Dialog,
 } from "react-aria-components";
 import styles from "./modalBase.module.css";
-import { BaseCard, CardBackground } from "@/components/Card/BaseCard";
+import { BaseCard } from "@/components/Card/BaseCard";
 
 export const ModalBase = ({
-  cardBackground = CardBackground.gradient,
+  cardBackground = "gradient",
   trigger,
   modalOverlayProps,
   dialogTriggerProps,

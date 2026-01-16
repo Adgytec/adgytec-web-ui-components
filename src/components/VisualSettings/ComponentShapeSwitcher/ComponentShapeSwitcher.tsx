@@ -1,33 +1,32 @@
 import { useLocalStorage } from "usehooks-ts";
 import {
   ComponentShapeKey,
-  ComponentShapes,
+  type ComponentShapes,
   type ComponentShapeSwitcherProps,
 } from "./types";
 import React, { useEffect } from "react";
 import { type Key } from "react-aria-components";
-import { ColorTheme } from "@adgytec/adgytec-web-ui-components";
 import {
   type ToggleButtonGroupItem,
   ToggleButtonGroup,
-} from "@adgytec/adgytec-web-ui-components/ToggleButtonGroup";
+} from "@/components/ToggleButtonGroup";
 
 export const ComponentShapeSwitcher: React.FC<ComponentShapeSwitcherProps> = ({
   ui = true,
-  theme = ColorTheme.primary,
+  theme = "primary",
 }) => {
-  const [selectedShape, setShape, _] = useLocalStorage(
+  const [selectedShape, setShape, _] = useLocalStorage<ComponentShapes>(
     ComponentShapeKey,
-    ComponentShapes.sharp,
+    "sharp",
   );
 
   const shapeItems: ToggleButtonGroupItem[] = [
     {
-      id: ComponentShapes.sharp,
+      id: "sharp",
       value: "Sharp",
     },
     {
-      id: ComponentShapes.round,
+      id: "round",
       value: "Round",
     },
   ];

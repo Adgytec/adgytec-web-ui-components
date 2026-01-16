@@ -1,11 +1,9 @@
 import { TextButton } from "@/components/Button/TextButton";
-import { ButtonShape } from "@/components/Button/ButtonBase/types";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { Tree } from "@/components/Tree/Tree";
 import type { NavigationSidebarProps } from "./types";
 import { Menu, X } from "lucide-react";
 import styles from "./navigationSidebar.module.css";
-import { ColorTheme } from "@/utils/types";
 
 export const NavigationSidebar = ({
   items,
@@ -15,7 +13,7 @@ export const NavigationSidebar = ({
     <Sidebar
       {...sidebarProps}
       trigger={
-        <TextButton shape={ButtonShape.square}>
+        <TextButton shape="square">
           <Menu />
         </TextButton>
       }
@@ -26,8 +24,8 @@ export const NavigationSidebar = ({
             <div className={styles["close"]}>
               <TextButton
                 onPress={close}
-                shape={ButtonShape.square}
-                theme={ColorTheme.inverseSurface}
+                shape="square"
+                theme="inverse-surface"
               >
                 <X />
               </TextButton>

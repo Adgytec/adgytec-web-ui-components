@@ -1,14 +1,13 @@
 import { ModalBase } from "@/components/Modal/ModalBase/ModalBase";
-import { ModalActionPlacement, type ModalActionProps } from "./types";
+import type { ModalActionProps } from "./types";
 import styles from "./modalAction.module.css";
 import { TextButton } from "@/components/Button/TextButton";
-import { ColorTheme } from "@/utils/types";
 
 export const ModalAction = ({
   trigger,
   header,
   children,
-  actionPlacement = ModalActionPlacement.start,
+  actionPlacement = "start",
   modalAction,
   closeText,
   isDismissable,
@@ -38,7 +37,7 @@ export const ModalAction = ({
             >
               {isActionFunction ? modalAction({ close }) : modalAction}
 
-              <TextButton onPress={close} theme={ColorTheme.inverseSurface}>
+              <TextButton onPress={close} theme="inverse-surface">
                 {closeText}
               </TextButton>
             </div>

@@ -1,2 +1,2 @@
 export * from "./ThemeSwitcher";
-export * from "./types";
+export type * from "./types";
