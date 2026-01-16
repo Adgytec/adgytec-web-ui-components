@@ -5,12 +5,11 @@ import {
   OverlayArrow,
 } from "react-aria-components";
 import styles from "./tooltip.module.css";
-import { ColorTheme } from "@/utils/types";
 
 export const Tooltip = ({
   children,
   description,
-  theme = ColorTheme.inverseSurface,
+  theme = "inverse-surface",
   delay = 250,
   closeDelay = 150,
 }: TooltipProps) => {

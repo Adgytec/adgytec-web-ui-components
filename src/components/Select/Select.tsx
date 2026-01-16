@@ -1,9 +1,6 @@
 import { FilledButton } from "@/components/Button/FilledButton";
 import styles from "./select.module.css";
-import {
-  ButtonVariant,
-  type ButtonVariantProps,
-} from "@/components/Button/ButtonBase/types.ts";
+import type { ButtonVariantProps } from "@/components/Button/ButtonBase/types.ts";
 import type { SelectProps } from "./types";
 import {
   Select as UnstyledSelect,
@@ -17,21 +14,20 @@ import { ChevronsUpDown, Check } from "lucide-react";
 import type { ComponentType } from "react";
 import { OutlinedButton } from "@/components/Button/OutlinedButton";
 import { TextButton } from "@/components/Button/TextButton";
-import { ColorTheme } from "@/utils/types";
 import { Tooltip } from "@/components/Tooltip/Tooltip";
 import { Label } from "@/components/Form/Label/Label.tsx";
 import { FieldError } from "@/components/Form/FieldError/FieldError.tsx";
-import { BaseCard, CardBackground } from "../Card/BaseCard";
+import { BaseCard } from "../Card/BaseCard";
 
 export const Select = ({
   options,
-  cardBackground = CardBackground.gradient,
-  triggerTheme = ColorTheme.inverseSurface,
+  cardBackground = "gradient",
+  triggerTheme = "inverse-surface",
   label,
   name,
   disabled,
   isRequired,
-  triggerVariant = ButtonVariant.filled,
+  triggerVariant = "filled",
   description,
   placeholder,
   selectedKey,
@@ -39,13 +35,13 @@ export const Select = ({
 }: SelectProps) => {
   let TriggerVariant: ComponentType<ButtonVariantProps>;
   switch (triggerVariant) {
-    case ButtonVariant.filled:
+    case "filled":
       TriggerVariant = FilledButton;
       break;
-    case ButtonVariant.outlined:
+    case "outlined":
       TriggerVariant = OutlinedButton;
       break;
-    case ButtonVariant.text:
+    case "text":
       TriggerVariant = TextButton;
       break;
     default:

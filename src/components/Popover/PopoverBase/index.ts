@@ -1,2 +1,2 @@
 export * from "./Popover";
-export * from "./types";
+export type * from "./types";

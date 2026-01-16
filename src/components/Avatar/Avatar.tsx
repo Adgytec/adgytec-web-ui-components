@@ -1,11 +1,5 @@
-import {
-  AvatarSize,
-  AvatarType,
-  type AvatarBaseProps,
-  type AvatarProps,
-} from "./types";
+import type { AvatarBaseProps, AvatarProps } from "./types";
 import styles from "./avatar.module.css";
-import { ColorTheme } from "@/utils/types";
 
 const AvatarBase = ({ children, size, type, theme }: AvatarBaseProps) => {
   return (
@@ -20,20 +14,20 @@ const AvatarBase = ({ children, size, type, theme }: AvatarBaseProps) => {
 export const Avatar = ({
   src,
   children,
-  size = AvatarSize.normal,
+  size = "normal",
   label,
-  theme = ColorTheme.primary,
+  theme = "primary",
 }: AvatarProps) => {
   if (children) {
     return (
-      <AvatarBase type={AvatarType.node} size={size} theme={theme}>
+      <AvatarBase type="node" size={size} theme={theme}>
         {children}
       </AvatarBase>
     );
   }
 
   return (
-    <AvatarBase size={size} type={AvatarType.image} theme={theme}>
+    <AvatarBase size={size} type="image" theme={theme}>
       <img src={src} alt={label} />
     </AvatarBase>
   );

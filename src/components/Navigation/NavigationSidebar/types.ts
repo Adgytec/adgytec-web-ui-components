@@ -1,5 +1,5 @@
 import type { HierarchyItemType } from "@/utils/types";
-import { SidebarPosition, SidebarSize } from "@/components/Sidebar/types";
+import type { SidebarPosition, SidebarSize } from "@/components/Sidebar/types";
 
 export interface NavigationSidebarProps {
   items: HierarchyItemType[];

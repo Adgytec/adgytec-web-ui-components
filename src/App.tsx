@@ -1,27 +1,23 @@
 import { Fragment, useState, type ReactNode } from "react";
-import { ColorTheme, type HierarchyItemType } from "./utils/types";
+import { type ColorTheme, type HierarchyItemType } from "./utils/types";
 import { FilledButton } from "./components/Button/FilledButton";
 import { OutlinedButton } from "./components/Button/OutlinedButton";
 import { TextButton } from "./components/Button/TextButton";
-import {
-  ButtonShape,
-  ButtonVariant,
-} from "@/components/Button/ButtonBase/types";
+import type { ButtonVariant } from "@/components/Button/ButtonBase/types";
 import { Link } from "@/components/Link/LinkBase";
 import { FilledButtonLink } from "./components/Link/FilledButtonLink";
 import { OutlinedButtonLink } from "./components/Link/OutlinedButtonLink";
 import type { SelectOptions } from "./components/Select/types";
 import { Select } from "./components/Select/Select";
-import { AvatarSize } from "./components/Avatar/types";
+import type { AvatarSize } from "./components/Avatar/types";
 import { Avatar } from "./components/Avatar/Avatar";
 import { Copy } from "lucide-react";
 import { ModalBase } from "./components/Modal/ModalBase/ModalBase";
 import { ModalAction } from "./components/Modal/ModalAction/ModalAction";
-import { ModalActionPlacement } from "./components/Modal/ModalAction/types";
 import { MenuButton } from "./components/Menu/MenuButton";
 import { MenuLabel } from "./components/Menu/MenuLabel";
 import { Tooltip } from "./components/Tooltip/Tooltip";
-import { SidebarPosition, SidebarSize } from "./components/Sidebar/types";
+import type { SidebarPosition, SidebarSize } from "./components/Sidebar/types";
 import { Sidebar } from "./components/Sidebar/Sidebar";
 import { Tree } from "./components/Tree/Tree";
 import { NavigationSidebar } from "./components/Navigation/NavigationSidebar/NavigationSidebar";
@@ -40,10 +36,7 @@ import {
 import "./styles/app.css";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
-import {
-  CardBackground,
-  type SolidCardBackground,
-} from "./components/Card/BaseCard";
+import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { VisualSettings } from "./components/VisualSettings/VisualSettings";
 
 // preview container
@@ -60,14 +53,14 @@ const PreviewContainer = (props: { label: string; children: ReactNode }) => {
 
 // button component preview
 const ButtonPreview = () => {
-  const buttonTheme = [
-    ColorTheme.primary,
-    ColorTheme.primaryVariant,
-    ColorTheme.secondary,
-    ColorTheme.tertiary,
-    ColorTheme.error,
-    ColorTheme.inverseSurface,
-    ColorTheme.success,
+  const buttonTheme: ColorTheme[] = [
+    "primary",
+    "primary-variant",
+    "secondary",
+    "tertiary",
+    "error",
+    "inverse-surface",
+    "success",
   ];
 
   const buttonElements = [
@@ -125,7 +118,7 @@ const ButtonPreview = () => {
                       onPress={onPress}
                       theme={theme}
                       description={"This button is shrinked"}
-                      shape={ButtonShape.shrink}
+                      shape="shrink"
                     >
                       {ButtonElement.label}
                     </ButtonElement.element>
@@ -134,7 +127,7 @@ const ButtonPreview = () => {
                   <ButtonElement.element
                     theme={theme}
                     onPress={onPress}
-                    shape={ButtonShape.square}
+                    shape="square"
                     description="This is square button"
                   >
                     <Copy />
@@ -143,7 +136,7 @@ const ButtonPreview = () => {
                   <ButtonElement.element
                     theme={theme}
                     onPress={onPress}
-                    shape={ButtonShape.avatar}
+                    shape="avatar"
                     description={descriptionAvatar}
                   >
                     <Avatar src={avatarSrc} />
@@ -152,7 +145,7 @@ const ButtonPreview = () => {
                   <ButtonElement.element
                     theme={theme}
                     onPress={onPress}
-                    shape={ButtonShape.avatar}
+                    shape="avatar"
                     description={descriptionAvatar}
                   >
                     <Avatar theme={theme}>RV</Avatar>
@@ -168,14 +161,14 @@ const ButtonPreview = () => {
 };
 
 const LinkPreview = () => {
-  const linkTheme = [
-    ColorTheme.primary,
-    ColorTheme.primaryVariant,
-    ColorTheme.secondary,
-    ColorTheme.tertiary,
-    ColorTheme.error,
-    ColorTheme.inverseSurface,
-    ColorTheme.success,
+  const linkTheme: ColorTheme[] = [
+    "primary",
+    "primary-variant",
+    "secondary",
+    "tertiary",
+    "error",
+    "inverse-surface",
+    "success",
   ];
 
   const linkElements = [
@@ -231,13 +224,17 @@ const LinkPreview = () => {
 };
 
 const SelectPreview = () => {
-  const buttonVariants = [
-    ButtonVariant.filled,
-    ButtonVariant.outlined,
-    ButtonVariant.text,
-  ];
+  const buttonVariants: ButtonVariant[] = ["filled", "outlined", "text"];
 
-  const colorThemes = Object.values(ColorTheme);
+  const colorThemes: ColorTheme[] = [
+    "primary",
+    "primary-variant",
+    "secondary",
+    "tertiary",
+    "error",
+    "inverse-surface",
+    "success",
+  ];
 
   const options: SelectOptions[] = [
     {
@@ -334,16 +331,16 @@ const AvatarPreview = () => {
 
   const avatarChildren = "RV";
 
-  const avatarSizes = [AvatarSize.small, AvatarSize.normal, AvatarSize.large];
+  const avatarSizes: AvatarSize[] = ["small", "normal", "large"];
 
-  const avatarTheme = [
-    ColorTheme.primary,
-    ColorTheme.primaryVariant,
-    ColorTheme.secondary,
-    ColorTheme.tertiary,
-    ColorTheme.error,
-    ColorTheme.inverseSurface,
-    ColorTheme.success,
+  const avatarTheme: ColorTheme[] = [
+    "primary",
+    "primary-variant",
+    "secondary",
+    "tertiary",
+    "error",
+    "inverse-surface",
+    "success",
   ];
 
   return (
@@ -373,10 +370,7 @@ const ModalPreview = () => {
       <div className="item-container">
         <ModalBase
           trigger={
-            <FilledButton
-              theme={ColorTheme.primary}
-              description="Open modal base"
-            >
+            <FilledButton theme="primary" description="Open modal base">
               Open modal
             </FilledButton>
           }
@@ -392,14 +386,14 @@ const ModalPreview = () => {
 };
 
 const ModalActionPreview = () => {
-  const modalTheme = [
-    ColorTheme.primary,
-    ColorTheme.primaryVariant,
-    ColorTheme.secondary,
-    ColorTheme.tertiary,
-    ColorTheme.error,
-    ColorTheme.inverseSurface,
-    ColorTheme.success,
+  const modalTheme: ColorTheme[] = [
+    "primary",
+    "primary-variant",
+    "secondary",
+    "tertiary",
+    "error",
+    "inverse-surface",
+    "success",
   ];
 
   const trigger = (theme: ColorTheme) => (
@@ -418,7 +412,7 @@ const ModalActionPreview = () => {
               trigger={trigger(theme)}
               key={theme}
               header="Simple Modal"
-              actionPlacement={ModalActionPlacement.end}
+              actionPlacement="end"
               modalAction={({ close }) => (
                 <FilledButton onPress={close} theme={theme}>
                   Okay
@@ -650,7 +644,7 @@ const MenuPreview = () => {
                       node: (
                         <OutlinedButton
                           onPress={() => alert("sign out pressed")}
-                          theme={ColorTheme.error}
+                          theme="error"
                         >
                           Sign Out
                         </OutlinedButton>
@@ -665,7 +659,7 @@ const MenuPreview = () => {
                   node: (
                     <OutlinedButton
                       onPress={() => alert("sign out pressed")}
-                      theme={ColorTheme.error}
+                      theme="error"
                     >
                       Sign Out
                     </OutlinedButton>
@@ -680,7 +674,7 @@ const MenuPreview = () => {
               node: (
                 <OutlinedButton
                   onPress={() => alert("sign out pressed")}
-                  theme={ColorTheme.error}
+                  theme="error"
                 >
                   Sign Out
                 </OutlinedButton>
@@ -695,7 +689,7 @@ const MenuPreview = () => {
           node: (
             <OutlinedButton
               onPress={() => alert("sign out pressed")}
-              theme={ColorTheme.error}
+              theme="error"
             >
               Sign Out
             </OutlinedButton>
@@ -708,10 +702,7 @@ const MenuPreview = () => {
       id: "8",
       type: "item-node",
       node: (
-        <OutlinedButton
-          onPress={() => alert("sign out pressed")}
-          theme={ColorTheme.error}
-        >
+        <OutlinedButton onPress={() => alert("sign out pressed")} theme="error">
           Sign Out
         </OutlinedButton>
       ),
@@ -726,7 +717,7 @@ const MenuPreview = () => {
         </MenuButton>
 
         <MenuLabel menuItems={menuItems} description="avatar menu">
-          <Avatar theme={ColorTheme.inverseSurface}>RV</Avatar>
+          <Avatar theme="inverse-surface">RV</Avatar>
         </MenuLabel>
       </div>
     </PreviewContainer>
@@ -734,34 +725,34 @@ const MenuPreview = () => {
 };
 
 const SidebarPreview = () => {
-  const sidebarPositions = [
-    SidebarPosition.inlineStart,
-    SidebarPosition.inlineEnd,
-    SidebarPosition.blockStart,
-    SidebarPosition.blockEnd,
+  const sidebarPositions: SidebarPosition[] = [
+    "inline-start",
+    "inline-end",
+    "block-start",
+    "block-end",
   ];
 
-  const sidebarSizes = [
-    SidebarSize.full,
-    SidebarSize.threeQuarters,
-    SidebarSize.half,
-    SidebarSize.quarter,
+  const sidebarSizes: SidebarSize[] = [
+    "full",
+    "three-quarters",
+    "half",
+    "quarter",
   ];
 
   const getTrigger = (size: SidebarSize) => {
-    let colorTheme;
+    let colorTheme: ColorTheme;
     switch (size) {
-      case SidebarSize.full:
-        colorTheme = ColorTheme.primary;
+      case "full":
+        colorTheme = "primary";
         break;
-      case SidebarSize.threeQuarters:
-        colorTheme = ColorTheme.primaryVariant;
+      case "three-quarters":
+        colorTheme = "primary-variant";
         break;
-      case SidebarSize.half:
-        colorTheme = ColorTheme.secondary;
+      case "half":
+        colorTheme = "secondary";
         break;
-      case SidebarSize.quarter:
-        colorTheme = ColorTheme.tertiary;
+      case "quarter":
+        colorTheme = "tertiary";
         break;
     }
 
@@ -861,7 +852,7 @@ const TreePreview = () => {
       type: "item-node",
       node: (
         <OutlinedButton
-          theme={ColorTheme.error}
+          theme="error"
           onPress={() => {
             alert("Signing out user");
           }}
@@ -939,7 +930,7 @@ const NavSidebarPreview = () => {
       type: "item-node",
       node: (
         <OutlinedButton
-          theme={ColorTheme.error}
+          theme="error"
           onPress={() => {
             alert("Signing out user");
           }}
@@ -1019,7 +1010,7 @@ const NavMenuPreview = () => {
       type: "item-node",
       node: (
         <OutlinedButton
-          theme={ColorTheme.error}
+          theme="error"
           onPress={() => {
             alert("Signing out user");
           }}
@@ -1097,7 +1088,7 @@ const NavResponsivePreview = () => {
       type: "item-node",
       node: (
         <OutlinedButton
-          theme={ColorTheme.error}
+          theme="error"
           onPress={() => {
             alert("Signing out user");
           }}
@@ -1189,14 +1180,14 @@ const ToggleButtonPreview = () => {
     },
   ];
 
-  const buttonTheme = [
-    ColorTheme.primary,
-    ColorTheme.primaryVariant,
-    ColorTheme.secondary,
-    ColorTheme.tertiary,
-    ColorTheme.error,
-    ColorTheme.inverseSurface,
-    ColorTheme.success,
+  const buttonTheme: ColorTheme[] = [
+    "primary",
+    "primary-variant",
+    "secondary",
+    "tertiary",
+    "error",
+    "inverse-surface",
+    "success",
   ];
 
   return (
@@ -1245,13 +1236,14 @@ const ToggleButtonPreview = () => {
 };
 
 const CardPreview = () => {
-  const solidBackgrounds = [
-    CardBackground.solid,
-    CardBackground.solidLow,
-    CardBackground.solidLowest,
-    CardBackground.solidHigh,
-    CardBackground.solidHighest,
+  const backgrounds: SolidCardBackground[] = [
+    "solid",
+    "solid-high",
+    "solid-highest",
+    "solid-low",
+    "solid-lowest",
   ];
+
   const imgsrc =
     "https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
@@ -1278,12 +1270,9 @@ const CardPreview = () => {
   return (
     <PreviewContainer label="Card Preview">
       <div className="item-container">
-        {solidBackgrounds.map((background, ind) => {
+        {backgrounds.map((background, ind) => {
           return (
-            <SolidCard
-              key={"solid" + ind}
-              background={background as SolidCardBackground}
-            >
+            <SolidCard key={"solid" + ind} background={background}>
               {cardChild}
             </SolidCard>
           );

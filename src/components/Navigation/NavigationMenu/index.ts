@@ -1,2 +1,2 @@
 export * from "./NavigationMenu";
-export * from "./types";
+export type * from "./types";

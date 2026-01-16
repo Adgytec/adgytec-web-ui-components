@@ -3,8 +3,6 @@ import styles from "./navigationMenu.module.css";
 import { MenuLabel } from "../../Menu/MenuLabel";
 import { Link } from "@/components/Link/LinkBase/Link";
 import { TextButton } from "../../Button/TextButton";
-import { ColorTheme } from "../../../utils/types";
-import { ButtonShape } from "@/components/Button/ButtonBase/types";
 import { ChevronDown } from "lucide-react";
 import { Fragment } from "react/jsx-runtime";
 
@@ -31,9 +29,7 @@ export const NavigationMenu = ({ items, className }: NavigationMenuProps) => {
                 href={item.href}
                 target={item.target}
                 underline={item.active}
-                theme={
-                  item.active ? ColorTheme.primary : ColorTheme.inverseSurface
-                }
+                theme={item.active ? "primary" : "inverse-surface"}
               >
                 {item.node}
               </Link>
@@ -43,8 +39,8 @@ export const NavigationMenu = ({ items, className }: NavigationMenuProps) => {
               <TextButton
                 key={item.id}
                 onPress={item.onPress}
-                theme={ColorTheme.inverseSurface}
-                shape={ButtonShape.shrink}
+                theme="inverse-surface"
+                shape="shrink"
               >
                 {item.node}
               </TextButton>

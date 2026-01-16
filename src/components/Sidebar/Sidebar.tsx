@@ -1,4 +1,4 @@
-import { SidebarPosition, SidebarSize, type SidebarProps } from "./types";
+import type { SidebarProps } from "./types";
 import {
   DialogTrigger,
   Modal,
@@ -6,16 +6,16 @@ import {
   Dialog,
 } from "react-aria-components";
 import styles from "./sidebar.module.css";
-import { BaseCard, CardBackground } from "../Card/BaseCard";
+import { BaseCard } from "../Card/BaseCard";
 
 export const Sidebar = ({
   children,
   trigger,
-  sidebarPosition = SidebarPosition.inlineStart,
-  sidebarSize = SidebarSize.full,
+  sidebarPosition = "inline-start",
+  sidebarSize = "full",
   isDismissable,
   isKeyboardDismissableDisabled,
-  cardBackground = CardBackground.gradient,
+  cardBackground = "gradient",
 }: SidebarProps) => {
   const isChildrenFunction = typeof children === "function";
 

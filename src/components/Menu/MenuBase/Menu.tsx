@@ -9,7 +9,7 @@ import {
 import styles from "./menu.module.css";
 import { Popover } from "@/components/Popover/PopoverBase";
 import { ChevronRight } from "lucide-react";
-import { BaseCard, CardBackground } from "@/components/Card/BaseCard";
+import { BaseCard } from "@/components/Card/BaseCard";
 
 const RenderMenu = ({ menuItem, cardBackground }: RenderMenuProps) => {
   if (menuItem.type === "separator") {
@@ -57,7 +57,7 @@ const RenderMenu = ({ menuItem, cardBackground }: RenderMenuProps) => {
 export const Menu = ({
   children,
   menuItems,
-  cardBackground = CardBackground.gradient,
+  cardBackground = "gradient",
 }: MenuProps) => {
   return (
     <MenuTrigger>

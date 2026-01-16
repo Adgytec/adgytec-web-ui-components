@@ -1,11 +1,10 @@
 import type React from "react";
-import { CardBackground, type BaseCardProps } from "./types";
+import type { BaseCardProps } from "./types";
 import styles from "./base-card.module.css";
-import { ComponentStyle } from "@/utils/types";
 
 export const BaseCard: React.FC<BaseCardProps> = ({
-  background = CardBackground.solid,
-  componentStyle = ComponentStyle.normal,
+  background = "solid",
+  componentStyle = "normal",
   children,
   ...props
 }) => {

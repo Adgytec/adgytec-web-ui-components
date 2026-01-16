@@ -1,2 +1,2 @@
 export * from "./Success";
-export * from "./types";
+export type * from "./types";

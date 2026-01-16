@@ -1,8 +1,11 @@
 {
   "name": "@adgytec/adgytec-web-ui-components",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "files": [
     "dist"
   ],
@@ -10,182 +13,23 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    },
-    "./styles/main.css": {
-      "import": "./dist/styles/main.css"
-    },
-    "./Avatar": {
-      "import": "./dist/components/Avatar/index.js",
-      "types": "./dist/components/Avatar/index.d.ts"
-    },
-    "./Button/ButtonBase": {
-      "import": "./dist/components/Button/ButtonBase/index.js",
-      "types": "./dist/components/Button/ButtonBase/index.d.ts"
-    },
-    "./Button/ButtonChild": {
-      "import": "./dist/components/Button/ButtonChild/index.js",
-      "types": "./dist/components/Button/ButtonChild/index.d.ts"
-    },
-    "./Button/FilledButton": {
-      "import": "./dist/components/Button/FilledButton/index.js",
-      "types": "./dist/components/Button/FilledButton/index.d.ts"
-    },
-    "./Button/OutlinedButton": {
-      "import": "./dist/components/Button/OutlinedButton/index.js",
-      "types": "./dist/components/Button/OutlinedButton/index.d.ts"
-    },
-    "./Button/TextButton": {
-      "import": "./dist/components/Button/TextButton/index.js",
-      "types": "./dist/components/Button/TextButton/index.d.ts"
-    },
-    "./Button/ToggleButton": {
-      "import": "./dist/components/Button/ToggleButton/index.js",
-      "types": "./dist/components/Button/ToggleButton/index.d.ts"
-    },
-    "./Card/BaseCard": {
-      "import": "./dist/components/Card/BaseCard/index.js",
-      "types": "./dist/components/Card/BaseCard/index.d.ts"
-    },
-    "./Card/GradientCard": {
-      "import": "./dist/components/Card/GradientCard/index.js",
-      "types": "./dist/components/Card/GradientCard/index.d.ts"
-    },
-    "./Card/SolidCard": {
-      "import": "./dist/components/Card/SolidCard/index.js",
-      "types": "./dist/components/Card/SolidCard/index.d.ts"
-    },
-    "./Disclosure/Disclosure": {
-      "import": "./dist/components/Disclosure/Disclosure/index.js",
-      "types": "./dist/components/Disclosure/Disclosure/index.d.ts"
-    },
-    "./Disclosure/DisclousureGroup": {
-      "import": "./dist/components/Disclosure/DisclousureGroup/index.js",
-      "types": "./dist/components/Disclosure/DisclousureGroup/index.d.ts"
-    },
-    "./Error": {
-      "import": "./dist/components/Error/index.js",
-      "types": "./dist/components/Error/index.d.ts"
-    },
-    "./Form/Form": {
-      "import": "./dist/components/Form/Form/index.js",
-      "types": "./dist/components/Form/Form/index.d.ts"
-    },
-    "./Form/Input": {
-      "import": "./dist/components/Form/Input/index.js",
-      "types": "./dist/components/Form/Input/index.d.ts"
-    },
-    "./Form/TextArea": {
-      "import": "./dist/components/Form/TextArea/index.js",
-      "types": "./dist/components/Form/TextArea/index.d.ts"
-    },
-    "./Link/FilledButtonLink": {
-      "import": "./dist/components/Link/FilledButtonLink/index.js",
-      "types": "./dist/components/Link/FilledButtonLink/index.d.ts"
-    },
-    "./Link/LinkBase": {
-      "import": "./dist/components/Link/LinkBase/index.js",
-      "types": "./dist/components/Link/LinkBase/index.d.ts"
-    },
-    "./Link/OutlinedButtonLink": {
-      "import": "./dist/components/Link/OutlinedButtonLink/index.js",
-      "types": "./dist/components/Link/OutlinedButtonLink/index.d.ts"
-    },
-    "./Loader": {
-      "import": "./dist/components/Loader/index.js",
-      "types": "./dist/components/Loader/index.d.ts"
-    },
-    "./Menu/MenuBase": {
-      "import": "./dist/components/Menu/MenuBase/index.js",
-      "types": "./dist/components/Menu/MenuBase/index.d.ts"
-    },
-    "./Menu/MenuButton": {
-      "import": "./dist/components/Menu/MenuButton/index.js",
-      "types": "./dist/components/Menu/MenuButton/index.d.ts"
-    },
-    "./Menu/MenuLabel": {
-      "import": "./dist/components/Menu/MenuLabel/index.js",
-      "types": "./dist/components/Menu/MenuLabel/index.d.ts"
-    },
-    "./Modal/ModalAction": {
-      "import": "./dist/components/Modal/ModalAction/index.js",
-      "types": "./dist/components/Modal/ModalAction/index.d.ts"
-    },
-    "./Modal/ModalBase": {
-      "import": "./dist/components/Modal/ModalBase/index.js",
-      "types": "./dist/components/Modal/ModalBase/index.d.ts"
-    },
-    "./Navigation/NavigationMenu": {
-      "import": "./dist/components/Navigation/NavigationMenu/index.js",
-      "types": "./dist/components/Navigation/NavigationMenu/index.d.ts"
-    },
-    "./Navigation/NavigationResponsive": {
-      "import": "./dist/components/Navigation/NavigationResponsive/index.js",
-      "types": "./dist/components/Navigation/NavigationResponsive/index.d.ts"
-    },
-    "./Navigation/NavigationSidebar": {
-      "import": "./dist/components/Navigation/NavigationSidebar/index.js",
-      "types": "./dist/components/Navigation/NavigationSidebar/index.d.ts"
-    },
-    "./Popover/PopoverBase": {
-      "import": "./dist/components/Popover/PopoverBase/index.js",
-      "types": "./dist/components/Popover/PopoverBase/index.d.ts"
-    },
-    "./Popover/PopoverDialog": {
-      "import": "./dist/components/Popover/PopoverDialog/index.js",
-      "types": "./dist/components/Popover/PopoverDialog/index.d.ts"
-    },
-    "./Select": {
-      "import": "./dist/components/Select/index.js",
-      "types": "./dist/components/Select/index.d.ts"
-    },
-    "./Sidebar": {
-      "import": "./dist/components/Sidebar/index.js",
-      "types": "./dist/components/Sidebar/index.d.ts"
-    },
-    "./Success": {
-      "import": "./dist/components/Success/index.js",
-      "types": "./dist/components/Success/index.d.ts"
-    },
-    "./ToggleButtonGroup": {
-      "import": "./dist/components/ToggleButtonGroup/index.js",
-      "types": "./dist/components/ToggleButtonGroup/index.d.ts"
-    },
-    "./Tooltip": {
-      "import": "./dist/components/Tooltip/index.js",
-      "types": "./dist/components/Tooltip/index.d.ts"
-    },
-    "./Tree": {
-      "import": "./dist/components/Tree/index.js",
-      "types": "./dist/components/Tree/index.d.ts"
-    },
-    "./VisualSettings/ComponentShapeSwitcher": {
-      "import": "./dist/components/VisualSettings/ComponentShapeSwitcher/index.js",
-      "types": "./dist/components/VisualSettings/ComponentShapeSwitcher/index.d.ts"
-    },
-    "./VisualSettings/ThemeSwitcher": {
-      "import": "./dist/components/VisualSettings/ThemeSwitcher/index.js",
-      "types": "./dist/components/VisualSettings/ThemeSwitcher/index.d.ts"
-    },
-    "./VisualSettings/VisualSettings": {
-      "import": "./dist/components/VisualSettings/VisualSettings/index.js",
-      "types": "./dist/components/VisualSettings/VisualSettings/index.d.ts"
     }
   },
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "dev": "vite",
-    "build": "npm run generate:exports && npm run add:exports && tsc -b && vite build",
+    "generate:index": "node src/scripts/generate-root-index.mjs",
+    "build": "npm run generate:index && tsc -b ./tsconfig.app.json && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "add:exports": "node ./src/scripts/add-exports.js",
-    "generate:exports": "node ./src/scripts/generate-exports.js",
-    "release": "npm run build && npm publish --public"
+    "release": "npm run build && npm publish --public",
+    "test": "npm run build && npm pack"
   },
-  "dependencies": {
+  "peerDependencies": {
     "lucide-react": "^0.562.0",
     "react": "^19.2.3",
     "react-aria-components": "^1.14.0",
@@ -206,6 +50,7 @@
     "eslint-plugin-react-refresh": "^0.4.26",
     "glob": "^13.0.0",
     "globals": "^17.0.0",
+    "lightningcss": "^1.30.2",
     "prettier": "^3.7.4",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.53.0",
