@@ -50,6 +50,7 @@ export default defineConfig({
         ]),
       ),
       output: {
+        chunkFileNames: "chunks/[name]",
         entryFileNames: "[name].js",
         assetFileNames: "assets/[name].[ext]",
       },

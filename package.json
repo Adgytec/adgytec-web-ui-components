@@ -1,7 +1,7 @@
 {
   "name": "@adgytec/adgytec-web-ui-components",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "sideEffects": [
     "**/*.css"
