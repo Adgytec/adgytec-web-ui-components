@@ -26,6 +26,7 @@
 }
 
 .panel {
+    font-size: var(--_panel-font-size);
     height: var(--disclosure-panel-height);
     transition: height 250ms;
 
@@ -35,5 +36,4 @@
     @media (prefers-reduced-motion: reduce) {
         transition: none;
     }
-    font-size: var(--_panel-font-size);
 }
