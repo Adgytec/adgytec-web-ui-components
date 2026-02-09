@@ -1,30 +1,43 @@
 .disclosure {
-  display: grid;
-  gap: 0.5rem;
+    display: grid;
+    gap: 0.25rem;
 
-  &[data-expanded] {
-    svg {
-      rotate: 90deg;
+    &[data-expanded] {
+        svg {
+            rotate: 90deg;
+        }
     }
-  }
 }
 
 .trigger {
-  font-size: var(--_trigger-font-size, 1.125rem);
+    font-size: var(--_trigger-font-size, 1.125rem);
 
-  [slot="trigger"] {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+    [slot="trigger"] {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
 
-  svg {
-    width: 0.875em;
+    svg {
+        width: 0.875em;
 
-    transition: rotate 250ms;
-  }
+        transition: rotate 250ms;
+    }
 }
 
 .panel {
-  font-size: var(--_panel-font-size);
+    font-size: var(--_panel-font-size);
+    height: var(--disclosure-panel-height);
+    transition: height 250ms;
+
+    overflow-block: clip;
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+
+    .panel-container {
+        padding-inline: 1.5rem;
+        padding-block: 0.5rem;
+    }
 }
