@@ -31,9 +31,13 @@
     transition: height 250ms;
 
     overflow-block: clip;
-    padding-inline: 1.5rem;
 
     @media (prefers-reduced-motion: reduce) {
         transition: none;
+    }
+
+    div {
+        padding-inline: 1.5rem;
+        padding-block: 0.5rem;
     }
 }
