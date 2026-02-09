@@ -1,6 +1,6 @@
 import type { DisclosureProps } from "./types";
 import {
-    Disclosure as UnstyledDisclousre,
+    Disclosure as UnstyledDisclosure,
     DisclosurePanel,
 } from "react-aria-components";
 import styles from "./disclosure.module.css";
@@ -9,7 +9,7 @@ import { TextButton } from "@/components/Button/TextButton";
 
 export const Disclosure = ({ heading, children, id }: DisclosureProps) => {
     return (
-        <UnstyledDisclousre className={styles["disclosure"]} id={id}>
+        <UnstyledDisclosure className={styles["disclosure"]} id={id}>
             <h2 className={styles["trigger"]}>
                 <TextButton slot="trigger" theme="inverse-surface">
                     <ChevronRight />
@@ -20,6 +20,6 @@ export const Disclosure = ({ heading, children, id }: DisclosureProps) => {
             <DisclosurePanel className={styles["panel"]}>
                 {children}
             </DisclosurePanel>
-        </UnstyledDisclousre>
+        </UnstyledDisclosure>
     );
 };
