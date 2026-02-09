@@ -1,6 +1,12 @@
-import type { AvatarBaseProps, AvatarProps } from "./types";
+import type { AvatarBaseProps, AvatarProps, AvatarSize } from "./types";
 import styles from "./avatar.module.css";
 import { Image } from "@/components/Image";
+
+const AVATAR_RENDER_SIZE: Record<AvatarSize, number> = {
+    small: 32,
+    normal: 48,
+    large: 64,
+};
 
 const AvatarBase = ({ children, size, type, theme }: AvatarBaseProps) => {
     return (
@@ -29,7 +35,7 @@ export const Avatar = ({
 
     return (
         <AvatarBase size={size} type="image" theme={theme}>
-            <Image {...image} />
+            <Image {...image} sizes={`${AVATAR_RENDER_SIZE[size]}px`} />
         </AvatarBase>
     );
 };
