@@ -22,23 +22,17 @@ export const ImageVariants: React.FC<ImageVariantProps> = ({
     variants,
     ...props
 }) => {
-    let src = "";
-
-    const availableVariants = VARIANT_PRIORITY.filter((key) => {
-        const val = variants[key];
-        const present = val && val.trim() !== "";
-
-        if (src === "" && present) {
-            src = val;
-        }
-
-        return present;
-    });
+    const availableVariants = VARIANT_PRIORITY.filter((key) =>
+        variants[key]?.trim()
+    );
 
     // All variants empty, use original
     if (availableVariants.length === 0) {
         return <img src={original} {...props} />;
     }
+
+    // get source
+    const src = variants[availableVariants[0]];
 
     // Build srcSet
     const srcSet = availableVariants
