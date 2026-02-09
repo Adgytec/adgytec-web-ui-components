@@ -18,7 +18,7 @@ export const Disclosure = ({ heading, children, id }: DisclosureProps) => {
             </h2>
 
             <DisclosurePanel className={styles["panel"]}>
-                <div>{children}</div>
+                <div className={styles["panel-container"]}>{children}</div>
             </DisclosurePanel>
         </UnstyledDisclosure>
     );

@@ -36,7 +36,7 @@
         transition: none;
     }
 
-    div {
+    .panel-container {
         padding-inline: 1.5rem;
         padding-block: 0.5rem;
     }
