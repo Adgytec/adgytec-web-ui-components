@@ -1,6 +1,6 @@
 .disclosure {
     display: grid;
-    gap: 0.5rem;
+    gap: 0.25rem;
 
     &[data-expanded] {
         svg {
@@ -28,8 +28,9 @@
 .panel {
     height: var(--disclosure-panel-height);
     transition: height 250ms;
-    overflow: clip;
-    padding-inline: 1.125em;
+
+    overflow-block: clip;
+    padding-inline: 1.5rem;
 
     @media (prefers-reduced-motion: reduce) {
         transition: none;
