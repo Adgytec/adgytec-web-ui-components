@@ -8,7 +8,6 @@ export type AvatarType = "image" | "node";
 
 interface AvatarRootProps {
     size?: AvatarSize;
-    label?: string;
     theme?: ColorTheme;
 }
 

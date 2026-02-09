@@ -364,8 +364,8 @@ const AvatarPreview = () => {
                             image={{
                                 type: "source",
                                 src: avatarSrc,
+                                alt: "dog-smile",
                             }}
-                            label="dog-smile"
                         />
 
                         {avatarTheme.map((theme) => {

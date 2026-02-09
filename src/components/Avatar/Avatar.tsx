@@ -17,7 +17,6 @@ export const Avatar = ({
     image,
     children,
     size = "normal",
-    label,
     theme = "primary",
 }: AvatarProps) => {
     if (type === "children") {
@@ -30,7 +29,7 @@ export const Avatar = ({
 
     return (
         <AvatarBase size={size} type="image" theme={theme}>
-            <Image {...image} alt={label} />
+            <Image {...image} />
         </AvatarBase>
     );
 };
