@@ -4,7 +4,7 @@ import { ImageSource } from "./ImageSource";
 import { ImageVariants } from "./ImageVariants";
 
 export const Image: React.FC<ImageProps> = (props) => {
-    if (props.type == "source") {
+    if (props.type === "source") {
         return <ImageSource {...props} />;
     }
 
