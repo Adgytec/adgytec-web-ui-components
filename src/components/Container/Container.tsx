@@ -6,5 +6,10 @@ export const Container: React.FC<ContainerProps> = ({
     className,
     ...props
 }) => {
-    return <div className={`${styles[varaint]} ${className}`} {...props} />;
+    return (
+        <div
+            className={` ${styles["container"]} ${styles[varaint]} ${className}`}
+            {...props}
+        />
+    );
 };
