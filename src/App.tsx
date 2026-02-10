@@ -38,6 +38,7 @@ import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { VisualSettings } from "./components/VisualSettings/VisualSettings";
+import { toast } from "./components/Toast";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -84,7 +85,15 @@ const ButtonPreview = () => {
     const avatarSrc =
         "https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
-    const onPress = () => {};
+    const onPress = () => {
+        toast({
+            manuallyDismissable: true,
+            heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            prefixIcon: <Copy />,
+            description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vulputate sollicitudin vulputate.",
+        });
+    };
 
     let descriptionAvatar = "This is a avatar button";
 
