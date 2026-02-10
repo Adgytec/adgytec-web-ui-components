@@ -69,5 +69,8 @@
     "type": "git",
     "url": "git+https://github.com/Adgytec/adgytec-web-ui-components.git"
   },
-  "homepage": "https://github.com/Adgytec/adgytec-web-ui-components/#/README.md"
+  "homepage": "https://github.com/Adgytec/adgytec-web-ui-components/#/README.md",
+  "dependencies": {
+    "sonner": "^2.0.7"
+  }
 }
