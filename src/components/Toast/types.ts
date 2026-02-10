@@ -5,6 +5,7 @@ type BaseToastProps = {
     background?: CardBackground;
     manualDismissable?: boolean;
     duration?: number;
+    toasterID?: string;
 };
 
 export interface DefaultToastProps extends BaseToastProps {
