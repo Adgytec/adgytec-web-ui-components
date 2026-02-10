@@ -1,0 +1,27 @@
+.container {
+    --_pi: min(5%, 1rem);
+    --_max-inline-size-df: 60rem;
+
+    inline-size: 100%;
+    margin-inline: auto;
+    container-type: inline-size;
+
+    max-inline-size: var(--_max-inline-size);
+    padding-inline: var(--_pi);
+}
+
+.default {
+    --_max-inline-size: var(--max-inline-size, var(--_max-inline-size-df));
+}
+
+.wide {
+    --_max-inline-size: var(
+        --max-inline-size-wide,
+        calc(var(--_max-inline-size-df) + 20rem)
+    );
+}
+
+.full {
+    --_max-inline-size: 100%;
+    --_pi: 0;
+}

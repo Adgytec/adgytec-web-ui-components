@@ -10,6 +10,7 @@ export * from "./components/Button/ToggleButton";
 export * from "./components/Card/BaseCard";
 export * from "./components/Card/GradientCard";
 export * from "./components/Card/SolidCard";
+export * from "./components/Container";
 export * from "./components/Disclosure/Disclosure";
 export * from "./components/Disclosure/DisclousureGroup";
 export * from "./components/Error";
