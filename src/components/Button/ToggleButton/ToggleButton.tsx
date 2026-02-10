@@ -4,33 +4,39 @@ import { useSplash } from "@/components/Splash/useSplash";
 import { Tooltip } from "@/components/Tooltip";
 import { Splash } from "@/components/Splash/Splash";
 import type {
-  ButtonShape,
-  ButtonVariant,
-  ToggleButtonProps,
+    ButtonShape,
+    ButtonVariant,
+    ToggleButtonProps,
 } from "@/components/Button/ButtonBase";
+import clsx from "clsx";
 
 export const ToggleButton = ({
-  id,
-  value,
-  description,
-  isDisabled,
-  theme = "primary",
+    id,
+    value,
+    description,
+    isDisabled,
+    theme = "primary",
 }: ToggleButtonProps) => {
-  const { coords, handlePress } = useSplash();
-  const buttonVariant: ButtonVariant = "outlined";
-  const buttonShape: ButtonShape = "rectangle";
+    const { coords, handlePress } = useSplash();
+    const buttonVariant: ButtonVariant = "outlined";
+    const buttonShape: ButtonShape = "rectangle";
 
-  return (
-    <Tooltip description={description}>
-      <UnstyledToggleButton
-        id={id}
-        onPress={handlePress}
-        className={`${styles["button"]} ${styles[theme]} ${styles[buttonVariant]} ${styles[buttonShape]}`}
-        isDisabled={isDisabled}
-      >
-        {coords && <Splash {...coords} />}
-        {value}
-      </UnstyledToggleButton>
-    </Tooltip>
-  );
+    return (
+        <Tooltip description={description}>
+            <UnstyledToggleButton
+                id={id}
+                onPress={handlePress}
+                className={clsx(
+                    styles["button"],
+                    styles[theme],
+                    styles[buttonVariant],
+                    styles[buttonShape]
+                )}
+                isDisabled={isDisabled}
+            >
+                {coords && <Splash {...coords} />}
+                {value}
+            </UnstyledToggleButton>
+        </Tooltip>
+    );
 };

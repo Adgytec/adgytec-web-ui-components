@@ -3,21 +3,22 @@ import { Menu } from "@/components/Menu/MenuBase/Menu";
 import { Pressable } from "react-aria-components";
 import { Tooltip } from "@/components/Tooltip/Tooltip";
 import styles from "./menu-label.module.css";
+import clsx from "clsx";
 
 export const MenuLabel = ({
-  children,
-  menuItems,
-  description,
+    children,
+    menuItems,
+    description,
 }: MenuLabelProps) => {
-  return (
-    <Menu menuItems={menuItems}>
-      <Tooltip description={description}>
-        <Pressable>
-          <span role="button" className={styles["pressable"]}>
-            {children}
-          </span>
-        </Pressable>
-      </Tooltip>
-    </Menu>
-  );
+    return (
+        <Menu menuItems={menuItems}>
+            <Tooltip description={description}>
+                <Pressable>
+                    <span role="button" className={clsx(styles["pressable"])}>
+                        {children}
+                    </span>
+                </Pressable>
+            </Tooltip>
+        </Menu>
+    );
 };

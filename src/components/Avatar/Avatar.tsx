@@ -1,6 +1,7 @@
 import type { AvatarBaseProps, AvatarProps, AvatarSize } from "./types";
 import styles from "./avatar.module.css";
 import { Image } from "@/components/Image";
+import clsx from "clsx";
 
 const AVATAR_RENDER_SIZE: Record<AvatarSize, number> = {
     small: 32,
@@ -11,7 +12,12 @@ const AVATAR_RENDER_SIZE: Record<AvatarSize, number> = {
 const AvatarBase = ({ children, size, type, theme }: AvatarBaseProps) => {
     return (
         <div
-            className={`${styles["avatar"]} ${styles[size]} ${styles[type]} ${styles[theme]}`}
+            className={clsx(
+                styles.avatar,
+                styles[size],
+                styles[type],
+                styles[theme]
+            )}
         >
             {children}
         </div>

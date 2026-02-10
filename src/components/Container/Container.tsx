@@ -1,14 +1,15 @@
 import type { ContainerProps } from "./types";
 import styles from "./container.module.css";
+import { clsx } from "clsx";
 
 export const Container: React.FC<ContainerProps> = ({
-    variant: varaint = "default",
+    variant = "default",
     className,
     ...props
 }) => {
     return (
         <div
-            className={` ${styles["container"]} ${styles[varaint]} ${className}`}
+            className={clsx(styles["container"], styles[variant], className)}
             {...props}
         />
     );

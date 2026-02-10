@@ -3,25 +3,26 @@ import { TextField, TextArea as AriaTextArea } from "react-aria-components";
 import { Label } from "@/components/Form/Label/Label";
 import { FieldError } from "@/components/Form/FieldError/FieldError";
 import styles from "./textArea.module.css";
+import clsx from "clsx";
 
 export const TextArea = ({
-  label,
-  textFieldProps,
-  textAreaProps,
-  labelProps,
-  fieldErrorProps,
+    label,
+    textFieldProps,
+    textAreaProps,
+    labelProps,
+    fieldErrorProps,
 }: TextAreaProps) => {
-  return (
-    <TextField
-      {...textFieldProps}
-      className={textFieldProps?.className ?? styles["textarea"]}
-    >
-      {label && <Label {...labelProps}>{label}</Label>}
-      <AriaTextArea
-        {...textAreaProps}
-        className={textAreaProps?.className ?? styles["editor"]}
-      />
-      <FieldError {...fieldErrorProps} />
-    </TextField>
-  );
+    return (
+        <TextField
+            {...textFieldProps}
+            className={clsx(styles["textarea"], textFieldProps?.className)}
+        >
+            {label && <Label {...labelProps}>{label}</Label>}
+            <AriaTextArea
+                {...textAreaProps}
+                className={clsx(styles["editor"], textFieldProps?.className)}
+            />
+            <FieldError {...fieldErrorProps} />
+        </TextField>
+    );
 };
