@@ -3,7 +3,8 @@ import type { CardBackground } from "../Card/BaseCard";
 
 export type ToastProps = {
     background?: CardBackground;
-    manuallyDismissable?: boolean;
+    dismissable?: boolean;
+    closeButton?: boolean;
     duration?: number;
     toasterID?: string;
     heading: string;

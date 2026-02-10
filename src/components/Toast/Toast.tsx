@@ -12,7 +12,7 @@ export function toast(details: ToastProps) {
         },
         {
             toasterId: details.toasterID,
-            dismissible: details.manuallyDismissable,
+            dismissible: details.dismissable,
             duration: details.duration,
         }
     );
@@ -24,6 +24,7 @@ const Toast: React.FC<ToastProps & { id: string | number }> = ({
     background,
     prefixIcon,
     description,
+    closeButton = true,
 }) => {
     return (
         <BaseCard background={background} className={styles["toast"]}>
@@ -37,15 +38,17 @@ const Toast: React.FC<ToastProps & { id: string | number }> = ({
                 )}
             </div>
 
-            <div>
-                <TextButton
-                    theme="inverse-surface"
-                    onPress={() => sonnerToast.dismiss(id)}
-                    shape="shrink"
-                >
-                    <X />
-                </TextButton>
-            </div>
+            {closeButton && (
+                <div>
+                    <TextButton
+                        theme="inverse-surface"
+                        onPress={() => sonnerToast.dismiss(id)}
+                        shape="shrink"
+                    >
+                        <X />
+                    </TextButton>
+                </div>
+            )}
         </BaseCard>
     );
 };
