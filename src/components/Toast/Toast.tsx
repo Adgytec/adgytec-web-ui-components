@@ -8,7 +8,7 @@ export function toast(details: ToastProps) {
         },
         {
             toasterId: details.toasterID,
-            dismissible: details.manualDismissable,
+            dismissible: details.manuallyDismissable,
             duration: details.duration,
         }
     );
