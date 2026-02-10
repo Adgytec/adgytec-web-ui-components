@@ -87,7 +87,7 @@ const ButtonPreview = () => {
 
     const onPress = () => {
         toast({
-            manuallyDismissable: true,
+            dismissable: true,
             heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             prefixIcon: <Copy />,
             description:
