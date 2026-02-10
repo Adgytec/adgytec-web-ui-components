@@ -38,6 +38,7 @@ export * from "./components/Toast";
 export * from "./components/ToggleButtonGroup";
 export * from "./components/Tooltip";
 export * from "./components/Tree";
+export * from "./components/Viewport";
 export * from "./components/VisualSettings/ComponentShapeSwitcher";
 export * from "./components/VisualSettings/ThemeSwitcher";
 export * from "./components/VisualSettings/VisualSettings";
