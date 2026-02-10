@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 import type { CardBackground } from "../Card/BaseCard";
 
 type BaseToastProps = {
@@ -17,7 +17,7 @@ export interface DefaultToastProps extends BaseToastProps {
 
 export interface CustomToastProps extends BaseToastProps {
     type: "custom";
-    children: ReactNode;
+    children: ReactElement;
 }
 
 export type ToastProps = DefaultToastProps | CustomToastProps;
