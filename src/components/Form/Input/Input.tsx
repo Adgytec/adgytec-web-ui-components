@@ -20,7 +20,7 @@ export const Input = ({
             {label && <Label {...labelProps}>{label}</Label>}
             <AriaInput
                 {...inputProps}
-                className={clsx(styles["editor"], textFieldProps?.className)}
+                className={clsx(styles["editor"], inputProps?.className)}
             />
             <FieldError {...fieldErrorProps} />
         </TextField>

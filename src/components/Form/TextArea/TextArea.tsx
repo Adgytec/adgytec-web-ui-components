@@ -20,7 +20,7 @@ export const TextArea = ({
             {label && <Label {...labelProps}>{label}</Label>}
             <AriaTextArea
                 {...textAreaProps}
-                className={clsx(styles["editor"], textFieldProps?.className)}
+                className={clsx(styles["editor"], textAreaProps?.className)}
             />
             <FieldError {...fieldErrorProps} />
         </TextField>
