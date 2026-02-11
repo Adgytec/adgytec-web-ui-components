@@ -14,7 +14,7 @@ import { clsx } from "clsx";
 
 const RenderMenu = ({ menuItem, cardBackground }: RenderMenuProps) => {
     if (menuItem.type === "separator") {
-        return <Separator className={`${styles["separator"]}`} />;
+        return <Separator className={clsx(styles["separator"])} />;
     }
 
     const hasSubmenu = !!menuItem.subItems?.length;
