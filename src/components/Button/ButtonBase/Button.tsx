@@ -28,7 +28,6 @@ export const Button = ({
                 {...props}
                 className={clsx(
                     styles["button"],
-                    styles["button-link"],
                     styles[variant],
                     styles[theme],
                     styles[shape],
