@@ -88,7 +88,7 @@
     --_button-radius: var(--radius-button);
 }
 
-.icon {
+.square-shrink {
     --_button-padding-inline: 0.375em;
     --_button-padding-block: 0.375em;
 
