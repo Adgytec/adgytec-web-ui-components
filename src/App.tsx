@@ -39,7 +39,6 @@ import { SolidCard } from "./components/Card/SolidCard";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { VisualSettings } from "./components/VisualSettings/VisualSettings";
 import { toast } from "./components/Toast";
-import { th } from "zod/locales";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
