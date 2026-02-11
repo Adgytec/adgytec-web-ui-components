@@ -46,7 +46,7 @@ const Toast: React.FC<ToastProps & { id: string | number }> = ({
                     <TextButton
                         theme="inverse-surface"
                         onPress={() => sonnerToast.dismiss(id)}
-                        shape="shrink"
+                        shape="square-shrink"
                     >
                         <X />
                     </TextButton>
