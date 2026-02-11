@@ -9,7 +9,7 @@ import { clsx } from "clsx";
 export const Button = ({
     variant,
     theme = "primary",
-    shape = "rectangle",
+    shape = "default",
     description,
     children,
     ...props
@@ -19,7 +19,7 @@ export const Button = ({
 
     // set default shape when unintended value is provided
     if (shape === "shrink" && variant !== "text") {
-        shape = "rectangle";
+        shape = "default";
     }
 
     return (

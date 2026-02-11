@@ -19,7 +19,7 @@ export const ToggleButton = ({
 }: ToggleButtonProps) => {
     const { coords, handlePress } = useSplash();
     const buttonVariant: ButtonVariant = "outlined";
-    const buttonShape: ButtonShape = "rectangle";
+    const buttonShape: ButtonShape = "default";
 
     return (
         <Tooltip description={description}>

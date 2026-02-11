@@ -14,7 +14,7 @@ export const ButtonLink = ({
     children,
     ...props
 }: ButtonLinkProps) => {
-    const buttonShape: ButtonShape = "rectangle";
+    const buttonShape: ButtonShape = "default";
     const { coords, handlePress } = useSplash(props.onPress);
     const isChildFunc = typeof children === "function";
 

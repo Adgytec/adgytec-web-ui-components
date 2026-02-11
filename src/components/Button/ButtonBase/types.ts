@@ -7,7 +7,12 @@ import type {
 
 export type ButtonVariant = "filled" | "outlined" | "text";
 
-export type ButtonShape = "rectangle" | "square" | "avatar" | "shrink";
+export type ButtonShape =
+    | "default"
+    | "square"
+    | "square-shrink"
+    | "avatar"
+    | "shrink";
 
 export interface ButtonProps extends ButtonVariantProps {
     variant: ButtonVariant;
