@@ -4,6 +4,7 @@ import type { ToastProps } from "./types";
 import { toast as sonnerToast } from "sonner";
 import { X } from "lucide-react";
 import styles from "./toast.module.css";
+import { clsx } from "clsx";
 
 export function toast(details: ToastProps) {
     return sonnerToast.custom(
@@ -27,14 +28,16 @@ const Toast: React.FC<ToastProps & { id: string | number }> = ({
     closeButton = true,
 }) => {
     return (
-        <BaseCard background={background} className={styles["toast"]}>
-            {prefixIcon && <div className={styles["prefix"]}>{prefixIcon}</div>}
+        <BaseCard background={background} className={clsx(styles["toast"])}>
+            {prefixIcon && (
+                <div className={clsx(styles["prefix"])}>{prefixIcon}</div>
+            )}
 
-            <div className={styles["content"]}>
-                <h3 className={styles["heading"]}>{heading}</h3>
+            <div className={clsx(styles["content"])}>
+                <h3 className={clsx(styles["heading"])}>{heading}</h3>
 
                 {description && (
-                    <p className={styles["description"]}>{description}</p>
+                    <p className={clsx(styles["description"])}>{description}</p>
                 )}
             </div>
 

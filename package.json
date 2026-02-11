@@ -34,9 +34,10 @@
         "react": "^19.2.3",
         "react-aria-components": "^1.14.0",
         "react-dom": "^19.2.3",
+        "sonner": "^2.0.7",
         "usehooks-ts": "^3.1.1",
         "zod": "^4.3.5",
-        "sonner": "^2.0.7"
+        "clsx": "^2.1.1"
     },
     "devDependencies": {
         "@eslint/js": "^9.39.2",

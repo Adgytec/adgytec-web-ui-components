@@ -68,6 +68,7 @@ export default defineConfig({
                 "usehooks-ts",
                 "zod",
                 "sonner",
+                "clsx",
             ],
         },
     },

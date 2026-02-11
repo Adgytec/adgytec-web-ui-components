@@ -8,57 +8,61 @@ import styles from "./visual-settings.module.css";
 import type React from "react";
 import type { VisualSettingsProps } from "./types";
 import type { ColorTheme } from "@/utils/types";
+import clsx from "clsx";
 
 export const VisualSettings: React.FC<VisualSettingsProps> = ({
-  ui = true,
+    ui = true,
 }) => {
-  if (!ui) {
+    if (!ui) {
+        return (
+            <>
+                <ThemeSwitcher ui={false} />
+                <ComponentShapeSwitcher ui={false} />
+            </>
+        );
+    }
+
+    const visualSettingsItems = [
+        {
+            Component: ThemeSwitcher,
+            heading: "Personalize Color Theme",
+            description: "Adjust the app's overall color scheme.",
+        },
+        {
+            Component: ComponentShapeSwitcher,
+            heading: "Edge Style",
+            description: "Toggle between rounded and sharp component edges.",
+        },
+    ];
+
+    const itemTheme: ColorTheme = "inverse-surface";
+
     return (
-      <>
-        <ThemeSwitcher ui={false} />
-        <ComponentShapeSwitcher ui={false} />
-      </>
-    );
-  }
-
-  const visualSettingsItems = [
-    {
-      Component: ThemeSwitcher,
-      heading: "Personalize Color Theme",
-      description: "Adjust the app's overall color scheme.",
-    },
-    {
-      Component: ComponentShapeSwitcher,
-      heading: "Edge Style",
-      description: "Toggle between rounded and sharp component edges.",
-    },
-  ];
-
-  const itemTheme: ColorTheme = "inverse-surface";
-
-  return (
-    <PopoverDialog
-      trigger={
-        <TextButton
-          shape="square"
-          description="Visual Settings"
-          theme={itemTheme}
+        <PopoverDialog
+            trigger={
+                <TextButton
+                    shape="square"
+                    description="Visual Settings"
+                    theme={itemTheme}
+                >
+                    <Settings />
+                </TextButton>
+            }
         >
-          <Settings />
-        </TextButton>
-      }
-    >
-      <SolidCard className={styles["visual-settings"]}>
-        {visualSettingsItems.map((visualItem) => (
-          <div className={styles["settings-item"]} key={visualItem.heading}>
-            <div>
-              <h3 data-heading="true">{visualItem.heading}</h3>
-              <p>{visualItem.description}</p>
-            </div>
-            <visualItem.Component theme={itemTheme} />
-          </div>
-        ))}
-      </SolidCard>
-    </PopoverDialog>
-  );
+            <SolidCard className={clsx(styles["visual-settings"])}>
+                {visualSettingsItems.map((visualItem) => (
+                    <div
+                        className={clsx(styles["settings-item"])}
+                        key={visualItem.heading}
+                    >
+                        <div>
+                            <h3 data-heading="true">{visualItem.heading}</h3>
+                            <p>{visualItem.description}</p>
+                        </div>
+                        <visualItem.Component theme={itemTheme} />
+                    </div>
+                ))}
+            </SolidCard>
+        </PopoverDialog>
+    );
 };
