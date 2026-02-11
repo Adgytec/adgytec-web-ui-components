@@ -17,11 +17,10 @@ export const ButtonChild = ({ buttonState, value }: ButtonChildProps) => {
     let child: ReactNode;
     switch (buttonState) {
         case "enabled":
-            child = enabled;
-            break;
+            return enabled;
+
         case "disabled":
-            child = disabled;
-            break;
+            return disabled;
 
         case "pending":
             child = (
