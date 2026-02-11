@@ -39,6 +39,7 @@ import { SolidCard } from "./components/Card/SolidCard";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { VisualSettings } from "./components/VisualSettings/VisualSettings";
 import { toast } from "./components/Toast";
+import { th } from "zod/locales";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1164,12 +1165,30 @@ const NavResponsivePreview = () => {
 };
 
 const DisclosurePreview = () => {
+    const buttonTheme: ColorTheme[] = [
+        "primary",
+        "primary-variant",
+        "secondary",
+        "tertiary",
+        "error",
+        "inverse-surface",
+        "success",
+    ];
+
     return (
         <PreviewContainer label="Disclosure">
-            <Disclosure heading="Hello click this to open">
-                A cake is a baked sweet food, traditionally made with flour,
-                sugar, and eggs, often with added fats and leavening agents.
-            </Disclosure>
+            {buttonTheme.map((theme) => (
+                <div className="item-container" key={theme}>
+                    <Disclosure
+                        heading="Hello click this to open"
+                        triggerTheme={theme}
+                    >
+                        A cake is a baked sweet food, traditionally made with
+                        flour, sugar, and eggs, often with added fats and
+                        leavening agents.
+                    </Disclosure>
+                </div>
+            ))}
         </PreviewContainer>
     );
 };
