@@ -1,7 +1,7 @@
 import styles from "./button.module.css";
 import { Link as UnstyledLink } from "react-aria-components";
 import { Tooltip } from "@/components/Tooltip/Tooltip.tsx";
-import type { ButtonLinkProps } from "./types.ts";
+import type { ButtonLinkProps, ButtonShape } from "./types.ts";
 import { Splash } from "@/components/Splash/Splash.tsx";
 import { useSplash } from "@/components/Splash/useSplash.ts";
 import clsx from "clsx";
@@ -9,12 +9,12 @@ import clsx from "clsx";
 export const ButtonLink = ({
     variant = "filled",
     theme = "primary",
-    shape = "rectangle",
     description,
     underline = true,
     children,
     ...props
 }: ButtonLinkProps) => {
+    const buttonShape: ButtonShape = "default";
     const { coords, handlePress } = useSplash(props.onPress);
     const isChildFunc = typeof children === "function";
 
@@ -29,7 +29,7 @@ export const ButtonLink = ({
                     styles["button-link"],
                     styles[variant],
                     styles[theme],
-                    styles[shape]
+                    styles[buttonShape]
                 )}
             >
                 {isChildFunc ? (

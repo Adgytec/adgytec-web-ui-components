@@ -9,7 +9,7 @@ import { clsx } from "clsx";
 export const Button = ({
     variant,
     theme = "primary",
-    shape = "rectangle",
+    shape = "default",
     description,
     children,
     ...props
@@ -17,18 +17,12 @@ export const Button = ({
     const { coords, handlePress } = useSplash(props.onPress);
     const isChildFunc = typeof children === "function";
 
-    // set default shape when unintended value is provided
-    if (shape === "shrink" && variant !== "text") {
-        shape = "rectangle";
-    }
-
     return (
         <Tooltip theme={theme} description={description}>
             <UnstyledButton
                 {...props}
                 className={clsx(
                     styles["button"],
-                    styles["button-link"],
                     styles[variant],
                     styles[theme],
                     styles[shape],
