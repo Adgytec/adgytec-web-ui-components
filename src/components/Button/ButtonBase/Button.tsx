@@ -9,13 +9,15 @@ import { clsx } from "clsx";
 export const Button = ({
     variant,
     theme = "primary",
-    shape = "default",
+    shape: initialShape = "default",
     description,
     children,
     ...props
 }: ButtonProps) => {
     const { coords, handlePress } = useSplash(props.onPress);
     const isChildFunc = typeof children === "function";
+
+    let shape = initialShape;
 
     // set default shape when unintended value is provided
     if (shape === "shrink" && variant !== "text") {
