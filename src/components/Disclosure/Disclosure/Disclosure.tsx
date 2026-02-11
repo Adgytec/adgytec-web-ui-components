@@ -8,11 +8,16 @@ import { ChevronRight } from "lucide-react";
 import { TextButton } from "@/components/Button/TextButton";
 import { clsx } from "clsx";
 
-export const Disclosure = ({ heading, children, id }: DisclosureProps) => {
+export const Disclosure = ({
+    heading,
+    children,
+    id,
+    triggerTheme = "inverse-surface",
+}: DisclosureProps) => {
     return (
         <UnstyledDisclosure className={clsx(styles["disclosure"])} id={id}>
             <h2 className={clsx(styles["trigger"])}>
-                <TextButton slot="trigger" theme="inverse-surface">
+                <TextButton slot="trigger" theme={triggerTheme}>
                     <ChevronRight />
                     {heading}
                 </TextButton>
