@@ -9,20 +9,13 @@ import { clsx } from "clsx";
 export const Button = ({
     variant,
     theme = "primary",
-    shape: initialShape = "default",
+    shape = "default",
     description,
     children,
     ...props
 }: ButtonProps) => {
     const { coords, handlePress } = useSplash(props.onPress);
     const isChildFunc = typeof children === "function";
-
-    let shape = initialShape;
-
-    // set default shape when unintended value is provided
-    if (shape === "shrink" && variant !== "text") {
-        shape = "default";
-    }
 
     return (
         <Tooltip theme={theme} description={description}>

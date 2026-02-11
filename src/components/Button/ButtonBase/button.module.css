@@ -67,8 +67,7 @@
     --_button-radius: var(--radius-circular);
 }
 
-.avatar,
-.square-shrink {
+.avatar {
     --_button-padding-inline: 0.125em;
     --_button-padding-block: 0.125em;
 
@@ -85,7 +84,16 @@
 .shrink {
     --_button-padding-inline: 0.25em;
     --_button-padding-block: 0.25em;
+
     --_button-radius: var(--radius-button);
+}
+
+.icon {
+    --_button-padding-inline: 0.375em;
+    --_button-padding-block: 0.375em;
+
+    aspect-ratio: 1/1;
+    --_button-radius: var(--radius-circular);
 }
 
 /* button theme */
