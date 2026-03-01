@@ -16,6 +16,11 @@
     }
 }
 
+.popover {
+    --_max-inline-size: var(--trigger-width);
+    --_min-inline-size: 15rem;
+}
+
 .trigger {
     display: flex;
     align-items: center;

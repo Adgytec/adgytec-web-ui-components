@@ -83,7 +83,7 @@ export const Select = ({
 
             <FieldError />
 
-            <Popover>
+            <Popover className={clsx(styles["popover"])}>
                 <BaseCard background={cardBackground}>
                     <ListBox
                         className={clsx(styles["options-list"])}

@@ -3,8 +3,10 @@
     border-radius: var(--radius);
     overflow: auto;
 
-    max-inline-size: min(90vi, 50rem);
-    min-inline-size: min(25vi, 10rem);
+    max-inline-size: min(90vi, var(--_max-inline-size, 50rem));
+
+    /* using 90vi in min-inline-size to not break readability in small screens */
+    min-inline-size: min(90vi, var(--_min-inline-size, 10rem));
 
     [data-card="true"] {
         --_card-padding-inline: 0.5em;
