@@ -1,100 +1,100 @@
 .tooltip {
-  font-size: 0.875rem;
-  text-align: center;
+    font-size: 0.875rem;
+    text-align: center;
 
-  background-color: var(--_tooltip-background);
-  color: var(--_tooltip-color);
+    background-color: var(--_tooltip-background);
+    color: var(--_tooltip-color);
 
-  padding-inline: 0.75em;
-  padding-block: 0.5em;
+    padding-inline: 0.75em;
+    padding-block: 0.5em;
 
-  outline: none;
-  max-width: 15rem;
+    outline: none;
+    max-width: 15rem;
 
-  margin: 0.625rem;
-  border-radius: var(--radius);
+    margin: 0.625rem;
+    border-radius: var(--radius);
 
-  box-shadow: var(--elevation-1);
+    box-shadow: var(--elevation-1);
 
-  transition:
-    transform 250ms,
-    opacity 250ms;
-  transform: translate3d(0, 0, 0);
+    transition:
+        transform 250ms,
+        opacity 250ms;
+    transform: translate3d(0, 0, 0);
 
-  &[data-placement="bottom"] {
-    --_origin: translateY(-0.25rem);
+    &[data-placement="bottom"] {
+        --_origin: translateY(-0.25rem);
 
-    .tooltip-arrow svg {
-      rotate: 180deg;
+        .tooltip-arrow svg {
+            rotate: 180deg;
+        }
     }
-  }
 
-  &[data-placement="top"] {
-    --_origin: translateY(0.25rem);
-  }
-
-  &[data-placement="right"] {
-    --_origin: translateX(-0.25rem);
-    .tooltip-arrow svg {
-      rotate: 90deg;
+    &[data-placement="top"] {
+        --_origin: translateY(0.25rem);
     }
-  }
 
-  &[data-placement="left"] {
-    --_origin: translateX(0.25rem);
-    .tooltip-arrow svg {
-      rotate: -90deg;
+    &[data-placement="right"] {
+        --_origin: translateX(-0.25rem);
+        .tooltip-arrow svg {
+            rotate: 90deg;
+        }
     }
-  }
 
-  &[data-entering],
-  &[data-exiting] {
-    transform: var(--_origin);
-    opacity: 0;
-  }
+    &[data-placement="left"] {
+        --_origin: translateX(0.25rem);
+        .tooltip-arrow svg {
+            rotate: -90deg;
+        }
+    }
+
+    &[data-entering],
+    &[data-exiting] {
+        transform: var(--_origin);
+        opacity: 0;
+    }
 }
 
 .tooltip-arrow {
-  svg {
-    display: block;
-    fill: var(--_tooltip-background);
-    inline-size: 0.625rem;
-    aspect-ratio: 1/1;
-  }
+    svg {
+        display: block;
+        fill: var(--_tooltip-background);
+        inline-size: 0.625rem;
+        aspect-ratio: 1/1;
+    }
 }
 
 /* tooltip theme */
 .primary {
-  --_tooltip-background: var(--color-primary-container);
-  --_tooltip-color: var(--color-on-primary-container);
+    --_tooltip-background: var(--color-primary-container);
+    --_tooltip-color: var(--color-on-primary-container);
 }
 
 .primary-variant {
-  --_tooltip-background: var(--color-primary-variant-container);
-  --_tooltip-color: var(--color-on-primary-variant-container);
+    --_tooltip-background: var(--color-primary-variant-container);
+    --_tooltip-color: var(--color-on-primary-variant-container);
 }
 
 .secondary {
-  --_tooltip-background: var(--color-secondary-container);
-  --_tooltip-color: var(--color-on-secondary-container);
+    --_tooltip-background: var(--color-secondary-container);
+    --_tooltip-color: var(--color-on-secondary-container);
 }
 
 .tertiary {
-  --_tooltip-background: var(--color-tertiary-container);
-  --_tooltip-color: var(--color-on-tertiary-container);
+    --_tooltip-background: var(--color-tertiary-container);
+    --_tooltip-color: var(--color-on-tertiary-container);
 }
 
 .error {
-  --_tooltip-background: var(--color-error-container);
-  --_tooltip-color: var(--color-on-error-container);
+    --_tooltip-background: var(--color-error-container);
+    --_tooltip-color: var(--color-on-error-container);
 }
 
 .inverse-surface {
-  --_tooltip-background: var(--color-surface-container);
-  --_tooltip-color: var(--color-on-surface);
+    --_tooltip-background: var(--color-surface-container);
+    --_tooltip-color: var(--color-on-surface);
 }
 
 .success {
-  --_tooltip-background: var(--color-success-container);
-  --_tooltip-color: var(--color-on-success-container);
+    --_tooltip-background: var(--color-success-container);
+    --_tooltip-color: var(--color-on-success-container);
 }

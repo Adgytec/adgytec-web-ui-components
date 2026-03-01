@@ -1,59 +1,59 @@
 .modal-overlay {
-  background-color: hsl(from var(--color-surface) h s l / 0.5);
-  backdrop-filter: blur(0.25rem);
+    background-color: hsl(from var(--color-surface) h s l / 0.5);
+    backdrop-filter: blur(0.25rem);
 
-  position: fixed;
-  inset: 0;
+    position: fixed;
+    inset: 0;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  &[data-entering] {
-    animation: modal-fade 200ms;
-  }
+    &[data-entering] {
+        animation: modal-fade 200ms;
+    }
 
-  &[data-exiting] {
-    animation: modal-fade 150ms reverse ease-in;
-  }
+    &[data-exiting] {
+        animation: modal-fade 150ms reverse ease-in;
+    }
 }
 
 .modal {
-  max-inline-size: min(90dvi, 60rem);
-  max-block-size: 90dvb;
-  overflow: auto;
+    max-inline-size: min(90dvi, 60rem);
+    max-block-size: 90dvb;
+    overflow: auto;
 
-  border-radius: var(--radius);
-  box-shadow: var(--elevation-2);
+    border-radius: var(--radius);
+    box-shadow: var(--elevation-2);
 
-  [data-card="true"] {
-    --_card-padding-inline: clamp(1rem, 2vi, 1.5rem);
-    --_card-padding-block: clamp(1rem, 2vi, 1.5rem);
+    [data-card="true"] {
+        --_card-padding-inline: clamp(1rem, 2vi, 1.5rem);
+        --_card-padding-block: clamp(1rem, 2vi, 1.5rem);
 
-    --_card-elevation: none;
-  }
+        --_card-elevation: none;
+    }
 
-  &[data-entering] {
-    animation: modal-zoom 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
+    &[data-entering] {
+        animation: modal-zoom 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
 }
 
 @keyframes modal-fade {
-  from {
-    opacity: 0;
-  }
+    from {
+        opacity: 0;
+    }
 
-  to {
-    opacity: 1;
-  }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes modal-zoom {
-  from {
-    transform: scale(0.8);
-  }
+    from {
+        transform: scale(0.8);
+    }
 
-  to {
-    transform: scale(1);
-  }
+    to {
+        transform: scale(1);
+    }
 }

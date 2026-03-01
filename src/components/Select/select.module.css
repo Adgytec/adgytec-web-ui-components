@@ -1,72 +1,72 @@
 .select {
-  display: grid;
-  gap: var(--form-input-gap);
+    display: grid;
+    gap: var(--form-input-gap);
 }
 
 .selected-value {
-  font-size: var(--form-input-text);
-  font-weight: var(--font-weight-bold);
+    font-size: var(--form-input-text);
+    font-weight: var(--font-weight-bold);
 
-  .option-description {
-    display: none;
-  }
+    .option-description {
+        display: none;
+    }
 
-  &[data-placeholder] {
-    font-style: italic;
-  }
+    &[data-placeholder] {
+        font-style: italic;
+    }
 }
 
 .trigger {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    justify-content: space-between;
 }
 
 .options-list {
-  display: grid;
-  gap: var(--form-gap);
-  border-radius: inherit;
+    display: grid;
+    gap: var(--form-gap);
+    border-radius: inherit;
 }
 
 .options-item-group {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
 
-  cursor: pointer;
-  border-radius: inherit;
+    cursor: pointer;
+    border-radius: inherit;
 
-  padding-inline: 0.75rem;
-  padding-block: 0.5rem;
+    padding-inline: 0.75rem;
+    padding-block: 0.5rem;
 
-  color: var(--_item-color);
-  background-color: var(--_item-background);
+    color: var(--_item-color);
+    background-color: var(--_item-background);
 
-  transition:
-    background-color 250ms,
-    color 250ms;
+    transition:
+        background-color 250ms,
+        color 250ms;
 
-  &[data-hovered],
-  &[data-focus-visible] {
-    --_item-background: hsl(from var(--_card-background) h s calc(l + 10));
-    --_item-color: hsl(from var(--_card-color) h s calc(l + 10));
-  }
+    &[data-hovered],
+    &[data-focus-visible] {
+        --_item-background: hsl(from var(--_card-background) h s calc(l + 10));
+        --_item-color: hsl(from var(--_card-color) h s calc(l + 10));
+    }
 
-  &[data-selected] {
-    --_item-background: hsl(from var(--_card-background) h s calc(l - 10));
-    --_item-color: hsl(from var(--_card-color) h s calc(l - 10));
-  }
+    &[data-selected] {
+        --_item-background: hsl(from var(--_card-background) h s calc(l - 10));
+        --_item-color: hsl(from var(--_card-color) h s calc(l - 10));
+    }
 }
 
 .options-item {
-  font-size: var(--form-input-text);
-  display: grid;
-  gap: 0.25rem;
+    font-size: var(--form-input-text);
+    display: grid;
+    gap: 0.25rem;
 
-  .option-description {
-    font-size: 0.875em;
-    font-style: italic;
-  }
+    .option-description {
+        font-size: 0.875em;
+        font-style: italic;
+    }
 }

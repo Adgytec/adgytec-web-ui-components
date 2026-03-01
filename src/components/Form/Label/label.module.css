@@ -1,4 +1,4 @@
 .label {
-  font-weight: var(--font-weight-medium);
-  font-size: var(--form-label-text);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--form-label-text);
 }
