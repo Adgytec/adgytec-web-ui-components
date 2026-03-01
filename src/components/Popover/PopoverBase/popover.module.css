@@ -1,42 +1,42 @@
 .popover {
-  box-shadow: var(--elevation-2);
-  border-radius: var(--radius);
-  overflow: auto;
+    box-shadow: var(--elevation-2);
+    border-radius: var(--radius);
+    overflow: auto;
 
-  max-inline-size: min(90vi, 50rem);
-  min-inline-size: min(25vi, 10rem);
+    max-inline-size: min(90vi, 50rem);
+    min-inline-size: min(25vi, 10rem);
 
-  [data-card="true"] {
-    --_card-padding-inline: 0.5em;
-    --_card-padding-block: 0.5em;
+    [data-card="true"] {
+        --_card-padding-inline: 0.5em;
+        --_card-padding-block: 0.5em;
 
-    --_card-elevation: none;
-  }
+        --_card-elevation: none;
+    }
 
-  transition:
-    transform 250ms,
-    opacity 250ms;
-  transform: translate3d(0, 0, 0);
+    transition:
+        transform 250ms,
+        opacity 250ms;
+    transform: translate3d(0, 0, 0);
 
-  &[data-placement="bottom"] {
-    --_origin: translateY(-0.25rem);
-  }
+    &[data-placement="bottom"] {
+        --_origin: translateY(-0.25rem);
+    }
 
-  &[data-placement="top"] {
-    --_origin: translateY(0.25rem);
-  }
+    &[data-placement="top"] {
+        --_origin: translateY(0.25rem);
+    }
 
-  &[data-placement="right"] {
-    --_origin: translateX(-0.25rem);
-  }
+    &[data-placement="right"] {
+        --_origin: translateX(-0.25rem);
+    }
 
-  &[data-placement="left"] {
-    --_origin: translateX(0.25rem);
-  }
+    &[data-placement="left"] {
+        --_origin: translateX(0.25rem);
+    }
 
-  &[data-entering],
-  &[data-exiting] {
-    transform: var(--_origin);
-    opacity: 0;
-  }
+    &[data-entering],
+    &[data-exiting] {
+        transform: var(--_origin);
+        opacity: 0;
+    }
 }

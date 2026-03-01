@@ -4,15 +4,15 @@ import { NavigationMenu } from "@/components/Navigation/NavigationMenu/Navigatio
 import { NavigationSidebar } from "@/components/Navigation/NavigationSidebar/NavigationSidebar";
 
 export const NavigationResponsive = ({
-  items,
-  mediaQuery,
-  ...sidebarProps
+    items,
+    mediaQuery,
+    ...sidebarProps
 }: NavigationResponsiveProps) => {
-  const matches = useMediaQuery(`(${mediaQuery})`);
+    const matches = useMediaQuery(`(${mediaQuery})`);
 
-  return matches ? (
-    <NavigationMenu items={items} />
-  ) : (
-    <NavigationSidebar items={items} {...sidebarProps} />
-  );
+    return matches ? (
+        <NavigationMenu items={items} />
+    ) : (
+        <NavigationSidebar items={items} {...sidebarProps} />
+    );
 };

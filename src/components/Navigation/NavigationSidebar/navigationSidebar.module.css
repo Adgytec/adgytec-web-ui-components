@@ -1,14 +1,14 @@
 .nav {
-  --tree-font-size: 1.25rem;
-  --_tree-gap: 1.5em;
+    --tree-font-size: 1.25rem;
+    --_tree-gap: 1.5em;
 
-  display: grid;
+    display: grid;
 }
 
 .close {
-  display: flex;
-  justify-content: end;
+    display: flex;
+    justify-content: end;
 
-  position: sticky;
-  inset-block-start: 0;
+    position: sticky;
+    inset-block-start: 0;
 }

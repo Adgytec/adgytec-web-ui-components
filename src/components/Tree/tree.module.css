@@ -1,42 +1,42 @@
 .tree {
-  display: grid;
-  gap: var(--_tree-gap, 1em);
+    display: grid;
+    gap: var(--_tree-gap, 1em);
 }
 
 .tree-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-  text-decoration: underline transparent;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    text-decoration: underline transparent;
 
-  font-size: var(--tree-font-size, 1rem);
-  cursor: context-menu;
-  padding-inline-start: calc(calc(var(--tree-item-level) - 1) * 1em);
-  transition: text-decoration-color 250ms;
+    font-size: var(--tree-font-size, 1rem);
+    cursor: context-menu;
+    padding-inline-start: calc(calc(var(--tree-item-level) - 1) * 1em);
+    transition: text-decoration-color 250ms;
 
-  &[data-active] {
-    color: var(--color-primary);
-  }
-
-  &:not([data-node]) {
-    cursor: pointer;
-  }
-
-  &[data-link] {
-    &[data-hovered],
-    &[data-focus-visible] {
-      text-decoration-color: currentColor;
+    &[data-active] {
+        color: var(--color-primary);
     }
-  }
 
-  svg {
-    transition: rotate 250ms;
-    width: 0.875em;
-  }
+    &:not([data-node]) {
+        cursor: pointer;
+    }
 
-  &[data-expanded] {
+    &[data-link] {
+        &[data-hovered],
+        &[data-focus-visible] {
+            text-decoration-color: currentColor;
+        }
+    }
+
     svg {
-      rotate: 90deg;
+        transition: rotate 250ms;
+        width: 0.875em;
     }
-  }
+
+    &[data-expanded] {
+        svg {
+            rotate: 90deg;
+        }
+    }
 }

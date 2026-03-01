@@ -1,89 +1,89 @@
 .avatar {
-  --_base-inline-size: 1rem;
-  --_base-font-size: 1rem;
+    --_base-inline-size: 1rem;
+    --_base-font-size: 1rem;
 
-  --_inline-size: calc(
-    var(--_base-inline-size) * var(--_inline-size-multiplier)
-  );
-  --_font-size: calc(var(--_base-font-size) * var(--_font-multiplier));
+    --_inline-size: calc(
+        var(--_base-inline-size) * var(--_inline-size-multiplier)
+    );
+    --_font-size: calc(var(--_base-font-size) * var(--_font-multiplier));
 
-  inline-size: var(--_inline-size);
-  font-size: var(--_font-size);
-  aspect-ratio: 1/1;
+    inline-size: var(--_inline-size);
+    font-size: var(--_font-size);
+    aspect-ratio: 1/1;
 
-  border-radius: var(--radius-circular);
-  overflow: hidden;
+    border-radius: var(--radius-circular);
+    overflow: hidden;
 }
 
 /* avatar type */
 .node {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
 
-  background-color: var(--_avatar-background);
-  color: var(--_avatar-color);
+    background-color: var(--_avatar-background);
+    color: var(--_avatar-color);
 }
 
 .image {
-  img {
-    object-fit: cover;
-    inline-size: 100%;
-    block-size: 100%;
-  }
+    img {
+        object-fit: cover;
+        inline-size: 100%;
+        block-size: 100%;
+    }
 }
 
 /* avatar sizes */
 .small {
-  --_inline-size-multiplier: 2;
-  --_font-multiplier: 0.875;
+    --_inline-size-multiplier: 2;
+    --_font-multiplier: 0.875;
 }
 
 .normal {
-  --_inline-size-multiplier: 2.5;
-  --_font-multiplier: 1;
+    --_inline-size-multiplier: 2.5;
+    --_font-multiplier: 1;
 }
 
 .large {
-  --_inline-size-multiplier: 3;
-  --_font-multiplier: 1.125;
+    --_inline-size-multiplier: 3;
+    --_font-multiplier: 1.125;
 }
 
 /* avatar theme */
 .primary {
-  --_avatar-background: var(--color-primary);
-  --_avatar-color: var(--color-on-primary);
+    --_avatar-background: var(--color-primary);
+    --_avatar-color: var(--color-on-primary);
 }
 
 .primary-variant {
-  --_avatar-background: var(--color-primary-variant);
-  --_avatar-color: var(--color-on-primary-variant);
+    --_avatar-background: var(--color-primary-variant);
+    --_avatar-color: var(--color-on-primary-variant);
 }
 
 .secondary {
-  --_avatar-background: var(--color-secondary);
-  --_avatar-color: var(--color-on-secondary);
+    --_avatar-background: var(--color-secondary);
+    --_avatar-color: var(--color-on-secondary);
 }
 
 .tertiary {
-  --_avatar-background: var(--color-tertiary);
-  --_avatar-color: var(--color-on-tertiary);
+    --_avatar-background: var(--color-tertiary);
+    --_avatar-color: var(--color-on-tertiary);
 }
 
 .error {
-  --_avatar-background: var(--color-error);
-  --_avatar-color: var(--color-on-error);
+    --_avatar-background: var(--color-error);
+    --_avatar-color: var(--color-on-error);
 }
 
 .inverse-surface {
-  --_avatar-background: var(--color-inverse-surface);
-  --_avatar-color: var(--color-inverse-on-surface);
+    --_avatar-background: var(--color-inverse-surface);
+    --_avatar-color: var(--color-inverse-on-surface);
 }
 
 .success {
-  --_avatar-background: var(--color-success);
-  --_avatar-color: var(--color-on-success);
+    --_avatar-background: var(--color-success);
+    --_avatar-color: var(--color-on-success);
 }
