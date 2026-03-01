@@ -25,6 +25,7 @@ export const Select = ({
     cardBackground = "gradient",
     triggerTheme = "inverse-surface",
     label,
+    ariaLabel,
     name,
     disabled,
     isRequired,
@@ -56,6 +57,7 @@ export const Select = ({
             name={name}
             value={selectedKey}
             onChange={onSelectionChange}
+            aria-label={ariaLabel}
         >
             {label && <Label className={clsx(styles["label"])}>{label}</Label>}
 

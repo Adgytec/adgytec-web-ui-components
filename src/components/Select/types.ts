@@ -10,12 +10,15 @@ export type SelectOptions = {
     disabled?: boolean;
 };
 
-export interface SelectProps {
+type AccessibleName =
+    | { label: string; ariaLabel?: never }
+    | { label?: never; ariaLabel: string };
+
+export type SelectProps = AccessibleName & {
     options: SelectOptions[];
     cardBackground?: CardBackground;
     triggerTheme?: ColorTheme;
     isRequired?: boolean;
-    label?: string;
     name?: string;
     disabled?: boolean;
     placeholder?: string;
@@ -23,4 +26,4 @@ export interface SelectProps {
     triggerVariant?: ButtonVariant;
     selectedKey?: Key;
     onSelectionChange?: (key: Key | null) => void;
-}
+};
