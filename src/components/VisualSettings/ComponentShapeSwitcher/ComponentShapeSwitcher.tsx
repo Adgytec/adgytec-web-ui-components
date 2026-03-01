@@ -5,7 +5,7 @@ import {
     type ComponentShapeSwitcherProps,
     type ShapeValue,
 } from "./types";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { type Key } from "react-aria-components";
 import {
     type ToggleButtonGroupItem,
