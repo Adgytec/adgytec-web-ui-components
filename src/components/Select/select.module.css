@@ -21,7 +21,6 @@
     --_min-inline-size: 15rem;
 
     inline-size: var(--trigger-width);
-    width: var(--trigger-width);
 }
 
 .trigger {
