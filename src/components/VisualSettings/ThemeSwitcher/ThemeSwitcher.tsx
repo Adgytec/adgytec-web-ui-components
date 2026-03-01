@@ -1,6 +1,6 @@
 import { useTernaryDarkMode, type TernaryDarkMode } from "usehooks-ts";
 import type { Key } from "react-aria-components";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import type { ThemeSwitcherProps, ThemeValue } from "./types";
 import {
     type ToggleButtonGroupItem,
