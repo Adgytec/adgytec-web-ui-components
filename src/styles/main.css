@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
 
+/* DO NOT REMOVE UNUSED STYLES */
+/* This css file is reference for clients to use this lib like this */
+
 [data-shape="sharp"] {
     --radius: 0;
     --radius-sidebar: 0;
