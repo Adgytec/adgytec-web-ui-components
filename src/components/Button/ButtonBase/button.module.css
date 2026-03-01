@@ -1,140 +1,150 @@
 .button {
-  --_button-theme-background: transparent;
-  --_button-theme-color: transparent;
-  --_button-border-color: var(--_button-theme-background);
+    --_button-theme-background: transparent;
+    --_button-theme-color: transparent;
+    --_button-border-color: var(--_button-theme-background);
 
-  border-radius: var(--_button-radius);
-  cursor: pointer;
-  border: var(--button-border-width) solid var(--_button-border-color);
+    border-radius: var(--_button-radius);
+    cursor: pointer;
+    border: var(--button-border-width) solid var(--_button-border-color);
 
-  font-weight: var(--font-weight-medium);
-  text-align: center;
+    font-weight: var(--font-weight-medium);
+    text-align: center;
 
-  padding-inline: var(--_button-padding-inline);
-  padding-block: var(--_button-padding-block);
+    padding-inline: var(--_button-padding-inline);
+    padding-block: var(--_button-padding-block);
 
-  background-color: var(--_button-background);
-  color: var(--_button-color);
-  position: relative;
-  overflow: hidden;
+    background-color: var(--_button-background);
+    color: var(--_button-color);
+    position: relative;
+    overflow: hidden;
 
-  transition:
-    background-color 250ms,
-    color 250ms;
+    transition:
+        background-color 250ms,
+        color 250ms;
 
-  &[data-hovered],
-  &[data-focus-visible] {
-    --_button-background: hsl(
-      from var(--_button-theme-background) h s calc(l + 10)
-    );
-    --_button-color: hsl(from var(--_button-theme-color) h s calc(l + 10));
-  }
+    &[data-hovered],
+    &[data-focus-visible] {
+        --_button-background: hsl(
+            from var(--_button-theme-background) h s calc(l + 10)
+        );
+        --_button-color: hsl(from var(--_button-theme-color) h s calc(l + 10));
+    }
 
-  &[data-pressed] {
-    --_button-background: hsl(
-      from var(--_button-theme-background) h s calc(l - 5)
-    );
-    --_button-color: hsl(from var(--_button-theme-color) h s calc(l - 5));
-  }
+    &[data-pressed] {
+        --_button-background: hsl(
+            from var(--_button-theme-background) h s calc(l - 5)
+        );
+        --_button-color: hsl(from var(--_button-theme-color) h s calc(l - 5));
+    }
 
-  &[data-selected] {
-    --_button-background: var(--_button-theme-background);
-    --_button-color: var(--_button-theme-color);
-  }
+    &[data-selected] {
+        --_button-background: var(--_button-theme-background);
+        --_button-color: var(--_button-theme-color);
+    }
 }
 
 .button-link {
-  text-underline-offset: 0.125em;
-  text-decoration-thickness: 0.075em;
-  text-decoration-color: transparent;
+    text-underline-offset: 0.125em;
+    text-decoration-thickness: 0.075em;
+    text-decoration-color: transparent;
 
-  &[data-hovered],
-  &[data-focus-visible] {
-    text-decoration-color: currentColor;
-  }
+    &[data-hovered],
+    &[data-focus-visible] {
+        text-decoration-color: currentColor;
+    }
 
-  &[data-underline] {
-    text-decoration-color: currentColor;
-  }
+    &[data-underline] {
+        text-decoration-color: currentColor;
+    }
 }
 
 /* button shape */
 .square {
-  --_button-padding-inline: 0.625em;
-  --_button-padding-block: 0.625em;
+    --_button-padding-inline: 0.625em;
+    --_button-padding-block: 0.625em;
 
-  aspect-ratio: 1/1;
-  --_button-radius: var(--radius-circular);
+    aspect-ratio: 1/1;
+    --_button-radius: var(--radius-circular);
 }
 
 .avatar {
-  --_button-padding-inline: 0.125em;
-  --_button-padding-block: 0.125em;
+    --_button-padding-inline: 0.125em;
+    --_button-padding-block: 0.125em;
 
-  aspect-ratio: 1/1;
-  --_button-radius: var(--radius-circular);
+    aspect-ratio: 1/1;
+    --_button-radius: var(--radius-circular);
 }
 
-.rectangle {
-  --_button-padding-inline: 1.125em;
-  --_button-padding-block: 0.625em;
-  --_button-radius: var(--radius-button);
+.default {
+    --_button-padding-inline: 1.125em;
+    --_button-padding-block: 0.625em;
+    --_button-radius: var(--radius-button);
 }
 
 .shrink {
-  --_button-padding-inline: 0;
-  --_button-padding-block: 0;
+    --_button-padding-inline: 0.25em;
+    --_button-padding-block: 0.25em;
+
+    --_button-radius: var(--radius-button);
+}
+
+.square-shrink {
+    --_button-padding-inline: 0.375em;
+    --_button-padding-block: 0.375em;
+
+    aspect-ratio: 1/1;
+    --_button-radius: var(--radius-circular);
 }
 
 /* button theme */
 .primary {
-  --_button-theme-background: var(--color-primary);
-  --_button-theme-color: var(--color-on-primary);
+    --_button-theme-background: var(--color-primary);
+    --_button-theme-color: var(--color-on-primary);
 }
 
 .primary-variant {
-  --_button-theme-background: var(--color-primary-variant);
-  --_button-theme-color: var(--color-on-primary-variant);
+    --_button-theme-background: var(--color-primary-variant);
+    --_button-theme-color: var(--color-on-primary-variant);
 }
 
 .secondary {
-  --_button-theme-background: var(--color-secondary);
-  --_button-theme-color: var(--color-on-secondary);
+    --_button-theme-background: var(--color-secondary);
+    --_button-theme-color: var(--color-on-secondary);
 }
 
 .tertiary {
-  --_button-theme-background: var(--color-tertiary);
-  --_button-theme-color: var(--color-on-tertiary);
+    --_button-theme-background: var(--color-tertiary);
+    --_button-theme-color: var(--color-on-tertiary);
 }
 
 .error {
-  --_button-theme-background: var(--color-error);
-  --_button-theme-color: var(--color-on-error);
+    --_button-theme-background: var(--color-error);
+    --_button-theme-color: var(--color-on-error);
 }
 
 .inverse-surface {
-  --_button-theme-background: var(--color-inverse-surface);
-  --_button-theme-color: var(--color-inverse-on-surface);
+    --_button-theme-background: var(--color-inverse-surface);
+    --_button-theme-color: var(--color-inverse-on-surface);
 }
 
 .success {
-  --_button-theme-background: var(--color-success);
-  --_button-theme-color: var(--color-on-success);
+    --_button-theme-background: var(--color-success);
+    --_button-theme-color: var(--color-on-success);
 }
 
 /* button variant */
 .filled {
-  --_button-background: var(--_button-theme-background);
-  --_button-color: var(--_button-theme-color);
+    --_button-background: var(--_button-theme-background);
+    --_button-color: var(--_button-theme-color);
 }
 
 .outlined {
-  --_button-background: transparent;
-  --_button-color: var(--_button-theme-background);
+    --_button-background: transparent;
+    --_button-color: var(--_button-theme-background);
 }
 
 .text {
-  --_button-background: transparent;
-  --_button-border-color: transparent;
-  --_button-color: var(--_button-theme-background);
+    --_button-background: transparent;
+    --_button-border-color: transparent;
+    --_button-color: var(--_button-theme-background);
 }

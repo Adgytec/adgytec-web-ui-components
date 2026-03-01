@@ -1,0 +1,27 @@
+.toast {
+    inline-size: min(90dvw, 25rem);
+    max-block-size: 10rem;
+
+    display: flex;
+    gap: 1rem;
+}
+
+.heading {
+    font-size: 1.125rem;
+    line-height: 1.125;
+}
+
+.content {
+    overflow: clip;
+    display: grid;
+    gap: 0.25rem;
+}
+
+.prefix {
+    display: flex;
+    align-items: center;
+}
+
+.description {
+    font-size: 0.925rem;
+}

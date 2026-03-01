@@ -1,48 +1,48 @@
 @import "reset.css";
 
 .preview-parent {
-  display: grid;
-  gap: 2rem;
+    display: grid;
+    gap: 2rem;
 
-  padding-inline: 1rem;
-  padding-block: 1rem;
+    padding-inline: 1rem;
+    padding-block: 1rem;
 }
 
 .preview-container {
-  display: grid;
-  gap: 1.5rem;
-  outline: 0.125rem solid var(--color-outline);
-  border-radius: var(--radius);
+    display: grid;
+    gap: 1.5rem;
+    outline: 0.125rem solid var(--color-outline);
+    border-radius: var(--radius);
 
-  padding-inline: 1rem;
-  padding-block: 1rem;
+    padding-inline: 1rem;
+    padding-block: 1rem;
 
-  overflow: auto;
+    overflow: auto;
 
-  h2 {
-    margin: 0;
-    padding: 0;
-  }
+    h2 {
+        margin: 0;
+        padding: 0;
+    }
 }
 
 .preview-container__items {
-  display: grid;
-  gap: 1.25rem;
+    display: grid;
+    gap: 1.25rem;
 }
 
 .item-container {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  align-items: center;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .item-container [data-card="true"] {
-  max-width: 25rem;
-  display: grid;
-  gap: 1rem;
+    max-width: 25rem;
+    display: grid;
+    gap: 1rem;
 
-  p {
-    text-align: justify;
-  }
+    p {
+        text-align: justify;
+    }
 }

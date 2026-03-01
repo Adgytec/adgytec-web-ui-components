@@ -1,67 +1,71 @@
 .card {
-  --_card-color: var(--color-on-surface);
-  --_card-background: var(--color-surface);
+    --_card-color: var(--color-on-surface);
+    --_card-background: var(--color-surface);
 
-  --_card-elevation: var(--elevation-1);
-  --_card-radius: var(--radius);
+    --_card-elevation: var(--elevation-1);
+    --_card-radius: var(--radius);
 
-  --_card-padding-inline: 1rem;
-  --_card-padding-block: 1rem;
+    --_card-padding-inline: 1rem;
+    --_card-padding-block: 1rem;
 
-  --_card-opacity: 1;
+    --_card-opacity: 1;
 
-  padding-inline: var(--_card-padding-inline);
-  padding-block: var(--_card-padding-block);
+    padding-inline: var(--_card-padding-inline);
+    padding-block: var(--_card-padding-block);
 
-  border-radius: var(--_card-radius);
-  box-shadow: var(--_card-elevation);
+    border-radius: var(--_card-radius);
+    box-shadow: var(--_card-elevation);
 
-  background-color: hsl(
-    from var(--_card-background) h s l / var(--_card-opacity)
-  );
-  color: var(--_card-color);
+    background-color: hsl(
+        from var(--_card-background) h s l / var(--_card-opacity)
+    );
+    color: var(--_card-color);
 }
 
 /* component style */
 .glass {
-  --_card-opacity: var(--glassmorphism-opacity);
-  backdrop-filter: var(--glassmorphism-filter);
+    --_card-opacity: var(--glassmorphism-opacity);
+    backdrop-filter: var(--glassmorphism-filter);
 }
 
 .solid {
-  --_card-background: var(--color-surface-container);
+    --_card-background: var(--color-surface-container);
 }
 
 .solid-low {
-  --_card-background: var(--color-surface-container-low);
+    --_card-background: var(--color-surface-container-low);
 }
 
 .solid-lowest {
-  --_card-background: var(--color-surface-container-lowest);
+    --_card-background: var(--color-surface-container-lowest);
 }
 
 .solid-high {
-  --_card-background: var(--color-surface-container-high);
+    --_card-background: var(--color-surface-container-high);
 }
 
 .solid-highest {
-  --_card-background: var(--color-surface-container-highest);
+    --_card-background: var(--color-surface-container-highest);
 }
 
 .gradient {
-  background-image:
-    radial-gradient(
-      ellipse at top,
-      hsl(from var(--color-surface-container-low) h s l / var(--_card-opacity)),
-      transparent
-    ),
-    radial-gradient(
-      ellipse at bottom,
-      hsl(
-        from var(--color-surface-container-high) h s l / var(--_card-opacity)
-      ),
-      transparent
-    );
+    background-image:
+        radial-gradient(
+            ellipse at top,
+            hsl(
+                from var(--color-surface-container-low) h s l /
+                    var(--_card-opacity)
+            ),
+            transparent
+        ),
+        radial-gradient(
+            ellipse at bottom,
+            hsl(
+                from var(--color-surface-container-high) h s l /
+                    var(--_card-opacity)
+            ),
+            transparent
+        );
 
-  background-repeat: no-repeat;
+    background-repeat: no-repeat;
 }

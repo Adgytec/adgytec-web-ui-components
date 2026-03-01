@@ -1,34 +1,47 @@
-import type { AvatarBaseProps, AvatarProps } from "./types";
+import type { AvatarBaseProps, AvatarProps, AvatarSize } from "./types";
 import styles from "./avatar.module.css";
+import { Image } from "@/components/Image";
+import clsx from "clsx";
+
+const AVATAR_RENDER_SIZE: Record<AvatarSize, number> = {
+    small: 32,
+    normal: 48,
+    large: 64,
+};
 
 const AvatarBase = ({ children, size, type, theme }: AvatarBaseProps) => {
-  return (
-    <div
-      className={`${styles["avatar"]} ${styles[size]} ${styles[type]} ${styles[theme]}`}
-    >
-      {children}
-    </div>
-  );
+    return (
+        <div
+            className={clsx(
+                styles.avatar,
+                styles[size],
+                styles[type],
+                styles[theme]
+            )}
+        >
+            {children}
+        </div>
+    );
 };
 
 export const Avatar = ({
-  src,
-  children,
-  size = "normal",
-  label,
-  theme = "primary",
+    type,
+    image,
+    children,
+    size = "normal",
+    theme = "primary",
 }: AvatarProps) => {
-  if (children) {
-    return (
-      <AvatarBase type="node" size={size} theme={theme}>
-        {children}
-      </AvatarBase>
-    );
-  }
+    if (type === "children") {
+        return (
+            <AvatarBase type="node" size={size} theme={theme}>
+                {children}
+            </AvatarBase>
+        );
+    }
 
-  return (
-    <AvatarBase size={size} type="image" theme={theme}>
-      <img src={src} alt={label} />
-    </AvatarBase>
-  );
+    return (
+        <AvatarBase size={size} type="image" theme={theme}>
+            <Image {...image} sizes={`${AVATAR_RENDER_SIZE[size]}px`} />
+        </AvatarBase>
+    );
 };

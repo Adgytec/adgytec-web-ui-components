@@ -3,49 +3,49 @@ import type { ButtonChildProps } from "./types";
 import styles from "./buttonChild.module.css";
 import { Loader } from "@/components/Loader/Loader";
 import { Check, TriangleAlert } from "lucide-react";
+import clsx from "clsx";
 
 export const ButtonChild = ({ buttonState, value }: ButtonChildProps) => {
-  const {
-    enabled,
-    disabled = enabled,
-    pending = enabled,
-    completed = enabled,
-    error = "Try again",
-  } = value;
+    const {
+        enabled,
+        disabled = enabled,
+        pending = enabled,
+        completed = enabled,
+        error = "Try again",
+    } = value;
 
-  let child: ReactNode;
-  switch (buttonState) {
-    case "enabled":
-      child = enabled;
-      break;
-    case "disabled":
-      child = disabled;
-      break;
+    let child: ReactNode;
+    switch (buttonState) {
+        case "enabled":
+            return enabled;
 
-    case "pending":
-      child = (
-        <span className={styles["with-icon"]}>
-          <Loader /> {pending}
-        </span>
-      );
-      break;
+        case "disabled":
+            return disabled;
 
-    case "completed":
-      child = (
-        <span className={styles["with-icon"]}>
-          <Check /> {completed}
-        </span>
-      );
-      break;
+        case "pending":
+            child = (
+                <>
+                    <Loader /> {pending}
+                </>
+            );
+            break;
 
-    case "error":
-      child = (
-        <span className={styles["with-icon"]}>
-          <TriangleAlert /> {error}
-        </span>
-      );
-      break;
-  }
+        case "completed":
+            child = (
+                <>
+                    <Check /> {completed}
+                </>
+            );
+            break;
 
-  return <>{child}</>;
+        case "error":
+            child = (
+                <>
+                    <TriangleAlert /> {error}
+                </>
+            );
+            break;
+    }
+
+    return <span className={clsx(styles["with-icon"])}>{child}</span>;
 };

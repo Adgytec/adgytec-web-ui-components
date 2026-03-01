@@ -5,14 +5,14 @@ import type { DialogRenderProps } from "react-aria-components";
 export type ModalActionPlacement = "start" | "end";
 
 export interface ModalActionProps {
-  trigger: ReactElement<ButtonVariantProps>;
-  header?: string;
-  children: ReactNode;
-  actionPlacement?: ModalActionPlacement;
-  modalAction:
-    | ReactElement<ButtonVariantProps>
-    | ((opts: DialogRenderProps) => ReactElement<ButtonVariantProps>);
-  closeText: string;
-  isDismissable?: boolean;
-  isKeyboardDismissableDisabled?: boolean;
+    trigger: ReactElement<ButtonVariantProps>;
+    header?: string;
+    children: ReactNode;
+    actionPlacement?: ModalActionPlacement;
+    modalAction:
+        | ReactElement<ButtonVariantProps>
+        | ((opts: DialogRenderProps) => ReactElement<ButtonVariantProps>);
+    closeText: string;
+    isDismissable?: boolean;
+    isKeyboardDismissableDisabled?: boolean;
 }

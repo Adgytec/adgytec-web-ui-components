@@ -1,33 +1,33 @@
 .input {
-  display: grid;
-  gap: var(--form-input-gap, 0.25rem);
+    display: grid;
+    gap: var(--form-input-gap, 0.25rem);
 }
 
 .editor {
-  outline: none;
+    outline: none;
 
-  font-weight: var(--font-weight-medium);
-  border-radius: var(--radius);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius);
 
-  padding-inline: 0.625em;
-  padding-block: 0.625em;
+    padding-inline: 0.625em;
+    padding-block: 0.625em;
 
-  max-inline-size: 100%;
-  inline-size: 100%;
-  border: 0.125rem solid var(--color-outline);
+    max-inline-size: 100%;
+    inline-size: 100%;
+    border: 0.125rem solid var(--color-outline);
 
-  background-color: inherit;
-  color: inherit;
+    background-color: inherit;
+    color: inherit;
 
-  font-size: var(--form-input-text);
+    font-size: var(--form-input-text);
 
-  transition: border-color 250ms;
+    transition: border-color 250ms;
 
-  &[data-focused] {
-    border-color: var(--color-primary);
-  }
+    &[data-focused] {
+        border-color: var(--color-primary);
+    }
 
-  &[data-invalid] {
-    border-color: var(--color-error);
-  }
+    &[data-invalid] {
+        border-color: var(--color-error);
+    }
 }

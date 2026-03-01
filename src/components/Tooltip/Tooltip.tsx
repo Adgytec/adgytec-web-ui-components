@@ -1,35 +1,36 @@
 import type { TooltipProps } from "./types";
 import {
-  TooltipTrigger,
-  Tooltip as UnstyledTooltip,
-  OverlayArrow,
+    TooltipTrigger,
+    Tooltip as UnstyledTooltip,
+    OverlayArrow,
 } from "react-aria-components";
 import styles from "./tooltip.module.css";
+import { clsx } from "clsx";
 
 export const Tooltip = ({
-  children,
-  description,
-  theme = "inverse-surface",
-  delay = 250,
-  closeDelay = 150,
+    children,
+    description,
+    theme = "inverse-surface",
+    delay = 250,
+    closeDelay = 150,
 }: TooltipProps) => {
-  if (!description) {
-    return children;
-  }
+    if (!description) {
+        return children;
+    }
 
-  return (
-    <TooltipTrigger delay={delay} closeDelay={closeDelay}>
-      {children}
+    return (
+        <TooltipTrigger delay={delay} closeDelay={closeDelay}>
+            {children}
 
-      <UnstyledTooltip className={`${styles["tooltip"]} ${styles[theme]}`}>
-        <OverlayArrow className={`${styles["tooltip-arrow"]}`}>
-          <svg viewBox="0 0 8 8">
-            <path d="M0 0 L4 4 L8 0" />
-          </svg>
-        </OverlayArrow>
+            <UnstyledTooltip className={clsx(styles["tooltip"], styles[theme])}>
+                <OverlayArrow className={clsx(styles["tooltip-arrow"])}>
+                    <svg viewBox="0 0 8 8">
+                        <path d="M0 0 L4 4 L8 0" />
+                    </svg>
+                </OverlayArrow>
 
-        {description}
-      </UnstyledTooltip>
-    </TooltipTrigger>
-  );
+                {description}
+            </UnstyledTooltip>
+        </TooltipTrigger>
+    );
 };
