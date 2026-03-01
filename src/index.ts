@@ -42,5 +42,4 @@ export * from "./components/Tree";
 export * from "./components/Viewport";
 export * from "./components/VisualSettings/ComponentShapeSwitcher";
 export * from "./components/VisualSettings/ThemeSwitcher";
-export * from "./components/VisualSettings/VisualSettings";
 export type * from "./utils/types";

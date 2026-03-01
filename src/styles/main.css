@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
 
+/* DO NOT REMOVE UNUSED STYLES */
+/* This css file is reference for clients to use this lib like this */
+
 [data-shape="sharp"] {
     --radius: 0;
     --radius-sidebar: 0;
@@ -188,17 +191,7 @@ body {
     font-family: var(--font-normal);
 }
 
-[data-heading] {
-    font-family: var(--font-heading);
-    font-weight: var(--font-weight-bold);
-}
-
-em,
-i {
-    font-family: var(--font-normal);
-    font-style: italic;
-}
-
+[data-heading],
 h1,
 h2,
 h3,
@@ -207,4 +200,10 @@ h5,
 h6 {
     font-family: var(--font-heading);
     font-weight: var(--font-weight-bold);
+}
+
+em,
+i {
+    font-family: var(--font-normal);
+    font-style: italic;
 }
