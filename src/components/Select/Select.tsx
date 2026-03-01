@@ -51,14 +51,13 @@ export const Select = ({
 
     return (
         <UnstyledSelect
-            className={clsx(styles["select"])}
             isDisabled={disabled}
             isRequired={isRequired}
             name={name}
             value={selectedKey}
             onChange={onSelectionChange}
         >
-            {label && <Label>{label}</Label>}
+            {label && <Label className={clsx(styles["label"])}>{label}</Label>}
 
             <Tooltip description={description} theme={triggerTheme}>
                 <TriggerVariant theme={triggerTheme}>

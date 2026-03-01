@@ -40,6 +40,7 @@ import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { toast } from "./components/Toast";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
+import { Viewport } from "./components/Viewport";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1397,11 +1398,14 @@ const App = () => {
     ];
 
     return (
-        <div className="preview-parent">
-            {previewElements.map((Element, ind) => {
-                return <Element key={ind} />;
-            })}
-        </div>
+        <>
+            <Viewport />
+            <div className="preview-parent">
+                {previewElements.map((Element, ind) => {
+                    return <Element key={ind} />;
+                })}
+            </div>
+        </>
     );
 };
 
