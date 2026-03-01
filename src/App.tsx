@@ -37,8 +37,9 @@ import "./styles/app.css";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
-import { VisualSettings } from "./components/VisualSettings/VisualSettings";
 import { toast } from "./components/Toast";
+import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
+import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1359,10 +1360,17 @@ const CardPreview = () => {
 
 const VisualSettingsPreview = () => {
     return (
-        <div>
-            <VisualSettings ui={false} />
-            <VisualSettings />
-        </div>
+        <>
+            <PreviewContainer label="Theme Switcher">
+                <ThemeSwitcher ui={false} />
+                <ThemeSwitcher />
+            </PreviewContainer>
+
+            <PreviewContainer label="Component Shape Switcher">
+                <ComponentShapeSwitcher ui={false} />
+                <ComponentShapeSwitcher />
+            </PreviewContainer>
+        </>
     );
 };
 

@@ -188,17 +188,7 @@ body {
     font-family: var(--font-normal);
 }
 
-[data-heading] {
-    font-family: var(--font-heading);
-    font-weight: var(--font-weight-bold);
-}
-
-em,
-i {
-    font-family: var(--font-normal);
-    font-style: italic;
-}
-
+[data-heading],
 h1,
 h2,
 h3,
@@ -207,4 +197,10 @@ h5,
 h6 {
     font-family: var(--font-heading);
     font-weight: var(--font-weight-bold);
+}
+
+em,
+i {
+    font-family: var(--font-normal);
+    font-style: italic;
 }
