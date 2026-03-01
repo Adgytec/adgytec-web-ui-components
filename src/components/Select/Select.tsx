@@ -25,6 +25,7 @@ export const Select = ({
     cardBackground = "gradient",
     triggerTheme = "inverse-surface",
     label,
+    ariaLabel,
     name,
     disabled,
     isRequired,
@@ -51,14 +52,14 @@ export const Select = ({
 
     return (
         <UnstyledSelect
-            className={clsx(styles["select"])}
             isDisabled={disabled}
             isRequired={isRequired}
             name={name}
             value={selectedKey}
             onChange={onSelectionChange}
+            aria-label={ariaLabel}
         >
-            {label && <Label>{label}</Label>}
+            {label && <Label className={clsx(styles["label"])}>{label}</Label>}
 
             <Tooltip description={description} theme={triggerTheme}>
                 <TriggerVariant theme={triggerTheme}>
@@ -83,7 +84,7 @@ export const Select = ({
 
             <FieldError />
 
-            <Popover>
+            <Popover className={clsx(styles["popover"])}>
                 <BaseCard background={cardBackground}>
                     <ListBox
                         className={clsx(styles["options-list"])}

@@ -1,6 +1,6 @@
-.select {
-    display: grid;
-    gap: var(--form-input-gap);
+.label {
+    display: block;
+    margin-block-end: var(--form-input-gap);
 }
 
 .selected-value {
@@ -14,6 +14,13 @@
     &[data-placeholder] {
         font-style: italic;
     }
+}
+
+.popover {
+    --_max-inline-size: var(--trigger-width);
+    --_min-inline-size: 15rem;
+
+    inline-size: var(--trigger-width);
 }
 
 .trigger {
