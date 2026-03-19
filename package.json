@@ -77,7 +77,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Adgytec/adgytec-web-ui-components.git"
+        "url": "https://github.com/Adgytec/adgytec-web-ui-components.git"
     },
     "homepage": "https://github.com/Adgytec/adgytec-web-ui-components/#/README.md"
 }
