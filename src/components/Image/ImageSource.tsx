@@ -3,7 +3,7 @@ import type { ImageSourceProps } from "./types";
 
 export const ImageSource: React.FC<ImageSourceProps> = ({
     src,
-    alt = "image",
+    alt = "",
     ...props
 }) => {
     return <img src={src} {...props} alt={alt} />;

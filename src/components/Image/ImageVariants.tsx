@@ -20,7 +20,7 @@ const VARIANT_WIDTH: Record<ImageVariant, number> = {
 export const ImageVariants: React.FC<ImageVariantProps> = ({
     original,
     variants,
-    alt = "image",
+    alt = "",
     ...props
 }) => {
     const availableVariants = VARIANT_PRIORITY.filter((key) =>
