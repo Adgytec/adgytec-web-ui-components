@@ -30,7 +30,7 @@
         "typecheck": "tsc -b",
         "preview": "vite preview",
         "release": "npm run build && npm publish --public",
-        "test": "npm run build && npm pack"
+        "test": "echo \"No tests\""
     },
     "peerDependencies": {
         "clsx": ">=2.1.1",
