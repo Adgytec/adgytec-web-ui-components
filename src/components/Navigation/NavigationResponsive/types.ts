@@ -1,8 +1,8 @@
 import type { SidebarPosition, SidebarSize } from "@/components/Sidebar/types";
-import type { HierarchyItemType } from "@/utils/types";
+import type { TreeHierarchyItemType } from "@/utils/types";
 
 export interface NavigationResponsiveProps {
-    items: HierarchyItemType[];
+    items: TreeHierarchyItemType[];
     mediaQuery: string;
     sidebarPosition?: SidebarPosition;
     sidebarSize?: SidebarSize;

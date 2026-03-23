@@ -929,7 +929,7 @@ const TreePreview = () => {
 };
 
 const NavSidebarPreview = () => {
-    const tree: HierarchyItemType[] = [
+    const tree: TreeHierarchyItemType[] = [
         {
             id: "1",
             type: "link",
@@ -1087,7 +1087,7 @@ const NavMenuPreview = () => {
 };
 
 const NavResponsivePreview = () => {
-    const tree: HierarchyItemType[] = [
+    const tree: TreeHierarchyItemType[] = [
         {
             id: "1",
             type: "link",
