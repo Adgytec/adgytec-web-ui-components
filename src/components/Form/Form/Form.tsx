@@ -1,12 +1,12 @@
-import * as z from "zod";
-import type { FormProps } from "./types";
-import { Form as UnstyledForm } from "react-aria-components";
-import styles from "./form.module.css";
-import { useState, type FormEvent } from "react";
-import { validateAndGetFormValues } from "@/utils/form";
 import { clsx } from "clsx";
+import { type SyntheticEvent, useState } from "react";
+import { Form as UnstyledForm } from "react-aria-components";
+import type * as z from "zod";
+import { validateAndGetFormValues } from "@/utils/form";
+import styles from "./form.module.css";
+import type { FormProps } from "./types";
 
-export const Form = <T extends z.ZodObject<any>>({
+export const Form = <T extends z.ZodTypeAny>({
     schema,
     onSubmit,
     children,
@@ -14,7 +14,7 @@ export const Form = <T extends z.ZodObject<any>>({
 }: FormProps<T>) => {
     const [errors, setErrors] = useState({});
 
-    const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const handleFormSubmit = async (e: SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault();
         setErrors({});
 

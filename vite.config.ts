@@ -1,11 +1,12 @@
 import path, { resolve } from "node:path";
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import { libInjectCss } from "vite-plugin-lib-inject-css";
-import dts from "vite-plugin-dts";
-import optimizeLocales from "@react-aria/optimize-locales-plugin";
 import { fileURLToPath } from "node:url";
+import optimizeLocales from "@react-aria/optimize-locales-plugin";
+import react from "@vitejs/plugin-react-swc";
 import { globSync } from "glob";
+import Sonda from "sonda/vite";
+import { defineConfig } from "vite";
+import dts from "vite-plugin-dts";
+import { libInjectCss } from "vite-plugin-lib-inject-css";
 
 export default defineConfig({
     plugins: [
@@ -21,6 +22,7 @@ export default defineConfig({
             }),
             enforce: "pre",
         },
+        Sonda(),
     ],
     resolve: {
         alias: {
@@ -28,6 +30,7 @@ export default defineConfig({
         },
     },
     build: {
+        sourcemap: true,
         outDir: "dist",
         copyPublicDir: false,
         lib: {

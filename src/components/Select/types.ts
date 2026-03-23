@@ -1,7 +1,7 @@
 import type { Key } from "react-aria-components";
 import type { ButtonVariant } from "@/components/Button/ButtonBase/types";
-import type { CardBackground } from "../Card/BaseCard";
 import type { ColorTheme } from "@/utils/types";
+import type { CardBackground } from "../Card/BaseCard";
 
 export type SelectOptions = {
     key: string;

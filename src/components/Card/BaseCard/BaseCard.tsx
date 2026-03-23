@@ -1,7 +1,7 @@
-import type React from "react";
-import type { BaseCardProps } from "./types";
-import styles from "./base-card.module.css";
 import clsx from "clsx";
+import type React from "react";
+import styles from "./base-card.module.css";
+import type { BaseCardProps } from "./types";
 
 export const BaseCard: React.FC<BaseCardProps> = ({
     background = "solid",

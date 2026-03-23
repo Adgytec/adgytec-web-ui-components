@@ -63,7 +63,7 @@
     --_button-padding-inline: 0.625em;
     --_button-padding-block: 0.625em;
 
-    aspect-ratio: 1/1;
+    aspect-ratio: 1 / 1;
     --_button-radius: var(--radius-circular);
 }
 
@@ -71,7 +71,7 @@
     --_button-padding-inline: 0.125em;
     --_button-padding-block: 0.125em;
 
-    aspect-ratio: 1/1;
+    aspect-ratio: 1 / 1;
     --_button-radius: var(--radius-circular);
 }
 
@@ -92,7 +92,7 @@
     --_button-padding-inline: 0.375em;
     --_button-padding-block: 0.375em;
 
-    aspect-ratio: 1/1;
+    aspect-ratio: 1 / 1;
     --_button-radius: var(--radius-circular);
 }
 

@@ -21,6 +21,13 @@
         opacity 250ms;
     transform: translate3d(0, 0, 0);
 
+    .tooltip-arrow svg {
+        display: block;
+        fill: var(--_tooltip-background);
+        inline-size: 0.625rem;
+        aspect-ratio: 1 / 1;
+    }
+
     &[data-placement="bottom"] {
         --_origin: translateY(-0.25rem);
 
@@ -35,6 +42,7 @@
 
     &[data-placement="right"] {
         --_origin: translateX(-0.25rem);
+
         .tooltip-arrow svg {
             rotate: 90deg;
         }
@@ -42,6 +50,7 @@
 
     &[data-placement="left"] {
         --_origin: translateX(0.25rem);
+
         .tooltip-arrow svg {
             rotate: -90deg;
         }
@@ -51,15 +60,6 @@
     &[data-exiting] {
         transform: var(--_origin);
         opacity: 0;
-    }
-}
-
-.tooltip-arrow {
-    svg {
-        display: block;
-        fill: var(--_tooltip-background);
-        inline-size: 0.625rem;
-        aspect-ratio: 1/1;
     }
 }
 

@@ -1,9 +1,9 @@
+import clsx from "clsx";
 import {
-    Popover as UnstyledPopover,
     type PopoverProps,
+    Popover as UnstyledPopover,
 } from "react-aria-components";
 import styles from "./popover.module.css";
-import clsx from "clsx";
 
 export const Popover = (props: PopoverProps) => {
     return (

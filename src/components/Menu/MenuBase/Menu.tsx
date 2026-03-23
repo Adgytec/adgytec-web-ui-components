@@ -1,23 +1,23 @@
-import type { MenuProps, RenderMenuProps } from "./types";
-import {
-    MenuTrigger,
-    Menu as UnstyledMenu,
-    MenuItem,
-    SubmenuTrigger,
-    Separator,
-} from "react-aria-components";
-import styles from "./menu.module.css";
-import { Popover } from "@/components/Popover/PopoverBase";
-import { ChevronRight } from "lucide-react";
-import { BaseCard } from "@/components/Card/BaseCard";
 import { clsx } from "clsx";
+import { ChevronRight } from "lucide-react";
+import {
+    MenuItem,
+    MenuTrigger,
+    SubmenuTrigger,
+    Menu as UnstyledMenu,
+} from "react-aria-components";
+import { BaseCard } from "@/components/Card/BaseCard";
+import { Popover } from "@/components/Popover/PopoverBase";
+import { Separator } from "@/components/Separator/Separator";
+import styles from "./menu.module.css";
+import type { MenuProps, RenderMenuProps } from "./types";
 
 const RenderMenu = ({ menuItem, cardBackground }: RenderMenuProps) => {
     if (menuItem.type === "separator") {
-        return <Separator className={clsx(styles["separator"])} />;
+        return <Separator />;
     }
 
-    const hasSubmenu = !!menuItem.subItems?.length;
+    const hasSubmenu = !!menuItem.subItems && menuItem.subItems.length > 0;
     const menuComp = (
         <MenuItem
             className={clsx(styles["menu-item"], styles[menuItem.type])}
@@ -39,7 +39,7 @@ const RenderMenu = ({ menuItem, cardBackground }: RenderMenuProps) => {
             <Popover>
                 <BaseCard background={cardBackground}>
                     <UnstyledMenu className={clsx(styles["menu"])}>
-                        {menuItem.subItems!.map((subMenu) => {
+                        {menuItem.subItems.map((subMenu) => {
                             return (
                                 <RenderMenu
                                     key={subMenu.id}
@@ -58,10 +58,11 @@ const RenderMenu = ({ menuItem, cardBackground }: RenderMenuProps) => {
 export const Menu = ({
     children,
     menuItems,
-    cardBackground = "gradient",
+    triggerType = "press",
+    cardBackground = "solid",
 }: MenuProps) => {
     return (
-        <MenuTrigger>
+        <MenuTrigger trigger={triggerType}>
             {children}
             <Popover>
                 <BaseCard background={cardBackground}>

@@ -1,10 +1,10 @@
+import { clsx } from "clsx";
+import { X } from "lucide-react";
+import { toast as sonnerToast } from "sonner";
 import { TextButton } from "../Button/TextButton";
 import { BaseCard } from "../Card/BaseCard";
-import type { ToastProps } from "./types";
-import { toast as sonnerToast } from "sonner";
-import { X } from "lucide-react";
 import styles from "./toast.module.css";
-import { clsx } from "clsx";
+import type { ToastProps } from "./types";
 
 export function toast(details: ToastProps) {
     return sonnerToast.custom(

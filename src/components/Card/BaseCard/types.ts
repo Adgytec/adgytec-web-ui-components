@@ -1,5 +1,5 @@
-import type { ComponentStyle } from "@/utils/types";
 import type React from "react";
+import type { ComponentStyle } from "@/utils/types";
 
 export type CardBackground =
     | "solid"
@@ -16,14 +16,10 @@ export interface BaseCardProps extends React.HTMLAttributes<HTMLDivElement> {
     componentStyle?: ComponentStyle;
 }
 
-export interface StyledBaseCardProps extends Omit<
-    BaseCardProps,
-    "background"
-> {}
+export interface StyledBaseCardProps
+    extends Omit<BaseCardProps, "background"> {}
 
-export interface StyledSolidCardProps extends Omit<
-    BaseCardProps,
-    "background"
-> {
+export interface StyledSolidCardProps
+    extends Omit<BaseCardProps, "background"> {
     background?: SolidCardBackground;
 }

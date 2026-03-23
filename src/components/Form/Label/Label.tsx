@@ -1,6 +1,6 @@
-import { Label as UnstyledLabel, type LabelProps } from "react-aria-components";
-import styles from "./label.module.css";
 import clsx from "clsx";
+import { type LabelProps, Label as UnstyledLabel } from "react-aria-components";
+import styles from "./label.module.css";
 
 export const Label = (props: LabelProps) => {
     return (

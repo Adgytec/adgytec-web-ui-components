@@ -1,9 +1,9 @@
-import type { LinkProps } from "@/components/Link/LinkBase";
-import type { ColorTheme } from "@/utils/types";
 import type {
     ButtonProps as AriaButtonProps,
     Key,
 } from "react-aria-components";
+import type { LinkProps } from "@/components/Link/LinkBase";
+import type { ColorTheme } from "@/utils/types";
 
 export type ButtonVariant = "filled" | "outlined" | "text";
 

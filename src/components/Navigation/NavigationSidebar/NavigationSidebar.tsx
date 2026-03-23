@@ -1,10 +1,10 @@
+import clsx from "clsx";
+import { Menu, X } from "lucide-react";
 import { TextButton } from "@/components/Button/TextButton";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { Tree } from "@/components/Tree/Tree";
-import type { NavigationSidebarProps } from "./types";
-import { Menu, X } from "lucide-react";
 import styles from "./navigationSidebar.module.css";
-import clsx from "clsx";
+import type { NavigationSidebarProps } from "./types";
 
 export const NavigationSidebar = ({
     items,

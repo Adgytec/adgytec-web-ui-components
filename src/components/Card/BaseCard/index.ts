@@ -1,2 +1,2 @@
-export type * from "./types";
 export * from "./BaseCard";
+export type * from "./types";

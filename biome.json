@@ -1,0 +1,90 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.4.8/schema.json",
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true
+    },
+    "files": {
+        "ignoreUnknown": false,
+        "includes": ["**", "!!**/routeTree.gen.ts"]
+    },
+    "formatter": {
+        "enabled": true,
+        "formatWithErrors": false,
+        "indentStyle": "space",
+        "indentWidth": 4
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "complexity": {
+                "useLiteralKeys": "off"
+            }
+        },
+        "includes": ["**", "!dist"]
+    },
+    "css": {
+        "parser": {
+            "cssModules": true
+        }
+    },
+    "javascript": {
+        "formatter": {
+            "quoteProperties": "asNeeded",
+            "trailingCommas": "es5"
+        }
+    },
+    "html": {
+        "formatter": {
+            "indentScriptAndStyle": false,
+            "selfCloseVoidElements": "always"
+        }
+    },
+    "overrides": [
+        {
+            "includes": ["src/styles/media-queries.css"],
+            "linter": {
+                "rules": {
+                    "suspicious": {
+                        "noUnknownAtRules": "off"
+                    }
+                }
+            }
+        },
+        {
+            "includes": ["**/*.{ts,tsx}", "**/*.mts", "**/*.cts"],
+            "linter": {
+                "rules": {
+                    "correctness": {
+                        "useExhaustiveDependencies": "warn",
+                        "useHookAtTopLevel": "error"
+                    },
+                    "style": {
+                        "noCommonJs": "error",
+                        "noNamespace": "error",
+                        "useArrayLiterals": "error",
+                        "useAsConstAssertion": "error"
+                    },
+                    "suspicious": {
+                        "noExplicitAny": "error",
+                        "noExtraNonNullAssertion": "error",
+                        "noMisleadingInstantiator": "error",
+                        "noNonNullAssertedOptionalChain": "error",
+                        "noUnsafeDeclarationMerging": "error",
+                        "useNamespaceKeyword": "error"
+                    }
+                }
+            }
+        }
+    ],
+    "assist": {
+        "enabled": true,
+        "actions": {
+            "source": {
+                "organizeImports": "on"
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
-import type { ColorTheme } from "@/utils/types";
 import type { LinkProps as AriaLinkProps } from "react-aria-components";
+import type { ColorTheme } from "@/utils/types";
 
 export interface LinkProps extends AriaLinkProps {
     theme?: ColorTheme;

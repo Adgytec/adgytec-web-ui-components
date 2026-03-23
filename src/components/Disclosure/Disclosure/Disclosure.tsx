@@ -1,12 +1,12 @@
-import type { DisclosureProps } from "./types";
-import {
-    Disclosure as UnstyledDisclosure,
-    DisclosurePanel,
-} from "react-aria-components";
-import styles from "./disclosure.module.css";
-import { ChevronRight } from "lucide-react";
-import { TextButton } from "@/components/Button/TextButton";
 import { clsx } from "clsx";
+import { ChevronRight } from "lucide-react";
+import {
+    DisclosurePanel,
+    Disclosure as UnstyledDisclosure,
+} from "react-aria-components";
+import { TextButton } from "@/components/Button/TextButton";
+import styles from "./disclosure.module.css";
+import type { DisclosureProps } from "./types";
 
 export const Disclosure = ({
     heading,
