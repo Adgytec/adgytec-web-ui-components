@@ -1,7 +1,7 @@
-import type { AvatarBaseProps, AvatarProps, AvatarSize } from "./types";
-import styles from "./avatar.module.css";
-import { Image } from "@/components/Image";
 import clsx from "clsx";
+import { Image } from "@/components/Image";
+import styles from "./avatar.module.css";
+import type { AvatarBaseProps, AvatarProps, AvatarSize } from "./types";
 
 const AVATAR_RENDER_SIZE: Record<AvatarSize, number> = {
     small: 32,

@@ -1,9 +1,9 @@
-import type { HierarchyItemType } from "@/utils/types";
+import type { TreeHierarchyItemType } from "@/utils/types";
 
 export interface TreeProps {
-    items: HierarchyItemType[];
+    items: TreeHierarchyItemType[];
 }
 
 export interface RenderTreeProps {
-    item: HierarchyItemType;
+    item: TreeHierarchyItemType;
 }

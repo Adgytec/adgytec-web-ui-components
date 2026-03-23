@@ -1,13 +1,13 @@
-import type { ModalBaseProps } from "./types";
+import { clsx } from "clsx";
 import {
+    Dialog,
     DialogTrigger,
     Modal,
     ModalOverlay,
-    Dialog,
 } from "react-aria-components";
-import styles from "./modalBase.module.css";
 import { BaseCard } from "@/components/Card/BaseCard";
-import { clsx } from "clsx";
+import styles from "./modalBase.module.css";
+import type { ModalBaseProps } from "./types";
 
 export const ModalBase = ({
     cardBackground = "gradient",

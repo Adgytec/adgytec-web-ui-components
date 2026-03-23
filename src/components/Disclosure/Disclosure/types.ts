@@ -1,5 +1,5 @@
-import type { ColorTheme } from "@/utils/types";
 import type { ReactNode } from "react";
+import type { ColorTheme } from "@/utils/types";
 
 export interface DisclosureProps {
     id?: string;

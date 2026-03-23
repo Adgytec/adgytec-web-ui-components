@@ -1,8 +1,8 @@
-import { ModalBase } from "@/components/Modal/ModalBase/ModalBase";
-import type { ModalActionProps } from "./types";
-import styles from "./modalAction.module.css";
-import { TextButton } from "@/components/Button/TextButton";
 import clsx from "clsx";
+import { TextButton } from "@/components/Button/TextButton";
+import { ModalBase } from "@/components/Modal/ModalBase/ModalBase";
+import styles from "./modalAction.module.css";
+import type { ModalActionProps } from "./types";
 
 export const ModalAction = ({
     trigger,

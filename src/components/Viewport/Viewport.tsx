@@ -18,5 +18,5 @@ export const Viewport = () => {
         };
     }, []);
 
-    return <></>;
+    return null;
 };

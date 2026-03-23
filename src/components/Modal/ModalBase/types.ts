@@ -1,10 +1,10 @@
 import type { ReactElement } from "react";
-import type { ButtonVariantProps } from "@/components/Button/ButtonBase/types";
 import type {
     DialogProps,
     DialogTriggerProps,
     ModalOverlayProps,
 } from "react-aria-components";
+import type { ButtonVariantProps } from "@/components/Button/ButtonBase/types";
 import type { CardBackground } from "@/components/Card/BaseCard";
 
 export interface ModalBaseProps extends DialogProps {

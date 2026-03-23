@@ -1,8 +1,8 @@
-import { Disclosure } from "@/components/Disclosure/Disclosure";
-import type { DisclosureGroupProps } from "./types";
-import { DisclosureGroup as UnstyledDisclosureGroup } from "react-aria-components";
-import styles from "./disclosureGroup.module.css";
 import { clsx } from "clsx";
+import { DisclosureGroup as UnstyledDisclosureGroup } from "react-aria-components";
+import { Disclosure } from "@/components/Disclosure/Disclosure";
+import styles from "./disclosureGroup.module.css";
+import type { DisclosureGroupProps } from "./types";
 
 export const DisclosureGroup = ({ items }: DisclosureGroupProps) => {
     return (

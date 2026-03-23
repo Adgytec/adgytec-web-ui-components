@@ -1,11 +1,11 @@
-import type { NavigationMenuProps } from "./types";
-import styles from "./navigationMenu.module.css";
-import { MenuLabel } from "../../Menu/MenuLabel";
+import { clsx } from "clsx";
+import { ChevronDown } from "lucide-react";
+import { Fragment } from "react";
 import { Link } from "@/components/Link/LinkBase/Link";
 import { TextButton } from "../../Button/TextButton";
-import { ChevronDown } from "lucide-react";
-import { Fragment } from "react/jsx-runtime";
-import { clsx } from "clsx";
+import { MenuLabel } from "../../Menu/MenuLabel";
+import styles from "./navigationMenu.module.css";
+import type { NavigationMenuProps } from "./types";
 
 export const NavigationMenu = ({ items, className }: NavigationMenuProps) => {
     const normalizedItems = items.filter((item) => item.type !== "separator");
@@ -48,6 +48,8 @@ export const NavigationMenu = ({ items, className }: NavigationMenuProps) => {
                                 {item.node}
                             </TextButton>
                         );
+                    default:
+                        return <Fragment key={"never"}></Fragment>;
                 }
             })}
         </div>

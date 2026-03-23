@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from "react";
-import type { ButtonVariantProps } from "@/components/Button/ButtonBase/types";
 import type { DialogRenderProps } from "react-aria-components";
+import type { ButtonVariantProps } from "@/components/Button/ButtonBase/types";
 
 export type ModalActionPlacement = "start" | "end";
 

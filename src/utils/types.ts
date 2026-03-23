@@ -73,3 +73,18 @@ export type HierarchyItemType =
     | HierarchySeparator;
 
 export type ComponentStyle = "normal" | "glass";
+
+interface TreeHierarchyItemsubItems extends HierarchyItemBase {
+    type: "sub-items";
+    href?: never;
+    target?: never;
+    onPress?: never;
+    active?: never;
+    subItems: TreeHierarchyItemType[];
+}
+
+export type TreeHierarchyItemType =
+    | HierarchyItemNode
+    | HierarchyItemLink
+    | HierarchyItemButton
+    | TreeHierarchyItemsubItems;

@@ -1,8 +1,8 @@
 import type {
-    TextFieldProps,
     InputProps as AriaInputProps,
-    LabelProps,
     FieldErrorProps,
+    LabelProps,
+    TextFieldProps,
 } from "react-aria-components";
 
 export interface InputProps {

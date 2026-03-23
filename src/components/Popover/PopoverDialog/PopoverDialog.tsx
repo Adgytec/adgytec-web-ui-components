@@ -1,6 +1,6 @@
 import { Dialog, DialogTrigger } from "react-aria-components";
-import type { PopoverDialogProps } from "@/components/Popover/PopoverBase/types";
 import { Popover } from "@/components/Popover/PopoverBase";
+import type { PopoverDialogProps } from "@/components/Popover/PopoverBase/types";
 
 export const PopoverDialog = ({
     trigger,

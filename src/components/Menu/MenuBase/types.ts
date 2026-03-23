@@ -1,23 +1,27 @@
 import type { ReactElement, ReactNode } from "react";
-import type { HierarchyItemType } from "@/utils/types";
 import type { ButtonVariantProps } from "@/components/Button/ButtonBase/types";
 import type { CardBackground } from "@/components/Card/BaseCard";
+import type { HierarchyItemType } from "@/utils/types";
 
-export interface MenuProps {
-    children: ReactNode;
+export type MenuTriggerType = "press" | "longPress";
+
+export interface BaseMenuProps {
+    triggerType?: MenuTriggerType;
     menuItems: HierarchyItemType[];
     cardBackground?: CardBackground;
 }
 
-export interface MenuButtonProps {
-    children: ReactElement<ButtonVariantProps>;
-    menuItems: HierarchyItemType[];
+export interface MenuProps extends BaseMenuProps {
+    children: ReactNode;
 }
 
-export interface MenuLabelProps {
+export interface MenuButtonProps extends BaseMenuProps {
+    children: ReactElement<ButtonVariantProps>;
+}
+
+export interface MenuLabelProps extends BaseMenuProps {
     children: ReactNode;
     description?: string;
-    menuItems: HierarchyItemType[];
 }
 
 export interface RenderMenuProps {

@@ -1,9 +1,9 @@
-import { TextField, Input as AriaInput } from "react-aria-components";
-import type { InputProps } from "./types";
+import clsx from "clsx";
+import { Input as AriaInput, TextField } from "react-aria-components";
+import { FieldError } from "@/components/Form/FieldError/FieldError.tsx";
 import { Label } from "@/components/Form/Label/Label";
 import styles from "./input.module.css";
-import { FieldError } from "@/components/Form/FieldError/FieldError.tsx";
-import clsx from "clsx";
+import type { InputProps } from "./types";
 
 export const Input = ({
     label,

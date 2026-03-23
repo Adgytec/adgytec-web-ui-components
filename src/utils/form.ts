@@ -14,7 +14,7 @@ type FormValidateResult<T> =
     | FormValidateSuccessResult<T>
     | FormValidateFailureResult<T>;
 
-export type ValidateAndGetFormValues = <T extends z.ZodObject<any>>(
+export type ValidateAndGetFormValues = <T extends z.ZodTypeAny>(
     formElement: HTMLFormElement,
     schema: T
 ) => FormValidateResult<z.infer<T>>;

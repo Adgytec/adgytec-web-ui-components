@@ -1,0 +1,6 @@
+.separator {
+    background-color: var(--color-outline);
+    block-size: 0.075rem;
+
+    margin-block: 0.25rem;
+}
