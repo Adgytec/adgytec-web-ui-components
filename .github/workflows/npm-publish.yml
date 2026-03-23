@@ -2,7 +2,7 @@ name: Adgytec Web UI Components Publish
 
 on:
   release:
-    types: [created]
+    types: [published]
 
 permissions:
   id-token: write  # Required for OIDC
