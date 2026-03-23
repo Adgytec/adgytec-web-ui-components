@@ -1,46 +1,46 @@
-import { Fragment, useState, type ReactNode } from "react";
-import { type ColorTheme, type HierarchyItemType } from "./utils/types";
+import { Copy } from "lucide-react";
+import { Fragment, type ReactNode, useState } from "react";
+import type { Key } from "react-aria-components";
+import type { ButtonVariant } from "@/components/Button/ButtonBase/types";
+import { Link } from "@/components/Link/LinkBase";
+import { Avatar } from "./components/Avatar/Avatar";
+import type { AvatarSize } from "./components/Avatar/types";
 import { FilledButton } from "./components/Button/FilledButton";
 import { OutlinedButton } from "./components/Button/OutlinedButton";
 import { TextButton } from "./components/Button/TextButton";
-import type { ButtonVariant } from "@/components/Button/ButtonBase/types";
-import { Link } from "@/components/Link/LinkBase";
-import { FilledButtonLink } from "./components/Link/FilledButtonLink";
-import { OutlinedButtonLink } from "./components/Link/OutlinedButtonLink";
-import type { SelectOptions } from "./components/Select/types";
-import { Select } from "./components/Select/Select";
-import type { AvatarSize } from "./components/Avatar/types";
-import { Avatar } from "./components/Avatar/Avatar";
-import { Copy } from "lucide-react";
-import { ModalBase } from "./components/Modal/ModalBase/ModalBase";
-import { ModalAction } from "./components/Modal/ModalAction/ModalAction";
-import { MenuButton } from "./components/Menu/MenuButton";
-import { MenuLabel } from "./components/Menu/MenuLabel";
-import { Tooltip } from "./components/Tooltip/Tooltip";
-import type { SidebarPosition, SidebarSize } from "./components/Sidebar/types";
-import { Sidebar } from "./components/Sidebar/Sidebar";
-import { Tree } from "./components/Tree/Tree";
-import { NavigationSidebar } from "./components/Navigation/NavigationSidebar/NavigationSidebar";
-import { NavigationMenu } from "./components/Navigation/NavigationMenu/NavigationMenu";
-import { NavigationResponsive } from "./components/Navigation/NavigationResponsive/NavigationResponsive";
 import { Disclosure } from "./components/Disclosure/Disclosure/Disclosure";
-import { DisclosureGroup } from "./components/Disclosure/DisclousureGroup/DisclousreGroup";
 import type { DisclosureProps } from "./components/Disclosure/Disclosure/types";
-import { type Key } from "react-aria-components";
+import { DisclosureGroup } from "./components/Disclosure/DisclousureGroup/DisclousreGroup";
 import { Input } from "./components/Form/Input/Input";
 import { TextArea } from "./components/Form/TextArea/TextArea";
+import { FilledButtonLink } from "./components/Link/FilledButtonLink";
+import { OutlinedButtonLink } from "./components/Link/OutlinedButtonLink";
+import { MenuButton } from "./components/Menu/MenuButton";
+import { MenuLabel } from "./components/Menu/MenuLabel";
+import { ModalAction } from "./components/Modal/ModalAction/ModalAction";
+import { ModalBase } from "./components/Modal/ModalBase/ModalBase";
+import { NavigationMenu } from "./components/Navigation/NavigationMenu/NavigationMenu";
+import { NavigationResponsive } from "./components/Navigation/NavigationResponsive/NavigationResponsive";
+import { NavigationSidebar } from "./components/Navigation/NavigationSidebar/NavigationSidebar";
+import { Select } from "./components/Select/Select";
+import type { SelectOptions } from "./components/Select/types";
+import { Sidebar } from "./components/Sidebar/Sidebar";
+import type { SidebarPosition, SidebarSize } from "./components/Sidebar/types";
 import {
-    type ToggleButtonGroupItem,
     ToggleButtonGroup,
+    type ToggleButtonGroupItem,
 } from "./components/ToggleButtonGroup";
+import { Tooltip } from "./components/Tooltip/Tooltip";
+import { Tree } from "./components/Tree/Tree";
+import type { ColorTheme, HierarchyItemType } from "./utils/types";
 import "./styles/app.css";
+import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
-import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { toast } from "./components/Toast";
-import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
-import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
 import { Viewport } from "./components/Viewport";
+import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
+import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -97,16 +97,16 @@ const ButtonPreview = () => {
         });
     };
 
-    let descriptionAvatar = "This is a avatar button";
+    const descriptionAvatar = "This is a avatar button";
 
     return (
         <PreviewContainer label="Buttons">
             {buttonTheme.map((theme) => {
                 return (
                     <div className="item-container" key={theme}>
-                        {buttonElements.map((ButtonElement, index) => {
+                        {buttonElements.map((ButtonElement) => {
                             return (
-                                <Fragment key={theme + index}>
+                                <Fragment key={theme + ButtonElement.label}>
                                     <ButtonElement.element
                                         onPress={onPress}
                                         theme={theme}
@@ -215,9 +215,9 @@ const LinkPreview = () => {
             {linkTheme.map((theme) => {
                 return (
                     <div className="item-container" key={theme}>
-                        {linkElements.map((LinkElement, index) => {
+                        {linkElements.map((LinkElement) => {
                             return (
-                                <Fragment key={theme + index}>
+                                <Fragment key={theme + LinkElement.label}>
                                     <LinkElement.element
                                         href="/"
                                         theme={theme}
@@ -291,7 +291,7 @@ const SelectPreview = () => {
         },
     ];
 
-    let description = "Who doesn't like desserts?";
+    const description = "Who doesn't like desserts?";
 
     const [dessert, setDessert] = useState<Key>("cookies");
 
@@ -302,7 +302,7 @@ const SelectPreview = () => {
                     <div className="item-container" key={theme}>
                         {buttonVariants.map((variant) => {
                             return (
-                                <Fragment key={"select" + variant + theme}>
+                                <Fragment key={`select:${variant}:${theme}`}>
                                     <Select
                                         label="Desserts"
                                         name="dessert"
@@ -368,7 +368,7 @@ const AvatarPreview = () => {
         <PreviewContainer label="Avatar">
             {avatarSizes.map((size) => {
                 return (
-                    <div className="item-container" key={"avatar" + size}>
+                    <div className="item-container" key={`avatar:${size}`}>
                         <Avatar
                             type="image"
                             size={size}
@@ -385,7 +385,7 @@ const AvatarPreview = () => {
                                     type="children"
                                     size={size}
                                     theme={theme}
-                                    key={"avatar" + size + theme}
+                                    key={`avatar:${size}:${theme}`}
                                 >
                                     {avatarChildren}
                                 </Avatar>
@@ -1329,6 +1329,7 @@ const CardPreview = () => {
                 style={{
                     borderRadius: "inherit",
                 }}
+                alt="sample"
             />
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
@@ -1345,9 +1346,12 @@ const CardPreview = () => {
     return (
         <PreviewContainer label="Card Preview">
             <div className="item-container">
-                {backgrounds.map((background, ind) => {
+                {backgrounds.map((background) => {
                     return (
-                        <SolidCard key={"solid" + ind} background={background}>
+                        <SolidCard
+                            key={`solid:${background}`}
+                            background={background}
+                        >
                             {cardChild}
                         </SolidCard>
                     );
@@ -1401,8 +1405,8 @@ const App = () => {
         <>
             <Viewport />
             <div className="preview-parent">
-                {previewElements.map((Element, ind) => {
-                    return <Element key={ind} />;
+                {previewElements.map((Element) => {
+                    return <Element key={Element.name} />;
                 })}
             </div>
         </>

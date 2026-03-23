@@ -1,16 +1,16 @@
+import { useEffect } from "react";
+import type { Key } from "react-aria-components";
 import { useLocalStorage } from "usehooks-ts";
 import {
+    ToggleButtonGroup,
+    type ToggleButtonGroupItem,
+} from "@/components/ToggleButtonGroup";
+import {
     ComponentShapeKey,
-    type ComponentShapes,
     type ComponentShapeSwitcherProps,
+    type ComponentShapes,
     type ShapeValue,
 } from "./types";
-import { useEffect } from "react";
-import { type Key } from "react-aria-components";
-import {
-    type ToggleButtonGroupItem,
-    ToggleButtonGroup,
-} from "@/components/ToggleButtonGroup";
 
 const defaultShapeValue: ShapeValue = {
     sharp: "Sharp",
@@ -49,7 +49,7 @@ export const ComponentShapeSwitcher: React.FC<ComponentShapeSwitcherProps> = ({
         setShape(shape);
     };
 
-    if (!ui) return <></>;
+    if (!ui) return;
 
     return (
         <ToggleButtonGroup

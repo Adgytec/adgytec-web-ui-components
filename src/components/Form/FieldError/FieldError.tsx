@@ -1,9 +1,9 @@
+import { clsx } from "clsx";
 import {
-    FieldError as UnstyledFieldError,
     type FieldErrorProps,
+    FieldError as UnstyledFieldError,
 } from "react-aria-components";
 import styles from "./fieldError.module.css";
-import { clsx } from "clsx";
 
 export const FieldError = (props: FieldErrorProps) => {
     return (

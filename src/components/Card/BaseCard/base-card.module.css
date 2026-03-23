@@ -17,7 +17,8 @@
     box-shadow: var(--_card-elevation);
 
     background-color: hsl(
-        from var(--_card-background) h s l / var(--_card-opacity)
+        from var(--_card-background) h s l /
+        var(--_card-opacity)
     );
     color: var(--_card-color);
 }
@@ -54,7 +55,7 @@
             ellipse at top,
             hsl(
                 from var(--color-surface-container-low) h s l /
-                    var(--_card-opacity)
+                var(--_card-opacity)
             ),
             transparent
         ),
@@ -62,7 +63,7 @@
             ellipse at bottom,
             hsl(
                 from var(--color-surface-container-high) h s l /
-                    var(--_card-opacity)
+                var(--_card-opacity)
             ),
             transparent
         );

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
 
-export interface SuccessProps {
+export interface DisplaySuccessProps {
     children: ReactNode;
 }

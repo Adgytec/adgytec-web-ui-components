@@ -1,9 +1,9 @@
-import type { TextAreaProps } from "./types";
-import { TextField, TextArea as AriaTextArea } from "react-aria-components";
-import { Label } from "@/components/Form/Label/Label";
-import { FieldError } from "@/components/Form/FieldError/FieldError";
-import styles from "./textArea.module.css";
 import clsx from "clsx";
+import { TextArea as AriaTextArea, TextField } from "react-aria-components";
+import { FieldError } from "@/components/Form/FieldError/FieldError";
+import { Label } from "@/components/Form/Label/Label";
+import styles from "./textArea.module.css";
+import type { TextAreaProps } from "./types";
 
 export const TextArea = ({
     label,

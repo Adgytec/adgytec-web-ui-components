@@ -1,9 +1,9 @@
-import type { ReactNode } from "react";
-import type { ButtonChildProps } from "./types";
-import styles from "./buttonChild.module.css";
-import { Loader } from "@/components/Loader/Loader";
-import { Check, TriangleAlert } from "lucide-react";
 import clsx from "clsx";
+import { Check, TriangleAlert } from "lucide-react";
+import type { ReactNode } from "react";
+import { Loader } from "@/components/Loader/Loader";
+import styles from "./buttonChild.module.css";
+import type { ButtonChildProps } from "./types";
 
 export const ButtonChild = ({ buttonState, value }: ButtonChildProps) => {
     const {

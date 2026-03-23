@@ -1,13 +1,13 @@
-import type { SidebarProps } from "./types";
+import { clsx } from "clsx";
 import {
+    Dialog,
     DialogTrigger,
     Modal,
     ModalOverlay,
-    Dialog,
 } from "react-aria-components";
-import styles from "./sidebar.module.css";
 import { BaseCard } from "../Card/BaseCard";
-import { clsx } from "clsx";
+import styles from "./sidebar.module.css";
+import type { SidebarProps } from "./types";
 
 export const Sidebar = ({
     children,

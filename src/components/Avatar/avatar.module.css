@@ -3,13 +3,14 @@
     --_base-font-size: 1rem;
 
     --_inline-size: calc(
-        var(--_base-inline-size) * var(--_inline-size-multiplier)
+        var(--_base-inline-size) *
+        var(--_inline-size-multiplier)
     );
     --_font-size: calc(var(--_base-font-size) * var(--_font-multiplier));
 
     inline-size: var(--_inline-size);
     font-size: var(--_font-size);
-    aspect-ratio: 1/1;
+    aspect-ratio: 1 / 1;
 
     border-radius: var(--radius-circular);
     overflow: hidden;

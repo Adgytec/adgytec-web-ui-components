@@ -20,6 +20,7 @@ const VARIANT_WIDTH: Record<ImageVariant, number> = {
 export const ImageVariants: React.FC<ImageVariantProps> = ({
     original,
     variants,
+    alt = "image",
     ...props
 }) => {
     const availableVariants = VARIANT_PRIORITY.filter((key) =>
@@ -28,7 +29,7 @@ export const ImageVariants: React.FC<ImageVariantProps> = ({
 
     // All variants empty, use original
     if (availableVariants.length === 0) {
-        return <img src={original} {...props} />;
+        return <img src={original} {...props} alt={alt} />;
     }
 
     // get source
@@ -44,5 +45,5 @@ export const ImageVariants: React.FC<ImageVariantProps> = ({
         })
         .join(", ");
 
-    return <img src={src} srcSet={srcSet} {...props} />;
+    return <img src={src} srcSet={srcSet} {...props} alt={alt} />;
 };

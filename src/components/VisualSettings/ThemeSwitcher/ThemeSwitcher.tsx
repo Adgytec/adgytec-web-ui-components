@@ -1,11 +1,11 @@
-import { useTernaryDarkMode, type TernaryDarkMode } from "usehooks-ts";
-import type { Key } from "react-aria-components";
 import { useEffect } from "react";
-import type { ThemeSwitcherProps, ThemeValue } from "./types";
+import type { Key } from "react-aria-components";
+import { type TernaryDarkMode, useTernaryDarkMode } from "usehooks-ts";
 import {
-    type ToggleButtonGroupItem,
     ToggleButtonGroup,
+    type ToggleButtonGroupItem,
 } from "@/components/ToggleButtonGroup";
+import type { ThemeSwitcherProps, ThemeValue } from "./types";
 
 const defaultThemeValues: ThemeValue = {
     system: "System",
@@ -36,15 +36,11 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
         },
     ];
 
-    const updateTheme = () => {
+    useEffect(() => {
         document.documentElement.setAttribute(
             "data-theme",
             isDarkMode ? "dark" : "light"
         );
-    };
-
-    useEffect(() => {
-        updateTheme();
     }, [isDarkMode]);
 
     const handleThemeChange = (keys: Set<Key>) => {
@@ -54,9 +50,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
         setTernaryDarkMode(theme);
     };
 
-    if (!ui) {
-        return <></>;
-    }
+    if (!ui) return;
 
     return (
         <ToggleButtonGroup

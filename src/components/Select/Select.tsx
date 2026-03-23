@@ -1,24 +1,24 @@
-import { FilledButton } from "@/components/Button/FilledButton";
-import styles from "./select.module.css";
-import type { ButtonVariantProps } from "@/components/Button/ButtonBase/types.ts";
-import type { SelectProps } from "./types";
+import { clsx } from "clsx";
+import { Check, ChevronsUpDown } from "lucide-react";
+import type { ComponentType } from "react";
 import {
-    Select as UnstyledSelect,
     ListBox,
     ListBoxItem,
     SelectValue,
     Text,
+    Select as UnstyledSelect,
 } from "react-aria-components";
-import { Popover } from "@/components/Popover/PopoverBase";
-import { ChevronsUpDown, Check } from "lucide-react";
-import type { ComponentType } from "react";
+import type { ButtonVariantProps } from "@/components/Button/ButtonBase/types.ts";
+import { FilledButton } from "@/components/Button/FilledButton";
 import { OutlinedButton } from "@/components/Button/OutlinedButton";
 import { TextButton } from "@/components/Button/TextButton";
-import { Tooltip } from "@/components/Tooltip/Tooltip";
-import { Label } from "@/components/Form/Label/Label.tsx";
 import { FieldError } from "@/components/Form/FieldError/FieldError.tsx";
+import { Label } from "@/components/Form/Label/Label.tsx";
+import { Popover } from "@/components/Popover/PopoverBase";
+import { Tooltip } from "@/components/Tooltip/Tooltip";
 import { BaseCard } from "../Card/BaseCard";
-import { clsx } from "clsx";
+import styles from "./select.module.css";
+import type { SelectProps } from "./types";
 
 export const Select = ({
     options,

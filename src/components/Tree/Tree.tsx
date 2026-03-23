@@ -1,15 +1,15 @@
+import clsx from "clsx";
+import { ChevronRight } from "lucide-react";
 import {
-    Tree as UnstyledTree,
     TreeItem,
     TreeItemContent,
+    Tree as UnstyledTree,
 } from "react-aria-components";
 import styles from "./tree.module.css";
 import type { RenderTreeProps, TreeProps } from "./types";
-import { ChevronRight } from "lucide-react";
-import clsx from "clsx";
 
 const RenderTree = ({ item }: RenderTreeProps) => {
-    if (item.type === "separator") return <></>;
+    if (item.type === "separator") return;
 
     const isLink = item.type === "link";
     const isButton = item.type === "button";
@@ -35,10 +35,9 @@ const RenderTree = ({ item }: RenderTreeProps) => {
                 {item.subItems && <ChevronRight />}
             </TreeItemContent>
 
-            {item.subItems &&
-                item.subItems.map((subItem) => {
-                    return <RenderTree key={subItem.id} item={subItem} />;
-                })}
+            {item.subItems?.map((subItem) => (
+                <RenderTree key={subItem.id} item={subItem} />
+            ))}
         </TreeItem>
     );
 };
