@@ -49,7 +49,7 @@ export const ComponentShapeSwitcher: React.FC<ComponentShapeSwitcherProps> = ({
         setShape(shape);
     };
 
-    if (!ui) return;
+    if (!ui) return null;
 
     return (
         <ToggleButtonGroup

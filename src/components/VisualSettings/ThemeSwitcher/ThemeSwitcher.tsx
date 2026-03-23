@@ -50,7 +50,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
         setTernaryDarkMode(theme);
     };
 
-    if (!ui) return;
+    if (!ui) return null;
 
     return (
         <ToggleButtonGroup

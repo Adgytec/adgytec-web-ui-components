@@ -32,7 +32,11 @@ import {
 } from "./components/ToggleButtonGroup";
 import { Tooltip } from "./components/Tooltip/Tooltip";
 import { Tree } from "./components/Tree/Tree";
-import type { ColorTheme, HierarchyItemType } from "./utils/types";
+import type {
+    ColorTheme,
+    HierarchyItemType,
+    TreeHierarchyItemType,
+} from "./utils/types";
 import "./styles/app.css";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
@@ -762,7 +766,7 @@ const MenuPreview = () => {
     return (
         <PreviewContainer label="Menu">
             <div className="item-container">
-                <MenuButton menuItems={menuItems}>
+                <MenuButton menuItems={menuItems} cardBackground="gradient">
                     <FilledButton>Open Menu</FilledButton>
                 </MenuButton>
 
@@ -847,7 +851,7 @@ const SidebarPreview = () => {
 };
 
 const TreePreview = () => {
-    const tree: HierarchyItemType[] = [
+    const tree: TreeHierarchyItemType[] = [
         {
             id: "1",
             type: "link",

@@ -9,8 +9,6 @@ import styles from "./tree.module.css";
 import type { RenderTreeProps, TreeProps } from "./types";
 
 const RenderTree = ({ item }: RenderTreeProps) => {
-    if (item.type === "separator") return;
-
     const isLink = item.type === "link";
     const isButton = item.type === "button";
     const isNode = item.type === "item-node";

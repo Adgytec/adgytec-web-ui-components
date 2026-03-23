@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import styles from "./success.module.css";
+import styles from "./displaySuccess.module.css";
 import type { DisplaySuccessProps } from "./types";
 
 export const DisplaySuccess = ({ children }: DisplaySuccessProps) => {

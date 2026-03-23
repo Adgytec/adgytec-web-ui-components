@@ -3,18 +3,18 @@ import { ChevronRight } from "lucide-react";
 import {
     MenuItem,
     MenuTrigger,
-    Separator,
     SubmenuTrigger,
     Menu as UnstyledMenu,
 } from "react-aria-components";
 import { BaseCard } from "@/components/Card/BaseCard";
 import { Popover } from "@/components/Popover/PopoverBase";
+import { Separator } from "@/components/Separator/Separator";
 import styles from "./menu.module.css";
 import type { MenuProps, RenderMenuProps } from "./types";
 
 const RenderMenu = ({ menuItem, cardBackground }: RenderMenuProps) => {
     if (menuItem.type === "separator") {
-        return <Separator className={clsx(styles["separator"])} />;
+        return <Separator />;
     }
 
     const hasSubmenu = !!menuItem.subItems && menuItem.subItems.length > 0;
@@ -59,7 +59,7 @@ export const Menu = ({
     children,
     menuItems,
     triggerType = "press",
-    cardBackground = "gradient",
+    cardBackground = "solid",
 }: MenuProps) => {
     return (
         <MenuTrigger trigger={triggerType}>

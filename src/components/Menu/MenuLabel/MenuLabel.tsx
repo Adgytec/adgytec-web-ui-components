@@ -10,9 +10,14 @@ export const MenuLabel = ({
     menuItems,
     description,
     triggerType,
+    cardBackground,
 }: MenuLabelProps) => {
     return (
-        <Menu menuItems={menuItems} triggerType={triggerType}>
+        <Menu
+            menuItems={menuItems}
+            triggerType={triggerType}
+            cardBackground={cardBackground}
+        >
             <Tooltip description={description}>
                 <Button type="button" className={clsx(styles["pressable"])}>
                     {children}

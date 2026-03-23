@@ -5,24 +5,23 @@ import type { HierarchyItemType } from "@/utils/types";
 
 export type MenuTriggerType = "press" | "longPress";
 
-export interface MenuProps {
-    children: ReactNode;
+export interface BaseMenuProps {
     triggerType?: MenuTriggerType;
     menuItems: HierarchyItemType[];
     cardBackground?: CardBackground;
 }
 
-export interface MenuButtonProps {
-    triggerType?: MenuTriggerType;
-    children: ReactElement<ButtonVariantProps>;
-    menuItems: HierarchyItemType[];
+export interface MenuProps extends BaseMenuProps {
+    children: ReactNode;
 }
 
-export interface MenuLabelProps {
-    triggerType?: MenuTriggerType;
+export interface MenuButtonProps extends BaseMenuProps {
+    children: ReactElement<ButtonVariantProps>;
+}
+
+export interface MenuLabelProps extends BaseMenuProps {
     children: ReactNode;
     description?: string;
-    menuItems: HierarchyItemType[];
 }
 
 export interface RenderMenuProps {
