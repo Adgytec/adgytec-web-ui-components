@@ -5,8 +5,7 @@ export type ButtonState =
     | "completed"
     | "error";
 
-// deafult for disabled, pending, and completed is enabled text
-// default for error is Try again
+// deafult for disabled, pending, error, and completed is enabled text
 export interface ButtonStateText {
     enabled: string;
     disabled?: string;
