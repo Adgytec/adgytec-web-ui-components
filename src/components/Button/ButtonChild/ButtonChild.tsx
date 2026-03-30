@@ -11,7 +11,7 @@ export const ButtonChild = ({ buttonState, value }: ButtonChildProps) => {
         disabled = enabled,
         pending = enabled,
         completed = enabled,
-        error = "Try again",
+        error = enabled,
     } = value;
 
     let child: ReactNode;
