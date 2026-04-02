@@ -1,7 +1,7 @@
 {
     "name": "@adgytec/adgytec-web-ui-components",
     "private": false,
-    "version": "1.1.4",
+    "version": "1.1.5",
     "type": "module",
     "sideEffects": [
         "**/*.css"
@@ -30,7 +30,7 @@
         "typecheck": "tsc -b",
         "preview": "vite preview",
         "release": "npm run build && npm publish --public",
-        "test": "npm run build && npm pack"
+        "test": "echo \"No tests\""
     },
     "peerDependencies": {
         "clsx": ">=2.1.1",

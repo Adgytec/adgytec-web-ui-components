@@ -34,6 +34,7 @@ export * from "./components/Navigation/NavigationSidebar";
 export * from "./components/Popover/PopoverBase";
 export * from "./components/Popover/PopoverDialog";
 export * from "./components/Select";
+export * from "./components/Separator";
 export * from "./components/Sidebar";
 export * from "./components/Toast";
 export * from "./components/ToggleButtonGroup";
