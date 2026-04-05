@@ -1,3 +1,5 @@
+// TODO: better way to handle this
+
 import { useMediaQuery } from "usehooks-ts";
 import { NavigationMenu } from "@/components/Navigation/NavigationMenu/NavigationMenu";
 import { NavigationSidebar } from "@/components/Navigation/NavigationSidebar/NavigationSidebar";

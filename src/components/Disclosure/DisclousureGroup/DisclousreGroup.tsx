@@ -1,3 +1,5 @@
+// TODO: better api for clients
+
 import { clsx } from "clsx";
 import { DisclosureGroup as UnstyledDisclosureGroup } from "react-aria-components";
 import { Disclosure } from "@/components/Disclosure/Disclosure";

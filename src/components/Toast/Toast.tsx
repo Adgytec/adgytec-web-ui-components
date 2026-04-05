@@ -1,3 +1,6 @@
+// TODO: better api
+// better control over toast layout
+
 import { clsx } from "clsx";
 import { X } from "lucide-react";
 import { toast as sonnerToast } from "sonner";

@@ -1,3 +1,5 @@
+// TODO: will be removed unnecessary abstraction
+
 import clsx from "clsx";
 import { TextButton } from "@/components/Button/TextButton";
 import { ModalBase } from "@/components/Modal/ModalBase/ModalBase";

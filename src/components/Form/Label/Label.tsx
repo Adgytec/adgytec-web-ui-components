@@ -1,3 +1,5 @@
+// TODO: will be exported
+
 import clsx from "clsx";
 import { type LabelProps, Label as UnstyledLabel } from "react-aria-components";
 import styles from "./label.module.css";
