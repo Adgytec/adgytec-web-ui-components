@@ -1,17 +1,43 @@
-// TODO: replace with simple implementation
-// Server response will also be changed to only include 5 variants
-// original, thumbnail, medium, large, extralarge
-// no source type will be there
+import type { ImageProps, Preset } from "./types";
 
-import type React from "react";
-import { ImageSource } from "./ImageSource";
-import { ImageVariants } from "./ImageVariants";
-import type { ImageProps } from "./types";
+const IMAGE_SIZE_PRESETS: Record<Preset, string> = {
+    default: "(max-width: 50rem) 100vw, 50rem", // "sane" default
+    thumbnail: "10rem",
+    normal: "(max-width: 60rem) 100vw, 60rem",
+    wide: "(max-width: 80rem) 100vw, 80rem",
+    full: "100vw",
+    grid3Col: "(max-width: 40rem) 100vw, (max-width: 80rem) 50vw, 30rem",
+};
 
-export const Image: React.FC<ImageProps> = (props) => {
-    if (props.type === "source") {
-        return <ImageSource {...props} />;
-    }
+export const Image: React.FC<ImageProps> = ({
+    preset = "default",
+    thumbnail,
+    small,
+    medium,
+    large,
+    extraLarge,
+    alt,
+    sizes,
+    ...props
+}) => {
+    const defaultSrc = small;
+    const finalSizes = sizes || IMAGE_SIZE_PRESETS[preset];
 
-    return <ImageVariants {...props} />;
+    const srcSet = [
+        `${thumbnail} 150w`,
+        `${small} 320w`,
+        `${medium} 640w`,
+        `${large} 1280w`,
+        `${extraLarge} 1920w`,
+    ].join(", ");
+
+    return (
+        <img
+            src={defaultSrc}
+            srcSet={srcSet}
+            sizes={finalSizes}
+            alt={alt}
+            {...props}
+        />
+    );
 };
