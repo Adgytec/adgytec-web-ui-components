@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+@import "reset.css";
+@import "theme.css";
 
 /* DO NOT REMOVE UNUSED STYLES */
 /* This css file is reference for clients to use this lib like this */
@@ -161,9 +163,6 @@
     --font-weight-regular: 400;
     --font-weight-medium: 600;
     --font-weight-bold: 700;
-
-    --glassmorphism-opacity: 0.625;
-    --glassmorphism-filter: blur(0.625rem) saturate(180%);
 
     caret-color: var(--color-primary);
     accent-color: var(--color-primary);

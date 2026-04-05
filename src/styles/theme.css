@@ -1,0 +1,34 @@
+.primary {
+    --theme-background: var(--color-primary);
+    --theme-color: var(--color-on-primary);
+}
+
+.primary-variant {
+    --theme-background: var(--color-primary-variant);
+    --theme-color: var(--color-on-primary-variant);
+}
+
+.secondary {
+    --theme-background: var(--color-secondary);
+    --theme-color: var(--color-on-secondary);
+}
+
+.tertiary {
+    --theme-background: var(--color-tertiary);
+    --theme-color: var(--color-on-tertiary);
+}
+
+.error {
+    --theme-background: var(--color-error);
+    --theme-color: var(--color-on-error);
+}
+
+.inverse-surface {
+    --theme-background: var(--color-inverse-surface);
+    --theme-color: var(--color-inverse-on-surface);
+}
+
+.success {
+    --theme-background: var(--color-success);
+    --theme-color: var(--color-on-success);
+}

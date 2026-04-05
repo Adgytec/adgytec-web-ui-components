@@ -38,6 +38,7 @@ import type {
     TreeHierarchyItemType,
 } from "./utils/types";
 import "./styles/app.css";
+import { AvatarImage } from "./components/Avatar/AvatarImage";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
@@ -156,13 +157,12 @@ const ButtonPreview = () => {
                                         shape="avatar"
                                         description={descriptionAvatar}
                                     >
-                                        <Avatar
-                                            type="image"
-                                            image={{
-                                                type: "source",
-                                                src: avatarSrc,
-                                            }}
-                                        />
+                                        <Avatar>
+                                            <AvatarImage
+                                                src={avatarSrc}
+                                                alt="dog"
+                                            />
+                                        </Avatar>
                                     </ButtonElement.element>
 
                                     <ButtonElement.element
@@ -171,7 +171,10 @@ const ButtonPreview = () => {
                                         shape="avatar"
                                         description={descriptionAvatar}
                                     >
-                                        <Avatar type="children" theme={theme}>
+                                        <Avatar
+                                            theme={theme}
+                                            background="inherit"
+                                        >
                                             RV
                                         </Avatar>
                                     </ButtonElement.element>
@@ -373,20 +376,13 @@ const AvatarPreview = () => {
             {avatarSizes.map((size) => {
                 return (
                     <div className="item-container" key={`avatar:${size}`}>
-                        <Avatar
-                            type="image"
-                            size={size}
-                            image={{
-                                type: "source",
-                                src: avatarSrc,
-                                alt: "dog-smile",
-                            }}
-                        />
+                        <Avatar size={size}>
+                            <AvatarImage src={avatarSrc} alt="dog-smile" />
+                        </Avatar>
 
                         {avatarTheme.map((theme) => {
                             return (
                                 <Avatar
-                                    type="children"
                                     size={size}
                                     theme={theme}
                                     key={`avatar:${size}:${theme}`}
@@ -771,7 +767,7 @@ const MenuPreview = () => {
                 </MenuButton>
 
                 <MenuLabel menuItems={menuItems} description="avatar menu">
-                    <Avatar type="children" theme="inverse-surface">
+                    <Avatar theme="inverse-surface" background="inherit">
                         RV
                     </Avatar>
                 </MenuLabel>
