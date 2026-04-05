@@ -1,6 +1,6 @@
 .link {
-    --theme-color: transparent;
-    --_color: var(--theme-color);
+    --theme-background: transparent;
+    --_color: var(--theme-background);
 
     cursor: pointer;
 
@@ -16,12 +16,12 @@
 
     &[data-hovered="true"],
     &[data-focus-visible="true"] {
-        --_color: hsl(from var(--theme-color) h s calc(l + 10));
+        --_color: hsl(from var(--theme-background) h s calc(l + 10));
         text-decoration-color: currentColor;
     }
 
     &[data-pressed="true"] {
-        --_color: hsl(from var(--theme-color) h s calc(l - 5));
+        --_color: hsl(from var(--theme-background) h s calc(l - 5));
     }
 
     &[data-underline] {
