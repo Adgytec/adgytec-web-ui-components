@@ -6,7 +6,10 @@ import { glob } from "glob";
  * 👇 Any custom exports you want to force into src/index.ts.
  * Write them exactly as you want them to appear.
  */
-const MANUAL_EXPORTS = ['export type * from "./utils/types";'];
+const MANUAL_EXPORTS = [
+    'export type * from "./utils/types";',
+    'export type * from "./utils/button/types;',
+];
 
 const COMPONENT_INDEX_GLOB = "src/components/**/index.ts";
 const ROOT_INDEX = "src/index.ts";
