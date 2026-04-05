@@ -16,7 +16,7 @@ export const Image: React.FC<ImageProps> = ({
     medium,
     large,
     extraLarge,
-    alt,
+    alt = "",
     sizes,
     ...props
 }) => {
