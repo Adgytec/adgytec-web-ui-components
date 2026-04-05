@@ -16,7 +16,7 @@
     overflow: hidden;
 }
 
-/* avatar type */
+/* avatar children */
 .node {
     display: flex;
     align-items: center;
@@ -25,8 +25,8 @@
     font-weight: var(--font-weight-bold);
     text-transform: uppercase;
 
-    background-color: var(--_avatar-background);
-    color: var(--_avatar-color);
+    background-color: var(--theme-background);
+    color: var(--theme-color);
 }
 
 .image {
@@ -49,40 +49,4 @@
 .large {
     --_inline-size-multiplier: 3;
     --_font-multiplier: 1.125;
-}
-
-/* avatar theme */
-.primary {
-    --_avatar-background: var(--color-primary);
-    --_avatar-color: var(--color-on-primary);
-}
-
-.primary-variant {
-    --_avatar-background: var(--color-primary-variant);
-    --_avatar-color: var(--color-on-primary-variant);
-}
-
-.secondary {
-    --_avatar-background: var(--color-secondary);
-    --_avatar-color: var(--color-on-secondary);
-}
-
-.tertiary {
-    --_avatar-background: var(--color-tertiary);
-    --_avatar-color: var(--color-on-tertiary);
-}
-
-.error {
-    --_avatar-background: var(--color-error);
-    --_avatar-color: var(--color-on-error);
-}
-
-.inverse-surface {
-    --_avatar-background: var(--color-inverse-surface);
-    --_avatar-color: var(--color-inverse-on-surface);
-}
-
-.success {
-    --_avatar-background: var(--color-success);
-    --_avatar-color: var(--color-on-success);
 }
