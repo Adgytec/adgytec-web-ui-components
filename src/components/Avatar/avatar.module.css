@@ -30,11 +30,9 @@
 }
 
 .image {
-    img {
-        object-fit: cover;
-        inline-size: 100%;
-        block-size: 100%;
-    }
+    object-fit: cover;
+    inline-size: 100%;
+    block-size: 100%;
 }
 
 /* avatar sizes */
