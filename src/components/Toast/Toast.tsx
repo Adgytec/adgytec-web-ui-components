@@ -4,7 +4,7 @@
 import { clsx } from "clsx";
 import { X } from "lucide-react";
 import { toast as sonnerToast } from "sonner";
-import { TextButton } from "../Button/TextButton";
+import { Button } from "../Button";
 import { BaseCard } from "../Card/BaseCard";
 import styles from "./toast.module.css";
 import type { ToastProps } from "./types";
@@ -46,13 +46,14 @@ const Toast: React.FC<ToastProps & { id: string | number }> = ({
 
             {closeButton && (
                 <div>
-                    <TextButton
+                    <Button
+                        variant="text"
                         theme="inverse-surface"
                         onPress={() => sonnerToast.dismiss(id)}
                         shape="square-shrink"
                     >
                         <X />
-                    </TextButton>
+                    </Button>
                 </div>
             )}
         </BaseCard>

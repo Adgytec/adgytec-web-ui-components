@@ -3,8 +3,8 @@
 import { clsx } from "clsx";
 import { ChevronDown } from "lucide-react";
 import { Fragment } from "react";
-import { Link } from "@/components/Link/LinkBase/Link";
-import { TextButton } from "../../Button/TextButton";
+import { Link } from "@/components/Link";
+import { Button } from "@/components/Button";
 import { MenuLabel } from "../../Menu/MenuLabel";
 import styles from "./navigationMenu.module.css";
 import type { NavigationMenuProps } from "./types";
@@ -41,14 +41,15 @@ export const NavigationMenu = ({ items, className }: NavigationMenuProps) => {
                         );
                     case "button":
                         return (
-                            <TextButton
+                            <Button
+                                variant="text"
                                 key={item.id}
                                 onPress={item.onPress}
                                 theme="inverse-surface"
                                 shape="shrink"
                             >
                                 {item.node}
-                            </TextButton>
+                            </Button>
                         );
                     default:
                         return <Fragment key={"never"}></Fragment>;

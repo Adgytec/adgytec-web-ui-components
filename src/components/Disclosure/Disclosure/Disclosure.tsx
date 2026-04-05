@@ -7,7 +7,7 @@ import {
     DisclosurePanel,
     Disclosure as UnstyledDisclosure,
 } from "react-aria-components";
-import { TextButton } from "@/components/Button/TextButton";
+import { Button } from "@/components/Button";
 import styles from "./disclosure.module.css";
 import type { DisclosureProps } from "./types";
 
@@ -20,10 +20,10 @@ export const Disclosure = ({
     return (
         <UnstyledDisclosure className={clsx(styles["disclosure"])} id={id}>
             <h2 className={clsx(styles["trigger"])}>
-                <TextButton slot="trigger" theme={triggerTheme}>
+                <Button variant="text" slot="trigger" theme={triggerTheme}>
                     <ChevronRight />
                     {heading}
-                </TextButton>
+                </Button>
             </h2>
 
             <DisclosurePanel className={clsx(styles["panel"])}>

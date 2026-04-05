@@ -3,7 +3,6 @@
 
 import { clsx } from "clsx";
 import { Check, ChevronsUpDown } from "lucide-react";
-import type { ComponentType } from "react";
 import {
     ListBox,
     ListBoxItem,
@@ -11,10 +10,6 @@ import {
     Text,
     Select as UnstyledSelect,
 } from "react-aria-components";
-import type { ButtonVariantProps } from "@/components/Button/ButtonBase/types.ts";
-import { FilledButton } from "@/components/Button/FilledButton";
-import { OutlinedButton } from "@/components/Button/OutlinedButton";
-import { TextButton } from "@/components/Button/TextButton";
 import { FieldError } from "@/components/Form/FieldError/FieldError.tsx";
 import { Label } from "@/components/Form/Label/Label.tsx";
 import { Popover } from "@/components/Popover/PopoverBase";
@@ -22,6 +17,7 @@ import { Tooltip } from "@/components/Tooltip/Tooltip";
 import { BaseCard } from "../Card/BaseCard";
 import styles from "./select.module.css";
 import type { SelectProps } from "./types";
+import { Button } from "../Button";
 
 export const Select = ({
     options,
@@ -38,21 +34,6 @@ export const Select = ({
     selectedKey,
     onSelectionChange,
 }: SelectProps) => {
-    let TriggerVariant: ComponentType<ButtonVariantProps>;
-    switch (triggerVariant) {
-        case "filled":
-            TriggerVariant = FilledButton;
-            break;
-        case "outlined":
-            TriggerVariant = OutlinedButton;
-            break;
-        case "text":
-            TriggerVariant = TextButton;
-            break;
-        default:
-            TriggerVariant = FilledButton;
-    }
-
     return (
         <UnstyledSelect
             isDisabled={disabled}
@@ -65,7 +46,7 @@ export const Select = ({
             {label && <Label className={clsx(styles["label"])}>{label}</Label>}
 
             <Tooltip description={description} theme={triggerTheme}>
-                <TriggerVariant theme={triggerTheme}>
+                <Button variant={triggerVariant} theme={triggerTheme}>
                     <span className={clsx(styles["trigger"])}>
                         {placeholder ? (
                             <SelectValue
@@ -82,7 +63,7 @@ export const Select = ({
                         )}
                         <ChevronsUpDown />
                     </span>
-                </TriggerVariant>
+                </Button>
             </Tooltip>
 
             <FieldError />

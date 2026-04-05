@@ -1,7 +1,7 @@
 // TODO: will be removed unnecessary abstraction
 
 import clsx from "clsx";
-import { TextButton } from "@/components/Button/TextButton";
+import { Button } from "@/components/Button";
 import { ModalBase } from "@/components/Modal/ModalBase/ModalBase";
 import styles from "./modalAction.module.css";
 import type { ModalActionProps } from "./types";
@@ -49,9 +49,13 @@ export const ModalAction = ({
                                 ? modalAction({ close })
                                 : modalAction}
 
-                            <TextButton onPress={close} theme="inverse-surface">
+                            <Button
+                                variant="text"
+                                onPress={close}
+                                theme="inverse-surface"
+                            >
                                 {closeText}
-                            </TextButton>
+                            </Button>
                         </div>
                     </div>
                 );
