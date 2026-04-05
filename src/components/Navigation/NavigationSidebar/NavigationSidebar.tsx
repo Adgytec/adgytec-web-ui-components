@@ -2,11 +2,11 @@
 
 import clsx from "clsx";
 import { Menu, X } from "lucide-react";
+import { Button } from "@/components/Button";
 import { Sidebar } from "@/components/Sidebar/Sidebar";
 import { Tree } from "@/components/Tree/Tree";
 import styles from "./navigationSidebar.module.css";
 import type { NavigationSidebarProps } from "./types";
-import { Button } from "@/components/Button";
 
 export const NavigationSidebar = ({
     items,

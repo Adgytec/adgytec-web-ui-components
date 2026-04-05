@@ -137,6 +137,7 @@ const ButtonPreview = () => {
                                                 "This button is shrinked"
                                             }
                                             shape="shrink"
+                                            variant={info.variant}
                                         >
                                             {info.label}
                                         </Button>
@@ -147,6 +148,7 @@ const ButtonPreview = () => {
                                         onPress={onPress}
                                         shape="square"
                                         description="This is square button"
+                                        variant={info.variant}
                                     >
                                         <Copy />
                                     </Button>
@@ -156,6 +158,7 @@ const ButtonPreview = () => {
                                         onPress={onPress}
                                         shape="avatar"
                                         description={descriptionAvatar}
+                                        variant={info.variant}
                                     >
                                         <Avatar>
                                             <AvatarImage
@@ -170,6 +173,7 @@ const ButtonPreview = () => {
                                         onPress={onPress}
                                         shape="avatar"
                                         description={descriptionAvatar}
+                                        variant={info.variant}
                                     >
                                         <Avatar
                                             theme={theme}

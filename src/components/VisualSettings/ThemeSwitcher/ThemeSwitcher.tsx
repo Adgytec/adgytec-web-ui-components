@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import type { Key } from "react-aria-components";
 import { type TernaryDarkMode, useTernaryDarkMode } from "usehooks-ts";
+import { ToggleButton } from "@/components/ToggleButton";
 import { ToggleButtonGroup } from "@/components/ToggleButtonGroup";
 import type { ThemeSwitcherProps, ThemeValue } from "./types";
-import { ToggleButton } from "@/components/ToggleButton";
 
 const defaultThemeValues: ThemeValue = {
     system: "System",

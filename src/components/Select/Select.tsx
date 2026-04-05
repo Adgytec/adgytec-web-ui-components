@@ -14,10 +14,10 @@ import { FieldError } from "@/components/Form/FieldError/FieldError.tsx";
 import { Label } from "@/components/Form/Label/Label.tsx";
 import { Popover } from "@/components/Popover/PopoverBase";
 import { Tooltip } from "@/components/Tooltip/Tooltip";
+import { Button } from "../Button";
 import { BaseCard } from "../Card/BaseCard";
 import styles from "./select.module.css";
 import type { SelectProps } from "./types";
-import { Button } from "../Button";
 
 export const Select = ({
     options,

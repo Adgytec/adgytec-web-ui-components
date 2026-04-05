@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import type { Key } from "react-aria-components";
 import { useLocalStorage } from "usehooks-ts";
+import { ToggleButton } from "@/components/ToggleButton";
 import { ToggleButtonGroup } from "@/components/ToggleButtonGroup";
 import {
     ComponentShapeKey,
@@ -8,7 +9,6 @@ import {
     type ComponentShapes,
     type ShapeValue,
 } from "./types";
-import { ToggleButton } from "@/components/ToggleButton";
 
 const defaultShapeValue: ShapeValue = {
     sharp: "Sharp",

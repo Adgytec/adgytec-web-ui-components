@@ -3,8 +3,8 @@
 import { clsx } from "clsx";
 import { ChevronDown } from "lucide-react";
 import { Fragment } from "react";
-import { Link } from "@/components/Link";
 import { Button } from "@/components/Button";
+import { Link } from "@/components/Link";
 import { MenuLabel } from "../../Menu/MenuLabel";
 import styles from "./navigationMenu.module.css";
 import type { NavigationMenuProps } from "./types";
