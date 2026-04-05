@@ -8,11 +8,3 @@ export interface ButtonProps extends AriaButtonProps {
     shape?: ButtonShape;
     description?: string;
 }
-
-// export interface ToggleButtonProps {
-//     id: Key;
-//     value: string;
-//     description?: string;
-//     theme?: ColorTheme;
-//     isDisabled?: boolean;
-// }

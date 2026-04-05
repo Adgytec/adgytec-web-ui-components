@@ -1,43 +1,49 @@
-// TODO: will import styles from utils/button styles (ref src/todo.ts comment)
-
 import clsx from "clsx";
 import { ToggleButton as UnstyledToggleButton } from "react-aria-components";
-import type {
-    ButtonShape,
-    ButtonVariant,
-    ToggleButtonProps,
-} from "@/components/Button/ButtonBase";
-import styles from "@/components/Button/ButtonBase/button.module.css";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
 import { Tooltip } from "@/components/Tooltip";
+import styles from "@/utils/button/button.module.css";
+import type { ToggleButtonProps } from "./types";
 
-export const ToggleButton = ({
-    id,
-    value,
+export const ToggleButton: React.FC<ToggleButtonProps> = ({
     description,
-    isDisabled,
     theme = "primary",
-}: ToggleButtonProps) => {
+    className,
+    children,
+    variant = "outlined",
+    shape = "default",
+    ...props
+}) => {
     const { coords, handlePress } = useSplash();
-    const buttonVariant: ButtonVariant = "outlined";
-    const buttonShape: ButtonShape = "default";
+    const isChildFunc = typeof children === "function";
 
     return (
         <Tooltip description={description}>
             <UnstyledToggleButton
-                id={id}
                 onPress={handlePress}
                 className={clsx(
                     styles["button"],
-                    styles[theme],
-                    styles[buttonVariant],
-                    styles[buttonShape]
+                    theme,
+                    styles[variant],
+                    styles[shape],
+                    className
                 )}
-                isDisabled={isDisabled}
+                {...props}
             >
-                {coords && <Splash {...coords} />}
-                {value}
+                {isChildFunc ? (
+                    (buttonState) => (
+                        <>
+                            {coords && <Splash {...coords} />}
+                            {children(buttonState)}
+                        </>
+                    )
+                ) : (
+                    <>
+                        {coords && <Splash {...coords} />}
+                        {children}
+                    </>
+                )}
             </UnstyledToggleButton>
         </Tooltip>
     );
