@@ -1,5 +1,3 @@
-// TODO: Link base will be chnaged to link only
-
 import { clsx } from "clsx";
 import { Link as UnstyledLink } from "react-aria-components";
 import { Tooltip } from "@/components/Tooltip/Tooltip";
