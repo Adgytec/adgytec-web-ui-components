@@ -19,10 +19,7 @@ import { Select } from "./components/Select/Select";
 import type { SelectOptions } from "./components/Select/types";
 import { Sidebar } from "./components/Sidebar/Sidebar";
 import type { SidebarPosition, SidebarSize } from "./components/Sidebar/types";
-import {
-    ToggleButtonGroup,
-    type ToggleButtonGroupItem,
-} from "./components/ToggleButtonGroup";
+import { ToggleButtonGroup } from "./components/ToggleButtonGroup";
 import { Tooltip } from "./components/Tooltip/Tooltip";
 import { Tree } from "./components/Tree/Tree";
 import type {
@@ -38,6 +35,7 @@ import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
 import { Link, type LinkVisual } from "./components/Link";
 import { toast } from "./components/Toast";
+import { ToggleButton } from "./components/ToggleButton";
 import { Viewport } from "./components/Viewport";
 import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
@@ -1267,21 +1265,6 @@ const FormInputPreview = () => {
 };
 
 const ToggleButtonPreview = () => {
-    const items: ToggleButtonGroupItem[] = [
-        {
-            id: "light",
-            value: "Light",
-        },
-        {
-            id: "dark",
-            value: "Dark",
-        },
-        {
-            id: "system",
-            value: "System",
-        },
-    ];
-
     const buttonTheme: ColorTheme[] = [
         "primary",
         "primary-variant",
@@ -1295,41 +1278,57 @@ const ToggleButtonPreview = () => {
     return (
         <PreviewContainer label="Toggle Button Group">
             {buttonTheme.map((theme) => {
+                const children = (
+                    <>
+                        <ToggleButton theme={theme} id="light">
+                            Light
+                        </ToggleButton>
+
+                        <ToggleButton theme={theme} id="dark">
+                            Dark
+                        </ToggleButton>
+
+                        <ToggleButton theme={theme} id="system">
+                            System
+                        </ToggleButton>
+                    </>
+                );
+
                 return (
                     <div className="item-container" key={theme}>
                         <ToggleButtonGroup
                             selectionMode="single"
-                            items={items}
                             disallowEmptySelection
-                            theme={theme}
                             orientation="horizontal"
-                        />
+                        >
+                            {children}
+                        </ToggleButtonGroup>
 
                         <ToggleButtonGroup
                             selectionMode="single"
-                            items={items}
                             disallowEmptySelection
-                            theme={theme}
                             orientation="horizontal"
                             isDisabled
-                        />
+                        >
+                            {children}
+                        </ToggleButtonGroup>
 
                         <ToggleButtonGroup
                             selectionMode="single"
-                            items={items}
                             disallowEmptySelection
-                            theme={theme}
                             orientation="vertical"
-                        />
+                        >
+                            {children}
+                        </ToggleButtonGroup>
 
                         <ToggleButtonGroup
                             selectionMode="single"
-                            items={items}
                             disallowEmptySelection
-                            theme={theme}
                             orientation="vertical"
                             isDisabled
-                        />
+                        >
+                            {children}
+                        </ToggleButtonGroup>
                     </div>
                 );
             })}
