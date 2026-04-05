@@ -1,7 +1,6 @@
 import { Copy } from "lucide-react";
 import { Fragment, type ReactNode, useState } from "react";
 import type { Key } from "react-aria-components";
-import { Link } from "@/components/Link/LinkBase";
 import { Avatar } from "./components/Avatar/Avatar";
 import type { AvatarSize } from "./components/Avatar/types";
 import { Disclosure } from "./components/Disclosure/Disclosure/Disclosure";
@@ -9,8 +8,6 @@ import type { DisclosureProps } from "./components/Disclosure/Disclosure/types";
 import { DisclosureGroup } from "./components/Disclosure/DisclousureGroup/DisclousreGroup";
 import { Input } from "./components/Form/Input/Input";
 import { TextArea } from "./components/Form/TextArea/TextArea";
-import { FilledButtonLink } from "./components/Link/FilledButtonLink";
-import { OutlinedButtonLink } from "./components/Link/OutlinedButtonLink";
 import { MenuButton } from "./components/Menu/MenuButton";
 import { MenuLabel } from "./components/Menu/MenuLabel";
 import { ModalAction } from "./components/Modal/ModalAction/ModalAction";
@@ -35,14 +32,16 @@ import type {
 } from "./utils/types";
 import "./styles/app.css";
 import { AvatarImage } from "./components/Avatar/AvatarImage";
-import { Button, type ButtonVariant } from "./components/Button";
+import { Button } from "./components/Button";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
+import { Link, type LinkVisual } from "./components/Link";
 import { toast } from "./components/Toast";
 import { Viewport } from "./components/Viewport";
 import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
+import type { ButtonVariant } from "./utils/button/types";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -209,14 +208,18 @@ const LinkPreview = () => {
             description: "This is regular link",
         },
         {
-            element: FilledButtonLink,
+            element: Link,
             label: "Filled Button Link",
             description: "This is filled button link",
+            visual: "button" as LinkVisual,
+            variant: "filled" as ButtonVariant,
         },
         {
-            element: OutlinedButtonLink,
+            element: Link,
             label: "Outlined Button Link",
             description: "This is outlined button link",
+            visual: "button" as LinkVisual,
+            variant: "outlined" as ButtonVariant,
         },
     ];
 
@@ -232,6 +235,8 @@ const LinkPreview = () => {
                                         href="/"
                                         theme={theme}
                                         description={LinkElement.description}
+                                        visual={LinkElement.visual}
+                                        variant={LinkElement.variant}
                                     >
                                         {LinkElement.label}
                                     </LinkElement.element>
@@ -241,6 +246,8 @@ const LinkPreview = () => {
                                         theme={theme}
                                         isDisabled
                                         description={LinkElement.description}
+                                        visual={LinkElement.visual}
+                                        variant={LinkElement.variant}
                                     >
                                         {LinkElement.label}
                                     </LinkElement.element>
