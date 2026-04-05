@@ -6,14 +6,14 @@ import { Tooltip } from "@/components/Tooltip";
 import styles from "@/utils/button/button.module.css";
 import type { ButtonProps } from "./types.ts";
 
-export const Button = ({
+export const Button: React.FC<ButtonProps> = ({
     variant = "filled",
     theme = "primary",
     shape = "default",
     description,
     children,
     ...props
-}: ButtonProps) => {
+}) => {
     const { coords, handlePress } = useSplash(props.onPress);
     const isChildFunc = typeof children === "function";
 
@@ -24,7 +24,7 @@ export const Button = ({
                 className={clsx(
                     styles["button"],
                     styles[variant],
-                    styles[theme],
+                    theme,
                     styles[shape],
                     props.className
                 )}

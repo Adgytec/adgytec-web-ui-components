@@ -3,18 +3,18 @@ import { Link as UnstyledLink } from "react-aria-components";
 import { Splash } from "@/components/Splash/Splash.tsx";
 import { useSplash } from "@/components/Splash/useSplash.ts";
 import { Tooltip } from "@/components/Tooltip/Tooltip.tsx";
-import styles from "./button.module.css";
-import type { ButtonLinkProps, ButtonShape } from "./types.ts";
+import styles from "@/utils/button/button.module.css";
+import type { LinkProps } from "./types";
 
-export const ButtonLink = ({
-    variant = "filled",
+export const ButtonLink: React.FC<LinkProps> = ({
     theme = "primary",
     description,
-    underline = true,
+    underline,
+    variant = "filled",
+    shape = "default",
     children,
     ...props
-}: ButtonLinkProps) => {
-    const buttonShape: ButtonShape = "default";
+}) => {
     const { coords, handlePress } = useSplash(props.onPress);
     const isChildFunc = typeof children === "function";
 
@@ -28,8 +28,8 @@ export const ButtonLink = ({
                     styles["button"],
                     styles["button-link"],
                     styles[variant],
-                    styles[theme],
-                    styles[buttonShape]
+                    theme,
+                    styles[shape]
                 )}
             >
                 {isChildFunc ? (
