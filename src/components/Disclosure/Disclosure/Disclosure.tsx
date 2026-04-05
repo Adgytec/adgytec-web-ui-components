@@ -1,3 +1,6 @@
+// TODO: better api similar to react-aria api
+// client will manually create element structure to give more flexiblity and less cognitive load
+
 import { clsx } from "clsx";
 import { ChevronRight } from "lucide-react";
 import {

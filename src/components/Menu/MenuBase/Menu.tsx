@@ -1,3 +1,7 @@
+// TODO: simplify client api
+// composition will be there instead of props to define the menu
+// only base styles components will be exported
+
 import { clsx } from "clsx";
 import { ChevronRight } from "lucide-react";
 import {

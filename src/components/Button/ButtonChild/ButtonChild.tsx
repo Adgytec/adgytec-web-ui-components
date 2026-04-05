@@ -1,3 +1,6 @@
+// TODO: button child will be changed to StateText component (can change name to better define its responsiblity)
+// also button state will be changed to generic state as states are similar for other components too
+
 import clsx from "clsx";
 import { Check, TriangleAlert } from "lucide-react";
 import type { ReactNode } from "react";

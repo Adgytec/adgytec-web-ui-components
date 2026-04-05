@@ -1,3 +1,5 @@
+// TODO: will be removed
+
 import { Menu } from "@/components/Menu/MenuBase/Menu";
 import type { MenuButtonProps } from "@/components/Menu/MenuBase/types";
 

@@ -1,3 +1,9 @@
+// TODO: better api for clients
+// remove type parameter
+// client directly send nullable image that will be passed to Image components
+// and required string whose first letter will be displayed if no image details
+// will also use that string for image alt value
+
 import clsx from "clsx";
 import { Image } from "@/components/Image";
 import styles from "./avatar.module.css";

@@ -1,3 +1,7 @@
+// TODO: better client api
+// also way to update errors from client
+// this is required to update error message if user language is changed and error is currently displayed
+
 import { clsx } from "clsx";
 import { type SyntheticEvent, useState } from "react";
 import { Form as UnstyledForm } from "react-aria-components";
