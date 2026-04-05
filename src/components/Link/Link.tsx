@@ -10,6 +10,7 @@ export const Link: React.FC<LinkProps> = ({
     theme = "primary",
     description,
     underline = true,
+    className,
     children,
     ...props
 }) => {
@@ -29,9 +30,9 @@ export const Link: React.FC<LinkProps> = ({
     return (
         <Tooltip description={description} theme={theme}>
             <UnstyledLink
-                {...props}
-                className={clsx(styles["link"], theme, props.className)}
+                className={clsx(styles["link"], theme, className)}
                 {...(underline && { "data-underline": true })}
+                {...props}
             >
                 {children}
             </UnstyledLink>

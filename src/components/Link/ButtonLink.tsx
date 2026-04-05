@@ -12,16 +12,16 @@ export const ButtonLink: React.FC<LinkProps> = ({
     underline,
     variant = "filled",
     shape = "default",
+    onPress,
     children,
     ...props
 }) => {
-    const { coords, handlePress } = useSplash(props.onPress);
+    const { coords, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
 
     return (
         <Tooltip theme={theme} description={description}>
             <UnstyledLink
-                {...props}
                 {...(underline && { "data-underline": true })}
                 onPress={handlePress}
                 className={clsx(
@@ -31,6 +31,7 @@ export const ButtonLink: React.FC<LinkProps> = ({
                     theme,
                     styles[shape]
                 )}
+                {...props}
             >
                 {isChildFunc ? (
                     (values) => (

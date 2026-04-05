@@ -12,23 +12,25 @@ export const Button: React.FC<ButtonProps> = ({
     shape = "default",
     description,
     children,
+    onPress,
+    className,
     ...props
 }) => {
-    const { coords, handlePress } = useSplash(props.onPress);
+    const { coords, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
 
     return (
         <Tooltip theme={theme} description={description}>
             <UnstyledButton
-                {...props}
                 className={clsx(
                     styles["button"],
                     styles[variant],
                     theme,
                     styles[shape],
-                    props.className
+                    className
                 )}
                 onPress={handlePress}
+                {...props}
             >
                 {isChildFunc ? (
                     (buttonState) => (
