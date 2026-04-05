@@ -14,7 +14,3 @@ export type AvatarImageProps = {
     src: string;
     alt: string;
 };
-
-export type AvatarNodeProps = {
-    children: ReactNode;
-};
