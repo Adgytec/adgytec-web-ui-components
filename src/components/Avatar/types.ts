@@ -1,33 +1,19 @@
 import type { ReactNode } from "react";
 import type { ColorTheme } from "@/utils/types";
-import type { ImageProps } from "../Image";
 
 export type AvatarSize = "small" | "normal" | "large";
 
-export type AvatarType = "image" | "node";
-
-interface AvatarRootProps {
+export type AvatarProps = {
+    children: ReactNode;
     size?: AvatarSize;
     theme?: ColorTheme;
-}
+};
 
-interface AvatarWithImage extends AvatarRootProps {
-    type: "image";
-    image: ImageProps;
-    children?: never;
-}
+export type AvatarImageProps = {
+    image: string;
+    alt: string;
+};
 
-interface AvatarWithChildren extends AvatarRootProps {
-    type: "children";
-    image?: never;
-    children: string;
-}
-
-export type AvatarProps = AvatarWithImage | AvatarWithChildren;
-
-export interface AvatarBaseProps {
+export type AvatarNodeProps = {
     children: ReactNode;
-    size: AvatarSize;
-    type: AvatarType;
-    theme: ColorTheme;
-}
+};
