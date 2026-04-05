@@ -10,7 +10,7 @@ export type AvatarProps = {
 };
 
 export type AvatarImageProps = {
-    image: string;
+    src: string;
     alt: string;
 };
 
