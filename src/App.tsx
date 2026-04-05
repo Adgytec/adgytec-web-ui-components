@@ -39,7 +39,6 @@ import type {
 } from "./utils/types";
 import "./styles/app.css";
 import { AvatarImage } from "./components/Avatar/AvatarImage";
-import { AvatarNode } from "./components/Avatar/AvatarNode";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
@@ -172,8 +171,11 @@ const ButtonPreview = () => {
                                         shape="avatar"
                                         description={descriptionAvatar}
                                     >
-                                        <Avatar theme={theme}>
-                                            <AvatarNode>RV</AvatarNode>
+                                        <Avatar
+                                            theme={theme}
+                                            background="inherit"
+                                        >
+                                            RV
                                         </Avatar>
                                     </ButtonElement.element>
                                 </Fragment>
@@ -355,6 +357,8 @@ const AvatarPreview = () => {
     const avatarSrc =
         "https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
+    const avatarChildren = "RV";
+
     const avatarSizes: AvatarSize[] = ["small", "normal", "large"];
 
     const avatarTheme: ColorTheme[] = [
@@ -383,7 +387,7 @@ const AvatarPreview = () => {
                                     theme={theme}
                                     key={`avatar:${size}:${theme}`}
                                 >
-                                    <AvatarNode>RV</AvatarNode>
+                                    {avatarChildren}
                                 </Avatar>
                             );
                         })}
@@ -763,8 +767,8 @@ const MenuPreview = () => {
                 </MenuButton>
 
                 <MenuLabel menuItems={menuItems} description="avatar menu">
-                    <Avatar theme="inverse-surface">
-                        <AvatarNode>RV</AvatarNode>
+                    <Avatar theme="inverse-surface" background="inherit">
+                        RV
                     </Avatar>
                 </MenuLabel>
             </div>
