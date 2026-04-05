@@ -1,8 +1,4 @@
-import type {
-    ButtonProps as AriaButtonProps,
-    Key,
-} from "react-aria-components";
-import type { LinkProps } from "@/components/Link/LinkBase";
+import type { ButtonProps as AriaButtonProps } from "react-aria-components";
 import type { ColorTheme } from "@/utils/types";
 
 export type ButtonVariant = "filled" | "outlined" | "text";
@@ -14,24 +10,21 @@ export type ButtonShape =
     | "avatar"
     | "shrink";
 
-export interface ButtonProps extends ButtonVariantProps {
-    variant: ButtonVariant;
-}
-
-export interface ButtonVariantProps extends AriaButtonProps {
+export interface ButtonProps extends AriaButtonProps {
+    variant?: ButtonVariant;
     theme?: ColorTheme;
     shape?: ButtonShape;
     description?: string;
 }
 
-export interface ButtonLinkProps extends LinkProps {
-    variant?: ButtonVariant;
-}
+// export interface ButtonLinkProps extends LinkProps {
+//     variant?: ButtonVariant;
+// }
 
-export interface ToggleButtonProps {
-    id: Key;
-    value: string;
-    description?: string;
-    theme?: ColorTheme;
-    isDisabled?: boolean;
-}
+// export interface ToggleButtonProps {
+//     id: Key;
+//     value: string;
+//     description?: string;
+//     theme?: ColorTheme;
+//     isDisabled?: boolean;
+// }

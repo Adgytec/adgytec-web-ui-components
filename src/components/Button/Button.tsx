@@ -7,7 +7,7 @@ import styles from "@/utils/button/button.module.css";
 import type { ButtonProps } from "./types.ts";
 
 export const Button = ({
-    variant,
+    variant = "filled",
     theme = "primary",
     shape = "default",
     description,
@@ -31,10 +31,10 @@ export const Button = ({
                 onPress={handlePress}
             >
                 {isChildFunc ? (
-                    (values) => (
+                    (buttonState) => (
                         <>
                             {coords && <Splash {...coords} />}
-                            {children(values)}
+                            {children(buttonState)}
                         </>
                     )
                 ) : (
