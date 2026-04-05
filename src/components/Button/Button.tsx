@@ -1,11 +1,9 @@
-// TODO: only single exported components Button will be there
-
 import { clsx } from "clsx";
 import { Button as UnstyledButton } from "react-aria-components";
 import { Splash } from "@/components/Splash/Splash.tsx";
 import { useSplash } from "@/components/Splash/useSplash.ts";
 import { Tooltip } from "@/components/Tooltip";
-import styles from "./button.module.css";
+import styles from "@/utils/button/button.module.css";
 import type { ButtonProps } from "./types.ts";
 
 export const Button = ({
