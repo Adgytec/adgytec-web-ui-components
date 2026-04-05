@@ -1,13 +1,9 @@
 import { Copy } from "lucide-react";
 import { Fragment, type ReactNode, useState } from "react";
 import type { Key } from "react-aria-components";
-import type { ButtonVariant } from "@/components/Button/ButtonBase/types";
 import { Link } from "@/components/Link/LinkBase";
 import { Avatar } from "./components/Avatar/Avatar";
 import type { AvatarSize } from "./components/Avatar/types";
-import { FilledButton } from "./components/Button/FilledButton";
-import { OutlinedButton } from "./components/Button/OutlinedButton";
-import { TextButton } from "./components/Button/TextButton";
 import { Disclosure } from "./components/Disclosure/Disclosure/Disclosure";
 import type { DisclosureProps } from "./components/Disclosure/Disclosure/types";
 import { DisclosureGroup } from "./components/Disclosure/DisclousureGroup/DisclousreGroup";
@@ -39,6 +35,7 @@ import type {
 } from "./utils/types";
 import "./styles/app.css";
 import { AvatarImage } from "./components/Avatar/AvatarImage";
+import { Button, type ButtonVariant } from "./components/Button";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
@@ -71,19 +68,23 @@ const ButtonPreview = () => {
         "success",
     ];
 
-    const buttonElements = [
+    const buttonInfo: {
+        variant: ButtonVariant;
+        label: string;
+        description: string;
+    }[] = [
         {
-            element: FilledButton,
+            variant: "filled",
             label: "Filled Button",
             description: "This is filled button",
         },
         {
-            element: OutlinedButton,
+            variant: "outlined",
             label: "Outlined Button",
             description: "This is outlined button",
         },
         {
-            element: TextButton,
+            variant: "text",
             label: "Text Button",
             description: "This is text button",
         },
@@ -109,28 +110,30 @@ const ButtonPreview = () => {
             {buttonTheme.map((theme) => {
                 return (
                     <div className="item-container" key={theme}>
-                        {buttonElements.map((ButtonElement) => {
+                        {buttonInfo.map((info) => {
                             return (
-                                <Fragment key={theme + ButtonElement.label}>
-                                    <ButtonElement.element
+                                <Fragment key={theme + info.label}>
+                                    <Button
                                         onPress={onPress}
                                         theme={theme}
-                                        description={ButtonElement.description}
+                                        description={info.description}
+                                        variant={info.variant}
                                     >
-                                        {ButtonElement.label}
-                                    </ButtonElement.element>
+                                        {info.label}
+                                    </Button>
 
-                                    <ButtonElement.element
+                                    <Button
                                         onPress={onPress}
                                         theme={theme}
+                                        description={info.description}
+                                        variant={info.variant}
                                         isDisabled
-                                        description={ButtonElement.description}
                                     >
-                                        {ButtonElement.label}
-                                    </ButtonElement.element>
+                                        {info.label}
+                                    </Button>
 
-                                    {ButtonElement.label === "Text Button" && (
-                                        <ButtonElement.element
+                                    {info.label === "Text Button" && (
+                                        <Button
                                             onPress={onPress}
                                             theme={theme}
                                             description={
@@ -138,20 +141,20 @@ const ButtonPreview = () => {
                                             }
                                             shape="shrink"
                                         >
-                                            {ButtonElement.label}
-                                        </ButtonElement.element>
+                                            {info.label}
+                                        </Button>
                                     )}
 
-                                    <ButtonElement.element
+                                    <Button
                                         theme={theme}
                                         onPress={onPress}
                                         shape="square"
                                         description="This is square button"
                                     >
                                         <Copy />
-                                    </ButtonElement.element>
+                                    </Button>
 
-                                    <ButtonElement.element
+                                    <Button
                                         theme={theme}
                                         onPress={onPress}
                                         shape="avatar"
@@ -163,9 +166,9 @@ const ButtonPreview = () => {
                                                 alt="dog"
                                             />
                                         </Avatar>
-                                    </ButtonElement.element>
+                                    </Button>
 
-                                    <ButtonElement.element
+                                    <Button
                                         theme={theme}
                                         onPress={onPress}
                                         shape="avatar"
@@ -177,7 +180,7 @@ const ButtonPreview = () => {
                                         >
                                             RV
                                         </Avatar>
-                                    </ButtonElement.element>
+                                    </Button>
                                 </Fragment>
                             );
                         })}
@@ -404,12 +407,9 @@ const ModalPreview = () => {
             <div className="item-container">
                 <ModalBase
                     trigger={
-                        <FilledButton
-                            theme="primary"
-                            description="Open modal base"
-                        >
+                        <Button theme="primary" description="Open modal base">
                             Open modal
-                        </FilledButton>
+                        </Button>
                     }
                     modalOverlayProps={{
                         isDismissable: true,
@@ -434,9 +434,13 @@ const ModalActionPreview = () => {
     ];
 
     const trigger = (theme: ColorTheme) => (
-        <OutlinedButton theme={theme} description="Open modal action">
+        <Button
+            variant="outlined"
+            theme={theme}
+            description="Open modal action"
+        >
             Open modal
-        </OutlinedButton>
+        </Button>
     );
 
     return (
@@ -451,9 +455,9 @@ const ModalActionPreview = () => {
                             header="Simple Modal"
                             actionPlacement="end"
                             modalAction={({ close }) => (
-                                <FilledButton onPress={close} theme={theme}>
+                                <Button onPress={close} theme={theme}>
                                     Okay
-                                </FilledButton>
+                                </Button>
                             )}
                         >
                             <p>
@@ -683,7 +687,8 @@ const MenuPreview = () => {
                                             id: "8",
                                             type: "item-node",
                                             node: (
-                                                <OutlinedButton
+                                                <Button
+                                                    variant="outlined"
                                                     onPress={() =>
                                                         alert(
                                                             "sign out pressed"
@@ -692,7 +697,7 @@ const MenuPreview = () => {
                                                     theme="error"
                                                 >
                                                     Sign Out
-                                                </OutlinedButton>
+                                                </Button>
                                             ),
                                         },
                                     ],
@@ -702,14 +707,15 @@ const MenuPreview = () => {
                                     id: "8",
                                     type: "item-node",
                                     node: (
-                                        <OutlinedButton
+                                        <Button
+                                            variant="outlined"
                                             onPress={() =>
                                                 alert("sign out pressed")
                                             }
                                             theme="error"
                                         >
                                             Sign Out
-                                        </OutlinedButton>
+                                        </Button>
                                     ),
                                 },
                             ],
@@ -719,12 +725,13 @@ const MenuPreview = () => {
                             id: "8",
                             type: "item-node",
                             node: (
-                                <OutlinedButton
+                                <Button
+                                    variant="outlined"
                                     onPress={() => alert("sign out pressed")}
                                     theme="error"
                                 >
                                     Sign Out
-                                </OutlinedButton>
+                                </Button>
                             ),
                         },
                     ],
@@ -734,12 +741,13 @@ const MenuPreview = () => {
                     id: "8",
                     type: "item-node",
                     node: (
-                        <OutlinedButton
+                        <Button
+                            variant="outlined"
                             onPress={() => alert("sign out pressed")}
                             theme="error"
                         >
                             Sign Out
-                        </OutlinedButton>
+                        </Button>
                     ),
                 },
             ],
@@ -749,12 +757,13 @@ const MenuPreview = () => {
             id: "8",
             type: "item-node",
             node: (
-                <OutlinedButton
+                <Button
+                    variant="outlined"
                     onPress={() => alert("sign out pressed")}
                     theme="error"
                 >
                     Sign Out
-                </OutlinedButton>
+                </Button>
             ),
         },
     ];
@@ -763,7 +772,7 @@ const MenuPreview = () => {
         <PreviewContainer label="Menu">
             <div className="item-container">
                 <MenuButton menuItems={menuItems} cardBackground="gradient">
-                    <FilledButton>Open Menu</FilledButton>
+                    <Button>Open Menu</Button>
                 </MenuButton>
 
                 <MenuLabel menuItems={menuItems} description="avatar menu">
@@ -808,7 +817,11 @@ const SidebarPreview = () => {
                 break;
         }
 
-        return <OutlinedButton theme={colorTheme}>Open sidebar</OutlinedButton>;
+        return (
+            <Button variant="outlined" theme={colorTheme}>
+                Open sidebar
+            </Button>
+        );
     };
 
     return (
@@ -830,9 +843,12 @@ const SidebarPreview = () => {
                                             <div>
                                                 <p>Sidebar content</p>
 
-                                                <TextButton onPress={close}>
+                                                <Button
+                                                    variant="text"
+                                                    onPress={close}
+                                                >
                                                     Close
-                                                </TextButton>
+                                                </Button>
                                             </div>
                                         );
                                     }}
@@ -905,14 +921,15 @@ const TreePreview = () => {
             id: "5",
             type: "item-node",
             node: (
-                <OutlinedButton
+                <Button
+                    variant="outlined"
                     theme="error"
                     onPress={() => {
                         alert("Signing out user");
                     }}
                 >
                     Sign out
-                </OutlinedButton>
+                </Button>
             ),
         },
     ];
@@ -983,14 +1000,15 @@ const NavSidebarPreview = () => {
             id: "5",
             type: "item-node",
             node: (
-                <OutlinedButton
+                <Button
+                    variant="outlined"
                     theme="error"
                     onPress={() => {
                         alert("Signing out user");
                     }}
                 >
                     Sign out
-                </OutlinedButton>
+                </Button>
             ),
         },
     ];
@@ -1063,14 +1081,15 @@ const NavMenuPreview = () => {
             id: "5",
             type: "item-node",
             node: (
-                <OutlinedButton
+                <Button
+                    variant="outlined"
                     theme="error"
                     onPress={() => {
                         alert("Signing out user");
                     }}
                 >
                     Sign out
-                </OutlinedButton>
+                </Button>
             ),
         },
     ];
@@ -1141,14 +1160,15 @@ const NavResponsivePreview = () => {
             id: "5",
             type: "item-node",
             node: (
-                <OutlinedButton
+                <Button
+                    variant="outlined"
                     theme="error"
                     onPress={() => {
                         alert("Signing out user");
                     }}
                 >
                     Sign out
-                </OutlinedButton>
+                </Button>
             ),
         },
     ];
