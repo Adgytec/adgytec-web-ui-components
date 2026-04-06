@@ -1,10 +1,8 @@
 import { useEffect } from "react";
 import type { Key } from "react-aria-components";
 import { type TernaryDarkMode, useTernaryDarkMode } from "usehooks-ts";
-import {
-    ToggleButtonGroup,
-    type ToggleButtonGroupItem,
-} from "@/components/ToggleButtonGroup";
+import { ToggleButton } from "@/components/ToggleButton";
+import { ToggleButtonGroup } from "@/components/ToggleButtonGroup";
 import type { ThemeSwitcherProps, ThemeValue } from "./types";
 
 const defaultThemeValues: ThemeValue = {
@@ -21,7 +19,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
     const { isDarkMode, ternaryDarkMode, setTernaryDarkMode } =
         useTernaryDarkMode();
 
-    const themeItems: ToggleButtonGroupItem[] = [
+    const themeItems = [
         {
             id: "system",
             value: displayValue.system,
@@ -54,11 +52,15 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
 
     return (
         <ToggleButtonGroup
-            items={themeItems}
             selectionMode="single"
             selectedKeys={[ternaryDarkMode]}
             onSelectionChange={handleThemeChange}
-            theme={theme}
-        />
+        >
+            {themeItems.map((item) => (
+                <ToggleButton key={item.id} id={item.id} theme={theme}>
+                    {item.value}
+                </ToggleButton>
+            ))}
+        </ToggleButtonGroup>
     );
 };

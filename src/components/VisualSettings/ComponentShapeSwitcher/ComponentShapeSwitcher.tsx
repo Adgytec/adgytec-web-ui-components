@@ -1,10 +1,8 @@
 import { useEffect } from "react";
 import type { Key } from "react-aria-components";
 import { useLocalStorage } from "usehooks-ts";
-import {
-    ToggleButtonGroup,
-    type ToggleButtonGroupItem,
-} from "@/components/ToggleButtonGroup";
+import { ToggleButton } from "@/components/ToggleButton";
+import { ToggleButtonGroup } from "@/components/ToggleButtonGroup";
 import {
     ComponentShapeKey,
     type ComponentShapeSwitcherProps,
@@ -27,7 +25,7 @@ export const ComponentShapeSwitcher: React.FC<ComponentShapeSwitcherProps> = ({
         "sharp"
     );
 
-    const shapeItems: ToggleButtonGroupItem[] = [
+    const shapeItems = [
         {
             id: "sharp",
             value: displayValue.sharp,
@@ -53,11 +51,15 @@ export const ComponentShapeSwitcher: React.FC<ComponentShapeSwitcherProps> = ({
 
     return (
         <ToggleButtonGroup
-            items={shapeItems}
             selectionMode="single"
             selectedKeys={[selectedShape]}
             onSelectionChange={handleShapeChange}
-            theme={theme}
-        />
+        >
+            {shapeItems.map((item) => (
+                <ToggleButton key={item.id} id={item.id} theme={theme}>
+                    {item.value}
+                </ToggleButton>
+            ))}
+        </ToggleButtonGroup>
     );
 };

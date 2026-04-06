@@ -1,7 +1,5 @@
 .button {
-    --_button-theme-background: transparent;
-    --_button-theme-color: transparent;
-    --_button-border-color: var(--_button-theme-background);
+    --_button-border-color: var(--theme-background);
 
     border-radius: var(--_button-radius);
     cursor: pointer;
@@ -25,21 +23,19 @@
     &[data-hovered],
     &[data-focus-visible] {
         --_button-background: hsl(
-            from var(--_button-theme-background) h s calc(l + 10)
+            from var(--theme-background) h s calc(l + 10)
         );
-        --_button-color: hsl(from var(--_button-theme-color) h s calc(l + 10));
+        --_button-color: hsl(from var(--theme-color) h s calc(l + 10));
     }
 
     &[data-pressed] {
-        --_button-background: hsl(
-            from var(--_button-theme-background) h s calc(l - 5)
-        );
-        --_button-color: hsl(from var(--_button-theme-color) h s calc(l - 5));
+        --_button-background: hsl(from var(--theme-background) h s calc(l - 5));
+        --_button-color: hsl(from var(--theme-color) h s calc(l - 5));
     }
 
     &[data-selected] {
-        --_button-background: var(--_button-theme-background);
-        --_button-color: var(--_button-theme-color);
+        --_button-background: var(--theme-background);
+        --_button-color: var(--theme-color);
     }
 }
 
@@ -96,55 +92,19 @@
     --_button-radius: var(--radius-circular);
 }
 
-/* button theme */
-.primary {
-    --_button-theme-background: var(--color-primary);
-    --_button-theme-color: var(--color-on-primary);
-}
-
-.primary-variant {
-    --_button-theme-background: var(--color-primary-variant);
-    --_button-theme-color: var(--color-on-primary-variant);
-}
-
-.secondary {
-    --_button-theme-background: var(--color-secondary);
-    --_button-theme-color: var(--color-on-secondary);
-}
-
-.tertiary {
-    --_button-theme-background: var(--color-tertiary);
-    --_button-theme-color: var(--color-on-tertiary);
-}
-
-.error {
-    --_button-theme-background: var(--color-error);
-    --_button-theme-color: var(--color-on-error);
-}
-
-.inverse-surface {
-    --_button-theme-background: var(--color-inverse-surface);
-    --_button-theme-color: var(--color-inverse-on-surface);
-}
-
-.success {
-    --_button-theme-background: var(--color-success);
-    --_button-theme-color: var(--color-on-success);
-}
-
 /* button variant */
 .filled {
-    --_button-background: var(--_button-theme-background);
-    --_button-color: var(--_button-theme-color);
+    --_button-background: var(--theme-background);
+    --_button-color: var(--theme-color);
 }
 
 .outlined {
     --_button-background: transparent;
-    --_button-color: var(--_button-theme-background);
+    --_button-color: var(--theme-background);
 }
 
 .text {
     --_button-background: transparent;
     --_button-border-color: transparent;
-    --_button-color: var(--_button-theme-background);
+    --_button-color: var(--theme-background);
 }

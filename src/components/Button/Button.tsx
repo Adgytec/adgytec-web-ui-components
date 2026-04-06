@@ -1,42 +1,42 @@
-// TODO: only single exported components Button will be there
-
 import { clsx } from "clsx";
 import { Button as UnstyledButton } from "react-aria-components";
 import { Splash } from "@/components/Splash/Splash.tsx";
 import { useSplash } from "@/components/Splash/useSplash.ts";
 import { Tooltip } from "@/components/Tooltip";
-import styles from "./button.module.css";
+import styles from "@/utils/button/button.module.css";
 import type { ButtonProps } from "./types.ts";
 
-export const Button = ({
-    variant,
+export const Button: React.FC<ButtonProps> = ({
+    variant = "filled",
     theme = "primary",
     shape = "default",
     description,
     children,
+    onPress,
+    className,
     ...props
-}: ButtonProps) => {
-    const { coords, handlePress } = useSplash(props.onPress);
+}) => {
+    const { coords, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
 
     return (
         <Tooltip theme={theme} description={description}>
             <UnstyledButton
-                {...props}
                 className={clsx(
                     styles["button"],
                     styles[variant],
-                    styles[theme],
+                    theme,
                     styles[shape],
-                    props.className
+                    className
                 )}
                 onPress={handlePress}
+                {...props}
             >
                 {isChildFunc ? (
-                    (values) => (
+                    (buttonState) => (
                         <>
                             {coords && <Splash {...coords} />}
-                            {children(values)}
+                            {children(buttonState)}
                         </>
                     )
                 ) : (
