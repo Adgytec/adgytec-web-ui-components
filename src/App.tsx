@@ -33,7 +33,7 @@ import { Button } from "./components/Button";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
-import { Link, type LinkVisual } from "./components/Link";
+import { Link, type Visual } from "./components/Link";
 import { toast } from "./components/Toast";
 import { ToggleButton } from "./components/ToggleButton";
 import { Viewport } from "./components/Viewport";
@@ -213,15 +213,17 @@ const LinkPreview = () => {
             element: Link,
             label: "Filled Button Link",
             description: "This is filled button link",
-            visual: "button" as LinkVisual,
-            variant: "filled" as ButtonVariant,
+            visual: {
+                variant: "filled",
+            } as Visual,
         },
         {
             element: Link,
             label: "Outlined Button Link",
             description: "This is outlined button link",
-            visual: "button" as LinkVisual,
-            variant: "outlined" as ButtonVariant,
+            visual: {
+                variant: "outlined",
+            } as Visual,
         },
     ];
 
@@ -238,7 +240,6 @@ const LinkPreview = () => {
                                         theme={theme}
                                         description={LinkElement.description}
                                         visual={LinkElement.visual}
-                                        variant={LinkElement.variant}
                                     >
                                         {LinkElement.label}
                                     </LinkElement.element>
@@ -249,7 +250,6 @@ const LinkPreview = () => {
                                         isDisabled
                                         description={LinkElement.description}
                                         visual={LinkElement.visual}
-                                        variant={LinkElement.variant}
                                     >
                                         {LinkElement.label}
                                     </LinkElement.element>
