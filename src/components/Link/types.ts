@@ -3,6 +3,7 @@ import type { ButtonShape, ButtonVariant } from "@/utils/button/types";
 import type { ColorTheme } from "@/utils/types";
 
 type ButtonVisual = {
+    type: "button";
     variant?: ButtonVariant;
     shape?: ButtonShape;
 };

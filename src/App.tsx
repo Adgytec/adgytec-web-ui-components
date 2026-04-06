@@ -214,6 +214,7 @@ const LinkPreview = () => {
             label: "Filled Button Link",
             description: "This is filled button link",
             visual: {
+                type: "button",
                 variant: "filled",
             } as Visual,
         },
@@ -222,6 +223,7 @@ const LinkPreview = () => {
             label: "Outlined Button Link",
             description: "This is outlined button link",
             visual: {
+                type: "button",
                 variant: "outlined",
             } as Visual,
         },

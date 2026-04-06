@@ -14,7 +14,7 @@ export const Link: React.FC<LinkProps> = ({
     children,
     ...props
 }) => {
-    if (visual !== "link") {
+    if (visual !== "link" && visual.type === "button") {
         return (
             <ButtonLink
                 underline={underline}
