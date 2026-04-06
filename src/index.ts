@@ -1,12 +1,8 @@
 // AUTO-GENERATED. DO NOT EDIT.
 
 export * from "./components/Avatar";
-export * from "./components/Button/ButtonBase";
-export * from "./components/Button/ButtonChild";
-export * from "./components/Button/FilledButton";
-export * from "./components/Button/OutlinedButton";
-export * from "./components/Button/TextButton";
-export * from "./components/Button/ToggleButton";
+export * from "./components/Button";
+export * from "./components/ButtonChild";
 export * from "./components/Card/BaseCard";
 export * from "./components/Card/GradientCard";
 export * from "./components/Card/SolidCard";
@@ -19,9 +15,7 @@ export * from "./components/Form/Form";
 export * from "./components/Form/Input";
 export * from "./components/Form/TextArea";
 export * from "./components/Image";
-export * from "./components/Link/FilledButtonLink";
-export * from "./components/Link/LinkBase";
-export * from "./components/Link/OutlinedButtonLink";
+export * from "./components/Link";
 export * from "./components/Loader";
 export * from "./components/Menu/MenuBase";
 export * from "./components/Menu/MenuButton";
@@ -37,10 +31,12 @@ export * from "./components/Select";
 export * from "./components/Separator";
 export * from "./components/Sidebar";
 export * from "./components/Toast";
+export * from "./components/ToggleButton";
 export * from "./components/ToggleButtonGroup";
 export * from "./components/Tooltip";
 export * from "./components/Tree";
 export * from "./components/Viewport";
 export * from "./components/VisualSettings/ComponentShapeSwitcher";
 export * from "./components/VisualSettings/ThemeSwitcher";
+export type * from "./utils/button/types";
 export type * from "./utils/types";
