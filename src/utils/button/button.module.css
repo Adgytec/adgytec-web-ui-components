@@ -1,8 +1,4 @@
 .button {
-    /* default colors */
-    --theme-background: transparent;
-    --theme-color: transparent;
-
     --_button-border-color: var(--theme-background);
 
     border-radius: var(--_button-radius);

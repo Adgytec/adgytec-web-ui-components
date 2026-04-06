@@ -1,5 +1,4 @@
 .link {
-    --theme-background: transparent;
     --_color: var(--theme-background);
 
     cursor: pointer;
