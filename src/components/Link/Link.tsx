@@ -14,12 +14,14 @@ export const Link: React.FC<LinkProps> = ({
     children,
     ...props
 }) => {
-    if (visual === "button") {
+    if (visual !== "link") {
         return (
             <ButtonLink
                 underline={underline}
                 theme={theme}
                 description={description}
+                visual={visual}
+                className={className}
                 {...props}
             >
                 {children}

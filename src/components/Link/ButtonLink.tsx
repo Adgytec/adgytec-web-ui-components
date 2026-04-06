@@ -4,20 +4,22 @@ import { Splash } from "@/components/Splash/Splash.tsx";
 import { useSplash } from "@/components/Splash/useSplash.ts";
 import { Tooltip } from "@/components/Tooltip/Tooltip.tsx";
 import styles from "@/utils/button/button.module.css";
-import type { LinkProps } from "./types";
+import type { ButtonLinkProps } from "./types";
 
-export const ButtonLink: React.FC<LinkProps> = ({
+export const ButtonLink: React.FC<ButtonLinkProps> = ({
+    visual,
     theme = "primary",
     description,
     underline,
-    variant = "filled",
-    shape = "default",
     onPress,
     children,
+    className,
     ...props
 }) => {
     const { coords, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
+
+    const { variant = "filled", shape = "default" } = visual;
 
     return (
         <Tooltip theme={theme} description={description}>
@@ -29,7 +31,8 @@ export const ButtonLink: React.FC<LinkProps> = ({
                     styles["button-link"],
                     styles[variant],
                     theme,
-                    styles[shape]
+                    styles[shape],
+                    className
                 )}
                 {...props}
             >

@@ -2,15 +2,20 @@ import type { LinkProps as AriaLinkProps } from "react-aria-components";
 import type { ButtonShape, ButtonVariant } from "@/utils/button/types";
 import type { ColorTheme } from "@/utils/types";
 
-export type LinkVisual = "link" | "button";
+type ButtonVisual = {
+    variant?: ButtonVariant;
+    shape?: ButtonShape;
+};
+
+export type Visual = "link" | ButtonVisual;
 
 export interface LinkProps extends AriaLinkProps {
-    visual?: LinkVisual;
+    visual?: Visual;
     theme?: ColorTheme;
     description?: string;
     underline?: boolean;
-
-    // these values are only used when visual is button
-    variant?: ButtonVariant;
-    shape?: ButtonShape;
 }
+
+export type ButtonLinkProps = LinkProps & {
+    visual: ButtonVisual;
+};
