@@ -9,6 +9,7 @@ import { glob } from "glob";
 const MANUAL_EXPORTS = [
     'export type * from "./utils/types";',
     'export type * from "./utils/button/types";',
+    'export type * from "./utils/textField/types";',
 ];
 
 const COMPONENT_INDEX_GLOB = "src/components/**/index.ts";
