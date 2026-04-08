@@ -1,0 +1,3 @@
+.description {
+    font-size: var(--description-font-size, 0.875rem);
+}
