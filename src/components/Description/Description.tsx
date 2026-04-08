@@ -5,14 +5,12 @@ import styles from "./description.module.css";
 export const Description: React.FC<TextProps> = ({
     className,
     slot: _,
-    elementType,
     ...props
 }) => {
     return (
         <Text
             slot="description"
             className={clsx(styles["description"], className)}
-            elementType={elementType ?? "em"}
             {...props}
         />
     );
