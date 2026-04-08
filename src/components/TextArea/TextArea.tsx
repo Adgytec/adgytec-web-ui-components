@@ -12,6 +12,7 @@ export const TextArea: React.FC<TextFieldProps> = ({
     placeholder,
     validationBehavior = "aria",
     className,
+    errorMessage,
     ...props
 }) => {
     return (
@@ -33,7 +34,7 @@ export const TextArea: React.FC<TextFieldProps> = ({
                 className={clsx(styles["editor"], styles["textarea"])}
             />
             {description && <Description>{description}</Description>}
-            <FieldError />
+            <FieldError>{errorMessage}</FieldError>
         </TextField>
     );
 };
