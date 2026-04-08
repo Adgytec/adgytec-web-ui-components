@@ -1,0 +1,38 @@
+.text-field {
+    display: grid;
+    gap: var(--text-field-gap, 0.25rem);
+}
+
+.editor {
+    outline: none;
+
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius);
+
+    padding-inline: var(--user-input-padding-inline, 0.625em);
+    padding-block: var(--user-input-padding-block, 0.625em);
+
+    max-inline-size: 100%;
+    inline-size: 100%;
+    border: 0.125rem solid var(--color-outline);
+
+    background-color: inherit;
+    color: inherit;
+
+    font-size: var(--user-input-font-size);
+
+    transition: border-color 250ms;
+
+    &[data-focused] {
+        border-color: var(--color-primary);
+    }
+
+    &[data-invalid] {
+        border-color: var(--color-error);
+    }
+}
+
+.textarea {
+    resize: vertical;
+    max-height: var(--text-area-max-height, 15rem);
+}

@@ -158,8 +158,13 @@
     --label-font-size: 1rem;
     --description-font-size: 0.875rem;
     --field-error-font-size: 0.875rem;
-    --form-input-text: 1rem;
-    --form-input-gap: 0.5rem;
+
+    --user-input-font-size: 1rem;
+    --user-input-padding-inline: 0.625rem;
+    --user-input-padding-block: 0.625rem;
+
+    --text-field-gap: 0.5rem;
+    --text-area-max-height: 15rem;
     --form-gap: 1rem;
 
     --font-weight-regular: 400;
