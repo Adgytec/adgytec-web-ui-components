@@ -3,7 +3,7 @@ import type {
     ValidationResult,
 } from "react-aria-components";
 
-export interface TextFieldProps extends AriaTextFieldProps {
+export interface TextFieldProps extends Omit<AriaTextFieldProps, "children"> {
     label?: string;
     description?: string;
     placeholder?: string;
