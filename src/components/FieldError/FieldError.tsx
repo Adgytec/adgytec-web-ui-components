@@ -1,5 +1,3 @@
-// TODO: will be exported for direct client usage
-
 import { clsx } from "clsx";
 import {
     type FieldErrorProps,
@@ -7,11 +5,14 @@ import {
 } from "react-aria-components";
 import styles from "./fieldError.module.css";
 
-export const FieldError = (props: FieldErrorProps) => {
+export const FieldError: React.FC<FieldErrorProps> = ({
+    className,
+    ...props
+}) => {
     return (
         <UnstyledFieldError
+            className={clsx(styles["error"], className)}
             {...props}
-            className={clsx(styles["error"], props.className)}
         />
     );
 };
