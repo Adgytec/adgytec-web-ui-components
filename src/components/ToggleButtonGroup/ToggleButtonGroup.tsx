@@ -6,16 +6,20 @@ import {
 import styles from "./toggleButtonGroup.module.css";
 
 export const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
-    children,
     className,
     ...props
 }) => {
     return (
         <UnstyledToggleButtonGroup
             {...props}
-            className={clsx(styles["toggle-button-group"], className)}
-        >
-            {children}
-        </UnstyledToggleButtonGroup>
+            className={(renderProps) =>
+                clsx(
+                    styles["toggle-button-group"],
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
+        />
     );
 };

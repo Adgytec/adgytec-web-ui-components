@@ -26,14 +26,18 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
             <UnstyledLink
                 {...(underline && { "data-underline": true })}
                 onPress={handlePress}
-                className={clsx(
-                    styles["button"],
-                    styles["button-link"],
-                    styles[variant],
-                    theme,
-                    styles[shape],
-                    className
-                )}
+                className={(renderProps) =>
+                    clsx(
+                        styles["button"],
+                        styles["button-link"],
+                        styles[variant],
+                        theme,
+                        styles[shape],
+                        typeof className === "function"
+                            ? className(renderProps)
+                            : className
+                    )
+                }
                 {...props}
             >
                 {isChildFunc ? (

@@ -22,13 +22,17 @@ export const Button: React.FC<ButtonProps> = ({
     return (
         <Tooltip theme={theme} description={description}>
             <UnstyledButton
-                className={clsx(
-                    styles["button"],
-                    styles[variant],
-                    theme,
-                    styles[shape],
-                    className
-                )}
+                className={(renderProps) =>
+                    clsx(
+                        styles["button"],
+                        styles[variant],
+                        theme,
+                        styles[shape],
+                        typeof className === "function"
+                            ? className(renderProps)
+                            : className
+                    )
+                }
                 onPress={handlePress}
                 {...props}
             >

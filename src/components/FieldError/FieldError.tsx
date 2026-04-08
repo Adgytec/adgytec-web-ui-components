@@ -11,7 +11,14 @@ export const FieldError: React.FC<FieldErrorProps> = ({
 }) => {
     return (
         <AriaFieldError
-            className={clsx(styles["error"], className)}
+            className={(renderProps) =>
+                clsx(
+                    styles["error"],
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
             {...props}
         />
     );
