@@ -23,13 +23,17 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
         <Tooltip description={description}>
             <UnstyledToggleButton
                 onPress={handlePress}
-                className={clsx(
-                    styles["button"],
-                    theme,
-                    styles[variant],
-                    styles[shape],
-                    className
-                )}
+                className={(renderProps) =>
+                    clsx(
+                        styles["button"],
+                        theme,
+                        styles[variant],
+                        styles[shape],
+                        typeof className === "function"
+                            ? className(renderProps)
+                            : className
+                    )
+                }
                 {...props}
             >
                 {isChildFunc ? (

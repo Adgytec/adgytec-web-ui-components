@@ -3,8 +3,8 @@
 
 import clsx from "clsx";
 import { Input as AriaInput, TextField } from "react-aria-components";
-import { FieldError } from "@/components/Form/FieldError/FieldError.tsx";
-import { Label } from "@/components/Form/Label/Label";
+import { FieldError } from "@/components/FieldError/FieldError.tsx";
+import { Label } from "@/components/Label/Label";
 import styles from "./input.module.css";
 import type { InputProps } from "./types";
 

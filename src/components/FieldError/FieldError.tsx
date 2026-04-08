@@ -1,25 +1,25 @@
-import clsx from "clsx";
+import { clsx } from "clsx";
 import {
-    type ToggleButtonGroupProps,
-    ToggleButtonGroup as UnstyledToggleButtonGroup,
+    FieldError as AriaFieldError,
+    type FieldErrorProps,
 } from "react-aria-components";
-import styles from "./toggleButtonGroup.module.css";
+import styles from "./fieldError.module.css";
 
-export const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
+export const FieldError: React.FC<FieldErrorProps> = ({
     className,
     ...props
 }) => {
     return (
-        <UnstyledToggleButtonGroup
-            {...props}
+        <AriaFieldError
             className={(renderProps) =>
                 clsx(
-                    styles["toggle-button-group"],
+                    styles["error"],
                     typeof className === "function"
                         ? className(renderProps)
                         : className
                 )
             }
+            {...props}
         />
     );
 };

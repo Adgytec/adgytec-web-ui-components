@@ -10,8 +10,8 @@ import {
     Text,
     Select as UnstyledSelect,
 } from "react-aria-components";
-import { FieldError } from "@/components/Form/FieldError/FieldError.tsx";
-import { Label } from "@/components/Form/Label/Label.tsx";
+import { FieldError } from "@/components/FieldError/FieldError.tsx";
+import { Label } from "@/components/Label/Label.tsx";
 import { Popover } from "@/components/Popover/PopoverBase";
 import { Tooltip } from "@/components/Tooltip/Tooltip";
 import { Button } from "../Button";
