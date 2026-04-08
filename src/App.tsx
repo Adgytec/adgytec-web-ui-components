@@ -6,8 +6,7 @@ import type { AvatarSize } from "./components/Avatar/types";
 import { Disclosure } from "./components/Disclosure/Disclosure/Disclosure";
 import type { DisclosureProps } from "./components/Disclosure/Disclosure/types";
 import { DisclosureGroup } from "./components/Disclosure/DisclousureGroup/DisclousreGroup";
-import { Input } from "./components/Form/Input/Input";
-import { TextArea } from "./components/Form/TextArea/TextArea";
+import { Input } from "./components/Input/Input";
 import { MenuButton } from "./components/Menu/MenuButton";
 import { MenuLabel } from "./components/Menu/MenuLabel";
 import { ModalAction } from "./components/Modal/ModalAction/ModalAction";
@@ -19,6 +18,7 @@ import { Select } from "./components/Select/Select";
 import type { SelectOptions } from "./components/Select/types";
 import { Sidebar } from "./components/Sidebar/Sidebar";
 import type { SidebarPosition, SidebarSize } from "./components/Sidebar/types";
+import { TextArea } from "./components/TextArea/TextArea";
 import { ToggleButtonGroup } from "./components/ToggleButtonGroup";
 import { Tooltip } from "./components/Tooltip/Tooltip";
 import { Tree } from "./components/Tree/Tree";
@@ -1257,15 +1257,9 @@ const DisclosureGroupPreview = () => {
 const FormInputPreview = () => {
     return (
         <PreviewContainer label="Form Input">
-            <Input
-                label="Email"
-                textFieldProps={{
-                    isRequired: true,
-                    type: "email",
-                }}
-            />
+            <Input label="Email" isRequired type="email" placeholder="Email" />
 
-            <TextArea label="More info" />
+            <TextArea label="More info" placeholder="More info" />
         </PreviewContainer>
     );
 };
