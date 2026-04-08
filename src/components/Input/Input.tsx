@@ -10,14 +10,12 @@ export const Input: React.FC<TextFieldProps> = ({
     label,
     description,
     placeholder,
-    validationBehavior = "aria",
     className,
     errorMessage,
     ...props
 }) => {
     return (
         <TextField
-            validationBehavior={validationBehavior}
             className={(renderProps) =>
                 clsx(
                     styles["text-field"],
