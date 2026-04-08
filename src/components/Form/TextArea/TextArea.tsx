@@ -2,8 +2,8 @@
 
 import clsx from "clsx";
 import { TextArea as AriaTextArea, TextField } from "react-aria-components";
-import { FieldError } from "@/components/Form/FieldError/FieldError";
-import { Label } from "@/components/Form/Label/Label";
+import { FieldError } from "@/components/FieldError/FieldError";
+import { Label } from "@/components/Label/Label";
 import styles from "./textArea.module.css";
 import type { TextAreaProps } from "./types";
 
