@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import {
+    FieldError as AriaFieldError,
     type FieldErrorProps,
-    FieldError as UnstyledFieldError,
 } from "react-aria-components";
 import styles from "./fieldError.module.css";
 
@@ -10,7 +10,7 @@ export const FieldError: React.FC<FieldErrorProps> = ({
     ...props
 }) => {
     return (
-        <UnstyledFieldError
+        <AriaFieldError
             className={clsx(styles["error"], className)}
             {...props}
         />
