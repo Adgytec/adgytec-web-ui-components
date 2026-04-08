@@ -1259,7 +1259,7 @@ const FormInputPreview = () => {
         <PreviewContainer label="Form Input">
             <Input label="Email" isRequired type="email" placeholder="Email" />
 
-            <TextArea label="More info" placeholder="More info" />
+            <TextArea rows={20} label="More info" placeholder="More info" />
         </PreviewContainer>
     );
 };

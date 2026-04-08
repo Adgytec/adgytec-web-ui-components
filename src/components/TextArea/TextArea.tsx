@@ -6,12 +6,13 @@ import { Description } from "../Description";
 import { FieldError } from "../FieldError";
 import { Label } from "../Label";
 
-export const TextArea: React.FC<TextFieldProps> = ({
+export const TextArea: React.FC<TextFieldProps & { rows?: number }> = ({
     label,
     description,
     placeholder,
     className,
     errorMessage,
+    rows,
     ...props
 }) => {
     return (
@@ -28,6 +29,7 @@ export const TextArea: React.FC<TextFieldProps> = ({
         >
             {label && <Label>{label}</Label>}
             <AriaTextArea
+                rows={rows}
                 placeholder={placeholder}
                 className={clsx(styles["editor"], styles["textarea"])}
             />
