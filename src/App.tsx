@@ -40,6 +40,7 @@ import { Viewport } from "./components/Viewport";
 import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import type { ButtonVariant } from "./utils/button/types";
+import { Switch } from "./components/Switch";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1260,6 +1261,10 @@ const FormInputPreview = () => {
             <Input label="Email" isRequired type="email" placeholder="Email" />
 
             <TextArea rows={20} label="More info" placeholder="More info" />
+
+            <Switch isDisabled>hmm</Switch>
+
+            <Switch>not-disabled</Switch>
         </PreviewContainer>
     );
 };
@@ -1408,6 +1413,7 @@ const VisualSettingsPreview = () => {
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        FormInputPreview,
         ButtonPreview,
         LinkPreview,
         CardPreview,
@@ -1423,7 +1429,6 @@ const App = () => {
         NavResponsivePreview,
         DisclosurePreview,
         DisclosureGroupPreview,
-        FormInputPreview,
         ToggleButtonPreview,
     ];
 
