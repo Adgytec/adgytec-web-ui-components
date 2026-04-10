@@ -27,14 +27,3 @@ body {
     color: var(--md-sys-color-on-surface);
     font-family: var(--md-sys-typescale-font-family-plain);
 }
-
-[data-heading],
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: var(--md-sys-typescale-font-family-brand);
-    font-weight: var(--md-sys-typescale-weight-bold);
-}

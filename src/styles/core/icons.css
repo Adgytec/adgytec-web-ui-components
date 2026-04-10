@@ -1,0 +1,65 @@
+:root {
+    /* =========================================
+     ICON TOKENS
+     ========================================= */
+    --md-sys-icon-size-small: calc(18 * var(--dp));
+    --md-sys-icon-size-medium: calc(24 * var(--dp));
+    --md-sys-icon-size-large: calc(32 * var(--dp));
+    --md-sys-icon-size-xlarge: calc(40 * var(--dp));
+
+    --md-sys-icon-stroke-light: calc(1.5 * var(--dp));
+    --md-sys-icon-stroke-regular: calc(2 * var(--dp));
+    --md-sys-icon-stroke-bold: calc(3 * var(--dp));
+}
+
+/* =========================================
+   BASE ICON COMPONENT
+   ========================================= */
+.icon {
+    width: var(--icon-size, var(--md-sys-icon-size-small));
+    height: var(--icon-size, var(--md-sys-icon-size-small));
+    stroke-width: var(--icon-stroke, var(--md-sys-icon-stroke-bold));
+
+    stroke: currentColor;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Base Brand Icon (Fill-based) */
+.brand-icon {
+    width: var(--icon-size, var(--md-sys-icon-size-small));
+    height: var(--icon-size, var(--md-sys-icon-size-small));
+    fill: currentColor;
+    stroke: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* =========================================
+   MODIFIERS (Used by React Props)
+   ========================================= */
+.icon-small {
+    --icon-size: var(--md-sys-icon-size-small);
+}
+.icon-medium {
+    --icon-size: var(--md-sys-icon-size-medium);
+}
+.icon-large {
+    --icon-size: var(--md-sys-icon-size-large);
+}
+.icon-xlarge {
+    --icon-size: var(--md-sys-icon-size-xlarge);
+}
+
+.icon-stroke-light {
+    --icon-stroke: var(--md-sys-icon-stroke-light);
+}
+.icon-stroke-regular {
+    --icon-stroke: var(--md-sys-icon-stroke-regular);
+}
+.icon-stroke-bold {
+    --icon-stroke: var(--md-sys-icon-stroke-bold);
+}
