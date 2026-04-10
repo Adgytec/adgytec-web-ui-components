@@ -1,0 +1,53 @@
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    > svg {
+        width: var(--icon-size, var(--md-sys-icon-size-small));
+        height: var(--icon-size, var(--md-sys-icon-size-small));
+        stroke-width: var(--icon-stroke, var(--md-sys-icon-stroke-bold));
+
+        stroke: currentColor;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+/* Base Brand Icon (Fill-based) */
+.brand-icon {
+    width: var(--icon-size, var(--md-sys-icon-size-small));
+    height: var(--icon-size, var(--md-sys-icon-size-small));
+    fill: currentColor;
+    stroke: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* size */
+.small {
+    --icon-size: var(--md-sys-icon-size-small);
+}
+.medium {
+    --icon-size: var(--md-sys-icon-size-medium);
+}
+.large {
+    --icon-size: var(--md-sys-icon-size-large);
+}
+.xlarge {
+    --icon-size: var(--md-sys-icon-size-xlarge);
+}
+
+/* stroke */
+.light {
+    --icon-stroke: var(--md-sys-icon-stroke-light);
+}
+.regular {
+    --icon-stroke: var(--md-sys-icon-stroke-regular);
+}
+.bold {
+    --icon-stroke: var(--md-sys-icon-stroke-bold);
+}
