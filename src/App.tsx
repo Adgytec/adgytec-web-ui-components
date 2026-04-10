@@ -34,13 +34,13 @@ import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
 import { Link, type Visual } from "./components/Link";
+import { Switch } from "./components/Switch";
 import { toast } from "./components/Toast";
 import { ToggleButton } from "./components/ToggleButton";
 import { Viewport } from "./components/Viewport";
 import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import type { ButtonVariant } from "./utils/button/types";
-import { Switch } from "./components/Switch";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {

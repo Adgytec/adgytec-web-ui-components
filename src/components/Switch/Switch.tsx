@@ -1,7 +1,7 @@
+import clsx from "clsx";
 import type { ReactNode } from "react";
 import { Switch as AriaSwitch, type SwitchProps } from "react-aria-components";
 import styles from "./switch.module.css";
-import clsx from "clsx";
 
 export const Switch: React.FC<
     Omit<SwitchProps, "children"> & {
