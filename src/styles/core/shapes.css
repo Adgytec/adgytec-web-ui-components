@@ -1,0 +1,13 @@
+:root {
+    /* Base DP definition for accessible scaling (1rem = 16px default) */
+    --dp: calc(1rem / 16);
+
+    /* Shape Radii */
+    --md-sys-shape-corner-none: 0;
+    --md-sys-shape-corner-extra-small: calc(4 * var(--dp)); /* 4px */
+    --md-sys-shape-corner-small: calc(8 * var(--dp)); /* 8px */
+    --md-sys-shape-corner-medium: calc(16 * var(--dp)); /* 16px */
+    --md-sys-shape-corner-large: calc(24 * var(--dp)); /* 24px */
+    --md-sys-shape-corner-extra-large: calc(32 * var(--dp)); /* 32px */
+    --md-sys-shape-corner-full: 9999px; /* Pill shape */
+}

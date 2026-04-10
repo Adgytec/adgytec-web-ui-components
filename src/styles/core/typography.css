@@ -1,0 +1,92 @@
+:root {
+    /* Font Families */
+    --md-sys-typescale-font-family-brand: "Roboto", system-ui, sans-serif;
+    --md-sys-typescale-font-family-plain: "Roboto", system-ui, sans-serif;
+
+    /* Font Weights */
+    --md-sys-typescale-weight-regular: 400;
+    --md-sys-typescale-weight-medium: 500;
+
+    /* DISPLAY (Massive text for hero sections) */
+    --md-sys-typescale-display-large-size: calc(57 * var(--dp));
+    --md-sys-typescale-display-large-line-height: calc(64 * var(--dp));
+    --md-sys-typescale-display-large-tracking: -0.25px;
+
+    --md-sys-typescale-display-medium-size: calc(45 * var(--dp));
+    --md-sys-typescale-display-medium-line-height: calc(52 * var(--dp));
+    --md-sys-typescale-display-medium-tracking: 0px;
+
+    --md-sys-typescale-display-small-size: calc(36 * var(--dp));
+    --md-sys-typescale-display-small-line-height: calc(44 * var(--dp));
+    --md-sys-typescale-display-small-tracking: 0px;
+
+    /* HEADLINE (Standard page and section headers) */
+    --md-sys-typescale-headline-large-size: calc(32 * var(--dp));
+    --md-sys-typescale-headline-large-line-height: calc(40 * var(--dp));
+    --md-sys-typescale-headline-large-tracking: 0px;
+
+    --md-sys-typescale-headline-medium-size: calc(28 * var(--dp));
+    --md-sys-typescale-headline-medium-line-height: calc(36 * var(--dp));
+    --md-sys-typescale-headline-medium-tracking: 0px;
+
+    --md-sys-typescale-headline-small-size: calc(24 * var(--dp));
+    --md-sys-typescale-headline-small-line-height: calc(32 * var(--dp));
+    --md-sys-typescale-headline-small-tracking: 0px;
+
+    /* TITLE (Cards, lists, dialog titles) */
+    --md-sys-typescale-title-large-size: calc(22 * var(--dp));
+    --md-sys-typescale-title-large-line-height: calc(28 * var(--dp));
+    --md-sys-typescale-title-large-weight: var(
+        --md-sys-typescale-weight-regular
+    );
+    --md-sys-typescale-title-large-tracking: 0px;
+
+    --md-sys-typescale-title-medium-size: calc(16 * var(--dp));
+    --md-sys-typescale-title-medium-line-height: calc(24 * var(--dp));
+    --md-sys-typescale-title-medium-weight: var(
+        --md-sys-typescale-weight-medium
+    );
+    --md-sys-typescale-title-medium-tracking: 0.15px;
+
+    --md-sys-typescale-title-small-size: calc(14 * var(--dp));
+    --md-sys-typescale-title-small-line-height: calc(20 * var(--dp));
+    --md-sys-typescale-title-small-weight: var(
+        --md-sys-typescale-weight-medium
+    );
+    --md-sys-typescale-title-small-tracking: 0.1px;
+
+    /* BODY (Standard paragraphs and reading text) */
+    --md-sys-typescale-body-large-size: calc(16 * var(--dp));
+    --md-sys-typescale-body-large-line-height: calc(24 * var(--dp));
+    --md-sys-typescale-body-large-tracking: 0.5px;
+
+    --md-sys-typescale-body-medium-size: calc(14 * var(--dp));
+    --md-sys-typescale-body-medium-line-height: calc(20 * var(--dp));
+    --md-sys-typescale-body-medium-tracking: 0.25px;
+
+    --md-sys-typescale-body-small-size: calc(12 * var(--dp));
+    --md-sys-typescale-body-small-line-height: calc(16 * var(--dp));
+    --md-sys-typescale-body-small-tracking: 0.4px;
+
+    /* LABEL (Buttons, chips, small metadata) */
+    --md-sys-typescale-label-large-size: calc(14 * var(--dp));
+    --md-sys-typescale-label-large-line-height: calc(20 * var(--dp));
+    --md-sys-typescale-label-large-weight: var(
+        --md-sys-typescale-weight-medium
+    );
+    --md-sys-typescale-label-large-tracking: 0.1px;
+
+    --md-sys-typescale-label-medium-size: calc(12 * var(--dp));
+    --md-sys-typescale-label-medium-line-height: calc(16 * var(--dp));
+    --md-sys-typescale-label-medium-weight: var(
+        --md-sys-typescale-weight-medium
+    );
+    --md-sys-typescale-label-medium-tracking: 0.5px;
+
+    --md-sys-typescale-label-small-size: calc(11 * var(--dp));
+    --md-sys-typescale-label-small-line-height: calc(16 * var(--dp));
+    --md-sys-typescale-label-small-weight: var(
+        --md-sys-typescale-weight-medium
+    );
+    --md-sys-typescale-label-small-tracking: 0.5px;
+}

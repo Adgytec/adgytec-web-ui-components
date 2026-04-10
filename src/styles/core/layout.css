@@ -1,0 +1,21 @@
+:root {
+    /* Spacing Scale (Multiples of 4 and 8) */
+    --md-sys-spacing-1: calc(4 * var(--dp));
+    --md-sys-spacing-2: calc(8 * var(--dp));
+    --md-sys-spacing-3: calc(12 * var(--dp));
+    --md-sys-spacing-4: calc(16 * var(--dp));
+    --md-sys-spacing-5: calc(24 * var(--dp));
+    --md-sys-spacing-6: calc(32 * var(--dp));
+    --md-sys-spacing-7: calc(48 * var(--dp));
+    --md-sys-spacing-8: calc(64 * var(--dp));
+
+    /* Standardized Z-Index Layers */
+    --md-sys-z-index-base: 0;
+    --md-sys-z-index-sticky: 100;
+    --md-sys-z-index-app-bar: 1100; /* Top nav bars */
+    --md-sys-z-index-drawer: 1200; /* Side navigation */
+    --md-sys-z-index-modal-scrim: 1300; /* Dark background behind dialogs */
+    --md-sys-z-index-modal: 1400; /* Dialog boxes */
+    --md-sys-z-index-snackbar: 1500; /* Toast notifications */
+    --md-sys-z-index-tooltip: 1600; /* Hover tooltips */
+}
