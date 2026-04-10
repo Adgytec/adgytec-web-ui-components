@@ -10,6 +10,8 @@ const MANUAL_EXPORTS = [
     'export type * from "./utils/types";',
     'export type * from "./utils/button/types";',
     'export type * from "./utils/textField/types";',
+    'export type * from "./utils/core";',
+    'export type * from "./utils/theme";',
 ];
 
 const COMPONENT_INDEX_GLOB = "src/components/**/index.ts";
