@@ -34,6 +34,7 @@ import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
 import { Link, type Visual } from "./components/Link";
+import { Switch } from "./components/Switch";
 import { toast } from "./components/Toast";
 import { ToggleButton } from "./components/ToggleButton";
 import { Viewport } from "./components/Viewport";
@@ -1260,6 +1261,10 @@ const FormInputPreview = () => {
             <Input label="Email" isRequired type="email" placeholder="Email" />
 
             <TextArea rows={20} label="More info" placeholder="More info" />
+
+            <Switch isDisabled>hmm</Switch>
+
+            <Switch>not-disabled</Switch>
         </PreviewContainer>
     );
 };
@@ -1408,6 +1413,7 @@ const VisualSettingsPreview = () => {
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        FormInputPreview,
         ButtonPreview,
         LinkPreview,
         CardPreview,
@@ -1423,7 +1429,6 @@ const App = () => {
         NavResponsivePreview,
         DisclosurePreview,
         DisclosureGroupPreview,
-        FormInputPreview,
         ToggleButtonPreview,
     ];
 

@@ -1,0 +1,28 @@
+/* TDOD: colors and animation will be added/replaced in next pr */
+.track {
+    background-color: red;
+    width: 4rem;
+    aspect-ratio: 3 / 1;
+    padding: 0.5rem;
+
+    display: inline-flex;
+    align-items: center;
+
+    border-radius: var(--radius);
+
+    &:has([data-selected]) {
+        justify-content: flex-end;
+    }
+}
+
+.handle {
+    background-color: green;
+    width: 1rem;
+    aspect-ratio: 1 / 1;
+
+    border-radius: var(--radius-circular);
+
+    &[data-selected] {
+        background-color: blue;
+    }
+}
