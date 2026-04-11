@@ -1,3 +1,5 @@
+/* https://www.figma.com/community/plugin/1034969338659738588/material-theme-builder */
+/* variables scheme -> monochrome dt */
 [data-theme="monochrome-dark"] {
     --md-sys-color-primary: rgb(255 255 255);
     --md-sys-color-on-primary: rgb(26 28 28);

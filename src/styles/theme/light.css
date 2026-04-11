@@ -1,3 +1,5 @@
+/* https://material-foundation.github.io/material-theme-builder/ */
+/* source color -> #00ADEE */
 :root,
 [data-theme="light"] {
     --md-sys-color-primary: rgb(32 100 135);
