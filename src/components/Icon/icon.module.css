@@ -6,48 +6,41 @@
     > svg {
         width: var(--icon-size, var(--md-sys-icon-size-small));
         height: var(--icon-size, var(--md-sys-icon-size-small));
-        stroke-width: var(--icon-stroke, var(--md-sys-icon-stroke-bold));
-
-        stroke: currentColor;
-        fill: none;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        display: inline-block;
-        vertical-align: middle;
     }
 }
 
-/* Base Brand Icon (Fill-based) */
+/* Base Brand Icon */
 .brand-icon {
     width: var(--icon-size, var(--md-sys-icon-size-small));
     height: var(--icon-size, var(--md-sys-icon-size-small));
+}
+
+/* fill */
+.fill {
     fill: currentColor;
-    stroke: none;
-    display: inline-block;
-    vertical-align: middle;
+
+    > svg {
+        fill: currentColor;
+    }
 }
 
 /* size */
-.small {
-    --icon-size: var(--md-sys-icon-size-small);
-}
-.medium {
-    --icon-size: var(--md-sys-icon-size-medium);
-}
-.large {
-    --icon-size: var(--md-sys-icon-size-large);
-}
-.xlarge {
-    --icon-size: var(--md-sys-icon-size-xlarge);
+.dense {
+    --icon-size: var(--md-sys-icon-dense);
 }
 
-/* stroke */
-.light {
-    --icon-stroke: var(--md-sys-icon-stroke-light);
+.standard {
+    --icon-size: var(--md-sys-icon-standard);
 }
-.regular {
-    --icon-stroke: var(--md-sys-icon-stroke-regular);
+
+.medium {
+    --icon-size: var(--md-sys-icon-medium);
 }
-.bold {
-    --icon-stroke: var(--md-sys-icon-stroke-bold);
+
+.large {
+    --icon-size: var(--md-sys-icon-large);
+}
+
+.extra-large {
+    --icon-size: var(--md-sys-icon-extra-large);
 }
