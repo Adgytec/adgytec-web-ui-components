@@ -1,5 +1,5 @@
 .modal-overlay {
-    background-color: hsl(from var(--color-surface) h s l / 0.5);
+    background-color: hsl(from var(--md-sys-color-surface) h s l / 0.5);
     backdrop-filter: blur(0.25rem);
 
     position: fixed;

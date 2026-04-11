@@ -3,7 +3,7 @@
     inline-size: 25%;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
-    background-color: hsl(from var(--color-surface-variant) h s l / 0.5);
+    background-color: hsl(from var(--md-sys-color-surface-variant) h s l / 0.5);
     animation: ripple 500ms linear;
     opacity: 0;
 }
