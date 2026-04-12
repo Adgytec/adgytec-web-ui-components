@@ -6,7 +6,7 @@ import styles from "./icon.module.css";
 import type { IconProps } from "./types";
 
 export const Icon: React.FC<IconProps> = ({
-    size = "standard",
+    size,
     withText,
     icon: Icon,
     className,
@@ -19,15 +19,14 @@ export const Icon: React.FC<IconProps> = ({
     }
 
     const sizeInNum = typeof size === "number";
-
     return (
         <Icon
             className={clsx(
                 withText ? styles["with-text"] : styles["icon"],
-                !sizeInNum && styles[size],
+                !withText && !sizeInNum && styles[size ?? "standard"],
                 className
             )}
-            size={sizeInNum ? size : undefined}
+            size={!withText && sizeInNum ? size : undefined}
             {...props}
         />
     );
