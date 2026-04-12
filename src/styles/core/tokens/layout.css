@@ -1,0 +1,45 @@
+/* window size */
+/* https://m3.material.io/foundations/layout/applying-layout/window-size-classes */
+@custom-media --md-sys-layout-window-size-compact (max-width: 37.4375rem);
+@custom-media --md-sys-layout-window-size-medium (min-width: 37.5rem) and (max-width: 52.4375rem);
+@custom-media --md-sys-layout-window-size-expanded (min-width: 52.5rem) and (max-width: 74.9375rem);
+@custom-media --md-sys-layout-window-size-large (min-width: 75rem) and (max-width: 99.9375rem);
+@custom-media --md-sys-layout-window-size-extra-large (min-width: 100rem);
+
+:root {
+    /* spacer */
+    /* space between panes */
+    /* https://m3.material.io/foundations/layout/understanding-layout/spacing#cd66a766-1835-4b82-ae48-e70634fd9e6d */
+    --md-sys-layout-spacer: calc(24 * var(--dp, 1px));
+
+    /* window margins */
+    /* https://pub.dev/documentation/material_design/latest/material_design/M3Margins-class.html */
+    --md-sys-layout-window-size-compact-margin: calc(16 * var(--dp, 1px));
+    --md-sys-layout-window-size-medium-margin: calc(24 * var(--dp, 1px));
+    --md-sys-layout-window-size-expanded-margin: calc(24 * var(--dp, 1px));
+    --md-sys-layout-window-size-large-margin: calc(24 * var(--dp, 1px));
+    --md-sys-layout-window-size-extra-large-margin: calc(24 * var(--dp, 1px));
+
+    /* spacing */
+    /* https://pub.dev/documentation/material_design/latest/material_design/M3Spacings-class.html */
+    /* https://m3.material.io/foundations/layout/understanding-layout/spacing#95b924d9-fd43-4ab1-9d25-664a9681bb22 */
+    --md-sys-layout-space-none: 0;
+    --md-sys-layout-space-infinity: 9999px;
+    --md-sys-layout-space-4: calc(4 * var(--dp, 1px));
+    --md-sys-layout-space-8: calc(8 * var(--dp, 1px));
+    --md-sys-layout-space-12: calc(12 * var(--dp, 1px));
+    --md-sys-layout-space-16: calc(16 * var(--dp, 1px));
+    --md-sys-layout-space-20: calc(20 * var(--dp, 1px));
+    --md-sys-layout-space-24: calc(24 * var(--dp, 1px));
+    --md-sys-layout-space-28: calc(28 * var(--dp, 1px));
+    --md-sys-layout-space-32: calc(32 * var(--dp, 1px));
+    --md-sys-layout-space-36: calc(36 * var(--dp, 1px));
+    --md-sys-layout-space-40: calc(40 * var(--dp, 1px));
+    --md-sys-layout-space-48: calc(48 * var(--dp, 1px));
+    --md-sys-layout-space-56: calc(56 * var(--dp, 1px));
+    --md-sys-layout-space-64: calc(64 * var(--dp, 1px));
+    --md-sys-layout-space-72: calc(72 * var(--dp, 1px));
+    --md-sys-layout-space-80: calc(80 * var(--dp, 1px));
+    --md-sys-layout-space-96: calc(96 * var(--dp, 1px));
+    --md-sys-layout-space-128: calc(128 * var(--dp, 1px));
+}

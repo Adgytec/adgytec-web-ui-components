@@ -1,0 +1,46 @@
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    > svg {
+        width: var(--icon-size, var(--md-sys-icon-standard));
+        height: var(--icon-size, var(--md-sys-icon-standard));
+    }
+}
+
+/* Base Brand Icon */
+.brand-icon {
+    width: var(--icon-size, var(--md-sys-icon-standard));
+    height: var(--icon-size, var(--md-sys-icon-standard));
+}
+
+/* fill */
+.fill {
+    fill: currentColor;
+
+    > svg {
+        fill: currentColor;
+    }
+}
+
+/* size */
+.dense {
+    --icon-size: var(--md-sys-icon-dense);
+}
+
+.standard {
+    --icon-size: var(--md-sys-icon-standard);
+}
+
+.medium {
+    --icon-size: var(--md-sys-icon-medium);
+}
+
+.large {
+    --icon-size: var(--md-sys-icon-large);
+}
+
+.extra-large {
+    --icon-size: var(--md-sys-icon-extra-large);
+}

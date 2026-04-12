@@ -2,27 +2,20 @@ import { writeFileSync } from "node:fs";
 import { dirname, relative } from "node:path";
 import { glob } from "glob";
 
-/**
- * 👇 Any custom exports you want to force into src/index.ts.
- * Write them exactly as you want them to appear.
- */
-const MANUAL_EXPORTS = [
-    'export type * from "./utils/types";',
-    'export type * from "./utils/button/types";',
-    'export type * from "./utils/textField/types";',
-];
+const MANUAL_EXPORTS = ['export * from "./utils/material/defaultTheme";'];
 
-const COMPONENT_INDEX_GLOB = "src/components/**/index.ts";
+const INDEX_GLOB = "src/**/index.ts";
 const ROOT_INDEX = "src/index.ts";
 
-const files = glob.sync(COMPONENT_INDEX_GLOB);
+const files = glob.sync(INDEX_GLOB, {
+    ignore: [ROOT_INDEX], // ❗ prevent self-export
+});
 
 const autoExports = files.map((file) => {
     const rel = relative("src", dirname(file)).replaceAll("\\", "/");
     return `export * from "./${rel}";`;
 });
 
-// Merge + dedupe + sort
 const allExports = Array.from(
     new Set([...autoExports, ...MANUAL_EXPORTS])
 ).sort();

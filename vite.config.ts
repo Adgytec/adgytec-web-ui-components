@@ -68,6 +68,7 @@ export default defineConfig({
                 "react/jsx-runtime",
                 "react-aria-components",
                 "lucide-react",
+                "@icons-pack/react-simple-icons",
                 "usehooks-ts",
                 "zod",
                 "sonner",

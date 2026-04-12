@@ -1,6 +1,6 @@
 .card {
-    --_card-color: var(--color-on-surface);
-    --_card-background: var(--color-surface);
+    --_card-color: var(--md-sys-color-on-surface);
+    --_card-background: var(--md-sys-color-surface);
 
     --_card-elevation: var(--elevation-1);
     --_card-radius: var(--radius);

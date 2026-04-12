@@ -65,36 +65,36 @@
 
 /* tooltip theme */
 .primary {
-    --_tooltip-background: var(--color-primary-container);
-    --_tooltip-color: var(--color-on-primary-container);
+    --_tooltip-background: var(--md-sys-color-primary-container);
+    --_tooltip-color: var(--md-sys-color-on-primary-container);
 }
 
 .primary-variant {
-    --_tooltip-background: var(--color-primary-variant-container);
-    --_tooltip-color: var(--color-on-primary-variant-container);
+    --_tooltip-background: var(--md-sys-color-primary-variant-container);
+    --_tooltip-color: var(--md-sys-color-on-primary-variant-container);
 }
 
 .secondary {
-    --_tooltip-background: var(--color-secondary-container);
-    --_tooltip-color: var(--color-on-secondary-container);
+    --_tooltip-background: var(--md-sys-color-secondary-container);
+    --_tooltip-color: var(--md-sys-color-on-secondary-container);
 }
 
 .tertiary {
-    --_tooltip-background: var(--color-tertiary-container);
-    --_tooltip-color: var(--color-on-tertiary-container);
+    --_tooltip-background: var(--md-sys-color-tertiary-container);
+    --_tooltip-color: var(--md-sys-color-on-tertiary-container);
 }
 
 .error {
-    --_tooltip-background: var(--color-error-container);
-    --_tooltip-color: var(--color-on-error-container);
+    --_tooltip-background: var(--md-sys-color-error-container);
+    --_tooltip-color: var(--md-sys-color-on-error-container);
 }
 
 .inverse-surface {
-    --_tooltip-background: var(--color-surface-container);
-    --_tooltip-color: var(--color-on-surface);
+    --_tooltip-background: var(--md-sys-color-surface-container);
+    --_tooltip-color: var(--md-sys-color-on-surface);
 }
 
 .success {
-    --_tooltip-background: var(--color-success-container);
-    --_tooltip-color: var(--color-on-success-container);
+    --_tooltip-background: var(--md-sys-color-success-container);
+    --_tooltip-color: var(--md-sys-color-on-success-container);
 }
