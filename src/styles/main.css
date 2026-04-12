@@ -1,22 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
-@import url("theme.css");
 
 /* DO NOT REMOVE UNUSED STYLES */
 /* This css file is reference for clients to use this lib like this */
 
 :root {
     --md-sys-typescale-font-family-brand: "Lexend", system-ui, sans-serif;
-    --md-sys-typescale-font-family-plain: "Lexend", system-ui, sans-serif;
+    --md-sys-typescale-font-family-plain: system-ui, sans-serif;
 
     caret-color: var(--md-sys-color-primary);
     accent-color: var(--md-sys-color-primary);
-}
-
-/* lucide icon global config */
-.lucide {
-    width: 1.125rem;
-    height: 1.125rem;
-    stroke-width: 0.1875rem;
 }
 
 [data-disabled] {
