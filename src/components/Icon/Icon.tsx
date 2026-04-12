@@ -18,13 +18,16 @@ export const Icon: React.FC<IconProps> = ({
         }
     }
 
+    const sizeInNum = typeof size === "number";
+
     return (
         <Icon
             className={clsx(
                 withText ? styles["with-text"] : styles["icon"],
-                styles[size],
+                !sizeInNum && styles[size],
                 className
             )}
+            size={sizeInNum ? size : undefined}
             {...props}
         />
     );

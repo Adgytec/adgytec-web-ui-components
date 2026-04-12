@@ -1267,7 +1267,7 @@ const FormInputPreview = () => {
             {/**/}
             {/* <Switch>not-disabled</Switch> */}
 
-            <Icon icon={FileBraces} size="extra-large" />
+            <Icon icon={FileBraces} size={400} />
 
             <p
                 style={{
