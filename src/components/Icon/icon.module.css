@@ -4,15 +4,15 @@
     justify-content: center;
 
     > svg {
-        width: var(--icon-size, var(--md-sys-icon-size-small));
-        height: var(--icon-size, var(--md-sys-icon-size-small));
+        width: var(--icon-size, var(--md-sys-icon-standard));
+        height: var(--icon-size, var(--md-sys-icon-standard));
     }
 }
 
 /* Base Brand Icon */
 .brand-icon {
-    width: var(--icon-size, var(--md-sys-icon-size-small));
-    height: var(--icon-size, var(--md-sys-icon-size-small));
+    width: var(--icon-size, var(--md-sys-icon-standard));
+    height: var(--icon-size, var(--md-sys-icon-standard));
 }
 
 /* fill */

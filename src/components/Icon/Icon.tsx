@@ -4,7 +4,7 @@ import type { IconProps } from "./types";
 
 export const Icon: React.FC<IconProps> = ({
     size = "medium",
-    Icon,
+    Icon: LucideIcon,
     fill = false,
 }) => {
     return (
@@ -15,7 +15,7 @@ export const Icon: React.FC<IconProps> = ({
                 fill && styles["fill"]
             )}
         >
-            {<Icon />}
+            {<LucideIcon />}
         </span>
     );
 };

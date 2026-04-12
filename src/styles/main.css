@@ -4,8 +4,8 @@
 /* This css file is reference for clients to use this lib like this */
 
 :root {
-    --md-sys-typescale-font-family-brand: "Lexend", system-ui, sans-serif;
-    --md-sys-typescale-font-family-plain: system-ui, sans-serif;
+    --md-sys-typescale-font-brand: "Lexend", system-ui, sans-serif;
+    --md-sys-typescale-font-plain: system-ui, sans-serif;
 
     caret-color: var(--md-sys-color-primary);
     accent-color: var(--md-sys-color-primary);

@@ -6,19 +6,11 @@
 
     /* window size */
     /* https://m3.material.io/foundations/layout/applying-layout/window-size-classes */
-    @custom-media --md-sys-layout-window-size-compact 
-  (max-width: calc(599 * var(--dp, 1px)));
-    @custom-media --md-sys-layout-window-size-medium 
-  (min-width: calc(600 * var(--dp, 1px))) and 
-  (max-width: calc(839 * var(--dp, 1px)));
-    @custom-media --md-sys-layout-window-size-expanded 
-  (min-width: calc(840 * var(--dp, 1px))) and 
-  (max-width: calc(1199 * var(--dp, 1px)));
-    @custom-media --md-sys-layout-window-size-large 
-  (min-width: calc(1200 * var(--dp, 1px))) and 
-  (max-width: calc(1599 * var(--dp, 1px)));
-    @custom-media --md-sys-layout-window-size-extra-large 
-  (min-width: calc(1600 * var(--dp, 1px)));
+    @custom-media --md-sys-layout-window-size-compact (max-width: calc(599 * var(--dp, 1px)));
+    @custom-media --md-sys-layout-window-size-medium (min-width: calc(600 * var(--dp, 1px))) and (max-width: calc(839 * var(--dp, 1px)));
+    @custom-media --md-sys-layout-window-size-expanded (min-width: calc(840 * var(--dp, 1px))) and (max-width: calc(1199 * var(--dp, 1px)));
+    @custom-media --md-sys-layout-window-size-large (min-width: calc(1200 * var(--dp, 1px))) and (max-width: calc(1599 * var(--dp, 1px)));
+    @custom-media --md-sys-layout-window-size-extra-large (min-width: calc(1600 * var(--dp, 1px)));
 
     /* window margins */
     /* https://pub.dev/documentation/material_design/latest/material_design/M3Margins-class.html */
