@@ -2,6 +2,15 @@
     /* =========================================
      ICON TOKENS
      ========================================= */
+
+    /* number only */
+    --md-sys-icon-dense-num: 20;
+    --md-sys-icon-standard-num: 24;
+    --md-sys-icon-medium-num: 32;
+    --md-sys-icon-large-num: 40;
+    --md-sys-icon-extra-large-num: 48;
+
+    /* with dp */
     --md-sys-icon-dense: calc(20 * var(--dp, 1px));
     --md-sys-icon-standard: calc(24 * var(--dp, 1px));
     --md-sys-icon-medium: calc(32 * var(--dp, 1px));
