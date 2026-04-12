@@ -1423,10 +1423,29 @@ const VisualSettingsPreview = () => {
     );
 };
 
+const IconPreview = () => {
+    return (
+        <PreviewContainer label="Icon preview">
+            <Icon icon={FileBraces} size={400} withText />
+
+            <p
+                style={{
+                    fontSize: "5rem",
+                    fontWeight: "400",
+                }}
+            >
+                <Icon icon={FileBraces} withText strokeWidth={1.375} /> with
+                text
+            </p>
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
+        IconPreview,
         // VisualSettingsPreview,
-        FormInputPreview,
+        // FormInputPreview,
         // ButtonPreview,
         // LinkPreview,
         // CardPreview,
