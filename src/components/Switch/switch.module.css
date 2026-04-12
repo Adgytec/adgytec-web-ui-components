@@ -1,28 +1,151 @@
-/* TDOD: colors and animation will be added/replaced in next pr */
-.track {
-    background-color: red;
-    width: 4rem;
-    aspect-ratio: 3 / 1;
-    padding: 0.5rem;
+.switch {
+    --track-block-size: calc(32 * var(--dp, 1px));
+    --track-inline-size: calc(52 * var(--dp, 1px));
+    --track-outline-width: calc(2 * var(--dp, 1px));
+    --track-shape: var(--md-sys-shape-corner-radius-full);
+
+    --track-outline-color: var(
+        --_track-outline-color,
+        var(--md-sys-color-outline)
+    );
+    --track-selected-color: var(
+        --_track-selected-color,
+        var(--md-sys-color-primary)
+    );
+    --track-unselected-color: var(
+        --_track-unselected-color,
+        var(--md-sys-color-surface-container-highest)
+    );
+
+    --handle-icon-size: calc(16 * var(--dp, 1px));
+    --handle-radius-unselected-without-icon: calc(16 * var(--dp, 1px));
+    --handle-radius-unselected-with-icon: calc(24 * var(--dp, 1px));
+    --handle-radius-selected: calc(24 * var(--dp, 1px));
+    --handle-radius-pressed: calc(28 * var(--dp, 1px));
+    --handle-shape: var(--md-sys-shape-corner-radius-full);
+
+    --handle-selected-color: var(
+        --_handle-selected-color,
+        var(--md-sys-color-on-primary)
+    );
+    --handle-unselected-color: var(
+        --_handle-unselected-color,
+        var(--md-sys-color-outline)
+    );
+
+    --state-layer-size: calc(40 * var(--dp, 1px));
+    --state-layer-shape: var(--md-sys-shape-corner-radius-full);
+
+    --target-size: calc(48 * var(--dp, 1px));
+
+    --selected-icon-color: var(
+        --_selected-icon-color,
+        var(--md-sys-color-primary)
+    );
+    --unselected-icon-color: var(
+        --_unselected-icon-color,
+        var(--md-sys-color-surface-container-highest)
+    );
 
     display: inline-flex;
     align-items: center;
+    justify-content: space-between;
+}
 
-    border-radius: var(--radius);
+.target {
+    min-inline-size: var(--target-size);
+    min-block-size: var(--target-size);
 
-    &:has([data-selected]) {
-        justify-content: flex-end;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.track {
+    --track-color: var(--track-unselected-color);
+    --_track-color: var(--track-color);
+
+    --track-inner-inline-size: calc(
+        var(--track-inline-size) -
+        calc(var(--track-outline-width) * 2)
+    );
+
+    position: relative;
+
+    inline-size: var(--track-inline-size);
+    block-size: var(--track-block-size);
+
+    background-color: var(--_track-color);
+    border-radius: var(--track-shape);
+
+    transition:
+        background-color,
+        border-color var(--md-sys-motion-standard-fast-effects-duration)
+        var(--md-sys-motion-standard-fast-effects);
+
+    border: var(--track-outline-width) solid var(--track-outline-color);
+
+    &[data-selected] {
+        --track-color: var(--track-selected-color);
+        border-color: var(--track-selected-color);
+    }
+
+    &[data-disabled] {
+        --_track-color: rgb(
+            from var(--track-color) r g b /
+            var(--md-sys-state-disabled-container)
+        );
     }
 }
 
 .handle {
-    background-color: green;
-    width: 1rem;
+    --handle-color: var(--handle-unselected-color);
+    --_handle-color: var(--handle-color);
+
+    --handle-x: calc(6 * var(--dp, 1px));
+    --_handle-x: var(--handle-x);
+
+    --handle-size: var(--handle-radius-unselected-without-icon);
+
+    position: absolute;
+    top: 50%;
+    transform: translate(var(--_handle-x), -50%);
+
+    inline-size: var(--handle-size);
     aspect-ratio: 1 / 1;
 
-    border-radius: var(--radius-circular);
+    background-color: var(--_handle-color);
+    border-radius: var(--handle-shape);
+
+    transition:
+        transform,
+        right,
+        inline-size,
+        block-size,
+        var(--md-sys-motion-expressive-fast-spatial)
+        var(--md-sys-motion-expressive-fast-spatial-duration);
+
+    &[data-pressed] {
+        --handle-size: var(--handle-radius-pressed);
+        --handle-x: 0;
+    }
 
     &[data-selected] {
-        background-color: blue;
+        --handle-color: var(--handle-selected-color);
+        --handle-size: var(--handle-radius-selected);
+
+        --_temp: calc(var(--track-inner-inline-size) - var(--handle-size));
+        --handle-x: calc(
+            var(--_temp) -
+            calc(calc(var(--handle-radius-pressed) - var(--_temp)) / 2)
+        );
+
+        &[data-pressed] {
+            --handle-size: var(--handle-radius-pressed);
+            --handle-x: calc(
+                var(--track-inner-inline-size) -
+                var(--handle-size)
+            );
+        }
     }
 }

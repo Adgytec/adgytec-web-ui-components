@@ -1263,21 +1263,9 @@ const FormInputPreview = () => {
             {/**/}
             {/* <TextArea rows={20} label="More info" placeholder="More info" /> */}
 
-            {/* <Switch isDisabled>hmm</Switch> */}
-            {/**/}
-            {/* <Switch>not-disabled</Switch> */}
+            <Switch isDisabled>hmm</Switch>
 
-            <Icon icon={FileBraces} size={400} withText />
-
-            <p
-                style={{
-                    fontSize: "5rem",
-                    fontWeight: "400",
-                }}
-            >
-                <Icon icon={FileBraces} withText strokeWidth={1.375} /> with
-                text
-            </p>
+            <Switch>not-disabled</Switch>
         </PreviewContainer>
     );
 };
@@ -1445,7 +1433,7 @@ const App = () => {
     const previewElements = [
         IconPreview,
         // VisualSettingsPreview,
-        // FormInputPreview,
+        FormInputPreview,
         // ButtonPreview,
         // LinkPreview,
         // CardPreview,
