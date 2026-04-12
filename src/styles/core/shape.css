@@ -1,0 +1,20 @@
+/* https://m3.material.io/styles/shape/corner-radius-scale */
+:root {
+    /* Shape corner radius scale */
+    --md-sys-shape-corner-radius-none: 0;
+
+    --md-sys-shape-corner-radius-extra-small: calc(4 * var(--dp, 1px));
+    --md-sys-shape-corner-radius-small: calc(8 * var(--dp, 1px));
+    --md-sys-shape-corner-radius-medium: calc(12 * var(--dp, 1px));
+    --md-sys-shape-corner-radius-large: calc(16 * var(--dp, 1px));
+    --md-sys-shape-corner-radius-large-increased: calc(20 * var(--dp, 1px));
+    --md-sys-shape-corner-radius-extra-large: calc(28 * var(--dp, 1px));
+    --md-sys-shape-corner-radius-extra-large-increased: calc(
+        32 *
+        var(--dp, 1px)
+    );
+    --md-sys-shape-corner-radius-extra-extra-large: calc(48 * var(--dp, 1px));
+
+    /* Fully rounded */
+    --md-sys-shape-corner-radius-full: calc(9999 * var(--dp, 1px));
+}
