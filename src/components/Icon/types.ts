@@ -1,5 +1,4 @@
-import type { IconType } from "@icons-pack/react-simple-icons";
-import type { LucideIcon } from "lucide-react";
+import type { LucideIcon, LucideProps } from "lucide-react";
 
 export type IconSize =
     | "dense"
@@ -8,15 +7,8 @@ export type IconSize =
     | "large"
     | "extra-large";
 
-// lucide icon auto handle stroke based on icon size
-export type IconProps = {
-    size?: IconSize;
-    Icon: LucideIcon;
-    fill?: boolean;
-};
-
-export type BrandIconProps = {
-    size?: IconSize;
-    Icon: IconType;
-    fill?: boolean;
+export type IconProps = Omit<LucideProps, "size"> & {
+    icon: LucideIcon;
+    size?: IconSize | number;
+    withText?: boolean;
 };

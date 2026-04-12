@@ -1,4 +1,4 @@
-import { Copy } from "lucide-react";
+import { Copy, FileBraces } from "lucide-react";
 import { Fragment, type ReactNode, useState } from "react";
 import type { Key } from "react-aria-components";
 import { Avatar } from "./components/Avatar/Avatar";
@@ -26,13 +26,14 @@ import type {
     ColorTheme,
     HierarchyItemType,
     TreeHierarchyItemType,
-} from "./utils/types";
+} from "./utils/hierarchy";
 import "./styles/app.css";
 import { AvatarImage } from "./components/Avatar/AvatarImage";
 import { Button } from "./components/Button";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
+import { Icon } from "./components/Icon";
 import { Link, type Visual } from "./components/Link";
 import { Switch } from "./components/Switch";
 import { toast } from "./components/Toast";
@@ -1258,13 +1259,25 @@ const DisclosureGroupPreview = () => {
 const FormInputPreview = () => {
     return (
         <PreviewContainer label="Form Input">
-            <Input label="Email" isRequired type="email" placeholder="Email" />
+            {/* <Input label="Email" isRequired type="email" placeholder="Email" /> */}
+            {/**/}
+            {/* <TextArea rows={20} label="More info" placeholder="More info" /> */}
 
-            <TextArea rows={20} label="More info" placeholder="More info" />
+            {/* <Switch isDisabled>hmm</Switch> */}
+            {/**/}
+            {/* <Switch>not-disabled</Switch> */}
 
-            <Switch isDisabled>hmm</Switch>
+            <Icon icon={FileBraces} size={400} withText />
 
-            <Switch>not-disabled</Switch>
+            <p
+                style={{
+                    fontSize: "5rem",
+                    fontWeight: "400",
+                }}
+            >
+                <Icon icon={FileBraces} withText strokeWidth={1.375} /> with
+                text
+            </p>
         </PreviewContainer>
     );
 };
@@ -1412,24 +1425,24 @@ const VisualSettingsPreview = () => {
 
 const App = () => {
     const previewElements = [
-        VisualSettingsPreview,
+        // VisualSettingsPreview,
         FormInputPreview,
-        ButtonPreview,
-        LinkPreview,
-        CardPreview,
-        SelectPreview,
-        AvatarPreview,
-        ModalPreview,
-        ModalActionPreview,
-        MenuPreview,
-        SidebarPreview,
-        TreePreview,
-        NavSidebarPreview,
-        NavMenuPreview,
-        NavResponsivePreview,
-        DisclosurePreview,
-        DisclosureGroupPreview,
-        ToggleButtonPreview,
+        // ButtonPreview,
+        // LinkPreview,
+        // CardPreview,
+        // SelectPreview,
+        // AvatarPreview,
+        // ModalPreview,
+        // ModalActionPreview,
+        // MenuPreview,
+        // SidebarPreview,
+        // TreePreview,
+        // NavSidebarPreview,
+        // NavMenuPreview,
+        // NavResponsivePreview,
+        // DisclosurePreview,
+        // DisclosureGroupPreview,
+        // ToggleButtonPreview,
     ];
 
     return (

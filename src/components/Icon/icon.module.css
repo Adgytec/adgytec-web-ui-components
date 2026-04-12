@@ -1,46 +1,32 @@
 .icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    > svg {
-        width: var(--icon-size, var(--md-sys-icon-standard));
-        height: var(--icon-size, var(--md-sys-icon-standard));
-    }
+    width: var(--_icon-size);
+    height: var(--_icon-size);
 }
 
-/* Base Brand Icon */
-.brand-icon {
-    width: var(--icon-size, var(--md-sys-icon-standard));
-    height: var(--icon-size, var(--md-sys-icon-standard));
-}
+.with-text {
+    width: 1em;
+    height: 1em;
 
-/* fill */
-.fill {
-    fill: currentColor;
-
-    > svg {
-        fill: currentColor;
-    }
+    vertical-align: sub;
 }
 
 /* size */
 .dense {
-    --icon-size: var(--md-sys-icon-dense);
+    --_icon-size: var(--md-sys-icon-dense);
 }
 
 .standard {
-    --icon-size: var(--md-sys-icon-standard);
+    --_icon-size: var(--md-sys-icon-standard);
 }
 
 .medium {
-    --icon-size: var(--md-sys-icon-medium);
+    --_icon-size: var(--md-sys-icon-medium);
 }
 
 .large {
-    --icon-size: var(--md-sys-icon-large);
+    --_icon-size: var(--md-sys-icon-large);
 }
 
 .extra-large {
-    --icon-size: var(--md-sys-icon-extra-large);
+    --_icon-size: var(--md-sys-icon-extra-large);
 }
