@@ -1,9 +1,3 @@
-@import "motion.css";
-@import "shapes.css";
-@import "states.css";
-@import "icons.css";
-@import "dp.css";
-@import "elevation.css";
-@import "layout.css";
 @import "reset.css";
-@import "typescale.css";
+@import "./tokens/tokens.css";
+@import "./theme/monochrome/monochrome.css";

@@ -1,18 +1,27 @@
-/* Box sizing rules */
+/* ==================== */
+/* Box sizing */
+/* ==================== */
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
+/* ==================== */
 /* Prevent font size inflation */
+/* ==================== */
+
 html {
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
 }
 
-/* Remove default margin in favour of better control in authored CSS */
+/* ==================== */
+/* Remove default margins */
+/* ==================== */
+
 body,
 h1,
 h2,
@@ -26,65 +35,65 @@ dd {
     margin: 0;
 }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+/* ==================== */
+/* Lists (only when role=list is used) */
+/* ==================== */
+
 ul[role="list"],
 ol[role="list"] {
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-/* Set core body defaults */
+/* ==================== */
+/* Core body defaults */
+/* ==================== */
+
 body {
     min-block-size: 100dvb;
-    line-height: 1.5;
+    line-height: 1.5; /* fallback only */
 }
 
-/* Set shorter line heights on headings and interactive elements */
-h1,
-h2,
-h3,
-h4,
-button,
-input,
-label {
-    line-height: 1.1;
-}
+/* ==================== */
+/* Links */
+/* ==================== */
 
-/* Balance text wrapping on headings */
-h1,
-h2,
-h3,
-h4 {
-    text-wrap: balance;
-}
-
-/* A elements that don't have a class get default styles */
 a:not([class]) {
     text-decoration-skip-ink: auto;
     color: currentColor;
 }
 
-/* Make images easier to work with */
+/* ==================== */
+/* Media elements */
+/* ==================== */
+
 img,
 picture {
     max-inline-size: 100%;
     display: block;
 }
 
-/* Inherit fonts for inputs and buttons */
+/* ==================== */
+/* Form elements */
+/* ==================== */
+
 input,
 button,
 textarea,
 select {
-    font-family: inherit;
-    font-size: inherit;
+    font: inherit;
 }
 
-/* Make sure textareas without a rows attribute are not tiny */
+/* Ensure textareas are usable */
 textarea:not([rows]) {
     min-block-size: 10em;
 }
 
-/* Anything that has been anchored to should have extra scroll margin */
+/* ==================== */
+/* Scroll behavior */
+/* ==================== */
+
 :target {
     scroll-margin-block: 5ex;
 }

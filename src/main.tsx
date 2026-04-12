@@ -1,7 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
-import "./utils/core.ts";
+import "./utils/material";
+import "./utils/material/defaultTheme";
 import "./styles/main.css";
 import { Toaster } from "sonner";
 
