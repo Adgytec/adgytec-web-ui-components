@@ -8,6 +8,7 @@ import "./utils/material";
 import "./utils/material/defaultTheme";
 import "./styles/main.css";
 import { Toaster } from "sonner";
+import "material-symbols/outlined.css";
 
 const rootEl = document.getElementById("root");
 if (!rootEl) throw new Error("missing root element");

@@ -9,21 +9,6 @@
     }
 }
 
-/* Base Brand Icon */
-.brand-icon {
-    width: var(--icon-size, var(--md-sys-icon-standard));
-    height: var(--icon-size, var(--md-sys-icon-standard));
-}
-
-/* fill */
-.fill {
-    fill: currentColor;
-
-    > svg {
-        fill: currentColor;
-    }
-}
-
 /* size */
 .dense {
     --icon-size: var(--md-sys-icon-dense);

@@ -1,4 +1,3 @@
-import type { IconType } from "@icons-pack/react-simple-icons";
 import type { LucideIcon } from "lucide-react";
 
 export type IconSize =
@@ -12,11 +11,5 @@ export type IconSize =
 export type IconProps = {
     size?: IconSize;
     Icon: LucideIcon;
-    fill?: boolean;
-};
-
-export type BrandIconProps = {
-    size?: IconSize;
-    Icon: IconType;
     fill?: boolean;
 };

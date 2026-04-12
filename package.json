@@ -33,9 +33,8 @@
         "test": "echo \"No tests\""
     },
     "peerDependencies": {
-        "@icons-pack/react-simple-icons": "^13.13.0",
         "clsx": ">=2.1.1",
-        "lucide-react": ">=0.562.0",
+        "material-symbols": "^0.44.1",
         "react": ">=19.2.3",
         "react-aria-components": ">=1.14.0",
         "react-dom": ">=19.2.3",
