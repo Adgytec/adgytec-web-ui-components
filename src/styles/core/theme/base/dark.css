@@ -1,6 +1,8 @@
 /* https://material-foundation.github.io/material-theme-builder/ */
 /* source color -> #00ADEE */
 [data-theme="dark"] {
+    color-scheme: dark;
+
     --md-sys-color-primary: rgb(146 206 245);
     --md-sys-color-on-primary: rgb(0 52 75);
     --md-sys-color-primary-container: rgb(0 76 107);
