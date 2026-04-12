@@ -1,21 +1,53 @@
 :root {
-    /* Spacing Scale (Multiples of 4 and 8) */
-    --md-sys-spacing-1: calc(4 * var(--dp));
-    --md-sys-spacing-2: calc(8 * var(--dp));
-    --md-sys-spacing-3: calc(12 * var(--dp));
-    --md-sys-spacing-4: calc(16 * var(--dp));
-    --md-sys-spacing-5: calc(24 * var(--dp));
-    --md-sys-spacing-6: calc(32 * var(--dp));
-    --md-sys-spacing-7: calc(48 * var(--dp));
-    --md-sys-spacing-8: calc(64 * var(--dp));
+    /* spacer */
+    /* space between panes */
+    /* https://m3.material.io/foundations/layout/understanding-layout/spacing#cd66a766-1835-4b82-ae48-e70634fd9e6d */
+    --md-sys-layout-spacer: calc(24 * var(--dp, 1px));
 
-    /* Standardized Z-Index Layers */
-    --md-sys-z-index-base: 0;
-    --md-sys-z-index-sticky: 100;
-    --md-sys-z-index-app-bar: 1100; /* Top nav bars */
-    --md-sys-z-index-drawer: 1200; /* Side navigation */
-    --md-sys-z-index-modal-scrim: 1300; /* Dark background behind dialogs */
-    --md-sys-z-index-modal: 1400; /* Dialog boxes */
-    --md-sys-z-index-snackbar: 1500; /* Toast notifications */
-    --md-sys-z-index-tooltip: 1600; /* Hover tooltips */
+    /* window size */
+    /* https://m3.material.io/foundations/layout/applying-layout/window-size-classes */
+    @custom-media --md-sys-layout-window-size-compact 
+  (max-width: calc(599 * var(--dp, 1px)));
+    @custom-media --md-sys-layout-window-size-medium 
+  (min-width: calc(600 * var(--dp, 1px))) and 
+  (max-width: calc(839 * var(--dp, 1px)));
+    @custom-media --md-sys-layout-window-size-expanded 
+  (min-width: calc(840 * var(--dp, 1px))) and 
+  (max-width: calc(1199 * var(--dp, 1px)));
+    @custom-media --md-sys-layout-window-size-large 
+  (min-width: calc(1200 * var(--dp, 1px))) and 
+  (max-width: calc(1599 * var(--dp, 1px)));
+    @custom-media --md-sys-layout-window-size-extra-large 
+  (min-width: calc(1600 * var(--dp, 1px)));
+
+    /* window margins */
+    /* https://pub.dev/documentation/material_design/latest/material_design/M3Margins-class.html */
+    --md-sys-layout-window-size-compact-margin: calc(16 * var(--dp, 1px));
+    --md-sys-layout-window-size-medium-margin: calc(24 * var(--dp, 1px));
+    --md-sys-layout-window-size-expanded-margin: calc(24 * var(--dp, 1px));
+    --md-sys-layout-window-size-large-margin: calc(24 * var(--dp, 1px));
+    --md-sys-layout-window-size-extra-large-margin: calc(24 * var(--dp, 1px));
+
+    /* spacing */
+    /* https://pub.dev/documentation/material_design/latest/material_design/M3Spacings-class.html */
+    /* https://m3.material.io/foundations/layout/understanding-layout/spacing#95b924d9-fd43-4ab1-9d25-664a9681bb22 */
+    --md-sys-layout-space-none: 0;
+    --md-sys-layout-space-infinity: 9999px;
+    --md-sys-layout-space-4: calc(4 * var(--dp, 1px));
+    --md-sys-layout-space-8: calc(8 * var(--dp, 1px));
+    --md-sys-layout-space-12: calc(12 * var(--dp, 1px));
+    --md-sys-layout-space-16: calc(16 * var(--dp, 1px));
+    --md-sys-layout-space-20: calc(20 * var(--dp, 1px));
+    --md-sys-layout-space-24: calc(24 * var(--dp, 1px));
+    --md-sys-layout-space-28: calc(28 * var(--dp, 1px));
+    --md-sys-layout-space-32: calc(32 * var(--dp, 1px));
+    --md-sys-layout-space-36: calc(36 * var(--dp, 1px));
+    --md-sys-layout-space-40: calc(40 * var(--dp, 1px));
+    --md-sys-layout-space-48: calc(48 * var(--dp, 1px));
+    --md-sys-layout-space-56: calc(56 * var(--dp, 1px));
+    --md-sys-layout-space-64: calc(64 * var(--dp, 1px));
+    --md-sys-layout-space-72: calc(72 * var(--dp, 1px));
+    --md-sys-layout-space-80: calc(80 * var(--dp, 1px));
+    --md-sys-layout-space-96: calc(96 * var(--dp, 1px));
+    --md-sys-layout-space-128: calc(128 * var(--dp, 1px));
 }

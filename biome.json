@@ -44,11 +44,14 @@
     },
     "overrides": [
         {
-            "includes": ["src/styles/media-queries.css"],
+            "includes": ["**/*.css"],
             "linter": {
                 "rules": {
                     "suspicious": {
                         "noUnknownAtRules": "off"
+                    },
+                    "correctness": {
+                        "noUnknownMediaFeatureName": "off"
                     }
                 }
             }
