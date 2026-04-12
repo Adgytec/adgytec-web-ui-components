@@ -67,7 +67,7 @@ export default defineConfig({
                 "react-dom",
                 "react/jsx-runtime",
                 "react-aria-components",
-                "material-symbols",
+                "lucide-react",
                 "usehooks-ts",
                 "zod",
                 "sonner",

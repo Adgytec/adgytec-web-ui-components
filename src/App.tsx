@@ -41,6 +41,7 @@ import { Viewport } from "./components/Viewport";
 import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import type { ButtonVariant } from "./utils/button/types";
+import { Icon } from "./components/Icon";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1258,13 +1259,25 @@ const DisclosureGroupPreview = () => {
 const FormInputPreview = () => {
     return (
         <PreviewContainer label="Form Input">
-            <Input label="Email" isRequired type="email" placeholder="Email" />
+            {/* <Input label="Email" isRequired type="email" placeholder="Email" /> */}
+            {/**/}
+            {/* <TextArea rows={20} label="More info" placeholder="More info" /> */}
 
-            <TextArea rows={20} label="More info" placeholder="More info" />
+            {/* <Switch isDisabled>hmm</Switch> */}
+            {/**/}
+            {/* <Switch>not-disabled</Switch> */}
 
-            <Switch isDisabled>hmm</Switch>
+            <Icon icon="face" size="extra-large" weight="bold" />
 
-            <Switch>not-disabled</Switch>
+            <p
+                style={{
+                    outline: "2px solid red",
+                    fontSize: "3rem",
+                    fontWeight: "700",
+                }}
+            >
+                <Icon icon="face" withText /> with text
+            </p>
         </PreviewContainer>
     );
 };
@@ -1412,24 +1425,24 @@ const VisualSettingsPreview = () => {
 
 const App = () => {
     const previewElements = [
-        VisualSettingsPreview,
+        // VisualSettingsPreview,
         FormInputPreview,
-        ButtonPreview,
-        LinkPreview,
-        CardPreview,
-        SelectPreview,
-        AvatarPreview,
-        ModalPreview,
-        ModalActionPreview,
-        MenuPreview,
-        SidebarPreview,
-        TreePreview,
-        NavSidebarPreview,
-        NavMenuPreview,
-        NavResponsivePreview,
-        DisclosurePreview,
-        DisclosureGroupPreview,
-        ToggleButtonPreview,
+        // ButtonPreview,
+        // LinkPreview,
+        // CardPreview,
+        // SelectPreview,
+        // AvatarPreview,
+        // ModalPreview,
+        // ModalActionPreview,
+        // MenuPreview,
+        // SidebarPreview,
+        // TreePreview,
+        // NavSidebarPreview,
+        // NavMenuPreview,
+        // NavResponsivePreview,
+        // DisclosurePreview,
+        // DisclosureGroupPreview,
+        // ToggleButtonPreview,
     ];
 
     return (
