@@ -1,5 +1,3 @@
-import type { LucideIcon } from "lucide-react";
-
 export type IconSize =
     | "dense"
     | "standard"
@@ -7,9 +5,12 @@ export type IconSize =
     | "large"
     | "extra-large";
 
-// lucide icon auto handle stroke based on icon size
+export type IconWeight = "regular" | "w-medium" | "bold";
+
 export type IconProps = {
     size?: IconSize;
-    Icon: LucideIcon;
+    weight?: IconWeight;
     fill?: boolean;
+    withText?: boolean;
+    icon: string;
 };

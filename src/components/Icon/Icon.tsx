@@ -1,23 +1,26 @@
-// INFO: Icons will be replaced by material symbols
-// no need to update these comps
 import clsx from "clsx";
 import styles from "./icon.module.css";
 import type { IconProps } from "./types";
 
 export const Icon: React.FC<IconProps> = ({
     size = "medium",
-    Icon: LucideIcon,
+    weight,
     fill = false,
+    withText = false,
+    icon,
 }) => {
     return (
         <span
             className={clsx(
+                "material-symbols-outlined",
                 styles["icon"],
                 styles[size],
-                fill && styles["fill"]
+                fill && styles["fill"],
+                weight && styles[weight],
+                withText && styles["with-text"]
             )}
         >
-            <LucideIcon />
+            {icon}
         </span>
     );
 };
