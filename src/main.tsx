@@ -1,3 +1,6 @@
+// INFO: this pr intentionally breaks multiple components
+// all components will be re-implemented using material 3 spec
+
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
