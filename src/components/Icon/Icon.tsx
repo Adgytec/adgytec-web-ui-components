@@ -22,7 +22,8 @@ export const Icon: React.FC<IconProps> = ({
         <Icon
             className={clsx(
                 withText ? styles["with-text"] : styles["icon"],
-                styles[size]
+                styles[size],
+                className
             )}
             {...props}
         />

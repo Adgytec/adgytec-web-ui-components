@@ -1,4 +1,4 @@
-import { Copy } from "lucide-react";
+import { Copy, FileBraces } from "lucide-react";
 import { Fragment, type ReactNode, useState } from "react";
 import type { Key } from "react-aria-components";
 import { Avatar } from "./components/Avatar/Avatar";
@@ -33,6 +33,7 @@ import { Button } from "./components/Button";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
+import { Icon } from "./components/Icon";
 import { Link, type Visual } from "./components/Link";
 import { Switch } from "./components/Switch";
 import { toast } from "./components/Toast";
@@ -41,7 +42,6 @@ import { Viewport } from "./components/Viewport";
 import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import type { ButtonVariant } from "./utils/button/types";
-import { Icon } from "./components/Icon";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1267,16 +1267,16 @@ const FormInputPreview = () => {
             {/**/}
             {/* <Switch>not-disabled</Switch> */}
 
-            <Icon icon="face" size="extra-large" weight="bold" />
+            <Icon icon={FileBraces} size="extra-large" />
 
             <p
                 style={{
-                    outline: "2px solid red",
-                    fontSize: "3rem",
-                    fontWeight: "700",
+                    fontSize: "5rem",
+                    fontWeight: "400",
                 }}
             >
-                <Icon icon="face" withText /> with text
+                <Icon icon={FileBraces} withText strokeWidth={1.375} /> with
+                text
             </p>
         </PreviewContainer>
     );

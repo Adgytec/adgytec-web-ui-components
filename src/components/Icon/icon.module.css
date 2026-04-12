@@ -6,25 +6,27 @@
 .with-text {
     width: 1em;
     height: 1em;
+
+    vertical-align: sub;
 }
 
 /* size */
 .dense {
-    --_icon-size: var(--md-sys-icon-dense-num);
+    --_icon-size: var(--md-sys-icon-dense);
 }
 
 .standard {
-    --_icon-size: var(--md-sys-icon-standard-num);
+    --_icon-size: var(--md-sys-icon-standard);
 }
 
 .medium {
-    --_icon-size: var(--md-sys-icon-medium-num);
+    --_icon-size: var(--md-sys-icon-medium);
 }
 
 .large {
-    --_icon-size: var(--md-sys-icon-large-num);
+    --_icon-size: var(--md-sys-icon-large);
 }
 
 .extra-large {
-    --_icon-size: var(--md-sys-icon-extra-large-num);
+    --_icon-size: var(--md-sys-icon-extra-large);
 }
