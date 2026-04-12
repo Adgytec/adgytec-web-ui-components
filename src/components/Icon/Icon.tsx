@@ -1,3 +1,5 @@
+// INFO: Icons will be replaced by material symbols
+// no need to update these comps
 import clsx from "clsx";
 import styles from "./icon.module.css";
 import type { IconProps } from "./types";
