@@ -1,3 +1,5 @@
+import type { LucideIcon, LucideProps } from "lucide-react";
+
 export type IconSize =
     | "dense"
     | "standard"
@@ -5,12 +7,8 @@ export type IconSize =
     | "large"
     | "extra-large";
 
-export type IconWeight = "regular" | "medium" | "bold";
-
-export type IconProps = {
-    icon: string;
-    size?: IconSize;
-    weight?: IconWeight;
-    fill?: boolean;
+export type IconProps = Omit<LucideProps, "size"> & {
+    icon: LucideIcon;
+    size?: IconSize | number;
     withText?: boolean;
 };
