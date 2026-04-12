@@ -26,7 +26,7 @@ import type {
     ColorTheme,
     HierarchyItemType,
     TreeHierarchyItemType,
-} from "./utils/types";
+} from "./utils/hierarchy";
 import "./styles/app.css";
 import { AvatarImage } from "./components/Avatar/AvatarImage";
 import { Button } from "./components/Button";
