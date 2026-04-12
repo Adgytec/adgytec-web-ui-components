@@ -15,7 +15,7 @@ export const Icon: React.FC<IconProps> = ({
                 fill && styles["fill"]
             )}
         >
-            {<LucideIcon />}
+            <LucideIcon />
         </span>
     );
 };
