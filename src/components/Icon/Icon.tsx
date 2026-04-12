@@ -13,20 +13,26 @@ export const Icon: React.FC<IconProps> = ({
     ...props
 }) => {
     if (process.env.NODE_ENV !== "production") {
-        if (withText && size) {
+        if (withText && typeof size !== "undefined") {
             console.warn("Icon: 'size' is ignored when 'withText' is true.");
         }
     }
 
     const sizeInNum = typeof size === "number";
+
+    const shouldAddSizeClasses = !withText && !sizeInNum;
+    const shouldAddSizeProp = !withText && sizeInNum;
     return (
         <Icon
             className={clsx(
-                withText ? styles["with-text"] : styles["icon"],
-                !withText && !sizeInNum && styles[size ?? "standard"],
+                withText && styles["with-text"],
+                {
+                    [styles["icon"]]: shouldAddSizeClasses,
+                    [styles[size ?? "standard"]]: shouldAddSizeClasses,
+                },
                 className
             )}
-            size={!withText && sizeInNum ? size : undefined}
+            size={shouldAddSizeProp ? size : undefined}
             {...props}
         />
     );
