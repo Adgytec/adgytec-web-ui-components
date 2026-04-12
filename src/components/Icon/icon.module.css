@@ -1,12 +1,20 @@
 .icon {
+    font-size: var(--_icon-size, var(--md-sys-icon-standard));
+
     font-variation-settings:
         "FILL" var(--_icon-fill, 0),
-        "wght" var(--_icon-weight, 400),
+        "wght" var(--_icon-weight, var(--md-sys-typescale-weight-regular)),
         "GRAD" 0,
-        "opsz" var(--_icon-size, 24px);
+        "opsz" var(--_icon-opsz, 24);
+
+    display: inline-flex;
+    line-height: 1;
 }
 
 .with-text {
+    font-size: 1em;
+    font-weight: inherit;
+
     vertical-align: middle;
     transform: translateY(0.115em);
 }
@@ -14,34 +22,39 @@
 /* size */
 .dense {
     --_icon-size: var(--md-sys-icon-dense);
+    --_icon-opsz: var(--md-sys-icon-dense-num);
 }
 
 .standard {
     --_icon-size: var(--md-sys-icon-standard);
+    --_icon-opsz: var(--md-sys-icon-standard-num);
 }
 
 .medium {
     --_icon-size: var(--md-sys-icon-medium);
+    --_icon-opsz: var(--md-sys-icon-medium-num);
 }
 
 .large {
     --_icon-size: var(--md-sys-icon-large);
+    --_icon-opsz: var(--md-sys-icon-large-num);
 }
 
 .extra-large {
     --_icon-size: var(--md-sys-icon-extra-large);
+    --_icon-opsz: var(--md-sys-icon-extra-large-num);
 }
 
 /* weight */
-.regular {
+.weight-regular {
     --_icon-weight: var(--md-sys-typescale-weight-regular);
 }
 
-.w-medium {
+.weight-medium {
     --_icon-weight: var(--md-sys-typescale-weight-medium);
 }
 
-.bold {
+.weight-bold {
     --_icon-weight: var(--md-sys-typescale-weight-bold);
 }
 
