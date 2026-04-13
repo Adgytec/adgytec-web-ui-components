@@ -1263,9 +1263,23 @@ const FormInputPreview = () => {
             {/**/}
             {/* <TextArea rows={20} label="More info" placeholder="More info" /> */}
 
-            <Switch isDisabled>hmm</Switch>
+            <Switch isDisabled icon="none">
+                hmm
+            </Switch>
+
+            <Switch isDisabled icon="both">
+                hmm
+            </Switch>
+
+            <Switch isDisabled isSelected>
+                hmm
+            </Switch>
 
             <Switch>not-disabled</Switch>
+
+            <Switch icon="both">not-disabled</Switch>
+
+            <Switch icon="none">not-disabled</Switch>
         </PreviewContainer>
     );
 };
@@ -1403,10 +1417,10 @@ const VisualSettingsPreview = () => {
                 <ThemeSwitcher />
             </PreviewContainer>
 
-            <PreviewContainer label="Component Shape Switcher">
-                <ComponentShapeSwitcher ui={false} />
-                <ComponentShapeSwitcher />
-            </PreviewContainer>
+            {/* <PreviewContainer label="Component Shape Switcher"> */}
+            {/*     <ComponentShapeSwitcher ui={false} /> */}
+            {/*     <ComponentShapeSwitcher /> */}
+            {/* </PreviewContainer> */}
         </>
     );
 };
@@ -1432,7 +1446,7 @@ const IconPreview = () => {
 const App = () => {
     const previewElements = [
         IconPreview,
-        // VisualSettingsPreview,
+        VisualSettingsPreview,
         FormInputPreview,
         // ButtonPreview,
         // LinkPreview,
