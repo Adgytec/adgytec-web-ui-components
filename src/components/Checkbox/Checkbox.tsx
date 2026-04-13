@@ -1,7 +1,5 @@
 import clsx from "clsx";
-import { Check } from "lucide-react";
 import { Checkbox as AriaCheckbox } from "react-aria-components";
-import { Icon } from "../Icon";
 import { Target } from "../Target";
 import styles from "./checkbox.module.css";
 import type { CheckboxProps } from "./types";
@@ -46,12 +44,15 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                     <>
                         <Target>
                             <div className={styles["indicator"]} {...dataAttrs}>
-                                <Icon
+                                <svg
+                                    viewBox="0 0 18 18"
+                                    aria-hidden="true"
+                                    key={"check"}
+                                    className={styles["svg"]}
                                     {...dataAttrs}
-                                    icon={Check}
-                                    size={18}
-                                    className={clsx(styles["icon"])}
-                                />
+                                >
+                                    <polyline points="2 9 7 14 16 4" />
+                                </svg>
                             </div>
                         </Target>
                         {children}

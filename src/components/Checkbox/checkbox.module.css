@@ -162,24 +162,31 @@
     outline-color: var(--focus-indicator-color);
 }
 
-.icon {
+/* https://react-aria.adobe.com/Checkbox */
+/* ref this for check animation */
+.svg {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
-    transform-origin: left;
-    scale: 0;
-    color: var(--icon-color);
+    width: calc(12 * var(--dp, 1px));
+    aspect-ratio: 1 / 1;
+    fill: none;
 
-    transition: scale var(--md-sys-motion-expressive-default-effects)
+    stroke: var(--icon-color);
+
+    stroke-width: calc(3 * var(--dp, 1px));
+    stroke-dasharray: calc(22 * var(--dp, 1px));
+    stroke-dashoffset: 66;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    transition: stroke-dashoffset
+        var(--md-sys-motion-expressive-default-effects)
         var(--md-sys-motion-expressive-default-effects-duration);
 
-    @media (prefers-reduced-motion) {
-        transition: none;
-    }
-
     &[data-selected] {
-        scale: 1;
+        stroke-dashoffset: 44;
     }
 }
