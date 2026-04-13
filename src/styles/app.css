@@ -1,20 +1,16 @@
 .preview-parent {
     display: grid;
-    gap: 2rem;
-
-    padding-inline: 1rem;
-    padding-block: 1rem;
+    gap: var(--md-sys-layout-space-32);
+    padding: var(--md-sys-layout-window-size-extra-large-margin);
 }
 
 .preview-container {
     display: grid;
-    gap: 1.5rem;
-    outline: 0.125rem solid var(--color-outline);
-    border-radius: var(--radius);
+    gap: var(--md-sys-layout-space-32);
+    outline: 0.125rem solid var(--md-sys-color-outline);
+    border-radius: var(--md-sys-shape-corner-radius-extra-large-increased);
 
-    padding-inline: 1rem;
-    padding-block: 1rem;
-
+    padding: var(--md-sys-layout-space-24);
     overflow: auto;
 
     h2 {
