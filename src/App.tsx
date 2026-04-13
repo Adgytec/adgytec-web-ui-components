@@ -1256,13 +1256,33 @@ const DisclosureGroupPreview = () => {
     );
 };
 
-const FormInputPreview = () => {
+const SwitchPreview = () => {
     return (
-        <PreviewContainer label="Form Input">
-            {/* <Input label="Email" isRequired type="email" placeholder="Email" /> */}
-            {/**/}
-            {/* <TextArea rows={20} label="More info" placeholder="More info" /> */}
+        <PreviewContainer label="Switch">
+            <Switch isDisabled icon="none">
+                hmm
+            </Switch>
 
+            <Switch isDisabled icon="both">
+                hmm
+            </Switch>
+
+            <Switch isDisabled isSelected>
+                hmm
+            </Switch>
+
+            <Switch>not-disabled</Switch>
+
+            <Switch icon="both">not-disabled</Switch>
+
+            <Switch icon="none">not-disabled</Switch>
+        </PreviewContainer>
+    );
+};
+
+const RadioPreview = () => {
+    return (
+        <PreviewContainer label="Radio">
             <Switch isDisabled icon="none">
                 hmm
             </Switch>
@@ -1445,9 +1465,10 @@ const IconPreview = () => {
 
 const App = () => {
     const previewElements = [
+        RadioPreview,
         IconPreview,
         VisualSettingsPreview,
-        FormInputPreview,
+        SwitchPreview,
         // ButtonPreview,
         // LinkPreview,
         // CardPreview,
