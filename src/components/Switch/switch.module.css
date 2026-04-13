@@ -18,19 +18,21 @@
     /* outline */
     --track-outline-thickness: calc(2 * var(--dp, 1px));
 
-    /* colors */
+    /* ================= BASE TOKENS ================= */
 
-    /* state independent */
-    --track-selected-outline-color: transparent;
-
-    /* enabled */
-    --track-unselected-enabled-color: var(
+    --track-selected-base-color: var(--md-sys-color-primary);
+    --track-unselected-base-color: var(
         --md-sys-color-surface-container-highest
     );
-    --track-selected-enabled-color: var(--md-sys-color-primary);
-    --track-unselected-enabled-outline-color: var(--md-sys-color-outline);
 
-    /* disabled */
+    --track-outline-base-color: var(--md-sys-color-outline);
+    --track-selected-outline-color: transparent;
+
+    --state-selected-base-color: var(--md-sys-color-primary);
+    --state-unselected-base-color: var(--md-sys-color-on-surface);
+
+    /* ================= DISABLED (unchanged) ================= */
+
     --track-unselected-disabled-color: rgb(
         from var(--md-sys-color-surface-container-highest) r g b /
         var(--md-sys-state-disabled-container)
@@ -44,59 +46,64 @@
         var(--md-sys-state-disabled-container)
     );
 
-    /* hovered */
-    --track-unselected-hovered-color: var(
-        --md-sys-color-surface-container-highest
-    );
-    --track-selected-hovered-color: var(--md-sys-color-primary);
-    --track-unselected-hovered-outline-color: var(--md-sys-color-outline);
-
-    /* hovered state layer */
-    --state-unselected-hovered-color: rgb(
-        from var(--md-sys-color-on-surface) r g b /
-        var(--md-sys-state-hover)
-    );
-    --state-selected-hovered-color: rgb(
-        from var(--md-sys-color-primary) r g b /
-        var(--md-sys-state-hover)
-    );
-
-    /* focused */
-    --track-unselected-focused-color: var(
-        --md-sys-color-surface-container-highest
-    );
-    --track-selected-focused-color: var(--md-sys-color-primary);
-    --track-unselected-focused-outline-color: var(--md-sys-color-outline);
-
-    /* focused state layer */
-    --state-unselected-focused-color: rgb(
-        from var(--md-sys-color-on-surface) r g b /
-        var(--md-sys-state-focus)
-    );
-    --state-selected-focused-color: rgb(
-        from var(--md-sys-color-primary) r g b /
-        var(--md-sys-state-focus)
-    );
-
     /* focus indicator */
     --focus-indicator-thickness: calc(3 * var(--dp, 1px));
     --focus-indicator-offset: calc(2 * var(--dp, 1px));
     --focus-indicator-color: var(--md-sys-color-secondary);
 
-    /* pressed */
-    --track-unselected-pressed-color: var(
-        --md-sys-color-surface-container-highest
-    );
-    --track-selected-pressed-color: var(--md-sys-color-primary);
-    --track-unselected-pressed-outline-color: var(--md-sys-color-outline);
+    /* opacity is only added of state layer */
+    /* create new variable to handle that value for opacity and state internal impl*/
+    --_state-opacity: 0;
+    --_state-color: var(--state-unselected-base-color);
 
-    /* pressed state layer */
-    --state-unselected-pressed-color: rgb(
-        from var(--md-sys-color-on-surface) r g b /
-        var(--md-sys-state-pressed)
-    );
-    --state-selected-pressed-color: rgb(
-        from var(--md-sys-color-primary) r g b /
-        var(--md-sys-state-pressed)
-    );
+    /* state final color for use */
+    --state-color: rgb(from var(--_state-color) r g b / var(--_state-opacity));
+
+    /* track style */
+    inline-size: var(--track-inline-size);
+    block-size: var(--track-block-size);
+    border-radius: var(--track-shape);
+
+    border-width: var(--track-outline-thickness);
+    border-style: line;
+    border-color: var(--track-outline-base-color);
+
+    background-color: var(--track-unselected-base-color);
+
+    transition:
+        background-color,
+        border-color var(--md-sys-motion-expressive-fast-effects)
+        var(--md-sys-motion-expressive-fast-effects-duration);
+
+    &[data-hovered] {
+        --_state-opacity: var(--md-sys-state-hover);
+    }
+
+    &[data-focus] {
+        --_state-opacity: var(--md-sys-state-focus);
+    }
+
+    &[data-focus-visible] {
+        --_state-opacity: var(--md-sys-state-focus);
+    }
+
+    &[data-pressed] {
+        --_state-opacity: var(--md-sys-state-pressed);
+    }
+}
+
+.track[data-selected] {
+    --_state-color: var(--state-selected-base-color);
+    background-color: var(--track-selected-base-color);
+    border-color: var(--track-selected-outline-color);
+}
+
+.track[data-disabled] {
+    background-color: var(--track-unselected-disabled-color);
+    border-color: var(--track-unselected-disabled-outline-color);
+
+    &[data-selected] {
+        background-color: var(--track-selected-disabled-color);
+        border-color: var(--track-selected-outline-color);
+    }
 }
