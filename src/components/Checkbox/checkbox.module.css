@@ -44,6 +44,8 @@
     --outline-color: var(--container-outline-enabled-unselected-color);
     --color: transparent;
 
+    --icon-color: var(--md-sys-color-on-primary);
+
     --_state-opacity: 0;
     --_state-color: var(--md-sys-color-on-surface);
 
@@ -72,6 +74,7 @@
     &[data-invalid] {
         --outline-color: var(--container-outline-unselected-error-color);
         --_state-color: var(--md-sys-color-error);
+        --icon-color: var(--md-sys-color-on-error);
     }
 
     &[data-selected] {
@@ -87,6 +90,7 @@
 
     &[data-disabled] {
         --outline-color: var(--container-disabled-base-color);
+        --icon-color: var(--md-sys-color-surface);
 
         &[data-selected] {
             --outline-color: transparent;
@@ -156,4 +160,26 @@
     outline-style: solid;
     outline-offset: var(--focus-indicator-offset);
     outline-color: var(--focus-indicator-color);
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    transform-origin: left;
+    scale: 0;
+    color: var(--icon-color);
+
+    transition: scale var(--md-sys-motion-expressive-default-effects)
+        var(--md-sys-motion-expressive-default-effects-duration);
+
+    @media (prefers-reduced-motion) {
+        transition: none;
+    }
+
+    &[data-selected] {
+        scale: 1;
+    }
 }

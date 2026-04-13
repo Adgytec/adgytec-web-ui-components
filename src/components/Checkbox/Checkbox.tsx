@@ -1,5 +1,7 @@
 import clsx from "clsx";
+import { Check } from "lucide-react";
 import { Checkbox as AriaCheckbox } from "react-aria-components";
+import { Icon } from "../Icon";
 import { Target } from "../Target";
 import styles from "./checkbox.module.css";
 import type { CheckboxProps } from "./types";
@@ -43,10 +45,14 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                 return (
                     <>
                         <Target>
-                            <div
-                                className={styles["indicator"]}
-                                {...dataAttrs}
-                            ></div>
+                            <div className={styles["indicator"]} {...dataAttrs}>
+                                <Icon
+                                    {...dataAttrs}
+                                    icon={Check}
+                                    size={18}
+                                    className={clsx(styles["icon"])}
+                                />
+                            </div>
                         </Target>
                         {children}
                     </>

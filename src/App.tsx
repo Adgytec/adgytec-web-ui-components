@@ -33,6 +33,7 @@ import { Button } from "./components/Button";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
+import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import { Icon } from "./components/Icon";
 import { Link, type Visual } from "./components/Link";
 import { Radio, RadioGroup } from "./components/Radio";
@@ -43,7 +44,6 @@ import { Viewport } from "./components/Viewport";
 import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import type { ButtonVariant } from "./utils/button/types";
-import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
