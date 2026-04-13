@@ -1,0 +1,15 @@
+.checkbox-group {
+    display: grid;
+    gap: var(--md-sys-layout-space-16);
+}
+
+.checkbox-items {
+    display: grid;
+    gap: var(--md-sys-layout-space-12);
+}
+
+.checkbox {
+    display: inline-flex;
+    gap: var(--md-sys-layout-space-8);
+    align-items: center;
+}

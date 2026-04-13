@@ -43,6 +43,7 @@ import { Viewport } from "./components/Viewport";
 import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import type { ButtonVariant } from "./utils/button/types";
+import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1329,7 +1330,52 @@ const RadioPreview = () => {
 };
 
 const CheckboxPreview = () => {
-    return <PreviewContainer label="Checkbox">checkbox</PreviewContainer>;
+    return (
+        <PreviewContainer label="Checkbox">
+            <Checkbox isDisabled>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Checkbox>
+
+            <Checkbox>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Checkbox>
+
+            <CheckboxGroup
+                label="lorem ipsum"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                isDisabled
+            >
+                <Checkbox>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox isInvalid>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+            </CheckboxGroup>
+
+            <CheckboxGroup
+                label="lorem ipsum"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+            >
+                <Checkbox isInvalid>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+            </CheckboxGroup>
+        </PreviewContainer>
+    );
 };
 
 const ToggleButtonPreview = () => {
