@@ -1,9 +1,9 @@
 import clsx from "clsx";
+import { Check, type LucideIcon, X } from "lucide-react";
 import type { ReactNode } from "react";
 import { Switch as AriaSwitch, type SwitchProps } from "react-aria-components";
-import styles from "./switch.module.css";
 import { Icon } from "../Icon";
-import { Check, X, type LucideIcon } from "lucide-react";
+import styles from "./switch.module.css";
 
 export const Switch: React.FC<
     Omit<SwitchProps, "children"> & {
