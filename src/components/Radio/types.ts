@@ -13,5 +13,5 @@ export interface RadioGroupProps extends Omit<AriaRadioGroupProps, "children"> {
 }
 
 export interface RadioProps extends Omit<AriaRadioProps, "children"> {
-    childrend?: ReactNode;
+    children?: ReactNode;
 }

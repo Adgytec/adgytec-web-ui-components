@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import { Radio as AriaRadio, type RadioProps } from "react-aria-components";
-import styles from "./radio.module.css";
 import { Target } from "../Target";
+import styles from "./radio.module.css";
 
 export const Radio: React.FC<RadioProps> = ({
     className,

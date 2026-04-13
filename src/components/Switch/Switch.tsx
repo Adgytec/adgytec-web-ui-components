@@ -3,8 +3,8 @@ import { Check, type LucideIcon, X } from "lucide-react";
 import type { ReactNode } from "react";
 import { Switch as AriaSwitch, type SwitchProps } from "react-aria-components";
 import { Icon } from "../Icon";
-import styles from "./switch.module.css";
 import { Target } from "../Target";
+import styles from "./switch.module.css";
 
 export const Switch: React.FC<
     Omit<SwitchProps, "children"> & {
