@@ -8,3 +8,95 @@
     align-items: center;
     justify-content: center;
 }
+
+.track {
+    /* dimensions and shape */
+    --track-block-size: calc(32 * var(--dp, 1px));
+    --track-inline-size: calc(52 * var(--dp, 1px));
+    --track-shape: var(--md-sys-shape-corner-radius-full);
+
+    /* outline */
+    --track-outline-thickness: calc(2 * var(--dp, 1px));
+
+    /* colors */
+
+    /* state independent */
+    --track-selected-outline-color: transparent;
+
+    /* enabled */
+    --track-unselected-enabled-color: var(
+        --md-sys-color-surface-container-highest
+    );
+    --track-selected-enabled-color: var(--md-sys-color-primary);
+    --track-unselected-enabled-outline-color: var(--md-sys-color-outline);
+
+    /* disabled */
+    --track-unselected-disabled-color: rgb(
+        from var(--md-sys-color-surface-container-highest) r g b /
+        var(--md-sys-state-disabled-container)
+    );
+    --track-selected-disabled-color: rgb(
+        from var(--md-sys-color-on-surface) r g b /
+        var(--md-sys-state-disabled-container)
+    );
+    --track-unselected-disabled-outline-color: rgb(
+        from var(--md-sys-color-on-surface) r g b /
+        var(--md-sys-state-disabled-container)
+    );
+
+    /* hovered */
+    --track-unselected-hovered-color: var(
+        --md-sys-color-surface-container-highest
+    );
+    --track-selected-hovered-color: var(--md-sys-color-primary);
+    --track-unselected-hovered-outline-color: var(--md-sys-color-outline);
+
+    /* hovered state layer */
+    --state-unselected-hovered-color: rgb(
+        from var(--md-sys-color-on-surface) r g b /
+        var(--md-sys-state-hover)
+    );
+    --state-selected-hovered-color: rgb(
+        from var(--md-sys-color-primary) r g b /
+        var(--md-sys-state-hover)
+    );
+
+    /* focused */
+    --track-unselected-focused-color: var(
+        --md-sys-color-surface-container-highest
+    );
+    --track-selected-focused-color: var(--md-sys-color-primary);
+    --track-unselected-focused-outline-color: var(--md-sys-color-outline);
+
+    /* focused state layer */
+    --state-unselected-focused-color: rgb(
+        from var(--md-sys-color-on-surface) r g b /
+        var(--md-sys-state-focus)
+    );
+    --state-selected-focused-color: rgb(
+        from var(--md-sys-color-primary) r g b /
+        var(--md-sys-state-focus)
+    );
+
+    /* focus indicator */
+    --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+    --focus-indicator-offset: calc(2 * var(--dp, 1px));
+    --focus-indicator-color: var(--md-sys-color-secondary);
+
+    /* pressed */
+    --track-unselected-pressed-color: var(
+        --md-sys-color-surface-container-highest
+    );
+    --track-selected-pressed-color: var(--md-sys-color-primary);
+    --track-unselected-pressed-outline-color: var(--md-sys-color-outline);
+
+    /* pressed state layer */
+    --state-unselected-pressed-color: rgb(
+        from var(--md-sys-color-on-surface) r g b /
+        var(--md-sys-state-pressed)
+    );
+    --state-selected-pressed-color: rgb(
+        from var(--md-sys-color-primary) r g b /
+        var(--md-sys-state-pressed)
+    );
+}
