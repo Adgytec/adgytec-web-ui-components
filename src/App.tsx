@@ -42,6 +42,7 @@ import { Viewport } from "./components/Viewport";
 import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import type { ButtonVariant } from "./utils/button/types";
+import { Radio, RadioGroup } from "./components/Radio";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1283,23 +1284,29 @@ const SwitchPreview = () => {
 const RadioPreview = () => {
     return (
         <PreviewContainer label="Radio">
-            <Switch isDisabled icon="none">
-                hmm
-            </Switch>
+            <RadioGroup label="Disabled" isDisabled>
+                <Radio value="cat">Cat</Radio>
+                <Radio value="dog">Dog</Radio>
+                <Radio value="dragon">Dragon</Radio>
+            </RadioGroup>
 
-            <Switch isDisabled icon="both">
-                hmm
-            </Switch>
+            <RadioGroup label="Disabled" isDisabled orientation="horizontal">
+                <Radio value="cat">Cat</Radio>
+                <Radio value="dog">Dog</Radio>
+                <Radio value="dragon">Dragon</Radio>
+            </RadioGroup>
 
-            <Switch isDisabled isSelected>
-                hmm
-            </Switch>
+            <RadioGroup label="Enabled" isDisabled orientation="horizontal">
+                <Radio value="cat">Cat</Radio>
+                <Radio value="dog">Dog</Radio>
+                <Radio value="dragon">Dragon</Radio>
+            </RadioGroup>
 
-            <Switch>not-disabled</Switch>
-
-            <Switch icon="both">not-disabled</Switch>
-
-            <Switch icon="none">not-disabled</Switch>
+            <RadioGroup label="Enabled" isDisabled orientation="horizontal">
+                <Radio value="cat">Cat</Radio>
+                <Radio value="dog">Dog</Radio>
+                <Radio value="dragon">Dragon</Radio>
+            </RadioGroup>
         </PreviewContainer>
     );
 };
