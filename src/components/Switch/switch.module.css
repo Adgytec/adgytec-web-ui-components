@@ -1,3 +1,11 @@
+.switch {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--md-sys-layout-space-16);
+}
+
 .target {
     --target-size: calc(48 * var(--dp, 1px));
 
