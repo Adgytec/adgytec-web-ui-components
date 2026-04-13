@@ -33,6 +33,7 @@ import { Button } from "./components/Button";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
+import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import { Icon } from "./components/Icon";
 import { Link, type Visual } from "./components/Link";
 import { Radio, RadioGroup } from "./components/Radio";
@@ -1328,6 +1329,75 @@ const RadioPreview = () => {
     );
 };
 
+const CheckboxPreview = () => {
+    return (
+        <PreviewContainer label="Checkbox">
+            <Checkbox isDisabled>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Checkbox>
+
+            <Checkbox isDisabled isSelected>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Checkbox>
+
+            <Checkbox>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Checkbox>
+
+            <CheckboxGroup
+                label="lorem ipsum"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                isDisabled
+            >
+                <Checkbox>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox isInvalid>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
+                </Checkbox>
+
+                <Checkbox>Lorem ipsum dolor sit amet, consectetur.</Checkbox>
+            </CheckboxGroup>
+
+            <CheckboxGroup
+                label="lorem ipsum"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+            >
+                <Checkbox value="one">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox value="two">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
+                </Checkbox>
+
+                <Checkbox value="three">
+                    Lorem ipsum dolor sit amet, consectetur.
+                </Checkbox>
+            </CheckboxGroup>
+
+            <CheckboxGroup
+                isInvalid
+                label="lorem ipsum"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+            >
+                <Checkbox value="one">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox value="two">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
+                </Checkbox>
+
+                <Checkbox value="three">
+                    Lorem ipsum dolor sit amet, consectetur.
+                </Checkbox>
+            </CheckboxGroup>
+        </PreviewContainer>
+    );
+};
+
 const ToggleButtonPreview = () => {
     const buttonTheme: ColorTheme[] = [
         "primary",
@@ -1489,6 +1559,7 @@ const IconPreview = () => {
 
 const App = () => {
     const previewElements = [
+        CheckboxPreview,
         RadioPreview,
         IconPreview,
         VisualSettingsPreview,
