@@ -1284,25 +1284,42 @@ const SwitchPreview = () => {
 const RadioPreview = () => {
     return (
         <PreviewContainer label="Radio">
-            <RadioGroup label="Disabled" isDisabled>
+            <RadioGroup
+                label="Disabled"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                isDisabled
+            >
                 <Radio value="cat">Cat</Radio>
                 <Radio value="dog">Dog</Radio>
                 <Radio value="dragon">Dragon</Radio>
             </RadioGroup>
 
-            <RadioGroup label="Disabled" isDisabled orientation="horizontal">
+            <RadioGroup
+                label="Disabled"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                isDisabled
+                orientation="horizontal"
+            >
                 <Radio value="cat">Cat</Radio>
                 <Radio value="dog">Dog</Radio>
                 <Radio value="dragon">Dragon</Radio>
             </RadioGroup>
 
-            <RadioGroup label="Enabled" isDisabled orientation="horizontal">
+            <RadioGroup
+                label="Enabled"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                orientation="horizontal"
+            >
                 <Radio value="cat">Cat</Radio>
                 <Radio value="dog">Dog</Radio>
                 <Radio value="dragon">Dragon</Radio>
             </RadioGroup>
 
-            <RadioGroup label="Enabled" isDisabled orientation="horizontal">
+            <RadioGroup
+                label="Enabled"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                orientation="horizontal"
+            >
                 <Radio value="cat">Cat</Radio>
                 <Radio value="dog">Dog</Radio>
                 <Radio value="dragon">Dragon</Radio>

@@ -26,12 +26,21 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
             }
             {...props}
         >
-            {label && <Label>{label}</Label>}
+            {({ orientation }) => (
+                <>
+                    {label && <Label>{label}</Label>}
 
-            <div className={clsx(styles["radio-items"])}>{children}</div>
+                    <div
+                        data-orientation={orientation}
+                        className={clsx(styles["radio-items"])}
+                    >
+                        {children}
+                    </div>
 
-            {description && <Description>{description}</Description>}
-            <FieldError>{errorMessage}</FieldError>
+                    {description && <Description>{description}</Description>}
+                    <FieldError>{errorMessage}</FieldError>
+                </>
+            )}
         </AriaRadioGroup>
     );
 };

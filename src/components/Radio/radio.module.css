@@ -1,0 +1,18 @@
+.radio-group {
+    display: grid;
+    gap: var(--md-sys-layout-space-24);
+}
+
+/* vertical */
+.radio-items {
+    display: grid;
+    gap: var(--md-sys-layout-space-16);
+}
+
+/* :horizontal */
+.radio-items[data-orientation="horizontal"] {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--md-sys-layout-space-32);
+}
