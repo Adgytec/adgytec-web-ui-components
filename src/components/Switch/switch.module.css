@@ -79,7 +79,8 @@
     background-color: var(--track-unselected-base-color);
 
     transition:
-        background-color,
+        background-color var(--md-sys-motion-expressive-fast-effects)
+        var(--md-sys-motion-expressive-fast-effects-duration),
         border-color var(--md-sys-motion-expressive-fast-effects)
         var(--md-sys-motion-expressive-fast-effects-duration);
 
@@ -87,10 +88,7 @@
         --_state-opacity: var(--md-sys-state-hover);
     }
 
-    &[data-focus] {
-        --_state-opacity: var(--md-sys-state-focus);
-    }
-
+    &[data-focus],
     &[data-focus-visible] {
         --_state-opacity: var(--md-sys-state-focus);
     }
@@ -114,4 +112,12 @@
         background-color: var(--track-selected-disabled-color);
         border-color: var(--track-selected-outline-color);
     }
+}
+
+.track[data-focus],
+.track[data-focus-visible] {
+    outline-width: var(--focus-indicator-thickness);
+    outline-style: solid;
+    outline-offset: var(--focus-indicator-offset);
+    outline-color: var(--focus-indicator-color);
 }
