@@ -1,12 +1,12 @@
 .radio-group {
     display: grid;
-    gap: var(--md-sys-layout-space-24);
+    gap: var(--md-sys-layout-space-16);
 }
 
 /* vertical */
 .radio-items {
     display: grid;
-    gap: var(--md-sys-layout-space-16);
+    gap: var(--md-sys-layout-space-12);
 }
 
 /* :horizontal */

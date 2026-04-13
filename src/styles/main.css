@@ -11,10 +11,6 @@
     accent-color: var(--md-sys-color-primary);
 }
 
-[data-disabled] {
-    cursor: not-allowed;
-}
-
 body {
     background-color: var(--md-sys-color-surface);
     color: var(--md-sys-color-on-surface);
