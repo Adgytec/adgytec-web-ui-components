@@ -133,8 +133,7 @@
 
     /* size */
     --handle-unselected-size: calc(16 * var(--dp, 1px));
-    --handle-unselected-size-with-icon: calc(24 * var(--dp, 1px));
-    --handle-selected-size: calc(24 * var(--dp, 1px));
+    --handle-base-size: calc(24 * var(--dp, 1px));
     --handle-pressed-size: calc(28 * var(--dp, 1px));
 
     /* shape */
@@ -179,8 +178,75 @@
         var(--md-sys-state-disabled-content)
     );
 
+    /* derived size */
+    --handle-size: var(--handle-unselected-size);
+    --handle-color: var(--handle-unselected-enabled-color);
+    --handle-x: calc(6 * var(--dp, 1px));
+
+    --icon-color: var(--handle-icon-unselected-base-color);
+
     /* handle style */
     position: absolute;
+    top: 50%;
+    translate: var(--handle-x) -50%;
+
+    inline-size: var(--handle-size);
+    aspect-ratio: 1 / 1;
+    border-radius: var(--handle-shape);
+
+    background-color: var(--handle-color);
+
+    transition:
+        translate var(--md-sys-motion-expressive-fast-spatial)
+        var(--md-sys-motion-expressive-fast-spatial-duration),
+        background-color var(--md-sys-motion-expressive-fast-effects)
+        var(--md-sys-motion-expressive-fast-effects-duration),
+        inline-size var(--md-sys-motion-expressive-fast-effects)
+        var(--md-sys-motion-expressive-fast-effects-duration),
+        block-size var(--md-sys-motion-expressive-fast-effects)
+        var(--md-sys-motion-expressive-fast-effects-duration);
+
+    &[data-disabled] {
+        --handle-color: var(--handle-unselected-disabled-color);
+        --icon-color: var(--handle-icon-unselected-disabled-color);
+
+        &[data-selected] {
+            --handle-color: var(--handle-selected-disabled-color);
+            --icon-color: var(--handle-icon-selected-disabled-color);
+        }
+    }
+
+    &[data-icon] {
+        --handle-size: var(--handle-base-size);
+        --handle-x: calc(2 * var(--dp, 1px));
+    }
+
+    &[data-selected] {
+        --handle-color: var(--handle-selected-enabled-color);
+        --handle-size: var(--handle-base-size);
+        --handle-x: calc(22 * var(--dp, 1px));
+        --icon-color: var(--handle-icon-selected-base-color);
+    }
+
+    &[data-pressed] {
+        --handle-size: var(--handle-pressed-size);
+        --handle-x: 0;
+
+        &[data-selected] {
+            --handle-x: calc(20 * var(--dp, 1px));
+        }
+    }
+
+    &[data-focus-visible],
+    &[data-focus],
+    &[data-hovered],
+    &[data-pressed] {
+        --handle-color: var(--handle-unselected-base-color);
+
+        &[data-selected] {
+            --handle-color: var(--handle-selected-base-color);
+        }
+    }
 }
 
 /* handle state layer */
@@ -200,4 +266,10 @@
 
     transition: background-color var(--md-sys-motion-expressive-fast-effects)
         var(--md-sys-motion-expressive-fast-effects-duration);
+}
+
+.handle[data-icon] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
