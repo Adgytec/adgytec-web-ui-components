@@ -16,3 +16,9 @@
     flex-wrap: wrap;
     gap: var(--md-sys-layout-space-32);
 }
+
+.radio {
+    display: inline-flex;
+    gap: var(--md-sys-layout-space-16);
+    align-items: center;
+}

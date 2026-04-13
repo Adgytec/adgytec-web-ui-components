@@ -19,12 +19,33 @@ export const Radio: React.FC<RadioProps> = ({
             }
             {...props}
         >
-            {(renderProps) => (
-                <>
-                    <div className={styles["indicator"]}>oo</div>
-                    {children}
-                </>
-            )}
+            {({
+                isSelected,
+                isHovered,
+                isDisabled,
+                isFocused,
+                isFocusVisible,
+                isPressed,
+            }) => {
+                const dataAttrs = {
+                    "data-selected": isSelected || undefined,
+                    "data-hovered": isHovered || undefined,
+                    "data-disabled": isDisabled || undefined,
+                    "data-focused": isFocused || undefined,
+                    "data-focus-visible": isFocusVisible || undefined,
+                    "data-pressed": isPressed || undefined,
+                };
+
+                return (
+                    <>
+                        <div
+                            className={styles["indicator"]}
+                            {...dataAttrs}
+                        ></div>
+                        {children}
+                    </>
+                );
+            }}
         </AriaRadio>
     );
 };

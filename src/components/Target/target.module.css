@@ -1,0 +1,10 @@
+.target {
+    --target-size: calc(48 * var(--dp, 1px));
+
+    min-inline-size: var(--target-size);
+    min-block-size: var(--target-size);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
