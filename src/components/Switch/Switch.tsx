@@ -41,21 +41,16 @@ export const Switch: React.FC<
                     iconValue = X;
                 }
 
-                const dataAttributes = {
-                    "data-selected": isSelected,
-                    "data-hovered": isHovered,
-                    "data-disabled": isDisabled,
-                    "data-focused": isFocused,
-                    "data-focus-visible": isFocusVisible,
-                    "data-pressed": isPressed,
-                    "data-readonly": isReadOnly,
-                    "data-icon": iconValue !== undefined,
+                const dataAttrs = {
+                    "data-selected": isSelected || undefined,
+                    "data-hovered": isHovered || undefined,
+                    "data-disabled": isDisabled || undefined,
+                    "data-focused": isFocused || undefined,
+                    "data-focus-visible": isFocusVisible || undefined,
+                    "data-pressed": isPressed || undefined,
+                    "data-readonly": isReadOnly || undefined,
+                    "data-icon": iconValue ? true : undefined,
                 };
-
-                // remove false values (so they don't render)
-                const filteredDataAttrs = Object.fromEntries(
-                    Object.entries(dataAttributes).filter(([_, v]) => v)
-                );
 
                 let iconElement: ReactNode;
                 if (iconValue) {
@@ -64,7 +59,7 @@ export const Switch: React.FC<
                             icon={iconValue}
                             size={16}
                             className={clsx(styles["icon"])}
-                            {...filteredDataAttrs}
+                            {...dataAttrs}
                         />
                     );
                 }
@@ -72,16 +67,13 @@ export const Switch: React.FC<
                     <>
                         {children}
 
-                        <div
-                            {...filteredDataAttrs}
-                            className={styles["target"]}
-                        >
+                        <div {...dataAttrs} className={styles["target"]}>
                             <div
-                                {...filteredDataAttrs}
+                                {...dataAttrs}
                                 className={clsx(styles["track"])}
                             >
                                 <div
-                                    {...filteredDataAttrs}
+                                    {...dataAttrs}
                                     className={clsx(styles["handle"])}
                                 >
                                     {iconElement}
