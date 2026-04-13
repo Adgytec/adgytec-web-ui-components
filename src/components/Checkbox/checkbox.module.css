@@ -13,3 +13,87 @@
     gap: var(--md-sys-layout-space-8);
     align-items: center;
 }
+
+.indicator {
+    /* size */
+    --container-size: calc(18 * var(--dp, 1px));
+    --container-shape: calc(2 * var(--dp, 1px));
+
+    /* outline */
+    --container-outline-thickness: var(--md-sys-shape-border-width-thick);
+
+    --container-outline-unselected-color: var(--md-sys-color-on-surface);
+    --container-outline-unselected-error-color: var(--md-sys-color-error);
+
+    /* color */
+    --container-selected-color: var(--md-sys-color-primary);
+    --container-selected-error-color: var(--md-sys-color-error);
+
+    /* enabled */
+    --container-outline-enabled-unselected-color: var(
+        --md-sys-color-on-surface-variant
+    );
+
+    /* disabled */
+    --container-disabled-base-color: rgb(
+        from var(--md-sys-color-on-surface) r g b /
+        var(--md-sys-state-disabled-content)
+    );
+
+    /* derived states */
+    --outline-color: var(--container-outline-enabled-unselected-color);
+    --color: transparent;
+
+    /* styles */
+    inline-size: var(--container-size);
+    aspect-ratio: 1;
+    border-radius: var(--container-shape);
+
+    background-color: var(--color);
+    border: var(--container-outline-thickness) solid var(--outline-color);
+
+    transition:
+        background-color var(--md-sys-motion-expressive-default-effects)
+        var(--md-sys-motion-expressive-default-effects-duration),
+        border-color var(--md-sys-motion-expressive-default-effects)
+        var(--md-sys-motion-expressive-default-effects-duration);
+
+    @media (prefers-reduced-motion) {
+        transition: none;
+    }
+
+    &[data-invalid] {
+        --outline-color: var(--container-outline-unselected-error-color);
+    }
+
+    &[data-selected] {
+        --outline-color: transparent;
+        --color: var(--container-selected-color);
+
+        &[data-invalid] {
+            --color: var(--container-selected-error-color);
+        }
+    }
+
+    &[data-disabled] {
+        --outline-color: var(--container-disabled-base-color);
+
+        &[data-selected] {
+            --outline-color: transparent;
+            --color: var(--container-disabled-base-color);
+        }
+    }
+
+    &[data-focus-visible],
+    &[data-focused],
+    &[data-hovered],
+    &[data-pressed] {
+        &:not([data-invalid]) {
+            --outline-color: var(--container-outline-unselected-color);
+        }
+
+        &[data-selected] {
+            --outline-color: transparent;
+        }
+    }
+}

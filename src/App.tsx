@@ -1336,6 +1336,10 @@ const CheckboxPreview = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </Checkbox>
 
+            <Checkbox isDisabled isSelected>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Checkbox>
+
             <Checkbox>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </Checkbox>
@@ -1350,28 +1354,44 @@ const CheckboxPreview = () => {
                 </Checkbox>
 
                 <Checkbox isInvalid>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
                 </Checkbox>
 
-                <Checkbox>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </Checkbox>
+                <Checkbox>Lorem ipsum dolor sit amet, consectetur.</Checkbox>
             </CheckboxGroup>
 
             <CheckboxGroup
                 label="lorem ipsum"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
             >
-                <Checkbox isInvalid>
+                <Checkbox value="one">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Checkbox>
 
-                <Checkbox>
+                <Checkbox value="two">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
+                </Checkbox>
+
+                <Checkbox value="three">
+                    Lorem ipsum dolor sit amet, consectetur.
+                </Checkbox>
+            </CheckboxGroup>
+
+            <CheckboxGroup
+                isInvalid
+                label="lorem ipsum"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+            >
+                <Checkbox value="one">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Checkbox>
 
-                <Checkbox>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                <Checkbox value="two">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
+                </Checkbox>
+
+                <Checkbox value="three">
+                    Lorem ipsum dolor sit amet, consectetur.
                 </Checkbox>
             </CheckboxGroup>
         </PreviewContainer>

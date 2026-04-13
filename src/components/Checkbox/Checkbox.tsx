@@ -28,6 +28,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                 isFocused,
                 isFocusVisible,
                 isPressed,
+                isInvalid,
             }) => {
                 const dataAttrs = {
                     "data-selected": isSelected || undefined,
@@ -36,6 +37,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                     "data-focused": isFocused || undefined,
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
+                    "data-invalid": isInvalid || undefined,
                 };
 
                 return (
