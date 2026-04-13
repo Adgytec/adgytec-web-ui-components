@@ -125,27 +125,29 @@
         var(--md-sys-motion-expressive-fast-spatial)
         var(--md-sys-motion-expressive-fast-spatial-duration);
 
-    &[data-pressed] {
-        --handle-size: var(--handle-radius-pressed);
-        --handle-x: 0;
+    &[data-icon] {
+        --handle-x: calc(2 * var(--dp, 1px));
+        --handle-size: var(--handle-radius-unselected-with-icon);
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 
     &[data-selected] {
         --handle-color: var(--handle-selected-color);
         --handle-size: var(--handle-radius-selected);
 
-        --_temp: calc(var(--track-inner-inline-size) - var(--handle-size));
-        --handle-x: calc(
-            var(--_temp) -
-            calc(calc(var(--handle-radius-pressed) - var(--_temp)) / 2)
-        );
+        --handle-x: calc(22 * var(--dp, 1px));
+    }
 
-        &[data-pressed] {
+    &[data-pressed] {
+        --handle-size: var(--handle-radius-pressed);
+        --handle-x: 0;
+
+        &[data-selected] {
             --handle-size: var(--handle-radius-pressed);
-            --handle-x: calc(
-                var(--track-inner-inline-size) -
-                var(--handle-size)
-            );
+            --handle-x: calc(20 * var(--dp, 1px));
         }
     }
 }

@@ -2,13 +2,15 @@ import clsx from "clsx";
 import type { ReactNode } from "react";
 import { Switch as AriaSwitch, type SwitchProps } from "react-aria-components";
 import styles from "./switch.module.css";
+import { Icon } from "../Icon";
+import { Check, X } from "lucide-react";
 
 export const Switch: React.FC<
     Omit<SwitchProps, "children"> & {
         children: ReactNode;
         icon?: "none" | "selected" | "both";
     }
-> = ({ className, children, icon = "none", ...props }) => {
+> = ({ className, children, icon = "selected", ...props }) => {
     return (
         <AriaSwitch
             className={(renderProps) =>
@@ -30,6 +32,15 @@ export const Switch: React.FC<
                 isPressed,
                 isReadOnly,
             }) => {
+                let iconElement: ReactNode;
+                if (icon !== "none" && isSelected) {
+                    iconElement = <Icon icon={Check} size={16} />;
+                }
+
+                if (icon === "both" && !isSelected) {
+                    iconElement = <Icon icon={X} size={16} />;
+                }
+
                 const dataAttributes = {
                     "data-selected": isSelected,
                     "data-hovered": isHovered,
@@ -38,6 +49,7 @@ export const Switch: React.FC<
                     "data-focus-visible": isFocusVisible,
                     "data-pressed": isPressed,
                     "data-readonly": isReadOnly,
+                    "data-icon": iconElement !== undefined,
                 };
 
                 // remove false values (so they don't render)
@@ -59,7 +71,9 @@ export const Switch: React.FC<
                                 <div
                                     {...filteredDataAttrs}
                                     className={clsx(styles["handle"])}
-                                ></div>
+                                >
+                                    {iconElement}
+                                </div>
                             </div>
                         </div>
                     </>
