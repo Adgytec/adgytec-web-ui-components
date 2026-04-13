@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
 import { Radio as AriaRadio, type RadioProps } from "react-aria-components";
 import styles from "./radio.module.css";
+import { Target } from "../Target";
 
 export const Radio: React.FC<RadioProps> = ({
     className,
@@ -38,10 +39,12 @@ export const Radio: React.FC<RadioProps> = ({
 
                 return (
                     <>
-                        <div
-                            className={styles["indicator"]}
-                            {...dataAttrs}
-                        ></div>
+                        <Target>
+                            <div
+                                className={styles["indicator"]}
+                                {...dataAttrs}
+                            ></div>
+                        </Target>
                         {children}
                     </>
                 );
