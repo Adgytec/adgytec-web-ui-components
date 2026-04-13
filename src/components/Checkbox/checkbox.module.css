@@ -44,7 +44,14 @@
     --outline-color: var(--container-outline-enabled-unselected-color);
     --color: transparent;
 
+    --_state-opacity: 0;
+    --_state-color: var(--md-sys-color-on-surface);
+
+    --state-color: rgb(from var(--_state-color) r g b / var(--_state-opacity));
+
     /* styles */
+    position: relative;
+
     inline-size: var(--container-size);
     aspect-ratio: 1;
     border-radius: var(--container-shape);
@@ -64,14 +71,17 @@
 
     &[data-invalid] {
         --outline-color: var(--container-outline-unselected-error-color);
+        --_state-color: var(--md-sys-color-error);
     }
 
     &[data-selected] {
         --outline-color: transparent;
         --color: var(--container-selected-color);
+        --_state-color: var(--md-sys-color-primary);
 
         &[data-invalid] {
             --color: var(--container-selected-error-color);
+            --_state-color: var(--md-sys-color-error);
         }
     }
 
@@ -95,5 +105,44 @@
         &[data-selected] {
             --outline-color: transparent;
         }
+    }
+
+    /* state opacity */
+    &[data-hovered] {
+        --_state-opacity: var(--md-sys-state-hover);
+    }
+
+    &[data-focused],
+    &[data-focus-visible] {
+        --_state-opacity: var(--md-sys-state-focus);
+    }
+
+    &[data-pressed] {
+        --_state-opacity: var(--md-sys-state-pressed);
+    }
+}
+
+/* state layer */
+.indicator::after {
+    --state-size: calc(40 * var(--dp, 1px));
+
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    inline-size: var(--state-size);
+    aspect-ratio: 1 / 1;
+    border-radius: var(--md-sys-shape-corner-radius-full);
+
+    background-color: var(--state-color);
+
+    transition: background-color var(--md-sys-motion-expressive-default-effects)
+        var(--md-sys-motion-expressive-default-effects-duration);
+
+    @media (prefers-reduced-motion) {
+        transition: none;
     }
 }
