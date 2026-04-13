@@ -88,6 +88,10 @@
         block-size var(--md-sys-motion-expressive-fast-effects)
         var(--md-sys-motion-expressive-fast-effects-duration);
 
+    @media (prefers-reduced-motion) {
+        transition: none;
+    }
+
     &[data-icon] {
         --handle-size: var(--handle-base-size);
         --handle-x: calc(2 * var(--dp, 1px));
@@ -148,6 +152,10 @@
 
     transition: background-color var(--md-sys-motion-expressive-fast-effects)
         var(--md-sys-motion-expressive-fast-effects-duration);
+
+    @media (prefers-reduced-motion) {
+        transition: none;
+    }
 }
 
 .handle[data-icon] {
@@ -239,6 +247,10 @@
         var(--md-sys-motion-expressive-fast-effects-duration),
         border-color var(--md-sys-motion-expressive-fast-effects)
         var(--md-sys-motion-expressive-fast-effects-duration);
+
+    @media (prefers-reduced-motion) {
+        transition: none;
+    }
 
     &[data-hovered] {
         --_state-opacity: var(--md-sys-state-hover);
