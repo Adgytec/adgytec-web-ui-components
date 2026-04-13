@@ -1,0 +1,165 @@
+.radio-group {
+    display: grid;
+    gap: var(--md-sys-layout-space-24);
+}
+
+/* vertical */
+.radio-items {
+    display: grid;
+    gap: var(--md-sys-layout-space-16);
+}
+
+/* :horizontal */
+.radio-items[data-orientation="horizontal"] {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--md-sys-layout-space-32);
+}
+
+.radio {
+    display: inline-flex;
+    gap: var(--md-sys-layout-space-8);
+    align-items: center;
+}
+
+.indicator {
+    /* material guideline */
+    --size: calc(20 * var(--dp, 1px));
+    --state-size: calc(40 * var(--dp, 1px));
+
+    /* colors */
+    --base-color: var(--md-sys-color-on-surface);
+
+    --selected-color: var(--md-sys-color-primary);
+    --unselected-color: var(--base-color);
+
+    /* enabled */
+    --enabled-unselected-color: var(--md-sys-color-on-surface-variant);
+
+    /* disabled */
+    --disabled-color: rgb(
+        from var(--base-color) r g b /
+        var(--md-sys-state-disabled-content)
+    );
+
+    /* derived variables */
+    --color: var(--enabled-unselected-color);
+    --_state-color: var(--color);
+    --icon-center-scale: 0;
+
+    /* state layer */
+    --_state-opacity: 0;
+    --state-color: rgb(from var(--_state-color) r g b / var(--_state-opacity));
+
+    /* indicator styles */
+    position: relative;
+
+    inline-size: var(--size);
+    aspect-ratio: 1 / 1;
+    border-radius: var(--md-sys-shape-corner-radius-full);
+
+    border: var(--md-sys-shape-border-width-thick) solid var(--color);
+
+    transition: border-color var(--md-sys-motion-expressive-default-effects)
+        var(--md-sys-motion-expressive-default-effects-duration);
+
+    @media (prefers-reduced-motion) {
+        transition: none;
+    }
+
+    &[data-selected] {
+        --color: var(--selected-color);
+        --icon-center-scale: 0.625;
+    }
+
+    &[data-hovered] {
+        --_state-opacity: var(--md-sys-state-hover);
+    }
+
+    &[data-focused],
+    &[data-focus-visible] {
+        --_state-opacity: var(--md-sys-state-focus);
+    }
+
+    &[data-pressed] {
+        --_state-opacity: var(--md-sys-state-pressed);
+        --_state-color: var(--md-sys-color-primary);
+
+        &[data-selected] {
+            --_state-color: var(--md-sys-color-on-surface);
+        }
+    }
+
+    &[data-disabled] {
+        --color: var(--disabled-color);
+    }
+
+    &[data-focus-visible],
+    &[data-focused],
+    &[data-hovered],
+    &[data-pressed] {
+        --color: var(--unselected-color);
+
+        &[data-selected] {
+            --color: var(--selected-color);
+        }
+    }
+}
+
+/* state layer */
+.indicator::after {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    inline-size: var(--state-size);
+    aspect-ratio: 1 / 1;
+    border-radius: var(--md-sys-shape-corner-radius-full);
+
+    background-color: var(--state-color);
+
+    transition: background-color var(--md-sys-motion-expressive-default-effects)
+        var(--md-sys-motion-expressive-default-effects-duration);
+
+    @media (prefers-reduced-motion) {
+        transition: none;
+    }
+}
+
+/* indicator center icon */
+.indicator::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-color: var(--color);
+    border-radius: var(--md-sys-shape-corner-radius-full);
+
+    scale: var(--icon-center-scale);
+
+    transition:
+        background-color var(--md-sys-motion-expressive-default-effects)
+        var(--md-sys-motion-expressive-default-effects-duration),
+        scale var(--md-sys-motion-standard-default-spatial)
+        var(--md-sys-motion-standard-default-spatial-duration);
+
+    @media (prefers-reduced-motion) {
+        transition: none;
+    }
+}
+
+.indicator[data-focus-visible] {
+    --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+    --focus-indicator-offset: calc(2 * var(--dp, 1px));
+    --focus-indicator-color: var(--md-sys-color-secondary);
+
+    outline-width: var(--focus-indicator-thickness);
+    outline-style: solid;
+    outline-offset: var(--focus-indicator-offset);
+    outline-color: var(--focus-indicator-color);
+}

@@ -124,7 +124,7 @@
     }
 
     &[data-focus-visible],
-    &[data-focus],
+    &[data-focused],
     &[data-hovered],
     &[data-pressed] {
         --handle-color: var(--handle-unselected-base-color);
@@ -159,17 +159,6 @@
 }
 
 .handle[data-icon] {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.target {
-    --target-size: calc(48 * var(--dp, 1px));
-
-    min-inline-size: var(--target-size);
-    min-block-size: var(--target-size);
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -256,7 +245,7 @@
         --_state-opacity: var(--md-sys-state-hover);
     }
 
-    &[data-focus],
+    &[data-focused],
     &[data-focus-visible] {
         --_state-opacity: var(--md-sys-state-focus);
     }
@@ -282,7 +271,6 @@
     }
 }
 
-.track[data-focus],
 .track[data-focus-visible] {
     outline-width: var(--focus-indicator-thickness);
     outline-style: solid;

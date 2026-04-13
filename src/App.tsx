@@ -35,6 +35,7 @@ import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
 import { Icon } from "./components/Icon";
 import { Link, type Visual } from "./components/Link";
+import { Radio, RadioGroup } from "./components/Radio";
 import { Switch } from "./components/Switch";
 import { toast } from "./components/Toast";
 import { ToggleButton } from "./components/ToggleButton";
@@ -1256,13 +1257,9 @@ const DisclosureGroupPreview = () => {
     );
 };
 
-const FormInputPreview = () => {
+const SwitchPreview = () => {
     return (
-        <PreviewContainer label="Form Input">
-            {/* <Input label="Email" isRequired type="email" placeholder="Email" /> */}
-            {/**/}
-            {/* <TextArea rows={20} label="More info" placeholder="More info" /> */}
-
+        <PreviewContainer label="Switch">
             <Switch isDisabled icon="none">
                 hmm
             </Switch>
@@ -1280,6 +1277,53 @@ const FormInputPreview = () => {
             <Switch icon="both">not-disabled</Switch>
 
             <Switch icon="none">not-disabled</Switch>
+        </PreviewContainer>
+    );
+};
+
+const RadioPreview = () => {
+    return (
+        <PreviewContainer label="Radio">
+            <RadioGroup
+                label="Disabled"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                isDisabled
+                defaultValue={"dog"}
+            >
+                <Radio value="cat">Cat</Radio>
+                <Radio value="dog">Dog</Radio>
+                <Radio value="dragon">Dragon</Radio>
+            </RadioGroup>
+
+            <RadioGroup
+                label="Disabled"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                isDisabled
+                orientation="horizontal"
+            >
+                <Radio value="cat">Cat</Radio>
+                <Radio value="dog">Dog</Radio>
+                <Radio value="dragon">Dragon</Radio>
+            </RadioGroup>
+
+            <RadioGroup
+                label="Enabled"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+            >
+                <Radio value="cat">Cat</Radio>
+                <Radio value="dog">Dog</Radio>
+                <Radio value="dragon">Dragon</Radio>
+            </RadioGroup>
+
+            <RadioGroup
+                label="Enabled"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                orientation="horizontal"
+            >
+                <Radio value="cat">Cat</Radio>
+                <Radio value="dog">Dog</Radio>
+                <Radio value="dragon">Dragon</Radio>
+            </RadioGroup>
         </PreviewContainer>
     );
 };
@@ -1445,9 +1489,10 @@ const IconPreview = () => {
 
 const App = () => {
     const previewElements = [
+        RadioPreview,
         IconPreview,
         VisualSettingsPreview,
-        FormInputPreview,
+        SwitchPreview,
         // ButtonPreview,
         // LinkPreview,
         // CardPreview,
