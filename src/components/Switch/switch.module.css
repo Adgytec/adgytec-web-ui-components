@@ -73,7 +73,7 @@
     border-radius: var(--track-shape);
 
     border-width: var(--track-outline-thickness);
-    border-style: line;
+    border-style: solid;
     border-color: var(--track-outline-base-color);
 
     background-color: var(--track-unselected-base-color);
