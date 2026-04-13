@@ -271,7 +271,6 @@
     }
 }
 
-.track[data-focused],
 .track[data-focus-visible] {
     outline-width: var(--focus-indicator-thickness);
     outline-style: solid;
