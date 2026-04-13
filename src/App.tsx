@@ -1328,6 +1328,10 @@ const RadioPreview = () => {
     );
 };
 
+const CheckboxPreview = () => {
+    return <PreviewContainer label="Checkbox">checkbox</PreviewContainer>;
+};
+
 const ToggleButtonPreview = () => {
     const buttonTheme: ColorTheme[] = [
         "primary",
@@ -1489,6 +1493,7 @@ const IconPreview = () => {
 
 const App = () => {
     const previewElements = [
+        CheckboxPreview,
         RadioPreview,
         IconPreview,
         VisualSettingsPreview,
