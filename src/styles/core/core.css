@@ -1,3 +1,4 @@
 @import "reset.css";
 @import "./tokens/tokens.css";
 @import "./theme/monochrome/monochrome.css";
+@import "./typography/typography.css";
