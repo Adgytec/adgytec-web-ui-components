@@ -21,19 +21,8 @@
         opacity 250ms;
     transform: translate3d(0, 0, 0);
 
-    .tooltip-arrow svg {
-        display: block;
-        fill: var(--_tooltip-background);
-        inline-size: 0.625rem;
-        aspect-ratio: 1 / 1;
-    }
-
     &[data-placement="bottom"] {
         --_origin: translateY(-0.25rem);
-
-        .tooltip-arrow svg {
-            rotate: 180deg;
-        }
     }
 
     &[data-placement="top"] {
@@ -42,18 +31,10 @@
 
     &[data-placement="right"] {
         --_origin: translateX(-0.25rem);
-
-        .tooltip-arrow svg {
-            rotate: 90deg;
-        }
     }
 
     &[data-placement="left"] {
         --_origin: translateX(0.25rem);
-
-        .tooltip-arrow svg {
-            rotate: -90deg;
-        }
     }
 
     &[data-entering],
@@ -61,40 +42,4 @@
         transform: var(--_origin);
         opacity: 0;
     }
-}
-
-/* tooltip theme */
-.primary {
-    --_tooltip-background: var(--md-sys-color-primary-container);
-    --_tooltip-color: var(--md-sys-color-on-primary-container);
-}
-
-.primary-variant {
-    --_tooltip-background: var(--md-sys-color-primary-variant-container);
-    --_tooltip-color: var(--md-sys-color-on-primary-variant-container);
-}
-
-.secondary {
-    --_tooltip-background: var(--md-sys-color-secondary-container);
-    --_tooltip-color: var(--md-sys-color-on-secondary-container);
-}
-
-.tertiary {
-    --_tooltip-background: var(--md-sys-color-tertiary-container);
-    --_tooltip-color: var(--md-sys-color-on-tertiary-container);
-}
-
-.error {
-    --_tooltip-background: var(--md-sys-color-error-container);
-    --_tooltip-color: var(--md-sys-color-on-error-container);
-}
-
-.inverse-surface {
-    --_tooltip-background: var(--md-sys-color-surface-container);
-    --_tooltip-color: var(--md-sys-color-on-surface);
-}
-
-.success {
-    --_tooltip-background: var(--md-sys-color-success-container);
-    --_tooltip-color: var(--md-sys-color-on-success-container);
 }
