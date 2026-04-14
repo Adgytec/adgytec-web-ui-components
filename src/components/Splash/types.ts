@@ -4,6 +4,6 @@ export interface SplashState {
     y: number;
 }
 
-export type SetTimeoutReturnType = ReturnType<typeof setTimeout>;
-
-export interface SplashProps extends SplashState {}
+export interface SplashProps extends SplashState {
+    onAnimationEnd?: () => void;
+}
