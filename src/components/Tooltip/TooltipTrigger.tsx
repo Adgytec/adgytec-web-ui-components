@@ -8,5 +8,7 @@ export const TooltipTrigger: React.FC<TooltipTriggerComponentProps> = ({
     closeDelay = 0,
     ...props
 }) => {
-    return <AriaTooltipTrigger {...props} />;
+    return (
+        <AriaTooltipTrigger delay={delay} closeDelay={closeDelay} {...props} />
+    );
 };

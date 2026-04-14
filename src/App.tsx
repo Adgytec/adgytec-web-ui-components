@@ -348,7 +348,7 @@ const TooltipPreview = () => {
                 <TooltipTrigger>
                     <Button>Tooltip demo</Button>
 
-                    <Tooltip>Hii this is a tooltip</Tooltip>
+                    <Tooltip>Lorem ipsum dolor sit amet.</Tooltip>
                 </TooltipTrigger>
             </div>
         </PreviewContainer>

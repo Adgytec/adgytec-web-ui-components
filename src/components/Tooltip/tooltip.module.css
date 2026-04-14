@@ -1,45 +1,10 @@
 .tooltip {
-    font-size: 0.875rem;
-    text-align: center;
+    background-color: var(--md-sys-color-inverse-surface);
+    color: var(--md-sys-color-inverse-on-surface);
 
-    background-color: var(--_tooltip-background);
-    color: var(--_tooltip-color);
+    padding-inline: var(--md-sys-layout-space-8);
+    padding-block: var(--md-sys-layout-space-4);
 
-    padding-inline: 0.75em;
-    padding-block: 0.5em;
-
-    outline: none;
-    max-width: 15rem;
-
-    margin: 0.625rem;
-    border-radius: var(--radius);
-
-    box-shadow: var(--elevation-1);
-
-    transition:
-        transform 250ms,
-        opacity 250ms;
-    transform: translate3d(0, 0, 0);
-
-    &[data-placement="bottom"] {
-        --_origin: translateY(-0.25rem);
-    }
-
-    &[data-placement="top"] {
-        --_origin: translateY(0.25rem);
-    }
-
-    &[data-placement="right"] {
-        --_origin: translateX(-0.25rem);
-    }
-
-    &[data-placement="left"] {
-        --_origin: translateX(0.25rem);
-    }
-
-    &[data-entering],
-    &[data-exiting] {
-        transform: var(--_origin);
-        opacity: 0;
-    }
+    max-inline-size: calc(300 * var(--dp, 1px));
+    border-radius: var(--md-sys-shape-corner-radius-extra-small);
 }
