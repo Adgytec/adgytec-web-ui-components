@@ -77,7 +77,8 @@
         --icon-color: var(--md-sys-color-on-error);
     }
 
-    &[data-selected] {
+    &[data-selected],
+    &[data-indeterminate] {
         --outline-color: transparent;
         --color: var(--container-selected-color);
         --_state-color: var(--md-sys-color-primary);
@@ -92,16 +93,11 @@
         --outline-color: var(--container-disabled-base-color);
         --icon-color: var(--md-sys-color-surface);
 
-        &[data-selected] {
+        &[data-selected],
+        &[data-indeterminate] {
             --outline-color: transparent;
             --color: var(--container-disabled-base-color);
         }
-    }
-
-    &[data-indeterminate] {
-        --outline-color: transparent;
-        --color: var(--container-selected-color);
-        --_state-color: var(--md-sys-color-primary);
     }
 
     &[data-focus-visible],
