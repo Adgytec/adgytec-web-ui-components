@@ -195,8 +195,7 @@
         fill var(--md-sys-motion-expressive-default-effects)
         var(--md-sys-motion-expressive-default-effects-duration);
 
-    &[data-selected],
-    &[data-indeterminate] {
+    &[data-selected] {
         stroke-dashoffset: 44;
     }
 
