@@ -1344,6 +1344,10 @@ const CheckboxPreview = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </Checkbox>
 
+            <Checkbox isIndeterminate>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </Checkbox>
+
             <CheckboxGroup
                 label="lorem ipsum"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "

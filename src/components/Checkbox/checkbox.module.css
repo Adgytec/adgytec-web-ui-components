@@ -98,6 +98,12 @@
         }
     }
 
+    &[data-indeterminate] {
+        --outline-color: transparent;
+        --color: var(--container-selected-color);
+        --_state-color: var(--md-sys-color-primary);
+    }
+
     &[data-focus-visible],
     &[data-focused],
     &[data-hovered],
@@ -106,7 +112,8 @@
             --outline-color: var(--container-outline-unselected-color);
         }
 
-        &[data-selected] {
+        &[data-selected],
+        &[data-indeterminate] {
             --outline-color: transparent;
         }
     }
@@ -182,11 +189,19 @@
     stroke-linecap: round;
     stroke-linejoin: round;
 
-    transition: stroke-dashoffset
-        var(--md-sys-motion-expressive-default-effects)
+    transition:
+        stroke-dashoffset var(--md-sys-motion-expressive-default-effects)
+        var(--md-sys-motion-expressive-default-effects-duration),
+        fill var(--md-sys-motion-expressive-default-effects)
         var(--md-sys-motion-expressive-default-effects-duration);
 
-    &[data-selected] {
+    &[data-selected],
+    &[data-indeterminate] {
         stroke-dashoffset: 44;
+    }
+
+    &[data-indeterminate] {
+        stroke: none;
+        fill: var(--icon-color);
     }
 }
