@@ -3,17 +3,22 @@ import type { PressEvent } from "react-aria-components";
 import type { SplashState } from "./types";
 
 export const useSplash = (onPress?: (e: PressEvent) => void) => {
-    const [coords, setCoords] = useState<SplashState | null>(null);
+    const [splashInfo, setSplashInfo] = useState<SplashState | null>(null);
     const idRef = useRef(0);
 
     const handlePress = (e: PressEvent) => {
-        setCoords({ id: idRef.current++, x: e.x, y: e.y });
+        setSplashInfo({
+            id: idRef.current++,
+            x: e.x,
+            y: e.y,
+            onAnimationEnd: handleAnimationEnd,
+        });
         onPress?.(e);
     };
 
     const handleAnimationEnd = () => {
-        setCoords(null);
+        setSplashInfo(null);
     };
 
-    return { coords, handlePress, handleAnimationEnd };
+    return { coords: splashInfo, handlePress };
 };
