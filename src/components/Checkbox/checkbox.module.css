@@ -185,10 +185,8 @@
     stroke-linecap: round;
     stroke-linejoin: round;
 
-    transition:
-        stroke-dashoffset var(--md-sys-motion-expressive-default-effects)
-        var(--md-sys-motion-expressive-default-effects-duration),
-        fill var(--md-sys-motion-expressive-default-effects)
+    transition: stroke-dashoffset
+        var(--md-sys-motion-expressive-default-effects)
         var(--md-sys-motion-expressive-default-effects-duration);
 
     &[data-selected] {
