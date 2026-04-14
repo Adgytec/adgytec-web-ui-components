@@ -1,2 +1,2 @@
 export * from "./Tooltip";
-export type * from "./types";
+export * from "./TooltipTrigger";
