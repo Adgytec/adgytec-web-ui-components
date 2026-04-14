@@ -4,8 +4,8 @@ import {
 } from "react-aria-components";
 
 export const TooltipTrigger: React.FC<TooltipTriggerComponentProps> = ({
-    delay = 0,
-    closeDelay = 0,
+    delay = 250,
+    closeDelay = 150,
     ...props
 }) => {
     return (
