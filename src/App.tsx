@@ -1332,9 +1332,6 @@ const RadioPreview = () => {
 const CheckboxPreview = () => {
     return (
         <PreviewContainer label="Checkbox">
-            <div>
-                <Button>ripple test</Button>
-            </div>
             <Checkbox isDisabled>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </Checkbox>

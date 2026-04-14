@@ -11,7 +11,8 @@ export const useSplash = (onPress?: (e: PressEvent) => void) => {
         setCoords({ id: idRef.current++, x: e.x, y: e.y });
         if (e.x !== -1 && e.y !== -1) {
             clearTimeout(timeout.current);
-            timeout.current = setTimeout(() => setCoords(null), 500);
+            // INFO: css animation timeout + 50ms buffer
+            timeout.current = setTimeout(() => setCoords(null), 700);
         }
         onPress?.(e);
     };
