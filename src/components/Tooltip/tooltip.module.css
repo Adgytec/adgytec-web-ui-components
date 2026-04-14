@@ -1,4 +1,6 @@
 .tooltip {
+    --offset: calc(4 * var(--dp, 1px));
+
     background-color: var(--md-sys-color-inverse-surface);
     color: var(--md-sys-color-inverse-on-surface);
 
@@ -7,4 +9,33 @@
 
     max-inline-size: calc(300 * var(--dp, 1px));
     border-radius: var(--md-sys-shape-corner-radius-extra-small);
+
+    transform: translate3d(0, 0, 0);
+    transition:
+        transform var(--md-sys-motion-expressive-fast-spatial)
+        var(--md-sys-motion-expressive-fast-spatial-duration),
+        opacity var(--md-sys-motion-expressive-fast-effects)
+        var(--md-sys-motion-expressive-fast-effects-duration);
+
+    &[data-placement="bottom"] {
+        --origin: translateY(calc(-1 * var(--offset)));
+    }
+
+    &[data-placement="top"] {
+        --origin: translateY(var(--offset));
+    }
+
+    &[data-placement="right"] {
+        --origin: translateX(calc(-1 * var(--offset)));
+    }
+
+    &[data-placement="left"] {
+        --origin: translateX(var(--offset));
+    }
+
+    &[data-entering],
+    &[data-exiting] {
+        transform: var(--origin);
+        opacity: 0;
+    }
 }
