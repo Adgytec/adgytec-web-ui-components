@@ -4,10 +4,12 @@
  * each variant scales between sizes two levels apart 
  * (e.g. display-small → display-large, headline-small → headline-large).
  *
+ * Only font-size is fluid. Line-height and letter-spacing remain fixed.
+ *
  * Viewport units are used intentionally since these styles are meant for
  * full-width layouts (hero sections, page headings), not container-bound UI.
  *
- * Title, body, and label are kept fixed to maintain readability and consistency.
+ * Title, body, and label are kept fully static for readability and UI consistency.
  */
 
 /* ==================== */
@@ -24,17 +26,8 @@
         var(--md-sys-typescale-display-large-size)
     );
 
-    line-height: clamp(
-        var(--md-sys-typescale-display-small-line-height),
-        1.2,
-        var(--md-sys-typescale-display-large-line-height)
-    );
-
-    letter-spacing: clamp(
-        var(--md-sys-typescale-display-small-letter-spacing),
-        -0.05vw,
-        var(--md-sys-typescale-display-large-letter-spacing)
-    );
+    line-height: var(--md-sys-typescale-display-large-line-height);
+    letter-spacing: var(--md-sys-typescale-display-large-letter-spacing);
 }
 
 /* ==================== */
@@ -51,17 +44,8 @@
         var(--md-sys-typescale-display-medium-size)
     );
 
-    line-height: clamp(
-        var(--md-sys-typescale-headline-large-line-height),
-        1.18,
-        var(--md-sys-typescale-display-medium-line-height)
-    );
-
-    letter-spacing: clamp(
-        var(--md-sys-typescale-headline-large-letter-spacing),
-        0vw,
-        var(--md-sys-typescale-display-medium-letter-spacing)
-    );
+    line-height: var(--md-sys-typescale-display-medium-line-height);
+    letter-spacing: var(--md-sys-typescale-display-medium-letter-spacing);
 }
 
 /* ==================== */
@@ -78,17 +62,8 @@
         var(--md-sys-typescale-display-small-size)
     );
 
-    line-height: clamp(
-        var(--md-sys-typescale-headline-medium-line-height),
-        1.2,
-        var(--md-sys-typescale-display-small-line-height)
-    );
-
-    letter-spacing: clamp(
-        var(--md-sys-typescale-headline-medium-letter-spacing),
-        0vw,
-        var(--md-sys-typescale-display-small-letter-spacing)
-    );
+    line-height: var(--md-sys-typescale-display-small-line-height);
+    letter-spacing: var(--md-sys-typescale-display-small-letter-spacing);
 }
 
 /* ==================== */
@@ -105,17 +80,8 @@
         var(--md-sys-typescale-headline-large-size)
     );
 
-    line-height: clamp(
-        var(--md-sys-typescale-headline-small-line-height),
-        1.26,
-        var(--md-sys-typescale-headline-large-line-height)
-    );
-
-    letter-spacing: clamp(
-        var(--md-sys-typescale-headline-small-letter-spacing),
-        0vw,
-        var(--md-sys-typescale-headline-large-letter-spacing)
-    );
+    line-height: var(--md-sys-typescale-headline-large-line-height);
+    letter-spacing: var(--md-sys-typescale-headline-large-letter-spacing);
 }
 
 /* ==================== */
@@ -132,17 +98,8 @@
         var(--md-sys-typescale-headline-medium-size)
     );
 
-    line-height: clamp(
-        var(--md-sys-typescale-title-large-line-height),
-        1.28,
-        var(--md-sys-typescale-headline-medium-line-height)
-    );
-
-    letter-spacing: clamp(
-        var(--md-sys-typescale-title-large-letter-spacing),
-        0vw,
-        var(--md-sys-typescale-headline-medium-letter-spacing)
-    );
+    line-height: var(--md-sys-typescale-headline-medium-line-height);
+    letter-spacing: var(--md-sys-typescale-headline-medium-letter-spacing);
 }
 
 /* ==================== */
@@ -159,15 +116,6 @@
         var(--md-sys-typescale-headline-small-size)
     );
 
-    line-height: clamp(
-        var(--md-sys-typescale-title-medium-line-height),
-        1.3,
-        var(--md-sys-typescale-headline-small-line-height)
-    );
-
-    letter-spacing: clamp(
-        var(--md-sys-typescale-title-medium-letter-spacing),
-        0vw,
-        var(--md-sys-typescale-headline-small-letter-spacing)
-    );
+    line-height: var(--md-sys-typescale-headline-small-line-height);
+    letter-spacing: var(--md-sys-typescale-headline-small-letter-spacing);
 }
