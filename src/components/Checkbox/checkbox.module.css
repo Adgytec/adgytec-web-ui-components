@@ -77,7 +77,8 @@
         --icon-color: var(--md-sys-color-on-error);
     }
 
-    &[data-selected] {
+    &[data-selected],
+    &[data-indeterminate] {
         --outline-color: transparent;
         --color: var(--container-selected-color);
         --_state-color: var(--md-sys-color-primary);
@@ -92,7 +93,8 @@
         --outline-color: var(--container-disabled-base-color);
         --icon-color: var(--md-sys-color-surface);
 
-        &[data-selected] {
+        &[data-selected],
+        &[data-indeterminate] {
             --outline-color: transparent;
             --color: var(--container-disabled-base-color);
         }
@@ -106,7 +108,8 @@
             --outline-color: var(--container-outline-unselected-color);
         }
 
-        &[data-selected] {
+        &[data-selected],
+        &[data-indeterminate] {
             --outline-color: transparent;
         }
     }
@@ -188,5 +191,10 @@
 
     &[data-selected] {
         stroke-dashoffset: 44;
+    }
+
+    &[data-indeterminate] {
+        stroke: none;
+        fill: var(--icon-color);
     }
 }

@@ -29,6 +29,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                 isFocusVisible,
                 isPressed,
                 isInvalid,
+                isIndeterminate,
             }) => {
                 const dataAttrs = {
                     "data-selected": isSelected || undefined,
@@ -38,6 +39,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
                     "data-invalid": isInvalid || undefined,
+                    "data-indeterminate": isIndeterminate || undefined,
                 };
 
                 return (
@@ -47,11 +49,24 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                                 <svg
                                     viewBox="0 0 18 18"
                                     aria-hidden="true"
-                                    key={"check"}
+                                    key={
+                                        isIndeterminate
+                                            ? "indeterminate"
+                                            : "check"
+                                    }
                                     className={styles["svg"]}
                                     {...dataAttrs}
                                 >
-                                    <polyline points="2 9 7 14 16 4" />
+                                    {isIndeterminate ? (
+                                        <rect
+                                            x={1}
+                                            y={7.5}
+                                            width={16}
+                                            height={3}
+                                        />
+                                    ) : (
+                                        <polyline points="2 9 7 14 16 4" />
+                                    )}
                                 </svg>
                             </div>
                         </Target>
