@@ -1,6 +1,4 @@
-import type { TypographyVariant } from "./base";
-
-export const fluidTypography: Partial<Record<TypographyVariant, string>> = {
+export const fluidTypography = {
     displayLarge: "typography-display-large-fluid",
     displayMedium: "typography-display-medium-fluid",
     displaySmall: "typography-display-small-fluid",
@@ -9,3 +7,5 @@ export const fluidTypography: Partial<Record<TypographyVariant, string>> = {
     headlineMedium: "typography-headline-medium-fluid",
     headlineSmall: "typography-headline-small-fluid",
 } as const;
+
+export type FluidTypographyVariant = keyof typeof fluidTypography;

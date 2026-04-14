@@ -22,7 +22,7 @@
 
     font-size: clamp(
         var(--md-sys-typescale-display-small-size),
-        5vw,
+        calc(1.5rem + 2vw),
         var(--md-sys-typescale-display-large-size)
     );
 
@@ -40,7 +40,7 @@
 
     font-size: clamp(
         var(--md-sys-typescale-headline-large-size),
-        4.5vw,
+        calc(1.25rem + 1.8vw),
         var(--md-sys-typescale-display-medium-size)
     );
 
@@ -58,7 +58,7 @@
 
     font-size: clamp(
         var(--md-sys-typescale-headline-medium-size),
-        4vw,
+        calc(1.125rem + 1.5vw),
         var(--md-sys-typescale-display-small-size)
     );
 
@@ -76,7 +76,7 @@
 
     font-size: clamp(
         var(--md-sys-typescale-headline-small-size),
-        3.5vw,
+        calc(1rem + 1.2vw),
         var(--md-sys-typescale-headline-large-size)
     );
 
@@ -94,7 +94,7 @@
 
     font-size: clamp(
         var(--md-sys-typescale-title-large-size),
-        3vw,
+        calc(0.9rem + 1vw),
         var(--md-sys-typescale-headline-medium-size)
     );
 
@@ -112,7 +112,7 @@
 
     font-size: clamp(
         var(--md-sys-typescale-title-medium-size),
-        2.5vw,
+        calc(0.85rem + 0.8vw),
         var(--md-sys-typescale-headline-small-size)
     );
 
