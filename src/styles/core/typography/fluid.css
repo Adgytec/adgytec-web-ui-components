@@ -1,0 +1,121 @@
+/*
+ * Fluid typography for display & headline levels.
+ * Uses bounded scaling (2-level depth) to preserve hierarchy:
+ * each variant scales between sizes two levels apart 
+ * (e.g. display-small → display-large, headline-small → headline-large).
+ *
+ * Only font-size is fluid. Line-height and letter-spacing remain fixed.
+ *
+ * Viewport units are used intentionally since these styles are meant for
+ * full-width layouts (hero sections, page headings), not container-bound UI.
+ *
+ * Title, body, and label are kept fully static for readability and UI consistency.
+ */
+
+/* ==================== */
+/* DISPLAY LARGE */
+/* ==================== */
+
+.typography-display-large-fluid {
+    font-family: var(--md-sys-typescale-display-large-font);
+    font-weight: var(--md-sys-typescale-display-large-weight);
+
+    font-size: clamp(
+        var(--md-sys-typescale-display-small-size),
+        calc(1.5rem + 2vw),
+        var(--md-sys-typescale-display-large-size)
+    );
+
+    line-height: var(--md-sys-typescale-display-large-line-height);
+    letter-spacing: var(--md-sys-typescale-display-large-letter-spacing);
+}
+
+/* ==================== */
+/* DISPLAY MEDIUM */
+/* ==================== */
+
+.typography-display-medium-fluid {
+    font-family: var(--md-sys-typescale-display-medium-font);
+    font-weight: var(--md-sys-typescale-display-medium-weight);
+
+    font-size: clamp(
+        var(--md-sys-typescale-headline-large-size),
+        calc(1.25rem + 1.8vw),
+        var(--md-sys-typescale-display-medium-size)
+    );
+
+    line-height: var(--md-sys-typescale-display-medium-line-height);
+    letter-spacing: var(--md-sys-typescale-display-medium-letter-spacing);
+}
+
+/* ==================== */
+/* DISPLAY SMALL */
+/* ==================== */
+
+.typography-display-small-fluid {
+    font-family: var(--md-sys-typescale-display-small-font);
+    font-weight: var(--md-sys-typescale-display-small-weight);
+
+    font-size: clamp(
+        var(--md-sys-typescale-headline-medium-size),
+        calc(1.125rem + 1.5vw),
+        var(--md-sys-typescale-display-small-size)
+    );
+
+    line-height: var(--md-sys-typescale-display-small-line-height);
+    letter-spacing: var(--md-sys-typescale-display-small-letter-spacing);
+}
+
+/* ==================== */
+/* HEADLINE LARGE */
+/* ==================== */
+
+.typography-headline-large-fluid {
+    font-family: var(--md-sys-typescale-headline-large-font);
+    font-weight: var(--md-sys-typescale-headline-large-weight);
+
+    font-size: clamp(
+        var(--md-sys-typescale-headline-small-size),
+        calc(1rem + 1.2vw),
+        var(--md-sys-typescale-headline-large-size)
+    );
+
+    line-height: var(--md-sys-typescale-headline-large-line-height);
+    letter-spacing: var(--md-sys-typescale-headline-large-letter-spacing);
+}
+
+/* ==================== */
+/* HEADLINE MEDIUM */
+/* ==================== */
+
+.typography-headline-medium-fluid {
+    font-family: var(--md-sys-typescale-headline-medium-font);
+    font-weight: var(--md-sys-typescale-headline-medium-weight);
+
+    font-size: clamp(
+        var(--md-sys-typescale-title-large-size),
+        calc(0.9rem + 1vw),
+        var(--md-sys-typescale-headline-medium-size)
+    );
+
+    line-height: var(--md-sys-typescale-headline-medium-line-height);
+    letter-spacing: var(--md-sys-typescale-headline-medium-letter-spacing);
+}
+
+/* ==================== */
+/* HEADLINE SMALL */
+/* ==================== */
+
+.typography-headline-small-fluid {
+    font-family: var(--md-sys-typescale-headline-small-font);
+    font-weight: var(--md-sys-typescale-headline-small-weight);
+
+    font-size: clamp(
+        var(--md-sys-typescale-title-medium-size),
+        calc(0.85rem + 0.8vw),
+        var(--md-sys-typescale-headline-small-size)
+    );
+
+    line-height: var(--md-sys-typescale-headline-small-line-height);
+    letter-spacing: var(--md-sys-typescale-headline-small-letter-spacing);
+}
