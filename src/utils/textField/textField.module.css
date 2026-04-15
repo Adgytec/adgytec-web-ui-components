@@ -28,7 +28,7 @@
     }
 
     &[data-focused],
-    &[data-foucus-visible] {
+    &[data-focus-visible] {
         outline-width: calc(3 * var(--dp, 1px));
         outline-color: var(--md-sys-color-primary);
     }
