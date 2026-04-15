@@ -360,26 +360,47 @@ const TooltipPreview = () => {
 const TextfieldPreview = () => {
     return (
         <PreviewContainer label="Textfield">
-            <Input label="input" placeholder="input" isDisabled />
+            <Input
+                label="input"
+                placeholder="input"
+                isDisabled
+                description="trial description"
+            />
 
             <TextArea
                 label="textarea"
                 rows={2}
                 placeholder="textarea"
                 isDisabled
+                description="trial description"
             />
 
-            <Input label="input" placeholder="input" />
+            <Input
+                label="input"
+                placeholder="input"
+                description="trial description"
+            />
 
-            <TextArea label="textarea" rows={2} placeholder="textarea" />
+            <TextArea
+                label="textarea"
+                rows={2}
+                placeholder="textarea"
+                description="trial description"
+            />
 
-            <Input label="input" placeholder="input" isInvalid />
+            <Input
+                label="input"
+                placeholder="input"
+                isInvalid
+                description="trial description"
+            />
 
             <TextArea
                 label="textarea"
                 rows={2}
                 placeholder="textarea"
                 isInvalid
+                description="trial description"
             />
         </PreviewContainer>
     );
