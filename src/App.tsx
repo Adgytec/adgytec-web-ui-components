@@ -379,6 +379,8 @@ const TextfieldPreview = () => {
                 label="input"
                 placeholder="input"
                 description="trial description"
+                isRequired
+                type="email"
             />
 
             <TextArea
@@ -393,6 +395,7 @@ const TextfieldPreview = () => {
                 placeholder="input"
                 isInvalid
                 description="trial description"
+                errorMessage={"trial error"}
             />
 
             <TextArea
@@ -401,6 +404,7 @@ const TextfieldPreview = () => {
                 placeholder="textarea"
                 isInvalid
                 description="trial description"
+                errorMessage={"trial error"}
             />
         </PreviewContainer>
     );
