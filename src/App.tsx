@@ -10,8 +10,10 @@ import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
 import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import { Icon } from "./components/Icon";
+import { Input } from "./components/Input";
 import { Radio, RadioGroup } from "./components/Radio";
 import { Switch } from "./components/Switch";
+import { TextArea } from "./components/TextArea";
 import { ToggleButton } from "./components/ToggleButton";
 import { Viewport } from "./components/Viewport";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
@@ -355,8 +357,62 @@ const TooltipPreview = () => {
     );
 };
 
+const TextfieldPreview = () => {
+    return (
+        <PreviewContainer label="Textfield">
+            <Input
+                label="input"
+                placeholder="input"
+                isDisabled
+                description="trial description"
+            />
+
+            <TextArea
+                label="textarea"
+                rows={2}
+                placeholder="textarea"
+                isDisabled
+                description="trial description"
+            />
+
+            <Input
+                label="input"
+                placeholder="input"
+                description="trial description"
+                isRequired
+                type="email"
+            />
+
+            <TextArea
+                label="textarea"
+                rows={2}
+                placeholder="textarea"
+                description="trial description"
+            />
+
+            <Input
+                label="input"
+                placeholder="input"
+                isInvalid
+                description="trial description"
+                errorMessage={"trial error"}
+            />
+
+            <TextArea
+                label="textarea"
+                rows={2}
+                placeholder="textarea"
+                isInvalid
+                description="trial description"
+                errorMessage={"trial error"}
+            />
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
+        TextfieldPreview,
         TooltipPreview,
         CheckboxPreview,
         RadioPreview,

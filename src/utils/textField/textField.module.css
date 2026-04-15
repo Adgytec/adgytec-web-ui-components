@@ -1,38 +1,77 @@
 .text-field {
     display: grid;
-    gap: var(--text-field-gap, 0.25rem);
+    gap: var(--md-sys-layout-space-16);
 }
 
 .editor {
-    outline: none;
+    border: none;
+    background-color: transparent;
+    border-radius: var(--md-sys-shape-corner-radius-extra-small);
+    padding: var(--md-sys-layout-space-16);
 
-    font-weight: var(--font-weight-medium);
-    border-radius: var(--radius);
+    outline-width: var(--md-sys-shape-border-width-thin);
+    outline-style: solid;
+    outline-color: var(--md-sys-color-outline);
 
-    padding-inline: var(--user-input-padding-inline, 0.625em);
-    padding-block: var(--user-input-padding-block, 0.625em);
+    color: var(--md-sys-color-on-surface);
 
-    max-inline-size: 100%;
-    inline-size: 100%;
-    border: 0.125rem solid var(--color-outline);
+    transition:
+        outline-width var(--md-sys-motion-standard-fast-effects)
+        var(--md-sys-motion-standard-fast-effects-duration),
+        outline-color var(--md-sys-motion-standard-fast-effects)
+        var(--md-sys-motion-standard-fast-effects-duration),
+        color var(--md-sys-motion-standard-fast-effects)
+        var(--md-sys-motion-standard-fast-effects-duration);
 
-    background-color: inherit;
-    color: inherit;
+    &[data-hovered] {
+        outline-color: var(--md-sys-color-on-surface);
+    }
 
-    font-size: var(--user-input-font-size);
+    &[data-focused],
+    &[data-focus-visible] {
+        outline-width: calc(3 * var(--dp, 1px));
+        outline-color: var(--md-sys-color-primary);
+    }
 
-    transition: border-color 250ms;
-
-    &[data-focused] {
-        border-color: var(--color-primary);
+    &[data-disabled] {
+        outline-color: rgb(
+            from var(--md-sys-color-on-surface) r g b /
+            var(--md-sys-state-disabled-container)
+        );
+        color: rgb(
+            from var(--md-sys-color-on-surface) r g b /
+            var(--md-sys-state-disabled-content)
+        );
     }
 
     &[data-invalid] {
-        border-color: var(--color-error);
+        outline-color: var(--md-sys-color-error);
+
+        &[data-hovered] {
+            outline-color: var(--md-sys-color-on-error-container);
+        }
     }
+}
+
+.editor::placeholder {
+    color: var(--md-sys-color-on-surface-variant);
+    transition: color var(--md-sys-motion-standard-fast-effects)
+        var(--md-sys-motion-standard-fast-effects-duration);
+}
+
+.editor[data-disabled]::placeholder {
+    color: rgb(
+        from var(--md-sys-color-on-surface) r g b /
+        var(--md-sys-state-disabled-content)
+    );
 }
 
 .textarea {
     resize: vertical;
-    max-height: var(--text-area-max-height, 15rem);
+    max-block-size: calc(300 * var(--dp, 1px));
+    min-block-size: calc(56 * var(--dp, 1px));
+
+    &[data-disabled] {
+        resize: none;
+    }
 }
