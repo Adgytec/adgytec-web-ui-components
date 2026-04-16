@@ -1,4 +1,5 @@
 import { typography } from "@/utils/typography";
+import styles from "./size.module.css";
 
 export type ButtonSize =
     | "extra-small"
@@ -30,3 +31,7 @@ export const ButtonLabelTextMapping: Record<ButtonSize, string> = {
     large: typography.headlineSmall,
     "extra-large": typography.headlineLarge,
 } as const;
+
+export const buttonSizeConfig = (size: ButtonSize) => {
+    return styles[size];
+};
