@@ -113,3 +113,22 @@
         --background-color: transparent;
     }
 }
+
+.elevated {
+    /* box shadow */
+    box-shadow: var(--md-sys-elevation-shadow-1);
+
+    /* background */
+    --background-color-normal: var(--md-sys-color-surface-container-low);
+    --background-color-selected: var(--md-sys-color-primary);
+    --background-color-unselected: var(--md-sys-color-surface-container-low);
+
+    /* text and icon */
+    --color-normal: var(--md-sys-color-primary);
+    --color-selected: var(--md-sys-color-on-primary);
+    --color-unselected: var(--md-sys-color-primary);
+
+    &[data-disabled] {
+        box-shadow: none;
+    }
+}
