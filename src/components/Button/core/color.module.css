@@ -96,3 +96,9 @@
     --color-selected: var(--md-sys-color-inverse-on-surface);
     --color-unselected: var(--md-sys-color-on-surface-variant);
 }
+
+/* no toggle button states are there */
+.text {
+    /* text and icon */
+    --color-normal: var(--md-sys-color-primary);
+}
