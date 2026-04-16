@@ -1,6 +1,6 @@
 import { ToggleButton as AriaToggleButton } from "react-aria-components";
 import { Icon } from "@/components/Icon";
-import { Tooltip, TooltipTrigger } from "@/components/Tooltip";
+import { withTooltip } from "../core";
 import type { ToggleIconButtonProps } from "./types";
 
 export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
@@ -12,13 +12,10 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     icon,
     ...props
 }) => {
-    return (
-        <TooltipTrigger isDisabled={!tooltip}>
-            <AriaToggleButton {...props}>
-                <Icon icon={icon} />
-            </AriaToggleButton>
-
-            {tooltip && <Tooltip>{tooltip}</Tooltip>}
-        </TooltipTrigger>
+    return withTooltip(
+        <AriaToggleButton {...props}>
+            <Icon icon={icon} />
+        </AriaToggleButton>,
+        tooltip
     );
 };

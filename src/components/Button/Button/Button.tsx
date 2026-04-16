@@ -1,5 +1,5 @@
 import { Button as AriaButton } from "react-aria-components";
-import { Tooltip, TooltipTrigger } from "@/components/Tooltip";
+import { withTooltip } from "../core";
 import type { ButtonProps } from "./types";
 
 export const Button: React.FC<ButtonProps> = ({
@@ -10,11 +10,5 @@ export const Button: React.FC<ButtonProps> = ({
     icon,
     ...props
 }) => {
-    return (
-        <TooltipTrigger>
-            <AriaButton {...props} />
-
-            {tooltip && <Tooltip>{tooltip}</Tooltip>}
-        </TooltipTrigger>
-    );
+    return withTooltip(<AriaButton {...props} />, tooltip);
 };

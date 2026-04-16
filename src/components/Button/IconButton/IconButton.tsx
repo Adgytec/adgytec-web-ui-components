@@ -1,6 +1,6 @@
 import { Button as AriaButton } from "react-aria-components";
 import { Icon } from "@/components/Icon";
-import { Tooltip, TooltipTrigger } from "@/components/Tooltip";
+import { withTooltip } from "../core";
 import type { IconButtonProps } from "./types";
 
 export const IconButton: React.FC<IconButtonProps> = ({
@@ -12,13 +12,10 @@ export const IconButton: React.FC<IconButtonProps> = ({
     icon,
     ...props
 }) => {
-    return (
-        <TooltipTrigger>
-            <AriaButton {...props}>
-                <Icon icon={icon} />
-            </AriaButton>
-
-            {tooltip && <Tooltip>{tooltip}</Tooltip>}
-        </TooltipTrigger>
+    return withTooltip(
+        <AriaButton {...props}>
+            <Icon icon={icon} />
+        </AriaButton>,
+        tooltip
     );
 };
