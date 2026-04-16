@@ -1,0 +1,59 @@
+.extra-small {
+    --padding-block: calc(6 * var(--dp, 1px));
+    --padding-inline: var(--md-sys-layout-space-12);
+
+    --icon-label-gap: var(--md-sys-layout-space-8);
+    --outline-width: var(--md-sys-shape-border-width-thin);
+
+    --shape: var(--md-sys-shape-corner-radius-full);
+    --pressed-shape: var(--md-sys-shape-corner-radius-small);
+    --selected-shape: var(--md-sys-shape-corner-radius-medium);
+
+    &[data-shape="square"] {
+        --shape: var(--md-sys-shape-corner-radius-medium);
+        --selected-shape: var(--md-sys-shape-corner-radius-full);
+    }
+
+    /* icon button width */
+    &[data-width="narrow"] {
+        --padding-inline: var(--md-sys-layout-space-4);
+    }
+
+    &[data-width="default"] {
+        --padding-inline: calc(6 * var(--dp, 1px));
+    }
+
+    &[data-width="wide"] {
+        --padding-inline: calc(10 * var(--dp, 1px));
+    }
+}
+
+.small {
+    --padding-block: calc(10 * var(--dp, 1px));
+    --padding-inline: var(--md-sys-layout-space-16);
+
+    --icon-label-gap: var(--md-sys-layout-space-8);
+    --outline-width: var(--md-sys-shape-border-width-thin);
+
+    --shape: var(--md-sys-shape-corner-radius-full);
+    --pressed-shape: var(--md-sys-shape-corner-radius-small);
+    --selected-shape: var(--md-sys-shape-corner-radius-medium);
+
+    &[data-shape="square"] {
+        --shape: var(--md-sys-shape-corner-radius-medium);
+        --selected-shape: var(--md-sys-shape-corner-radius-full);
+    }
+
+    /* icon button width */
+    &[data-width="narrow"] {
+        --padding-inline: var(--md-sys-layout-space-4);
+    }
+
+    &[data-width="default"] {
+        --padding-inline: var(--md-sys-layout-space-8);
+    }
+
+    &[data-width="wide"] {
+        --padding-inline: calc(14 * var(--dp, 1px));
+    }
+}
