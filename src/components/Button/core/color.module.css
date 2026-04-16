@@ -102,3 +102,14 @@
     /* text and icon */
     --color-normal: var(--md-sys-color-primary);
 }
+
+.standard {
+    /* text and icon */
+    --color-normal: var(--md-sys-color-on-surface-variant);
+    --color-selected: var(--md-sys-color-primary);
+    --color-unselected: var(--md-sys-color-on-surface-variant);
+
+    &[data-disabled] {
+        --background-color: transparent;
+    }
+}
