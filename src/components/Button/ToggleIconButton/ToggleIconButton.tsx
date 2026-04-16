@@ -15,7 +15,13 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
 }) => {
     return withTooltip(
         <AriaToggleButton {...props}>
-            <Icon icon={icon} />
+            {({ isSelected }) =>
+                isSelected && selectedIcon ? (
+                    <Icon icon={selectedIcon} />
+                ) : (
+                    <Icon icon={icon} />
+                )
+            }
         </AriaToggleButton>,
         tooltip
     );
