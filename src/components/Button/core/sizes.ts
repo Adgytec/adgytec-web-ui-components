@@ -1,4 +1,4 @@
-export type ButtonSizes =
+export type ButtonSize =
     | "extra-small"
     | "small"
     | "medium"
