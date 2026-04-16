@@ -1,18 +1,8 @@
-.filled {
-    /* background */
-    --background-color-normal: var(--md-sys-color-primary);
-    --background-color-selected: var(--md-sys-color-primary);
-    --background-color-unselected: var(--md-sys-color-surface-container);
-
-    /* text and icon */
-    --color-normal: var(--md-sys-color-on-primary);
-    --color-selected: var(--md-sys-color-on-primary);
-    --color-unselected: var(--md-sys-color-on-surface-variant);
-
+.base {
     /* state layer */
-    --state-layer-normal: var(--md-sys-color-on-primary);
-    --state-layer-selected: var(--md-sys-color-on-primary);
-    --state-layer-unselected: var(--md-sys-color-on-surface-variant);
+    --state-layer-normal: var(--color-normal);
+    --state-layer-selected: var(--color-selected);
+    --state-layer-unselected: var(--color-unselected);
 
     --state-color: var(--state-layer-normal);
     --state-layer-opacity: 0;
@@ -63,4 +53,28 @@
             var(--md-sys-state-disabled-content)
         );
     }
+}
+
+.filled {
+    /* background */
+    --background-color-normal: var(--md-sys-color-primary);
+    --background-color-selected: var(--md-sys-color-primary);
+    --background-color-unselected: var(--md-sys-color-surface-container);
+
+    /* text and icon */
+    --color-normal: var(--md-sys-color-on-primary);
+    --color-selected: var(--md-sys-color-on-primary);
+    --color-unselected: var(--md-sys-color-on-surface-variant);
+}
+
+.tonal {
+    /* background */
+    --background-color-normal: var(--md-sys-color-secondary-container);
+    --background-color-selected: var(--md-sys-color-secondary);
+    --background-color-unselected: var(--md-sys-color-secondary-container);
+
+    /* text and icon */
+    --color-normal: var(--md-sys-color-on-secondary-container);
+    --color-selected: var(--md-sys-color-on-secondary);
+    --color-unselected: var(--md-sys-color-on-secondary-container);
 }
