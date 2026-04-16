@@ -8,4 +8,5 @@ export interface IconButtonBaseProps {
     size?: ButtonSize;
     shape?: ButtonShape;
     width?: IconButtonWidth;
+    tooltip?: string;
 }

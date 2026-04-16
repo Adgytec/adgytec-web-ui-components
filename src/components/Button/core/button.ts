@@ -6,4 +6,5 @@ export interface ButtonBaseProps {
     color?: ButtonColor;
     size?: ButtonSize;
     shape?: ButtonShape;
+    tooltip?: string;
 }
