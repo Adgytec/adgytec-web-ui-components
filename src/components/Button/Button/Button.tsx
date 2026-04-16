@@ -7,6 +7,7 @@ export const Button: React.FC<ButtonProps> = ({
     shape = "round",
     color = "filled",
     tooltip,
+    icon,
     ...props
 }) => {
     const comp = <AriaButton {...props} />;

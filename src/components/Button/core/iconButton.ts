@@ -1,3 +1,4 @@
+import type { LucideIcon } from "lucide-react";
 import type { IconButtonColor } from "./color";
 import type { ButtonShape } from "./shape";
 import type { ButtonSize } from "./sizes";
@@ -9,4 +10,5 @@ export interface IconButtonBaseProps {
     shape?: ButtonShape;
     width?: IconButtonWidth;
     tooltip?: string;
+    icon: LucideIcon;
 }

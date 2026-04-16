@@ -2,5 +2,5 @@ import type { ToggleButtonProps as AriaToggleButtonProps } from "react-aria-comp
 import type { IconButtonBaseProps } from "../core";
 
 export interface ToggleIconButtonProps
-    extends AriaToggleButtonProps,
+    extends Omit<AriaToggleButtonProps, "children">,
         IconButtonBaseProps {}

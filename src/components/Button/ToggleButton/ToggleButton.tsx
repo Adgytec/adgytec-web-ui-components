@@ -7,6 +7,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
     shape = "round",
     color = "filled",
     tooltip,
+    icon,
     ...props
 }) => {
     const comp = <AriaToggleButton {...props} />;
