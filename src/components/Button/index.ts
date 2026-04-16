@@ -1,2 +1,3 @@
 export * from "./Button";
-export type * from "./types";
+export * from "./core";
+export * from "./IconButton";
