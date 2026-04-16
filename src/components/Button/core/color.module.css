@@ -1,8 +1,10 @@
 .base {
+    --outline-color: var(--outline-color-normal, transparent);
+
     /* state layer */
-    --state-layer-normal: var(--color-normal);
-    --state-layer-selected: var(--color-selected);
-    --state-layer-unselected: var(--color-unselected);
+    --state-layer-normal: var(--color-normal, transparent);
+    --state-layer-selected: var(--color-selected, transparent);
+    --state-layer-unselected: var(--color-unselected, transparent);
 
     --state-color: var(--state-layer-normal);
     --state-layer-opacity: 0;
@@ -13,18 +15,20 @@
     );
 
     /* variable to use */
-    --background-color: var(--background-color-normal);
-    --color: var(--color-normal);
+    --background-color: var(--background-color-normal, transparent);
+    --color: var(--color-normal, transparent);
 
     &[data-toggle-button] {
-        --background-color: var(--background-color-unselected);
-        --color: var(--color-unselected);
+        --background-color: var(--background-color-unselected, transparent);
+        --color: var(--color-unselected, transparent);
+        --outline-color: var(--outline-color-unselected, transparent);
 
         --state-color: var(--state-layer-unselected);
 
         &[data-selected] {
-            --background-color: var(--background-color-selected);
-            --color: var(--color-selected);
+            --background-color: var(--background-color-selected, transparent);
+            --color: var(--color-selected, transparent);
+            --outline-color: var(--outline-color-selected, transparent);
 
             --state-color: var(--state-layer-selected);
         }
@@ -77,4 +81,18 @@
     --color-normal: var(--md-sys-color-on-secondary-container);
     --color-selected: var(--md-sys-color-on-secondary);
     --color-unselected: var(--md-sys-color-on-secondary-container);
+}
+
+.outlined {
+    /* outline */
+    --outline-color-normal: var(--md-sys-color-outline-variant);
+    --outline-color-unselected: var(--md-sys-color-outline-variant);
+
+    /* background */
+    --background-color-selected: var(--md-sys-color-inverse-surface);
+
+    /* text and icon */
+    --color-normal: var(--md-sys-color-on-surface-variant);
+    --color-selected: var(--md-sys-color-inverse-on-surface);
+    --color-unselected: var(--md-sys-color-on-surface-variant);
 }
