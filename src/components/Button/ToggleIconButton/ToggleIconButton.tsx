@@ -12,19 +12,13 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     icon,
     ...props
 }) => {
-    const comp = (
-        <AriaToggleButton {...props}>
-            <Icon icon={icon} />
-        </AriaToggleButton>
-    );
+    return (
+        <TooltipTrigger isDisabled={!tooltip}>
+            <AriaToggleButton {...props}>
+                <Icon icon={icon} />
+            </AriaToggleButton>
 
-    if (tooltip) {
-        return (
-            <TooltipTrigger>
-                {comp}
-                <Tooltip>{tooltip}</Tooltip>
-            </TooltipTrigger>
-        );
-    }
-    return comp;
+            {tooltip && <Tooltip>{tooltip}</Tooltip>}
+        </TooltipTrigger>
+    );
 };

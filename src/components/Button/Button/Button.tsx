@@ -10,15 +10,11 @@ export const Button: React.FC<ButtonProps> = ({
     icon,
     ...props
 }) => {
-    const comp = <AriaButton {...props} />;
+    return (
+        <TooltipTrigger>
+            <AriaButton {...props} />
 
-    if (tooltip) {
-        return (
-            <TooltipTrigger>
-                {comp}
-                <Tooltip>{tooltip}</Tooltip>
-            </TooltipTrigger>
-        );
-    }
-    return comp;
+            {tooltip && <Tooltip>{tooltip}</Tooltip>}
+        </TooltipTrigger>
+    );
 };

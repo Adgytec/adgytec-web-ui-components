@@ -12,19 +12,13 @@ export const IconButton: React.FC<IconButtonProps> = ({
     icon,
     ...props
 }) => {
-    const comp = (
-        <AriaButton {...props}>
-            <Icon icon={icon} />
-        </AriaButton>
-    );
+    return (
+        <TooltipTrigger>
+            <AriaButton {...props}>
+                <Icon icon={icon} />
+            </AriaButton>
 
-    if (tooltip) {
-        return (
-            <TooltipTrigger>
-                {comp}
-                <Tooltip>{tooltip}</Tooltip>
-            </TooltipTrigger>
-        );
-    }
-    return comp;
+            {tooltip && <Tooltip>{tooltip}</Tooltip>}
+        </TooltipTrigger>
+    );
 };
