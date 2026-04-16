@@ -2,16 +2,17 @@
     --padding-block: calc(6 * var(--dp, 1px));
     --padding-inline: var(--md-sys-layout-space-12);
 
-    --icon-label-gap: var(--md-sys-layout-space-8);
+    --icon-label-gap: var(--md-sys-layout-space-4);
     --outline-width: var(--md-sys-shape-border-width-thin);
 
     --shape: var(--md-sys-shape-corner-radius-full);
-    --pressed-shape: var(--md-sys-shape-corner-radius-small);
-    --selected-shape: var(--md-sys-shape-corner-radius-medium);
+    --shape-selected: var(--md-sys-shape-corner-radius-medium);
+
+    --shape-pressed: var(--md-sys-shape-corner-radius-small);
 
     &[data-shape="square"] {
         --shape: var(--md-sys-shape-corner-radius-medium);
-        --selected-shape: var(--md-sys-shape-corner-radius-full);
+        --shape-selected: var(--md-sys-shape-corner-radius-full);
     }
 
     /* icon button width */
@@ -36,12 +37,13 @@
     --outline-width: var(--md-sys-shape-border-width-thin);
 
     --shape: var(--md-sys-shape-corner-radius-full);
-    --pressed-shape: var(--md-sys-shape-corner-radius-small);
-    --selected-shape: var(--md-sys-shape-corner-radius-medium);
+    --shape-selected: var(--md-sys-shape-corner-radius-medium);
+
+    --shape-pressed: var(--md-sys-shape-corner-radius-small);
 
     &[data-shape="square"] {
         --shape: var(--md-sys-shape-corner-radius-medium);
-        --selected-shape: var(--md-sys-shape-corner-radius-full);
+        --shape-selected: var(--md-sys-shape-corner-radius-full);
     }
 
     /* icon button width */
@@ -66,12 +68,13 @@
     --outline-width: var(--md-sys-shape-border-width-thin);
 
     --shape: var(--md-sys-shape-corner-radius-full);
-    --pressed-shape: var(--md-sys-shape-corner-radius-medium);
-    --selected-shape: var(--md-sys-shape-corner-radius-large);
+    --shape-selected: var(--md-sys-shape-corner-radius-large);
+
+    --shape-pressed: var(--md-sys-shape-corner-radius-medium);
 
     &[data-shape="square"] {
         --shape: var(--md-sys-shape-corner-radius-large);
-        --selected-shape: var(--md-sys-shape-corner-radius-full);
+        --shape-selected: var(--md-sys-shape-corner-radius-full);
     }
 
     /* icon button width */
@@ -85,5 +88,67 @@
 
     &[data-width="wide"] {
         --padding-inline: var(--md-sys-layout-space-24);
+    }
+}
+
+.large {
+    --padding-block: var(--md-sys-layout-space-32);
+    --padding-inline: var(--md-sys-layout-space-48);
+
+    --icon-label-gap: var(--md-sys-layout-space-12);
+    --outline-width: var(--md-sys-shape-border-width-thick);
+
+    --shape: var(--md-sys-shape-corner-radius-full);
+    --shape-selected: var(--md-sys-shape-corner-radius-extra-large);
+
+    --shape-pressed: var(--md-sys-shape-corner-radius-large);
+
+    &[data-shape="square"] {
+        --shape: var(--md-sys-shape-corner-radius-extra-large);
+        --shape-selected: var(--md-sys-shape-corner-radius-full);
+    }
+
+    /* icon button width */
+    &[data-width="narrow"] {
+        --padding-inline: var(--md-sys-layout-space-16);
+    }
+
+    &[data-width="default"] {
+        --padding-inline: var(--md-sys-layout-space-32);
+    }
+
+    &[data-width="wide"] {
+        --padding-inline: var(--md-sys-layout-space-48);
+    }
+}
+
+.extra-large {
+    --padding-block: var(--md-sys-layout-space-48);
+    --padding-inline: var(--md-sys-layout-space-64);
+
+    --icon-label-gap: var(--md-sys-layout-space-16);
+    --outline-width: calc(3 * var(--dp, 1px));
+
+    --shape: var(--md-sys-shape-corner-radius-full);
+    --shape-selected: var(--md-sys-shape-corner-radius-extra-large);
+
+    --shape-pressed: var(--md-sys-shape-corner-radius-large);
+
+    &[data-shape="square"] {
+        --shape: var(--md-sys-shape-corner-radius-extra-large);
+        --shape-selected: var(--md-sys-shape-corner-radius-full);
+    }
+
+    /* icon button width */
+    &[data-width="narrow"] {
+        --padding-inline: var(--md-sys-layout-space-32);
+    }
+
+    &[data-width="default"] {
+        --padding-inline: var(--md-sys-layout-space-48);
+    }
+
+    &[data-width="wide"] {
+        --padding-inline: var(--md-sys-layout-space-72);
     }
 }
