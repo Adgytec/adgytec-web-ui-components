@@ -1,0 +1,66 @@
+.filled {
+    /* background */
+    --background-color-normal: var(--md-sys-color-primary);
+    --background-color-selected: var(--md-sys-color-primary);
+    --background-color-unselected: var(--md-sys-color-surface-container);
+
+    /* text and icon */
+    --color-normal: var(--md-sys-color-on-primary);
+    --color-selected: var(--md-sys-color-on-primary);
+    --color-unselected: var(--md-sys-color-on-surface-variant);
+
+    /* state layer */
+    --state-layer-normal: var(--md-sys-color-on-primary);
+    --state-layer-selected: var(--md-sys-color-on-primary);
+    --state-layer-unselected: var(--md-sys-color-on-surface-variant);
+
+    --state-color: var(--state-layer-normal);
+    --state-layer-opacity: 0;
+
+    --state-layer-color: rgb(
+        from var(--state-color) r g b /
+        var(--state-layer-opacity)
+    );
+
+    /* variable to use */
+    --background-color: var(--background-color-normal);
+    --color: var(--color-normal);
+
+    &[data-toggle-button] {
+        --background-color: var(--background-color-unselected);
+        --color: var(--color-unselected);
+
+        --state-color: var(--state-layer-unselected);
+
+        &[data-selected] {
+            --background-color: var(--background-color-selected);
+            --color: var(--color-selected);
+
+            --state-color: var(--state-layer-selected);
+        }
+    }
+
+    &[data-hovered] {
+        --state-layer-opacity: var(--md-sys-state-hover);
+    }
+
+    &[data-focused],
+    &[data-focus-visible] {
+        --state-layer-opacity: var(--md-sys-state-focus);
+    }
+
+    &[data-pressed] {
+        --state-layer-opacity: var(--md-sys-state-pressed);
+    }
+
+    &[data-disabled] {
+        --background-color: rgb(
+            from var(--md-sys-color-on-surface) r g b /
+            var(--md-sys-state-disabled-container)
+        );
+        --color: rgb(
+            from var(--md-sys-color-on-surface) r g b /
+            var(--md-sys-state-disabled-content)
+        );
+    }
+}
