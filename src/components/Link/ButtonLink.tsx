@@ -16,7 +16,7 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
     className,
     ...props
 }) => {
-    const { coords, handlePress } = useSplash(onPress);
+    const { splashInfo: coords, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
 
     const { variant = "filled", shape = "default" } = visual;

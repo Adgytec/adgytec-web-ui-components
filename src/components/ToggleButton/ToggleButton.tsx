@@ -16,7 +16,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
     onPress,
     ...props
 }) => {
-    const { coords, handlePress } = useSplash(onPress);
+    const { splashInfo: coords, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
 
     return (
