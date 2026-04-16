@@ -9,6 +9,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     color = "filled",
     width = "default",
     tooltip,
+    selectedIcon,
     icon,
     ...props
 }) => {
