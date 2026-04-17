@@ -51,6 +51,8 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                     "data-pressed": isPressed || undefined,
                     "data-selected": isSelected || undefined,
                     "data-toggle-button": true,
+                    "data-shape": shape,
+                    "data-width": width,
                 };
 
                 let iconToRender = icon;

@@ -49,6 +49,8 @@ export const IconButton: React.FC<IconButtonProps> = ({
                     "data-focused": isFocused || undefined,
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
+                    "data-shape": shape,
+                    "data-width": width,
                 };
 
                 const iconSize = IconButtonIconSizeMapping[size];
