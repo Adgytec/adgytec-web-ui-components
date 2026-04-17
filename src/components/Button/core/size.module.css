@@ -25,7 +25,7 @@
     --padding-block: calc(6 * var(--dp, 1px));
     --padding-inline: var(--md-sys-layout-space-12);
 
-    --icon-label-gap: var(--md-sys-layout-space-8);
+    --icon-label-gap: var(--md-sys-layout-space-4);
     --outline-width: var(--md-sys-shape-border-width-thin);
 
     --shape-normal: var(--md-sys-shape-corner-radius-full);
