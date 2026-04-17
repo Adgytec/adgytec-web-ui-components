@@ -5,7 +5,7 @@ export const withTooltip = (element: ReactElement, tooltip?: string) => {
     if (!tooltip) return element;
 
     return (
-        <TooltipTrigger isDisabled={!tooltip}>
+        <TooltipTrigger>
             {element}
 
             <Tooltip>{tooltip}</Tooltip>
