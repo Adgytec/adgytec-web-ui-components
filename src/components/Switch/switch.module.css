@@ -124,7 +124,6 @@
     }
 
     &[data-focus-visible],
-    &[data-focused],
     &[data-hovered],
     &[data-pressed] {
         --handle-color: var(--handle-unselected-base-color);
@@ -245,7 +244,6 @@
         --_state-opacity: var(--md-sys-state-hover);
     }
 
-    &[data-focused],
     &[data-focus-visible] {
         --_state-opacity: var(--md-sys-state-focus);
     }

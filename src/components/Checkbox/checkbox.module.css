@@ -101,7 +101,6 @@
     }
 
     &[data-focus-visible],
-    &[data-focused],
     &[data-hovered],
     &[data-pressed] {
         &:not([data-invalid]) {
@@ -119,7 +118,6 @@
         --_state-opacity: var(--md-sys-state-hover);
     }
 
-    &[data-focused],
     &[data-focus-visible] {
         --_state-opacity: var(--md-sys-state-focus);
     }
