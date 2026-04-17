@@ -42,7 +42,6 @@
         --state-layer-opacity: var(--md-sys-state-hover);
     }
 
-    &[data-focused],
     &[data-focus-visible] {
         --state-layer-opacity: var(--md-sys-state-focus);
     }

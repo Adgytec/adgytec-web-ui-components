@@ -77,7 +77,6 @@
         --_state-opacity: var(--md-sys-state-hover);
     }
 
-    &[data-focused],
     &[data-focus-visible] {
         --_state-opacity: var(--md-sys-state-focus);
     }
@@ -96,7 +95,6 @@
     }
 
     &[data-focus-visible],
-    &[data-focused],
     &[data-hovered],
     &[data-pressed] {
         --color: var(--unselected-color);
