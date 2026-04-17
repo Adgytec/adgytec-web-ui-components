@@ -1,7 +1,6 @@
 import { clsx } from "clsx";
 import { Link } from "react-aria-components";
 import { Icon } from "@/components/Icon";
-import { Loader } from "@/components/Loader";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
 import { Target } from "@/components/Target";
@@ -32,7 +31,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
     const isChildFunc = typeof children === "function";
 
     return withTooltip(
-        <Link onPress={handlePress} {...props}>
+        <Link onPress={handlePress} className={clsx(ButtonReset)} {...props}>
             {(renderProps) => {
                 const {
                     isDisabled,
