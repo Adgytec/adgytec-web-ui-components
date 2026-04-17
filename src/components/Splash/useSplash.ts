@@ -20,5 +20,5 @@ export const useSplash = (onPress?: (e: PressEvent) => void) => {
         setSplashInfo(null);
     };
 
-    return { coords: splashInfo, handlePress };
+    return { splashInfo, handlePress };
 };
