@@ -76,11 +76,6 @@
     }
 
     /* icon button width */
-    /* icon size is 24 for icon only buttons */
-    &[data-icon] {
-        --padding-block: calc(8 * var(--dp, 1px));
-    }
-
     &[data-width="narrow"] {
         --padding-inline: var(--md-sys-layout-space-4);
     }
@@ -91,6 +86,11 @@
 
     &[data-width="wide"] {
         --padding-inline: calc(14 * var(--dp, 1px));
+    }
+
+    /* icon button height adjustment: icon size is 24 for icon only buttons */
+    &[data-icon-button] {
+        --padding-block: calc(8 * var(--dp, 1px));
     }
 }
 

@@ -51,7 +51,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
                     "data-pressed": isPressed || undefined,
                     "data-shape": shape,
                     "data-width": width,
-                    "data-icon": true,
+                    "data-icon-button": true,
                 };
 
                 const iconSize = IconButtonIconSizeMapping[size];
