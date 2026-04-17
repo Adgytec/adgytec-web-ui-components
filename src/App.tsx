@@ -1,27 +1,25 @@
-import { FileBraces } from "lucide-react";
-import type { ReactNode } from "react";
-import { ToggleButtonGroup } from "./components/ToggleButtonGroup";
+import { FileBraces, Mouse, MouseOff } from "lucide-react";
+import { Fragment, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
-import type { ColorTheme } from "./utils/hierarchy";
 import "./styles/app.css";
 import {
     Button,
+    IconButton,
+    ToggleButton,
+    ToggleIconButton,
     type ButtonColor,
     type ButtonShape,
     type ButtonSize,
     type IconButtonColor,
     type IconButtonWidth,
+    type ToggleButtonColor,
 } from "./components/Button";
-import type { SolidCardBackground } from "./components/Card/BaseCard";
-import { GradientCard } from "./components/Card/GradientCard";
-import { SolidCard } from "./components/Card/SolidCard";
 import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import { Icon } from "./components/Icon";
 import { Input } from "./components/Input";
 import { Radio, RadioGroup } from "./components/Radio";
 import { Switch } from "./components/Switch";
 import { TextArea } from "./components/TextArea";
-import { ToggleButton } from "./components/ToggleButton";
 import { Viewport } from "./components/Viewport";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
@@ -194,144 +192,12 @@ const CheckboxPreview = () => {
     );
 };
 
-const ToggleButtonPreview = () => {
-    const buttonTheme: ColorTheme[] = [
-        "primary",
-        "primary-variant",
-        "secondary",
-        "tertiary",
-        "error",
-        "inverse-surface",
-        "success",
-    ];
-
-    return (
-        <PreviewContainer label="Toggle Button Group">
-            {buttonTheme.map((theme) => {
-                const children = (
-                    <>
-                        <ToggleButton theme={theme} id="light">
-                            Light
-                        </ToggleButton>
-
-                        <ToggleButton theme={theme} id="dark">
-                            Dark
-                        </ToggleButton>
-
-                        <ToggleButton theme={theme} id="system">
-                            System
-                        </ToggleButton>
-                    </>
-                );
-
-                return (
-                    <div className="item-container" key={theme}>
-                        <ToggleButtonGroup
-                            selectionMode="single"
-                            disallowEmptySelection
-                            orientation="horizontal"
-                        >
-                            {children}
-                        </ToggleButtonGroup>
-
-                        <ToggleButtonGroup
-                            selectionMode="single"
-                            disallowEmptySelection
-                            orientation="horizontal"
-                            isDisabled
-                        >
-                            {children}
-                        </ToggleButtonGroup>
-
-                        <ToggleButtonGroup
-                            selectionMode="single"
-                            disallowEmptySelection
-                            orientation="vertical"
-                        >
-                            {children}
-                        </ToggleButtonGroup>
-
-                        <ToggleButtonGroup
-                            selectionMode="single"
-                            disallowEmptySelection
-                            orientation="vertical"
-                            isDisabled
-                        >
-                            {children}
-                        </ToggleButtonGroup>
-                    </div>
-                );
-            })}
-        </PreviewContainer>
-    );
-};
-
-const CardPreview = () => {
-    const backgrounds: SolidCardBackground[] = [
-        "solid",
-        "solid-high",
-        "solid-highest",
-        "solid-low",
-        "solid-lowest",
-    ];
-
-    const imgsrc =
-        "https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-
-    const cardChild = (
-        <>
-            <img
-                src={imgsrc}
-                style={{
-                    borderRadius: "inherit",
-                }}
-                alt="sample"
-            />
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                sit amet egestas justo. Integer lobortis vulputate finibus.
-                Morbi eget feugiat odio. Sed lectus massa, malesuada at laoreet
-                non, porttitor non elit. Maecenas imperdiet varius nisi, non
-                gravida velit egestas quis. Fusce tincidunt ac nulla ac
-                condimentum. Integer auctor, libero vel maximus laoreet, nisl
-                erat rhoncus nunc, a facilisis risus libero a felis.{" "}
-            </p>
-        </>
-    );
-
-    return (
-        <PreviewContainer label="Card Preview">
-            <div className="item-container">
-                {backgrounds.map((background) => {
-                    return (
-                        <SolidCard
-                            key={`solid:${background}`}
-                            background={background}
-                        >
-                            {cardChild}
-                        </SolidCard>
-                    );
-                })}
-
-                <GradientCard>{cardChild}</GradientCard>
-            </div>
-        </PreviewContainer>
-    );
-};
-
 const VisualSettingsPreview = () => {
     return (
-        <>
-            <PreviewContainer label="Theme Switcher">
-                <ThemeSwitcher ui={false} />
-                <ThemeSwitcher />
-            </PreviewContainer>
-
-            {/* <PreviewContainer label="Component Shape Switcher"> */}
-            {/*     <ComponentShapeSwitcher ui={false} /> */}
-            {/*     <ComponentShapeSwitcher /> */}
-            {/* </PreviewContainer> */}
-        </>
+        <PreviewContainer label="Theme Switcher">
+            <ThemeSwitcher ui={false} />
+            <ThemeSwitcher />
+        </PreviewContainer>
     );
 };
 
@@ -440,9 +306,68 @@ const ButtonPreview = () => {
 
     return (
         <PreviewContainer label="Button">
-            <div>
-                <Button color="elevated">Click</Button>
-            </div>
+            {buttonColor.map((color) => (
+                <div className="button-color" key={`button-${color}`}>
+                    <h3 className={typography.headlineMediumEmphasized}>
+                        {color}
+                    </h3>
+
+                    {sizes.map((size) => (
+                        <div className="button-size" key={size}>
+                            <h4 className={typography.headlineSmall}>{size}</h4>
+
+                            {shapes.map((shape) => (
+                                <div className="buttons" key={shape}>
+                                    <Button
+                                        size={size}
+                                        shape={shape}
+                                        color={color}
+                                    >
+                                        click me
+                                    </Button>
+
+                                    <Button
+                                        size={size}
+                                        shape={shape}
+                                        color={color}
+                                        icon={Mouse}
+                                    >
+                                        click me
+                                    </Button>
+
+                                    <Button
+                                        size={size}
+                                        shape={shape}
+                                        color={color}
+                                        isPending
+                                    >
+                                        click me
+                                    </Button>
+
+                                    <Button
+                                        size={size}
+                                        shape={shape}
+                                        color={color}
+                                        isDisabled
+                                    >
+                                        click me
+                                    </Button>
+
+                                    {color !== "text" && (
+                                        <ToggleButton
+                                            size={size}
+                                            shape={shape}
+                                            color={color}
+                                        >
+                                            click me
+                                        </ToggleButton>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+            ))}
         </PreviewContainer>
     );
 };
@@ -467,22 +392,81 @@ const IconButtonPreview = () => {
 
     return (
         <PreviewContainer label="Icon Button">
-            <div>
-                <Button color="elevated">Click</Button>
-            </div>
+            {iconButtonColor.map((color) => (
+                <div key={`icon-button-${color}`} className="button-color">
+                    <h3 className={typography.headlineMedium}>{color}</h3>
+
+                    {sizes.map((size) => (
+                        <div className="button-size" key={size}>
+                            <h4 className={typography.headlineSmall}>{size}</h4>
+
+                            {iconButtonWidth.map((width) => (
+                                <Fragment key={width}>
+                                    <h5
+                                        className={
+                                            typography.titleMediumEmphasized
+                                        }
+                                    >
+                                        {width}
+                                    </h5>
+                                    {shapes.map((shape) => (
+                                        <div key={shape} className="buttons">
+                                            <IconButton
+                                                size={size}
+                                                shape={shape}
+                                                color={color}
+                                                icon={Mouse}
+                                                width={width}
+                                            />
+
+                                            <IconButton
+                                                size={size}
+                                                shape={shape}
+                                                color={color}
+                                                icon={Mouse}
+                                                width={width}
+                                                isPending
+                                            />
+
+                                            <IconButton
+                                                size={size}
+                                                shape={shape}
+                                                color={color}
+                                                icon={Mouse}
+                                                width={width}
+                                                isDisabled
+                                            />
+
+                                            <ToggleIconButton
+                                                size={size}
+                                                shape={shape}
+                                                color={color}
+                                                icon={Mouse}
+                                                width={width}
+                                                selectedIcon={MouseOff}
+                                            />
+                                        </div>
+                                    ))}
+                                </Fragment>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+            ))}
         </PreviewContainer>
     );
 };
 
 const App = () => {
     const previewElements = [
+        VisualSettingsPreview,
         ButtonPreview,
+        IconButtonPreview,
         TextfieldPreview,
         TooltipPreview,
         CheckboxPreview,
         RadioPreview,
         IconPreview,
-        VisualSettingsPreview,
         SwitchPreview,
     ];
 

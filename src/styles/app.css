@@ -40,3 +40,41 @@
         text-align: justify;
     }
 }
+
+.button-color {
+    display: grid;
+    gap: var(--md-sys-layout-space-20);
+    text-align: center;
+
+    padding: var(--md-sys-layout-space-16);
+    border-radius: var(--md-sys-shape-corner-radius-large);
+
+    background-color: var(--md-sys-color-surface-variant);
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.button-size {
+    display: grid;
+    gap: var(--md-sys-layout-space-16);
+    text-align: center;
+
+    padding-inline: var(--md-sys-layout-space-16);
+    padding-block: var(--md-sys-layout-space-24);
+    border-radius: inherit;
+
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+
+    h5 {
+        margin: 0;
+    }
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--md-sys-layout-space-16);
+
+    align-items: center;
+    justify-content: center;
+}
