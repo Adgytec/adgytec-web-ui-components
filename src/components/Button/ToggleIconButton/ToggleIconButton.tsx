@@ -53,6 +53,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                     "data-toggle-button": true,
                     "data-shape": shape,
                     "data-width": width,
+                    "data-icon": true,
                 };
 
                 let iconToRender = icon;
