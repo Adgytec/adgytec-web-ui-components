@@ -1,6 +1,10 @@
 .button-reset {
     all: unset;
     cursor: pointer;
+
+    &[data-disabled] {
+        cursor: default;
+    }
 }
 
 .button-core {
