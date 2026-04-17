@@ -4,15 +4,14 @@ import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
 import {
     Button,
-    IconButton,
-    ToggleButton,
-    ToggleIconButton,
     type ButtonColor,
     type ButtonShape,
     type ButtonSize,
+    IconButton,
     type IconButtonColor,
     type IconButtonWidth,
-    type ToggleButtonColor,
+    ToggleButton,
+    ToggleIconButton,
 } from "./components/Button";
 import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import { Icon } from "./components/Icon";
@@ -457,9 +456,18 @@ const IconButtonPreview = () => {
     );
 };
 
+const LinkPreview = () => {
+    return (
+        <PreviewContainer label="Link">
+            <div></div>
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        LinkPreview,
         ButtonPreview,
         IconButtonPreview,
         TextfieldPreview,
