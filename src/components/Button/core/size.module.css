@@ -22,6 +22,9 @@
 }
 
 .extra-small {
+    /* height for button is 32 */
+    --md-sys-shape-corner-radius-full: calc(16 * var(--dp, 1px));
+
     --padding-block: calc(6 * var(--dp, 1px));
     --padding-inline: var(--md-sys-layout-space-12);
 
@@ -53,6 +56,9 @@
 }
 
 .small {
+    /* height for button is 40 */
+    --md-sys-shape-corner-radius-full: calc(20 * var(--dp, 1px));
+
     --padding-block: calc(10 * var(--dp, 1px));
     --padding-inline: var(--md-sys-layout-space-16);
 
@@ -84,6 +90,9 @@
 }
 
 .medium {
+    /* height for button is 56 */
+    --md-sys-shape-corner-radius-full: calc(28 * var(--dp, 1px));
+
     --padding-block: var(--md-sys-layout-space-16);
     --padding-inline: var(--md-sys-layout-space-24);
 
@@ -115,6 +124,9 @@
 }
 
 .large {
+    /* height for button is 96 */
+    --md-sys-shape-corner-radius-full: calc(48 * var(--dp, 1px));
+
     --padding-block: var(--md-sys-layout-space-32);
     --padding-inline: var(--md-sys-layout-space-48);
 
@@ -146,6 +158,9 @@
 }
 
 .extra-large {
+    /* height for button is 136 */
+    --md-sys-shape-corner-radius-full: calc(68 * var(--dp, 1px));
+
     --padding-block: var(--md-sys-layout-space-48);
     --padding-inline: var(--md-sys-layout-space-64);
 

@@ -13,6 +13,8 @@
         var(--dp, 1px)
     );
     --md-sys-shape-corner-radius-extra-extra-large: calc(48 * var(--dp, 1px));
+
+    /* Use only for static layouts. Avoid in animated contexts (breaks border-radius transitions). */
     --md-sys-shape-corner-radius-full: calc(9999 * var(--dp, 1px));
 
     /* border width */
