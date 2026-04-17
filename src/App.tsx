@@ -4,7 +4,14 @@ import { ToggleButtonGroup } from "./components/ToggleButtonGroup";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import type { ColorTheme } from "./utils/hierarchy";
 import "./styles/app.css";
-import { Button } from "./components/Button";
+import {
+    Button,
+    type ButtonColor,
+    type ButtonShape,
+    type ButtonSize,
+    type IconButtonColor,
+    type IconButtonWidth,
+} from "./components/Button";
 import type { SolidCardBackground } from "./components/Card/BaseCard";
 import { GradientCard } from "./components/Card/GradientCard";
 import { SolidCard } from "./components/Card/SolidCard";
@@ -17,12 +24,15 @@ import { TextArea } from "./components/TextArea";
 import { ToggleButton } from "./components/ToggleButton";
 import { Viewport } from "./components/Viewport";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
+import { typography } from "./utils/typography";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
     return (
         <div className="preview-container">
-            <h2>{props.label}</h2>
+            <h2 className={typography.headlineLargeEmphasized}>
+                {props.label}
+            </h2>
             <div className="preview-container__items">{props.children}</div>
         </div>
     );
@@ -410,8 +420,63 @@ const TextfieldPreview = () => {
     );
 };
 
+const ButtonPreview = () => {
+    const sizes: ButtonSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+    const shapes: ButtonShape[] = ["round", "square"];
+
+    const buttonColor: ButtonColor[] = [
+        "filled",
+        "tonal",
+        "outlined",
+        "text",
+        "elevated",
+    ];
+
+    return (
+        <PreviewContainer label="Button">
+            <div>
+                <Button color="elevated">Click</Button>
+            </div>
+        </PreviewContainer>
+    );
+};
+
+const IconButtonPreview = () => {
+    const sizes: ButtonSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+    const shapes: ButtonShape[] = ["round", "square"];
+
+    const iconButtonWidth: IconButtonWidth[] = ["narrow", "default", "wide"];
+    const iconButtonColor: IconButtonColor[] = [
+        "filled",
+        "tonal",
+        "outlined",
+        "standard",
+    ];
+
+    return (
+        <PreviewContainer label="Icon Button">
+            <div>
+                <Button color="elevated">Click</Button>
+            </div>
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
+        ButtonPreview,
         TextfieldPreview,
         TooltipPreview,
         CheckboxPreview,
