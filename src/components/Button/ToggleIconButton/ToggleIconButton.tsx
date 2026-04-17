@@ -6,13 +6,12 @@ import { useSplash } from "@/components/Splash/useSplash";
 import { Target } from "@/components/Target";
 import {
     ButtonCore,
-    ButtonIconSizeMapping,
-    ButtonLabelTextMapping,
     ButtonReset,
     ButtonSizeBase,
     buttonColorBase,
     buttonColorConfig,
     buttonSizeConfig,
+    IconButtonIconSizeMapping,
     withTooltip,
 } from "../core";
 import type { ToggleIconButtonProps } from "./types";
@@ -57,7 +56,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                 let iconToRender = icon;
                 if (isSelected && selectedIcon) iconToRender = selectedIcon;
 
-                const iconSize = ButtonIconSizeMapping[size];
+                const iconSize = IconButtonIconSizeMapping[size];
                 return (
                     <Target {...dataAttrs}>
                         <div
@@ -66,8 +65,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                                 buttonColorBase,
                                 ButtonSizeBase,
                                 buttonColorConfig(color),
-                                buttonSizeConfig(size),
-                                ButtonLabelTextMapping[size]
+                                buttonSizeConfig(size)
                             )}
                             {...dataAttrs}
                         >

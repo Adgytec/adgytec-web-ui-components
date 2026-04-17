@@ -7,13 +7,12 @@ import { useSplash } from "@/components/Splash/useSplash";
 import { Target } from "@/components/Target";
 import {
     ButtonCore,
-    ButtonIconSizeMapping,
-    ButtonLabelTextMapping,
     ButtonReset,
     ButtonSizeBase,
     buttonColorBase,
     buttonColorConfig,
     buttonSizeConfig,
+    IconButtonIconSizeMapping,
     withTooltip,
 } from "../core";
 import type { IconButtonProps } from "./types";
@@ -52,7 +51,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
                     "data-pressed": isPressed || undefined,
                 };
 
-                const iconSize = ButtonIconSizeMapping[size];
+                const iconSize = IconButtonIconSizeMapping[size];
                 return (
                     <Target {...dataAttrs}>
                         <div
@@ -61,8 +60,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
                                 buttonColorBase,
                                 ButtonSizeBase,
                                 buttonColorConfig(color),
-                                buttonSizeConfig(size),
-                                ButtonLabelTextMapping[size]
+                                buttonSizeConfig(size)
                             )}
                             {...dataAttrs}
                         >
