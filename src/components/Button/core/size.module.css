@@ -1,3 +1,26 @@
+.size {
+    /* shape */
+    --shape: var(--shape-normal);
+
+    /* styles */
+    padding-inline: var(--padding-inline);
+    padding-block: var(--padding-block);
+    border-radius: var(--shape);
+
+    display: inline-flex;
+    gap: var(--icon-label-gap);
+    align-items: center;
+    justify-content: center;
+
+    &[data-selected] {
+        --shape: var(--shape-selected);
+    }
+
+    &[data-pressed] {
+        --shape: var(--shape-pressed);
+    }
+}
+
 .extra-small {
     --padding-block: calc(6 * var(--dp, 1px));
     --padding-inline: var(--md-sys-layout-space-12);
@@ -5,13 +28,13 @@
     --icon-label-gap: var(--md-sys-layout-space-8);
     --outline-width: var(--md-sys-shape-border-width-thin);
 
-    --shape: var(--md-sys-shape-corner-radius-full);
+    --shape-normal: var(--md-sys-shape-corner-radius-full);
     --shape-selected: var(--md-sys-shape-corner-radius-medium);
 
     --shape-pressed: var(--md-sys-shape-corner-radius-small);
 
     &[data-shape="square"] {
-        --shape: var(--md-sys-shape-corner-radius-medium);
+        --shape-normal: var(--md-sys-shape-corner-radius-medium);
         --shape-selected: var(--md-sys-shape-corner-radius-full);
     }
 
@@ -36,13 +59,13 @@
     --icon-label-gap: var(--md-sys-layout-space-8);
     --outline-width: var(--md-sys-shape-border-width-thin);
 
-    --shape: var(--md-sys-shape-corner-radius-full);
+    --shape-normal: var(--md-sys-shape-corner-radius-full);
     --shape-selected: var(--md-sys-shape-corner-radius-medium);
 
     --shape-pressed: var(--md-sys-shape-corner-radius-small);
 
     &[data-shape="square"] {
-        --shape: var(--md-sys-shape-corner-radius-medium);
+        --shape-normal: var(--md-sys-shape-corner-radius-medium);
         --shape-selected: var(--md-sys-shape-corner-radius-full);
     }
 
@@ -67,13 +90,13 @@
     --icon-label-gap: var(--md-sys-layout-space-8);
     --outline-width: var(--md-sys-shape-border-width-thin);
 
-    --shape: var(--md-sys-shape-corner-radius-full);
+    --shape-normal: var(--md-sys-shape-corner-radius-full);
     --shape-selected: var(--md-sys-shape-corner-radius-large);
 
     --shape-pressed: var(--md-sys-shape-corner-radius-medium);
 
     &[data-shape="square"] {
-        --shape: var(--md-sys-shape-corner-radius-large);
+        --shape-normal: var(--md-sys-shape-corner-radius-large);
         --shape-selected: var(--md-sys-shape-corner-radius-full);
     }
 
@@ -98,13 +121,13 @@
     --icon-label-gap: var(--md-sys-layout-space-12);
     --outline-width: var(--md-sys-shape-border-width-thick);
 
-    --shape: var(--md-sys-shape-corner-radius-full);
+    --shape-normal: var(--md-sys-shape-corner-radius-full);
     --shape-selected: var(--md-sys-shape-corner-radius-extra-large);
 
     --shape-pressed: var(--md-sys-shape-corner-radius-large);
 
     &[data-shape="square"] {
-        --shape: var(--md-sys-shape-corner-radius-extra-large);
+        --shape-normal: var(--md-sys-shape-corner-radius-extra-large);
         --shape-selected: var(--md-sys-shape-corner-radius-full);
     }
 
@@ -129,13 +152,13 @@
     --icon-label-gap: var(--md-sys-layout-space-16);
     --outline-width: calc(3 * var(--dp, 1px));
 
-    --shape: var(--md-sys-shape-corner-radius-full);
+    --shape-normal: var(--md-sys-shape-corner-radius-full);
     --shape-selected: var(--md-sys-shape-corner-radius-extra-large);
 
     --shape-pressed: var(--md-sys-shape-corner-radius-large);
 
     &[data-shape="square"] {
-        --shape: var(--md-sys-shape-corner-radius-extra-large);
+        --shape-normal: var(--md-sys-shape-corner-radius-extra-large);
         --shape-selected: var(--md-sys-shape-corner-radius-full);
     }
 

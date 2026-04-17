@@ -35,3 +35,5 @@ export const ButtonLabelTextMapping: Record<ButtonSize, string> = {
 export const buttonSizeConfig = (size: ButtonSize) => {
     return styles[size];
 };
+
+export const ButtonSizeBase = styles["size"];
