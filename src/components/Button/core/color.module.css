@@ -1,4 +1,4 @@
-.base {
+.color {
     --outline-color: var(--outline-color-normal, transparent);
 
     /* state layer */
@@ -18,20 +18,24 @@
     --background-color: var(--background-color-normal, transparent);
     --color: var(--color-normal, transparent);
 
+    /* styles */
+    background-color: var(--background-color);
+    color: var(--color);
+
     &[data-toggle-button] {
         --background-color: var(--background-color-unselected, transparent);
         --color: var(--color-unselected, transparent);
         --outline-color: var(--outline-color-unselected, transparent);
 
         --state-color: var(--state-layer-unselected);
+    }
 
-        &[data-selected] {
-            --background-color: var(--background-color-selected, transparent);
-            --color: var(--color-selected, transparent);
-            --outline-color: var(--outline-color-selected, transparent);
+    &[data-selected] {
+        --background-color: var(--background-color-selected, transparent);
+        --color: var(--color-selected, transparent);
+        --outline-color: var(--outline-color-selected, transparent);
 
-            --state-color: var(--state-layer-selected);
-        }
+        --state-color: var(--state-layer-selected);
     }
 
     &[data-hovered] {
@@ -57,6 +61,20 @@
             var(--md-sys-state-disabled-content)
         );
     }
+}
+
+/* state layer */
+.color::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+
+    background-color: var(--state-layer-color);
+
+    transition: background-color var(--md-sys-motion-standard-fast-spatial)
+        var(--md-sys-motion-standard-fast-spatial-duration);
 }
 
 .filled {
@@ -95,6 +113,11 @@
     --color-normal: var(--md-sys-color-on-surface-variant);
     --color-selected: var(--md-sys-color-inverse-on-surface);
     --color-unselected: var(--md-sys-color-on-surface-variant);
+
+    /* styles limited to outlined color */
+    border-width: var(--outline-width);
+    border-style: solid;
+    border-color: var(--outline-color);
 }
 
 /* no toggle button states are there */
@@ -115,9 +138,6 @@
 }
 
 .elevated {
-    /* box shadow */
-    box-shadow: var(--md-sys-elevation-shadow-1);
-
     /* background */
     --background-color-normal: var(--md-sys-color-surface-container-low);
     --background-color-selected: var(--md-sys-color-primary);
@@ -127,6 +147,9 @@
     --color-normal: var(--md-sys-color-primary);
     --color-selected: var(--md-sys-color-on-primary);
     --color-unselected: var(--md-sys-color-primary);
+
+    /* styles limited to elevated color */
+    box-shadow: var(--md-sys-elevation-shadow-1);
 
     &[data-disabled] {
         box-shadow: none;

@@ -12,4 +12,4 @@ export const buttonColorConfig = (color: ButtonColor | IconButtonColor) => {
     return styles[color];
 };
 
-export const buttonColorBase = styles["base"];
+export const buttonColorBase = styles["color"];
