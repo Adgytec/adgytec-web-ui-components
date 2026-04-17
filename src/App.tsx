@@ -1,18 +1,19 @@
-import { FileBraces, Mouse, MouseOff } from "lucide-react";
+import { ExternalLinkIcon, FileBraces, Mouse, MouseOff } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
 import {
     Button,
-    IconButton,
-    ToggleButton,
-    ToggleIconButton,
     type ButtonColor,
     type ButtonShape,
     type ButtonSize,
+    IconButton,
     type IconButtonColor,
     type IconButtonWidth,
-    type ToggleButtonColor,
+    LinkButton,
+    LinkIconButton,
+    ToggleButton,
+    ToggleIconButton,
 } from "./components/Button";
 import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import { Icon } from "./components/Icon";
@@ -457,9 +458,33 @@ const IconButtonPreview = () => {
     );
 };
 
+const LinkPreview = () => {
+    return (
+        <PreviewContainer label="Link">
+            <div className="links">
+                <LinkButton
+                    href="https://m3.material.io"
+                    target="_blank"
+                    color="elevated"
+                >
+                    Material 3
+                </LinkButton>
+
+                <LinkIconButton
+                    href="https://m3.material.io"
+                    target="_blank"
+                    icon={ExternalLinkIcon}
+                    color="standard"
+                />
+            </div>
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        LinkPreview,
         ButtonPreview,
         IconButtonPreview,
         TextfieldPreview,
