@@ -19,9 +19,11 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                         {leadingIcon && <Icon icon={leadingIcon} />}
 
                         <div>
-                            <p>{label}</p>
+                            <p slot="label">{label}</p>
 
-                            {supportingText && <p>{supportingText}</p>}
+                            {supportingText && (
+                                <p slot="description">{supportingText}</p>
+                            )}
                         </div>
 
                         {badge && { badge }}
