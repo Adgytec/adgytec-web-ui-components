@@ -1,3 +1,4 @@
+export * from "./core";
 export * from "./Menu";
 export * from "./MenuBadge";
 export * from "./MenuItem";
