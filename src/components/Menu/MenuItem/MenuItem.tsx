@@ -2,6 +2,8 @@ import { ChevronRight } from "lucide-react";
 import { MenuItem as AriaMenuItem } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import type { MenuItemProps } from "./types";
+import clsx from "clsx";
+import { typography } from "@/utils/typography";
 
 export const MenuItem: React.FC<MenuItemProps> = ({
     leadingIcon,
@@ -19,10 +21,20 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                         {leadingIcon && <Icon icon={leadingIcon} />}
 
                         <div>
-                            <p slot="label">{label}</p>
+                            <p
+                                slot="label"
+                                className={clsx(typography.labelLarge)}
+                            >
+                                {label}
+                            </p>
 
                             {supportingText && (
-                                <p slot="description">{supportingText}</p>
+                                <p
+                                    slot="description"
+                                    className={clsx(typography.bodySmall)}
+                                >
+                                    {supportingText}
+                                </p>
                             )}
                         </div>
 
