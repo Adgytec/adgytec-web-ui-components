@@ -1,0 +1,10 @@
+.shape {
+    --menu-container-shape: var(--md-sys-shape-corner-radius-large);
+    --menu-container-shape-disabled: var(--md-sys-shape-corner-radius-small);
+
+    --menu-section-shape: var(--md-sys-shape-corner-radius-small);
+
+    --menu-item-shape: var(--md-sys-shape-corner-radius-extra-small);
+    --menu-item-outer-shape: var(--md-sys-shape-corner-radius-medium);
+    --menu-item-selected-shape: var(--md-sys-shape-corner-radius-medium);
+}
