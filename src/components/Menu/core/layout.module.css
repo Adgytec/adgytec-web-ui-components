@@ -1,0 +1,6 @@
+.layout {
+    --menu-container-elevation: var(--md-sys-elevation-shadow-3);
+
+    --menu-section-gap: calc(2 * var(--dp, 1px));
+    --menu-section-padding: calc(2 * var(--dp, 1px));
+}
