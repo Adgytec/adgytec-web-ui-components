@@ -1,20 +1,16 @@
-import React from "react";
-import {
-    MenuTrigger as AriaMenuTrigger,
-    type MenuTriggerProps,
-} from "react-aria-components";
+import { MenuTrigger as AriaMenuTrigger } from "react-aria-components";
 import { Popover } from "@/components/Popover";
+import type { MenuTriggerProps } from "./types";
 
 export const MenuTrigger: React.FC<MenuTriggerProps> = ({
+    triggerElement,
     children,
     ...props
 }) => {
-    const [trigger, menu] = React.Children.toArray(children);
-
     return (
         <AriaMenuTrigger {...props}>
-            {trigger}
-            <Popover>{menu}</Popover>
+            {triggerElement}
+            <Popover>{children}</Popover>
         </AriaMenuTrigger>
     );
 };
