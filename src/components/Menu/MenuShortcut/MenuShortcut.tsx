@@ -1,5 +1,5 @@
-import { typography } from "@/utils/typography";
 import clsx from "clsx";
+import { typography } from "@/utils/typography";
 
 export const MenuShortcut: React.FC<React.ComponentPropsWithoutRef<"kbd">> = ({
     className,

@@ -1,9 +1,9 @@
+import clsx from "clsx";
 import { ChevronRight } from "lucide-react";
 import { MenuItem as AriaMenuItem } from "react-aria-components";
 import { Icon } from "@/components/Icon";
-import type { MenuItemProps } from "./types";
-import clsx from "clsx";
 import { typography } from "@/utils/typography";
+import type { MenuItemProps } from "./types";
 
 export const MenuItem: React.FC<MenuItemProps> = ({
     leadingIcon,

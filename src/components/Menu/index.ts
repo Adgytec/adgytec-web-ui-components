@@ -5,5 +5,5 @@ export * from "./MenuItem";
 export * from "./MenuSection";
 export * from "./MenuSectionLabel";
 export * from "./MenuShortcut";
-export * from "./MenuTrigger";
 export * from "./MenuTrailingText";
+export * from "./MenuTrigger";
