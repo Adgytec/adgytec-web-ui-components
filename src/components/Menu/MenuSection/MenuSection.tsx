@@ -1,8 +1,9 @@
-import { MenuSection as AriaMenuSection } from "react-aria-components";
-import type { MenuSectionProps } from "./types";
+import {
+    MenuSection as AriaMenuSection,
+    type MenuSectionProps,
+} from "react-aria-components";
 
 export const MenuSection = <T extends object>({
-    layout = "grouped",
     ...props
 }: MenuSectionProps<T>) => {
     return <AriaMenuSection {...props} />;
