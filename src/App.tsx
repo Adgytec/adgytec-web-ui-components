@@ -1,4 +1,10 @@
-import { ExternalLinkIcon, FileBraces, Mouse, MouseOff } from "lucide-react";
+import {
+    ExternalLinkIcon,
+    FileBraces,
+    Mouse,
+    MouseOff,
+    NotepadText,
+} from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
@@ -24,6 +30,15 @@ import { TextArea } from "./components/TextArea";
 import { Viewport } from "./components/Viewport";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
+import {
+    Menu,
+    MenuItem,
+    MenuSection,
+    MenuShortcut,
+    MenuTrigger,
+    SubmenuTrigger,
+} from "./components/Menu";
+import { Separator } from "./components/Separator";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -481,9 +496,69 @@ const LinkPreview = () => {
     );
 };
 
+const MenuPreview = () => {
+    return (
+        <PreviewContainer label="Menu (Layout + Color)">
+            <div className="menus">
+                <MenuTrigger
+                    triggerElement={
+                        <Button
+                            tooltip="Standard layout and standard color"
+                            color="tonal"
+                        >
+                            Standard-S
+                        </Button>
+                    }
+                >
+                    <Menu color="standard" layout="standard">
+                        <MenuItem leadingIcon={NotepadText}>First</MenuItem>
+
+                        <MenuItem supportingText="Second child">
+                            Second
+                        </MenuItem>
+
+                        <MenuItem
+                            trailingText={<MenuShortcut>Ctrl + R</MenuShortcut>}
+                        >
+                            Third
+                        </MenuItem>
+
+                        <Separator />
+
+                        <SubmenuTrigger>
+                            <MenuItem supportingText="has submenu">
+                                Sub menu
+                            </MenuItem>
+
+                            <Menu color="standard" layout="standard">
+                                <MenuItem leadingIcon={NotepadText}>
+                                    First
+                                </MenuItem>
+
+                                <MenuItem supportingText="Second child">
+                                    Second
+                                </MenuItem>
+
+                                <MenuItem
+                                    trailingText={
+                                        <MenuShortcut>Ctrl + R</MenuShortcut>
+                                    }
+                                >
+                                    Third
+                                </MenuItem>
+                            </Menu>
+                        </SubmenuTrigger>
+                    </Menu>
+                </MenuTrigger>
+            </div>
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        MenuPreview,
         LinkPreview,
         ButtonPreview,
         IconButtonPreview,

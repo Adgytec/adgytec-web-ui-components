@@ -71,7 +71,8 @@
 }
 
 .buttons,
-.links {
+.links,
+.menus {
     display: flex;
     flex-wrap: wrap;
     gap: var(--md-sys-layout-space-16);

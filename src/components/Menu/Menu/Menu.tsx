@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Menu as AriaMenu } from "react-aria-components";
-import { menuColorConfig } from "../core";
+import { MenuBaseLayout, menuColorConfig, menuLayoutConfig } from "../core";
 import type { MenuProps } from "./types";
 
 export const Menu = <T extends object>({
@@ -14,12 +14,15 @@ export const Menu = <T extends object>({
             className={(renderProps) =>
                 clsx(
                     menuColorConfig(color),
+                    MenuBaseLayout,
+                    menuLayoutConfig(layout),
                     typeof className === "function"
                         ? className(renderProps)
                         : className
                 )
             }
             {...props}
+            data-layout={layout}
         />
     );
 };

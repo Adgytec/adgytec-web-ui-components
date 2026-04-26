@@ -30,7 +30,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                 )
             }
             {...props}
-            data-supporting-text={supportingText ? true : undefined}
+            data-multi-line={supportingText ? true : undefined}
         >
             {({ hasSubmenu, isSelected }) => {
                 return (

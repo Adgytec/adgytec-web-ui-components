@@ -1,29 +1,54 @@
+/* core menu tokens */
 .layout {
-    /* menu container or menu section elevation based on layout */
-    --menu-container-elevation: var(--md-sys-elevation-shadow-3);
+    /* tokens used either by menu or menu section based on layout value */
+    --elevation: var(--md-sys-elevation-shadow-3);
+    --gap: calc(2 * var(--dp, 1px));
+    --padding: var(--md-sys-layout-space-4);
 
-    /* gap between menu section and menu items */
-    --menu-gap: calc(2 * var(--dp, 1px));
+    /* shape */
+    --shape: var(--md-sys-shape-corner-radius-large);
+    --section-shape: var(--md-sys-shape-corner-radius-small);
 
-    /* menu padding or menu section padding based on layout */
-    --menu-padding: var(--md-sys-layout-space-4);
+    /* menu item */
 
-    /* max height for menu item */
-    /* this value is not used its for refrence for other values to calc padding block values */
-    --menu-item-height: calc(44 * var(--dp, 1px));
+    --menu-item-shape: var(--md-sys-shape-corner-radius-extra-small);
+    --menu-item-outer-shape: var(--md-sys-shape-corner-radius-medium);
+    --menu-item-selected-shape: var(--md-sys-shape-corner-radius-medium);
 
-    /* when menu item doesn't have supporting text */
-    /* (height(44) - label line height(20) ) / 2 = 12 */
-    --menu-item-padding-block-normal: var(--md-sys-layout-space-12);
+    /* Vertical padding when item contains only a single-line label */
+    /* Centers 20px label within 44px container */
+    --menu-item-padding-block-single-line: var(--md-sys-layout-space-12);
 
-    /* when menu item has supporting text */
-    /* (height(44) - (label line height(20) + supporting text line height(16) + gap between label and text(2)) / 2 = 3 */
-    --menu-item-padding-block-supporting-text: calc(3 * var(--dp, 1px));
+    /* Vertical padding when item contains label + supporting text */
+    /* Reduced padding to fit two text lines (20px + 16px) with 2px gap inside 44px container */
+    --menu-item-padding-block-multi-line: calc(3 * var(--dp, 1px));
 
-    /* token value is 16 = menu padding(4) + menu item acutal padding inline(12) */
-    --menu-item-padding-inline: var(--md-sys-layout-space-12);
+    /* Horizontal padding inside each menu item (excluding outer menu padding) */
+    /* Total visual inset = menu container padding (4) + this value (12) */
+    --menu-item-padding-inline-content: var(--md-sys-layout-space-12);
 
-    /* gap between menu item comps */
-    --menu-item-gap: var(--md-sys-layout-space-8);
-    --menu-item-label-supporting-text-gap: calc(2 * var(--dp, 1px));
+    /* Spacing between elements inside a menu item (icon, text, trailing, etc.) */
+    --menu-item-content-gap: var(--md-sys-layout-space-8);
+}
+
+.standard {
+    --menu-elevation: var(--elevation);
+    --menu-padding: var(--padding);
+    --menu-shape: var(--shape);
+
+    --menu-section-elevation: none;
+    --menu-section-padding: 0;
+    --menu-section-shape: 0;
+    --menu-section-outer-shape: 0;
+}
+
+.grouped {
+    --menu-elevation: none;
+    --menu-padding: 0;
+    --menu-shape: 0;
+
+    --menu-section-elevation: var(--elevation);
+    --menu-section-padding: var(--padding);
+    --menu-section-outer-shape: var(--shape);
+    --menu-section-shape: var(--section-shape);
 }
