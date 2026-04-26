@@ -3,7 +3,11 @@ import { Check, ChevronRight } from "lucide-react";
 import { MenuItem as AriaMenuItem } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { typography } from "@/utils/typography";
-import { MenuItemIconSize } from "../core";
+import {
+    MenuItemIconSize,
+    menuItemBaseColor,
+    menuItemLabelColor,
+} from "../core";
 import type { MenuItemProps } from "./types";
 
 export const MenuItem: React.FC<MenuItemProps> = ({
@@ -12,10 +16,19 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     supportingText,
     trailingText,
     badge,
+    className,
     ...props
 }) => {
     return (
         <AriaMenuItem
+            className={(renderProps) =>
+                clsx(
+                    menuItemBaseColor,
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
             {...props}
             data-supporting-text={supportingText ? true : undefined}
         >
@@ -38,7 +51,10 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                             <div>
                                 <p
                                     slot="label"
-                                    className={clsx(typography.labelLarge)}
+                                    className={clsx(
+                                        typography.labelLarge,
+                                        menuItemLabelColor
+                                    )}
                                 >
                                     {label}
                                 </p>
