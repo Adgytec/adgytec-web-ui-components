@@ -4,7 +4,7 @@ import type { MenuItemProps as AriaMenuItemProps } from "react-aria-components";
 
 export interface MenuItemProps extends Omit<AriaMenuItemProps, "children"> {
     leadingIcon?: LucideIcon;
-    label: string;
+    children: string;
     supportingText?: string;
     trailingText?: ReactNode;
     badge?: ReactNode;
