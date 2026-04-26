@@ -86,13 +86,14 @@
     outline-color: var(--focus-indicator-color);
 }
 
+/* TODO: add this to menu item css */
 /* menu label */
 .label {
     color: var(--label-color);
 }
 
 .standard {
-    --menu-background: var(--md-sys-color-surface-container-low);
+    --background: var(--md-sys-color-surface-container-low);
     --menu-section-label-color: var(--md-sys-color-on-surface-variant);
 
     /* menu item */
@@ -111,7 +112,7 @@
 }
 
 .vibrant {
-    --menu-background: var(--md-sys-color-tertiary-container);
+    --background: var(--md-sys-color-tertiary-container);
     --menu-section-label-color: var(--md-sys-color-on-tertiary-container);
 
     /* menu item */

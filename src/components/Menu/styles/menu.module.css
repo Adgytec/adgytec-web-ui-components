@@ -1,0 +1,19 @@
+.menu {
+    background-color: var(--menu-background);
+    box-shadow: var(--menu-elevation);
+    border-radius: var(--menu-shape);
+    padding: var(--menu-padding);
+
+    display: grid;
+    gap: var(--gap);
+}
+
+.menu-section {
+    background-color: var(--menu-section-background);
+    box-shadow: var(--menu-section-elevation);
+    border-radius: var(--menu-section-shape);
+    padding: var(--menu-section-padding);
+
+    display: grid;
+    gap: var(--gap);
+}

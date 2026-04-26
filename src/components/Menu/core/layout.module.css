@@ -35,20 +35,24 @@
     --menu-elevation: var(--elevation);
     --menu-padding: var(--padding);
     --menu-shape: var(--shape);
+    --menu-background: var(--background);
 
     --menu-section-elevation: none;
     --menu-section-padding: 0;
     --menu-section-shape: 0;
     --menu-section-outer-shape: 0;
+    --menu-section-background: transparent;
 }
 
 .grouped {
     --menu-elevation: none;
     --menu-padding: 0;
     --menu-shape: 0;
+    --menu-background: transparent;
 
     --menu-section-elevation: var(--elevation);
     --menu-section-padding: var(--padding);
     --menu-section-outer-shape: var(--shape);
     --menu-section-shape: var(--section-shape);
+    --menu-section-background: var(--background);
 }

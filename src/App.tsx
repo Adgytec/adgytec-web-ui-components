@@ -24,12 +24,6 @@ import {
 import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import { Icon } from "./components/Icon";
 import { Input } from "./components/Input";
-import { Radio, RadioGroup } from "./components/Radio";
-import { Switch } from "./components/Switch";
-import { TextArea } from "./components/TextArea";
-import { Viewport } from "./components/Viewport";
-import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
-import { typography } from "./utils/typography";
 import {
     Menu,
     MenuItem,
@@ -38,7 +32,13 @@ import {
     MenuTrigger,
     SubmenuTrigger,
 } from "./components/Menu";
+import { Radio, RadioGroup } from "./components/Radio";
 import { Separator } from "./components/Separator";
+import { Switch } from "./components/Switch";
+import { TextArea } from "./components/TextArea";
+import { Viewport } from "./components/Viewport";
+import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
+import { typography } from "./utils/typography";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
