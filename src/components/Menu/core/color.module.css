@@ -1,0 +1,111 @@
+/* this is used by individual menu items */
+.color {
+    /* state layer */
+    --state-color: var(--label-color);
+    --state-layer-opacity: 0;
+
+    --state-layer-color: rgb(
+        from var(--state-color) r g b /
+        var(--state-layer-opacity)
+    );
+
+    /* variables to use */
+    --background-color: var(--menu-item-background-normal);
+    --color: var(--menu-item-color-normal);
+    --label-color: var(--menu-item-label-color-normal);
+
+    /* styles */
+    background-color: var(--background-color);
+    color: var(--color);
+
+    &[data-selected] {
+        --background-color: var(--menu-item-background-selected);
+        --color: var(--menu-item-color-selected);
+        --label-color: var(--menu-item-label-color-selected);
+    }
+
+    &[data-hovered] {
+        --state-layer-opacity: var(--md-sys-state-hover);
+    }
+
+    &[data-focus-visible] {
+        --state-layer-opacity: var(--md-sys-state-focus);
+    }
+
+    &[data-open] {
+        --state-layer-opacity: 0.08;
+    }
+
+    &[data-pressed] {
+        --state-layer-opacity: var(--md-sys-state-pressed);
+    }
+
+    &[data-disabled] {
+        --label-color: rgb(
+            from var(--menu-item-label-color-normal) r g b /
+            var(--md-sys-state-disabled-content)
+        );
+        --color: var(--label-color);
+
+        &[data-selected] {
+            --background-color: rgb(
+                from var(--menu-item-background-selected) r g b /
+                var(--md-sys-state-disabled-container)
+            );
+            --label-color: rgb(
+                from var(--menu-item-label-color-selected) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+        }
+    }
+}
+
+/* state layer */
+.color::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+
+    background-color: var(--state-layer-color);
+
+    transition: background-color var(--md-sys-motion-standard-fast-spatial)
+        var(--md-sys-motion-standard-fast-spatial-duration);
+}
+
+/* focus indicator */
+.color[data-focus-visible] {
+    --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+    --focus-indicator-offset: calc(2 * var(--dp, 1px));
+    --focus-indicator-color: var(--md-sys-color-secondary);
+
+    outline-width: var(--focus-indicator-thickness);
+    outline-style: solid;
+    outline-offset: var(--focus-indicator-offset);
+    outline-color: var(--focus-indicator-color);
+}
+
+/* menu label */
+.label {
+    color: var(--label-color);
+}
+
+.standard {
+    --menu-background: var(--md-sys-color-surface-container-low);
+    --menu-section-label-color: var(--md-sys-color-on-surface-variant);
+
+    /* menu item */
+
+    /* background */
+    --menu-item-background-normal: var(--md-sys-color-surface-container-low);
+    --menu-item-background-selected: var(--md-sys-color-tertiary-container);
+
+    /* color */
+    --menu-item-color-normal: var(--md-sys-color-on-surface-variant);
+    --menu-item-color-selected: var(--md-sys-color-on-tertiary-container);
+
+    /* label color */
+    --menu-item-label-color-normal: var(--md-sys-color-on-surface);
+    --menu-item-label-color-selected: var(--md-sys-color-on-tertiary-container);
+}

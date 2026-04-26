@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ChevronRight } from "lucide-react";
+import { Check, ChevronRight } from "lucide-react";
 import { MenuItem as AriaMenuItem } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { typography } from "@/utils/typography";
@@ -19,16 +19,20 @@ export const MenuItem: React.FC<MenuItemProps> = ({
             {...props}
             data-supporting-text={supportingText ? true : undefined}
         >
-            {({ hasSubmenu }) => {
+            {({ hasSubmenu, isSelected }) => {
                 return (
                     <>
                         {/* leading comps */}
                         <div>
-                            {leadingIcon && (
-                                <Icon
-                                    icon={leadingIcon}
-                                    size={MenuItemIconSize}
-                                />
+                            {isSelected ? (
+                                <Icon icon={Check} size={MenuItemIconSize} />
+                            ) : (
+                                leadingIcon && (
+                                    <Icon
+                                        icon={leadingIcon}
+                                        size={MenuItemIconSize}
+                                    />
+                                )
                             )}
 
                             <div>
