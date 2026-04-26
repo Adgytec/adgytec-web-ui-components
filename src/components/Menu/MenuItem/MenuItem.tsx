@@ -3,6 +3,7 @@ import { ChevronRight } from "lucide-react";
 import { MenuItem as AriaMenuItem } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { typography } from "@/utils/typography";
+import { MenuItemIconSize } from "../core";
 import type { MenuItemProps } from "./types";
 
 export const MenuItem: React.FC<MenuItemProps> = ({
@@ -14,35 +15,54 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     ...props
 }) => {
     return (
-        <AriaMenuItem {...props}>
+        <AriaMenuItem
+            {...props}
+            data-supporting-text={supportingText ? true : undefined}
+        >
             {({ hasSubmenu }) => {
                 return (
                     <>
-                        {leadingIcon && <Icon icon={leadingIcon} />}
-
+                        {/* leading comps */}
                         <div>
-                            <p
-                                slot="label"
-                                className={clsx(typography.labelLarge)}
-                            >
-                                {label}
-                            </p>
-
-                            {supportingText && (
-                                <p
-                                    slot="description"
-                                    className={clsx(typography.bodySmall)}
-                                >
-                                    {supportingText}
-                                </p>
+                            {leadingIcon && (
+                                <Icon
+                                    icon={leadingIcon}
+                                    size={MenuItemIconSize}
+                                />
                             )}
+
+                            <div>
+                                <p
+                                    slot="label"
+                                    className={clsx(typography.labelLarge)}
+                                >
+                                    {label}
+                                </p>
+
+                                {supportingText && (
+                                    <p
+                                        slot="description"
+                                        className={clsx(typography.bodySmall)}
+                                    >
+                                        {supportingText}
+                                    </p>
+                                )}
+                            </div>
                         </div>
 
-                        {badge && { badge }}
+                        {/* trailing comps */}
+                        <div>
+                            {badge && badge}
 
-                        {trailingText && { trailingText }}
+                            {trailingText && trailingText}
 
-                        {hasSubmenu && <Icon icon={ChevronRight} />}
+                            {hasSubmenu && (
+                                <Icon
+                                    icon={ChevronRight}
+                                    size={MenuItemIconSize}
+                                />
+                            )}
+                        </div>
                     </>
                 );
             }}
