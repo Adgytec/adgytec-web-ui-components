@@ -109,3 +109,22 @@
     --menu-item-label-color-normal: var(--md-sys-color-on-surface);
     --menu-item-label-color-selected: var(--md-sys-color-on-tertiary-container);
 }
+
+.vibrant {
+    --menu-background: var(--md-sys-color-tertiary-container);
+    --menu-section-label-color: var(--md-sys-color-on-tertiary-container);
+
+    /* menu item */
+
+    /* background */
+    --menu-item-background-normal: var(--md-sys-color-tertiary-container);
+    --menu-item-background-selected: var(--md-sys-color-tertiary);
+
+    /* color */
+    --menu-item-color-normal: var(--md-sys-color-on-tertiary-container);
+    --menu-item-color-selected: var(--md-sys-color-on-tertiary);
+
+    /* label color */
+    --menu-item-label-color-normal: var(--md-sys-color-on-tertiary-container);
+    --menu-item-label-color-selected: var(--md-sys-color-on-tertiary);
+}
