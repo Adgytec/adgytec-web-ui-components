@@ -1,9 +1,10 @@
 import {
+    Clipboard,
     ExternalLinkIcon,
     FileBraces,
+    type LucideIcon,
     Mouse,
     MouseOff,
-    NotepadText,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
@@ -26,7 +27,10 @@ import { Icon } from "./components/Icon";
 import { Input } from "./components/Input";
 import {
     Menu,
+    type MenuColor,
     MenuItem,
+    type MenuLayout,
+    MenuSection,
     MenuShortcut,
     MenuTrigger,
     SubmenuTrigger,
@@ -496,63 +500,403 @@ const LinkPreview = () => {
 };
 
 const MenuPreview = () => {
+    type MenuCombo = {
+        title: string;
+        menu: MenuNode[];
+    };
+
+    type MenuNode = MenuItemNode | MenuSectionNode | MenuSeparatorNode;
+
+    type MenuSeparatorNode = {
+        type: "separator";
+        id: string;
+    };
+
+    type MenuItemNode = {
+        type: "item";
+
+        id: string;
+        label: string;
+        leadingIcon?: LucideIcon;
+        supportingText?: string;
+        trailingText?: React.ReactNode;
+
+        submenu?: MenuNode[]; // recursion
+    };
+
+    type MenuSectionNode = {
+        type: "section";
+
+        id: string;
+
+        items: (MenuItemNode | MenuSeparatorNode)[];
+    };
+
+    type MenuComboList = MenuCombo[];
+
+    const menuCombo: MenuComboList = [
+        {
+            title: "Only items",
+            menu: [
+                { type: "item", id: "0-0", label: "Profile" },
+                { type: "item", id: "0-1", label: "Settings" },
+                { type: "item", id: "0-2", label: "Logout" },
+            ],
+        },
+
+        {
+            title: "Only sections",
+            menu: [
+                {
+                    type: "section",
+                    id: "1-0",
+                    items: [
+                        { type: "item", id: "1-0-0", label: "Profile" },
+                        { type: "item", id: "1-0-2", label: "Security" },
+                    ],
+                },
+                {
+                    type: "section",
+                    id: "1-1",
+                    items: [
+                        { type: "item", id: "1-1-0", label: "Theme" },
+                        { type: "item", id: "1-1-1", label: "Language" },
+                    ],
+                },
+            ],
+        },
+
+        {
+            title: "Items + section",
+            menu: [
+                { type: "item", id: "2-0", label: "Home" },
+                {
+                    type: "section",
+                    id: "2-1",
+                    items: [
+                        { type: "item", id: "2-1-0", label: "Profile" },
+                        { type: "item", id: "2-1-1", label: "Settings" },
+                    ],
+                },
+            ],
+        },
+
+        {
+            title: "Section + item",
+            menu: [
+                {
+                    type: "section",
+                    id: "3-0",
+                    items: [
+                        { type: "item", id: "3-0-0", label: "Profile" },
+                        { type: "item", id: "3-0-1", label: "Settings" },
+                    ],
+                },
+                { type: "item", id: "3-1", label: "Logout" },
+            ],
+        },
+
+        {
+            title: "Mixed",
+            menu: [
+                { type: "item", id: "4-0", label: "Home" },
+                {
+                    type: "section",
+                    id: "4-1",
+                    items: [{ type: "item", id: "4-1-0", label: "Profile" }],
+                },
+                { type: "item", id: "4-2", label: "Notifications" },
+                {
+                    type: "section",
+                    id: "4-3",
+                    items: [{ type: "item", id: "4-3-0", label: "Privacy" }],
+                },
+            ],
+        },
+
+        {
+            title: "Section (no header)",
+            menu: [
+                {
+                    type: "section",
+                    id: "5-0",
+                    items: [
+                        { type: "item", id: "5-0-0", label: "Option 1" },
+                        { type: "item", id: "5-0-1", label: "Option 2" },
+                    ],
+                },
+            ],
+        },
+
+        {
+            title: "Item variants",
+            menu: [
+                { type: "item", id: "6-0", label: "Basic" },
+                {
+                    type: "item",
+                    id: "6-1",
+                    label: "With leading icon",
+                    leadingIcon: Clipboard,
+                },
+                {
+                    type: "item",
+                    id: "6-2",
+                    label: "With supporting text",
+                    supportingText: "Extra info",
+                },
+                {
+                    type: "item",
+                    id: "6-3",
+                    label: "With trailing text",
+                    trailingText: "⌘K",
+                },
+                {
+                    type: "item",
+                    id: "6-4",
+                    label: "Full",
+                    leadingIcon: Clipboard,
+                    supportingText: "Details",
+                    trailingText: "Ctrl+S",
+                },
+            ],
+        },
+
+        {
+            title: "Submenu (items)",
+            menu: [
+                {
+                    type: "item",
+                    id: "7-0",
+                    label: "File",
+                    submenu: [
+                        { type: "item", id: "7-0-0", label: "New" },
+                        { type: "item", id: "7-0-1", label: "Open" },
+                    ],
+                },
+            ],
+        },
+
+        {
+            title: "Submenu (sections)",
+            menu: [
+                {
+                    type: "item",
+                    id: "8-0",
+                    label: "Edit",
+                    submenu: [
+                        {
+                            type: "section",
+                            id: "8-0-0",
+                            items: [
+                                { type: "item", id: "8-0-0-0", label: "Copy" },
+                                { type: "item", id: "8-0-0-1", label: "Paste" },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
+
+        {
+            title: "Nested submenu",
+            menu: [
+                {
+                    type: "item",
+                    id: "9-0",
+                    label: "More",
+                    submenu: [
+                        {
+                            type: "item",
+                            id: "9-0-0",
+                            label: "Advanced",
+                            submenu: [
+                                {
+                                    type: "section",
+                                    id: "9-0-0-0",
+                                    header: "Dev",
+                                    items: [
+                                        {
+                                            type: "item",
+                                            id: "9-0-0-0-0",
+                                            label: "Logs",
+                                        },
+                                        {
+                                            type: "item",
+                                            id: "9-0-0-0-1",
+                                            label: "Debug",
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
+
+        {
+            title: "Mixed + nested",
+            menu: [
+                { type: "item", id: "10-0", label: "Home" },
+                {
+                    type: "item",
+                    id: "10-1",
+                    label: "File",
+                    submenu: [
+                        { type: "item", id: "10-1-0", label: "New" },
+                        {
+                            type: "section",
+                            id: "10-1-1",
+                            header: "Recent",
+                            items: [
+                                {
+                                    type: "item",
+                                    id: "10-1-1-0",
+                                    label: "file1.txt",
+                                },
+                                {
+                                    type: "item",
+                                    id: "10-1-1-1",
+                                    label: "file2.txt",
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
+                    type: "section",
+                    id: "10-2",
+                    header: "Account",
+                    items: [
+                        { type: "item", id: "10-2-0", label: "Profile" },
+                        {
+                            type: "item",
+                            id: "10-2-1",
+                            label: "Settings",
+                            submenu: [
+                                {
+                                    type: "item",
+                                    id: "10-2-1-0",
+                                    label: "Theme",
+                                },
+                                {
+                                    type: "item",
+                                    id: "10-2-1-1",
+                                    label: "Privacy",
+                                },
+                            ],
+                        },
+                    ],
+                },
+                { type: "item", id: "10-3", label: "Logout" },
+            ],
+        },
+    ];
+
+    const prob = (p = 0.5) => Math.random() < p;
+
+    const layout = () => (prob() ? "standard" : "grouped");
+    const color = () => (prob() ? "standard" : "vibrant");
+
+    const randomButtonColor = (): ButtonColor => {
+        const colors: ButtonColor[] = [
+            "filled",
+            "tonal",
+            "outlined",
+            "elevated",
+            "text",
+        ];
+        return colors[Math.floor(Math.random() * colors.length)];
+    };
+
+    const renderMenuItem = (item: MenuItemNode) => {
+        return (
+            <MenuItem
+                leadingIcon={item.leadingIcon}
+                supportingText={item.supportingText}
+                trailingText={
+                    item.trailingText && (
+                        <MenuShortcut>{item.trailingText}</MenuShortcut>
+                    )
+                }
+            >
+                {item.label}
+            </MenuItem>
+        );
+    };
+
+    const renderMenu = (
+        item: MenuNode,
+        menuLayout: MenuLayout,
+        menuColor: MenuColor
+    ) => {
+        if (item.type === "section") {
+            return (
+                <MenuSection items={item.items} selectionMode="multiple">
+                    {(item) => renderMenu(item, menuLayout, menuColor)}
+                </MenuSection>
+            );
+        }
+
+        if (item.type === "separator") return <Separator />;
+
+        if (item.submenu) {
+            return (
+                <SubmenuTrigger>
+                    {renderMenuItem(item)}
+                    <Menu
+                        layout={menuLayout}
+                        color={menuColor}
+                        items={item.submenu}
+                        selectionMode="multiple"
+                    >
+                        {(item) => renderMenu(item, menuLayout, menuColor)}
+                    </Menu>
+                </SubmenuTrigger>
+            );
+        }
+
+        return renderMenuItem(item);
+    };
+
     return (
         <PreviewContainer label="Menu (Layout + Color)">
             <div className="menus">
-                <MenuTrigger
-                    triggerElement={
-                        <Button
-                            tooltip="Standard layout and standard color"
-                            color="tonal"
-                        >
-                            Standard-S
-                        </Button>
-                    }
-                >
-                    <Menu
-                        color="standard"
-                        layout="standard"
-                        selectionMode="multiple"
-                    >
-                        <MenuItem leadingIcon={NotepadText}>First</MenuItem>
+                {menuCombo.map((combo) => {
+                    const menuLayout = layout();
+                    const menuColor = color();
 
-                        <MenuItem supportingText="Second child">
-                            Second
-                        </MenuItem>
+                    const triggerColor = randomButtonColor();
 
-                        <MenuItem
-                            trailingText={<MenuShortcut>Ctrl + R</MenuShortcut>}
-                        >
-                            Third
-                        </MenuItem>
-
-                        <Separator />
-
-                        <SubmenuTrigger>
-                            <MenuItem supportingText="has submenu">
-                                Sub menu
-                            </MenuItem>
-
-                            <Menu color="standard" layout="standard">
-                                <MenuItem leadingIcon={NotepadText}>
-                                    First
-                                </MenuItem>
-
-                                <MenuItem supportingText="Second child">
-                                    Second
-                                </MenuItem>
-
-                                <MenuItem
-                                    trailingText={
-                                        <MenuShortcut>Ctrl + R</MenuShortcut>
-                                    }
+                    return (
+                        <MenuTrigger
+                            key={combo.title}
+                            triggerElement={
+                                <Button
+                                    color={triggerColor}
+                                    tooltip={`layout: ${menuLayout}, color: ${menuColor}`}
                                 >
-                                    Third
-                                </MenuItem>
+                                    {combo.title}
+                                </Button>
+                            }
+                        >
+                            <Menu
+                                layout={menuLayout}
+                                color={menuColor}
+                                items={combo.menu}
+                                selectionMode="multiple"
+                            >
+                                {(item) => {
+                                    return renderMenu(
+                                        item,
+                                        menuLayout,
+                                        menuColor
+                                    );
+                                }}
                             </Menu>
-                        </SubmenuTrigger>
-                    </Menu>
-                </MenuTrigger>
+                        </MenuTrigger>
+                    );
+                })}
             </div>
         </PreviewContainer>
     );
