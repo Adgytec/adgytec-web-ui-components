@@ -72,6 +72,14 @@
 
     border-radius: var(--menu-item-shape);
 
+    transition:
+        border-radius var(--md-sys-motion-expressive-fast-spatial)
+        var(--md-sys-motion-expressive-fast-spatial-duration),
+        background-color var(--md-sys-motion-expressive-fast-effects)
+        var(--md-sys-motion-expressive-fast-effects-duration),
+        color var(--md-sys-motion-expressive-fast-effects)
+        var(--md-sys-motion-expressive-fast-effects-duration);
+
     &[data-multi-line] {
         --pb: var(--menu-item-padding-block-multi-line);
     }

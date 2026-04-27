@@ -510,7 +510,11 @@ const MenuPreview = () => {
                         </Button>
                     }
                 >
-                    <Menu color="standard" layout="standard">
+                    <Menu
+                        color="standard"
+                        layout="standard"
+                        selectionMode="multiple"
+                    >
                         <MenuItem leadingIcon={NotepadText}>First</MenuItem>
 
                         <MenuItem supportingText="Second child">
