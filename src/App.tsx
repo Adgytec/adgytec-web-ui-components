@@ -8,6 +8,10 @@ import {
     MouseOff,
     Settings,
     User,
+    Download,
+    Eye,
+    Share2,
+    GlobeLock,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
@@ -24,6 +28,9 @@ import {
     LinkIconButton,
     ToggleButton,
     ToggleIconButton,
+    SplitButton,
+    SplitButtonPrimary,
+    SplitButtonTrigger,
 } from "./components/Button";
 import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import { Icon } from "./components/Icon";
@@ -339,7 +346,7 @@ const ButtonPreview = () => {
                             <h4 className={typography.headlineSmall}>{size}</h4>
 
                             {shapes.map((shape) => (
-                                <div className="buttons" key={shape}>
+                                <div className="items" key={shape}>
                                     <Button
                                         size={size}
                                         shape={shape}
@@ -432,7 +439,7 @@ const IconButtonPreview = () => {
                                         {width}
                                     </h5>
                                     {shapes.map((shape) => (
-                                        <div key={shape} className="buttons">
+                                        <div key={shape} className="items">
                                             <IconButton
                                                 size={size}
                                                 shape={shape}
@@ -482,7 +489,7 @@ const IconButtonPreview = () => {
 const LinkPreview = () => {
     return (
         <PreviewContainer label="Link">
-            <div className="links">
+            <div className="items">
                 <LinkButton
                     href="https://m3.material.io"
                     target="_blank"
@@ -878,7 +885,7 @@ const MenuPreview = () => {
 
     return (
         <PreviewContainer label="Menu (Layout + Color)">
-            <div className="menus">
+            <div className="items">
                 {menuCombo.map((combo) => {
                     const menuLayout = layout();
                     const menuColor = color();
@@ -890,6 +897,7 @@ const MenuPreview = () => {
                             key={combo.title}
                             triggerElement={
                                 <Button
+                                    size="extra-small"
                                     color={triggerColor}
                                     tooltip={`layout: ${menuLayout}, color: ${menuColor}`}
                                 >
@@ -919,9 +927,47 @@ const MenuPreview = () => {
     );
 };
 
+const SplitButtonPreview = () => {
+    return (
+        <PreviewContainer label="SplitButton">
+            <div className="items">
+                <SplitButton>
+                    <SplitButtonPrimary tooltip="download" icon={Download}>
+                        Download
+                    </SplitButtonPrimary>
+
+                    <MenuTrigger
+                        triggerElement={
+                            <SplitButtonTrigger tooltip="more actions" />
+                        }
+                    >
+                        <Menu color="vibrant" layout="grouped">
+                            <MenuSection>
+                                <MenuItem trailingIcon={Eye}>Preview</MenuItem>
+
+                                <MenuItem trailingIcon={Share2}>Share</MenuItem>
+                            </MenuSection>
+
+                            <MenuSection>
+                                <MenuItem
+                                    trailingIcon={GlobeLock}
+                                    supportingText="Make item private"
+                                >
+                                    Private
+                                </MenuItem>
+                            </MenuSection>
+                        </Menu>
+                    </MenuTrigger>
+                </SplitButton>
+            </div>
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        SplitButtonPreview,
         MenuPreview,
         LinkPreview,
         ButtonPreview,
