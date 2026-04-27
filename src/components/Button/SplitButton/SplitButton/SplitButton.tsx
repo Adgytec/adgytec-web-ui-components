@@ -1,6 +1,8 @@
 import { clsx } from "clsx";
 import { buttonColorConfig } from "../../core";
+import { splitButtonSizeConfig } from "../core";
 import { SplitButtonContext } from "../SplitButtonContext";
+import styles from "./splitButton.module.css";
 import type { SplitButtonProps } from "./types";
 
 export const SplitButton: React.FC<SplitButtonProps> = ({
@@ -21,7 +23,15 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
                 size,
             }}
         >
-            <div className={clsx(buttonColorConfig(color))}>{children}</div>
+            <div
+                className={clsx(
+                    styles["split-button"],
+                    buttonColorConfig(color),
+                    splitButtonSizeConfig(size)
+                )}
+            >
+                {children}
+            </div>
         </SplitButtonContext>
     );
 };

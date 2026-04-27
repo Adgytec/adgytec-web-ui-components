@@ -1,4 +1,5 @@
 import type { ButtonSize } from "../../core";
+import styles from "./size.module.css";
 
 export const SplitButtonTriggerIconSize: Record<ButtonSize, number> = {
     "extra-small": 22,
@@ -7,3 +8,10 @@ export const SplitButtonTriggerIconSize: Record<ButtonSize, number> = {
     large: 38,
     "extra-large": 50,
 } as const;
+
+export const splitButtonSizeConfig = (size: ButtonSize) => {
+    return styles[size];
+};
+
+export const SplitButtonPrimaryBase = styles["primary"];
+export const SplitButtonTriggerBase = styles["trigger"];

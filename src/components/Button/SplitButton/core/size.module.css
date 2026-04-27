@@ -1,7 +1,3 @@
-.size {
-    --split-button-gap: calc(2 * var(--dp, 1px));
-}
-
 .extra-small {
     /* height for button is 32 */
     --md-sys-shape-corner-radius-full: calc(16 * var(--dp, 1px));
