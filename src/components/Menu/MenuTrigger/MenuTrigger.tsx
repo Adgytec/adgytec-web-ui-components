@@ -10,7 +10,7 @@ export const MenuTrigger: React.FC<MenuTriggerProps> = ({
     return (
         <AriaMenuTrigger {...props}>
             {triggerElement}
-            <Popover>{children}</Popover>
+            <Popover offset={-1}>{children}</Popover>
         </AriaMenuTrigger>
     );
 };

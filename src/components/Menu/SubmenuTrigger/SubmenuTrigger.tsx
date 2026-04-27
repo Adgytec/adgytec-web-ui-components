@@ -12,7 +12,7 @@ export const SubmenuTrigger: React.FC<SubmenuTriggerProps> = ({
     return (
         <AriaSubmenuTrigger {...props}>
             {trigger}
-            <Popover>{menu}</Popover>
+            <Popover offset={-1}>{menu}</Popover>
         </AriaSubmenuTrigger>
     );
 };

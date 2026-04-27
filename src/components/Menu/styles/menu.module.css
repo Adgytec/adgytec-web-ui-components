@@ -8,6 +8,8 @@
 
     display: grid;
     gap: var(--gap);
+
+    min-inline-size: min(100svi, var(--md-sys-layout-space-128));
 }
 
 .menu-section {
