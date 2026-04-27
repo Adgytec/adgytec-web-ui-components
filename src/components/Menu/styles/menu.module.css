@@ -12,6 +12,40 @@
     min-inline-size: min(100svi, var(--md-sys-layout-space-128));
 }
 
+/* menu -> menu section shape */
+.menu > .menu-section:first-child {
+    border-start-start-radius: var(--menu-section-outer-shape);
+    border-start-end-radius: var(--menu-section-outer-shape);
+}
+
+.menu > .menu-section:last-child {
+    border-end-start-radius: var(--menu-section-outer-shape);
+    border-end-end-radius: var(--menu-section-outer-shape);
+}
+
+/* menu -> menu item shape (only if NOT selected) */
+.menu > .menu-item:not([data-selected]):first-child {
+    border-start-start-radius: var(--shape);
+    border-start-end-radius: var(--shape);
+}
+
+.menu > .menu-item:not([data-selected]):last-child {
+    border-end-start-radius: var(--shape);
+    border-end-end-radius: var(--shape);
+}
+
+/* menu section -> menu item shape (only if NOT selected) */
+.menu > .menu-section:first-child
+    > .menu-item:not([data-selected]):first-child {
+    border-start-start-radius: var(--shape);
+    border-start-end-radius: var(--shape);
+}
+
+.menu > .menu-section:last-child > .menu-item:not([data-selected]):last-child {
+    border-end-start-radius: var(--shape);
+    border-end-end-radius: var(--shape);
+}
+
 .menu-section {
     background-color: var(--menu-section-background);
     box-shadow: var(--menu-section-elevation);
