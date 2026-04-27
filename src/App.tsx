@@ -713,7 +713,6 @@ const MenuPreview = () => {
                                 {
                                     type: "section",
                                     id: "9-0-0-0",
-                                    header: "Dev",
                                     items: [
                                         {
                                             type: "item",
@@ -747,7 +746,6 @@ const MenuPreview = () => {
                         {
                             type: "section",
                             id: "10-1-1",
-                            header: "Recent",
                             items: [
                                 {
                                     type: "item",
@@ -766,7 +764,6 @@ const MenuPreview = () => {
                 {
                     type: "section",
                     id: "10-2",
-                    header: "Account",
                     items: [
                         { type: "item", id: "10-2-0", label: "Profile" },
                         {
