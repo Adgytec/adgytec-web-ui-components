@@ -8,6 +8,7 @@ import {
     menuItemBaseColor,
     menuItemLabelColor,
 } from "../core";
+import styles from "../styles/menu.module.css";
 import type { MenuItemProps } from "./types";
 
 export const MenuItem: React.FC<MenuItemProps> = ({
@@ -24,6 +25,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
             className={(renderProps) =>
                 clsx(
                     menuItemBaseColor,
+                    styles["menu-item"],
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -36,7 +38,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                 return (
                     <>
                         {/* leading comps */}
-                        <div>
+                        <div className={clsx(styles["menu-item-leading"])}>
                             {isSelected ? (
                                 <Icon icon={Check} size={MenuItemIconSize} />
                             ) : (
@@ -71,7 +73,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                         </div>
 
                         {/* trailing comps */}
-                        <div>
+                        <div className={clsx(styles["menu-item-trailing"])}>
                             {badge && badge}
 
                             {trailingText && trailingText}

@@ -86,7 +86,6 @@
     outline-color: var(--focus-indicator-color);
 }
 
-/* TODO: add this to menu item css */
 /* menu label */
 .label {
     color: var(--label-color);

@@ -4,8 +4,10 @@
     border-radius: var(--menu-shape);
     padding: var(--menu-padding);
 
+    outline: none;
+
     display: grid;
-    gap: var(--gap);
+    gap: 6px;
 }
 
 .menu-section {
@@ -16,4 +18,36 @@
 
     display: grid;
     gap: var(--gap);
+}
+
+.menu-item {
+    --pb: var(--menu-item-padding-block-single-line);
+
+    position: relative;
+    outline: none;
+
+    display: flex;
+    gap: var(--menu-item-content-gap);
+    align-items: center;
+    justify-content: space-between;
+
+    padding-inline: var(--menu-item-padding-inline-content);
+    padding-block: var(--pb);
+
+    border-radius: var(--menu-item-shape);
+
+    &[data-multi-line] {
+        --pb: var(--menu-item-padding-block-multi-line);
+    }
+
+    &[data-selected] {
+        border-radius: var(--menu-item-selected-shape);
+    }
+}
+
+.menu-item-leading,
+.menu-item-trailing {
+    display: flex;
+    gap: var(--menu-item-content-gap);
+    align-items: center;
 }
