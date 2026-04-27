@@ -1,17 +1,17 @@
 import {
     Clipboard,
+    Download,
     ExternalLinkIcon,
+    Eye,
     FileBraces,
+    GlobeLock,
     LogOut,
     type LucideIcon,
     Mouse,
     MouseOff,
     Settings,
-    User,
-    Download,
-    Eye,
     Share2,
-    GlobeLock,
+    User,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
@@ -26,11 +26,11 @@ import {
     type IconButtonWidth,
     LinkButton,
     LinkIconButton,
-    ToggleButton,
-    ToggleIconButton,
     SplitButton,
     SplitButtonPrimary,
     SplitButtonTrigger,
+    ToggleButton,
+    ToggleIconButton,
 } from "./components/Button";
 import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import { Icon } from "./components/Icon";

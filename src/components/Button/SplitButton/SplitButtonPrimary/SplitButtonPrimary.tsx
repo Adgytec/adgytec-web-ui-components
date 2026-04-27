@@ -1,9 +1,14 @@
+import { clsx } from "clsx";
 import { useContext } from "react";
 import { Button as AriaButton } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
-import { ButtonIconSizeMapping, withTooltip } from "../../core";
+import {
+    ButtonIconSizeMapping,
+    ButtonLabelTextMapping,
+    withTooltip,
+} from "../../core";
 import { SplitButtonContext } from "../SplitButtonContext";
 import type { SplitButtonPrimaryProps } from "./types";
 
@@ -30,6 +35,7 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
             isDisabled={disabled}
             isPending={pending}
             {...props}
+            className={clsx(ButtonLabelTextMapping[splitButtonState.size])}
         >
             {(renderProps) => (
                 <>

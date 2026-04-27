@@ -4,7 +4,8 @@ import { Button as AriaButton } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
-import { IconButtonIconSizeMapping, withTooltip } from "../../core";
+import { withTooltip } from "../../core";
+import { SplitButtonTriggerIconSize } from "../core";
 import { SplitButtonContext } from "../SplitButtonContext";
 import type { SplitButtonTriggerProps } from "./types";
 
@@ -36,14 +37,18 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
                         <Icon
                             icon={ChevronUp}
                             size={
-                                IconButtonIconSizeMapping[splitButtonState.size]
+                                SplitButtonTriggerIconSize[
+                                    splitButtonState.size
+                                ]
                             }
                         />
                     ) : (
                         <Icon
                             icon={ChevronDown}
                             size={
-                                IconButtonIconSizeMapping[splitButtonState.size]
+                                SplitButtonTriggerIconSize[
+                                    splitButtonState.size
+                                ]
                             }
                         />
                     )}
