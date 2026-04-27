@@ -17,6 +17,8 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
             value={{
                 isPending,
                 isDisabled,
+                color,
+                size,
             }}
         >
             <div className={clsx(buttonColorConfig(color))}>{children}</div>
