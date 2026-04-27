@@ -5,12 +5,16 @@ import type { MenuTriggerProps } from "./types";
 export const MenuTrigger: React.FC<MenuTriggerProps> = ({
     triggerElement,
     children,
+    offset,
+    crossOffset,
     ...props
 }) => {
     return (
         <AriaMenuTrigger {...props}>
             {triggerElement}
-            <Popover offset={-1}>{children}</Popover>
+            <Popover offset={offset} crossOffset={crossOffset}>
+                {children}
+            </Popover>
         </AriaMenuTrigger>
     );
 };

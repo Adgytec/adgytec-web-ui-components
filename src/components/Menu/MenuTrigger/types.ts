@@ -3,4 +3,6 @@ import type { MenuTriggerProps as AriaMenuTriggerProps } from "react-aria-compon
 
 export interface MenuTriggerProps extends AriaMenuTriggerProps {
     triggerElement: ReactNode;
+    offset?: number;
+    crossOffset?: number;
 }

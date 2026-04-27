@@ -895,9 +895,9 @@ const MenuPreview = () => {
                     return (
                         <MenuTrigger
                             key={combo.title}
+                            offset={-1}
                             triggerElement={
                                 <Button
-                                    size="extra-small"
                                     color={triggerColor}
                                     tooltip={`layout: ${menuLayout}, color: ${menuColor}`}
                                 >
