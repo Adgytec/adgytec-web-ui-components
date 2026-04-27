@@ -9,7 +9,7 @@
     display: grid;
     gap: var(--gap);
 
-    min-inline-size: min(100svi, var(--md-sys-layout-space-128));
+    min-inline-size: min(100svi, calc(160 * var(--dp, 1px)));
 }
 
 /* menu -> menu section shape */

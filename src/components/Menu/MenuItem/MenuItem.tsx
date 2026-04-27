@@ -16,7 +16,6 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     children,
     supportingText,
     trailingText,
-    badge,
     className,
     ...props
 }) => {
@@ -74,8 +73,6 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 
                         {/* trailing comps */}
                         <div className={clsx(styles["menu-item-trailing"])}>
-                            {badge && badge}
-
                             {trailingText && trailingText}
 
                             {hasSubmenu && (

@@ -1,4 +1,5 @@
 import {
+    ClipboardList,
     ExternalLinkIcon,
     FileBraces,
     Mouse,
@@ -27,7 +28,6 @@ import { Input } from "./components/Input";
 import {
     Menu,
     MenuItem,
-    MenuSection,
     MenuShortcut,
     MenuTrigger,
     SubmenuTrigger,
