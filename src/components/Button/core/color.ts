@@ -8,7 +8,11 @@ export type ToggleButtonColor = CoreButtonColor | "elevated";
 
 export type IconButtonColor = CoreButtonColor | "standard";
 
-export const buttonColorConfig = (color: ButtonColor | IconButtonColor) => {
+export type SplitButtonColor = CoreButtonColor | "elevated";
+
+export const buttonColorConfig = (
+    color: ButtonColor | IconButtonColor | SplitButtonColor
+) => {
     return styles[color];
 };
 
