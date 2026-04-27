@@ -18,6 +18,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     children,
     supportingText,
     trailingText,
+    trailingIcon,
     className,
     onPress,
     ...props
@@ -83,11 +84,18 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                         <div className={clsx(styles["menu-item-trailing"])}>
                             {trailingText && trailingText}
 
-                            {hasSubmenu && (
+                            {hasSubmenu ? (
                                 <Icon
                                     icon={ChevronRight}
                                     size={MenuItemIconSize}
                                 />
+                            ) : (
+                                trailingIcon && (
+                                    <Icon
+                                        icon={trailingIcon}
+                                        size={MenuItemIconSize}
+                                    />
+                                )
                             )}
                         </div>
                     </>

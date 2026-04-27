@@ -7,4 +7,5 @@ export interface MenuItemProps extends Omit<AriaMenuItemProps, "children"> {
     children: string;
     supportingText?: string;
     trailingText?: ReactNode;
+    trailingIcon?: LucideIcon;
 }

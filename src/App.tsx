@@ -2,9 +2,12 @@ import {
     Clipboard,
     ExternalLinkIcon,
     FileBraces,
+    LogOut,
     type LucideIcon,
     Mouse,
     MouseOff,
+    Settings,
+    User,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
@@ -518,6 +521,7 @@ const MenuPreview = () => {
         id: string;
         label: string;
         leadingIcon?: LucideIcon;
+        trailingIcon?: LucideIcon;
         supportingText?: string;
         trailingText?: React.ReactNode;
 
@@ -538,9 +542,24 @@ const MenuPreview = () => {
         {
             title: "Only items",
             menu: [
-                { type: "item", id: "0-0", label: "Profile" },
-                { type: "item", id: "0-1", label: "Settings" },
-                { type: "item", id: "0-2", label: "Logout" },
+                {
+                    type: "item",
+                    id: "0-0",
+                    label: "Profile",
+                    trailingIcon: User,
+                },
+                {
+                    type: "item",
+                    id: "0-1",
+                    label: "Settings",
+                    trailingIcon: Settings,
+                },
+                {
+                    type: "item",
+                    id: "0-2",
+                    label: "Logout",
+                    trailingIcon: LogOut,
+                },
             ],
         },
 
@@ -816,6 +835,7 @@ const MenuPreview = () => {
                         <MenuShortcut>{item.trailingText}</MenuShortcut>
                     )
                 }
+                trailingIcon={item.trailingIcon}
             >
                 {item.label}
             </MenuItem>
