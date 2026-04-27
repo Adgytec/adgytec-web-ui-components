@@ -511,7 +511,7 @@ const MenuPreview = () => {
                     }
                 >
                     <Menu
-                        color="standard"
+                        color="vibrant"
                         layout="standard"
                         selectionMode="multiple"
                     >

@@ -96,6 +96,8 @@
     --background: var(--md-sys-color-surface-container-low);
     --menu-section-label-color: var(--md-sys-color-on-surface-variant);
 
+    --separator-color: var(--menu-item-color-normal);
+
     /* menu item */
 
     /* background */
@@ -114,6 +116,8 @@
 .vibrant {
     --background: var(--md-sys-color-tertiary-container);
     --menu-section-label-color: var(--md-sys-color-on-tertiary-container);
+
+    --separator-color: var(--menu-item-color-normal);
 
     /* menu item */
 
