@@ -1,0 +1,62 @@
+/* core menu tokens */
+.layout {
+    /* tokens used either by menu or menu section based on layout value */
+    --elevation: var(--md-sys-elevation-shadow-3);
+    --gap: calc(2 * var(--dp, 1px));
+    --padding: var(--md-sys-layout-space-4);
+
+    /* shape */
+    --shape: var(--md-sys-shape-corner-radius-large);
+    --section-shape: var(--md-sys-shape-corner-radius-small);
+
+    /* menu item */
+
+    --menu-item-shape: var(--md-sys-shape-corner-radius-extra-small);
+    --menu-item-outer-shape: var(--md-sys-shape-corner-radius-medium);
+    --menu-item-selected-shape: var(--md-sys-shape-corner-radius-medium);
+
+    /* Vertical padding when item contains only a single-line label */
+    /* Centers 20px label within 44px container */
+    --menu-item-padding-block-single-line: var(--md-sys-layout-space-12);
+
+    /* Vertical padding when item contains label + supporting text */
+    /* Reduced padding to fit two text lines (20px + 16px) with 2px gap inside 44px container */
+    --menu-item-padding-block-multi-line: calc(3 * var(--dp, 1px));
+
+    /* Horizontal padding inside each menu item (excluding outer menu padding) */
+    /* Total visual inset = menu container padding (4) + this value (12) */
+    --menu-item-padding-inline-content: var(--md-sys-layout-space-12);
+
+    /* Spacing between elements inside a menu item (icon, text, trailing, etc.) */
+    --menu-item-content-gap: var(--md-sys-layout-space-8);
+}
+
+.standard {
+    --menu-elevation: var(--elevation);
+    --menu-padding: var(--padding);
+    --menu-shape: var(--shape);
+    --menu-background: var(--background);
+
+    --menu-section-elevation: none;
+    --menu-section-padding: 0;
+    --menu-section-shape: 0;
+    --menu-section-outer-shape: 0;
+    --menu-section-background: transparent;
+
+    --menu-item-elevation: none;
+}
+
+.grouped {
+    --menu-elevation: none;
+    --menu-padding: 0;
+    --menu-shape: 0;
+    --menu-background: transparent;
+
+    --menu-section-elevation: var(--elevation);
+    --menu-section-padding: var(--padding);
+    --menu-section-outer-shape: var(--shape);
+    --menu-section-shape: var(--section-shape);
+    --menu-section-background: var(--background);
+
+    --menu-item-elevation: var(--elevation);
+}

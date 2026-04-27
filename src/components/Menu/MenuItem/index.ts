@@ -1,2 +1,2 @@
-export * from "./Popover";
+export * from "./MenuItem";
 export type * from "./types";
