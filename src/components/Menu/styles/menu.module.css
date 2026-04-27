@@ -12,6 +12,11 @@
     min-inline-size: min(100svi, calc(160 * var(--dp, 1px)));
 }
 
+/* menu -> menu item elevation */
+.menu > .menu-item {
+    box-shadow: var(--menu-item-elevation);
+}
+
 /* menu -> menu section shape */
 .menu > .menu-section:first-child {
     border-start-start-radius: var(--menu-section-outer-shape);
