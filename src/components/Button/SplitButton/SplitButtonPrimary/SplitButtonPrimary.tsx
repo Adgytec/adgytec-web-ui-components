@@ -5,8 +5,12 @@ import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
 import {
+    ButtonCore,
     ButtonIconSizeMapping,
     ButtonLabelTextMapping,
+    ButtonReset,
+    buttonColorBase,
+    buttonColorConfig,
     withTooltip,
 } from "../../core";
 import { SplitButtonContext } from "../SplitButtonContext";
@@ -35,7 +39,13 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
             isDisabled={disabled}
             isPending={pending}
             {...props}
-            className={clsx(ButtonLabelTextMapping[splitButtonState.size])}
+            className={clsx(
+                ButtonReset,
+                ButtonCore,
+                buttonColorBase,
+                buttonColorConfig(splitButtonState.color),
+                ButtonLabelTextMapping[splitButtonState.size]
+            )}
         >
             {(renderProps) => (
                 <>
