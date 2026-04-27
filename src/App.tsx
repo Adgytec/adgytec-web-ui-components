@@ -1,5 +1,4 @@
 import {
-    ClipboardList,
     ExternalLinkIcon,
     FileBraces,
     Mouse,

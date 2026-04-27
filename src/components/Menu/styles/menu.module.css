@@ -12,6 +12,57 @@
     min-inline-size: min(100svi, calc(160 * var(--dp, 1px)));
 }
 
+.menu-section {
+    background-color: var(--menu-section-background);
+    box-shadow: var(--menu-section-elevation);
+    border-radius: var(--menu-section-shape);
+    padding: var(--menu-section-padding);
+
+    display: grid;
+    gap: var(--gap);
+}
+
+.menu-item {
+    --pb: var(--menu-item-padding-block-single-line);
+
+    position: relative;
+    outline: none;
+    overflow: hidden;
+
+    display: flex;
+    gap: var(--menu-item-content-gap);
+    align-items: center;
+    justify-content: space-between;
+
+    padding-inline: var(--menu-item-padding-inline-content);
+    padding-block: var(--pb);
+
+    border-radius: var(--menu-item-shape);
+
+    transition:
+        border-radius var(--md-sys-motion-expressive-fast-spatial)
+        var(--md-sys-motion-expressive-fast-spatial-duration),
+        background-color var(--md-sys-motion-expressive-fast-effects)
+        var(--md-sys-motion-expressive-fast-effects-duration),
+        color var(--md-sys-motion-expressive-fast-effects)
+        var(--md-sys-motion-expressive-fast-effects-duration);
+
+    &[data-multi-line] {
+        --pb: var(--menu-item-padding-block-multi-line);
+    }
+
+    &[data-selected] {
+        border-radius: var(--menu-item-selected-shape);
+    }
+}
+
+.menu-item-leading,
+.menu-item-trailing {
+    display: flex;
+    gap: var(--menu-item-content-gap);
+    align-items: center;
+}
+
 /* menu -> menu item elevation */
 .menu > .menu-item {
     box-shadow: var(--menu-item-elevation);
@@ -49,54 +100,4 @@
 .menu > .menu-section:last-child > .menu-item:not([data-selected]):last-child {
     border-end-start-radius: var(--shape);
     border-end-end-radius: var(--shape);
-}
-
-.menu-section {
-    background-color: var(--menu-section-background);
-    box-shadow: var(--menu-section-elevation);
-    border-radius: var(--menu-section-shape);
-    padding: var(--menu-section-padding);
-
-    display: grid;
-    gap: var(--gap);
-}
-
-.menu-item {
-    --pb: var(--menu-item-padding-block-single-line);
-
-    position: relative;
-    outline: none;
-
-    display: flex;
-    gap: var(--menu-item-content-gap);
-    align-items: center;
-    justify-content: space-between;
-
-    padding-inline: var(--menu-item-padding-inline-content);
-    padding-block: var(--pb);
-
-    border-radius: var(--menu-item-shape);
-
-    transition:
-        border-radius var(--md-sys-motion-expressive-fast-spatial)
-        var(--md-sys-motion-expressive-fast-spatial-duration),
-        background-color var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration),
-        color var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration);
-
-    &[data-multi-line] {
-        --pb: var(--menu-item-padding-block-multi-line);
-    }
-
-    &[data-selected] {
-        border-radius: var(--menu-item-selected-shape);
-    }
-}
-
-.menu-item-leading,
-.menu-item-trailing {
-    display: flex;
-    gap: var(--menu-item-content-gap);
-    align-items: center;
 }

@@ -2,6 +2,8 @@ import clsx from "clsx";
 import { Check, ChevronRight } from "lucide-react";
 import { MenuItem as AriaMenuItem } from "react-aria-components";
 import { Icon } from "@/components/Icon";
+import { Splash } from "@/components/Splash/Splash";
+import { useSplash } from "@/components/Splash/useSplash";
 import { typography } from "@/utils/typography";
 import {
     MenuItemIconSize,
@@ -17,8 +19,11 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     supportingText,
     trailingText,
     className,
+    onPress,
     ...props
 }) => {
+    const { splashInfo, handlePress } = useSplash(onPress);
+
     return (
         <AriaMenuItem
             className={(renderProps) =>
@@ -30,12 +35,15 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                         : className
                 )
             }
+            onPress={handlePress}
             {...props}
             data-multi-line={supportingText ? true : undefined}
         >
             {({ hasSubmenu, isSelected }) => {
                 return (
                     <>
+                        {splashInfo && <Splash {...splashInfo} />}
+
                         {/* leading comps */}
                         <div className={clsx(styles["menu-item-leading"])}>
                             {isSelected ? (
