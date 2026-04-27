@@ -1,4 +1,5 @@
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { clsx } from "clsx";
+import { ChevronDown } from "lucide-react";
 import { useContext } from "react";
 import { Button as AriaButton } from "react-aria-components";
 import { Icon } from "@/components/Icon";
@@ -7,6 +8,7 @@ import { useSplash } from "@/components/Splash/useSplash";
 import { withTooltip } from "../../core";
 import { SplitButtonTriggerIconSize } from "../core";
 import { SplitButtonContext } from "../SplitButtonContext";
+import styles from "./splitButtonTrigger.module.css";
 import type { SplitButtonTriggerProps } from "./types";
 
 export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
@@ -28,32 +30,14 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
             onPress={handlePress}
             isDisabled={disabled}
             isPending={pending}
+            className={clsx(styles["trigger"])}
             {...props}
         >
-            {({ isPressed }) => (
-                <>
-                    {splashInfo && <Splash {...splashInfo} />}
-                    {isPressed ? (
-                        <Icon
-                            icon={ChevronUp}
-                            size={
-                                SplitButtonTriggerIconSize[
-                                    splitButtonState.size
-                                ]
-                            }
-                        />
-                    ) : (
-                        <Icon
-                            icon={ChevronDown}
-                            size={
-                                SplitButtonTriggerIconSize[
-                                    splitButtonState.size
-                                ]
-                            }
-                        />
-                    )}
-                </>
-            )}
+            {splashInfo && <Splash {...splashInfo} />}
+            <Icon
+                icon={ChevronDown}
+                size={SplitButtonTriggerIconSize[splitButtonState.size]}
+            />
         </AriaButton>,
         tooltip
     );
