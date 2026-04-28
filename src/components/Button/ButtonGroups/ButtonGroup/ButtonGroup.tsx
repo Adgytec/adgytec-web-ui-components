@@ -5,8 +5,8 @@ import styles from "./buttonGroup.module.css";
 import type { ButtonGroupProps } from "./types";
 
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
-    size = "small",
-    shape = "round",
+    size,
+    shape,
     className,
     ...props
 }) => {
@@ -16,7 +16,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
                 className={(renderProps) =>
                     clsx(
                         styles["button-group"],
-                        styles[size],
+                        styles[size ?? "small"],
                         typeof className === "function"
                             ? className(renderProps)
                             : className
