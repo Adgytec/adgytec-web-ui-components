@@ -5,6 +5,7 @@ import { Loader } from "@/components/Loader";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
 import { Target } from "@/components/Target";
+import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
     ButtonIconSizeMapping,
@@ -28,6 +29,9 @@ export const Button: React.FC<ButtonProps> = ({
     onPress,
     ...props
 }) => {
+    const { size: buttonGroupSize } = useButtonGroupContext();
+    const buttonSize = buttonGroupSize ?? size;
+
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
 
@@ -56,7 +60,7 @@ export const Button: React.FC<ButtonProps> = ({
                     "data-shape": shape,
                 };
 
-                const iconSize = ButtonIconSizeMapping[size];
+                const iconSize = ButtonIconSizeMapping[buttonSize];
                 return (
                     <Target {...dataAttrs}>
                         <div
@@ -65,8 +69,8 @@ export const Button: React.FC<ButtonProps> = ({
                                 buttonColorBase,
                                 ButtonSizeBase,
                                 buttonColorConfig(color),
-                                buttonSizeConfig(size),
-                                ButtonLabelTextMapping[size]
+                                buttonSizeConfig(buttonSize),
+                                ButtonLabelTextMapping[buttonSize]
                             )}
                             {...dataAttrs}
                         >

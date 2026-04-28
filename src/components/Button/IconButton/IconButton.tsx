@@ -5,6 +5,7 @@ import { Loader } from "@/components/Loader";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
 import { Target } from "@/components/Target";
+import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
     ButtonReset,
@@ -27,6 +28,9 @@ export const IconButton: React.FC<IconButtonProps> = ({
     onPress,
     ...props
 }) => {
+    const { size: buttonGroupSize } = useButtonGroupContext();
+    const buttonSize = buttonGroupSize ?? size;
+
     const { splashInfo, handlePress } = useSplash(onPress);
 
     return withTooltip(
@@ -54,7 +58,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
                     "data-icon-button": true,
                 };
 
-                const iconSize = IconButtonIconSizeMapping[size];
+                const iconSize = IconButtonIconSizeMapping[buttonSize];
                 return (
                     <Target {...dataAttrs}>
                         <div
@@ -63,7 +67,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
                                 buttonColorBase,
                                 ButtonSizeBase,
                                 buttonColorConfig(color),
-                                buttonSizeConfig(size)
+                                buttonSizeConfig(buttonSize)
                             )}
                             {...dataAttrs}
                         >

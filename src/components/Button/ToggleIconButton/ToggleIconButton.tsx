@@ -4,6 +4,7 @@ import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
 import { Target } from "@/components/Target";
+import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
     ButtonReset,
@@ -27,6 +28,9 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     onPress,
     ...props
 }) => {
+    const { size: buttonGroupSize } = useButtonGroupContext();
+    const buttonSize = buttonGroupSize ?? size;
+
     const { splashInfo, handlePress } = useSplash(onPress);
 
     return withTooltip(
@@ -59,7 +63,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                 let iconToRender = icon;
                 if (isSelected && selectedIcon) iconToRender = selectedIcon;
 
-                const iconSize = IconButtonIconSizeMapping[size];
+                const iconSize = IconButtonIconSizeMapping[buttonSize];
                 return (
                     <Target {...dataAttrs}>
                         <div
@@ -68,7 +72,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                                 buttonColorBase,
                                 ButtonSizeBase,
                                 buttonColorConfig(color),
-                                buttonSizeConfig(size)
+                                buttonSizeConfig(buttonSize)
                             )}
                             {...dataAttrs}
                         >
