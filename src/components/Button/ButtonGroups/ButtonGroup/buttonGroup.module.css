@@ -1,0 +1,26 @@
+.button-group {
+    display: inline-flex;
+    align-items: center;
+
+    gap: var(--button-group-gap);
+}
+
+.extra-small {
+    --button-group-gap: calc(18 * var(--dp, 1px));
+}
+
+.small {
+    --button-group-gap: var(--md-sys-layout-space-12);
+}
+
+.medium {
+    --button-group-gap: var(--md-sys-layout-space-8);
+}
+
+.large {
+    --button-group-gap: var(--md-sys-layout-space-8);
+}
+
+.extra-large {
+    --button-group-gap: var(--md-sys-layout-space-8);
+}
