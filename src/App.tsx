@@ -1059,29 +1059,48 @@ const SplitButtonPreview = () => {
 
 const ButtonGroupPreview = () => {
     const color = "outlined";
+
+    const sizes: ButtonSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+
     return (
         <PreviewContainer label="ButtonGroup">
-            <div className="items">
-                <ButtonGroup size="medium" shape="square">
-                    <ToggleButton id={"one"} color={color}>
-                        One
-                    </ToggleButton>
+            {sizes.map((size) => (
+                <div className="items" key={size}>
+                    <ButtonGroup size={size} shape="square">
+                        <ToggleButton id={"one"} color={color}>
+                            One
+                        </ToggleButton>
 
-                    <ToggleButton id={"two"} color={color}>
-                        Two
-                    </ToggleButton>
+                        <ToggleButton id={"two"} color={color}>
+                            Two
+                        </ToggleButton>
 
-                    <ToggleButton id={"three"} color={color} icon={Armchair}>
-                        Three
-                    </ToggleButton>
+                        <ToggleButton
+                            id={"three"}
+                            color={color}
+                            icon={Armchair}
+                        >
+                            Three
+                        </ToggleButton>
 
-                    <ToggleIconButton id={"four"} color={color} icon={Sofa} />
+                        <ToggleIconButton
+                            id={"four"}
+                            color={color}
+                            icon={Sofa}
+                        />
 
-                    <ToggleButton id={"five"} color={color}>
-                        Five
-                    </ToggleButton>
-                </ButtonGroup>
-            </div>
+                        <ToggleButton id={"five"} color={color}>
+                            Five
+                        </ToggleButton>
+                    </ButtonGroup>
+                </div>
+            ))}
         </PreviewContainer>
     );
 };

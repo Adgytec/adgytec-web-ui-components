@@ -26,30 +26,50 @@
 
 /* next sibling ONLY if pressed is first */
 .button-group > [data-pressed]:first-child + * {
-    --morph: var(--morph--edge-pressed-sibling, 0px);
+    --morph: var(--morph-edge-pressed-sibling, 0px);
 }
 
 /* previous sibling ONLY if pressed is last */
 .button-group > *:has(+ [data-pressed]:last-child) {
-    --morph: var(--morph--edge-pressed-sibling, 0px);
+    --morph: var(--morph-edge-pressed-sibling, 0px);
 }
 
 .extra-small {
     --button-group-gap: calc(18 * var(--dp, 1px));
+
+    --morph-pressed: 2px;
+    --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
+    --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
 }
 
 .small {
     --button-group-gap: var(--md-sys-layout-space-12);
+
+    --morph-pressed: 2px;
+    --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
+    --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
 }
 
 .medium {
     --button-group-gap: var(--md-sys-layout-space-8);
+
+    --morph-pressed: 4px;
+    --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
+    --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
 }
 
 .large {
     --button-group-gap: var(--md-sys-layout-space-8);
+
+    --morph-pressed: 8px;
+    --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
+    --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
 }
 
 .extra-large {
     --button-group-gap: var(--md-sys-layout-space-8);
+
+    --morph-pressed: 8px;
+    --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
+    --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
 }
