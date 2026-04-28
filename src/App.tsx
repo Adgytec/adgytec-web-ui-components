@@ -931,7 +931,7 @@ const SplitButtonPreview = () => {
     return (
         <PreviewContainer label="SplitButton">
             <div className="items">
-                <SplitButton>
+                <SplitButton color="outlined">
                     <SplitButtonPrimary tooltip="download" icon={Download}>
                         Download
                     </SplitButtonPrimary>
