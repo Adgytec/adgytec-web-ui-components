@@ -60,6 +60,7 @@ export const Button: React.FC<ButtonProps> = ({
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
                     "data-shape": buttonShape,
+                    "data-visual": true,
                 };
 
                 const iconSize = ButtonIconSizeMapping[buttonSize];

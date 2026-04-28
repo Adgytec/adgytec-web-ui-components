@@ -52,6 +52,7 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
                     "data-shape": buttonShape,
                     "data-width": width,
                     "data-icon-button": true,
+                    "data-visual": true,
                 };
 
                 const iconSize = IconButtonIconSizeMapping[buttonSize];
