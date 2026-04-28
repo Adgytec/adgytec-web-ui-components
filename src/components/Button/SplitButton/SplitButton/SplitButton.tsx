@@ -13,6 +13,7 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
     isDisabled,
 
     children,
+    className,
 
     ...props
 }) => {
@@ -28,7 +29,8 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
             <Toolbar
                 className={clsx(
                     styles["split-button"],
-                    splitButtonSizeConfig(size)
+                    splitButtonSizeConfig(size),
+                    className
                 )}
                 {...props}
             >

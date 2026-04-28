@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { ToolbarProps as AriaToolbarProps } from "react-aria-components";
 import type { ButtonSize, SplitButtonColor } from "../../core";
 
@@ -14,4 +14,6 @@ export interface SplitButtonProps
     isDisabled?: boolean;
 
     children?: ReactNode;
+    className?: string;
+    style?: CSSProperties;
 }
