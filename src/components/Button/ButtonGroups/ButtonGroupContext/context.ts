@@ -1,10 +1,12 @@
 import { createContext } from "react";
-import type { ButtonSize } from "../../core";
+import type { ButtonShape, ButtonSize } from "../../core";
 
 export type ButtonGroupContextValue = {
     size: ButtonSize;
+    shape: ButtonShape;
 };
 
 export const ButtonGroupContext = createContext<ButtonGroupContextValue>({
     size: "small",
+    shape: "round",
 });
