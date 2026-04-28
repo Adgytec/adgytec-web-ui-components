@@ -1,4 +1,5 @@
 import { clsx } from "clsx";
+import { Toolbar } from "react-aria-components";
 import { splitButtonSizeConfig } from "../core";
 import { SplitButtonContext } from "../SplitButtonContext";
 import styles from "./splitButton.module.css";
@@ -12,6 +13,9 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
     isDisabled,
 
     children,
+    className,
+
+    ...props
 }) => {
     return (
         <SplitButtonContext
@@ -22,14 +26,16 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
                 size,
             }}
         >
-            <div
+            <Toolbar
                 className={clsx(
                     styles["split-button"],
-                    splitButtonSizeConfig(size)
+                    splitButtonSizeConfig(size),
+                    className
                 )}
+                {...props}
             >
                 {children}
-            </div>
+            </Toolbar>
         </SplitButtonContext>
     );
 };
