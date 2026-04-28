@@ -949,11 +949,13 @@ const SplitButtonPreview = () => {
         color,
         isDisabled,
         isPending,
+        label = true,
     }: {
         size: ButtonSize;
         color: SplitButtonColor;
         isPending?: boolean;
         isDisabled?: boolean;
+        label?: boolean;
     }) => {
         return (
             <SplitButton
@@ -963,7 +965,7 @@ const SplitButtonPreview = () => {
                 isPending={isPending}
             >
                 <SplitButtonPrimary tooltip="download" icon={Download}>
-                    Download
+                    {label && "Download"}
                 </SplitButtonPrimary>
 
                 <MenuTrigger
@@ -1016,6 +1018,26 @@ const SplitButtonPreview = () => {
                                 <RenderSplitButton
                                     size={size}
                                     color={color}
+                                    isDisabled
+                                />
+
+                                <RenderSplitButton
+                                    size={size}
+                                    color={color}
+                                    label={false}
+                                />
+
+                                <RenderSplitButton
+                                    size={size}
+                                    color={color}
+                                    label={false}
+                                    isPending
+                                />
+
+                                <RenderSplitButton
+                                    size={size}
+                                    color={color}
+                                    label={false}
                                     isDisabled
                                 />
                             </div>
