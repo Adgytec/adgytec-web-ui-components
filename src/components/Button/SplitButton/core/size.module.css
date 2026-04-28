@@ -1,4 +1,6 @@
 .size {
+    --padding-block: var(--padding-block-base);
+
     border-start-start-radius: var(--shape-start-start);
     border-start-end-radius: var(--shape-start-end);
     border-end-start-radius: var(--shape-end-start);
@@ -28,7 +30,7 @@
     --padding-inline-start: var(--primary-padding-inline-start);
     --padding-inline-end: var(--primary-padding-inline-end);
 
-    --padding-block: var(--primary-padding-block);
+    --padding-block-base: var(--primary-padding-block);
 
     &[data-pressed] {
         --inner-shape: var(--inner-corner-shape-interaction);
@@ -53,7 +55,7 @@
     --padding-inline-start: var(--trigger-padding-inline-start-normal);
     --padding-inline-end: var(--trigger-padding-inline-end-normal);
 
-    --padding-block: var(--trigger-padding-block);
+    --padding-block-base: var(--trigger-padding-block);
 
     &[data-pressed] {
         --inner-shape: var(--trigger-pressed-shape);

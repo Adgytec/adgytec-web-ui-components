@@ -133,6 +133,11 @@
     border-color: var(--outline-color);
 }
 
+/* outlined padding block considers border width */
+.outlined.outlined {
+    --padding-block: calc(var(--padding-block-base) - var(--outline-width, 0));
+}
+
 /* no toggle button states are there */
 .text {
     /* text and icon */
