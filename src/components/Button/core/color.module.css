@@ -86,6 +86,8 @@
     outline-style: solid;
     outline-offset: var(--focus-indicator-offset);
     outline-color: var(--focus-indicator-color);
+
+    z-index: 1;
 }
 
 .filled {
@@ -129,6 +131,11 @@
     border-width: var(--outline-width);
     border-style: solid;
     border-color: var(--outline-color);
+}
+
+/* outlined padding block considers border width */
+.outlined.outlined {
+    --padding-block: calc(var(--padding-block-base) - var(--outline-width, 0));
 }
 
 /* no toggle button states are there */

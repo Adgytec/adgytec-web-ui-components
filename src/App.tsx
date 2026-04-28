@@ -1,12 +1,16 @@
 import {
     Clipboard,
+    Download,
     ExternalLinkIcon,
+    Eye,
     FileBraces,
+    GlobeLock,
     LogOut,
     type LucideIcon,
     Mouse,
     MouseOff,
     Settings,
+    Share2,
     User,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
@@ -22,6 +26,10 @@ import {
     type IconButtonWidth,
     LinkButton,
     LinkIconButton,
+    SplitButton,
+    type SplitButtonColor,
+    SplitButtonPrimary,
+    SplitButtonTrigger,
     ToggleButton,
     ToggleIconButton,
 } from "./components/Button";
@@ -339,7 +347,7 @@ const ButtonPreview = () => {
                             <h4 className={typography.headlineSmall}>{size}</h4>
 
                             {shapes.map((shape) => (
-                                <div className="buttons" key={shape}>
+                                <div className="items" key={shape}>
                                     <Button
                                         size={size}
                                         shape={shape}
@@ -432,7 +440,7 @@ const IconButtonPreview = () => {
                                         {width}
                                     </h5>
                                     {shapes.map((shape) => (
-                                        <div key={shape} className="buttons">
+                                        <div key={shape} className="items">
                                             <IconButton
                                                 size={size}
                                                 shape={shape}
@@ -482,7 +490,7 @@ const IconButtonPreview = () => {
 const LinkPreview = () => {
     return (
         <PreviewContainer label="Link">
-            <div className="links">
+            <div className="items">
                 <LinkButton
                     href="https://m3.material.io"
                     target="_blank"
@@ -878,7 +886,7 @@ const MenuPreview = () => {
 
     return (
         <PreviewContainer label="Menu (Layout + Color)">
-            <div className="menus">
+            <div className="items">
                 {menuCombo.map((combo) => {
                     const menuLayout = layout();
                     const menuColor = color();
@@ -888,6 +896,7 @@ const MenuPreview = () => {
                     return (
                         <MenuTrigger
                             key={combo.title}
+                            offset={-1}
                             triggerElement={
                                 <Button
                                     color={triggerColor}
@@ -919,9 +928,109 @@ const MenuPreview = () => {
     );
 };
 
+const SplitButtonPreview = () => {
+    const sizes: ButtonSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+
+    const colors: SplitButtonColor[] = [
+        "filled",
+        "tonal",
+        "outlined",
+        "elevated",
+    ];
+
+    const RenderSplitButton = ({
+        size,
+        color,
+        isDisabled,
+        isPending,
+    }: {
+        size: ButtonSize;
+        color: SplitButtonColor;
+        isPending?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        return (
+            <SplitButton
+                color={color}
+                size={size}
+                isDisabled={isDisabled}
+                isPending={isPending}
+            >
+                <SplitButtonPrimary tooltip="download" icon={Download}>
+                    Download
+                </SplitButtonPrimary>
+
+                <MenuTrigger
+                    triggerElement={
+                        <SplitButtonTrigger tooltip="more actions" />
+                    }
+                >
+                    <Menu color="vibrant" layout="grouped">
+                        <MenuSection>
+                            <MenuItem trailingIcon={Eye}>Preview</MenuItem>
+
+                            <MenuItem trailingIcon={Share2}>Share</MenuItem>
+                        </MenuSection>
+
+                        <MenuSection>
+                            <MenuItem
+                                trailingIcon={GlobeLock}
+                                supportingText="Make item private"
+                            >
+                                Private
+                            </MenuItem>
+                        </MenuSection>
+                    </Menu>
+                </MenuTrigger>
+            </SplitButton>
+        );
+    };
+
+    return (
+        <PreviewContainer label="SplitButton">
+            {colors.map((color) => (
+                <div className="button-color" key={`button-${color}`}>
+                    <h3 className={typography.headlineMediumEmphasized}>
+                        {color}
+                    </h3>
+
+                    {sizes.map((size) => (
+                        <div className="button-size" key={size}>
+                            <h4 className={typography.headlineSmall}>{size}</h4>
+
+                            <div className="items">
+                                <RenderSplitButton size={size} color={color} />
+
+                                <RenderSplitButton
+                                    size={size}
+                                    color={color}
+                                    isPending
+                                />
+
+                                <RenderSplitButton
+                                    size={size}
+                                    color={color}
+                                    isDisabled
+                                />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            ))}
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        SplitButtonPreview,
         MenuPreview,
         LinkPreview,
         ButtonPreview,
