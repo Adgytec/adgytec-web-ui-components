@@ -1,3 +1,9 @@
+.block-size {
+    --target-size: calc(48 * var(--dp, 1px));
+
+    min-block-size: var(--target-size);
+}
+
 .size {
     --padding-block: var(--padding-block-base);
 
@@ -14,6 +20,9 @@
     gap: var(--icon-label-gap);
     align-items: center;
     justify-content: center;
+
+    box-sizing: border-box;
+    min-inline-size: var(--target-size);
 }
 
 .primary {

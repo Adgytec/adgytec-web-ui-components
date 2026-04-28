@@ -15,6 +15,7 @@ import {
     SplitButtonTriggerBase,
     SplitButtonTriggerIconSize,
     SplitButtonVariantBase,
+    SplitButtonVariantTargetSize,
 } from "../core";
 import { useSplitButtonContext } from "../SplitButtonContext";
 import styles from "./splitButtonTrigger.module.css";
@@ -39,22 +40,48 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
             onPress={handlePress}
             isDisabled={disabled}
             isPending={pending}
-            className={clsx(
-                ButtonReset,
-                ButtonCore,
-                buttonColorBase,
-                buttonColorConfig(splitButtonState.color),
-                styles["trigger"],
-                SplitButtonVariantBase,
-                SplitButtonTriggerBase
-            )}
+            className={clsx(ButtonReset, SplitButtonVariantTargetSize)}
             {...props}
         >
-            {splashInfo && <Splash {...splashInfo} />}
-            <Icon
-                icon={ChevronDown}
-                size={SplitButtonTriggerIconSize[splitButtonState.size]}
-            />
+            {({
+                isDisabled,
+                isFocusVisible,
+                isFocused,
+                isPressed,
+                isHovered,
+            }) => {
+                const dataAttrs = {
+                    "data-hovered": isHovered || undefined,
+                    "data-disabled": isDisabled || undefined,
+                    "data-focused": isFocused || undefined,
+                    "data-focus-visible": isFocusVisible || undefined,
+                    "data-pressed": isPressed || undefined,
+                };
+
+                return (
+                    <div
+                        className={clsx(
+                            ButtonCore,
+                            buttonColorBase,
+                            buttonColorConfig(splitButtonState.color),
+                            styles["trigger"],
+                            SplitButtonVariantBase,
+                            SplitButtonTriggerBase
+                        )}
+                        {...dataAttrs}
+                    >
+                        {splashInfo && <Splash {...splashInfo} />}
+                        <Icon
+                            icon={ChevronDown}
+                            size={
+                                SplitButtonTriggerIconSize[
+                                    splitButtonState.size
+                                ]
+                            }
+                        />
+                    </div>
+                );
+            }}
         </AriaButton>,
         tooltip
     );
