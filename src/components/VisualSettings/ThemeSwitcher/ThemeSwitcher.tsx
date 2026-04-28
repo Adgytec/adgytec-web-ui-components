@@ -1,7 +1,15 @@
+// TODO: this component if for trial purposes only
+// its impl will be completly changed in next pr
+// don't review this
+
 import { useEffect } from "react";
 import type { Key } from "react-aria-components";
-import { type TernaryDarkMode, useTernaryDarkMode } from "usehooks-ts";
-import { ToggleButton } from "@/components/ToggleButton";
+import {
+    type TernaryDarkMode,
+    useLocalStorage,
+    useTernaryDarkMode,
+} from "usehooks-ts";
+import { ToggleButton } from "@/components/Button";
 import { ToggleButtonGroup } from "@/components/ToggleButtonGroup";
 import type { ThemeSwitcherProps, ThemeValue } from "./types";
 
@@ -13,11 +21,26 @@ const defaultThemeValues: ThemeValue = {
 
 export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
     ui = true,
-    theme = "primary",
     displayValue = defaultThemeValues,
 }) => {
+    const [themeType, setThemeType] = useLocalStorage(
+        "data-theme-type",
+        "normal"
+    );
+
     const { isDarkMode, ternaryDarkMode, setTernaryDarkMode } =
         useTernaryDarkMode();
+
+    const themeTypes = [
+        {
+            id: "monochrome",
+            value: "Monochrome",
+        },
+        {
+            id: "normal",
+            value: "Normal",
+        },
+    ];
 
     const themeItems = [
         {
@@ -35,11 +58,14 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
     ];
 
     useEffect(() => {
+        const themePrefix = themeType !== "normal" ? "monochrome-" : "";
         document.documentElement.setAttribute(
             "data-theme",
-            isDarkMode ? "dark" : "light"
+            `${themePrefix}${isDarkMode ? "dark" : "light"}`
         );
-    }, [isDarkMode]);
+
+        document.documentElement.setAttribute("data-theme-type", themeType);
+    }, [isDarkMode, themeType]);
 
     const handleThemeChange = (keys: Set<Key>) => {
         const theme = Array.from(keys)[0] as TernaryDarkMode;
@@ -48,19 +74,38 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
         setTernaryDarkMode(theme);
     };
 
+    const handleThemeTypeChange = (keys: Set<Key>) => {
+        const selectedType = Array.from(keys)[0];
+        if (typeof selectedType === "string") setThemeType(selectedType);
+    };
+
     if (!ui) return null;
 
     return (
-        <ToggleButtonGroup
-            selectionMode="single"
-            selectedKeys={[ternaryDarkMode]}
-            onSelectionChange={handleThemeChange}
-        >
-            {themeItems.map((item) => (
-                <ToggleButton key={item.id} id={item.id} theme={theme}>
-                    {item.value}
-                </ToggleButton>
-            ))}
-        </ToggleButtonGroup>
+        <>
+            <ToggleButtonGroup
+                selectionMode="single"
+                selectedKeys={[themeType]}
+                onSelectionChange={handleThemeTypeChange}
+            >
+                {themeTypes.map((item) => (
+                    <ToggleButton key={item.id} id={item.id} color="elevated">
+                        {item.value}
+                    </ToggleButton>
+                ))}
+            </ToggleButtonGroup>
+
+            <ToggleButtonGroup
+                selectionMode="single"
+                selectedKeys={[ternaryDarkMode]}
+                onSelectionChange={handleThemeChange}
+            >
+                {themeItems.map((item) => (
+                    <ToggleButton key={item.id} id={item.id} color="tonal">
+                        {item.value}
+                    </ToggleButton>
+                ))}
+            </ToggleButtonGroup>
+        </>
     );
 };

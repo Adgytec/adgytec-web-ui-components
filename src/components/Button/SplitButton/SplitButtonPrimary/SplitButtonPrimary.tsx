@@ -13,7 +13,11 @@ import {
     buttonColorConfig,
     withTooltip,
 } from "../../core";
-import { SplitButtonPrimaryBase, SplitButtonVariantBase } from "../core";
+import {
+    SplitButtonPrimaryBase,
+    SplitButtonVariantBase,
+    SplitButtonVariantTargetSize,
+} from "../core";
 import { useSplitButtonContext } from "../SplitButtonContext";
 import type { SplitButtonPrimaryProps } from "./types";
 
@@ -40,20 +44,38 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
             isDisabled={disabled}
             isPending={pending}
             {...props}
-            className={clsx(
-                ButtonReset,
-                ButtonCore,
-                buttonColorBase,
-                buttonColorConfig(splitButtonState.color),
-                ButtonLabelTextMapping[splitButtonState.size],
-                SplitButtonPrimaryBase,
-                SplitButtonVariantBase
-            )}
+            className={clsx(ButtonReset, SplitButtonVariantTargetSize)}
         >
             {(renderProps) => {
+                const {
+                    isDisabled,
+                    isFocusVisible,
+                    isFocused,
+                    isPressed,
+                    isHovered,
+                } = renderProps;
+
+                const dataAttrs = {
+                    "data-hovered": isHovered || undefined,
+                    "data-disabled": isDisabled || undefined,
+                    "data-focused": isFocused || undefined,
+                    "data-focus-visible": isFocusVisible || undefined,
+                    "data-pressed": isPressed || undefined,
+                };
+
                 const iconSize = ButtonIconSizeMapping[splitButtonState.size];
                 return (
-                    <>
+                    <div
+                        className={clsx(
+                            ButtonCore,
+                            buttonColorBase,
+                            buttonColorConfig(splitButtonState.color),
+                            ButtonLabelTextMapping[splitButtonState.size],
+                            SplitButtonPrimaryBase,
+                            SplitButtonVariantBase
+                        )}
+                        {...dataAttrs}
+                    >
                         {splashInfo && <Splash {...splashInfo} />}
 
                         {renderProps.isPending ? (
@@ -63,7 +85,7 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
                         )}
 
                         {isChildFunc ? children(renderProps) : children}
-                    </>
+                    </div>
                 );
             }}
         </AriaButton>,
