@@ -1062,7 +1062,7 @@ const ButtonGroupPreview = () => {
     return (
         <PreviewContainer label="ButtonGroup">
             <div className="items">
-                <ButtonGroup size="medium">
+                <ButtonGroup size="medium" shape="square">
                     <ToggleButton id={"one"} color={color}>
                         One
                     </ToggleButton>

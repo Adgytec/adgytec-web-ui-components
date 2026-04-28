@@ -28,8 +28,10 @@ export const IconButton: React.FC<IconButtonProps> = ({
     onPress,
     ...props
 }) => {
-    const { size: buttonGroupSize } = useButtonGroupContext();
+    const { size: buttonGroupSize, shape: buttonGroupShape } =
+        useButtonGroupContext();
     const buttonSize = buttonGroupSize ?? size;
+    const buttonShape = buttonGroupShape ?? shape;
 
     const { splashInfo, handlePress } = useSplash(onPress);
 
@@ -53,7 +55,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
                     "data-focused": isFocused || undefined,
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
-                    "data-shape": shape,
+                    "data-shape": buttonShape,
                     "data-width": width,
                     "data-icon-button": true,
                 };

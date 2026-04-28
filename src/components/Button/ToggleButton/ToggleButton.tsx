@@ -29,8 +29,10 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
     onPress,
     ...props
 }) => {
-    const { size: buttonGroupSize } = useButtonGroupContext();
+    const { size: buttonGroupSize, shape: buttonGroupShape } =
+        useButtonGroupContext();
     const buttonSize = buttonGroupSize ?? size;
+    const buttonShape = buttonGroupShape ?? shape;
 
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
@@ -59,7 +61,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
                     "data-pressed": isPressed || undefined,
                     "data-selected": isSelected || undefined,
                     "data-toggle-button": true,
-                    "data-shape": shape,
+                    "data-shape": buttonShape,
                 };
 
                 let iconToRender = icon;

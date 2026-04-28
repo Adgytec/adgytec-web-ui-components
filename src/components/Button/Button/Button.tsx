@@ -29,8 +29,10 @@ export const Button: React.FC<ButtonProps> = ({
     onPress,
     ...props
 }) => {
-    const { size: buttonGroupSize } = useButtonGroupContext();
+    const { size: buttonGroupSize, shape: buttonGroupShape } =
+        useButtonGroupContext();
     const buttonSize = buttonGroupSize ?? size;
+    const buttonShape = buttonGroupShape ?? shape;
 
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
@@ -57,7 +59,7 @@ export const Button: React.FC<ButtonProps> = ({
                     "data-focused": isFocused || undefined,
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
-                    "data-shape": shape,
+                    "data-shape": buttonShape,
                 };
 
                 const iconSize = ButtonIconSizeMapping[buttonSize];
