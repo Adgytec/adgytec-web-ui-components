@@ -16,6 +16,7 @@ import {
 import { SplitButtonContext } from "../SplitButtonContext";
 import type { SplitButtonPrimaryProps } from "./types";
 import { SplitButtonPrimaryBase, SplitButtonVariantBase } from "../core";
+import { Loader } from "@/components/Loader";
 
 export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
     tooltip,
@@ -50,20 +51,22 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
                 SplitButtonVariantBase
             )}
         >
-            {(renderProps) => (
-                <>
-                    {splashInfo && <Splash {...splashInfo} />}
+            {(renderProps) => {
+                const iconSize = ButtonIconSizeMapping[splitButtonState.size];
+                return (
+                    <>
+                        {splashInfo && <Splash {...splashInfo} />}
 
-                    {icon && (
-                        <Icon
-                            icon={icon}
-                            size={ButtonIconSizeMapping[splitButtonState.size]}
-                        />
-                    )}
+                        {renderProps.isPending ? (
+                            <Loader size={iconSize} />
+                        ) : (
+                            icon && <Icon icon={icon} size={iconSize} />
+                        )}
 
-                    {isChildFunc ? children(renderProps) : children}
-                </>
-            )}
+                        {isChildFunc ? children(renderProps) : children}
+                    </>
+                );
+            }}
         </AriaButton>,
         tooltip
     );

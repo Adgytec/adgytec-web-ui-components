@@ -5,6 +5,10 @@
     &[data-disabled] {
         cursor: default;
     }
+
+    &[data-pending] {
+        cursor: default;
+    }
 }
 
 .button-core {
