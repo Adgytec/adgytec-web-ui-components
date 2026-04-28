@@ -1,6 +1,5 @@
 import { clsx } from "clsx";
 import { ChevronDown } from "lucide-react";
-import { useContext } from "react";
 import { Button as AriaButton } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
@@ -17,7 +16,7 @@ import {
     SplitButtonTriggerIconSize,
     SplitButtonVariantBase,
 } from "../core";
-import { SplitButtonContext } from "../SplitButtonContext";
+import { useSplitButtonContext } from "../SplitButtonContext";
 import styles from "./splitButtonTrigger.module.css";
 import type { SplitButtonTriggerProps } from "./types";
 
@@ -28,7 +27,7 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
     isPending,
     ...props
 }) => {
-    const splitButtonState = useContext(SplitButtonContext);
+    const splitButtonState = useSplitButtonContext();
 
     const { splashInfo, handlePress } = useSplash(onPress);
 

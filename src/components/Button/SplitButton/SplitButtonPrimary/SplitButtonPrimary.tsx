@@ -1,5 +1,4 @@
 import { clsx } from "clsx";
-import { useContext } from "react";
 import { Button as AriaButton } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Loader } from "@/components/Loader";
@@ -15,7 +14,7 @@ import {
     withTooltip,
 } from "../../core";
 import { SplitButtonPrimaryBase, SplitButtonVariantBase } from "../core";
-import { SplitButtonContext } from "../SplitButtonContext";
+import { useSplitButtonContext } from "../SplitButtonContext";
 import type { SplitButtonPrimaryProps } from "./types";
 
 export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
@@ -27,7 +26,7 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
     isPending,
     ...props
 }) => {
-    const splitButtonState = useContext(SplitButtonContext);
+    const splitButtonState = useSplitButtonContext();
 
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
