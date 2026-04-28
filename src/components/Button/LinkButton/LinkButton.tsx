@@ -58,7 +58,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
 
                 const iconSize = ButtonIconSizeMapping[buttonSize];
                 return (
-                    <Target {...dataAttrs}>
+                    <Target>
                         <div
                             className={clsx(
                                 ButtonCore,

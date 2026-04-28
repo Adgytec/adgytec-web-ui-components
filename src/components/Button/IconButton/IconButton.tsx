@@ -62,7 +62,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
 
                 const iconSize = IconButtonIconSizeMapping[buttonSize];
                 return (
-                    <Target {...dataAttrs}>
+                    <Target>
                         <div
                             className={clsx(
                                 ButtonCore,

@@ -68,7 +68,7 @@ export const Switch: React.FC<
                     <>
                         {children}
 
-                        <Target {...dataAttrs}>
+                        <Target>
                             <div
                                 {...dataAttrs}
                                 className={clsx(styles["track"])}

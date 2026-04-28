@@ -1,4 +1,5 @@
 import {
+    Armchair,
     Clipboard,
     Download,
     ExternalLinkIcon,
@@ -11,9 +12,8 @@ import {
     MouseOff,
     Settings,
     Share2,
-    User,
-    Armchair,
     Sofa,
+    User,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
@@ -21,6 +21,7 @@ import "./styles/app.css";
 import {
     Button,
     type ButtonColor,
+    ButtonGroup,
     type ButtonShape,
     type ButtonSize,
     IconButton,
@@ -34,7 +35,6 @@ import {
     SplitButtonTrigger,
     ToggleButton,
     ToggleIconButton,
-    ButtonGroup,
 } from "./components/Button";
 import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import { Icon } from "./components/Icon";
