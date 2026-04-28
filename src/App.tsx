@@ -27,6 +27,7 @@ import {
     LinkButton,
     LinkIconButton,
     SplitButton,
+    type SplitButtonColor,
     SplitButtonPrimary,
     SplitButtonTrigger,
     ToggleButton,
@@ -928,38 +929,100 @@ const MenuPreview = () => {
 };
 
 const SplitButtonPreview = () => {
+    const sizes: ButtonSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+
+    const colors: SplitButtonColor[] = [
+        "filled",
+        "tonal",
+        "outlined",
+        "elevated",
+    ];
+
+    const RenderSplitButton = ({
+        size,
+        color,
+        isDisabled,
+        isPending,
+    }: {
+        size: ButtonSize;
+        color: SplitButtonColor;
+        isPending?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        return (
+            <SplitButton
+                color={color}
+                size={size}
+                isDisabled={isDisabled}
+                isPending={isPending}
+            >
+                <SplitButtonPrimary tooltip="download" icon={Download}>
+                    Download
+                </SplitButtonPrimary>
+
+                <MenuTrigger
+                    triggerElement={
+                        <SplitButtonTrigger tooltip="more actions" />
+                    }
+                >
+                    <Menu color="vibrant" layout="grouped">
+                        <MenuSection>
+                            <MenuItem trailingIcon={Eye}>Preview</MenuItem>
+
+                            <MenuItem trailingIcon={Share2}>Share</MenuItem>
+                        </MenuSection>
+
+                        <MenuSection>
+                            <MenuItem
+                                trailingIcon={GlobeLock}
+                                supportingText="Make item private"
+                            >
+                                Private
+                            </MenuItem>
+                        </MenuSection>
+                    </Menu>
+                </MenuTrigger>
+            </SplitButton>
+        );
+    };
+
     return (
         <PreviewContainer label="SplitButton">
-            <div className="items">
-                <SplitButton color="outlined">
-                    <SplitButtonPrimary tooltip="download" icon={Download}>
-                        Download
-                    </SplitButtonPrimary>
+            {colors.map((color) => (
+                <div className="button-color" key={`button-${color}`}>
+                    <h3 className={typography.headlineMediumEmphasized}>
+                        {color}
+                    </h3>
 
-                    <MenuTrigger
-                        triggerElement={
-                            <SplitButtonTrigger tooltip="more actions" />
-                        }
-                    >
-                        <Menu color="vibrant" layout="grouped">
-                            <MenuSection>
-                                <MenuItem trailingIcon={Eye}>Preview</MenuItem>
+                    {sizes.map((size) => (
+                        <div className="button-size" key={size}>
+                            <h4 className={typography.headlineSmall}>{size}</h4>
 
-                                <MenuItem trailingIcon={Share2}>Share</MenuItem>
-                            </MenuSection>
+                            <div className="items">
+                                <RenderSplitButton size={size} color={color} />
 
-                            <MenuSection>
-                                <MenuItem
-                                    trailingIcon={GlobeLock}
-                                    supportingText="Make item private"
-                                >
-                                    Private
-                                </MenuItem>
-                            </MenuSection>
-                        </Menu>
-                    </MenuTrigger>
-                </SplitButton>
-            </div>
+                                <RenderSplitButton
+                                    size={size}
+                                    color={color}
+                                    isPending
+                                />
+
+                                <RenderSplitButton
+                                    size={size}
+                                    color={color}
+                                    isDisabled
+                                />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            ))}
         </PreviewContainer>
     );
 };

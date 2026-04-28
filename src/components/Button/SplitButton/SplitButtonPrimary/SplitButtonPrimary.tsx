@@ -2,6 +2,7 @@ import { clsx } from "clsx";
 import { useContext } from "react";
 import { Button as AriaButton } from "react-aria-components";
 import { Icon } from "@/components/Icon";
+import { Loader } from "@/components/Loader";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
 import {
@@ -13,10 +14,9 @@ import {
     buttonColorConfig,
     withTooltip,
 } from "../../core";
+import { SplitButtonPrimaryBase, SplitButtonVariantBase } from "../core";
 import { SplitButtonContext } from "../SplitButtonContext";
 import type { SplitButtonPrimaryProps } from "./types";
-import { SplitButtonPrimaryBase, SplitButtonVariantBase } from "../core";
-import { Loader } from "@/components/Loader";
 
 export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
     tooltip,
