@@ -12,6 +12,8 @@ import {
     Settings,
     Share2,
     User,
+    Armchair,
+    Sofa,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
@@ -32,6 +34,7 @@ import {
     SplitButtonTrigger,
     ToggleButton,
     ToggleIconButton,
+    ButtonGroup,
 } from "./components/Button";
 import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import { Icon } from "./components/Icon";
@@ -1054,9 +1057,39 @@ const SplitButtonPreview = () => {
     );
 };
 
+const ButtonGroupPreview = () => {
+    const color = "outlined";
+    return (
+        <PreviewContainer label="ButtonGroup">
+            <div className="items">
+                <ButtonGroup size="medium">
+                    <ToggleButton id={"one"} color={color}>
+                        One
+                    </ToggleButton>
+
+                    <ToggleButton id={"two"} color={color}>
+                        Two
+                    </ToggleButton>
+
+                    <ToggleButton id={"three"} color={color} icon={Armchair}>
+                        Three
+                    </ToggleButton>
+
+                    <ToggleIconButton id={"four"} color={color} icon={Sofa} />
+
+                    <ToggleButton id={"five"} color={color}>
+                        Five
+                    </ToggleButton>
+                </ButtonGroup>
+            </div>
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        ButtonGroupPreview,
         SplitButtonPreview,
         MenuPreview,
         LinkPreview,
