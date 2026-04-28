@@ -4,6 +4,7 @@ import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
 import { Target } from "@/components/Target";
+import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
     ButtonIconSizeMapping,
@@ -27,6 +28,11 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
     onPress,
     ...props
 }) => {
+    const { size: buttonGroupSize, shape: buttonGroupShape } =
+        useButtonGroupContext();
+    const buttonSize = buttonGroupSize ?? size;
+    const buttonShape = buttonGroupShape ?? shape;
+
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
 
@@ -47,20 +53,21 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
                     "data-focused": isFocused || undefined,
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
-                    "data-shape": shape,
+                    "data-shape": buttonShape,
+                    "data-visual": true,
                 };
 
-                const iconSize = ButtonIconSizeMapping[size];
+                const iconSize = ButtonIconSizeMapping[buttonSize];
                 return (
-                    <Target {...dataAttrs}>
+                    <Target>
                         <div
                             className={clsx(
                                 ButtonCore,
                                 buttonColorBase,
                                 ButtonSizeBase,
                                 buttonColorConfig(color),
-                                buttonSizeConfig(size),
-                                ButtonLabelTextMapping[size]
+                                buttonSizeConfig(buttonSize),
+                                ButtonLabelTextMapping[buttonSize]
                             )}
                             {...dataAttrs}
                         >

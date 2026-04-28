@@ -4,6 +4,7 @@ import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
 import { Target } from "@/components/Target";
+import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
     ButtonReset,
@@ -27,6 +28,11 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     onPress,
     ...props
 }) => {
+    const { size: buttonGroupSize, shape: buttonGroupShape } =
+        useButtonGroupContext();
+    const buttonSize = buttonGroupSize ?? size;
+    const buttonShape = buttonGroupShape ?? shape;
+
     const { splashInfo, handlePress } = useSplash(onPress);
 
     return withTooltip(
@@ -51,24 +57,25 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                     "data-pressed": isPressed || undefined,
                     "data-selected": isSelected || undefined,
                     "data-toggle-button": true,
-                    "data-shape": shape,
+                    "data-shape": buttonShape,
                     "data-width": width,
                     "data-icon-button": true,
+                    "data-visual": true,
                 };
 
                 let iconToRender = icon;
                 if (isSelected && selectedIcon) iconToRender = selectedIcon;
 
-                const iconSize = IconButtonIconSizeMapping[size];
+                const iconSize = IconButtonIconSizeMapping[buttonSize];
                 return (
-                    <Target {...dataAttrs}>
+                    <Target>
                         <div
                             className={clsx(
                                 ButtonCore,
                                 buttonColorBase,
                                 ButtonSizeBase,
                                 buttonColorConfig(color),
-                                buttonSizeConfig(size)
+                                buttonSizeConfig(buttonSize)
                             )}
                             {...dataAttrs}
                         >

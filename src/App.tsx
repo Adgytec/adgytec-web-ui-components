@@ -1,4 +1,5 @@
 import {
+    Armchair,
     Clipboard,
     Download,
     ExternalLinkIcon,
@@ -11,6 +12,7 @@ import {
     MouseOff,
     Settings,
     Share2,
+    Sofa,
     User,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
@@ -19,6 +21,7 @@ import "./styles/app.css";
 import {
     Button,
     type ButtonColor,
+    ButtonGroup,
     type ButtonShape,
     type ButtonSize,
     IconButton,
@@ -1054,9 +1057,58 @@ const SplitButtonPreview = () => {
     );
 };
 
+const ButtonGroupPreview = () => {
+    const color = "outlined";
+
+    const sizes: ButtonSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+
+    return (
+        <PreviewContainer label="ButtonGroup">
+            {sizes.map((size) => (
+                <div className="items" key={size}>
+                    <ButtonGroup size={size} shape="square">
+                        <ToggleButton id={"one"} color={color}>
+                            One
+                        </ToggleButton>
+
+                        <ToggleButton id={"two"} color={color}>
+                            Two
+                        </ToggleButton>
+
+                        <ToggleButton
+                            id={"three"}
+                            color={color}
+                            icon={Armchair}
+                        >
+                            Three
+                        </ToggleButton>
+
+                        <ToggleIconButton
+                            id={"four"}
+                            color={color}
+                            icon={Sofa}
+                        />
+
+                        <ToggleButton id={"five"} color={color}>
+                            Five
+                        </ToggleButton>
+                    </ButtonGroup>
+                </div>
+            ))}
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        ButtonGroupPreview,
         SplitButtonPreview,
         MenuPreview,
         LinkPreview,
