@@ -12,7 +12,11 @@ import {
     buttonColorConfig,
     withTooltip,
 } from "../../core";
-import { SplitButtonTriggerIconSize } from "../core";
+import {
+    SplitButtonTriggerBase,
+    SplitButtonTriggerIconSize,
+    SplitButtonVariantBase,
+} from "../core";
 import { SplitButtonContext } from "../SplitButtonContext";
 import styles from "./splitButtonTrigger.module.css";
 import type { SplitButtonTriggerProps } from "./types";
@@ -41,7 +45,9 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
                 ButtonCore,
                 buttonColorBase,
                 buttonColorConfig(splitButtonState.color),
-                styles["trigger"]
+                styles["trigger"],
+                SplitButtonVariantBase,
+                SplitButtonTriggerBase
             )}
             {...props}
         >

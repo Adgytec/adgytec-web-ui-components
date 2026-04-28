@@ -15,6 +15,7 @@ import {
 } from "../../core";
 import { SplitButtonContext } from "../SplitButtonContext";
 import type { SplitButtonPrimaryProps } from "./types";
+import { SplitButtonPrimaryBase, SplitButtonVariantBase } from "../core";
 
 export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
     tooltip,
@@ -44,7 +45,9 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
                 ButtonCore,
                 buttonColorBase,
                 buttonColorConfig(splitButtonState.color),
-                ButtonLabelTextMapping[splitButtonState.size]
+                ButtonLabelTextMapping[splitButtonState.size],
+                SplitButtonPrimaryBase,
+                SplitButtonVariantBase
             )}
         >
             {(renderProps) => (

@@ -1,3 +1,72 @@
+.size {
+    border-start-start-radius: var(--shape-start-start);
+    border-start-end-radius: var(--shape-start-end);
+    border-end-start-radius: var(--shape-end-start);
+    border-end-end-radius: var(--shape-end-end);
+
+    padding-inline-start: var(--padding-inline-start);
+    padding-inline-end: var(--padding-inline-end);
+    padding-block: var(--padding-block);
+
+    display: inline-flex;
+    gap: var(--icon-label-gap);
+    align-items: center;
+    justify-content: center;
+}
+
+.primary {
+    /* shape */
+    --inner-shape: var(--inner-corner-shape-normal);
+
+    --shape-start-end: var(--inner-shape);
+    --shape-end-end: var(--inner-shape);
+
+    --shape-start-start: var(--outer-corner-shape);
+    --shape-end-start: var(--outer-corner-shape);
+
+    /* padding */
+    --padding-inline-start: var(--primary-padding-inline-start);
+    --padding-inline-end: var(--primary-padding-inline-end);
+
+    --padding-block: var(--primary-padding-block);
+
+    &[data-pressed] {
+        --inner-shape: var(--inner-corner-shape-interaction);
+    }
+
+    &[data-hovered] {
+        --inner-shape: var(--inner-corner-shape-interaction);
+    }
+}
+
+.trigger {
+    /* shape */
+    --inner-shape: var(--inner-corner-shape-normal);
+
+    --shape-start-end: var(--outer-corner-shape);
+    --shape-end-end: var(--outer-corner-shape);
+
+    --shape-start-start: var(--inner-shape);
+    --shape-end-start: var(--inner-shape);
+
+    /* padding */
+    --padding-inline-start: var(--trigger-padding-inline-start-normal);
+    --padding-inline-end: var(--trigger-padding-inline-end-normal);
+
+    --padding-block: var(--trigger-padding-block);
+
+    &[data-pressed] {
+        --inner-shape: var(--trigger-pressed-shape);
+
+        --padding-inline-start: var(--trigger-padding-inline-start-pressed);
+        --padding-inline-end: var(--trigger-padding-inline-end-pressed);
+    }
+
+    &[data-hovered] {
+        --inner-shape: var(--inner-corner-shape-interaction);
+    }
+}
+
 .extra-small {
     /* height for button is 32 */
     --md-sys-shape-corner-radius-full: calc(16 * var(--dp, 1px));
@@ -5,6 +74,9 @@
     --outer-corner-shape: var(--md-sys-shape-corner-radius-full);
     --inner-corner-shape-normal: var(--md-sys-shape-corner-radius-extra-small);
     --inner-corner-shape-interaction: var(--md-sys-shape-corner-radius-small);
+
+    --icon-label-gap: var(--md-sys-layout-space-4);
+    --outline-width: var(--md-sys-shape-border-width-thin);
 
     /* primary button */
     --primary-padding-inline-start: var(--md-sys-layout-space-12);
@@ -31,6 +103,9 @@
     --inner-corner-shape-normal: var(--md-sys-shape-corner-radius-extra-small);
     --inner-corner-shape-interaction: var(--md-sys-shape-corner-radius-small);
 
+    --icon-label-gap: var(--md-sys-layout-space-8);
+    --outline-width: var(--md-sys-shape-border-width-thin);
+
     /* primary button */
     --primary-padding-inline-start: var(--md-sys-layout-space-16);
     --primary-padding-inline-end: var(--md-sys-layout-space-12);
@@ -55,6 +130,9 @@
     --outer-corner-shape: var(--md-sys-shape-corner-radius-full);
     --inner-corner-shape-normal: var(--md-sys-shape-corner-radius-extra-small);
     --inner-corner-shape-interaction: var(--md-sys-shape-corner-radius-medium);
+
+    --icon-label-gap: var(--md-sys-layout-space-8);
+    --outline-width: var(--md-sys-shape-border-width-thin);
 
     /* primary button */
     --primary-padding-inline-start: var(--md-sys-layout-space-24);
@@ -81,6 +159,9 @@
     --inner-corner-shape-normal: var(--md-sys-shape-corner-radius-small);
     --inner-corner-shape-interaction: var(--md-sys-shape-corner-radius-large);
 
+    --icon-label-gap: var(--md-sys-layout-space-12);
+    --outline-width: var(--md-sys-shape-border-width-thick);
+
     /* primary button */
     --primary-padding-inline-start: var(--md-sys-layout-space-48);
     --primary-padding-inline-end: var(--md-sys-layout-space-48);
@@ -105,6 +186,9 @@
     --outer-corner-shape: var(--md-sys-shape-corner-radius-full);
     --inner-corner-shape-normal: var(--md-sys-shape-corner-radius-medium);
     --inner-corner-shape-interaction: var(--md-sys-shape-corner-radius-large);
+
+    --icon-label-gap: var(--md-sys-layout-space-16);
+    --outline-width: calc(3 * var(--dp, 1px));
 
     /* primary button */
     --primary-padding-inline-start: var(--md-sys-layout-space-64);
