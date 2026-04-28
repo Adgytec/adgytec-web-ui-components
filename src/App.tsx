@@ -973,12 +973,17 @@ const SplitButtonPreview = () => {
                         <SplitButtonTrigger tooltip="more actions" />
                     }
                 >
-                    <Menu color="vibrant" layout="grouped">
+                    <Menu
+                        color={!label ? "standard" : "vibrant"}
+                        layout={!label ? "standard" : "grouped"}
+                    >
                         <MenuSection>
                             <MenuItem trailingIcon={Eye}>Preview</MenuItem>
 
                             <MenuItem trailingIcon={Share2}>Share</MenuItem>
                         </MenuSection>
+
+                        {!label && <Separator />}
 
                         <MenuSection>
                             <MenuItem
