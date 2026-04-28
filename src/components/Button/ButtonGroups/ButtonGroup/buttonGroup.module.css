@@ -5,6 +5,35 @@
     gap: var(--button-group-gap);
 }
 
+.button-group [data-visual] {
+    padding-inline: calc(var(--padding-inline) + var(--morph, 0px));
+}
+
+/* pressed item */
+.button-group > [data-pressed] {
+    --morph: var(--morph-pressed, 0px);
+}
+
+/* next sibling */
+.button-group > [data-pressed] + * {
+    --morph: var(--morph-pressed-sibling, 0px);
+}
+
+/* previous sibling */
+.button-group > *:has(+ [data-pressed]) {
+    --morph: var(--morph-pressed-sibling, 0px);
+}
+
+/* next sibling ONLY if pressed is first */
+.button-group > [data-pressed]:first-child + * {
+    --morph: var(--morph--edge-pressed-sibling, 0px);
+}
+
+/* previous sibling ONLY if pressed is last */
+.button-group > *:has(+ [data-pressed]:last-child) {
+    --morph: var(--morph--edge-pressed-sibling, 0px);
+}
+
 .extra-small {
     --button-group-gap: calc(18 * var(--dp, 1px));
 }
