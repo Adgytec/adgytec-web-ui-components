@@ -51,7 +51,7 @@ import { Separator } from "./components/Separator";
 import { Switch } from "./components/Switch";
 import { TextArea } from "./components/TextArea";
 import { Viewport } from "./components/Viewport";
-// import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
+import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
 
 // preview container
@@ -222,14 +222,14 @@ const CheckboxPreview = () => {
     );
 };
 
-// const VisualSettingsPreview = () => {
-//     return (
-//         <PreviewContainer label="Theme Switcher">
-//             <ThemeSwitcher ui={false} />
-//             <ThemeSwitcher />
-//         </PreviewContainer>
-//     );
-// };
+const VisualSettingsPreview = () => {
+    return (
+        <PreviewContainer label="Theme Switcher">
+            <ThemeSwitcher ui={false} />
+            <ThemeSwitcher />
+        </PreviewContainer>
+    );
+};
 
 const IconPreview = () => {
     return (
@@ -1051,7 +1051,7 @@ const SplitButtonPreview = () => {
 
 const App = () => {
     const previewElements = [
-        // VisualSettingsPreview,
+        VisualSettingsPreview,
         SplitButtonPreview,
         MenuPreview,
         LinkPreview,
