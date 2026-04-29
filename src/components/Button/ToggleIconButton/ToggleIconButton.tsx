@@ -69,7 +69,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
 
                 const iconSize = IconButtonIconSizeMapping[buttonSize];
                 return (
-                    <div
+                    <span
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
@@ -84,7 +84,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                         {iconToRender && (
                             <Icon icon={iconToRender} size={iconSize} />
                         )}
-                    </div>
+                    </span>
                 );
             }}
         </AriaToggleButton>,

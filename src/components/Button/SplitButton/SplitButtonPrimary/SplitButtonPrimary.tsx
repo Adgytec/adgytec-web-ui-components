@@ -62,7 +62,7 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
 
                 const iconSize = ButtonIconSizeMapping[splitButtonState.size];
                 return (
-                    <div
+                    <span
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
@@ -82,7 +82,7 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
                         )}
 
                         {isChildFunc ? children(renderProps) : children}
-                    </div>
+                    </span>
                 );
             }}
         </AriaButton>,

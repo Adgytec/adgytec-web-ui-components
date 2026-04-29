@@ -62,7 +62,7 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
 
                 const iconSize = ButtonIconSizeMapping[size];
                 return (
-                    <div
+                    <span
                         {...dataAttrs}
                         className={clsx(
                             ButtonCore,
@@ -79,7 +79,7 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
                         )}
 
                         {isChildFunc ? children(renderProps) : children}
-                    </div>
+                    </span>
                 );
             }}
         </AriaToggleButton>

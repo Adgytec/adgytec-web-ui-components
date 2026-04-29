@@ -59,7 +59,7 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
                 };
 
                 return (
-                    <div
+                    <span
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
@@ -79,7 +79,7 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
                                 ]
                             }
                         />
-                    </div>
+                    </span>
                 );
             }}
         </AriaButton>,
