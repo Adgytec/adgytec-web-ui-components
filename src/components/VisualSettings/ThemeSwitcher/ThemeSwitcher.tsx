@@ -1,5 +1,4 @@
-// TODO: this component if for trial purposes only
-// its impl will be completly changed in next pr
+// TODO: updating visual components
 // don't review this
 
 import { useEffect } from "react";
@@ -9,8 +8,12 @@ import {
     useLocalStorage,
     useTernaryDarkMode,
 } from "usehooks-ts";
-import { ToggleButton } from "@/components/Button";
-import { ToggleButtonGroup } from "@/components/ToggleButtonGroup";
+import {
+    ButtonGroup,
+    ConnectedButton,
+    ConnectedButtonGroup,
+    ToggleButton,
+} from "@/components/Button";
 import type { ThemeSwitcherProps, ThemeValue } from "./types";
 
 const defaultThemeValues: ThemeValue = {
@@ -58,13 +61,20 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
     ];
 
     useEffect(() => {
-        const themePrefix = themeType !== "normal" ? "monochrome-" : "";
-        document.documentElement.setAttribute(
-            "data-theme",
-            `${themePrefix}${isDarkMode ? "dark" : "light"}`
-        );
+        // add delay to handle flickers during button transitions
+        const timeoutId = setTimeout(() => {
+            const themePrefix = themeType !== "normal" ? "monochrome-" : "";
+            document.documentElement.setAttribute(
+                "data-theme",
+                `${themePrefix}${isDarkMode ? "dark" : "light"}`
+            );
 
-        document.documentElement.setAttribute("data-theme-type", themeType);
+            document.documentElement.setAttribute("data-theme-type", themeType);
+        }, 100);
+
+        return () => {
+            clearTimeout(timeoutId);
+        };
     }, [isDarkMode, themeType]);
 
     const handleThemeChange = (keys: Set<Key>) => {
@@ -83,29 +93,31 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
 
     return (
         <>
-            <ToggleButtonGroup
+            <ConnectedButtonGroup
                 selectionMode="single"
                 selectedKeys={[themeType]}
                 onSelectionChange={handleThemeTypeChange}
+                color="elevated"
             >
                 {themeTypes.map((item) => (
-                    <ToggleButton key={item.id} id={item.id} color="elevated">
+                    <ConnectedButton key={item.id} id={item.id}>
                         {item.value}
-                    </ToggleButton>
+                    </ConnectedButton>
                 ))}
-            </ToggleButtonGroup>
+            </ConnectedButtonGroup>
 
-            <ToggleButtonGroup
+            <ButtonGroup
                 selectionMode="single"
                 selectedKeys={[ternaryDarkMode]}
                 onSelectionChange={handleThemeChange}
+                color="outlined"
             >
                 {themeItems.map((item) => (
-                    <ToggleButton key={item.id} id={item.id} color="tonal">
+                    <ToggleButton key={item.id} id={item.id}>
                         {item.value}
                     </ToggleButton>
                 ))}
-            </ToggleButtonGroup>
+            </ButtonGroup>
         </>
     );
 };

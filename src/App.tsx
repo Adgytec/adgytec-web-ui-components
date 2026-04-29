@@ -31,6 +31,7 @@ import {
     type ButtonSize,
     ConnectedButton,
     ConnectedButtonGroup,
+    type ConnectedButtonGroupColor,
     IconButton,
     type IconButtonColor,
     type IconButtonWidth,
@@ -42,7 +43,6 @@ import {
     SplitButtonTrigger,
     ToggleButton,
     ToggleIconButton,
-    type ConnectedButtonGroupColor,
 } from "./components/Button";
 import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import { Icon } from "./components/Icon";
