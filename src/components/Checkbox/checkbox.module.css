@@ -5,7 +5,7 @@
 
 .checkbox-items {
     display: grid;
-    gap: var(--md-sys-layout-space-12);
+    gap: var(--md-sys-layout-space-32);
 }
 
 .checkbox {
