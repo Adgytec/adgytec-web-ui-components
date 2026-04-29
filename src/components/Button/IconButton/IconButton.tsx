@@ -64,7 +64,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
 
                 const iconSize = IconButtonIconSizeMapping[buttonSize];
                 return (
-                    <div
+                    <span
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
@@ -80,7 +80,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
                         ) : (
                             icon && <Icon icon={icon} size={iconSize} />
                         )}
-                    </div>
+                    </span>
                 );
             }}
         </AriaButton>,

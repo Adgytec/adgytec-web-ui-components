@@ -62,7 +62,7 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
 
                 const iconSize = IconButtonIconSizeMapping[buttonSize];
                 return (
-                    <div
+                    <span
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
@@ -74,7 +74,7 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
                     >
                         {splashInfo && <Splash {...splashInfo} />}
                         {icon && <Icon icon={icon} size={iconSize} />}
-                    </div>
+                    </span>
                 );
             }}
         </Link>,
