@@ -4,6 +4,7 @@ import { Button as AriaButton } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
+import { TapTarget } from "@/utils/tapTarget";
 import {
     ButtonCore,
     ButtonReset,
@@ -15,7 +16,6 @@ import {
     SplitButtonTriggerBase,
     SplitButtonTriggerIconSize,
     SplitButtonVariantBase,
-    SplitButtonVariantTargetSize,
 } from "../core";
 import { useSplitButtonContext } from "../SplitButtonContext";
 import styles from "./splitButtonTrigger.module.css";
@@ -40,7 +40,7 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
             onPress={handlePress}
             isDisabled={disabled}
             isPending={pending}
-            className={clsx(ButtonReset, SplitButtonVariantTargetSize)}
+            className={clsx(ButtonReset, TapTarget)}
             {...props}
         >
             {({

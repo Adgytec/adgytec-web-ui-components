@@ -3,7 +3,7 @@ import { Link } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
-import { Target } from "@/components/Target";
+import { TapTarget } from "@/utils/tapTarget";
 import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
@@ -37,7 +37,11 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
     const isChildFunc = typeof children === "function";
 
     return withTooltip(
-        <Link onPress={handlePress} className={clsx(ButtonReset)} {...props}>
+        <Link
+            onPress={handlePress}
+            className={clsx(ButtonReset, TapTarget)}
+            {...props}
+        >
             {(renderProps) => {
                 const {
                     isDisabled,
@@ -59,24 +63,22 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
 
                 const iconSize = ButtonIconSizeMapping[buttonSize];
                 return (
-                    <Target>
-                        <div
-                            className={clsx(
-                                ButtonCore,
-                                buttonColorBase,
-                                ButtonSizeBase,
-                                buttonColorConfig(color),
-                                buttonSizeConfig(buttonSize),
-                                ButtonLabelTextMapping[buttonSize]
-                            )}
-                            {...dataAttrs}
-                        >
-                            {splashInfo && <Splash {...splashInfo} />}
-                            {icon && <Icon icon={icon} size={iconSize} />}
+                    <div
+                        className={clsx(
+                            ButtonCore,
+                            buttonColorBase,
+                            ButtonSizeBase,
+                            buttonColorConfig(color),
+                            buttonSizeConfig(buttonSize),
+                            ButtonLabelTextMapping[buttonSize]
+                        )}
+                        {...dataAttrs}
+                    >
+                        {splashInfo && <Splash {...splashInfo} />}
+                        {icon && <Icon icon={icon} size={iconSize} />}
 
-                            {isChildFunc ? children(renderProps) : children}
-                        </div>
-                    </Target>
+                        {isChildFunc ? children(renderProps) : children}
+                    </div>
                 );
             }}
         </Link>,

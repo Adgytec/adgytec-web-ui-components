@@ -128,7 +128,7 @@
 }
 
 /* state layer */
-.indicator::after {
+.indicator::before {
     --state-size: calc(40 * var(--dp, 1px));
 
     content: "";

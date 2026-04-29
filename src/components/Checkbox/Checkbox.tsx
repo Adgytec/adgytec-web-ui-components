@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Checkbox as AriaCheckbox } from "react-aria-components";
-import { Target } from "../Target";
+import { TapTarget } from "@/utils/tapTarget";
 import styles from "./checkbox.module.css";
 import type { CheckboxProps } from "./types";
 
@@ -44,32 +44,26 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 
                 return (
                     <>
-                        <Target>
-                            <div className={styles["indicator"]} {...dataAttrs}>
-                                <svg
-                                    viewBox="0 0 18 18"
-                                    aria-hidden="true"
-                                    key={
-                                        isIndeterminate
-                                            ? "indeterminate"
-                                            : "check"
-                                    }
-                                    className={styles["svg"]}
-                                    {...dataAttrs}
-                                >
-                                    {isIndeterminate ? (
-                                        <rect
-                                            x={1}
-                                            y={7.5}
-                                            width={16}
-                                            height={3}
-                                        />
-                                    ) : (
-                                        <polyline points="2 9 7 14 16 4" />
-                                    )}
-                                </svg>
-                            </div>
-                        </Target>
+                        <div
+                            className={clsx(styles["indicator"], TapTarget)}
+                            {...dataAttrs}
+                        >
+                            <svg
+                                viewBox="0 0 18 18"
+                                aria-hidden="true"
+                                key={
+                                    isIndeterminate ? "indeterminate" : "check"
+                                }
+                                className={styles["svg"]}
+                                {...dataAttrs}
+                            >
+                                {isIndeterminate ? (
+                                    <rect x={1} y={7.5} width={16} height={3} />
+                                ) : (
+                                    <polyline points="2 9 7 14 16 4" />
+                                )}
+                            </svg>
+                        </div>
                         {children}
                     </>
                 );

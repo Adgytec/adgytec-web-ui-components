@@ -106,7 +106,7 @@
 }
 
 /* state layer */
-.indicator::after {
+.indicator::before {
     content: "";
 
     position: absolute;
@@ -129,7 +129,7 @@
 }
 
 /* indicator center icon */
-.indicator::before {
+.indicator-icon {
     content: "";
 
     position: absolute;

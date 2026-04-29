@@ -14,7 +14,6 @@ export const splitButtonSizeConfig = (size: ButtonSize) => {
 };
 
 export const SplitButtonVariantBase = styles["size"];
-export const SplitButtonVariantTargetSize = styles["block-size"];
 
 export const SplitButtonPrimaryBase = styles["primary"];
 export const SplitButtonTriggerBase = styles["trigger"];

@@ -2,8 +2,8 @@ import clsx from "clsx";
 import { Check, type LucideIcon, X } from "lucide-react";
 import type { ReactNode } from "react";
 import { Switch as AriaSwitch, type SwitchProps } from "react-aria-components";
+import { TapTarget } from "@/utils/tapTarget";
 import { Icon } from "../Icon";
-import { Target } from "../Target";
 import styles from "./switch.module.css";
 
 export const Switch: React.FC<
@@ -68,19 +68,17 @@ export const Switch: React.FC<
                     <>
                         {children}
 
-                        <Target>
+                        <div
+                            {...dataAttrs}
+                            className={clsx(styles["track"], TapTarget)}
+                        >
                             <div
                                 {...dataAttrs}
-                                className={clsx(styles["track"])}
+                                className={clsx(styles["handle"])}
                             >
-                                <div
-                                    {...dataAttrs}
-                                    className={clsx(styles["handle"])}
-                                >
-                                    {iconElement}
-                                </div>
+                                {iconElement}
                             </div>
-                        </Target>
+                        </div>
                     </>
                 );
             }}
