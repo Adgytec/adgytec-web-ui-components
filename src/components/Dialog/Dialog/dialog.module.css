@@ -1,0 +1,18 @@
+.dialog {
+    --dialog-action-gap: var(--md-sys-layout-space-8);
+    --dialog-title-body-gap: var(--md-sys-layout-space-16);
+    --dialog-title-icon-gap: var(--md-sys-layout-space-16);
+    --dialog-body-action-gap: var(--md-sys-layout-space-24);
+    --dialog-icon-color: var(--md-sys-color-secondary);
+    --dialog-headline-color: var(--md-sys-color-on-surface);
+
+    padding: var(--md-sys-layout-space-24);
+    border-radius: var(--md-sys-shape-corner-radius-extra-large);
+
+    background-color: var(--md-sys-color-surface-container-high);
+    color: var(--md-sys-color-on-surface-variant);
+    box-shadow: var(--md-sys-elevation-shadow-3);
+
+    min-inline-size: calc(280 * var(--dp, 1px));
+    max-inline-size: calc(560 * var(--dp, 1px));
+}
