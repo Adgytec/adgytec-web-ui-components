@@ -1,0 +1,23 @@
+.after,
+.before {
+    --target-size: calc(48 * var(--dp, 1px));
+
+    &[data-disabled] {
+        --target-size: 0;
+    }
+}
+
+.after::after,
+.before::before {
+    content: "";
+    position: absolute;
+    inline-size: var(--target-size);
+    block-size: var(--target-size);
+
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+
+    /* TODO: remove this before merging */
+    outline: 2px solid red;
+}
