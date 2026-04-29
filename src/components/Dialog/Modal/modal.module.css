@@ -1,0 +1,16 @@
+.modal {
+    &[data-entering] {
+        animation: modal-zoom var(--md-sys-motion-expressive-default-spatial)
+            var(--md-sys-motion-expressive-default-spatial-duration);
+    }
+}
+
+@keyframes modal-zoom {
+    from {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
