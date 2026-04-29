@@ -1,4 +1,5 @@
 import { clsx } from "clsx";
+import { useMemo } from "react";
 import { ToggleButtonGroup as AriaToggleButtonGroup } from "react-aria-components";
 import { ButtonGroupContext } from "../ButtonGroupContext";
 import styles from "./buttonGroup.module.css";
@@ -11,8 +12,13 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
     className,
     ...props
 }) => {
+    const contextValue = useMemo(
+        () => ({ size, shape, color }),
+        [size, shape, color]
+    );
+
     return (
-        <ButtonGroupContext value={{ size, shape, color }}>
+        <ButtonGroupContext value={contextValue}>
             <AriaToggleButtonGroup
                 className={(renderProps) =>
                     clsx(
