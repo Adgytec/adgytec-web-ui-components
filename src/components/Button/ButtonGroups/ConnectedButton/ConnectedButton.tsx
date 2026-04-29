@@ -9,11 +9,11 @@ import {
     ButtonIconSizeMapping,
     ButtonLabelTextMapping,
     ButtonReset,
-    ButtonSizeBase,
     buttonColorBase,
     buttonColorConfig,
 } from "../../core";
 import { useConnectedButtonGroupContext } from "../ButtonGroupContext";
+import styles from "./connectedButton.module.css";
 import type { ConnectedButtonProps } from "./types";
 
 export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
@@ -33,6 +33,7 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
             onPress={handlePress}
             className={clsx(ButtonReset, TapTarget)}
             {...props}
+            data-connected-button={true}
         >
             {(renderProps) => {
                 const {
@@ -66,9 +67,9 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
-                            ButtonSizeBase,
                             buttonColorConfig(color),
-                            ButtonLabelTextMapping[size]
+                            ButtonLabelTextMapping[size],
+                            styles["button"]
                         )}
                     >
                         {splashInfo && <Splash {...splashInfo} />}

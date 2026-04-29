@@ -1,0 +1,28 @@
+.button {
+    /* padding  */
+    --padding-block: var(--padding-block-base);
+
+    /* styles */
+    min-inline-size: var(--min-tap-target-size);
+
+    padding-inline: var(--padding-inline);
+    padding-block: var(--padding-block);
+
+    display: inline-flex;
+    gap: var(--icon-label-gap);
+    align-items: center;
+    justify-content: center;
+
+    /* shape styles */
+    border-start-start-radius: var(--shape-start-start);
+    border-end-start-radius: var(--shape-end-start);
+    border-start-end-radius: var(--shape-start-end);
+    border-end-end-radius: var(--shape-end-end);
+
+    &[data-selected] {
+        --shape-start-start: var(--selected-shape);
+        --shape-end-start: var(--selected-shape);
+        --shape-start-end: var(--selected-shape);
+        --shape-end-end: var(--selected-shape);
+    }
+}

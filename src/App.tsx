@@ -1,8 +1,8 @@
 import {
     Armchair,
     Clipboard,
+    CloudSnow,
     CloudSun,
-    CloudSunRain,
     Download,
     ExternalLinkIcon,
     Eye,
@@ -1137,9 +1137,7 @@ const ConnectedButtonGroupPreview = () => {
                                     Cloud Sun
                                 </ConnectedButton>
 
-                                <ConnectedButton id="5" icon={CloudSunRain}>
-                                    Cloud Sun Rain
-                                </ConnectedButton>
+                                <ConnectedButton id="5" icon={CloudSnow} />
                             </ConnectedButtonGroup>
                         </div>
                     ))}

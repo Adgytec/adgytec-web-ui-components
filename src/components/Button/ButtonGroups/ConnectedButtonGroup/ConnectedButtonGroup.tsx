@@ -2,6 +2,7 @@ import { clsx } from "clsx";
 import { useMemo } from "react";
 import { ToggleButtonGroup as AriaToggleButtonGroup } from "react-aria-components";
 import { ConnectedButtonGroupContext } from "../ButtonGroupContext";
+import styles from "./connectedButtonGroup.module.css";
 import type { ConnectedButtonGroupProps } from "./types";
 
 export const ConnectedButtonGroup: React.FC<ConnectedButtonGroupProps> = ({
@@ -21,12 +22,15 @@ export const ConnectedButtonGroup: React.FC<ConnectedButtonGroupProps> = ({
             <AriaToggleButtonGroup
                 className={(renderProps) =>
                     clsx(
+                        styles["group"],
+                        styles[size],
                         typeof className === "function"
                             ? className(renderProps)
                             : className
                     )
                 }
                 {...props}
+                data-shape={shape}
             />
         </ConnectedButtonGroupContext>
     );
