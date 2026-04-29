@@ -3,7 +3,7 @@ import { ToggleButton as AriaToggleButton } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
-import { Target } from "@/components/Target";
+import { TapTarget } from "@/utils/tapTarget";
 import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
@@ -38,7 +38,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     return withTooltip(
         <AriaToggleButton
             onPress={handlePress}
-            className={clsx(ButtonReset)}
+            className={clsx(ButtonReset, TapTarget)}
             {...props}
         >
             {({
@@ -68,24 +68,22 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
 
                 const iconSize = IconButtonIconSizeMapping[buttonSize];
                 return (
-                    <Target>
-                        <div
-                            className={clsx(
-                                ButtonCore,
-                                buttonColorBase,
-                                ButtonSizeBase,
-                                buttonColorConfig(color),
-                                buttonSizeConfig(buttonSize)
-                            )}
-                            {...dataAttrs}
-                        >
-                            {splashInfo && <Splash {...splashInfo} />}
+                    <div
+                        className={clsx(
+                            ButtonCore,
+                            buttonColorBase,
+                            ButtonSizeBase,
+                            buttonColorConfig(color),
+                            buttonSizeConfig(buttonSize)
+                        )}
+                        {...dataAttrs}
+                    >
+                        {splashInfo && <Splash {...splashInfo} />}
 
-                            {iconToRender && (
-                                <Icon icon={iconToRender} size={iconSize} />
-                            )}
-                        </div>
-                    </Target>
+                        {iconToRender && (
+                            <Icon icon={iconToRender} size={iconSize} />
+                        )}
+                    </div>
                 );
             }}
         </AriaToggleButton>,

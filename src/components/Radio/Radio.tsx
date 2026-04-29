@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import { Radio as AriaRadio, type RadioProps } from "react-aria-components";
-import { Target } from "../Target";
+import { TapTarget } from "@/utils/tapTarget";
 import styles from "./radio.module.css";
 
 export const Radio: React.FC<RadioProps> = ({
@@ -39,12 +39,14 @@ export const Radio: React.FC<RadioProps> = ({
 
                 return (
                     <>
-                        <Target>
+                        <div
+                            className={clsx(styles["indicator"], TapTarget)}
+                            {...dataAttrs}
+                        >
                             <div
-                                className={styles["indicator"]}
-                                {...dataAttrs}
+                                className={clsx(styles["indicator-icon"])}
                             ></div>
-                        </Target>
+                        </div>
                         {children}
                     </>
                 );

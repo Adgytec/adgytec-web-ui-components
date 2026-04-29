@@ -3,7 +3,7 @@ import { ToggleButton as AriaToggleButton } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
-import { Target } from "@/components/Target";
+import { TapTarget } from "@/utils/tapTarget";
 import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
@@ -40,7 +40,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
     return withTooltip(
         <AriaToggleButton
             onPress={handlePress}
-            className={clsx(ButtonReset)}
+            className={clsx(ButtonReset, TapTarget)}
             {...props}
         >
             {(renderProps) => {
@@ -70,27 +70,25 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
 
                 const iconSize = ButtonIconSizeMapping[buttonSize];
                 return (
-                    <Target>
-                        <div
-                            className={clsx(
-                                ButtonCore,
-                                buttonColorBase,
-                                ButtonSizeBase,
-                                buttonColorConfig(color),
-                                buttonSizeConfig(buttonSize),
-                                ButtonLabelTextMapping[buttonSize]
-                            )}
-                            {...dataAttrs}
-                        >
-                            {splashInfo && <Splash {...splashInfo} />}
+                    <div
+                        className={clsx(
+                            ButtonCore,
+                            buttonColorBase,
+                            ButtonSizeBase,
+                            buttonColorConfig(color),
+                            buttonSizeConfig(buttonSize),
+                            ButtonLabelTextMapping[buttonSize]
+                        )}
+                        {...dataAttrs}
+                    >
+                        {splashInfo && <Splash {...splashInfo} />}
 
-                            {iconToRender && (
-                                <Icon icon={iconToRender} size={iconSize} />
-                            )}
+                        {iconToRender && (
+                            <Icon icon={iconToRender} size={iconSize} />
+                        )}
 
-                            {isChildFunc ? children(renderProps) : children}
-                        </div>
-                    </Target>
+                        {isChildFunc ? children(renderProps) : children}
+                    </div>
                 );
             }}
         </AriaToggleButton>,

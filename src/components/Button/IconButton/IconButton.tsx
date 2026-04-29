@@ -4,7 +4,7 @@ import { Icon } from "@/components/Icon";
 import { Loader } from "@/components/Loader";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
-import { Target } from "@/components/Target";
+import { TapTarget } from "@/utils/tapTarget";
 import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
@@ -38,7 +38,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
     return withTooltip(
         <AriaButton
             onPress={handlePress}
-            className={clsx(ButtonReset)}
+            className={clsx(ButtonReset, TapTarget)}
             {...props}
         >
             {({
@@ -63,25 +63,23 @@ export const IconButton: React.FC<IconButtonProps> = ({
 
                 const iconSize = IconButtonIconSizeMapping[buttonSize];
                 return (
-                    <Target>
-                        <div
-                            className={clsx(
-                                ButtonCore,
-                                buttonColorBase,
-                                ButtonSizeBase,
-                                buttonColorConfig(color),
-                                buttonSizeConfig(buttonSize)
-                            )}
-                            {...dataAttrs}
-                        >
-                            {splashInfo && <Splash {...splashInfo} />}
-                            {isPending ? (
-                                <Loader size={iconSize} />
-                            ) : (
-                                icon && <Icon icon={icon} size={iconSize} />
-                            )}
-                        </div>
-                    </Target>
+                    <div
+                        className={clsx(
+                            ButtonCore,
+                            buttonColorBase,
+                            ButtonSizeBase,
+                            buttonColorConfig(color),
+                            buttonSizeConfig(buttonSize)
+                        )}
+                        {...dataAttrs}
+                    >
+                        {splashInfo && <Splash {...splashInfo} />}
+                        {isPending ? (
+                            <Loader size={iconSize} />
+                        ) : (
+                            icon && <Icon icon={icon} size={iconSize} />
+                        )}
+                    </div>
                 );
             }}
         </AriaButton>,

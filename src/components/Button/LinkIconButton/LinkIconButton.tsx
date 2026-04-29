@@ -3,7 +3,7 @@ import { Link } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
-import { Target } from "@/components/Target";
+import { TapTarget } from "@/utils/tapTarget";
 import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
@@ -35,7 +35,11 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
     const { splashInfo, handlePress } = useSplash(onPress);
 
     return withTooltip(
-        <Link onPress={handlePress} className={clsx(ButtonReset)} {...props}>
+        <Link
+            onPress={handlePress}
+            className={clsx(ButtonReset, TapTarget)}
+            {...props}
+        >
             {({
                 isDisabled,
                 isFocusVisible,
@@ -57,21 +61,19 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
 
                 const iconSize = IconButtonIconSizeMapping[buttonSize];
                 return (
-                    <Target>
-                        <div
-                            className={clsx(
-                                ButtonCore,
-                                buttonColorBase,
-                                ButtonSizeBase,
-                                buttonColorConfig(color),
-                                buttonSizeConfig(buttonSize)
-                            )}
-                            {...dataAttrs}
-                        >
-                            {splashInfo && <Splash {...splashInfo} />}
-                            {icon && <Icon icon={icon} size={iconSize} />}
-                        </div>
-                    </Target>
+                    <div
+                        className={clsx(
+                            ButtonCore,
+                            buttonColorBase,
+                            ButtonSizeBase,
+                            buttonColorConfig(color),
+                            buttonSizeConfig(buttonSize)
+                        )}
+                        {...dataAttrs}
+                    >
+                        {splashInfo && <Splash {...splashInfo} />}
+                        {icon && <Icon icon={icon} size={iconSize} />}
+                    </div>
                 );
             }}
         </Link>,

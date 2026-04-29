@@ -4,6 +4,7 @@ import { Icon } from "@/components/Icon";
 import { Loader } from "@/components/Loader";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
+import { TapTarget } from "@/utils/tapTarget";
 import {
     ButtonCore,
     ButtonIconSizeMapping,
@@ -13,11 +14,7 @@ import {
     buttonColorConfig,
     withTooltip,
 } from "../../core";
-import {
-    SplitButtonPrimaryBase,
-    SplitButtonVariantBase,
-    SplitButtonVariantTargetSize,
-} from "../core";
+import { SplitButtonPrimaryBase, SplitButtonVariantBase } from "../core";
 import { useSplitButtonContext } from "../SplitButtonContext";
 import type { SplitButtonPrimaryProps } from "./types";
 
@@ -44,7 +41,7 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
             isDisabled={disabled}
             isPending={pending}
             {...props}
-            className={clsx(ButtonReset, SplitButtonVariantTargetSize)}
+            className={clsx(ButtonReset, TapTarget)}
         >
             {(renderProps) => {
                 const {

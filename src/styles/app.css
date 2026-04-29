@@ -55,7 +55,7 @@
 
 .button-size {
     display: grid;
-    gap: var(--md-sys-layout-space-16);
+    gap: var(--md-sys-layout-space-28);
     text-align: center;
 
     padding-inline: var(--md-sys-layout-space-16);
@@ -73,7 +73,7 @@
 .items {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--md-sys-layout-space-16);
+    gap: var(--md-sys-layout-space-28);
 
     align-items: center;
     justify-content: center;

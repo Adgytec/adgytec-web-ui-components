@@ -1,9 +1,3 @@
-.block-size {
-    --target-size: calc(48 * var(--dp, 1px));
-
-    min-block-size: var(--target-size);
-}
-
 .size {
     --padding-block: var(--padding-block-base);
 
@@ -22,7 +16,7 @@
     justify-content: center;
 
     box-sizing: border-box;
-    min-inline-size: var(--target-size);
+    min-inline-size: var(--min-tap-target-size);
 }
 
 .primary {

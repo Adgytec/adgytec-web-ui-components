@@ -5,7 +5,7 @@
 
 .checkbox-items {
     display: grid;
-    gap: var(--md-sys-layout-space-12);
+    gap: var(--md-sys-layout-space-32);
 }
 
 .checkbox {
@@ -128,7 +128,7 @@
 }
 
 /* state layer */
-.indicator::after {
+.indicator::before {
     --state-size: calc(40 * var(--dp, 1px));
 
     content: "";

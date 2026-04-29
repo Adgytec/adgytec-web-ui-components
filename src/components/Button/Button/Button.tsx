@@ -4,7 +4,7 @@ import { Icon } from "@/components/Icon";
 import { Loader } from "@/components/Loader";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
-import { Target } from "@/components/Target";
+import { TapTarget } from "@/utils/tapTarget";
 import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
@@ -40,7 +40,7 @@ export const Button: React.FC<ButtonProps> = ({
     return withTooltip(
         <AriaButton
             onPress={handlePress}
-            className={clsx(ButtonReset)}
+            className={clsx(ButtonReset, TapTarget)}
             {...props}
         >
             {(renderProps) => {
@@ -65,28 +65,26 @@ export const Button: React.FC<ButtonProps> = ({
 
                 const iconSize = ButtonIconSizeMapping[buttonSize];
                 return (
-                    <Target>
-                        <div
-                            className={clsx(
-                                ButtonCore,
-                                buttonColorBase,
-                                ButtonSizeBase,
-                                buttonColorConfig(color),
-                                buttonSizeConfig(buttonSize),
-                                ButtonLabelTextMapping[buttonSize]
-                            )}
-                            {...dataAttrs}
-                        >
-                            {splashInfo && <Splash {...splashInfo} />}
-                            {isPending ? (
-                                <Loader size={iconSize} />
-                            ) : (
-                                icon && <Icon icon={icon} size={iconSize} />
-                            )}
+                    <div
+                        className={clsx(
+                            ButtonCore,
+                            buttonColorBase,
+                            ButtonSizeBase,
+                            buttonColorConfig(color),
+                            buttonSizeConfig(buttonSize),
+                            ButtonLabelTextMapping[buttonSize]
+                        )}
+                        {...dataAttrs}
+                    >
+                        {splashInfo && <Splash {...splashInfo} />}
+                        {isPending ? (
+                            <Loader size={iconSize} />
+                        ) : (
+                            icon && <Icon icon={icon} size={iconSize} />
+                        )}
 
-                            {isChildFunc ? children(renderProps) : children}
-                        </div>
-                    </Target>
+                        {isChildFunc ? children(renderProps) : children}
+                    </div>
                 );
             }}
         </AriaButton>,

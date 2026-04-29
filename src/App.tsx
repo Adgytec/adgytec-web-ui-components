@@ -72,23 +72,25 @@ const PreviewContainer = (props: { label: string; children: ReactNode }) => {
 const SwitchPreview = () => {
     return (
         <PreviewContainer label="Switch">
-            <Switch isDisabled icon="none">
-                hmm
-            </Switch>
+            <div className="items">
+                <Switch isDisabled icon="none">
+                    hmm
+                </Switch>
 
-            <Switch isDisabled icon="both">
-                hmm
-            </Switch>
+                <Switch isDisabled icon="both">
+                    hmm
+                </Switch>
 
-            <Switch isDisabled isSelected>
-                hmm
-            </Switch>
+                <Switch isDisabled isSelected>
+                    hmm
+                </Switch>
 
-            <Switch>not-disabled</Switch>
+                <Switch>not-disabled</Switch>
 
-            <Switch icon="both">not-disabled</Switch>
+                <Switch icon="both">not-disabled</Switch>
 
-            <Switch icon="none">not-disabled</Switch>
+                <Switch icon="none">not-disabled</Switch>
+            </div>
         </PreviewContainer>
     );
 };
