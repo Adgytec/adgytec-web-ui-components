@@ -23,6 +23,8 @@ import {
 import { Fragment, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
+import { clsx } from "clsx";
+import { DialogTrigger } from "react-aria-components";
 import {
     Button,
     type ButtonColor,
@@ -45,6 +47,13 @@ import {
     ToggleIconButton,
 } from "./components/Button";
 import { Checkbox, CheckboxGroup } from "./components/Checkbox";
+import {
+    Dialog,
+    DialogBodyTypography,
+    DialogHeadlineTypography,
+    Modal,
+    ModalOverlay,
+} from "./components/Dialog";
 import { Icon } from "./components/Icon";
 import { Input } from "./components/Input";
 import {
@@ -1176,9 +1185,43 @@ const ConnectedButtonGroupPreview = () => {
     );
 };
 
+const DialogPreview = () => {
+    return (
+        <PreviewContainer label="Dialog">
+            <div className="items">
+                <DialogTrigger>
+                    <Button>Open</Button>
+
+                    <ModalOverlay>
+                        <Modal>
+                            <Dialog>
+                                <h2
+                                    slot="title"
+                                    className={clsx(DialogHeadlineTypography)}
+                                >
+                                    Modal
+                                </h2>
+
+                                <div className={clsx(DialogBodyTypography)}>
+                                    <p>helo</p>
+                                </div>
+
+                                <Button color="text" slot="close">
+                                    Close
+                                </Button>
+                            </Dialog>
+                        </Modal>
+                    </ModalOverlay>
+                </DialogTrigger>
+            </div>
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        DialogPreview,
         ConnectedButtonGroupPreview,
         ButtonGroupPreview,
         SplitButtonPreview,
