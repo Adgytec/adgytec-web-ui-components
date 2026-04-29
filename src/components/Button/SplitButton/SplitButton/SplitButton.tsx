@@ -1,4 +1,5 @@
 import { clsx } from "clsx";
+import { useMemo } from "react";
 import { Toolbar } from "react-aria-components";
 import { splitButtonSizeConfig } from "../core";
 import { SplitButtonContext } from "../SplitButtonContext";
@@ -17,15 +18,18 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
 
     ...props
 }) => {
+    const contextValue = useMemo(
+        () => ({
+            isPending,
+            isDisabled,
+            color,
+            size,
+        }),
+        [isPending, isDisabled, color, size]
+    );
+
     return (
-        <SplitButtonContext
-            value={{
-                isPending,
-                isDisabled,
-                color,
-                size,
-            }}
-        >
+        <SplitButtonContext value={contextValue}>
             <Toolbar
                 className={clsx(
                     styles["split-button"],

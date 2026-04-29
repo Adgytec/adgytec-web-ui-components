@@ -4,7 +4,6 @@ import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
 import { TapTarget } from "@/utils/tapTarget";
-import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
     ButtonReset,
@@ -13,14 +12,15 @@ import {
     buttonColorConfig,
     buttonSizeConfig,
     IconButtonIconSizeMapping,
+    useButtonConfig,
     withTooltip,
 } from "../core";
 import type { ToggleIconButtonProps } from "./types";
 
 export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
-    size = "small",
-    shape = "round",
-    color = "filled",
+    size,
+    shape,
+    color,
     width = "default",
     tooltip,
     selectedIcon,
@@ -28,10 +28,11 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     onPress,
     ...props
 }) => {
-    const { size: buttonGroupSize, shape: buttonGroupShape } =
-        useButtonGroupContext();
-    const buttonSize = buttonGroupSize ?? size;
-    const buttonShape = buttonGroupShape ?? shape;
+    const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
+        size,
+        shape,
+        color,
+    });
 
     const { splashInfo, handlePress } = useSplash(onPress);
 
@@ -73,7 +74,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                             ButtonCore,
                             buttonColorBase,
                             ButtonSizeBase,
-                            buttonColorConfig(color),
+                            buttonColorConfig(buttonColor),
                             buttonSizeConfig(buttonSize)
                         )}
                         {...dataAttrs}

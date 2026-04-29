@@ -1,6 +1,6 @@
 import styles from "./color.module.css";
 
-type CoreButtonColor = "filled" | "tonal" | "outlined";
+export type CoreButtonColor = "filled" | "tonal" | "outlined";
 
 export type ButtonColor = CoreButtonColor | "elevated" | "text";
 
