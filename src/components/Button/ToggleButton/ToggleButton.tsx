@@ -4,7 +4,6 @@ import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
 import { TapTarget } from "@/utils/tapTarget";
-import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
     ButtonIconSizeMapping,
@@ -14,6 +13,7 @@ import {
     buttonColorBase,
     buttonColorConfig,
     buttonSizeConfig,
+    useButtonConfig,
     withTooltip,
 } from "../core";
 import type { ToggleButtonProps } from "./types";
@@ -29,14 +29,11 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
     onPress,
     ...props
 }) => {
-    const {
-        size: buttonGroupSize,
-        shape: buttonGroupShape,
-        color: buttonGroupColor,
-    } = useButtonGroupContext();
-    const buttonSize = size ?? buttonGroupSize ?? "small";
-    const buttonShape = shape ?? buttonGroupShape ?? "round";
-    const buttonColor = color ?? buttonGroupColor ?? "filled";
+    const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
+        size,
+        shape,
+        color,
+    });
 
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";

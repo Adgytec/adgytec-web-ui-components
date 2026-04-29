@@ -4,7 +4,6 @@ import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
 import { TapTarget } from "@/utils/tapTarget";
-import { useButtonGroupContext } from "../ButtonGroups";
 import {
     ButtonCore,
     ButtonReset,
@@ -13,6 +12,7 @@ import {
     buttonColorConfig,
     buttonSizeConfig,
     IconButtonIconSizeMapping,
+    useButtonConfig,
     withTooltip,
 } from "../core";
 import type { LinkIconButtonProps } from "./types";
@@ -27,14 +27,11 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
     onPress,
     ...props
 }) => {
-    const {
-        size: buttonGroupSize,
-        shape: buttonGroupShape,
-        color: buttonGroupColor,
-    } = useButtonGroupContext();
-    const buttonSize = size ?? buttonGroupSize ?? "small";
-    const buttonShape = shape ?? buttonGroupShape ?? "round";
-    const buttonColor = color ?? buttonGroupColor ?? "filled";
+    const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
+        size,
+        shape,
+        color,
+    });
 
     const { splashInfo, handlePress } = useSplash(onPress);
 
