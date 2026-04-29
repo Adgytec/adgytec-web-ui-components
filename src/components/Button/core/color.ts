@@ -10,8 +10,14 @@ export type IconButtonColor = CoreButtonColor | "standard";
 
 export type SplitButtonColor = CoreButtonColor | "elevated";
 
+export type ConnectedButtonGroupColor = CoreButtonColor | "elevated";
+
 export const buttonColorConfig = (
-    color: ButtonColor | IconButtonColor | SplitButtonColor
+    color:
+        | ButtonColor
+        | IconButtonColor
+        | SplitButtonColor
+        | ConnectedButtonGroupColor
 ) => {
     return styles[color];
 };

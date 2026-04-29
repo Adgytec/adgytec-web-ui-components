@@ -1,6 +1,8 @@
 import {
     Armchair,
     Clipboard,
+    CloudSnow,
+    CloudSun,
     Download,
     ExternalLinkIcon,
     Eye,
@@ -13,6 +15,9 @@ import {
     Settings,
     Share2,
     Sofa,
+    Sun,
+    SunMoon,
+    SunSnow,
     User,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
@@ -24,6 +29,9 @@ import {
     ButtonGroup,
     type ButtonShape,
     type ButtonSize,
+    ConnectedButton,
+    ConnectedButtonGroup,
+    type ConnectedButtonGroupColor,
     IconButton,
     type IconButtonColor,
     type IconButtonWidth,
@@ -1069,7 +1077,7 @@ const ButtonGroupPreview = () => {
     ];
 
     return (
-        <PreviewContainer label="ButtonGroup">
+        <PreviewContainer label="Button Group">
             {sizes.map((size) => (
                 <div className="items" key={size}>
                     <ButtonGroup size={size} shape="square" color="outlined">
@@ -1096,9 +1104,82 @@ const ButtonGroupPreview = () => {
     );
 };
 
+const ConnectedButtonGroupPreview = () => {
+    const sizes: ButtonSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+
+    const shapes: ButtonShape[] = ["round", "square"];
+
+    const buttonColor: ConnectedButtonGroupColor[] = [
+        "filled",
+        "tonal",
+        "outlined",
+        "elevated",
+    ];
+
+    return (
+        <PreviewContainer label="Connected Button Group">
+            {buttonColor.map((color) => (
+                <div className="button-color" key={`button-${color}`}>
+                    <h3 className={typography.headlineMediumEmphasized}>
+                        {color}
+                    </h3>
+
+                    {sizes.map((size) => (
+                        <div className="button-size" key={size}>
+                            <h4 className={typography.headlineSmall}>{size}</h4>
+
+                            {shapes.map((shape) => (
+                                <div className="items" key={shape}>
+                                    <ConnectedButtonGroup
+                                        size={size}
+                                        shape={shape}
+                                        color={color}
+                                    >
+                                        <ConnectedButton id="1" icon={Sun}>
+                                            Sun
+                                        </ConnectedButton>
+
+                                        <ConnectedButton id="2" icon={SunMoon}>
+                                            Sun Moon
+                                        </ConnectedButton>
+
+                                        <ConnectedButton
+                                            id="3"
+                                            icon={SunSnow}
+                                            isDisabled
+                                        >
+                                            Sun Snow
+                                        </ConnectedButton>
+
+                                        <ConnectedButton id="4" icon={CloudSun}>
+                                            Cloud Sun
+                                        </ConnectedButton>
+
+                                        <ConnectedButton
+                                            id="5"
+                                            icon={CloudSnow}
+                                        />
+                                    </ConnectedButtonGroup>
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+            ))}
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        ConnectedButtonGroupPreview,
         ButtonGroupPreview,
         SplitButtonPreview,
         MenuPreview,
