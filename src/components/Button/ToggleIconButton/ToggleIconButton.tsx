@@ -18,9 +18,9 @@ import {
 import type { ToggleIconButtonProps } from "./types";
 
 export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
-    size = "small",
-    shape = "round",
-    color = "filled",
+    size,
+    shape,
+    color,
     width = "default",
     tooltip,
     selectedIcon,
@@ -28,10 +28,14 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     onPress,
     ...props
 }) => {
-    const { size: buttonGroupSize, shape: buttonGroupShape } =
-        useButtonGroupContext();
-    const buttonSize = buttonGroupSize ?? size;
-    const buttonShape = buttonGroupShape ?? shape;
+    const {
+        size: buttonGroupSize,
+        shape: buttonGroupShape,
+        color: buttonGroupColor,
+    } = useButtonGroupContext();
+    const buttonSize = size ?? buttonGroupSize ?? "small";
+    const buttonShape = shape ?? buttonGroupShape ?? "round";
+    const buttonColor = color ?? buttonGroupColor ?? "filled";
 
     const { splashInfo, handlePress } = useSplash(onPress);
 
@@ -73,7 +77,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                             ButtonCore,
                             buttonColorBase,
                             ButtonSizeBase,
-                            buttonColorConfig(color),
+                            buttonColorConfig(buttonColor),
                             buttonSizeConfig(buttonSize)
                         )}
                         {...dataAttrs}

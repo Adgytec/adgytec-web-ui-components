@@ -18,19 +18,23 @@ import {
 import type { LinkIconButtonProps } from "./types";
 
 export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
-    size = "small",
-    shape = "round",
-    color = "filled",
+    size,
+    shape,
+    color,
     width = "default",
     tooltip,
     icon,
     onPress,
     ...props
 }) => {
-    const { size: buttonGroupSize, shape: buttonGroupShape } =
-        useButtonGroupContext();
-    const buttonSize = buttonGroupSize ?? size;
-    const buttonShape = buttonGroupShape ?? shape;
+    const {
+        size: buttonGroupSize,
+        shape: buttonGroupShape,
+        color: buttonGroupColor,
+    } = useButtonGroupContext();
+    const buttonSize = size ?? buttonGroupSize ?? "small";
+    const buttonShape = shape ?? buttonGroupShape ?? "round";
+    const buttonColor = color ?? buttonGroupColor ?? "filled";
 
     const { splashInfo, handlePress } = useSplash(onPress);
 
@@ -66,7 +70,7 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
                             ButtonCore,
                             buttonColorBase,
                             ButtonSizeBase,
-                            buttonColorConfig(color),
+                            buttonColorConfig(buttonColor),
                             buttonSizeConfig(buttonSize)
                         )}
                         {...dataAttrs}

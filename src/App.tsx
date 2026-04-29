@@ -1060,8 +1060,6 @@ const SplitButtonPreview = () => {
 };
 
 const ButtonGroupPreview = () => {
-    const color = "outlined";
-
     const sizes: ButtonSize[] = [
         "extra-small",
         "small",
@@ -1074,32 +1072,23 @@ const ButtonGroupPreview = () => {
         <PreviewContainer label="ButtonGroup">
             {sizes.map((size) => (
                 <div className="items" key={size}>
-                    <ButtonGroup size={size} shape="square">
-                        <ToggleButton id={"one"} color={color}>
-                            One
-                        </ToggleButton>
+                    <ButtonGroup size={size} shape="square" color="outlined">
+                        <ToggleButton id={"one"}>One</ToggleButton>
 
-                        <ToggleButton id={"two"} color={color}>
-                            Two
-                        </ToggleButton>
+                        <ToggleButton id={"two"}>Two</ToggleButton>
 
                         <ToggleButton
                             id={"three"}
-                            color={color}
                             icon={Armchair}
+                            shape="round"
+                            color="elevated"
                         >
                             Three
                         </ToggleButton>
 
-                        <ToggleIconButton
-                            id={"four"}
-                            color={color}
-                            icon={Sofa}
-                        />
+                        <ToggleIconButton id={"four"} icon={Sofa} />
 
-                        <ToggleButton id={"five"} color={color}>
-                            Five
-                        </ToggleButton>
+                        <ToggleButton id={"five"}>Five</ToggleButton>
                     </ButtonGroup>
                 </div>
             ))}

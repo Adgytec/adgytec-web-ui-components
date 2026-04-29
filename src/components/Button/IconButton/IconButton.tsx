@@ -19,19 +19,23 @@ import {
 import type { IconButtonProps } from "./types";
 
 export const IconButton: React.FC<IconButtonProps> = ({
-    size = "small",
-    shape = "round",
-    color = "filled",
+    size,
+    shape,
+    color,
     width = "default",
     tooltip,
     icon,
     onPress,
     ...props
 }) => {
-    const { size: buttonGroupSize, shape: buttonGroupShape } =
-        useButtonGroupContext();
-    const buttonSize = buttonGroupSize ?? size;
-    const buttonShape = buttonGroupShape ?? shape;
+    const {
+        size: buttonGroupSize,
+        shape: buttonGroupShape,
+        color: buttonGroupColor,
+    } = useButtonGroupContext();
+    const buttonSize = size ?? buttonGroupSize ?? "small";
+    const buttonShape = shape ?? buttonGroupShape ?? "round";
+    const buttonColor = color ?? buttonGroupColor ?? "filled";
 
     const { splashInfo, handlePress } = useSplash(onPress);
 
@@ -68,7 +72,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
                             ButtonCore,
                             buttonColorBase,
                             ButtonSizeBase,
-                            buttonColorConfig(color),
+                            buttonColorConfig(buttonColor),
                             buttonSizeConfig(buttonSize)
                         )}
                         {...dataAttrs}
