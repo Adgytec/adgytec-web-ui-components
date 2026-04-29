@@ -42,6 +42,7 @@ import {
     SplitButtonTrigger,
     ToggleButton,
     ToggleIconButton,
+    type ConnectedButtonGroupColor,
 } from "./components/Button";
 import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import { Icon } from "./components/Icon";
@@ -1114,34 +1115,62 @@ const ConnectedButtonGroupPreview = () => {
 
     const shapes: ButtonShape[] = ["round", "square"];
 
+    const buttonColor: ConnectedButtonGroupColor[] = [
+        "filled",
+        "tonal",
+        "outlined",
+        "elevated",
+    ];
+
     return (
         <PreviewContainer label="Connected Button Group">
-            {sizes.map((size) => (
-                <Fragment key={size}>
-                    {shapes.map((shape) => (
-                        <div className="items" key={shape}>
-                            <ConnectedButtonGroup size={size} shape={shape}>
-                                <ConnectedButton id="1" icon={Sun}>
-                                    Sun
-                                </ConnectedButton>
+            {buttonColor.map((color) => (
+                <div className="button-color" key={`button-${color}`}>
+                    <h3 className={typography.headlineMediumEmphasized}>
+                        {color}
+                    </h3>
 
-                                <ConnectedButton id="2" icon={SunMoon}>
-                                    Sun Moon
-                                </ConnectedButton>
+                    {sizes.map((size) => (
+                        <div className="button-size" key={size}>
+                            <h4 className={typography.headlineSmall}>{size}</h4>
 
-                                <ConnectedButton id="3" icon={SunSnow}>
-                                    Sun Snow
-                                </ConnectedButton>
+                            {shapes.map((shape) => (
+                                <div className="items" key={shape}>
+                                    <ConnectedButtonGroup
+                                        size={size}
+                                        shape={shape}
+                                        color={color}
+                                    >
+                                        <ConnectedButton id="1" icon={Sun}>
+                                            Sun
+                                        </ConnectedButton>
 
-                                <ConnectedButton id="4" icon={CloudSun}>
-                                    Cloud Sun
-                                </ConnectedButton>
+                                        <ConnectedButton id="2" icon={SunMoon}>
+                                            Sun Moon
+                                        </ConnectedButton>
 
-                                <ConnectedButton id="5" icon={CloudSnow} />
-                            </ConnectedButtonGroup>
+                                        <ConnectedButton
+                                            id="3"
+                                            icon={SunSnow}
+                                            isDisabled
+                                        >
+                                            Sun Snow
+                                        </ConnectedButton>
+
+                                        <ConnectedButton id="4" icon={CloudSun}>
+                                            Cloud Sun
+                                        </ConnectedButton>
+
+                                        <ConnectedButton
+                                            id="5"
+                                            icon={CloudSnow}
+                                        />
+                                    </ConnectedButtonGroup>
+                                </div>
+                            ))}
                         </div>
                     ))}
-                </Fragment>
+                </div>
             ))}
         </PreviewContainer>
     );
