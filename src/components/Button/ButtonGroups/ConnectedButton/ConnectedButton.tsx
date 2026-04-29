@@ -1,8 +1,18 @@
+import clsx from "clsx";
 import { ToggleButton as AriaToggleButton } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
-import { ButtonIconSizeMapping } from "../../core";
+import { TapTarget } from "@/utils/tapTarget";
+import {
+    ButtonCore,
+    ButtonIconSizeMapping,
+    ButtonLabelTextMapping,
+    ButtonReset,
+    ButtonSizeBase,
+    buttonColorBase,
+    buttonColorConfig,
+} from "../../core";
 import { useConnectedButtonGroupContext } from "../ButtonGroupContext";
 import type { ConnectedButtonProps } from "./types";
 
@@ -19,7 +29,11 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
     const isChildFunc = typeof children === "function";
 
     return (
-        <AriaToggleButton onPress={handlePress} {...props}>
+        <AriaToggleButton
+            onPress={handlePress}
+            className={clsx(ButtonReset, TapTarget)}
+            {...props}
+        >
             {(renderProps) => {
                 const {
                     isSelected,
@@ -47,7 +61,16 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
 
                 const iconSize = ButtonIconSizeMapping[size];
                 return (
-                    <div {...dataAttrs}>
+                    <div
+                        {...dataAttrs}
+                        className={clsx(
+                            ButtonCore,
+                            buttonColorBase,
+                            ButtonSizeBase,
+                            buttonColorConfig(color),
+                            ButtonLabelTextMapping[size]
+                        )}
+                    >
                         {splashInfo && <Splash {...splashInfo} />}
 
                         {iconToRender && (
