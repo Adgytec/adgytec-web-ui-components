@@ -7,11 +7,12 @@ import type { ButtonGroupProps } from "./types";
 export const ButtonGroup: React.FC<ButtonGroupProps> = ({
     size,
     shape,
+    color,
     className,
     ...props
 }) => {
     return (
-        <ButtonGroupContext value={{ size, shape }}>
+        <ButtonGroupContext value={{ size, shape, color }}>
             <AriaToggleButtonGroup
                 className={(renderProps) =>
                     clsx(
