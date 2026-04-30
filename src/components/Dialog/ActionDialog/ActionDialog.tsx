@@ -29,6 +29,7 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
 
                             {heading && (
                                 <h2
+                                    slot="title"
                                     className={clsx(
                                         DialogHeadlineTypography,
                                         styles["heading"]
