@@ -1,0 +1,39 @@
+.action-dialog {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding-inline: 0;
+}
+
+.heading-container {
+    color: var(--dialog-icon-color);
+    margin-block-end: var(--dialog-title-body-gap);
+    padding-inline: var(--dialog-container-padding);
+
+    display: grid;
+    gap: var(--dialog-title-icon-gap);
+
+    &[data-icon] {
+        text-align: center;
+        justify-items: center;
+    }
+}
+
+.heading {
+    color: var(--dialog-headline-text-color);
+}
+
+.action-container {
+    padding-inline: var(--dialog-container-padding);
+    margin-block-start: var(--dialog-body-action-gap);
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--dialog-action-gap);
+}
+
+.body {
+    padding-inline: var(--dialog-container-padding);
+    overflow: auto;
+}

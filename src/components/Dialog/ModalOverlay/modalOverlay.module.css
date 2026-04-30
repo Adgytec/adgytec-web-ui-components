@@ -12,8 +12,8 @@
     justify-content: center;
 
     &[data-entering] {
-        animation: modal-fade var(--md-sys-motion-expressive-fast-effects)
-            var(--md-sys-motion-expressive-fast-effects-duration);
+        animation: modal-fade var(--md-sys-motion-expressive-default-effects)
+            var(--md-sys-motion-expressive-default-effects-duration);
     }
 
     &[data-exiting] {
