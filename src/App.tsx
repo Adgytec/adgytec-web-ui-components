@@ -19,6 +19,7 @@ import {
     SunMoon,
     SunSnow,
     User,
+    Squirrel,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
@@ -48,6 +49,7 @@ import {
 } from "./components/Button";
 import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import {
+    ActionDialog,
     Dialog,
     DialogBodyTypography,
     DialogHeadlineTypography,
@@ -1190,26 +1192,94 @@ const DialogPreview = () => {
         <PreviewContainer label="Dialog">
             <div className="items">
                 <DialogTrigger>
-                    <Button>Open</Button>
+                    <Button>Simple Dialog</Button>
+
+                    <ModalOverlay isDismissable>
+                        <Modal>
+                            <Dialog
+                                style={{
+                                    display: "grid",
+                                    gap: "1rem",
+                                }}
+                            >
+                                <div>
+                                    <h2
+                                        slot="title"
+                                        className={clsx(
+                                            DialogHeadlineTypography
+                                        )}
+                                    >
+                                        Simple Dialog
+                                    </h2>
+
+                                    <Separator />
+                                </div>
+
+                                <div className={clsx(DialogBodyTypography)}>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Phasellus vehicula enim
+                                        eu tortor semper faucibus. Nullam vitae
+                                        pulvinar ligula. Nulla consequat, tortor
+                                        quis volutpat luctus, ipsum sem
+                                        venenatis augue, gravida feugiat ligula
+                                        nulla vitae tortor.
+                                    </p>
+                                </div>
+                                <div>
+                                    <Separator />
+
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "flex-end",
+                                        }}
+                                    >
+                                        <Button color="text" slot="close">
+                                            Close
+                                        </Button>
+                                    </div>
+                                </div>
+                            </Dialog>
+                        </Modal>
+                    </ModalOverlay>
+                </DialogTrigger>
+
+                <DialogTrigger>
+                    <Button color="elevated">Action Dialog</Button>
 
                     <ModalOverlay>
                         <Modal>
-                            <Dialog>
-                                <h2
-                                    slot="title"
-                                    className={clsx(DialogHeadlineTypography)}
-                                >
-                                    Modal
-                                </h2>
-
-                                <div className={clsx(DialogBodyTypography)}>
-                                    <p>helo</p>
-                                </div>
-
-                                <Button color="text" slot="close">
-                                    Close
-                                </Button>
-                            </Dialog>
+                            <ActionDialog
+                                heading="Squirrel?"
+                                icon={Squirrel}
+                                actions={[
+                                    <Button
+                                        color="text"
+                                        slot="close"
+                                        key="close"
+                                    >
+                                        Close
+                                    </Button>,
+                                    <Button
+                                        color="text"
+                                        slot="close"
+                                        key="Squirrel"
+                                    >
+                                        Squirrel
+                                    </Button>,
+                                ]}
+                            >
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit. Phasellus vehicula enim eu
+                                    tortor semper faucibus. Nullam vitae
+                                    pulvinar ligula. Nulla consequat, tortor
+                                    quis volutpat luctus, ipsum sem venenatis
+                                    augue, gravida feugiat ligula nulla vitae
+                                    tortor.
+                                </p>
+                            </ActionDialog>
                         </Modal>
                     </ModalOverlay>
                 </DialogTrigger>
