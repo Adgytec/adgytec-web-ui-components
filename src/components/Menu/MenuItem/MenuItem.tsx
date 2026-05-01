@@ -7,10 +7,12 @@ import { useSplash } from "@/components/Splash/useSplash";
 import { typography } from "@/utils/typography";
 import {
     MenuItemIconSize,
+    MenuItemLeadingStyles,
+    MenuItemStyles,
+    MenuItemTrailingStyles,
     menuItemBaseColor,
     menuItemLabelColor,
 } from "../core";
-import styles from "../styles/menu.module.css";
 import type { MenuItemProps } from "./types";
 
 export const MenuItem: React.FC<MenuItemProps> = ({
@@ -30,7 +32,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
             className={(renderProps) =>
                 clsx(
                     menuItemBaseColor,
-                    styles["menu-item"],
+                    MenuItemStyles,
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -46,7 +48,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                         {splashInfo && <Splash {...splashInfo} />}
 
                         {/* leading comps */}
-                        <div className={clsx(styles["menu-item-leading"])}>
+                        <div className={clsx(MenuItemLeadingStyles)}>
                             {isSelected ? (
                                 <Icon icon={Check} size={MenuItemIconSize} />
                             ) : (
@@ -81,7 +83,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                         </div>
 
                         {/* trailing comps */}
-                        <div className={clsx(styles["menu-item-trailing"])}>
+                        <div className={clsx(MenuItemTrailingStyles)}>
                             {trailingText && trailingText}
 
                             {hasSubmenu ? (

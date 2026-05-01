@@ -3,7 +3,7 @@ import {
     MenuSection as AriaMenuSection,
     type MenuSectionProps,
 } from "react-aria-components";
-import styles from "../styles/menu.module.css";
+import { MenuSectionStyles } from "../core";
 
 export const MenuSection = <T extends object>({
     className,
@@ -11,7 +11,7 @@ export const MenuSection = <T extends object>({
 }: MenuSectionProps<T>) => {
     return (
         <AriaMenuSection
-            className={clsx(styles["menu-section"], className)}
+            className={clsx(MenuSectionStyles, className)}
             {...props}
         />
     );
