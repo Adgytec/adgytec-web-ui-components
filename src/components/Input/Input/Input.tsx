@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import { Input as AriaInput, TextField } from "react-aria-components";
-import styles from "@/utils/textField/textField.module.css";
 import type { TextFieldProps } from "@/utils/textField/types";
 import { typography } from "@/utils/typography";
+import { EditorStyles, TextFieldStyles } from "../core";
 import { Description } from "../Description";
 import { FieldError } from "../FieldError";
 import { Label } from "../Label";
@@ -19,7 +19,7 @@ export const Input: React.FC<TextFieldProps> = ({
         <TextField
             className={(renderProps) =>
                 clsx(
-                    styles["text-field"],
+                    TextFieldStyles,
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -30,7 +30,7 @@ export const Input: React.FC<TextFieldProps> = ({
             {label && <Label>{label}</Label>}
             <AriaInput
                 placeholder={placeholder}
-                className={clsx(styles["editor"], typography.bodyLarge)}
+                className={clsx(EditorStyles, typography.bodyLarge)}
             />
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>
