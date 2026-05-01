@@ -15,11 +15,11 @@ import {
     Settings,
     Share2,
     Sofa,
+    Squirrel,
     Sun,
     SunMoon,
     SunSnow,
     User,
-    Squirrel,
 } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
