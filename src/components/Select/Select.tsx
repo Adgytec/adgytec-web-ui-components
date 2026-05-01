@@ -1,5 +1,5 @@
 // TODO: better api
-// will reimport list box components with custom styles for select
+// this will be changed in next pr
 
 import { clsx } from "clsx";
 import { Check, ChevronsUpDown } from "lucide-react";
