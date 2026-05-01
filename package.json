@@ -14,11 +14,11 @@
             "import": "./dist/index.js",
             "types": "./dist/index.d.ts"
         },
-        "./styles/core": {
-            "import": "./dist/styles/core.js"
+        "./styles/core.css": {
+            "import": "./dist/assets/core.css"
         },
-        "./styles/defaultTheme": {
-            "import": "./dist/styles/defaultTheme.js"
+        "./styles/defaultTheme.css": {
+            "import": "./dist/assets/defaultTheme.css"
         }
     },
     "main": "./dist/index.js",
