@@ -1,13 +1,13 @@
-import type { ActionDialogProps } from "./types";
-import styles from "./actionDialog.module.css";
-import { Dialog } from "../Dialog";
 import clsx from "clsx";
+import { Icon } from "@/components/Icon";
 import {
     DialogBodyTypography,
     DialogHeadlineTypography,
     DialogIconSize,
 } from "../core";
-import { Icon } from "@/components/Icon";
+import { Dialog } from "../Dialog";
+import styles from "./actionDialog.module.css";
+import type { ActionDialogProps } from "./types";
 
 export const ActionDialog: React.FC<ActionDialogProps> = ({
     heading,

@@ -4,9 +4,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
-import "./utils/material";
-import "./utils/material/defaultTheme";
 import "./styles/main.css";
+import "./styles/core";
+import "./styles/defaultTheme";
 import { Toaster } from "sonner";
 
 const rootEl = document.getElementById("root");

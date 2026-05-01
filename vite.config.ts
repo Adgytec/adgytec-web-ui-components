@@ -41,21 +41,21 @@ export default defineConfig({
         cssCodeSplit: true,
         rollupOptions: {
             input: Object.fromEntries(
-                // 1️⃣ Auto-discovered entries (components + root index)
-                globSync(["src/components/**/index.ts", "src/index.ts"]).map(
-                    (file) => [
-                        // entry name: remove `src/` and extension
-                        path.relative(
-                            "src",
-                            file.slice(
-                                0,
-                                file.length - path.extname(file).length
-                            )
-                        ),
-                        // absolute file path
-                        fileURLToPath(new URL(file, import.meta.url)),
-                    ]
-                )
+                // 1️⃣ Auto-discovered entries (components + root index + optional styles)
+                globSync([
+                    "src/components/**/index.ts",
+                    "src/index.ts",
+
+                    "src/styles/*.ts",
+                ]).map((file) => [
+                    // entry name: remove `src/` and extension
+                    path.relative(
+                        "src",
+                        file.slice(0, file.length - path.extname(file).length)
+                    ),
+                    // absolute file path
+                    fileURLToPath(new URL(file, import.meta.url)),
+                ])
             ),
             output: {
                 chunkFileNames: "chunks/[name]",

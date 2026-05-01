@@ -2,13 +2,17 @@ import { writeFileSync } from "node:fs";
 import { dirname, relative } from "node:path";
 import { glob } from "glob";
 
-const MANUAL_EXPORTS = ['export * from "./utils/material/defaultTheme";'];
+const MANUAL_EXPORTS = [];
 
-const INDEX_GLOB = "src/**/index.ts";
+const INDEX_GLOB = [
+    "src/*/index.ts", // top-level
+    "src/components/*/index.ts", // one level inside components
+];
+
 const ROOT_INDEX = "src/index.ts";
 
 const files = glob.sync(INDEX_GLOB, {
-    ignore: [ROOT_INDEX], // ❗ prevent self-export
+    ignore: [ROOT_INDEX],
 });
 
 const autoExports = files.map((file) => {
