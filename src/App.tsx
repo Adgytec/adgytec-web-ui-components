@@ -72,7 +72,6 @@ import { Radio, RadioGroup } from "./components/Radio";
 import { Separator } from "./components/Separator";
 import { Switch } from "./components/Switch";
 import { TextArea } from "./components/TextArea";
-import { Viewport } from "./components/Viewport";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
 
@@ -1379,14 +1378,11 @@ const App = () => {
     ];
 
     return (
-        <>
-            <Viewport />
-            <div className="preview-parent">
-                {previewElements.map((Element) => {
-                    return <Element key={Element.name} />;
-                })}
-            </div>
-        </>
+        <div className="preview-parent">
+            {previewElements.map((Element) => {
+                return <Element key={Element.name} />;
+            })}
+        </div>
     );
 };
 
