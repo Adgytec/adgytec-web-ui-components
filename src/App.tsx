@@ -47,7 +47,6 @@ import {
     ToggleButton,
     ToggleIconButton,
 } from "./components/Button";
-import { Checkbox, CheckboxGroup } from "./components/Checkbox";
 import {
     ActionDialog,
     Dialog,
@@ -58,6 +57,10 @@ import {
 } from "./components/Dialog";
 import { Icon } from "./components/Icon";
 import { Input } from "./components/Input";
+import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
+import { Radio, RadioGroup } from "./components/Input/Radio";
+import { Switch } from "./components/Input/Switch";
+import { TextArea } from "./components/Input/TextArea";
 import {
     Menu,
     type MenuColor,
@@ -68,10 +71,7 @@ import {
     MenuTrigger,
     SubmenuTrigger,
 } from "./components/Menu";
-import { Radio, RadioGroup } from "./components/Radio";
 import { Separator } from "./components/Separator";
-import { Switch } from "./components/Switch";
-import { TextArea } from "./components/TextArea";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
 
