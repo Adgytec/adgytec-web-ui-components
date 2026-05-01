@@ -8,7 +8,6 @@ export * from "./components/Input";
 export * from "./components/Loader";
 export * from "./components/Menu";
 export * from "./components/Popover";
-export * from "./components/Select";
 export * from "./components/Separator";
 export * from "./components/Sidebar";
 export * from "./components/Tooltip";
