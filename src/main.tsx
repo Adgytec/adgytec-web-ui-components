@@ -5,8 +5,8 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./styles/main.css";
-import "./styles/core/core.css";
-import "./styles/core/theme/base/base.css";
+import "./styles/core";
+import "./styles/defaultTheme";
 import { Toaster } from "sonner";
 
 const rootEl = document.getElementById("root");
