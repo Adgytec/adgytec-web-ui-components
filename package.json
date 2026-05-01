@@ -13,6 +13,12 @@
         ".": {
             "import": "./dist/index.js",
             "types": "./dist/index.d.ts"
+        },
+        "./styles/core": {
+            "import": "./dist/styles/core.js"
+        },
+        "./styles/defaultTheme": {
+            "import": "./dist/styles/defaultTheme.js"
         }
     },
     "main": "./dist/index.js",
