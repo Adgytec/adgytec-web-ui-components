@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { TextArea as AriaTextArea, TextField } from "react-aria-components";
-import type { TextFieldProps } from "@/utils/textField/types";
 import { typography } from "@/utils/typography";
+import type { TextFieldProps } from "../core";
 import { EditorStyles, TextareaStyles, TextFieldStyles } from "../core";
 import { Description } from "../Description";
 import { FieldError } from "../FieldError";
