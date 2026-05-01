@@ -9,6 +9,6 @@ export * from "./components/Loader";
 export * from "./components/Menu";
 export * from "./components/Popover";
 export * from "./components/Separator";
-export * from "./components/Sidebar";
 export * from "./components/Tooltip";
+export * from "./components/VisualSettings";
 export * from "./utils";
