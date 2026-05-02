@@ -1,4 +1,5 @@
-.switch {
+/* reduces specificity for easier override */
+:where(.switch) {
     display: inline-flex;
 
     align-items: center;
