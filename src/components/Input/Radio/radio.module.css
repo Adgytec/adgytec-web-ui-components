@@ -1,8 +1,9 @@
 :where(.radio-group) {
     --padding: var(--md-sys-layout-space-16);
 
-    & > [slot="description"],
-    & > [slot="label"] {
+    > [slot="description"],
+    > [slot="label"],
+    > [slot="errorMessage"] {
         padding: var(--padding);
     }
 }
