@@ -81,9 +81,16 @@
         --_state-opacity: var(--md-sys-state-pressed);
         --_state-color: var(--md-sys-color-primary);
 
-        &[data-selected] {
-            --_state-color: var(--md-sys-color-on-surface);
+        &:not([data-invalid]) {
+            &[data-selected] {
+                --_state-color: var(--md-sys-color-on-surface);
+            }
         }
+    }
+
+    &[data-invalid] {
+        --color: var(--md-sys-color-error);
+        --_state-color: var(--md-sys-color-error);
     }
 
     &[data-disabled] {
@@ -99,10 +106,12 @@
     &[data-focus-visible],
     &[data-hovered],
     &[data-pressed] {
-        --color: var(--unselected-color);
+        &:not([data-invalid]) {
+            --color: var(--unselected-color);
 
-        &[data-selected] {
-            --color: var(--selected-color);
+            &[data-selected] {
+                --color: var(--selected-color);
+            }
         }
     }
 }

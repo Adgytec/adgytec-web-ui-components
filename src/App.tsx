@@ -177,6 +177,7 @@ const RadioPreview = () => {
             <RadioGroup
                 label="Enabled"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                isInvalid
             >
                 <Radio value="cat">Cat</Radio>
                 <Radio value="dog">Dog</Radio>
