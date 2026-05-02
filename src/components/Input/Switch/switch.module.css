@@ -4,6 +4,15 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--md-sys-layout-space-16);
+
+    color: inherit;
+
+    &[data-disabled] {
+        color: rgb(
+            from currentColor r g b /
+            var(--md-sys-state-disabled-content)
+        );
+    }
 }
 
 .icon {
