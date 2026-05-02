@@ -56,7 +56,7 @@ import {
     ModalOverlay,
 } from "./components/Dialog";
 import { Icon } from "./components/Icon";
-import { Input } from "./components/Input";
+import { Input, Label } from "./components/Input";
 import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
 import { Radio, RadioGroup } from "./components/Input/Radio";
 import { Switch } from "./components/Input/Switch";
@@ -90,25 +90,29 @@ const PreviewContainer = (props: { label: string; children: ReactNode }) => {
 const SwitchPreview = () => {
     return (
         <PreviewContainer label="Switch">
-            <div className="items">
-                <Switch isDisabled icon="none">
-                    hmm
-                </Switch>
+            <Switch isDisabled icon="none">
+                <Label>Disabled no icon</Label>
+            </Switch>
 
-                <Switch isDisabled icon="both">
-                    hmm
-                </Switch>
+            <Switch isDisabled icon="both">
+                <Label>Disabled with icon</Label>
+            </Switch>
 
-                <Switch isDisabled isSelected>
-                    hmm
-                </Switch>
+            <Switch isDisabled isSelected>
+                <Label>Disabled selected</Label>
+            </Switch>
 
-                <Switch>not-disabled</Switch>
+            <Switch>
+                <Label>Selected icon</Label>
+            </Switch>
 
-                <Switch icon="both">not-disabled</Switch>
+            <Switch icon="both">
+                <Label>Both icon</Label>
+            </Switch>
 
-                <Switch icon="none">not-disabled</Switch>
-            </div>
+            <Switch icon="none">
+                <Label>Icon none</Label>
+            </Switch>
         </PreviewContainer>
     );
 };

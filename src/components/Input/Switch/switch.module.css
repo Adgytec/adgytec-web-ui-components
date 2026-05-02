@@ -22,6 +22,8 @@
     background-color: var(--state-color);
     border-radius: var(--md-sys-shape-corner-radius-extra-small);
 
+    cursor: pointer;
+
     transition: background-color var(--md-sys-motion-expressive-fast-effects)
         var(--md-sys-motion-expressive-fast-effects-duration);
 
@@ -34,6 +36,7 @@
             from currentColor r g b /
             var(--md-sys-state-disabled-content)
         );
+        cursor: default;
     }
 
     &[data-selected] {
