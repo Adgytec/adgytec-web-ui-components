@@ -10,6 +10,7 @@ export interface RadioGroupProps extends Omit<AriaRadioGroupProps, "children"> {
     description?: string;
     errorMessage?: string | ((validation: ValidationResult) => string);
     children?: ReactNode;
+    radioItemsGap?: number;
 }
 
 export interface RadioProps extends Omit<AriaRadioProps, "children"> {

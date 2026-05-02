@@ -11,6 +11,7 @@ export interface CheckboxGroupProps
     description?: string;
     errorMessage?: string | ((validation: ValidationResult) => string);
     children?: ReactNode;
+    checkboxItemsGap?: number;
 }
 
 export interface CheckboxProps extends Omit<AriaCheckboxProps, "children"> {

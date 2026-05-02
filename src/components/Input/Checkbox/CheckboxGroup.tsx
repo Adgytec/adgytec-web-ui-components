@@ -12,6 +12,7 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     errorMessage,
     children,
     className,
+    checkboxItemsGap = 0,
     ...props
 }) => {
     return (
@@ -28,7 +29,14 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
         >
             {label && <Label>{label}</Label>}
 
-            <div className={clsx(styles["checkbox-items"])}>{children}</div>
+            <div
+                className={clsx(styles["checkbox-items"])}
+                style={{
+                    gap: `calc(${checkboxItemsGap} * var(--dp, 1px))`,
+                }}
+            >
+                {children}
+            </div>
 
             {description && <Description>{description}</Description>}
             <FieldError>{errorMessage}</FieldError>

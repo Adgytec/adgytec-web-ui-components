@@ -1,9 +1,60 @@
-.switch {
+/* reduces specificity for easier override */
+:where(.switch) {
+    --padding: var(--md-sys-layout-space-16);
+
+    --state-selected-base-color: var(--md-sys-color-primary);
+    --state-unselected-base-color: var(--md-sys-color-on-surface);
+
+    --_state-opacity: 0;
+    --_state-color: var(--state-unselected-base-color);
+
+    --state-color: rgb(from var(--_state-color) r g b / var(--_state-opacity));
+
     display: inline-flex;
 
     align-items: center;
     justify-content: space-between;
     gap: var(--md-sys-layout-space-16);
+
+    color: inherit;
+
+    padding: var(--padding);
+
+    background-color: var(--state-color);
+    border-radius: var(--md-sys-shape-corner-radius-extra-small);
+
+    cursor: pointer;
+
+    transition: background-color var(--md-sys-motion-expressive-fast-effects)
+        var(--md-sys-motion-expressive-fast-effects-duration);
+
+    @media (prefers-reduced-motion) {
+        transition: none;
+    }
+
+    &[data-disabled] {
+        color: rgb(
+            from currentColor r g b /
+            var(--md-sys-state-disabled-content)
+        );
+        cursor: default;
+    }
+
+    &[data-selected] {
+        --_state-color: var(--state-selected-base-color);
+    }
+
+    &[data-hovered] {
+        --_state-opacity: var(--md-sys-state-hover);
+    }
+
+    &[data-focus-visible] {
+        --_state-opacity: var(--md-sys-state-focus);
+    }
+
+    &[data-pressed] {
+        --_state-opacity: var(--md-sys-state-pressed);
+    }
 }
 
 .icon {
@@ -182,9 +233,6 @@
     --track-outline-base-color: var(--md-sys-color-outline);
     --track-selected-outline-color: transparent;
 
-    --state-selected-base-color: var(--md-sys-color-primary);
-    --state-unselected-base-color: var(--md-sys-color-on-surface);
-
     /* ================= DISABLED (unchanged) ================= */
 
     --track-unselected-disabled-color: rgb(
@@ -205,13 +253,7 @@
     --focus-indicator-offset: calc(2 * var(--dp, 1px));
     --focus-indicator-color: var(--md-sys-color-secondary);
 
-    /* opacity is only added of state layer */
-    /* create new variable to handle that value for opacity and state internal impl*/
-    --_state-opacity: 0;
-    --_state-color: var(--state-unselected-base-color);
-
-    /* state final color for use */
-    --state-color: rgb(from var(--_state-color) r g b / var(--_state-opacity));
+    /* track state size and shape for use */
     --state-size: calc(40 * var(--dp, 1px));
     --state-shape: var(--md-sys-shape-corner-radius-full);
 
@@ -239,22 +281,9 @@
     @media (prefers-reduced-motion) {
         transition: none;
     }
-
-    &[data-hovered] {
-        --_state-opacity: var(--md-sys-state-hover);
-    }
-
-    &[data-focus-visible] {
-        --_state-opacity: var(--md-sys-state-focus);
-    }
-
-    &[data-pressed] {
-        --_state-opacity: var(--md-sys-state-pressed);
-    }
 }
 
 .track[data-selected] {
-    --_state-color: var(--state-selected-base-color);
     background-color: var(--track-selected-base-color);
     border-color: var(--track-selected-outline-color);
 }

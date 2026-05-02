@@ -1,17 +1,18 @@
 import clsx from "clsx";
 import { Check, type LucideIcon, X } from "lucide-react";
 import type { ReactNode } from "react";
-import { Switch as AriaSwitch, type SwitchProps } from "react-aria-components";
+import { Switch as AriaSwitch } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { TapTarget } from "@/utils/tapTarget";
 import styles from "./switch.module.css";
+import type { SwitchProps } from "./types";
 
-export const Switch: React.FC<
-    Omit<SwitchProps, "children"> & {
-        children: ReactNode;
-        icon?: "none" | "selected" | "both";
-    }
-> = ({ className, children, icon = "selected", ...props }) => {
+export const Switch: React.FC<SwitchProps> = ({
+    className,
+    children,
+    icon = "selected",
+    ...props
+}) => {
     return (
         <AriaSwitch
             className={(renderProps) =>
@@ -24,15 +25,17 @@ export const Switch: React.FC<
             }
             {...props}
         >
-            {({
-                isSelected,
-                isHovered,
-                isDisabled,
-                isFocused,
-                isFocusVisible,
-                isPressed,
-                isReadOnly,
-            }) => {
+            {(renderProps) => {
+                const {
+                    isSelected,
+                    isHovered,
+                    isDisabled,
+                    isFocused,
+                    isFocusVisible,
+                    isPressed,
+                    isReadOnly,
+                } = renderProps;
+
                 let iconValue: LucideIcon | undefined;
                 if (icon !== "none" && isSelected) {
                     iconValue = Check;
@@ -66,7 +69,9 @@ export const Switch: React.FC<
                 }
                 return (
                     <>
-                        {children}
+                        {typeof children === "function"
+                            ? children(renderProps)
+                            : children}
 
                         <div
                             {...dataAttrs}

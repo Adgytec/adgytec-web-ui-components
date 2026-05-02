@@ -1,17 +1,79 @@
-.checkbox-group {
-    display: grid;
-    gap: var(--md-sys-layout-space-16);
+:where(.checkbox-group) {
+    --padding: var(--md-sys-layout-space-16);
+
+    & > [slot="description"],
+    & > [slot="label"] {
+        padding: var(--padding);
+    }
 }
 
-.checkbox-items {
+:where(.checkbox-items) {
     display: grid;
-    gap: var(--md-sys-layout-space-32);
 }
 
-.checkbox {
+:where(.checkbox) {
+    --padding-checkbox: var(--padding, var(--md-sys-layout-space-16));
+
+    /* state layer */
+    --_state-opacity: 0;
+    --_state-color: var(--md-sys-color-on-surface);
+
+    --state-color: rgb(from var(--_state-color) r g b / var(--_state-opacity));
+
+    /* styles */
     display: inline-flex;
-    gap: var(--md-sys-layout-space-8);
+    gap: var(--md-sys-layout-space-16);
     align-items: center;
+
+    color: inherit;
+    cursor: pointer;
+
+    padding: var(--padding-checkbox);
+
+    border-radius: var(--md-sys-shape-corner-radius-extra-small);
+
+    background-color: var(--state-color);
+
+    transition: background-color var(--md-sys-motion-expressive-fast-effects)
+        var(--md-sys-motion-expressive-fast-effects-duration);
+
+    @media (prefers-reduced-motion) {
+        transition: none;
+    }
+
+    &[data-invalid] {
+        --_state-color: var(--md-sys-color-error);
+    }
+
+    &[data-selected],
+    &[data-indeterminate] {
+        --_state-color: var(--md-sys-color-primary);
+
+        &[data-invalid] {
+            --_state-color: var(--md-sys-color-error);
+        }
+    }
+
+    &[data-disabled] {
+        color: rgb(
+            from currentColor r g b /
+            var(--md-sys-state-disabled-content)
+        );
+        cursor: default;
+    }
+
+    /* state opacity */
+    &[data-hovered] {
+        --_state-opacity: var(--md-sys-state-hover);
+    }
+
+    &[data-focus-visible] {
+        --_state-opacity: var(--md-sys-state-focus);
+    }
+
+    &[data-pressed] {
+        --_state-opacity: var(--md-sys-state-pressed);
+    }
 }
 
 .indicator {
@@ -46,11 +108,6 @@
 
     --icon-color: var(--md-sys-color-on-primary);
 
-    --_state-opacity: 0;
-    --_state-color: var(--md-sys-color-on-surface);
-
-    --state-color: rgb(from var(--_state-color) r g b / var(--_state-opacity));
-
     /* styles */
     position: relative;
 
@@ -73,7 +130,6 @@
 
     &[data-invalid] {
         --outline-color: var(--container-outline-unselected-error-color);
-        --_state-color: var(--md-sys-color-error);
         --icon-color: var(--md-sys-color-on-error);
     }
 
@@ -81,11 +137,9 @@
     &[data-indeterminate] {
         --outline-color: transparent;
         --color: var(--container-selected-color);
-        --_state-color: var(--md-sys-color-primary);
 
         &[data-invalid] {
             --color: var(--container-selected-error-color);
-            --_state-color: var(--md-sys-color-error);
         }
     }
 
@@ -111,19 +165,6 @@
         &[data-indeterminate] {
             --outline-color: transparent;
         }
-    }
-
-    /* state opacity */
-    &[data-hovered] {
-        --_state-opacity: var(--md-sys-state-hover);
-    }
-
-    &[data-focus-visible] {
-        --_state-opacity: var(--md-sys-state-focus);
-    }
-
-    &[data-pressed] {
-        --_state-opacity: var(--md-sys-state-pressed);
     }
 }
 

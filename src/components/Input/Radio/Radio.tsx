@@ -45,6 +45,7 @@ export const Radio: React.FC<RadioProps> = ({
                         >
                             <div
                                 className={clsx(styles["indicator-icon"])}
+                                {...dataAttrs}
                             ></div>
                         </div>
                         {children}
