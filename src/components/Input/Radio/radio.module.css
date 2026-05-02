@@ -43,8 +43,7 @@
     color: inherit;
     cursor: pointer;
 
-    padding-block: var(--md-sys-layout-space-12);
-    padding-inline: var(--md-sys-layout-space-12);
+    padding: var(--md-sys-layout-space-16);
 
     border-radius: var(--md-sys-shape-corner-radius-extra-small);
 

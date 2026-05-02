@@ -16,8 +16,7 @@
 
     color: inherit;
 
-    padding-block: var(--md-sys-layout-space-12);
-    padding-inline: var(--md-sys-layout-space-12);
+    padding: var(--md-sys-layout-space-16);
 
     background-color: var(--state-color);
     border-radius: var(--md-sys-shape-corner-radius-extra-small);
