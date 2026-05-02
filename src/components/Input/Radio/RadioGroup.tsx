@@ -12,6 +12,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
     errorMessage,
     children,
     className,
+    radioItemsGap = 0,
     ...props
 }) => {
     return (
@@ -33,6 +34,9 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
                     <div
                         data-orientation={orientation}
                         className={clsx(styles["radio-items"])}
+                        style={{
+                            gap: `calc(${radioItemsGap} * var(--dp, 1px))`,
+                        }}
                     >
                         {children}
                     </div>
