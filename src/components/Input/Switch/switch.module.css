@@ -1,5 +1,7 @@
 /* reduces specificity for easier override */
 :where(.switch) {
+    --padding: var(--md-sys-layout-space-16);
+
     --state-selected-base-color: var(--md-sys-color-primary);
     --state-unselected-base-color: var(--md-sys-color-on-surface);
 
@@ -16,7 +18,7 @@
 
     color: inherit;
 
-    padding: var(--md-sys-layout-space-16);
+    padding: var(--padding);
 
     background-color: var(--state-color);
     border-radius: var(--md-sys-shape-corner-radius-extra-small);

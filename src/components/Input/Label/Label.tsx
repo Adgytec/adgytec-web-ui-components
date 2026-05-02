@@ -5,6 +5,7 @@ import { typography } from "@/utils/typography";
 export const Label: React.FC<LabelProps> = ({ className, ...props }) => {
     return (
         <AriaLabel
+            slot="label"
             className={clsx(typography.labelLarge, className)}
             {...props}
         />

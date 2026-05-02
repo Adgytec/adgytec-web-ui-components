@@ -1,8 +1,19 @@
+:where(.checkbox-group) {
+    --padding: var(--md-sys-layout-space-16);
+
+    & > [slot="description"],
+    & > [slot="label"] {
+        padding: var(--padding);
+    }
+}
+
 :where(.checkbox-items) {
     display: grid;
 }
 
 :where(.checkbox) {
+    --padding: var(--md-sys-layout-space-16);
+
     /* state layer */
     --_state-opacity: 0;
     --_state-color: var(--md-sys-color-on-surface);
@@ -17,7 +28,7 @@
     color: inherit;
     cursor: pointer;
 
-    padding: var(--md-sys-layout-space-16);
+    padding: var(--padding);
 
     border-radius: var(--md-sys-shape-corner-radius-extra-small);
 
