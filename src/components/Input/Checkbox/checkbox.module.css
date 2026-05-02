@@ -12,7 +12,7 @@
 }
 
 :where(.checkbox) {
-    --padding: var(--md-sys-layout-space-16);
+    --padding-checkbox: var(--padding, var(--md-sys-layout-space-16));
 
     /* state layer */
     --_state-opacity: 0;
@@ -28,7 +28,7 @@
     color: inherit;
     cursor: pointer;
 
-    padding: var(--padding);
+    padding: var(--padding-checkbox);
 
     border-radius: var(--md-sys-shape-corner-radius-extra-small);
 
