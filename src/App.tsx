@@ -90,29 +90,61 @@ const PreviewContainer = (props: { label: string; children: ReactNode }) => {
 const SwitchPreview = () => {
     return (
         <PreviewContainer label="Switch">
-            <Switch isDisabled icon="none">
-                <Label>Disabled no icon</Label>
-            </Switch>
+            <div>
+                <Switch isDisabled icon="none">
+                    <Label>Disabled no icon</Label>
+                </Switch>
 
-            <Switch isDisabled icon="both">
-                <Label>Disabled with icon</Label>
-            </Switch>
+                <Switch isDisabled icon="both">
+                    <Label>Disabled with icon</Label>
+                </Switch>
 
-            <Switch isDisabled isSelected>
-                <Label>Disabled selected</Label>
-            </Switch>
+                <Switch isDisabled isSelected>
+                    <Label>Disabled selected</Label>
+                </Switch>
 
-            <Switch>
-                <Label>Selected icon</Label>
-            </Switch>
+                <Switch>
+                    <Label>Selected icon</Label>
+                </Switch>
 
-            <Switch icon="both">
-                <Label>Both icon</Label>
-            </Switch>
+                <Switch icon="both">
+                    <Label>Both icon</Label>
+                </Switch>
 
-            <Switch icon="none">
-                <Label>Icon none</Label>
-            </Switch>
+                <Switch icon="none">
+                    <Label>Icon none</Label>
+                </Switch>
+            </div>
+
+            <div
+                style={{
+                    display: "grid",
+                }}
+            >
+                <Switch isDisabled icon="none">
+                    <Label>Disabled no icon</Label>
+                </Switch>
+
+                <Switch isDisabled icon="both">
+                    <Label>Disabled with icon</Label>
+                </Switch>
+
+                <Switch isDisabled isSelected>
+                    <Label>Disabled selected</Label>
+                </Switch>
+
+                <Switch>
+                    <Label>Selected icon</Label>
+                </Switch>
+
+                <Switch icon="both">
+                    <Label>Both icon</Label>
+                </Switch>
+
+                <Switch icon="none">
+                    <Label>Icon none</Label>
+                </Switch>
+            </div>
         </PreviewContainer>
     );
 };
@@ -167,33 +199,35 @@ const RadioPreview = () => {
 const CheckboxPreview = () => {
     return (
         <PreviewContainer label="Checkbox">
-            <Checkbox isDisabled>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Checkbox>
+            <div style={{ display: "grid" }}>
+                <Checkbox isDisabled>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
 
-            <Checkbox isDisabled isSelected>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Checkbox>
+                <Checkbox isDisabled isSelected>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
 
-            <Checkbox>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Checkbox>
+                <Checkbox>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
 
-            <Checkbox isIndeterminate isDisabled>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Checkbox>
+                <Checkbox isIndeterminate isDisabled>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
 
-            <Checkbox isIndeterminate>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Checkbox>
+                <Checkbox isIndeterminate>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
 
-            <Checkbox isIndeterminate isInvalid>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Checkbox>
+                <Checkbox isIndeterminate isInvalid>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
 
-            <Checkbox isIndeterminate isInvalid isDisabled>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Checkbox>
+                <Checkbox isIndeterminate isInvalid isDisabled>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+            </div>
 
             <CheckboxGroup
                 label="lorem ipsum"
