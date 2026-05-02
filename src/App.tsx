@@ -56,11 +56,10 @@ import {
     ModalOverlay,
 } from "./components/Dialog";
 import { Icon } from "./components/Icon";
-import { Input, Label } from "./components/Input";
+import { Label } from "./components/Input";
 import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
 import { Radio, RadioGroup } from "./components/Input/Radio";
 import { Switch } from "./components/Input/Switch";
-import { TextArea } from "./components/Input/TextArea";
 import {
     Menu,
     type MenuColor,
@@ -322,59 +321,6 @@ const TooltipPreview = () => {
                     <Tooltip>Lorem ipsum dolor sit amet.</Tooltip>
                 </TooltipTrigger>
             </div>
-        </PreviewContainer>
-    );
-};
-
-const TextfieldPreview = () => {
-    return (
-        <PreviewContainer label="Textfield">
-            <Input
-                label="input"
-                placeholder="input"
-                isDisabled
-                description="trial description"
-            />
-
-            <TextArea
-                label="textarea"
-                rows={2}
-                placeholder="textarea"
-                isDisabled
-                description="trial description"
-            />
-
-            <Input
-                label="input"
-                placeholder="input"
-                description="trial description"
-                isRequired
-                type="email"
-            />
-
-            <TextArea
-                label="textarea"
-                rows={2}
-                placeholder="textarea"
-                description="trial description"
-            />
-
-            <Input
-                label="input"
-                placeholder="input"
-                isInvalid
-                description="trial description"
-                errorMessage={"trial error"}
-            />
-
-            <TextArea
-                label="textarea"
-                rows={2}
-                placeholder="textarea"
-                isInvalid
-                description="trial description"
-                errorMessage={"trial error"}
-            />
         </PreviewContainer>
     );
 };
@@ -1413,7 +1359,6 @@ const App = () => {
         LinkPreview,
         ButtonPreview,
         IconButtonPreview,
-        TextfieldPreview,
         TooltipPreview,
         CheckboxPreview,
         RadioPreview,
