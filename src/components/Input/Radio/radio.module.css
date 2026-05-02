@@ -1,33 +1,16 @@
-.radio-group {
+:where(.radio-items) {
+    --radio-display: flex;
+
     display: grid;
-    gap: var(--md-sys-layout-space-16);
+
+    &[data-orientation="horizontal"] {
+        --radio-display: inline-flex;
+
+        display: flex;
+    }
 }
 
-/* vertical */
-.radio-items {
-    display: grid;
-    gap: var(--md-sys-layout-space-32);
-}
-
-/* :horizontal */
-.radio-items[data-orientation="horizontal"] {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--md-sys-layout-space-40);
-}
-
-.radio {
-    display: inline-flex;
-    gap: var(--md-sys-layout-space-8);
-    align-items: center;
-}
-
-.indicator {
-    /* material guideline */
-    --size: calc(20 * var(--dp, 1px));
-    --state-size: calc(40 * var(--dp, 1px));
-
+:where(.radio) {
     /* colors */
     --base-color: var(--md-sys-color-on-surface);
 
@@ -52,17 +35,23 @@
     --_state-opacity: 0;
     --state-color: rgb(from var(--_state-color) r g b / var(--_state-opacity));
 
-    /* indicator styles */
-    position: relative;
+    /* styles */
+    display: var(--radio-display, flex);
+    align-items: center;
+    gap: var(--md-sys-layout-space-16);
 
-    inline-size: var(--size);
-    aspect-ratio: 1 / 1;
-    border-radius: var(--md-sys-shape-corner-radius-full);
+    color: inherit;
+    cursor: pointer;
 
-    border: var(--md-sys-shape-border-width-thick) solid var(--color);
+    padding-block: var(--md-sys-layout-space-12);
+    padding-inline: var(--md-sys-layout-space-12);
 
-    transition: border-color var(--md-sys-motion-expressive-default-effects)
-        var(--md-sys-motion-expressive-default-effects-duration);
+    border-radius: var(--md-sys-shape-corner-radius-extra-small);
+
+    background-color: var(--state-color);
+
+    transition: background-color var(--md-sys-motion-expressive-fast-effects)
+        var(--md-sys-motion-expressive-fast-effects-duration);
 
     @media (prefers-reduced-motion) {
         transition: none;
@@ -70,7 +59,6 @@
 
     &[data-selected] {
         --color: var(--selected-color);
-        --icon-center-scale: 0.625;
     }
 
     &[data-hovered] {
@@ -92,6 +80,12 @@
 
     &[data-disabled] {
         --color: var(--disabled-color);
+
+        color: rgb(
+            from currentColor r g b /
+            var(--md-sys-state-disabled-content)
+        );
+        cursor: default;
     }
 
     &[data-focus-visible],
@@ -102,6 +96,29 @@
         &[data-selected] {
             --color: var(--selected-color);
         }
+    }
+}
+
+.indicator {
+    /* material guideline */
+    --size: calc(20 * var(--dp, 1px));
+    --indicator-icon-size: calc(var(--size) - calc(10 * var(--dp, 1px)));
+    --state-size: calc(40 * var(--dp, 1px));
+
+    /* indicator styles */
+    position: relative;
+
+    inline-size: var(--size);
+    aspect-ratio: 1 / 1;
+    border-radius: var(--md-sys-shape-corner-radius-full);
+
+    border: var(--md-sys-shape-border-width-thick) solid var(--color);
+
+    transition: border-color var(--md-sys-motion-expressive-default-effects)
+        var(--md-sys-motion-expressive-default-effects-duration);
+
+    @media (prefers-reduced-motion) {
+        transition: none;
     }
 }
 
@@ -133,12 +150,17 @@
     content: "";
 
     position: absolute;
-    inset: 0;
+    inline-size: var(--indicator-icon-size);
+    aspect-ratio: 1 / 1;
+
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
 
     background-color: var(--color);
     border-radius: var(--md-sys-shape-corner-radius-full);
 
-    scale: var(--icon-center-scale);
+    scale: 0;
 
     transition:
         background-color var(--md-sys-motion-expressive-default-effects)
@@ -148,6 +170,10 @@
 
     @media (prefers-reduced-motion) {
         transition: none;
+    }
+
+    &[data-selected] {
+        scale: 1;
     }
 }
 
