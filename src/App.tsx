@@ -67,6 +67,7 @@ import {
     MenuItem,
     type MenuLayout,
     MenuSection,
+    MenuSectionHeader,
     MenuShortcut,
     MenuTrigger,
     SubmenuTrigger,
@@ -1040,6 +1041,8 @@ const SplitButtonPreview = () => {
                         layout={!label ? "standard" : "grouped"}
                     >
                         <MenuSection>
+                            <MenuSectionHeader>Quick Actions</MenuSectionHeader>
+
                             <MenuItem trailingIcon={Eye}>Preview</MenuItem>
 
                             <MenuItem trailingIcon={Share2}>Share</MenuItem>
@@ -1048,6 +1051,8 @@ const SplitButtonPreview = () => {
                         {!label && <Separator />}
 
                         <MenuSection>
+                            <MenuSectionHeader>Security</MenuSectionHeader>
+
                             <MenuItem
                                 trailingIcon={GlobeLock}
                                 supportingText="Make item private"

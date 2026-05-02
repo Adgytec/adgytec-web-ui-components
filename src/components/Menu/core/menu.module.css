@@ -22,6 +22,12 @@
     gap: var(--gap);
 }
 
+.menu-section-header {
+    padding-inline: var(--menu-item-padding-inline-content);
+    padding-block: var(--md-sys-layout-space-8);
+    color: var(--menu-item-color-normal);
+}
+
 .menu-item {
     --pb: var(--menu-item-padding-block-single-line);
 
