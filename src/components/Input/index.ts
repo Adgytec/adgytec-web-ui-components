@@ -7,3 +7,4 @@ export * from "./Label";
 export * from "./Radio";
 export * from "./Switch";
 export * from "./TextArea";
+export * from "./TimeField";
