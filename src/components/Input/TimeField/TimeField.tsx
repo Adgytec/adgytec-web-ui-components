@@ -1,9 +1,21 @@
+import clsx from "clsx";
 import {
     TimeField as AriaTimeField,
     DateInput,
     DateSegment,
     type TimeValue,
 } from "react-aria-components";
+import { typography } from "@/utils";
+import {
+    Colors,
+    DateInputStyles,
+    DateSegementStyles,
+    EditorInputStyles,
+    EditorStyles,
+    InputGroupStyles,
+    SupportingTextStyles,
+    UnsetStyles,
+} from "../core";
 import { Description } from "../Description";
 import { FieldError } from "../FieldError";
 import { Label } from "../Label";
@@ -13,17 +25,55 @@ export const TimeField = <T extends TimeValue>({
     label,
     description,
     errorMessage,
+    className,
     ...props
 }: TimeFieldProps<T>) => {
     return (
-        <AriaTimeField {...props}>
+        <AriaTimeField
+            className={(renderProps) =>
+                clsx(
+                    Colors,
+                    InputGroupStyles,
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
+            {...props}
+        >
             {label && <Label>{label}</Label>}
 
-            <DateInput>
-                {(segement) => <DateSegment segment={segement} />}
+            <DateInput
+                className={clsx(
+                    UnsetStyles,
+                    EditorStyles,
+                    EditorInputStyles,
+                    typography.bodyLarge,
+                    DateInputStyles
+                )}
+                data-date-input={true}
+            >
+                {(segment) => {
+                    return (
+                        <DateSegment
+                            className={clsx(
+                                DateSegementStyles,
+                                typography.bodyLarge
+                            )}
+                            segment={segment}
+                        />
+                    );
+                }}
             </DateInput>
 
-            {description && <Description>{description}</Description>}
+            {description && (
+                <Description
+                    className={clsx(SupportingTextStyles)}
+                    data-description={true}
+                >
+                    {description}
+                </Description>
+            )}
             <FieldError>{errorMessage}</FieldError>
         </AriaTimeField>
     );

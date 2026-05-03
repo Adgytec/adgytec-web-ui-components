@@ -58,6 +58,11 @@ export const Input: React.FC<InputProps> = ({
         },
     });
 
+    const layoutDataAttrs = {
+        "data-trailing": trailing ? true : undefined,
+        "data-leading": leadingIcon ? true : undefined,
+    };
+
     return (
         <AriaTextField
             className={(renderProps) =>
@@ -74,13 +79,9 @@ export const Input: React.FC<InputProps> = ({
             defaultValue={defaultValue}
             onChange={setValue}
             {...props}
+            {...layoutDataAttrs}
         >
             {({ isDisabled, isInvalid }) => {
-                const layoutDataAttrs = {
-                    "data-trailing": trailing ? true : undefined,
-                    "data-leading": leadingIcon ? true : undefined,
-                };
-
                 const dataAttrs = {
                     ...layoutDataAttrs,
                     "data-hovered": isHovered || undefined,

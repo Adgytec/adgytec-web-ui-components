@@ -1393,7 +1393,7 @@ const InputPreview = () => {
 
     return (
         <PreviewContainer label="Input">
-            <div className="items-grid">
+            <div className="items">
                 <RenderInput />
 
                 <RenderInput isInvalid />
@@ -1438,16 +1438,74 @@ const TextAreaPreview = () => {
                 <RenderTextArea isDisabled />
 
                 <RenderTextArea isInvalid isDisabled />
+            </div>
+        </PreviewContainer>
+    );
+};
 
-                {/* <TimeField */}
-                {/*     label="Appointment Time" */}
-                {/*     description="Add your appointment time" */}
-                {/* /> */}
-                {/**/}
-                {/* <DateField */}
-                {/*     label="Appointment Date" */}
-                {/*     description="Add your appointment date" */}
-                {/* /> */}
+const TimeFieldPreview = () => {
+    const RenderTimeField = ({
+        isInvalid,
+        isDisabled,
+    }: {
+        isInvalid?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        return (
+            <TimeField
+                label="Appointment Time"
+                description="Add your appointment time"
+                isDisabled={isDisabled}
+                isInvalid={isInvalid}
+                granularity="second"
+            />
+        );
+    };
+
+    return (
+        <PreviewContainer label="TimeField">
+            <div className="items">
+                <RenderTimeField />
+
+                <RenderTimeField isInvalid />
+
+                <RenderTimeField isDisabled />
+
+                <RenderTimeField isInvalid isDisabled />
+            </div>
+        </PreviewContainer>
+    );
+};
+
+const DateFieldPreview = () => {
+    const RenderDateField = ({
+        isInvalid,
+        isDisabled,
+    }: {
+        isInvalid?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        return (
+            <DateField
+                label="Appointment Date"
+                description="Add your appointment date"
+                isDisabled={isDisabled}
+                isInvalid={isInvalid}
+                granularity="second"
+            />
+        );
+    };
+
+    return (
+        <PreviewContainer label="DateField">
+            <div className="items">
+                <RenderDateField />
+
+                <RenderDateField isInvalid />
+
+                <RenderDateField isDisabled />
+
+                <RenderDateField isInvalid isDisabled />
             </div>
         </PreviewContainer>
     );
@@ -1456,6 +1514,8 @@ const TextAreaPreview = () => {
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        DateFieldPreview,
+        TimeFieldPreview,
         TextAreaPreview,
         InputPreview,
         DialogPreview,
