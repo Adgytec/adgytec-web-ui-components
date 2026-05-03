@@ -20,6 +20,7 @@ import {
     SunMoon,
     SunSnow,
     User,
+    Mail,
 } from "lucide-react";
 import { Fragment, type ReactNode, useState } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
@@ -1355,46 +1356,68 @@ const DialogPreview = () => {
 };
 
 const TextFieldPreview = () => {
-    const [val, setVal] = useState("");
+    const RenderInput = ({
+        isInvalid,
+        isDisabled,
+    }: {
+        isInvalid?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        const [val, setVal] = useState("");
+        return (
+            <Input
+                label="Email"
+                type="text"
+                description="Enter your Adgytec work email"
+                placeholder="username"
+                suffix={"@adgytec.in"}
+                // editorDir="rtl"
+                leadingIcon={Mail}
+                trailing={(isDisabled) => (
+                    <IconButton
+                        icon={Armchair}
+                        color="standard"
+                        onPress={() => setVal("hello")}
+                        isDisabled={isDisabled}
+                    />
+                )}
+                showCharacterCount
+                value={val}
+                onChange={setVal}
+                maxLength={64}
+                isInvalid={isInvalid}
+                isDisabled={isDisabled}
+            />
+        );
+    };
+
     return (
-        <PreviewContainer label="TextField">
-            <div>
-                <Input
-                    label="Email"
-                    type="text"
-                    description="Enter your Adgytec work email"
-                    suffix={"@adgytec.in"}
-                    editorDir="rtl"
-                    trailing={
-                        <IconButton
-                            icon={Armchair}
-                            color="standard"
-                            onPress={() => setVal("hello")}
-                        />
-                    }
-                    showCharacterCount
-                    value={val}
-                    onChange={setVal}
-                    maxLength={64}
-                />
+        <PreviewContainer label="Input">
+            <div className="items-grid">
+                <RenderInput />
+                <RenderInput isInvalid />
 
-                <TextArea
-                    label="Issue"
-                    maxLength={1024}
-                    rows={4}
-                    description="Describe your issue"
-                    showCharacterCount
-                />
+                <RenderInput isDisabled />
 
-                <TimeField
-                    label="Appointment Time"
-                    description="Add your appointment time"
-                />
+                <RenderInput isInvalid isDisabled />
 
-                <DateField
-                    label="Appointment Date"
-                    description="Add your appointment date"
-                />
+                {/* <TextArea */}
+                {/*     label="Issue" */}
+                {/*     maxLength={1024} */}
+                {/*     rows={4} */}
+                {/*     description="Describe your issue" */}
+                {/*     showCharacterCount */}
+                {/* /> */}
+                {/**/}
+                {/* <TimeField */}
+                {/*     label="Appointment Time" */}
+                {/*     description="Add your appointment time" */}
+                {/* /> */}
+                {/**/}
+                {/* <DateField */}
+                {/*     label="Appointment Date" */}
+                {/*     description="Add your appointment date" */}
+                {/* /> */}
             </div>
         </PreviewContainer>
     );

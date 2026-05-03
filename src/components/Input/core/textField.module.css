@@ -1,0 +1,193 @@
+.unset {
+    all: unset;
+}
+
+.colors {
+    --disabled-color: rgb(
+        from var(--md-sys-color-on-surface) r g b /
+        var(--md-sys-state-disabled-content)
+    );
+
+    /* label color */
+    --label-color-normal: var(--md-sys-color-on-surface-variant);
+
+    /* outline color */
+    --outline-color-normal: var(--md-sys-color-outline);
+    --outline-width: calc(1 * var(--dp, 1px));
+
+    /* label and outline */
+    --color-interaction-invalid: var(--md-sys-color-error);
+
+    --color-interaction-hovered-normal: var(--md-sys-color-on-surface);
+    --color-interaction-focused-normal: var(--md-sys-color-primary);
+
+    --color-interaction-hovered-invalid: var(--md-sys-color-on-error-container);
+    --color-interaction-focused-invalid: var(--md-sys-color-error);
+
+    /* group color */
+    --group-color-normal: var(--md-sys-color-on-surface-variant);
+    --group-color-invalid: var(--md-sys-color-error);
+
+    /* editor */
+    --editor-infix-text-color-normal: var(--md-sys-color-on-surface-variant);
+    --editor-color-normal: var(--md-sys-color-on-surface);
+
+    /* caret color */
+    --caret-color-normal: var(--md-sys-color-primary);
+    --caret-color-invalid: var(--md-sys-color-error);
+
+    /* variable to use */
+    --group-color: var(--group-color-normal);
+
+    --editor-infix-color: var(--editor-infix-text-color-normal);
+    --editor-color: var(--editor-color-normal);
+
+    --caret-color: var(--caret-color-normal);
+
+    --label-color: var(--label-color-normal);
+    --outline-color: var(--outline-color-normal);
+
+    &[data-hovered] {
+        --label-color: var(--color-interaction-hovered-normal);
+        --outline-color: var(--color-interaction-hovered-normal);
+    }
+
+    &[data-focus-visible],
+    &[data-focused] {
+        --label-color: var(--color-interaction-focused-normal);
+        --outline-color: var(--color-interaction-focused-normal);
+        --outline-width: calc(3 * var(--dp, 1px));
+    }
+
+    &[data-invalid] {
+        --group-color: var(--group-color-invalid);
+
+        --caret-color: var(--caret-color-invalid);
+
+        --label-color: var(--color-interaction-invalid);
+        --outline-color: var(--color-interaction-invalid);
+
+        &:not([data-disabled]) {
+            &[data-hovered] {
+                --label-color: var(--color-interaction-hovered-invalid);
+                --outline-color: var(--color-interaction-hovered-invalid);
+            }
+
+            &[data-focus-visible],
+            &[data-focused] {
+                --label-color: var(--color-interaction-focused-invalid);
+                --outline-color: var(--color-interaction-focused-invalid);
+            }
+        }
+    }
+
+    &[data-disabled] {
+        --label-color: var(--disabled-color);
+        --group-color: var(--disabled-color);
+
+        --editor-infix-color: var(--disabled-color);
+        --editor-color: var(--disabled-color);
+
+        --caret-color: var(--disabled-color);
+
+        --outline-color: var(--disabled-color);
+    }
+}
+
+.group {
+    --label-padding-inline-start: var(--md-sys-layout-space-16);
+    --label-padding-inline-end: var(--md-sys-layout-space-16);
+
+    display: inline-grid;
+    gap: var(--md-sys-layout-space-4);
+
+    color: var(--group-color);
+    caret-color: var(--caret-color);
+
+    > [slot="label"] {
+        color: var(--label-color);
+
+        padding-inline-start: var(--label-padding-inline-start);
+        padding-inline-end: var(--label-padding-inline-end);
+
+        transition: color var(--md-sys-motion-standard-fast-effects)
+            var(--md-sys-motion-standard-fast-effects-duration);
+    }
+
+    &[data-leading] {
+        --label-padding-inline-start: var(--md-sys-layout-space-12);
+    }
+
+    &[data-trailing] {
+        --label-padding-inline-end: var(--md-sys-layout-space-12);
+    }
+}
+
+.editor {
+    border-radius: var(--md-sys-shape-corner-radius-extra-small);
+
+    outline-width: var(--outline-width);
+    outline-style: solid;
+    outline-color: var(--outline-color);
+
+    padding: var(--md-sys-layout-space-16);
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--md-sys-layout-space-16);
+
+    transition:
+        outline-width var(--md-sys-motion-standard-fast-effects)
+        var(--md-sys-motion-standard-fast-effects-duration),
+        outline-color var(--md-sys-motion-standard-fast-effects)
+        var(--md-sys-motion-standard-fast-effects-duration);
+
+    &[data-trailing] {
+        padding-inline-end: var(--md-sys-layout-space-12);
+    }
+
+    &[data-leading] {
+        padding-inline-start: var(--md-sys-layout-space-12);
+    }
+
+    &[data-disabled] {
+        cursor: default;
+    }
+}
+
+.editor-input-group {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+
+    color: var(--editor-infix-color);
+}
+
+.editor-input {
+    width: 100%;
+    color: var(--editor-color);
+}
+
+.supporting-text {
+    padding-inline: var(--md-sys-layout-space-16);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--md-sys-layout-space-16);
+
+    transition: color var(--md-sys-motion-standard-fast-effects)
+        var(--md-sys-motion-standard-fast-effects-duration);
+
+    &[data-leading] {
+        padding-inline-start: var(--md-sys-layout-space-12);
+    }
+
+    &[data-trailing] {
+        padding-inline-end: var(--md-sys-layout-space-12);
+    }
+
+    &[data-description] {
+        justify-content: space-between;
+    }
+}

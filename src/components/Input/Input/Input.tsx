@@ -12,6 +12,18 @@ import { FieldError } from "../FieldError";
 import { useControllableState } from "../hooks";
 import { Label } from "../Label";
 import type { InputProps } from "./types";
+import {
+    Colors,
+    EditorInputGroupStyles,
+    EditorInputStyles,
+    EditorStyles,
+    InputGroupStyles,
+    SupportingTextStyles,
+    TextFieldIconSize,
+    UnsetStyles,
+} from "../core";
+import { typography } from "@/utils";
+import { Icon } from "@/components/Icon";
 
 export const Input: React.FC<InputProps> = ({
     label,
@@ -21,6 +33,7 @@ export const Input: React.FC<InputProps> = ({
     editorDir,
     prefix,
     suffix,
+    leadingIcon,
     trailing,
     className,
     showCharacterCount,
@@ -45,10 +58,24 @@ export const Input: React.FC<InputProps> = ({
         },
     });
 
+    const layoutDataAttrs = {
+        "data-trailing": trailing ? true : undefined,
+        "data-leading": leadingIcon ? true : undefined,
+    };
+
+    const baseDataAttrs = {
+        ...layoutDataAttrs,
+        "data-hovered": isHovered || undefined,
+        "data-focused": isFocused || undefined,
+        "data-focus-visible": isFocusVisible || undefined,
+    };
+
     return (
         <AriaTextField
             className={(renderProps) =>
                 clsx(
+                    Colors,
+                    InputGroupStyles,
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -59,53 +86,77 @@ export const Input: React.FC<InputProps> = ({
             defaultValue={defaultValue}
             onChange={setValue}
             {...props}
+            {...baseDataAttrs}
         >
             {({ isDisabled, isInvalid }) => {
                 const dataAttrs = {
-                    "data-hovered": isHovered || undefined,
+                    ...baseDataAttrs,
                     "data-disabled": isDisabled || undefined,
-                    "data-focused": isFocused || undefined,
-                    "data-focus-visible": isFocusVisible || undefined,
                     "data-invalid": isInvalid || undefined,
-                    "data-trailing": trailing ? true : undefined,
                 };
 
                 return (
                     <>
                         {label && <Label>{label}</Label>}
 
-                        <div {...pressProps} {...hoverProps} {...dataAttrs}>
-                            <div>
-                                {prefix && prefix}
+                        <span
+                            {...pressProps}
+                            {...hoverProps}
+                            {...dataAttrs}
+                            className={clsx(EditorStyles)}
+                        >
+                            {leadingIcon && (
+                                <Icon
+                                    icon={leadingIcon}
+                                    size={TextFieldIconSize}
+                                />
+                            )}
+                            <span className={clsx(EditorInputGroupStyles)}>
+                                {prefix && typeof prefix === "function"
+                                    ? prefix(isDisabled, isInvalid)
+                                    : prefix}
                                 <AriaInput
+                                    className={clsx(
+                                        UnsetStyles,
+                                        EditorInputStyles,
+                                        typography.bodyLarge
+                                    )}
                                     ref={inputRef}
                                     {...focusProps}
                                     placeholder={placeholder}
                                     dir={editorDir}
                                 />
-                                {suffix && suffix}
-                            </div>
+                                {suffix && typeof suffix === "function"
+                                    ? suffix(isDisabled, isInvalid)
+                                    : suffix}
+                            </span>
 
-                            {trailing && trailing}
-                        </div>
+                            {trailing && typeof trailing === "function"
+                                ? trailing(isDisabled, isInvalid)
+                                : trailing}
+                        </span>
 
                         {(showCharacterCount || description) && (
-                            <div
+                            <span
                                 data-description={
                                     description ? true : undefined
                                 }
+                                {...layoutDataAttrs}
+                                className={clsx(SupportingTextStyles)}
                             >
                                 {description && (
                                     <Description>{description}</Description>
                                 )}
 
                                 {showCharacterCount && (
-                                    <span>
+                                    <span
+                                        className={clsx(typography.labelMedium)}
+                                    >
                                         {currentValue.length}
                                         {maxLength && `/${maxLength}`}
                                     </span>
                                 )}
-                            </div>
+                            </span>
                         )}
                         <FieldError>{errorMessage}</FieldError>
                     </>
