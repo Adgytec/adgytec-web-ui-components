@@ -9,7 +9,7 @@ import { typography } from "@/utils";
 import {
     Colors,
     DateInputStyles,
-    DateSegementStyles,
+    DateSegmentStyles,
     EditorInputStyles,
     EditorStyles,
     InputGroupStyles,
@@ -53,13 +53,13 @@ export const DateField = <T extends DateValue>({
                 )}
                 data-date-input={true}
             >
-                {(segement) => (
+                {(segment) => (
                     <DateSegment
                         className={clsx(
-                            DateSegementStyles,
+                            DateSegmentStyles,
                             typography.bodyLarge
                         )}
-                        segment={segement}
+                        segment={segment}
                     />
                 )}
             </DateInput>

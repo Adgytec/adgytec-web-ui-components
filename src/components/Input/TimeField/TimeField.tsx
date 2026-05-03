@@ -9,7 +9,7 @@ import { typography } from "@/utils";
 import {
     Colors,
     DateInputStyles,
-    DateSegementStyles,
+    DateSegmentStyles,
     EditorInputStyles,
     EditorStyles,
     InputGroupStyles,
@@ -57,7 +57,7 @@ export const TimeField = <T extends TimeValue>({
                     return (
                         <DateSegment
                             className={clsx(
-                                DateSegementStyles,
+                                DateSegmentStyles,
                                 typography.bodyLarge
                             )}
                             segment={segment}

@@ -14,4 +14,4 @@ export const EditorInputStyles = styles["editor-input"];
 export const SupportingTextStyles = styles["supporting-text"];
 
 export const DateInputStyles = styles["date-input"];
-export const DateSegementStyles = styles["date-segment"];
+export const DateSegmentStyles = styles["date-segment"];
