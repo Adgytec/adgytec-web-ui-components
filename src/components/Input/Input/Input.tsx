@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useFocusRing } from "react-aria/useFocusRing";
 import { useHover } from "react-aria/useHover";
 import { usePress } from "react-aria/usePress";
@@ -22,6 +22,11 @@ export const Input: React.FC<InputProps> = ({
     suffix,
     trailing,
     className,
+    showCharacterCount,
+    maxLength,
+    value,
+    defaultValue,
+    onChange,
     ...props
 }) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
@@ -34,6 +39,19 @@ export const Input: React.FC<InputProps> = ({
         },
     });
 
+    const isControlled = value !== undefined;
+    const [internalValue, setInternalValue] = useState(defaultValue ?? "");
+    const currentValue = isControlled ? value : internalValue;
+    const count = currentValue?.length ?? 0;
+
+    const handleChange = (val: string) => {
+        onChange?.(val);
+
+        if (!isControlled) {
+            setInternalValue(val);
+        }
+    };
+
     return (
         <AriaTextField
             className={(renderProps) =>
@@ -43,6 +61,10 @@ export const Input: React.FC<InputProps> = ({
                         : className
                 )
             }
+            maxLength={maxLength}
+            value={value}
+            defaultValue={defaultValue}
+            onChange={handleChange}
             {...props}
         >
             {({ isDisabled, isInvalid }) => {
@@ -74,8 +96,23 @@ export const Input: React.FC<InputProps> = ({
                             {trailing && trailing}
                         </div>
 
-                        {description && (
-                            <Description>{description}</Description>
+                        {(showCharacterCount || description) && (
+                            <div
+                                data-description={
+                                    description ? true : undefined
+                                }
+                            >
+                                {description && (
+                                    <Description>{description}</Description>
+                                )}
+
+                                {showCharacterCount && (
+                                    <span>
+                                        {count}
+                                        {maxLength && `/${maxLength}`}
+                                    </span>
+                                )}
+                            </div>
                         )}
                         <FieldError>{errorMessage}</FieldError>
                     </>

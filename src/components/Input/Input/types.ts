@@ -13,4 +13,5 @@ export interface InputProps extends Omit<AriaTextFieldProps, "children"> {
     prefix?: ReactNode;
     suffix?: ReactNode;
     trailing?: ReactNode;
+    showCharacterCount?: boolean;
 }

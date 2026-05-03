@@ -21,7 +21,7 @@ import {
     SunSnow,
     User,
 } from "lucide-react";
-import { Fragment, type ReactNode } from "react";
+import { Fragment, useState, type ReactNode } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
 import { clsx } from "clsx";
@@ -1349,6 +1349,7 @@ const DialogPreview = () => {
 };
 
 const TextFieldPreview = () => {
+    const [val, setVal] = useState("");
     return (
         <PreviewContainer label="TextField">
             <div>
@@ -1358,7 +1359,17 @@ const TextFieldPreview = () => {
                     description="Enter your Adgytec work email"
                     suffix={"@adgytec.in"}
                     editorDir="rtl"
-                    trailing={<IconButton icon={Armchair} color="standard" />}
+                    trailing={
+                        <IconButton
+                            icon={Armchair}
+                            color="standard"
+                            onPress={() => setVal("hello")}
+                        />
+                    }
+                    showCharacterCount
+                    value={val}
+                    onChange={setVal}
+                    maxLength={64}
                 />
             </div>
         </PreviewContainer>
