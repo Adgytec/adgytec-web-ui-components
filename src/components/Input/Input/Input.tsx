@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useFocusRing } from "react-aria/useFocusRing";
 import { useHover } from "react-aria/useHover";
 import { usePress } from "react-aria/usePress";
@@ -9,6 +9,7 @@ import {
 } from "react-aria-components";
 import { Description } from "../Description";
 import { FieldError } from "../FieldError";
+import { useControllableState } from "../hooks";
 import { Label } from "../Label";
 import type { InputProps } from "./types";
 
@@ -30,6 +31,11 @@ export const Input: React.FC<InputProps> = ({
     ...props
 }) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
+    const { currentValue, setValue } = useControllableState({
+        value,
+        defaultValue,
+        onChange,
+    });
 
     const { isFocused, isFocusVisible, focusProps } = useFocusRing();
     const { isHovered, hoverProps } = useHover({});
@@ -38,19 +44,6 @@ export const Input: React.FC<InputProps> = ({
             inputRef.current?.focus();
         },
     });
-
-    const isControlled = value !== undefined;
-    const [internalValue, setInternalValue] = useState(defaultValue ?? "");
-    const currentValue = isControlled ? value : internalValue;
-    const count = currentValue?.length ?? 0;
-
-    const handleChange = (val: string) => {
-        onChange?.(val);
-
-        if (!isControlled) {
-            setInternalValue(val);
-        }
-    };
 
     return (
         <AriaTextField
@@ -64,7 +57,7 @@ export const Input: React.FC<InputProps> = ({
             maxLength={maxLength}
             value={value}
             defaultValue={defaultValue}
-            onChange={handleChange}
+            onChange={setValue}
             {...props}
         >
             {({ isDisabled, isInvalid }) => {
@@ -108,7 +101,7 @@ export const Input: React.FC<InputProps> = ({
 
                                 {showCharacterCount && (
                                     <span>
-                                        {count}
+                                        {currentValue.length}
                                         {maxLength && `/${maxLength}`}
                                     </span>
                                 )}
