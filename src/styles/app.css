@@ -78,3 +78,8 @@
     align-items: center;
     justify-content: center;
 }
+
+.items-grid {
+    display: grid;
+    gap: var(--md-sys-layout-space-28);
+}

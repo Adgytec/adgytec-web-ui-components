@@ -66,6 +66,7 @@ export default defineConfig({
                 "react",
                 "react-dom",
                 "react/jsx-runtime",
+                "react-aria",
                 "react-aria-components",
                 "lucide-react",
                 "usehooks-ts",

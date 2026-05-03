@@ -35,11 +35,11 @@
 
     --padding-block-base: var(--primary-padding-block);
 
-    &[data-pressed] {
+    &[data-hovered] {
         --inner-shape: var(--inner-corner-shape-interaction);
     }
 
-    &[data-hovered] {
+    &[data-pressed] {
         --inner-shape: var(--inner-corner-shape-interaction);
     }
 }
@@ -60,15 +60,15 @@
 
     --padding-block-base: var(--trigger-padding-block);
 
+    &[data-hovered] {
+        --inner-shape: var(--inner-corner-shape-interaction);
+    }
+
     &[data-pressed] {
         --inner-shape: var(--trigger-pressed-shape);
 
         --padding-inline-start: var(--trigger-padding-inline-start-pressed);
         --padding-inline-end: var(--trigger-padding-inline-end-pressed);
-    }
-
-    &[data-hovered] {
-        --inner-shape: var(--inner-corner-shape-interaction);
     }
 }
 

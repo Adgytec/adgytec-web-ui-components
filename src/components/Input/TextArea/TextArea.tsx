@@ -1,45 +1,90 @@
 import clsx from "clsx";
-import { TextArea as AriaTextArea, TextField } from "react-aria-components";
-import { typography } from "@/utils/typography";
-import type { TextFieldProps } from "../core";
-import { EditorStyles, TextareaStyles, TextFieldStyles } from "../core";
+import {
+    TextArea as AriaTextArea,
+    TextField as AriaTextField,
+} from "react-aria-components";
+import { typography } from "@/utils";
+import {
+    Colors,
+    EditorInputStyles,
+    EditorStyles,
+    InputGroupStyles,
+    SupportingTextStyles,
+    UnsetStyles,
+} from "../core";
 import { Description } from "../Description";
 import { FieldError } from "../FieldError";
+import { useControllableState } from "../hooks";
 import { Label } from "../Label";
+import type { TextAreaProps } from "./types";
 
-export const TextArea: React.FC<TextFieldProps & { rows?: number }> = ({
+export const TextArea: React.FC<TextAreaProps> = ({
     label,
     description,
-    placeholder,
-    className,
     errorMessage,
+    placeholder,
+    showCharacterCount,
     rows,
+    className,
+    maxLength,
+    value,
+    defaultValue,
+    onChange,
     ...props
 }) => {
+    const { currentValue, setValue } = useControllableState({
+        value,
+        defaultValue,
+        onChange,
+    });
+
     return (
-        <TextField
+        <AriaTextField
             className={(renderProps) =>
                 clsx(
-                    TextFieldStyles,
+                    Colors,
+                    InputGroupStyles,
                     typeof className === "function"
                         ? className(renderProps)
                         : className
                 )
             }
+            maxLength={maxLength}
+            value={value}
+            defaultValue={defaultValue}
+            onChange={setValue}
             {...props}
         >
             {label && <Label>{label}</Label>}
+
             <AriaTextArea
                 rows={rows}
                 placeholder={placeholder}
                 className={clsx(
+                    UnsetStyles,
                     EditorStyles,
-                    TextareaStyles,
+                    EditorInputStyles,
                     typography.bodyLarge
                 )}
+                data-textarea={true}
             />
-            {description && <Description>{description}</Description>}
+
+            {(showCharacterCount || description) && (
+                <span
+                    data-description={description ? true : undefined}
+                    className={clsx(SupportingTextStyles)}
+                >
+                    {description && <Description>{description}</Description>}
+
+                    {showCharacterCount && (
+                        <span className={clsx(typography.labelMedium)}>
+                            {currentValue.length}
+                            {maxLength && `/${maxLength}`}
+                        </span>
+                    )}
+                </span>
+            )}
             <FieldError>{errorMessage}</FieldError>
-        </TextField>
+        </AriaTextField>
     );
 };

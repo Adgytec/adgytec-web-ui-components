@@ -10,6 +10,7 @@ import {
     GlobeLock,
     LogOut,
     type LucideIcon,
+    Mail,
     Mouse,
     MouseOff,
     Settings,
@@ -21,7 +22,7 @@ import {
     SunSnow,
     User,
 } from "lucide-react";
-import { Fragment, type ReactNode } from "react";
+import { Fragment, type ReactNode, useState } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
 import { clsx } from "clsx";
@@ -56,11 +57,16 @@ import {
     ModalOverlay,
 } from "./components/Dialog";
 import { Icon } from "./components/Icon";
-import { Input, Label } from "./components/Input";
+import {
+    DateField,
+    Input,
+    Label,
+    TextArea,
+    TimeField,
+} from "./components/Input";
 import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
 import { Radio, RadioGroup } from "./components/Input/Radio";
 import { Switch } from "./components/Input/Switch";
-import { TextArea } from "./components/Input/TextArea";
 import {
     Menu,
     type MenuColor,
@@ -322,59 +328,6 @@ const TooltipPreview = () => {
                     <Tooltip>Lorem ipsum dolor sit amet.</Tooltip>
                 </TooltipTrigger>
             </div>
-        </PreviewContainer>
-    );
-};
-
-const TextfieldPreview = () => {
-    return (
-        <PreviewContainer label="Textfield">
-            <Input
-                label="input"
-                placeholder="input"
-                isDisabled
-                description="trial description"
-            />
-
-            <TextArea
-                label="textarea"
-                rows={2}
-                placeholder="textarea"
-                isDisabled
-                description="trial description"
-            />
-
-            <Input
-                label="input"
-                placeholder="input"
-                description="trial description"
-                isRequired
-                type="email"
-            />
-
-            <TextArea
-                label="textarea"
-                rows={2}
-                placeholder="textarea"
-                description="trial description"
-            />
-
-            <Input
-                label="input"
-                placeholder="input"
-                isInvalid
-                description="trial description"
-                errorMessage={"trial error"}
-            />
-
-            <TextArea
-                label="textarea"
-                rows={2}
-                placeholder="textarea"
-                isInvalid
-                description="trial description"
-                errorMessage={"trial error"}
-            />
         </PreviewContainer>
     );
 };
@@ -1402,9 +1355,169 @@ const DialogPreview = () => {
     );
 };
 
+const InputPreview = () => {
+    const RenderInput = ({
+        isInvalid,
+        isDisabled,
+    }: {
+        isInvalid?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        const [val, setVal] = useState("");
+        return (
+            <Input
+                label="Email"
+                type="text"
+                description="Enter your Adgytec work email"
+                placeholder="username"
+                suffix={"@adgytec.in"}
+                // editorDir="rtl"
+                leadingIcon={Mail}
+                trailing={(isDisabled) => (
+                    <IconButton
+                        icon={Armchair}
+                        color="standard"
+                        onPress={() => setVal("hello")}
+                        isDisabled={isDisabled}
+                    />
+                )}
+                showCharacterCount
+                value={val}
+                onChange={setVal}
+                maxLength={64}
+                isInvalid={isInvalid}
+                isDisabled={isDisabled}
+            />
+        );
+    };
+
+    return (
+        <PreviewContainer label="Input">
+            <div className="items">
+                <RenderInput />
+
+                <RenderInput isInvalid />
+
+                <RenderInput isDisabled />
+
+                <RenderInput isInvalid isDisabled />
+            </div>
+        </PreviewContainer>
+    );
+};
+
+const TextAreaPreview = () => {
+    const RenderTextArea = ({
+        isInvalid,
+        isDisabled,
+    }: {
+        isInvalid?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        return (
+            <TextArea
+                label="Issue"
+                maxLength={1024}
+                rows={4}
+                description="Describe your issue"
+                showCharacterCount
+                isInvalid={isInvalid}
+                isDisabled={isDisabled}
+                placeholder="Define you issue..."
+            />
+        );
+    };
+
+    return (
+        <PreviewContainer label="TextArea">
+            <div className="items-grid">
+                <RenderTextArea />
+
+                <RenderTextArea isInvalid />
+
+                <RenderTextArea isDisabled />
+
+                <RenderTextArea isInvalid isDisabled />
+            </div>
+        </PreviewContainer>
+    );
+};
+
+const TimeFieldPreview = () => {
+    const RenderTimeField = ({
+        isInvalid,
+        isDisabled,
+    }: {
+        isInvalid?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        return (
+            <TimeField
+                label="Appointment Time"
+                description="Add your appointment time"
+                isDisabled={isDisabled}
+                isInvalid={isInvalid}
+                granularity="second"
+            />
+        );
+    };
+
+    return (
+        <PreviewContainer label="TimeField">
+            <div className="items">
+                <RenderTimeField />
+
+                <RenderTimeField isInvalid />
+
+                <RenderTimeField isDisabled />
+
+                <RenderTimeField isInvalid isDisabled />
+            </div>
+        </PreviewContainer>
+    );
+};
+
+const DateFieldPreview = () => {
+    const RenderDateField = ({
+        isInvalid,
+        isDisabled,
+    }: {
+        isInvalid?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        return (
+            <DateField
+                label="Appointment Date"
+                description="Add your appointment date"
+                isDisabled={isDisabled}
+                isInvalid={isInvalid}
+                granularity="second"
+            />
+        );
+    };
+
+    return (
+        <PreviewContainer label="DateField">
+            <div className="items">
+                <RenderDateField />
+
+                <RenderDateField isInvalid />
+
+                <RenderDateField isDisabled />
+
+                <RenderDateField isInvalid isDisabled />
+            </div>
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        DateFieldPreview,
+        TimeFieldPreview,
+        TextAreaPreview,
+        InputPreview,
         DialogPreview,
         ConnectedButtonGroupPreview,
         ButtonGroupPreview,
@@ -1413,7 +1526,6 @@ const App = () => {
         LinkPreview,
         ButtonPreview,
         IconButtonPreview,
-        TextfieldPreview,
         TooltipPreview,
         CheckboxPreview,
         RadioPreview,
