@@ -1358,6 +1358,7 @@ const TextFieldPreview = () => {
                     description="Enter your Adgytec work email"
                     suffix={"@adgytec.in"}
                     editorDir="rtl"
+                    trailing={<IconButton icon={Armchair} color="standard" />}
                 />
             </div>
         </PreviewContainer>

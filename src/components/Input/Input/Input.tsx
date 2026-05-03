@@ -1,4 +1,8 @@
 import clsx from "clsx";
+import { useRef } from "react";
+import { useFocusRing } from "react-aria/useFocusRing";
+import { useHover } from "react-aria/useHover";
+import { usePress } from "react-aria/usePress";
 import {
     Input as AriaInput,
     TextField as AriaTextField,
@@ -20,6 +24,16 @@ export const Input: React.FC<InputProps> = ({
     className,
     ...props
 }) => {
+    const inputRef = useRef<HTMLInputElement | null>(null);
+
+    const { isFocused, isFocusVisible, focusProps } = useFocusRing();
+    const { isHovered, hoverProps } = useHover({});
+    const { pressProps } = usePress({
+        onPress: () => {
+            inputRef.current?.focus();
+        },
+    });
+
     return (
         <AriaTextField
             className={(renderProps) =>
@@ -31,20 +45,42 @@ export const Input: React.FC<InputProps> = ({
             }
             {...props}
         >
-            {label && <Label>{label}</Label>}
+            {({ isDisabled, isInvalid }) => {
+                const dataAttrs = {
+                    "data-hovered": isHovered || undefined,
+                    "data-disabled": isDisabled || undefined,
+                    "data-focused": isFocused || undefined,
+                    "data-focus-visible": isFocusVisible || undefined,
+                    "data-invalid": isInvalid || undefined,
+                    "data-trailing": trailing ? true : undefined,
+                };
 
-            <div>
-                <div>
-                    {prefix && prefix}
-                    <AriaInput placeholder={placeholder} dir={editorDir} />
-                    {suffix && suffix}
-                </div>
+                return (
+                    <>
+                        {label && <Label>{label}</Label>}
 
-                {trailing && trailing}
-            </div>
+                        <div {...pressProps} {...hoverProps} {...dataAttrs}>
+                            <div>
+                                {prefix && prefix}
+                                <AriaInput
+                                    ref={inputRef}
+                                    {...focusProps}
+                                    placeholder={placeholder}
+                                    dir={editorDir}
+                                />
+                                {suffix && suffix}
+                            </div>
 
-            {description && <Description>{description}</Description>}
-            <FieldError>{errorMessage}</FieldError>
+                            {trailing && trailing}
+                        </div>
+
+                        {description && (
+                            <Description>{description}</Description>
+                        )}
+                        <FieldError>{errorMessage}</FieldError>
+                    </>
+                );
+            }}
         </AriaTextField>
     );
 };
