@@ -10,6 +10,7 @@ import {
     GlobeLock,
     LogOut,
     type LucideIcon,
+    Mail,
     Mouse,
     MouseOff,
     Settings,
@@ -20,7 +21,6 @@ import {
     SunMoon,
     SunSnow,
     User,
-    Mail,
 } from "lucide-react";
 import { Fragment, type ReactNode, useState } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
@@ -1355,7 +1355,7 @@ const DialogPreview = () => {
     );
 };
 
-const TextFieldPreview = () => {
+const InputPreview = () => {
     const RenderInput = ({
         isInvalid,
         isDisabled,
@@ -1395,20 +1395,50 @@ const TextFieldPreview = () => {
         <PreviewContainer label="Input">
             <div className="items-grid">
                 <RenderInput />
+
                 <RenderInput isInvalid />
 
                 <RenderInput isDisabled />
 
                 <RenderInput isInvalid isDisabled />
+            </div>
+        </PreviewContainer>
+    );
+};
 
-                {/* <TextArea */}
-                {/*     label="Issue" */}
-                {/*     maxLength={1024} */}
-                {/*     rows={4} */}
-                {/*     description="Describe your issue" */}
-                {/*     showCharacterCount */}
-                {/* /> */}
-                {/**/}
+const TextAreaPreview = () => {
+    const RenderTextArea = ({
+        isInvalid,
+        isDisabled,
+    }: {
+        isInvalid?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        return (
+            <TextArea
+                label="Issue"
+                maxLength={1024}
+                rows={4}
+                description="Describe your issue"
+                showCharacterCount
+                isInvalid={isInvalid}
+                isDisabled={isDisabled}
+                placeholder="Define you issue..."
+            />
+        );
+    };
+
+    return (
+        <PreviewContainer label="TextArea">
+            <div className="items-grid">
+                <RenderTextArea />
+
+                <RenderTextArea isInvalid />
+
+                <RenderTextArea isDisabled />
+
+                <RenderTextArea isInvalid isDisabled />
+
                 {/* <TimeField */}
                 {/*     label="Appointment Time" */}
                 {/*     description="Add your appointment time" */}
@@ -1426,7 +1456,8 @@ const TextFieldPreview = () => {
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
-        TextFieldPreview,
+        TextAreaPreview,
+        InputPreview,
         DialogPreview,
         ConnectedButtonGroupPreview,
         ButtonGroupPreview,

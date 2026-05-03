@@ -8,21 +8,18 @@
         var(--md-sys-state-disabled-content)
     );
 
-    /* label color */
-    --label-color-normal: var(--md-sys-color-on-surface-variant);
-
     /* outline color */
     --outline-color-normal: var(--md-sys-color-outline);
+    --outline-color-invalid: var(--md-sys-color-error);
+
     --outline-width: calc(1 * var(--dp, 1px));
+    --outline-width-focused: calc(2 * var(--dp, 1px));
 
-    /* label and outline */
-    --color-interaction-invalid: var(--md-sys-color-error);
+    --outline-color-hovered-normal: var(--md-sys-color-on-surface);
+    --outline-color-hovered-invalid: var(--md-sys-color-on-error-container);
 
-    --color-interaction-hovered-normal: var(--md-sys-color-on-surface);
-    --color-interaction-focused-normal: var(--md-sys-color-primary);
-
-    --color-interaction-hovered-invalid: var(--md-sys-color-on-error-container);
-    --color-interaction-focused-invalid: var(--md-sys-color-error);
+    --outline-color-focused-normal: var(--md-sys-color-primary);
+    --outline-color-focused-invalid: var(--md-sys-color-error);
 
     /* group color */
     --group-color-normal: var(--md-sys-color-on-surface-variant);
@@ -44,45 +41,16 @@
 
     --caret-color: var(--caret-color-normal);
 
-    --label-color: var(--label-color-normal);
     --outline-color: var(--outline-color-normal);
-
-    &[data-hovered] {
-        --label-color: var(--color-interaction-hovered-normal);
-        --outline-color: var(--color-interaction-hovered-normal);
-    }
-
-    &[data-focus-visible],
-    &[data-focused] {
-        --label-color: var(--color-interaction-focused-normal);
-        --outline-color: var(--color-interaction-focused-normal);
-        --outline-width: calc(3 * var(--dp, 1px));
-    }
+    --outline-color-focused: transparent;
 
     &[data-invalid] {
         --group-color: var(--group-color-invalid);
-
         --caret-color: var(--caret-color-invalid);
-
-        --label-color: var(--color-interaction-invalid);
-        --outline-color: var(--color-interaction-invalid);
-
-        &:not([data-disabled]) {
-            &[data-hovered] {
-                --label-color: var(--color-interaction-hovered-invalid);
-                --outline-color: var(--color-interaction-hovered-invalid);
-            }
-
-            &[data-focus-visible],
-            &[data-focused] {
-                --label-color: var(--color-interaction-focused-invalid);
-                --outline-color: var(--color-interaction-focused-invalid);
-            }
-        }
+        --outline-color: var(--outline-color-invalid);
     }
 
     &[data-disabled] {
-        --label-color: var(--disabled-color);
         --group-color: var(--disabled-color);
 
         --editor-infix-color: var(--disabled-color);
@@ -105,13 +73,8 @@
     caret-color: var(--caret-color);
 
     > [slot="label"] {
-        color: var(--label-color);
-
         padding-inline-start: var(--label-padding-inline-start);
         padding-inline-end: var(--label-padding-inline-end);
-
-        transition: color var(--md-sys-motion-standard-fast-effects)
-            var(--md-sys-motion-standard-fast-effects-duration);
     }
 
     &[data-leading] {
@@ -126,9 +89,8 @@
 .editor {
     border-radius: var(--md-sys-shape-corner-radius-extra-small);
 
-    outline-width: var(--outline-width);
-    outline-style: solid;
-    outline-color: var(--outline-color);
+    border: var(--outline-width) solid var(--outline-color);
+    outline: var(--outline-width-focused) solid var(--outline-color-focused);
 
     padding: var(--md-sys-layout-space-16);
 
@@ -137,10 +99,14 @@
     gap: var(--md-sys-layout-space-16);
 
     transition:
-        outline-width var(--md-sys-motion-standard-fast-effects)
+        border-color var(--md-sys-motion-standard-fast-effects)
         var(--md-sys-motion-standard-fast-effects-duration),
         outline-color var(--md-sys-motion-standard-fast-effects)
         var(--md-sys-motion-standard-fast-effects-duration);
+
+    &[data-input] {
+        cursor: text;
+    }
 
     &[data-trailing] {
         padding-inline-end: var(--md-sys-layout-space-12);
@@ -148,6 +114,29 @@
 
     &[data-leading] {
         padding-inline-start: var(--md-sys-layout-space-12);
+    }
+
+    &:not([data-disabled]) {
+        &[data-hovered] {
+            --outline-color: var(--outline-color-hovered-normal);
+        }
+
+        &[data-focus-visible],
+        &[data-focused] {
+            --outline-color: var(--outline-color-focused-normal);
+            --outline-color-focused: var(--outline-color);
+        }
+
+        &[data-invalid] {
+            &[data-hovered] {
+                --outline-color: var(--outline-color-hovered-invalid);
+            }
+
+            &[data-focus-visible],
+            &[data-focused] {
+                --outline-color: var(--outline-color-focused-invalid);
+            }
+        }
     }
 
     &[data-disabled] {
@@ -164,8 +153,21 @@
 }
 
 .editor-input {
-    width: 100%;
     color: var(--editor-color);
+
+    &[data-input] {
+        width: 100%;
+    }
+
+    &[data-textarea] {
+        resize: vertical;
+        max-block-size: calc(300 * var(--dp, 1px));
+        min-block-size: calc(56 * var(--dp, 1px));
+
+        &[data-disabled] {
+            resize: none;
+        }
+    }
 }
 
 .supporting-text {

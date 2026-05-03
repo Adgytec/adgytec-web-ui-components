@@ -3,6 +3,15 @@ import {
     TextArea as AriaTextArea,
     TextField as AriaTextField,
 } from "react-aria-components";
+import { typography } from "@/utils";
+import {
+    Colors,
+    EditorInputStyles,
+    EditorStyles,
+    InputGroupStyles,
+    SupportingTextStyles,
+    UnsetStyles,
+} from "../core";
 import { Description } from "../Description";
 import { FieldError } from "../FieldError";
 import { useControllableState } from "../hooks";
@@ -33,6 +42,8 @@ export const TextArea: React.FC<TextAreaProps> = ({
         <AriaTextField
             className={(renderProps) =>
                 clsx(
+                    Colors,
+                    InputGroupStyles,
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -46,19 +57,32 @@ export const TextArea: React.FC<TextAreaProps> = ({
         >
             {label && <Label>{label}</Label>}
 
-            <AriaTextArea rows={rows} placeholder={placeholder} />
+            <AriaTextArea
+                rows={rows}
+                placeholder={placeholder}
+                className={clsx(
+                    UnsetStyles,
+                    EditorStyles,
+                    EditorInputStyles,
+                    typography.bodyLarge
+                )}
+                data-textarea={true}
+            />
 
             {(showCharacterCount || description) && (
-                <div data-description={description ? true : undefined}>
+                <span
+                    data-description={description ? true : undefined}
+                    className={clsx(SupportingTextStyles)}
+                >
                     {description && <Description>{description}</Description>}
 
                     {showCharacterCount && (
-                        <span>
+                        <span className={clsx(typography.labelMedium)}>
                             {currentValue.length}
                             {maxLength && `/${maxLength}`}
                         </span>
                     )}
-                </div>
+                </span>
             )}
             <FieldError>{errorMessage}</FieldError>
         </AriaTextField>

@@ -7,11 +7,8 @@ import {
     Input as AriaInput,
     TextField as AriaTextField,
 } from "react-aria-components";
-import { Description } from "../Description";
-import { FieldError } from "../FieldError";
-import { useControllableState } from "../hooks";
-import { Label } from "../Label";
-import type { InputProps } from "./types";
+import { Icon } from "@/components/Icon";
+import { typography } from "@/utils";
 import {
     Colors,
     EditorInputGroupStyles,
@@ -22,8 +19,11 @@ import {
     TextFieldIconSize,
     UnsetStyles,
 } from "../core";
-import { typography } from "@/utils";
-import { Icon } from "@/components/Icon";
+import { Description } from "../Description";
+import { FieldError } from "../FieldError";
+import { useControllableState } from "../hooks";
+import { Label } from "../Label";
+import type { InputProps } from "./types";
 
 export const Input: React.FC<InputProps> = ({
     label,
@@ -58,18 +58,6 @@ export const Input: React.FC<InputProps> = ({
         },
     });
 
-    const layoutDataAttrs = {
-        "data-trailing": trailing ? true : undefined,
-        "data-leading": leadingIcon ? true : undefined,
-    };
-
-    const baseDataAttrs = {
-        ...layoutDataAttrs,
-        "data-hovered": isHovered || undefined,
-        "data-focused": isFocused || undefined,
-        "data-focus-visible": isFocusVisible || undefined,
-    };
-
     return (
         <AriaTextField
             className={(renderProps) =>
@@ -86,11 +74,18 @@ export const Input: React.FC<InputProps> = ({
             defaultValue={defaultValue}
             onChange={setValue}
             {...props}
-            {...baseDataAttrs}
         >
             {({ isDisabled, isInvalid }) => {
+                const layoutDataAttrs = {
+                    "data-trailing": trailing ? true : undefined,
+                    "data-leading": leadingIcon ? true : undefined,
+                };
+
                 const dataAttrs = {
-                    ...baseDataAttrs,
+                    ...layoutDataAttrs,
+                    "data-hovered": isHovered || undefined,
+                    "data-focused": isFocused || undefined,
+                    "data-focus-visible": isFocusVisible || undefined,
                     "data-disabled": isDisabled || undefined,
                     "data-invalid": isInvalid || undefined,
                 };
@@ -104,6 +99,7 @@ export const Input: React.FC<InputProps> = ({
                             {...hoverProps}
                             {...dataAttrs}
                             className={clsx(EditorStyles)}
+                            data-input={true}
                         >
                             {leadingIcon && (
                                 <Icon
@@ -125,6 +121,7 @@ export const Input: React.FC<InputProps> = ({
                                     {...focusProps}
                                     placeholder={placeholder}
                                     dir={editorDir}
+                                    data-input={true}
                                 />
                                 {suffix && typeof suffix === "function"
                                     ? suffix(isDisabled, isInvalid)
