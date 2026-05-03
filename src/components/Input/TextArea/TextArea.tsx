@@ -15,6 +15,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
     errorMessage,
     placeholder,
     showCharacterCount,
+    rows,
     className,
     maxLength,
     value,
@@ -45,7 +46,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
         >
             {label && <Label>{label}</Label>}
 
-            <AriaTextArea placeholder={placeholder} />
+            <AriaTextArea rows={rows} placeholder={placeholder} />
 
             {(showCharacterCount || description) && (
                 <div data-description={description ? true : undefined}>

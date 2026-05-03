@@ -56,7 +56,13 @@ import {
     ModalOverlay,
 } from "./components/Dialog";
 import { Icon } from "./components/Icon";
-import { Input, Label } from "./components/Input";
+import {
+    DateField,
+    Input,
+    Label,
+    TextArea,
+    TimeField,
+} from "./components/Input";
 import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
 import { Radio, RadioGroup } from "./components/Input/Radio";
 import { Switch } from "./components/Input/Switch";
@@ -1370,6 +1376,24 @@ const TextFieldPreview = () => {
                     value={val}
                     onChange={setVal}
                     maxLength={64}
+                />
+
+                <TextArea
+                    label="Issue"
+                    maxLength={1024}
+                    rows={4}
+                    description="Describe your issue"
+                    showCharacterCount
+                />
+
+                <TimeField
+                    label="Appointment Time"
+                    description="Add your appointment time"
+                />
+
+                <DateField
+                    label="Appointment Date"
+                    description="Add your appointment date"
                 />
             </div>
         </PreviewContainer>

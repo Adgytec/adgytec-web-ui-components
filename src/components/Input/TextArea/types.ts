@@ -3,10 +3,12 @@ import type {
     ValidationResult,
 } from "react-aria-components";
 
-export interface TextAreaProps extends Omit<AriaTextFieldProps, "children"> {
+export interface TextAreaProps
+    extends Omit<AriaTextFieldProps, "children" | "type"> {
     label?: string;
     description?: string;
     errorMessage?: string | ((validation: ValidationResult) => string);
     placeholder?: string;
     showCharacterCount?: boolean;
+    rows?: number;
 }
