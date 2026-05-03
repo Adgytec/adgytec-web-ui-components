@@ -36,7 +36,7 @@ export const Input: React.FC<InputProps> = ({
             <div>
                 <div>
                     {prefix && prefix}
-                    <AriaInput placeholder={placeholder} />
+                    <AriaInput placeholder={placeholder} dir={editorDir} />
                     {suffix && suffix}
                 </div>
 

@@ -56,7 +56,7 @@ import {
     ModalOverlay,
 } from "./components/Dialog";
 import { Icon } from "./components/Icon";
-import { Label } from "./components/Input";
+import { Input, Label } from "./components/Input";
 import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
 import { Radio, RadioGroup } from "./components/Input/Radio";
 import { Switch } from "./components/Input/Switch";
@@ -1348,9 +1348,26 @@ const DialogPreview = () => {
     );
 };
 
+const TextFieldPreview = () => {
+    return (
+        <PreviewContainer label="TextField">
+            <div>
+                <Input
+                    label="Email"
+                    type="text"
+                    description="Enter your Adgytec work email"
+                    suffix={"@adgytec.in"}
+                    editorDir="rtl"
+                />
+            </div>
+        </PreviewContainer>
+    );
+};
+
 const App = () => {
     const previewElements = [
         VisualSettingsPreview,
+        TextFieldPreview,
         DialogPreview,
         ConnectedButtonGroupPreview,
         ButtonGroupPreview,
