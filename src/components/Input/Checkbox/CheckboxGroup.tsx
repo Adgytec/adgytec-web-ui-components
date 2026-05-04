@@ -13,7 +13,7 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     errorMessage,
     children,
     className,
-    checkboxItemsGap = 0,
+    checkboxItemsGap = 24,
     labelPlacement,
     ...props
 }) => {

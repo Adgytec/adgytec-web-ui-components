@@ -204,7 +204,7 @@ const RadioPreview = () => {
 const CheckboxPreview = () => {
     return (
         <PreviewContainer label="Checkbox">
-            <div style={{ display: "grid" }}>
+            <div className="items">
                 <Checkbox isDisabled>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Checkbox>
@@ -273,7 +273,7 @@ const CheckboxPreview = () => {
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
                 labelPlacement="start"
             >
-                <Checkbox value="one">
+                <Checkbox value="one" labelPlacement="end">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Checkbox>
 
