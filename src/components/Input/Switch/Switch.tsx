@@ -12,6 +12,7 @@ export const Switch: React.FC<SwitchProps> = ({
     children,
     icon = "selected",
     labelPlacement = "start",
+    containerStateLayer = false,
     ...props
 }) => {
     return (
@@ -19,6 +20,7 @@ export const Switch: React.FC<SwitchProps> = ({
             className={(renderProps) =>
                 clsx(
                     styles["switch"],
+                    containerStateLayer && styles["state-layer"],
                     typeof className === "function"
                         ? className(renderProps)
                         : className

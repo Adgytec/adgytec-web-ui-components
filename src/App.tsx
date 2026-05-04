@@ -122,7 +122,7 @@ const SwitchPreview = () => {
                     <Label>Selected icon</Label>
                 </Switch>
 
-                <Switch icon="both" labelPlacement="end">
+                <Switch containerStateLayer icon="both" labelPlacement="end">
                     <Label>Both icon</Label>
                 </Switch>
 
@@ -148,7 +148,7 @@ const SwitchPreview = () => {
                     <Label>Selected icon</Label>
                 </Switch>
 
-                <Switch icon="both" labelPlacement="end">
+                <Switch icon="both" labelPlacement="end" containerStateLayer>
                     <Label>Both icon</Label>
                 </Switch>
 
@@ -189,9 +189,12 @@ const RadioPreview = () => {
                 label="Enabled"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
                 isInvalid
+                containerStateLayer
             >
                 <Radio value="cat">Cat</Radio>
-                <Radio value="dog">Dog</Radio>
+                <Radio value="dog" containerStateLayer={false}>
+                    Dog
+                </Radio>
                 <Radio value="dragon">Dragon</Radio>
             </RadioGroup>
 
@@ -202,7 +205,9 @@ const RadioPreview = () => {
                 labelPlacement="start"
             >
                 <Radio value="cat">Cat</Radio>
-                <Radio value="dog">Dog</Radio>
+                <Radio value="dog" containerStateLayer>
+                    <Label>Dog</Label>
+                </Radio>
                 <Radio value="dragon">Dragon</Radio>
             </RadioGroup>
         </>
@@ -222,7 +227,9 @@ const CheckboxPreview = () => {
                 </Checkbox>
 
                 <Checkbox>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    <Label>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </Label>
                 </Checkbox>
 
                 <Checkbox isIndeterminate isDisabled>
@@ -261,6 +268,7 @@ const CheckboxPreview = () => {
             <CheckboxGroup
                 label="lorem ipsum"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                containerStateLayer
             >
                 <Checkbox value="one">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -914,44 +922,31 @@ const MenuPreview = () => {
                 const triggerColor = randomButtonColor();
 
                 return (
-                    <>
-                        <MenuTrigger key={combo.title}>
-                            <Button
-                                color={triggerColor}
-                                tooltip={`layout: ${menuLayout}, color: ${menuColor}`}
-                            >
-                                {combo.title}
-                            </Button>
-
-                            <Popover>
-                                <Menu
-                                    layout={menuLayout}
-                                    color={menuColor}
-                                    items={combo.menu}
-                                    selectionMode="multiple"
-                                >
-                                    {(item) => {
-                                        return renderMenu(
-                                            item,
-                                            menuLayout,
-                                            menuColor
-                                        );
-                                    }}
-                                </Menu>
-                            </Popover>
-                        </MenuTrigger>
-
-                        <Menu
-                            layout={menuLayout}
-                            color={menuColor}
-                            items={combo.menu}
-                            selectionMode="multiple"
+                    <MenuTrigger key={combo.title}>
+                        <Button
+                            color={triggerColor}
+                            tooltip={`layout: ${menuLayout}, color: ${menuColor}`}
                         >
-                            {(item) => {
-                                return renderMenu(item, menuLayout, menuColor);
-                            }}
-                        </Menu>
-                    </>
+                            {combo.title}
+                        </Button>
+
+                        <Popover>
+                            <Menu
+                                layout={menuLayout}
+                                color={menuColor}
+                                items={combo.menu}
+                                selectionMode="multiple"
+                            >
+                                {(item) => {
+                                    return renderMenu(
+                                        item,
+                                        menuLayout,
+                                        menuColor
+                                    );
+                                }}
+                            </Menu>
+                        </Popover>
+                    </MenuTrigger>
                 );
             })}
         </div>

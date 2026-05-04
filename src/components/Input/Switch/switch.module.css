@@ -21,8 +21,8 @@
         color: inherit;
         cursor: pointer;
 
-        * {
-            cursor: pointer;
+        & * {
+            cursor: inherit;
         }
 
         &[data-disabled] {
@@ -52,7 +52,7 @@
         }
     }
 
-    .switch::before {
+    .state-layer::before {
         content: "";
 
         position: absolute;

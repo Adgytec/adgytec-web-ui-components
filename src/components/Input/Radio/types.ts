@@ -14,8 +14,10 @@ export interface RadioGroupProps extends Omit<AriaRadioGroupProps, "children"> {
     children?: ReactNode;
     radioItemsGap?: number;
     labelPlacement?: RadioLabelPlacement;
+    containerStateLayer?: boolean;
 }
 
 export interface RadioProps extends AriaRadioProps {
     labelPlacement?: RadioLabelPlacement;
+    containerStateLayer?: boolean;
 }

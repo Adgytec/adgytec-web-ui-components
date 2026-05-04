@@ -54,8 +54,8 @@
         color: inherit;
         cursor: pointer;
 
-        * {
-            cursor: pointer;
+        & * {
+            cursor: inherit;
         }
 
         &[data-selected] {
@@ -95,6 +95,7 @@
                 from currentColor r g b /
                 var(--md-sys-state-disabled-content)
             );
+
             cursor: default;
         }
 
@@ -111,7 +112,7 @@
         }
     }
 
-    .radio::before {
+    .state-layer::before {
         content: "";
 
         position: absolute;

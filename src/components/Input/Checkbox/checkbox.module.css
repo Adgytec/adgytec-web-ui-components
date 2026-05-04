@@ -30,8 +30,8 @@
         color: inherit;
         cursor: pointer;
 
-        * {
-            cursor: pointer;
+        & * {
+            cursor: inherit;
         }
 
         &[data-invalid] {
@@ -71,7 +71,7 @@
         }
     }
 
-    .checkbox::before {
+    .state-layer::before {
         content: "";
 
         position: absolute;

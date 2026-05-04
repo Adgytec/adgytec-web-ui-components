@@ -10,17 +10,22 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     children,
     className,
     labelPlacement,
+    containerStateLayer,
     ...props
 }) => {
-    const { labelPlacement: groupLabelPlacement } =
-        useContext(CheckboxGroupContext);
+    const {
+        labelPlacement: groupLabelPlacement,
+        containerStateLayer: groupContainerStateLayer,
+    } = useContext(CheckboxGroupContext);
     const placement = labelPlacement ?? groupLabelPlacement ?? "end";
+    const stateLayer = containerStateLayer ?? groupContainerStateLayer ?? false;
 
     return (
         <AriaCheckbox
             className={(renderProps) =>
                 clsx(
                     styles["checkbox"],
+                    stateLayer && styles["state-layer"],
                     typeof className === "function"
                         ? className(renderProps)
                         : className

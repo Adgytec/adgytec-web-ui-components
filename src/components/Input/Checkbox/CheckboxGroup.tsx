@@ -15,10 +15,11 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     className,
     checkboxItemsGap = 24,
     labelPlacement,
+    containerStateLayer,
     ...props
 }) => {
     return (
-        <CheckboxGroupContext value={{ labelPlacement }}>
+        <CheckboxGroupContext value={{ labelPlacement, containerStateLayer }}>
             <AriaCheckboxGroup
                 className={(renderProps) =>
                     clsx(

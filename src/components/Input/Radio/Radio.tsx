@@ -10,17 +10,22 @@ export const Radio: React.FC<RadioProps> = ({
     className,
     children,
     labelPlacement,
+    containerStateLayer,
     ...props
 }) => {
-    const { labelPlacement: groupLabelPlacement } =
-        useContext(RadioGroupContext);
+    const {
+        labelPlacement: groupLabelPlacement,
+        containerStateLayer: groupContainerStateLayer,
+    } = useContext(RadioGroupContext);
     const placement = labelPlacement ?? groupLabelPlacement ?? "end";
+    const stateLayer = containerStateLayer ?? groupContainerStateLayer ?? false;
 
     return (
         <AriaRadio
             className={(renderProps) =>
                 clsx(
                     styles["radio"],
+                    stateLayer && styles["state-layer"],
                     typeof className === "function"
                         ? className(renderProps)
                         : className

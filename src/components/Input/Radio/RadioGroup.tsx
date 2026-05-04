@@ -15,10 +15,11 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
     className,
     radioItemsGap = 24,
     labelPlacement,
+    containerStateLayer,
     ...props
 }) => {
     return (
-        <RadioGroupContext value={{ labelPlacement }}>
+        <RadioGroupContext value={{ labelPlacement, containerStateLayer }}>
             <AriaRadioGroup
                 className={(renderProps) =>
                     clsx(

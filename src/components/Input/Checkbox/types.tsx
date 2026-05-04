@@ -15,8 +15,10 @@ export interface CheckboxGroupProps
     children?: ReactNode;
     checkboxItemsGap?: number;
     labelPlacement?: CheckboxLabelPlacement;
+    containerStateLayer?: boolean;
 }
 
 export interface CheckboxProps extends AriaCheckboxProps {
     labelPlacement?: CheckboxLabelPlacement;
+    containerStateLayer?: boolean;
 }
