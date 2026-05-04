@@ -69,6 +69,7 @@ import {
     DateField,
     Input,
     Label,
+    Select,
     TextArea,
     TimeField,
 } from "./components/Input";
@@ -1499,6 +1500,20 @@ const DateFieldPreview = () => {
     );
 };
 
+export const SelectPreview = () => {
+    return (
+        <div className="items">
+            <Select
+                label="Icecream"
+                description="Flavors of icecream"
+                placeholder="Select Icecream"
+            >
+                <Button>select</Button>
+            </Select>
+        </div>
+    );
+};
+
 const App = () => {
     type PreviewItem = {
         id: string;
@@ -1512,6 +1527,7 @@ const App = () => {
             label: "Theme Switcher",
             Component: VisualSettingsPreview,
         },
+        { id: "select", label: "Select", Component: SelectPreview },
         { id: "date-field", label: "Date Field", Component: DateFieldPreview },
         { id: "time-field", label: "Time Field", Component: TimeFieldPreview },
         { id: "text-area", label: "Text Area", Component: TextAreaPreview },
