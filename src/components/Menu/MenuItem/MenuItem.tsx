@@ -17,7 +17,7 @@ import type { MenuItemProps } from "./types";
 
 export const MenuItem: React.FC<MenuItemProps> = ({
     leadingIcon,
-    children,
+    label,
     supportingText,
     trailingText,
     trailingIcon,
@@ -68,7 +68,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
                                         menuItemLabelColor
                                     )}
                                 >
-                                    {children}
+                                    {label}
                                 </p>
 
                                 {supportingText && (
