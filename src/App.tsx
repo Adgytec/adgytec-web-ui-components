@@ -28,6 +28,7 @@ import "./styles/app.css";
 import { clsx } from "clsx";
 import {
     DialogTrigger,
+    SubmenuTrigger,
     Tab,
     TabList,
     TabPanel,
@@ -83,8 +84,8 @@ import {
     MenuSectionHeader,
     MenuShortcut,
     MenuTrigger,
-    SubmenuTrigger,
 } from "./components/Menu";
+import { Popover } from "./components/Popover";
 import { Separator } from "./components/Separator";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
@@ -886,14 +887,17 @@ const MenuPreview = () => {
             return (
                 <SubmenuTrigger>
                     {renderMenuItem(item)}
-                    <Menu
-                        layout={menuLayout}
-                        color={menuColor}
-                        items={item.submenu}
-                        selectionMode="multiple"
-                    >
-                        {(item) => renderMenu(item, menuLayout, menuColor)}
-                    </Menu>
+
+                    <Popover offset={-1}>
+                        <Menu
+                            layout={menuLayout}
+                            color={menuColor}
+                            items={item.submenu}
+                            selectionMode="multiple"
+                        >
+                            {(item) => renderMenu(item, menuLayout, menuColor)}
+                        </Menu>
+                    </Popover>
                 </SubmenuTrigger>
             );
         }
@@ -910,18 +914,33 @@ const MenuPreview = () => {
                 const triggerColor = randomButtonColor();
 
                 return (
-                    <MenuTrigger
-                        key={combo.title}
-                        offset={-1}
-                        triggerElement={
+                    <>
+                        <MenuTrigger key={combo.title}>
                             <Button
                                 color={triggerColor}
                                 tooltip={`layout: ${menuLayout}, color: ${menuColor}`}
                             >
                                 {combo.title}
                             </Button>
-                        }
-                    >
+
+                            <Popover>
+                                <Menu
+                                    layout={menuLayout}
+                                    color={menuColor}
+                                    items={combo.menu}
+                                    selectionMode="multiple"
+                                >
+                                    {(item) => {
+                                        return renderMenu(
+                                            item,
+                                            menuLayout,
+                                            menuColor
+                                        );
+                                    }}
+                                </Menu>
+                            </Popover>
+                        </MenuTrigger>
+
                         <Menu
                             layout={menuLayout}
                             color={menuColor}
@@ -932,7 +951,7 @@ const MenuPreview = () => {
                                 return renderMenu(item, menuLayout, menuColor);
                             }}
                         </Menu>
-                    </MenuTrigger>
+                    </>
                 );
             })}
         </div>
@@ -979,36 +998,37 @@ const SplitButtonPreview = () => {
                     {label && "Download"}
                 </SplitButtonPrimary>
 
-                <MenuTrigger
-                    triggerElement={
-                        <SplitButtonTrigger tooltip="more actions" />
-                    }
-                >
-                    <Menu
-                        color={!label ? "standard" : "vibrant"}
-                        layout={!label ? "standard" : "grouped"}
-                    >
-                        <MenuSection>
-                            <MenuSectionHeader>Quick Actions</MenuSectionHeader>
+                <MenuTrigger>
+                    <SplitButtonTrigger tooltip="more actions" />
+                    <Popover>
+                        <Menu
+                            color={!label ? "standard" : "vibrant"}
+                            layout={!label ? "standard" : "grouped"}
+                        >
+                            <MenuSection>
+                                <MenuSectionHeader>
+                                    Quick Actions
+                                </MenuSectionHeader>
 
-                            <MenuItem trailingIcon={Eye}>Preview</MenuItem>
+                                <MenuItem trailingIcon={Eye}>Preview</MenuItem>
 
-                            <MenuItem trailingIcon={Share2}>Share</MenuItem>
-                        </MenuSection>
+                                <MenuItem trailingIcon={Share2}>Share</MenuItem>
+                            </MenuSection>
 
-                        {!label && <Separator />}
+                            {!label && <Separator />}
 
-                        <MenuSection>
-                            <MenuSectionHeader>Security</MenuSectionHeader>
+                            <MenuSection>
+                                <MenuSectionHeader>Security</MenuSectionHeader>
 
-                            <MenuItem
-                                trailingIcon={GlobeLock}
-                                supportingText="Make item private"
-                            >
-                                Private
-                            </MenuItem>
-                        </MenuSection>
-                    </Menu>
+                                <MenuItem
+                                    trailingIcon={GlobeLock}
+                                    supportingText="Make item private"
+                                >
+                                    Private
+                                </MenuItem>
+                            </MenuSection>
+                        </Menu>
+                    </Popover>
                 </MenuTrigger>
             </SplitButton>
         );
