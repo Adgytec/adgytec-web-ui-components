@@ -209,7 +209,7 @@ const CheckboxPreview = () => {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Checkbox>
 
-                <Checkbox isDisabled isSelected>
+                <Checkbox isDisabled isSelected labelPlacement="start">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Checkbox>
 
@@ -271,6 +271,7 @@ const CheckboxPreview = () => {
                 isInvalid
                 label="lorem ipsum"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                labelPlacement="start"
             >
                 <Checkbox value="one">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.

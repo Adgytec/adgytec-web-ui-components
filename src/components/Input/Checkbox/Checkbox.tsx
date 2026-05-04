@@ -3,12 +3,19 @@ import { Checkbox as AriaCheckbox } from "react-aria-components";
 import { TapTarget } from "@/utils/tapTarget";
 import styles from "./checkbox.module.css";
 import type { CheckboxProps } from "./types";
+import { useContext } from "react";
+import { CheckboxGroupContext } from "./context";
 
 export const Checkbox: React.FC<CheckboxProps> = ({
     children,
     className,
+    labelPlacement,
     ...props
 }) => {
+    const { labelPlacement: groupLabelPlacement } =
+        useContext(CheckboxGroupContext);
+    const placement = labelPlacement ?? groupLabelPlacement ?? "end";
+
     return (
         <AriaCheckbox
             className={(renderProps) =>
@@ -21,16 +28,18 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             }
             {...props}
         >
-            {({
-                isSelected,
-                isHovered,
-                isDisabled,
-                isFocused,
-                isFocusVisible,
-                isPressed,
-                isInvalid,
-                isIndeterminate,
-            }) => {
+            {(renderProps) => {
+                const {
+                    isSelected,
+                    isHovered,
+                    isDisabled,
+                    isFocused,
+                    isFocusVisible,
+                    isPressed,
+                    isInvalid,
+                    isIndeterminate,
+                } = renderProps;
+
                 const dataAttrs = {
                     "data-selected": isSelected || undefined,
                     "data-hovered": isHovered || undefined,
@@ -42,9 +51,15 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                     "data-indeterminate": isIndeterminate || undefined,
                 };
 
+                const label =
+                    typeof children === "function"
+                        ? children(renderProps)
+                        : children;
                 return (
                     <>
-                        <div
+                        {placement === "start" && label}
+
+                        <span
                             className={clsx(styles["indicator"], TapTarget)}
                             {...dataAttrs}
                         >
@@ -63,8 +78,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                                     <polyline points="2 9 7 14 16 4" />
                                 )}
                             </svg>
-                        </div>
-                        {children}
+                        </span>
+
+                        {placement === "end" && label}
                     </>
                 );
             }}

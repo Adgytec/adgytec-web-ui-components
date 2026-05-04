@@ -55,15 +55,15 @@ export const Radio: React.FC<RadioProps> = ({
                     <>
                         {placement === "start" && label}
 
-                        <div
+                        <span
                             className={clsx(styles["indicator"], TapTarget)}
                             {...dataAttrs}
                         >
-                            <div
+                            <span
                                 className={clsx(styles["indicator-icon"])}
                                 {...dataAttrs}
-                            ></div>
-                        </div>
+                            ></span>
+                        </span>
 
                         {placement === "end" && label}
                     </>
