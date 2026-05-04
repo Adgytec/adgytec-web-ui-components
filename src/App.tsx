@@ -70,6 +70,11 @@ import {
     Input,
     Label,
     Select,
+    SelectItem,
+    SelectList,
+    SelectListSection,
+    SelectListSectionHeader,
+    SelectTrigger,
     TextArea,
     TimeField,
 } from "./components/Input";
@@ -871,9 +876,8 @@ const MenuPreview = () => {
                     )
                 }
                 trailingIcon={item.trailingIcon}
-            >
-                {item.label}
-            </MenuItem>
+                label={item.label}
+            />
         );
     };
 
@@ -1006,9 +1010,9 @@ const SplitButtonPreview = () => {
                                     Quick Actions
                                 </MenuSectionHeader>
 
-                                <MenuItem trailingIcon={Eye}>Preview</MenuItem>
+                                <MenuItem trailingIcon={Eye} label="Preview" />
 
-                                <MenuItem trailingIcon={Share2}>Share</MenuItem>
+                                <MenuItem trailingIcon={Share2} label="Share" />
                             </MenuSection>
 
                             {!label && <Separator />}
@@ -1019,9 +1023,8 @@ const SplitButtonPreview = () => {
                                 <MenuItem
                                     trailingIcon={GlobeLock}
                                     supportingText="Make item private"
-                                >
-                                    Private
-                                </MenuItem>
+                                    label="Private"
+                                />
                             </MenuSection>
                         </Menu>
                     </Popover>
@@ -1508,7 +1511,50 @@ export const SelectPreview = () => {
                 description="Flavors of icecream"
                 placeholder="Select Icecream"
             >
-                <Button>select</Button>
+                <SelectTrigger />
+
+                <Popover>
+                    <SelectList>
+                        <SelectItem label="Strawberry" />
+
+                        <SelectItem label="Mango" />
+
+                        <Separator />
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </Popover>
+            </Select>
+
+            <Select
+                label="Icecream"
+                description="Flavors of icecream"
+                placeholder="Select Icecream"
+                selectionMode="multiple"
+            >
+                <SelectTrigger />
+
+                <Popover>
+                    <SelectList>
+                        <SelectListSection>
+                            <SelectListSectionHeader>
+                                Specials 😋
+                            </SelectListSectionHeader>
+
+                            <SelectItem label="Strawberry" />
+
+                            <SelectItem label="Mango" />
+                        </SelectListSection>
+
+                        <Separator />
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </Popover>
             </Select>
         </div>
     );
