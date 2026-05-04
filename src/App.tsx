@@ -26,7 +26,14 @@ import { Fragment, type ReactNode, useState } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
 import { clsx } from "clsx";
-import { DialogTrigger } from "react-aria-components";
+import {
+    DialogTrigger,
+    Tab,
+    TabList,
+    TabPanel,
+    TabPanels,
+    Tabs,
+} from "react-aria-components";
 import {
     Button,
     type ButtonColor,
@@ -96,7 +103,7 @@ const PreviewContainer = (props: { label: string; children: ReactNode }) => {
 
 const SwitchPreview = () => {
     return (
-        <PreviewContainer label="Switch">
+        <>
             <div className="items">
                 <Switch isDisabled icon="none" labelPlacement="end">
                     <Label>Disabled no icon</Label>
@@ -148,13 +155,13 @@ const SwitchPreview = () => {
                     <Label>Icon none</Label>
                 </Switch>
             </div>
-        </PreviewContainer>
+        </>
     );
 };
 
 const RadioPreview = () => {
     return (
-        <PreviewContainer label="Radio">
+        <>
             <RadioGroup
                 label="Disabled"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
@@ -197,13 +204,13 @@ const RadioPreview = () => {
                 <Radio value="dog">Dog</Radio>
                 <Radio value="dragon">Dragon</Radio>
             </RadioGroup>
-        </PreviewContainer>
+        </>
     );
 };
 
 const CheckboxPreview = () => {
     return (
-        <PreviewContainer label="Checkbox">
+        <>
             <div className="items">
                 <Checkbox isDisabled>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -285,22 +292,22 @@ const CheckboxPreview = () => {
                     Lorem ipsum dolor sit amet, consectetur.
                 </Checkbox>
             </CheckboxGroup>
-        </PreviewContainer>
+        </>
     );
 };
 
 const VisualSettingsPreview = () => {
     return (
-        <PreviewContainer label="Theme Switcher">
+        <>
             <ThemeSwitcher ui={false} />
             <ThemeSwitcher />
-        </PreviewContainer>
+        </>
     );
 };
 
 const IconPreview = () => {
     return (
-        <PreviewContainer label="Icon preview">
+        <>
             <Icon icon={FileBraces} size={400} withText />
 
             <p
@@ -312,21 +319,19 @@ const IconPreview = () => {
                 <Icon icon={FileBraces} withText strokeWidth={1.375} /> with
                 text
             </p>
-        </PreviewContainer>
+        </>
     );
 };
 
 const TooltipPreview = () => {
     return (
-        <PreviewContainer label="Tooltip">
-            <div>
-                <TooltipTrigger>
-                    <Button>Tooltip demo</Button>
+        <div className="items">
+            <TooltipTrigger>
+                <Button>Tooltip demo</Button>
 
-                    <Tooltip>Lorem ipsum dolor sit amet.</Tooltip>
-                </TooltipTrigger>
-            </div>
-        </PreviewContainer>
+                <Tooltip>Lorem ipsum dolor sit amet.</Tooltip>
+            </TooltipTrigger>
+        </div>
     );
 };
 
@@ -349,7 +354,7 @@ const ButtonPreview = () => {
     ];
 
     return (
-        <PreviewContainer label="Button">
+        <>
             {buttonColor.map((color) => (
                 <div className="button-color" key={`button-${color}`}>
                     <h3 className={typography.headlineMediumEmphasized}>
@@ -412,7 +417,7 @@ const ButtonPreview = () => {
                     ))}
                 </div>
             ))}
-        </PreviewContainer>
+        </>
     );
 };
 
@@ -435,7 +440,7 @@ const IconButtonPreview = () => {
     ];
 
     return (
-        <PreviewContainer label="Icon Button">
+        <>
             {iconButtonColor.map((color) => (
                 <div key={`icon-button-${color}`} className="button-color">
                     <h3 className={typography.headlineMedium}>{color}</h3>
@@ -497,30 +502,28 @@ const IconButtonPreview = () => {
                     ))}
                 </div>
             ))}
-        </PreviewContainer>
+        </>
     );
 };
 
 const LinkPreview = () => {
     return (
-        <PreviewContainer label="Link">
-            <div className="items">
-                <LinkButton
-                    href="https://m3.material.io"
-                    target="_blank"
-                    color="elevated"
-                >
-                    Material 3
-                </LinkButton>
+        <div className="items">
+            <LinkButton
+                href="https://m3.material.io"
+                target="_blank"
+                color="elevated"
+            >
+                Material 3
+            </LinkButton>
 
-                <LinkIconButton
-                    href="https://m3.material.io"
-                    target="_blank"
-                    icon={ExternalLinkIcon}
-                    color="standard"
-                />
-            </div>
-        </PreviewContainer>
+            <LinkIconButton
+                href="https://m3.material.io"
+                target="_blank"
+                icon={ExternalLinkIcon}
+                color="standard"
+            />
+        </div>
     );
 };
 
@@ -899,46 +902,40 @@ const MenuPreview = () => {
     };
 
     return (
-        <PreviewContainer label="Menu (Layout + Color)">
-            <div className="items">
-                {menuCombo.map((combo) => {
-                    const menuLayout = layout();
-                    const menuColor = color();
+        <div className="items">
+            {menuCombo.map((combo) => {
+                const menuLayout = layout();
+                const menuColor = color();
 
-                    const triggerColor = randomButtonColor();
+                const triggerColor = randomButtonColor();
 
-                    return (
-                        <MenuTrigger
-                            key={combo.title}
-                            offset={-1}
-                            triggerElement={
-                                <Button
-                                    color={triggerColor}
-                                    tooltip={`layout: ${menuLayout}, color: ${menuColor}`}
-                                >
-                                    {combo.title}
-                                </Button>
-                            }
-                        >
-                            <Menu
-                                layout={menuLayout}
-                                color={menuColor}
-                                items={combo.menu}
-                                selectionMode="multiple"
+                return (
+                    <MenuTrigger
+                        key={combo.title}
+                        offset={-1}
+                        triggerElement={
+                            <Button
+                                color={triggerColor}
+                                tooltip={`layout: ${menuLayout}, color: ${menuColor}`}
                             >
-                                {(item) => {
-                                    return renderMenu(
-                                        item,
-                                        menuLayout,
-                                        menuColor
-                                    );
-                                }}
-                            </Menu>
-                        </MenuTrigger>
-                    );
-                })}
-            </div>
-        </PreviewContainer>
+                                {combo.title}
+                            </Button>
+                        }
+                    >
+                        <Menu
+                            layout={menuLayout}
+                            color={menuColor}
+                            items={combo.menu}
+                            selectionMode="multiple"
+                        >
+                            {(item) => {
+                                return renderMenu(item, menuLayout, menuColor);
+                            }}
+                        </Menu>
+                    </MenuTrigger>
+                );
+            })}
+        </div>
     );
 };
 
@@ -1018,7 +1015,7 @@ const SplitButtonPreview = () => {
     };
 
     return (
-        <PreviewContainer label="SplitButton">
+        <>
             {colors.map((color) => (
                 <div className="button-color" key={`button-${color}`}>
                     <h3 className={typography.headlineMediumEmphasized}>
@@ -1068,7 +1065,7 @@ const SplitButtonPreview = () => {
                     ))}
                 </div>
             ))}
-        </PreviewContainer>
+        </>
     );
 };
 
@@ -1082,7 +1079,7 @@ const ButtonGroupPreview = () => {
     ];
 
     return (
-        <PreviewContainer label="Button Group">
+        <>
             {sizes.map((size) => (
                 <div className="items" key={size}>
                     <ButtonGroup size={size} shape="square" color="outlined">
@@ -1105,7 +1102,7 @@ const ButtonGroupPreview = () => {
                     </ButtonGroup>
                 </div>
             ))}
-        </PreviewContainer>
+        </>
     );
 };
 
@@ -1128,7 +1125,7 @@ const ConnectedButtonGroupPreview = () => {
     ];
 
     return (
-        <PreviewContainer label="Connected Button Group">
+        <>
             {buttonColor.map((color) => (
                 <div className="button-color" key={`button-${color}`}>
                     <h3 className={typography.headlineMediumEmphasized}>
@@ -1177,94 +1174,36 @@ const ConnectedButtonGroupPreview = () => {
                     ))}
                 </div>
             ))}
-        </PreviewContainer>
+        </>
     );
 };
 
 const DialogPreview = () => {
     return (
-        <PreviewContainer label="Dialog">
-            <div className="items">
-                <DialogTrigger>
-                    <Button>Simple Dialog</Button>
+        <div className="items">
+            <DialogTrigger>
+                <Button>Simple Dialog</Button>
 
-                    <ModalOverlay isDismissable>
-                        <Modal>
-                            <Dialog
-                                style={{
-                                    display: "grid",
-                                    gap: "1rem",
-                                }}
-                            >
-                                <div>
-                                    <h2
-                                        slot="title"
-                                        className={clsx(
-                                            DialogHeadlineTypography
-                                        )}
-                                    >
-                                        Simple Dialog
-                                    </h2>
+                <ModalOverlay isDismissable>
+                    <Modal>
+                        <Dialog
+                            style={{
+                                display: "grid",
+                                gap: "1rem",
+                            }}
+                        >
+                            <div>
+                                <h2
+                                    slot="title"
+                                    className={clsx(DialogHeadlineTypography)}
+                                >
+                                    Simple Dialog
+                                </h2>
 
-                                    <Separator />
-                                </div>
+                                <Separator />
+                            </div>
 
-                                <div className={clsx(DialogBodyTypography)}>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipiscing elit. Phasellus vehicula enim
-                                        eu tortor semper faucibus. Nullam vitae
-                                        pulvinar ligula. Nulla consequat, tortor
-                                        quis volutpat luctus, ipsum sem
-                                        venenatis augue, gravida feugiat ligula
-                                        nulla vitae tortor.
-                                    </p>
-                                </div>
-
-                                <div>
-                                    <Separator />
-
-                                    <div
-                                        style={{
-                                            display: "flex",
-                                            justifyContent: "flex-end",
-                                        }}
-                                    >
-                                        <Button color="text" slot="close">
-                                            Close
-                                        </Button>
-                                    </div>
-                                </div>
-                            </Dialog>
-                        </Modal>
-                    </ModalOverlay>
-                </DialogTrigger>
-
-                <DialogTrigger>
-                    <Button color="elevated">Action Dialog</Button>
-
-                    <ModalOverlay>
-                        <Modal>
-                            <ActionDialog
-                                heading="Squirrel?"
-                                icon={Squirrel}
-                                actions={[
-                                    <Button
-                                        color="text"
-                                        slot="close"
-                                        key="close"
-                                    >
-                                        Close
-                                    </Button>,
-                                    <Button
-                                        color="text"
-                                        slot="close"
-                                        key="Squirrel"
-                                    >
-                                        Squirrel
-                                    </Button>,
-                                ]}
-                            >
+                            <div className={clsx(DialogBodyTypography)}>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur
                                     adipiscing elit. Phasellus vehicula enim eu
@@ -1272,84 +1211,128 @@ const DialogPreview = () => {
                                     pulvinar ligula. Nulla consequat, tortor
                                     quis volutpat luctus, ipsum sem venenatis
                                     augue, gravida feugiat ligula nulla vitae
-                                    tortor. Praesent commodo ac metus eu
-                                    lobortis. Ut aliquam dignissim lacus
-                                    vulputate imperdiet. Donec lorem dolor,
-                                    semper commodo sollicitudin ut, pharetra
-                                    eget ipsum. Cras ac aliquet felis. Sed non
-                                    arcu luctus, pulvinar nulla nec, ornare
-                                    velit. Suspendisse eget metus vel ligula
-                                    sollicitudin pulvinar sit amet vel metus.
-                                    Pellentesque auctor gravida varius. Integer
-                                    mollis arcu enim, eu malesuada sem mollis
-                                    ut. Praesent vel mollis risus. Ut molestie
-                                    eleifend neque, eget scelerisque eros.
-                                    Aenean et metus eleifend justo pulvinar
-                                    vestibulum. Aenean facilisis odio ut
-                                    pharetra pretium. Aenean semper tortor sit
-                                    amet magna malesuada congue.
+                                    tortor.
                                 </p>
-                                <br />
-                                <p>
-                                    Quisque tellus tellus, pharetra nec ex et,
-                                    malesuada cursus ante. Nulla tincidunt
-                                    placerat sapien, a aliquet velit placerat
-                                    quis. Maecenas pharetra et nulla a pharetra.
-                                    Praesent tincidunt ullamcorper lacus vitae
-                                    imperdiet. Sed fringilla sem vel magna
-                                    dignissim pretium. In vehicula fringilla
-                                    lacinia. In fringilla nunc a lorem pulvinar,
-                                    ac lacinia ante semper. Cras faucibus, odio
-                                    eget dignissim blandit, risus tortor aliquam
-                                    massa, ut varius diam est at orci. Vivamus
-                                    non turpis eu nisl fringilla pellentesque
-                                    non in mauris. Sed feugiat eros et est
-                                    dignissim, non condimentum risus
-                                    ullamcorper. Vivamus in purus neque.
-                                    Phasellus sed libero et nisl luctus
-                                    tincidunt vitae in nibh.
-                                </p>
-                                <br />
-                                <p>
-                                    Sed rhoncus erat eget vehicula aliquam.
-                                    Aenean luctus auctor metus eu elementum.
-                                    Duis hendrerit metus non erat porttitor, nec
-                                    dignissim mauris pretium. Quisque porttitor,
-                                    lacus eu condimentum interdum, diam tortor
-                                    consectetur augue, in pellentesque est nibh
-                                    et ipsum. Sed vel consectetur magna. Ut id
-                                    tincidunt risus. Integer interdum augue eu
-                                    ex tincidunt, et faucibus nunc blandit.
-                                    Praesent suscipit placerat luctus. Ut odio
-                                    turpis, varius cursus erat at, lacinia
-                                    suscipit libero.
-                                </p>
-                                <br />
-                                <p>
-                                    Praesent sed neque porttitor, gravida massa
-                                    eget, aliquet nulla. Nam tristique, sapien
-                                    nec posuere feugiat, enim purus ullamcorper
-                                    nibh, at vehicula nibh diam id metus. Duis
-                                    purus libero, scelerisque et volutpat sit
-                                    amet, dapibus non ante. Ut sagittis
-                                    scelerisque efficitur. Nulla ut pretium
-                                    erat. Suspendisse potenti. Donec vulputate
-                                    nibh quis arcu placerat laoreet. Aenean enim
-                                    est, rutrum blandit semper ut, mollis a
-                                    elit. Suspendisse at varius tortor. Etiam
-                                    molestie in urna sit amet pellentesque.
-                                    Fusce justo augue, porta at consequat sit
-                                    amet, blandit in dolor. Aliquam erat
-                                    volutpat. Donec ultricies eleifend arcu quis
-                                    fringilla. Etiam sit amet scelerisque
-                                    sapien.
-                                </p>
-                            </ActionDialog>
-                        </Modal>
-                    </ModalOverlay>
-                </DialogTrigger>
-            </div>
-        </PreviewContainer>
+                            </div>
+
+                            <div>
+                                <Separator />
+
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "flex-end",
+                                    }}
+                                >
+                                    <Button color="text" slot="close">
+                                        Close
+                                    </Button>
+                                </div>
+                            </div>
+                        </Dialog>
+                    </Modal>
+                </ModalOverlay>
+            </DialogTrigger>
+
+            <DialogTrigger>
+                <Button color="elevated">Action Dialog</Button>
+
+                <ModalOverlay>
+                    <Modal>
+                        <ActionDialog
+                            heading="Squirrel?"
+                            icon={Squirrel}
+                            actions={[
+                                <Button color="text" slot="close" key="close">
+                                    Close
+                                </Button>,
+                                <Button
+                                    color="text"
+                                    slot="close"
+                                    key="Squirrel"
+                                >
+                                    Squirrel
+                                </Button>,
+                            ]}
+                        >
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit. Phasellus vehicula enim eu
+                                tortor semper faucibus. Nullam vitae pulvinar
+                                ligula. Nulla consequat, tortor quis volutpat
+                                luctus, ipsum sem venenatis augue, gravida
+                                feugiat ligula nulla vitae tortor. Praesent
+                                commodo ac metus eu lobortis. Ut aliquam
+                                dignissim lacus vulputate imperdiet. Donec lorem
+                                dolor, semper commodo sollicitudin ut, pharetra
+                                eget ipsum. Cras ac aliquet felis. Sed non arcu
+                                luctus, pulvinar nulla nec, ornare velit.
+                                Suspendisse eget metus vel ligula sollicitudin
+                                pulvinar sit amet vel metus. Pellentesque auctor
+                                gravida varius. Integer mollis arcu enim, eu
+                                malesuada sem mollis ut. Praesent vel mollis
+                                risus. Ut molestie eleifend neque, eget
+                                scelerisque eros. Aenean et metus eleifend justo
+                                pulvinar vestibulum. Aenean facilisis odio ut
+                                pharetra pretium. Aenean semper tortor sit amet
+                                magna malesuada congue.
+                            </p>
+                            <br />
+                            <p>
+                                Quisque tellus tellus, pharetra nec ex et,
+                                malesuada cursus ante. Nulla tincidunt placerat
+                                sapien, a aliquet velit placerat quis. Maecenas
+                                pharetra et nulla a pharetra. Praesent tincidunt
+                                ullamcorper lacus vitae imperdiet. Sed fringilla
+                                sem vel magna dignissim pretium. In vehicula
+                                fringilla lacinia. In fringilla nunc a lorem
+                                pulvinar, ac lacinia ante semper. Cras faucibus,
+                                odio eget dignissim blandit, risus tortor
+                                aliquam massa, ut varius diam est at orci.
+                                Vivamus non turpis eu nisl fringilla
+                                pellentesque non in mauris. Sed feugiat eros et
+                                est dignissim, non condimentum risus
+                                ullamcorper. Vivamus in purus neque. Phasellus
+                                sed libero et nisl luctus tincidunt vitae in
+                                nibh.
+                            </p>
+                            <br />
+                            <p>
+                                Sed rhoncus erat eget vehicula aliquam. Aenean
+                                luctus auctor metus eu elementum. Duis hendrerit
+                                metus non erat porttitor, nec dignissim mauris
+                                pretium. Quisque porttitor, lacus eu condimentum
+                                interdum, diam tortor consectetur augue, in
+                                pellentesque est nibh et ipsum. Sed vel
+                                consectetur magna. Ut id tincidunt risus.
+                                Integer interdum augue eu ex tincidunt, et
+                                faucibus nunc blandit. Praesent suscipit
+                                placerat luctus. Ut odio turpis, varius cursus
+                                erat at, lacinia suscipit libero.
+                            </p>
+                            <br />
+                            <p>
+                                Praesent sed neque porttitor, gravida massa
+                                eget, aliquet nulla. Nam tristique, sapien nec
+                                posuere feugiat, enim purus ullamcorper nibh, at
+                                vehicula nibh diam id metus. Duis purus libero,
+                                scelerisque et volutpat sit amet, dapibus non
+                                ante. Ut sagittis scelerisque efficitur. Nulla
+                                ut pretium erat. Suspendisse potenti. Donec
+                                vulputate nibh quis arcu placerat laoreet.
+                                Aenean enim est, rutrum blandit semper ut,
+                                mollis a elit. Suspendisse at varius tortor.
+                                Etiam molestie in urna sit amet pellentesque.
+                                Fusce justo augue, porta at consequat sit amet,
+                                blandit in dolor. Aliquam erat volutpat. Donec
+                                ultricies eleifend arcu quis fringilla. Etiam
+                                sit amet scelerisque sapien.
+                            </p>
+                        </ActionDialog>
+                    </Modal>
+                </ModalOverlay>
+            </DialogTrigger>
+        </div>
     );
 };
 
@@ -1390,17 +1373,15 @@ const InputPreview = () => {
     };
 
     return (
-        <PreviewContainer label="Input">
-            <div className="items">
-                <RenderInput />
+        <div className="items">
+            <RenderInput />
 
-                <RenderInput isInvalid />
+            <RenderInput isInvalid />
 
-                <RenderInput isDisabled />
+            <RenderInput isDisabled />
 
-                <RenderInput isInvalid isDisabled />
-            </div>
-        </PreviewContainer>
+            <RenderInput isInvalid isDisabled />
+        </div>
     );
 };
 
@@ -1427,17 +1408,15 @@ const TextAreaPreview = () => {
     };
 
     return (
-        <PreviewContainer label="TextArea">
-            <div className="items-grid">
-                <RenderTextArea />
+        <div className="items-grid">
+            <RenderTextArea />
 
-                <RenderTextArea isInvalid />
+            <RenderTextArea isInvalid />
 
-                <RenderTextArea isDisabled />
+            <RenderTextArea isDisabled />
 
-                <RenderTextArea isInvalid isDisabled />
-            </div>
-        </PreviewContainer>
+            <RenderTextArea isInvalid isDisabled />
+        </div>
     );
 };
 
@@ -1461,17 +1440,15 @@ const TimeFieldPreview = () => {
     };
 
     return (
-        <PreviewContainer label="TimeField">
-            <div className="items">
-                <RenderTimeField />
+        <div className="items">
+            <RenderTimeField />
 
-                <RenderTimeField isInvalid />
+            <RenderTimeField isInvalid />
 
-                <RenderTimeField isDisabled />
+            <RenderTimeField isDisabled />
 
-                <RenderTimeField isInvalid isDisabled />
-            </div>
-        </PreviewContainer>
+            <RenderTimeField isInvalid isDisabled />
+        </div>
     );
 };
 
@@ -1495,47 +1472,91 @@ const DateFieldPreview = () => {
     };
 
     return (
-        <PreviewContainer label="DateField">
-            <div className="items">
-                <RenderDateField />
+        <div className="items">
+            <RenderDateField />
 
-                <RenderDateField isInvalid />
+            <RenderDateField isInvalid />
 
-                <RenderDateField isDisabled />
+            <RenderDateField isDisabled />
 
-                <RenderDateField isInvalid isDisabled />
-            </div>
-        </PreviewContainer>
+            <RenderDateField isInvalid isDisabled />
+        </div>
     );
 };
 
 const App = () => {
-    const previewElements = [
-        VisualSettingsPreview,
-        DateFieldPreview,
-        TimeFieldPreview,
-        TextAreaPreview,
-        InputPreview,
-        DialogPreview,
-        ConnectedButtonGroupPreview,
-        ButtonGroupPreview,
-        SplitButtonPreview,
-        MenuPreview,
-        LinkPreview,
-        ButtonPreview,
-        IconButtonPreview,
-        TooltipPreview,
-        CheckboxPreview,
-        RadioPreview,
-        IconPreview,
-        SwitchPreview,
+    type PreviewItem = {
+        id: string;
+        label: string;
+        Component: React.ComponentType;
+    };
+
+    const previewItems: PreviewItem[] = [
+        {
+            id: "visual-settings",
+            label: "Theme Switcher",
+            Component: VisualSettingsPreview,
+        },
+        { id: "date-field", label: "Date Field", Component: DateFieldPreview },
+        { id: "time-field", label: "Time Field", Component: TimeFieldPreview },
+        { id: "text-area", label: "Text Area", Component: TextAreaPreview },
+        { id: "input", label: "Input", Component: InputPreview },
+        { id: "dialog", label: "Dialog", Component: DialogPreview },
+        {
+            id: "connected-button-group",
+            label: "Connected Button Group",
+            Component: ConnectedButtonGroupPreview,
+        },
+        {
+            id: "button-group",
+            label: "Button Group",
+            Component: ButtonGroupPreview,
+        },
+        {
+            id: "split-button",
+            label: "Split Button",
+            Component: SplitButtonPreview,
+        },
+        { id: "menu", label: "Menu", Component: MenuPreview },
+        { id: "link", label: "Link", Component: LinkPreview },
+        { id: "button", label: "Button", Component: ButtonPreview },
+        {
+            id: "icon-button",
+            label: "Icon Button",
+            Component: IconButtonPreview,
+        },
+        { id: "tooltip", label: "Tooltip", Component: TooltipPreview },
+        { id: "checkbox", label: "Checkbox", Component: CheckboxPreview },
+        { id: "radio", label: "Radio", Component: RadioPreview },
+        { id: "icon", label: "Icon", Component: IconPreview },
+        { id: "switch", label: "Switch", Component: SwitchPreview },
     ];
 
     return (
         <div className="preview-parent">
-            {previewElements.map((Element) => {
-                return <Element key={Element.name} />;
-            })}
+            <Tabs className="tabs">
+                <TabList className={"tab-list"}>
+                    {previewItems.map((item) => (
+                        <Tab key={item.id} id={item.id} className={"tab"}>
+                            {item.label}
+                        </Tab>
+                    ))}
+                </TabList>
+
+                <TabPanels>
+                    {previewItems.map((item) => {
+                        const Component = item.Component;
+
+                        return (
+                            <TabPanel key={item.id} id={item.id}>
+                                <PreviewContainer label={item.label}>
+                                    <Component />
+                                </PreviewContainer>
+                            </TabPanel>
+                        );
+                    })}
+                </TabPanels>
+            </Tabs>
         </div>
     );
 };
