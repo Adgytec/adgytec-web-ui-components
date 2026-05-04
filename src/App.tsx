@@ -97,8 +97,8 @@ const PreviewContainer = (props: { label: string; children: ReactNode }) => {
 const SwitchPreview = () => {
     return (
         <PreviewContainer label="Switch">
-            <div>
-                <Switch isDisabled icon="none">
+            <div className="items">
+                <Switch isDisabled icon="none" labelPlacement="end">
                     <Label>Disabled no icon</Label>
                 </Switch>
 
@@ -114,7 +114,7 @@ const SwitchPreview = () => {
                     <Label>Selected icon</Label>
                 </Switch>
 
-                <Switch icon="both">
+                <Switch icon="both" labelPlacement="end">
                     <Label>Both icon</Label>
                 </Switch>
 
@@ -123,12 +123,8 @@ const SwitchPreview = () => {
                 </Switch>
             </div>
 
-            <div
-                style={{
-                    display: "grid",
-                }}
-            >
-                <Switch isDisabled icon="none">
+            <div className="items-grid">
+                <Switch isDisabled icon="none" labelPlacement="end">
                     <Label>Disabled no icon</Label>
                 </Switch>
 
@@ -144,7 +140,7 @@ const SwitchPreview = () => {
                     <Label>Selected icon</Label>
                 </Switch>
 
-                <Switch icon="both">
+                <Switch icon="both" labelPlacement="end">
                     <Label>Both icon</Label>
                 </Switch>
 
