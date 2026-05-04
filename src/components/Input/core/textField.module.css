@@ -129,6 +129,7 @@
 
         &[data-trailing] {
             padding-inline-end: var(--md-sys-layout-space-12);
+            padding-block: var(--md-sys-layout-space-8);
         }
 
         &[data-leading] {
@@ -185,8 +186,10 @@
 
         &[data-textarea] {
             resize: vertical;
+
+            /* 2dp for border thickness */
+            min-block-size: calc(58 * var(--dp, 1px));
             max-block-size: calc(300 * var(--dp, 1px));
-            min-block-size: calc(56 * var(--dp, 1px));
 
             &[data-disabled] {
                 resize: none;
