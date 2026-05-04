@@ -1,5 +1,7 @@
-.split-button {
-    display: inline-flex;
-    align-items: center;
-    gap: calc(2 * var(--dp, 1px));
+@layer adgytec.comps {
+    .split-button {
+        display: inline-flex;
+        align-items: center;
+        gap: calc(2 * var(--dp, 1px));
+    }
 }

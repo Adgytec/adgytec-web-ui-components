@@ -1,32 +1,34 @@
-.popover {
-    --offset: calc(4 * var(--dp, 1px));
+@layer adgytec.comps {
+    .popover {
+        --offset: calc(4 * var(--dp, 1px));
 
-    transform: translate3d(0, 0, 0);
-    transition:
-        transform var(--md-sys-motion-expressive-fast-spatial)
-        var(--md-sys-motion-expressive-fast-spatial-duration),
-        opacity var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration);
+        transform: translate3d(0, 0, 0);
+        transition:
+            transform var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            opacity var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
-    &[data-placement="bottom"] {
-        --origin: translateY(calc(-1 * var(--offset)));
-    }
+        &[data-placement="bottom"] {
+            --origin: translateY(calc(-1 * var(--offset)));
+        }
 
-    &[data-placement="top"] {
-        --origin: translateY(var(--offset));
-    }
+        &[data-placement="top"] {
+            --origin: translateY(var(--offset));
+        }
 
-    &[data-placement="right"] {
-        --origin: translateX(calc(-1 * var(--offset)));
-    }
+        &[data-placement="right"] {
+            --origin: translateX(calc(-1 * var(--offset)));
+        }
 
-    &[data-placement="left"] {
-        --origin: translateX(var(--offset));
-    }
+        &[data-placement="left"] {
+            --origin: translateX(var(--offset));
+        }
 
-    &[data-entering],
-    &[data-exiting] {
-        transform: var(--origin);
-        opacity: 0;
+        &[data-entering],
+        &[data-exiting] {
+            transform: var(--origin);
+            opacity: 0;
+        }
     }
 }

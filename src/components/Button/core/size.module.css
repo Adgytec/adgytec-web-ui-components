@@ -1,200 +1,202 @@
-.size {
-    /* shape */
-    --shape: var(--shape-normal);
+@layer adgytec.comps {
+    .size {
+        /* shape */
+        --shape: var(--shape-normal);
 
-    /* padding  */
-    --padding-block: var(--padding-block-base);
+        /* padding  */
+        --padding-block: var(--padding-block-base);
 
-    /* styles */
-    padding-inline: var(--padding-inline);
-    padding-block: var(--padding-block);
-    border-radius: var(--shape);
+        /* styles */
+        padding-inline: var(--padding-inline);
+        padding-block: var(--padding-block);
+        border-radius: var(--shape);
 
-    display: inline-flex;
-    gap: var(--icon-label-gap);
-    align-items: center;
-    justify-content: center;
+        display: inline-flex;
+        gap: var(--icon-label-gap);
+        align-items: center;
+        justify-content: center;
 
-    &[data-selected] {
-        --shape: var(--shape-selected);
+        &[data-selected] {
+            --shape: var(--shape-selected);
+        }
+
+        &[data-pressed] {
+            --shape: var(--shape-pressed);
+        }
     }
 
-    &[data-pressed] {
-        --shape: var(--shape-pressed);
-    }
-}
+    .extra-small {
+        /* height for button is 32 */
+        --md-sys-shape-corner-radius-full: calc(16 * var(--dp, 1px));
 
-.extra-small {
-    /* height for button is 32 */
-    --md-sys-shape-corner-radius-full: calc(16 * var(--dp, 1px));
-
-    --padding-block-base: calc(6 * var(--dp, 1px));
-    --padding-inline: var(--md-sys-layout-space-12);
-
-    --icon-label-gap: var(--md-sys-layout-space-4);
-    --outline-width: var(--md-sys-shape-border-width-thin);
-
-    --shape-normal: var(--md-sys-shape-corner-radius-full);
-    --shape-selected: var(--md-sys-shape-corner-radius-medium);
-
-    --shape-pressed: var(--md-sys-shape-corner-radius-small);
-
-    &[data-shape="square"] {
-        --shape-normal: var(--md-sys-shape-corner-radius-medium);
-        --shape-selected: var(--md-sys-shape-corner-radius-full);
-    }
-
-    /* icon button width */
-    &[data-width="narrow"] {
-        --padding-inline: var(--md-sys-layout-space-4);
-    }
-
-    &[data-width="default"] {
-        --padding-inline: calc(6 * var(--dp, 1px));
-    }
-
-    &[data-width="wide"] {
-        --padding-inline: calc(10 * var(--dp, 1px));
-    }
-}
-
-.small {
-    /* height for button is 40 */
-    --md-sys-shape-corner-radius-full: calc(20 * var(--dp, 1px));
-
-    --padding-block-base: calc(10 * var(--dp, 1px));
-    --padding-inline: var(--md-sys-layout-space-16);
-
-    --icon-label-gap: var(--md-sys-layout-space-8);
-    --outline-width: var(--md-sys-shape-border-width-thin);
-
-    --shape-normal: var(--md-sys-shape-corner-radius-full);
-    --shape-selected: var(--md-sys-shape-corner-radius-medium);
-
-    --shape-pressed: var(--md-sys-shape-corner-radius-small);
-
-    &[data-shape="square"] {
-        --shape-normal: var(--md-sys-shape-corner-radius-medium);
-        --shape-selected: var(--md-sys-shape-corner-radius-full);
-    }
-
-    /* icon button width */
-    &[data-width="narrow"] {
-        --padding-inline: var(--md-sys-layout-space-4);
-    }
-
-    &[data-width="default"] {
-        --padding-inline: var(--md-sys-layout-space-8);
-    }
-
-    &[data-width="wide"] {
-        --padding-inline: calc(14 * var(--dp, 1px));
-    }
-
-    /* icon button height adjustment: icon size is 24 for icon only buttons */
-    &[data-icon-button] {
-        --padding-block-base: calc(8 * var(--dp, 1px));
-    }
-}
-
-.medium {
-    /* height for button is 56 */
-    --md-sys-shape-corner-radius-full: calc(28 * var(--dp, 1px));
-
-    --padding-block-base: var(--md-sys-layout-space-16);
-    --padding-inline: var(--md-sys-layout-space-24);
-
-    --icon-label-gap: var(--md-sys-layout-space-8);
-    --outline-width: var(--md-sys-shape-border-width-thin);
-
-    --shape-normal: var(--md-sys-shape-corner-radius-full);
-    --shape-selected: var(--md-sys-shape-corner-radius-large);
-
-    --shape-pressed: var(--md-sys-shape-corner-radius-medium);
-
-    &[data-shape="square"] {
-        --shape-normal: var(--md-sys-shape-corner-radius-large);
-        --shape-selected: var(--md-sys-shape-corner-radius-full);
-    }
-
-    /* icon button width */
-    &[data-width="narrow"] {
+        --padding-block-base: calc(6 * var(--dp, 1px));
         --padding-inline: var(--md-sys-layout-space-12);
+
+        --icon-label-gap: var(--md-sys-layout-space-4);
+        --outline-width: var(--md-sys-shape-border-width-thin);
+
+        --shape-normal: var(--md-sys-shape-corner-radius-full);
+        --shape-selected: var(--md-sys-shape-corner-radius-medium);
+
+        --shape-pressed: var(--md-sys-shape-corner-radius-small);
+
+        &[data-shape="square"] {
+            --shape-normal: var(--md-sys-shape-corner-radius-medium);
+            --shape-selected: var(--md-sys-shape-corner-radius-full);
+        }
+
+        /* icon button width */
+        &[data-width="narrow"] {
+            --padding-inline: var(--md-sys-layout-space-4);
+        }
+
+        &[data-width="default"] {
+            --padding-inline: calc(6 * var(--dp, 1px));
+        }
+
+        &[data-width="wide"] {
+            --padding-inline: calc(10 * var(--dp, 1px));
+        }
     }
 
-    &[data-width="default"] {
+    .small {
+        /* height for button is 40 */
+        --md-sys-shape-corner-radius-full: calc(20 * var(--dp, 1px));
+
+        --padding-block-base: calc(10 * var(--dp, 1px));
         --padding-inline: var(--md-sys-layout-space-16);
+
+        --icon-label-gap: var(--md-sys-layout-space-8);
+        --outline-width: var(--md-sys-shape-border-width-thin);
+
+        --shape-normal: var(--md-sys-shape-corner-radius-full);
+        --shape-selected: var(--md-sys-shape-corner-radius-medium);
+
+        --shape-pressed: var(--md-sys-shape-corner-radius-small);
+
+        &[data-shape="square"] {
+            --shape-normal: var(--md-sys-shape-corner-radius-medium);
+            --shape-selected: var(--md-sys-shape-corner-radius-full);
+        }
+
+        /* icon button width */
+        &[data-width="narrow"] {
+            --padding-inline: var(--md-sys-layout-space-4);
+        }
+
+        &[data-width="default"] {
+            --padding-inline: var(--md-sys-layout-space-8);
+        }
+
+        &[data-width="wide"] {
+            --padding-inline: calc(14 * var(--dp, 1px));
+        }
+
+        /* icon button height adjustment: icon size is 24 for icon only buttons */
+        &[data-icon-button] {
+            --padding-block-base: calc(8 * var(--dp, 1px));
+        }
     }
 
-    &[data-width="wide"] {
+    .medium {
+        /* height for button is 56 */
+        --md-sys-shape-corner-radius-full: calc(28 * var(--dp, 1px));
+
+        --padding-block-base: var(--md-sys-layout-space-16);
         --padding-inline: var(--md-sys-layout-space-24);
-    }
-}
 
-.large {
-    /* height for button is 96 */
-    --md-sys-shape-corner-radius-full: calc(48 * var(--dp, 1px));
+        --icon-label-gap: var(--md-sys-layout-space-8);
+        --outline-width: var(--md-sys-shape-border-width-thin);
 
-    --padding-block-base: var(--md-sys-layout-space-32);
-    --padding-inline: var(--md-sys-layout-space-48);
+        --shape-normal: var(--md-sys-shape-corner-radius-full);
+        --shape-selected: var(--md-sys-shape-corner-radius-large);
 
-    --icon-label-gap: var(--md-sys-layout-space-12);
-    --outline-width: var(--md-sys-shape-border-width-thick);
+        --shape-pressed: var(--md-sys-shape-corner-radius-medium);
 
-    --shape-normal: var(--md-sys-shape-corner-radius-full);
-    --shape-selected: var(--md-sys-shape-corner-radius-extra-large);
+        &[data-shape="square"] {
+            --shape-normal: var(--md-sys-shape-corner-radius-large);
+            --shape-selected: var(--md-sys-shape-corner-radius-full);
+        }
 
-    --shape-pressed: var(--md-sys-shape-corner-radius-large);
+        /* icon button width */
+        &[data-width="narrow"] {
+            --padding-inline: var(--md-sys-layout-space-12);
+        }
 
-    &[data-shape="square"] {
-        --shape-normal: var(--md-sys-shape-corner-radius-extra-large);
-        --shape-selected: var(--md-sys-shape-corner-radius-full);
-    }
+        &[data-width="default"] {
+            --padding-inline: var(--md-sys-layout-space-16);
+        }
 
-    /* icon button width */
-    &[data-width="narrow"] {
-        --padding-inline: var(--md-sys-layout-space-16);
-    }
-
-    &[data-width="default"] {
-        --padding-inline: var(--md-sys-layout-space-32);
+        &[data-width="wide"] {
+            --padding-inline: var(--md-sys-layout-space-24);
+        }
     }
 
-    &[data-width="wide"] {
+    .large {
+        /* height for button is 96 */
+        --md-sys-shape-corner-radius-full: calc(48 * var(--dp, 1px));
+
+        --padding-block-base: var(--md-sys-layout-space-32);
         --padding-inline: var(--md-sys-layout-space-48);
-    }
-}
 
-.extra-large {
-    /* height for button is 136 */
-    --md-sys-shape-corner-radius-full: calc(68 * var(--dp, 1px));
+        --icon-label-gap: var(--md-sys-layout-space-12);
+        --outline-width: var(--md-sys-shape-border-width-thick);
 
-    --padding-block-base: var(--md-sys-layout-space-48);
-    --padding-inline: var(--md-sys-layout-space-64);
+        --shape-normal: var(--md-sys-shape-corner-radius-full);
+        --shape-selected: var(--md-sys-shape-corner-radius-extra-large);
 
-    --icon-label-gap: var(--md-sys-layout-space-16);
-    --outline-width: calc(3 * var(--dp, 1px));
+        --shape-pressed: var(--md-sys-shape-corner-radius-large);
 
-    --shape-normal: var(--md-sys-shape-corner-radius-full);
-    --shape-selected: var(--md-sys-shape-corner-radius-extra-large);
+        &[data-shape="square"] {
+            --shape-normal: var(--md-sys-shape-corner-radius-extra-large);
+            --shape-selected: var(--md-sys-shape-corner-radius-full);
+        }
 
-    --shape-pressed: var(--md-sys-shape-corner-radius-large);
+        /* icon button width */
+        &[data-width="narrow"] {
+            --padding-inline: var(--md-sys-layout-space-16);
+        }
 
-    &[data-shape="square"] {
-        --shape-normal: var(--md-sys-shape-corner-radius-extra-large);
-        --shape-selected: var(--md-sys-shape-corner-radius-full);
-    }
+        &[data-width="default"] {
+            --padding-inline: var(--md-sys-layout-space-32);
+        }
 
-    /* icon button width */
-    &[data-width="narrow"] {
-        --padding-inline: var(--md-sys-layout-space-32);
-    }
-
-    &[data-width="default"] {
-        --padding-inline: var(--md-sys-layout-space-48);
+        &[data-width="wide"] {
+            --padding-inline: var(--md-sys-layout-space-48);
+        }
     }
 
-    &[data-width="wide"] {
-        --padding-inline: var(--md-sys-layout-space-72);
+    .extra-large {
+        /* height for button is 136 */
+        --md-sys-shape-corner-radius-full: calc(68 * var(--dp, 1px));
+
+        --padding-block-base: var(--md-sys-layout-space-48);
+        --padding-inline: var(--md-sys-layout-space-64);
+
+        --icon-label-gap: var(--md-sys-layout-space-16);
+        --outline-width: calc(3 * var(--dp, 1px));
+
+        --shape-normal: var(--md-sys-shape-corner-radius-full);
+        --shape-selected: var(--md-sys-shape-corner-radius-extra-large);
+
+        --shape-pressed: var(--md-sys-shape-corner-radius-large);
+
+        &[data-shape="square"] {
+            --shape-normal: var(--md-sys-shape-corner-radius-extra-large);
+            --shape-selected: var(--md-sys-shape-corner-radius-full);
+        }
+
+        /* icon button width */
+        &[data-width="narrow"] {
+            --padding-inline: var(--md-sys-layout-space-32);
+        }
+
+        &[data-width="default"] {
+            --padding-inline: var(--md-sys-layout-space-48);
+        }
+
+        &[data-width="wide"] {
+            --padding-inline: var(--md-sys-layout-space-72);
+        }
     }
 }

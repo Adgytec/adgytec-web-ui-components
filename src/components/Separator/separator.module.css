@@ -1,17 +1,19 @@
-.separator {
-    --thickness: calc(1 * var(--dp, 1px));
-    --color: var(--separator-color, var(--md-sys-color-outline-variant));
+@layer adgytec.comps {
+    .separator {
+        --thickness: calc(1 * var(--dp, 1px));
+        --color: var(--separator-color, var(--md-sys-color-outline-variant));
 
-    background-color: rgb(
-        from var(--color) r g b /
-        var(--md-sys-state-divider)
-    );
+        background-color: rgb(
+            from var(--color) r g b /
+            var(--md-sys-state-divider)
+        );
 
-    inline-size: 100%;
-    block-size: var(--thickness);
+        inline-size: 100%;
+        block-size: var(--thickness);
 
-    &[aria-orientation="vertical"] {
-        block-size: 100%;
-        inline-size: var(--thickness);
+        &[aria-orientation="vertical"] {
+            block-size: 100%;
+            inline-size: var(--thickness);
+        }
     }
 }

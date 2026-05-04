@@ -4,8 +4,8 @@ import { Description } from "../Description";
 import { FieldError } from "../FieldError";
 import { Label } from "../Label";
 import styles from "./checkbox.module.css";
-import type { CheckboxGroupProps } from "./types";
 import { CheckboxGroupContext } from "./context";
+import type { CheckboxGroupProps } from "./types";
 
 export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     label,

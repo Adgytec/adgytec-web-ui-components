@@ -1,10 +1,10 @@
 import clsx from "clsx";
+import { useContext } from "react";
 import { Checkbox as AriaCheckbox } from "react-aria-components";
 import { TapTarget } from "@/utils/tapTarget";
 import styles from "./checkbox.module.css";
-import type { CheckboxProps } from "./types";
-import { useContext } from "react";
 import { CheckboxGroupContext } from "./context";
+import type { CheckboxProps } from "./types";
 
 export const Checkbox: React.FC<CheckboxProps> = ({
     children,

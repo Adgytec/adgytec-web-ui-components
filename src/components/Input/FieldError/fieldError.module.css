@@ -1,3 +1,5 @@
-.error {
-    color: var(--md-sys-color-error);
+@layer adgytec.comps {
+    .error {
+        color: var(--md-sys-color-error);
+    }
 }
