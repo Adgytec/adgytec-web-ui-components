@@ -194,9 +194,7 @@ const RadioPreview = () => {
                 labelPlacement="start"
             >
                 <Radio value="cat">Cat</Radio>
-                <Radio value="dog" labelPlacement="end">
-                    Dog
-                </Radio>
+                <Radio value="dog">Dog</Radio>
                 <Radio value="dragon">Dragon</Radio>
             </RadioGroup>
         </PreviewContainer>

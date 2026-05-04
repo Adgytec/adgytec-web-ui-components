@@ -11,8 +11,6 @@
             var(--_state-opacity)
         );
 
-        cursor: pointer;
-
         position: relative;
         display: inline-flex;
 
@@ -21,6 +19,7 @@
         gap: var(--md-sys-layout-space-16);
 
         color: inherit;
+        cursor: pointer;
 
         * {
             cursor: pointer;

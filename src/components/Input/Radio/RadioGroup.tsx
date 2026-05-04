@@ -13,7 +13,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
     errorMessage,
     children,
     className,
-    radioItemsGap = 0,
+    radioItemsGap = 24,
     labelPlacement,
     ...props
 }) => {

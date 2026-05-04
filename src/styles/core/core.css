@@ -1,4 +1,8 @@
-@layer adgytec.reset, adgytec.tokens, adgytec.base, adgytec.comps;
+@layer adgytec.reset,
+    adgytec.tokens,
+    adgytec.base,
+    adgytec.comps,
+    adgytec.overrides;
 
 @import "reset.css" layer(adgytec.reset);
 @import "./tokens/tokens.css" layer(adgytec.tokens);
