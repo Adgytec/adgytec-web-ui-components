@@ -191,9 +191,12 @@ const RadioPreview = () => {
                 label="Enabled"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
                 orientation="horizontal"
+                labelPlacement="start"
             >
                 <Radio value="cat">Cat</Radio>
-                <Radio value="dog">Dog</Radio>
+                <Radio value="dog" labelPlacement="end">
+                    Dog
+                </Radio>
                 <Radio value="dragon">Dragon</Radio>
             </RadioGroup>
         </PreviewContainer>

@@ -5,14 +5,17 @@ import type {
     ValidationResult,
 } from "react-aria-components";
 
+export type RadioLabelPlacement = "start" | "end";
+
 export interface RadioGroupProps extends Omit<AriaRadioGroupProps, "children"> {
     label?: string;
     description?: string;
     errorMessage?: string | ((validation: ValidationResult) => string);
     children?: ReactNode;
     radioItemsGap?: number;
+    labelPlacement?: RadioLabelPlacement;
 }
 
-export interface RadioProps extends Omit<AriaRadioProps, "children"> {
-    children?: ReactNode;
+export interface RadioProps extends AriaRadioProps {
+    labelPlacement?: RadioLabelPlacement;
 }

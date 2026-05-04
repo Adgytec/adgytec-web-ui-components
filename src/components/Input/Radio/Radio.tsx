@@ -1,13 +1,21 @@
 import { clsx } from "clsx";
-import { Radio as AriaRadio, type RadioProps } from "react-aria-components";
+import { useContext } from "react";
+import { Radio as AriaRadio } from "react-aria-components";
 import { TapTarget } from "@/utils/tapTarget";
+import { RadioGroupContext } from "./context";
 import styles from "./radio.module.css";
+import type { RadioProps } from "./types";
 
 export const Radio: React.FC<RadioProps> = ({
     className,
     children,
+    labelPlacement,
     ...props
 }) => {
+    const { labelPlacement: groupLabelPlacement } =
+        useContext(RadioGroupContext);
+    const placement = labelPlacement ?? groupLabelPlacement ?? "end";
+
     return (
         <AriaRadio
             className={(renderProps) =>
@@ -20,14 +28,16 @@ export const Radio: React.FC<RadioProps> = ({
             }
             {...props}
         >
-            {({
-                isSelected,
-                isHovered,
-                isDisabled,
-                isFocused,
-                isFocusVisible,
-                isPressed,
-            }) => {
+            {(renderProps) => {
+                const {
+                    isSelected,
+                    isHovered,
+                    isDisabled,
+                    isFocused,
+                    isFocusVisible,
+                    isPressed,
+                } = renderProps;
+
                 const dataAttrs = {
                     "data-selected": isSelected || undefined,
                     "data-hovered": isHovered || undefined,
@@ -37,8 +47,14 @@ export const Radio: React.FC<RadioProps> = ({
                     "data-pressed": isPressed || undefined,
                 };
 
+                const label =
+                    typeof children === "function"
+                        ? children(renderProps)
+                        : children;
                 return (
                     <>
+                        {placement === "start" && label}
+
                         <div
                             className={clsx(styles["indicator"], TapTarget)}
                             {...dataAttrs}
@@ -48,7 +64,8 @@ export const Radio: React.FC<RadioProps> = ({
                                 {...dataAttrs}
                             ></div>
                         </div>
-                        {children}
+
+                        {placement === "end" && label}
                     </>
                 );
             }}
