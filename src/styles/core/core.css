@@ -1,4 +1,6 @@
-@import "reset.css";
-@import "./tokens/tokens.css";
-@import "./theme/monochrome/monochrome.css";
-@import "./typography/typography.css";
+@layer adgytec.reset, adgytec.tokens, adgytec.base, adgytec.comps;
+
+@import "reset.css" layer(adgytec.reset);
+@import "./tokens/tokens.css" layer(adgytec.tokens);
+@import "./theme/monochrome/monochrome.css" layer(adgytec.tokens);
+@import "./typography/typography.css" layer(adgytec.base);
