@@ -1,306 +1,323 @@
-/* reduces specificity for easier override */
-:where(.switch) {
-    --padding: var(--md-sys-layout-space-16);
+@layer adgytec.comps {
+    .switch {
+        --state-selected-base-color: var(--md-sys-color-primary);
+        --state-unselected-base-color: var(--md-sys-color-on-surface);
 
-    --state-selected-base-color: var(--md-sys-color-primary);
-    --state-unselected-base-color: var(--md-sys-color-on-surface);
+        --_state-opacity: 0;
+        --_state-color: var(--state-unselected-base-color);
 
-    --_state-opacity: 0;
-    --_state-color: var(--state-unselected-base-color);
+        --state-color: rgb(
+            from var(--_state-color) r g b /
+            var(--_state-opacity)
+        );
 
-    --state-color: rgb(from var(--_state-color) r g b / var(--_state-opacity));
+        position: relative;
+        display: inline-flex;
 
-    display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--md-sys-layout-space-16);
 
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--md-sys-layout-space-16);
+        color: inherit;
+        cursor: pointer;
 
-    color: inherit;
+        & * {
+            cursor: inherit;
+        }
 
-    padding: var(--padding);
+        &[data-disabled] {
+            color: rgb(
+                from currentColor r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            cursor: default;
+        }
 
-    background-color: var(--state-color);
-    border-radius: var(--md-sys-shape-corner-radius-extra-small);
+        &[data-selected] {
+            --_state-color: var(--state-selected-base-color);
+        }
 
-    cursor: pointer;
+        &[data-hovered] {
+            --_state-opacity: var(--md-sys-state-hover);
+            z-index: 1;
+        }
 
-    transition: background-color var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration);
+        &[data-focus-visible] {
+            --_state-opacity: var(--md-sys-state-focus);
+            z-index: 1;
+        }
 
-    @media (prefers-reduced-motion) {
-        transition: none;
+        &[data-pressed] {
+            --_state-opacity: var(--md-sys-state-pressed);
+        }
     }
 
-    &[data-disabled] {
-        color: rgb(
-            from currentColor r g b /
+    .state-layer::before {
+        content: "";
+
+        position: absolute;
+        inset: calc(-1 * var(--md-sys-layout-space-12));
+
+        background-color: var(--state-color);
+        border-radius: var(--md-sys-shape-corner-radius-extra-small);
+
+        pointer-events: none;
+
+        transition: background-color
+            var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    .icon {
+        color: var(--icon-color);
+    }
+
+    .handle {
+        /* ================= BASE TOKENS ================= */
+
+        /* size */
+        --handle-unselected-size: calc(16 * var(--dp, 1px));
+        --handle-base-size: calc(24 * var(--dp, 1px));
+        --handle-pressed-size: calc(28 * var(--dp, 1px));
+
+        /* shape */
+        --handle-shape: var(--md-sys-shape-corner-radius-full);
+
+        /* color */
+        --handle-selected-base-color: var(--md-sys-color-primary-container);
+        --handle-unselected-base-color: var(--md-sys-color-on-surface-variant);
+
+        /* icon color (if present) */
+        --handle-icon-selected-base-color: var(--md-sys-color-primary);
+        --handle-icon-unselected-base-color: var(
+            --md-sys-color-surface-container-highest
+        );
+
+        /* elevation (M3 uses shadow levels instead of raw shadow) */
+        --handle-elevation: var(--md-sys-elevation-level1);
+        --handle-pressed-elevation: var(--md-sys-elevation-level2);
+
+        /* ================= ENABLED ================= */
+        --handle-selected-enabled-color: var(--md-sys-color-on-primary);
+        --handle-unselected-enabled-color: var(--md-sys-color-outline);
+
+        /* ================= DISABLED ================= */
+
+        --handle-selected-disabled-color: rgb(
+            from var(--md-sys-color-surface) r g b /
+            1
+        );
+        --handle-unselected-disabled-color: rgb(
+            from var(--md-sys-color-on-surface) r g b /
             var(--md-sys-state-disabled-content)
         );
-        cursor: default;
-    }
 
-    &[data-selected] {
-        --_state-color: var(--state-selected-base-color);
-    }
+        /* icon color */
+        --handle-icon-selected-disabled-color: rgb(
+            from var(--md-sys-color-on-surface) r g b /
+            var(--md-sys-state-disabled-content)
+        );
+        --handle-icon-unselected-disabled-color: rgb(
+            from var(--md-sys-color-surface-container-highest) r g b /
+            var(--md-sys-state-disabled-content)
+        );
 
-    &[data-hovered] {
-        --_state-opacity: var(--md-sys-state-hover);
-    }
+        /* derived size */
+        --handle-size: var(--handle-unselected-size);
+        --handle-color: var(--handle-unselected-enabled-color);
+        --handle-x: calc(6 * var(--dp, 1px));
 
-    &[data-focus-visible] {
-        --_state-opacity: var(--md-sys-state-focus);
-    }
+        --icon-color: var(--handle-icon-unselected-base-color);
 
-    &[data-pressed] {
-        --_state-opacity: var(--md-sys-state-pressed);
-    }
-}
+        /* handle style */
+        position: absolute;
+        top: 50%;
+        translate: var(--handle-x) -50%;
 
-.icon {
-    color: var(--icon-color);
-}
+        inline-size: var(--handle-size);
+        aspect-ratio: 1 / 1;
+        border-radius: var(--handle-shape);
 
-.handle {
-    /* ================= BASE TOKENS ================= */
+        background-color: var(--handle-color);
 
-    /* size */
-    --handle-unselected-size: calc(16 * var(--dp, 1px));
-    --handle-base-size: calc(24 * var(--dp, 1px));
-    --handle-pressed-size: calc(28 * var(--dp, 1px));
+        transition:
+            translate var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            background-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            inline-size var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            block-size var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
-    /* shape */
-    --handle-shape: var(--md-sys-shape-corner-radius-full);
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
 
-    /* color */
-    --handle-selected-base-color: var(--md-sys-color-primary-container);
-    --handle-unselected-base-color: var(--md-sys-color-on-surface-variant);
-
-    /* icon color (if present) */
-    --handle-icon-selected-base-color: var(--md-sys-color-primary);
-    --handle-icon-unselected-base-color: var(
-        --md-sys-color-surface-container-highest
-    );
-
-    /* elevation (M3 uses shadow levels instead of raw shadow) */
-    --handle-elevation: var(--md-sys-elevation-level1);
-    --handle-pressed-elevation: var(--md-sys-elevation-level2);
-
-    /* ================= ENABLED ================= */
-    --handle-selected-enabled-color: var(--md-sys-color-on-primary);
-    --handle-unselected-enabled-color: var(--md-sys-color-outline);
-
-    /* ================= DISABLED ================= */
-
-    --handle-selected-disabled-color: rgb(
-        from var(--md-sys-color-surface) r g b /
-        1
-    );
-    --handle-unselected-disabled-color: rgb(
-        from var(--md-sys-color-on-surface) r g b /
-        var(--md-sys-state-disabled-content)
-    );
-
-    /* icon color */
-    --handle-icon-selected-disabled-color: rgb(
-        from var(--md-sys-color-on-surface) r g b /
-        var(--md-sys-state-disabled-content)
-    );
-    --handle-icon-unselected-disabled-color: rgb(
-        from var(--md-sys-color-surface-container-highest) r g b /
-        var(--md-sys-state-disabled-content)
-    );
-
-    /* derived size */
-    --handle-size: var(--handle-unselected-size);
-    --handle-color: var(--handle-unselected-enabled-color);
-    --handle-x: calc(6 * var(--dp, 1px));
-
-    --icon-color: var(--handle-icon-unselected-base-color);
-
-    /* handle style */
-    position: absolute;
-    top: 50%;
-    translate: var(--handle-x) -50%;
-
-    inline-size: var(--handle-size);
-    aspect-ratio: 1 / 1;
-    border-radius: var(--handle-shape);
-
-    background-color: var(--handle-color);
-
-    transition:
-        translate var(--md-sys-motion-expressive-fast-spatial)
-        var(--md-sys-motion-expressive-fast-spatial-duration),
-        background-color var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration),
-        inline-size var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration),
-        block-size var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration);
-
-    @media (prefers-reduced-motion) {
-        transition: none;
-    }
-
-    &[data-icon] {
-        --handle-size: var(--handle-base-size);
-        --handle-x: calc(2 * var(--dp, 1px));
-    }
-
-    &[data-selected] {
-        --handle-color: var(--handle-selected-enabled-color);
-        --handle-size: var(--handle-base-size);
-        --handle-x: calc(22 * var(--dp, 1px));
-        --icon-color: var(--handle-icon-selected-base-color);
-    }
-
-    &[data-disabled] {
-        --handle-color: var(--handle-unselected-disabled-color);
-        --icon-color: var(--handle-icon-unselected-disabled-color);
+        &[data-icon] {
+            --handle-size: var(--handle-base-size);
+            --handle-x: calc(2 * var(--dp, 1px));
+        }
 
         &[data-selected] {
-            --handle-color: var(--handle-selected-disabled-color);
-            --icon-color: var(--handle-icon-selected-disabled-color);
+            --handle-color: var(--handle-selected-enabled-color);
+            --handle-size: var(--handle-base-size);
+            --handle-x: calc(22 * var(--dp, 1px));
+            --icon-color: var(--handle-icon-selected-base-color);
+        }
+
+        &[data-disabled] {
+            --handle-color: var(--handle-unselected-disabled-color);
+            --icon-color: var(--handle-icon-unselected-disabled-color);
+
+            &[data-selected] {
+                --handle-color: var(--handle-selected-disabled-color);
+                --icon-color: var(--handle-icon-selected-disabled-color);
+            }
+        }
+
+        &[data-pressed] {
+            --handle-size: var(--handle-pressed-size);
+            --handle-x: 0;
+
+            &[data-selected] {
+                --handle-x: calc(20 * var(--dp, 1px));
+            }
+        }
+
+        &[data-focus-visible],
+        &[data-hovered],
+        &[data-pressed] {
+            --handle-color: var(--handle-unselected-base-color);
+
+            &[data-selected] {
+                --handle-color: var(--handle-selected-base-color);
+            }
         }
     }
 
-    &[data-pressed] {
-        --handle-size: var(--handle-pressed-size);
-        --handle-x: 0;
+    /* handle state layer */
+    .handle::before {
+        content: "";
 
-        &[data-selected] {
-            --handle-x: calc(20 * var(--dp, 1px));
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        inline-size: var(--state-size);
+        aspect-ratio: 1 / 1;
+        border-radius: var(--state-shape);
+
+        background-color: var(--state-color);
+
+        transition: background-color
+            var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
         }
     }
 
-    &[data-focus-visible],
-    &[data-hovered],
-    &[data-pressed] {
-        --handle-color: var(--handle-unselected-base-color);
+    .handle[data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-        &[data-selected] {
-            --handle-color: var(--handle-selected-base-color);
+    .track {
+        /* dimensions and shape */
+        --track-block-size: calc(32 * var(--dp, 1px));
+        --track-inline-size: calc(52 * var(--dp, 1px));
+        --track-shape: var(--md-sys-shape-corner-radius-full);
+
+        /* outline */
+        --track-outline-thickness: calc(2 * var(--dp, 1px));
+
+        /* ================= BASE TOKENS ================= */
+
+        --track-selected-base-color: var(--md-sys-color-primary);
+        --track-unselected-base-color: var(
+            --md-sys-color-surface-container-highest
+        );
+
+        --track-outline-base-color: var(--md-sys-color-outline);
+        --track-selected-outline-color: transparent;
+
+        /* ================= DISABLED (unchanged) ================= */
+
+        --track-unselected-disabled-color: rgb(
+            from var(--md-sys-color-surface-container-highest) r g b /
+            var(--md-sys-state-disabled-container)
+        );
+        --track-selected-disabled-color: rgb(
+            from var(--md-sys-color-on-surface) r g b /
+            var(--md-sys-state-disabled-container)
+        );
+        --track-unselected-disabled-outline-color: rgb(
+            from var(--md-sys-color-on-surface) r g b /
+            var(--md-sys-state-disabled-container)
+        );
+
+        /* focus indicator */
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
+
+        /* track state size and shape for use */
+        --state-size: calc(40 * var(--dp, 1px));
+        --state-shape: var(--md-sys-shape-corner-radius-full);
+
+        /* track style */
+
+        /* handle will be absolute to track */
+        position: relative;
+
+        inline-size: var(--track-inline-size);
+        block-size: var(--track-block-size);
+        border-radius: var(--track-shape);
+
+        border-width: var(--track-outline-thickness);
+        border-style: solid;
+        border-color: var(--track-outline-base-color);
+
+        background-color: var(--track-unselected-base-color);
+
+        transition:
+            background-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            border-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
         }
     }
-}
 
-/* handle state layer */
-.handle::before {
-    content: "";
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    inline-size: var(--state-size);
-    aspect-ratio: 1 / 1;
-    border-radius: var(--state-shape);
-
-    background-color: var(--state-color);
-
-    transition: background-color var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration);
-
-    @media (prefers-reduced-motion) {
-        transition: none;
-    }
-}
-
-.handle[data-icon] {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.track {
-    /* dimensions and shape */
-    --track-block-size: calc(32 * var(--dp, 1px));
-    --track-inline-size: calc(52 * var(--dp, 1px));
-    --track-shape: var(--md-sys-shape-corner-radius-full);
-
-    /* outline */
-    --track-outline-thickness: calc(2 * var(--dp, 1px));
-
-    /* ================= BASE TOKENS ================= */
-
-    --track-selected-base-color: var(--md-sys-color-primary);
-    --track-unselected-base-color: var(
-        --md-sys-color-surface-container-highest
-    );
-
-    --track-outline-base-color: var(--md-sys-color-outline);
-    --track-selected-outline-color: transparent;
-
-    /* ================= DISABLED (unchanged) ================= */
-
-    --track-unselected-disabled-color: rgb(
-        from var(--md-sys-color-surface-container-highest) r g b /
-        var(--md-sys-state-disabled-container)
-    );
-    --track-selected-disabled-color: rgb(
-        from var(--md-sys-color-on-surface) r g b /
-        var(--md-sys-state-disabled-container)
-    );
-    --track-unselected-disabled-outline-color: rgb(
-        from var(--md-sys-color-on-surface) r g b /
-        var(--md-sys-state-disabled-container)
-    );
-
-    /* focus indicator */
-    --focus-indicator-thickness: calc(3 * var(--dp, 1px));
-    --focus-indicator-offset: calc(2 * var(--dp, 1px));
-    --focus-indicator-color: var(--md-sys-color-secondary);
-
-    /* track state size and shape for use */
-    --state-size: calc(40 * var(--dp, 1px));
-    --state-shape: var(--md-sys-shape-corner-radius-full);
-
-    /* track style */
-
-    /* handle will be absolute to track */
-    position: relative;
-
-    inline-size: var(--track-inline-size);
-    block-size: var(--track-block-size);
-    border-radius: var(--track-shape);
-
-    border-width: var(--track-outline-thickness);
-    border-style: solid;
-    border-color: var(--track-outline-base-color);
-
-    background-color: var(--track-unselected-base-color);
-
-    transition:
-        background-color var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration),
-        border-color var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration);
-
-    @media (prefers-reduced-motion) {
-        transition: none;
-    }
-}
-
-.track[data-selected] {
-    background-color: var(--track-selected-base-color);
-    border-color: var(--track-selected-outline-color);
-}
-
-.track[data-disabled] {
-    background-color: var(--track-unselected-disabled-color);
-    border-color: var(--track-unselected-disabled-outline-color);
-
-    &[data-selected] {
-        background-color: var(--track-selected-disabled-color);
+    .track[data-selected] {
+        background-color: var(--track-selected-base-color);
         border-color: var(--track-selected-outline-color);
     }
-}
 
-.track[data-focus-visible] {
-    outline-width: var(--focus-indicator-thickness);
-    outline-style: solid;
-    outline-offset: var(--focus-indicator-offset);
-    outline-color: var(--focus-indicator-color);
+    .track[data-disabled] {
+        background-color: var(--track-unselected-disabled-color);
+        border-color: var(--track-unselected-disabled-outline-color);
+
+        &[data-selected] {
+            background-color: var(--track-selected-disabled-color);
+            border-color: var(--track-selected-outline-color);
+        }
+    }
+
+    .track[data-focus-visible] {
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
+    }
 }

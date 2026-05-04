@@ -5,6 +5,8 @@ import type {
     ValidationResult,
 } from "react-aria-components";
 
+export type CheckboxLabelPlacement = "start" | "end";
+
 export interface CheckboxGroupProps
     extends Omit<AriaCheckboxGroupProps, "children"> {
     label?: string;
@@ -12,8 +14,11 @@ export interface CheckboxGroupProps
     errorMessage?: string | ((validation: ValidationResult) => string);
     children?: ReactNode;
     checkboxItemsGap?: number;
+    labelPlacement?: CheckboxLabelPlacement;
+    containerStateLayer?: boolean;
 }
 
-export interface CheckboxProps extends Omit<AriaCheckboxProps, "children"> {
-    children?: ReactNode;
+export interface CheckboxProps extends AriaCheckboxProps {
+    labelPlacement?: CheckboxLabelPlacement;
+    containerStateLayer?: boolean;
 }

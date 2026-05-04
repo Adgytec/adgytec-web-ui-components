@@ -1,207 +1,224 @@
-:where(.radio-group) {
-    --padding: var(--md-sys-layout-space-16);
-
-    > [slot="description"],
-    > [slot="label"],
-    > [slot="errorMessage"] {
-        padding: var(--padding);
+@layer adgytec.comps {
+    .radio-group {
+        display: grid;
+        gap: var(--md-sys-layout-space-12);
     }
-}
 
-:where(.radio-items) {
-    --radio-display: flex;
-
-    display: grid;
-
-    &[data-orientation="horizontal"] {
+    .radio-items {
         --radio-display: inline-flex;
 
-        display: flex;
-    }
-}
+        display: inline-grid;
 
-:where(.radio) {
-    /* colors */
-    --base-color: var(--md-sys-color-on-surface);
+        &[data-orientation="horizontal"] {
+            --radio-display: inline-flex;
 
-    --selected-color: var(--md-sys-color-primary);
-    --unselected-color: var(--base-color);
-
-    /* enabled */
-    --enabled-unselected-color: var(--md-sys-color-on-surface-variant);
-
-    /* disabled */
-    --disabled-color: rgb(
-        from var(--base-color) r g b /
-        var(--md-sys-state-disabled-content)
-    );
-
-    /* derived variables */
-    --color: var(--enabled-unselected-color);
-    --_state-color: var(--color);
-    --icon-center-scale: 0;
-
-    /* state layer */
-    --_state-opacity: 0;
-    --state-color: rgb(from var(--_state-color) r g b / var(--_state-opacity));
-
-    /* styles */
-    display: var(--radio-display, flex);
-    align-items: center;
-    gap: var(--md-sys-layout-space-16);
-
-    color: inherit;
-    cursor: pointer;
-
-    padding: var(--padding);
-
-    border-radius: var(--md-sys-shape-corner-radius-extra-small);
-
-    background-color: var(--state-color);
-
-    transition: background-color var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration);
-
-    @media (prefers-reduced-motion) {
-        transition: none;
-    }
-
-    &[data-selected] {
-        --color: var(--selected-color);
-    }
-
-    &[data-hovered] {
-        --_state-opacity: var(--md-sys-state-hover);
-    }
-
-    &[data-focus-visible] {
-        --_state-opacity: var(--md-sys-state-focus);
-    }
-
-    &[data-pressed] {
-        --_state-opacity: var(--md-sys-state-pressed);
-        --_state-color: var(--md-sys-color-primary);
-
-        &:not([data-invalid]) {
-            &[data-selected] {
-                --_state-color: var(--md-sys-color-on-surface);
-            }
+            display: inline-flex;
         }
     }
 
-    &[data-invalid] {
-        --color: var(--md-sys-color-error);
-        --_state-color: var(--md-sys-color-error);
-    }
+    .radio {
+        /* colors */
+        --base-color: var(--md-sys-color-on-surface);
 
-    &[data-disabled] {
-        --color: var(--disabled-color);
+        --selected-color: var(--md-sys-color-primary);
+        --unselected-color: var(--base-color);
 
-        color: rgb(
-            from currentColor r g b /
+        /* enabled */
+        --enabled-unselected-color: var(--md-sys-color-on-surface-variant);
+
+        /* disabled */
+        --disabled-color: rgb(
+            from var(--base-color) r g b /
             var(--md-sys-state-disabled-content)
         );
-        cursor: default;
-    }
 
-    &[data-focus-visible],
-    &[data-hovered],
-    &[data-pressed] {
-        &:not([data-invalid]) {
-            --color: var(--unselected-color);
+        /* derived variables */
+        --color: var(--enabled-unselected-color);
+        --_state-color: var(--color);
+        --icon-center-scale: 0;
 
-            &[data-selected] {
-                --color: var(--selected-color);
+        /* state layer */
+        --_state-opacity: 0;
+        --state-color: rgb(
+            from var(--_state-color) r g b /
+            var(--_state-opacity)
+        );
+
+        /* styles */
+        position: relative;
+
+        display: var(--radio-display, inline-flex);
+        align-items: center;
+        gap: var(--md-sys-layout-space-16);
+
+        color: inherit;
+        cursor: pointer;
+
+        & * {
+            cursor: inherit;
+        }
+
+        &[data-selected] {
+            --color: var(--selected-color);
+        }
+
+        &[data-hovered] {
+            --_state-opacity: var(--md-sys-state-hover);
+            z-index: 1;
+        }
+
+        &[data-focus-visible] {
+            --_state-opacity: var(--md-sys-state-focus);
+            z-index: 1;
+        }
+
+        &[data-pressed] {
+            --_state-opacity: var(--md-sys-state-pressed);
+            --_state-color: var(--md-sys-color-primary);
+
+            &:not([data-invalid]) {
+                &[data-selected] {
+                    --_state-color: var(--md-sys-color-on-surface);
+                }
+            }
+        }
+
+        &[data-invalid] {
+            --color: var(--md-sys-color-error);
+            --_state-color: var(--md-sys-color-error);
+        }
+
+        &[data-disabled] {
+            --color: var(--disabled-color);
+
+            color: rgb(
+                from currentColor r g b /
+                var(--md-sys-state-disabled-content)
+            );
+
+            cursor: default;
+        }
+
+        &[data-focus-visible],
+        &[data-hovered],
+        &[data-pressed] {
+            &:not([data-invalid]) {
+                --color: var(--unselected-color);
+
+                &[data-selected] {
+                    --color: var(--selected-color);
+                }
             }
         }
     }
-}
 
-.indicator {
-    /* material guideline */
-    --size: calc(20 * var(--dp, 1px));
-    --indicator-icon-size: calc(var(--size) - calc(10 * var(--dp, 1px)));
-    --state-size: calc(40 * var(--dp, 1px));
+    .state-layer::before {
+        content: "";
 
-    /* indicator styles */
-    position: relative;
+        position: absolute;
+        inset: calc(-1 * var(--md-sys-layout-space-12));
 
-    inline-size: var(--size);
-    aspect-ratio: 1 / 1;
-    border-radius: var(--md-sys-shape-corner-radius-full);
+        background-color: var(--state-color);
+        border-radius: var(--md-sys-shape-corner-radius-extra-small);
 
-    border: var(--md-sys-shape-border-width-thick) solid var(--color);
+        pointer-events: none;
 
-    transition: border-color var(--md-sys-motion-expressive-default-effects)
-        var(--md-sys-motion-expressive-default-effects-duration);
+        transition: background-color
+            var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
-    @media (prefers-reduced-motion) {
-        transition: none;
-    }
-}
-
-/* state layer */
-.indicator::before {
-    content: "";
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    inline-size: var(--state-size);
-    aspect-ratio: 1 / 1;
-    border-radius: var(--md-sys-shape-corner-radius-full);
-
-    background-color: var(--state-color);
-
-    transition: background-color var(--md-sys-motion-expressive-default-effects)
-        var(--md-sys-motion-expressive-default-effects-duration);
-
-    @media (prefers-reduced-motion) {
-        transition: none;
-    }
-}
-
-/* indicator center icon */
-.indicator-icon {
-    content: "";
-
-    position: absolute;
-    inline-size: var(--indicator-icon-size);
-    aspect-ratio: 1 / 1;
-
-    left: 50%;
-    top: 50%;
-    translate: -50% -50%;
-
-    background-color: var(--color);
-    border-radius: var(--md-sys-shape-corner-radius-full);
-
-    scale: 0;
-
-    transition:
-        background-color var(--md-sys-motion-expressive-default-effects)
-        var(--md-sys-motion-expressive-default-effects-duration),
-        scale var(--md-sys-motion-standard-default-spatial)
-        var(--md-sys-motion-standard-default-spatial-duration);
-
-    @media (prefers-reduced-motion) {
-        transition: none;
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
     }
 
-    &[data-selected] {
-        scale: 1;
+    .indicator {
+        /* material guideline */
+        --size: calc(20 * var(--dp, 1px));
+        --indicator-icon-size: calc(var(--size) - calc(10 * var(--dp, 1px)));
+        --state-size: calc(40 * var(--dp, 1px));
+
+        /* indicator styles */
+        position: relative;
+
+        inline-size: var(--size);
+        aspect-ratio: 1 / 1;
+        border-radius: var(--md-sys-shape-corner-radius-full);
+
+        border: var(--md-sys-shape-border-width-thick) solid var(--color);
+
+        transition: border-color var(--md-sys-motion-expressive-default-effects)
+            var(--md-sys-motion-expressive-default-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
     }
-}
 
-.indicator[data-focus-visible] {
-    --focus-indicator-thickness: calc(3 * var(--dp, 1px));
-    --focus-indicator-offset: calc(2 * var(--dp, 1px));
-    --focus-indicator-color: var(--md-sys-color-secondary);
+    /* state layer */
+    .indicator::before {
+        content: "";
 
-    outline-width: var(--focus-indicator-thickness);
-    outline-style: solid;
-    outline-offset: var(--focus-indicator-offset);
-    outline-color: var(--focus-indicator-color);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        inline-size: var(--state-size);
+        aspect-ratio: 1 / 1;
+        border-radius: var(--md-sys-shape-corner-radius-full);
+
+        background-color: var(--state-color);
+
+        transition: background-color
+            var(--md-sys-motion-expressive-default-effects)
+            var(--md-sys-motion-expressive-default-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    /* indicator center icon */
+    .indicator-icon {
+        content: "";
+
+        position: absolute;
+        inline-size: var(--indicator-icon-size);
+        aspect-ratio: 1 / 1;
+
+        left: 50%;
+        top: 50%;
+        translate: -50% -50%;
+
+        background-color: var(--color);
+        border-radius: var(--md-sys-shape-corner-radius-full);
+
+        scale: 0;
+
+        transition:
+            background-color var(--md-sys-motion-expressive-default-effects)
+            var(--md-sys-motion-expressive-default-effects-duration),
+            scale var(--md-sys-motion-standard-default-spatial)
+            var(--md-sys-motion-standard-default-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-selected] {
+            scale: 1;
+        }
+    }
+
+    .indicator[data-focus-visible] {
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
+
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
+    }
 }

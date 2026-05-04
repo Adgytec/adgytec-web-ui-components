@@ -1,109 +1,113 @@
-.menu {
-    background-color: var(--menu-background);
-    box-shadow: var(--menu-elevation);
-    border-radius: var(--menu-shape);
-    padding: var(--menu-padding);
+@layer adgytec.comps {
+    .menu {
+        background-color: var(--menu-background);
+        box-shadow: var(--menu-elevation);
+        border-radius: var(--menu-shape);
+        padding: var(--menu-padding);
 
-    outline: none;
+        outline: none;
 
-    display: grid;
-    gap: var(--gap);
+        display: grid;
+        gap: var(--gap);
 
-    min-inline-size: min(100svi, calc(160 * var(--dp, 1px)));
-}
-
-.menu-section {
-    background-color: var(--menu-section-background);
-    box-shadow: var(--menu-section-elevation);
-    border-radius: var(--menu-section-shape);
-    padding: var(--menu-section-padding);
-
-    display: grid;
-    gap: var(--gap);
-}
-
-.menu-section-header {
-    padding-inline: var(--menu-item-padding-inline-content);
-    padding-block: var(--md-sys-layout-space-8);
-    color: var(--menu-item-color-normal);
-}
-
-.menu-item {
-    --pb: var(--menu-item-padding-block-single-line);
-
-    position: relative;
-    outline: none;
-    overflow: hidden;
-
-    display: flex;
-    gap: var(--menu-item-content-gap);
-    align-items: center;
-    justify-content: space-between;
-
-    padding-inline: var(--menu-item-padding-inline-content);
-    padding-block: var(--pb);
-
-    border-radius: var(--menu-item-shape);
-
-    transition:
-        border-radius var(--md-sys-motion-expressive-fast-spatial)
-        var(--md-sys-motion-expressive-fast-spatial-duration),
-        background-color var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration),
-        color var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration);
-
-    &[data-multi-line] {
-        --pb: var(--menu-item-padding-block-multi-line);
+        min-inline-size: min(100svi, calc(160 * var(--dp, 1px)));
     }
 
-    &[data-selected] {
-        border-radius: var(--menu-item-selected-shape);
+    .menu-section {
+        background-color: var(--menu-section-background);
+        box-shadow: var(--menu-section-elevation);
+        border-radius: var(--menu-section-shape);
+        padding: var(--menu-section-padding);
+
+        display: grid;
+        gap: var(--gap);
     }
-}
 
-.menu-item-leading,
-.menu-item-trailing {
-    display: flex;
-    gap: var(--menu-item-content-gap);
-    align-items: center;
-}
+    .menu-section-header {
+        padding-inline: var(--menu-item-padding-inline-content);
+        padding-block: var(--md-sys-layout-space-8);
+        color: var(--menu-item-color-normal);
+    }
 
-/* menu -> menu item elevation */
-.menu > .menu-item {
-    box-shadow: var(--menu-item-elevation);
-}
+    .menu-item {
+        --pb: var(--menu-item-padding-block-single-line);
 
-/* menu -> menu section shape */
-.menu > .menu-section:first-child {
-    border-start-start-radius: var(--menu-section-outer-shape);
-    border-start-end-radius: var(--menu-section-outer-shape);
-}
+        position: relative;
+        outline: none;
+        overflow: hidden;
 
-.menu > .menu-section:last-child {
-    border-end-start-radius: var(--menu-section-outer-shape);
-    border-end-end-radius: var(--menu-section-outer-shape);
-}
+        display: flex;
+        gap: var(--menu-item-content-gap);
+        align-items: center;
+        justify-content: space-between;
 
-/* menu -> menu item shape (only if NOT selected) */
-.menu > .menu-item:not([data-selected]):first-child {
-    border-start-start-radius: var(--shape);
-    border-start-end-radius: var(--shape);
-}
+        padding-inline: var(--menu-item-padding-inline-content);
+        padding-block: var(--pb);
 
-.menu > .menu-item:not([data-selected]):last-child {
-    border-end-start-radius: var(--shape);
-    border-end-end-radius: var(--shape);
-}
+        border-radius: var(--menu-item-shape);
 
-/* menu section -> menu item shape (only if NOT selected) */
-.menu > .menu-section:first-child
-    > .menu-item:not([data-selected]):first-child {
-    border-start-start-radius: var(--shape);
-    border-start-end-radius: var(--shape);
-}
+        transition:
+            border-radius var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            background-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
-.menu > .menu-section:last-child > .menu-item:not([data-selected]):last-child {
-    border-end-start-radius: var(--shape);
-    border-end-end-radius: var(--shape);
+        &[data-multi-line] {
+            --pb: var(--menu-item-padding-block-multi-line);
+        }
+
+        &[data-selected] {
+            border-radius: var(--menu-item-selected-shape);
+        }
+    }
+
+    .menu-item-leading,
+    .menu-item-trailing {
+        display: flex;
+        gap: var(--menu-item-content-gap);
+        align-items: center;
+    }
+
+    /* menu -> menu item elevation */
+    .menu > .menu-item {
+        box-shadow: var(--menu-item-elevation);
+    }
+
+    /* menu -> menu section shape */
+    .menu > .menu-section:first-child {
+        border-start-start-radius: var(--menu-section-outer-shape);
+        border-start-end-radius: var(--menu-section-outer-shape);
+    }
+
+    .menu > .menu-section:last-child {
+        border-end-start-radius: var(--menu-section-outer-shape);
+        border-end-end-radius: var(--menu-section-outer-shape);
+    }
+
+    /* menu -> menu item shape (only if NOT selected) */
+    .menu > .menu-item:not([data-selected]):first-child {
+        border-start-start-radius: var(--shape);
+        border-start-end-radius: var(--shape);
+    }
+
+    .menu > .menu-item:not([data-selected]):last-child {
+        border-end-start-radius: var(--shape);
+        border-end-end-radius: var(--shape);
+    }
+
+    /* menu section -> menu item shape (only if NOT selected) */
+    .menu > .menu-section:first-child
+        > .menu-item:not([data-selected]):first-child {
+        border-start-start-radius: var(--shape);
+        border-start-end-radius: var(--shape);
+    }
+
+    .menu
+        > .menu-section:last-child
+        > .menu-item:not([data-selected]):last-child {
+        border-end-start-radius: var(--shape);
+        border-end-end-radius: var(--shape);
+    }
 }

@@ -11,6 +11,8 @@ export const Switch: React.FC<SwitchProps> = ({
     className,
     children,
     icon = "selected",
+    labelPlacement = "start",
+    containerStateLayer = false,
     ...props
 }) => {
     return (
@@ -18,6 +20,7 @@ export const Switch: React.FC<SwitchProps> = ({
             className={(renderProps) =>
                 clsx(
                     styles["switch"],
+                    containerStateLayer && styles["state-layer"],
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -67,23 +70,29 @@ export const Switch: React.FC<SwitchProps> = ({
                         />
                     );
                 }
+
+                const label =
+                    typeof children === "function"
+                        ? children(renderProps)
+                        : children;
+
                 return (
                     <>
-                        {typeof children === "function"
-                            ? children(renderProps)
-                            : children}
+                        {labelPlacement === "start" && label}
 
-                        <div
+                        <span
                             {...dataAttrs}
                             className={clsx(styles["track"], TapTarget)}
                         >
-                            <div
+                            <span
                                 {...dataAttrs}
                                 className={clsx(styles["handle"])}
                             >
                                 {iconElement}
-                            </div>
-                        </div>
+                            </span>
+                        </span>
+
+                        {labelPlacement === "end" && label}
                     </>
                 );
             }}

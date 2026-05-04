@@ -61,20 +61,13 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
     ];
 
     useEffect(() => {
-        // add delay to handle flickers during button transitions
-        const timeoutId = setTimeout(() => {
-            const themePrefix = themeType !== "normal" ? "monochrome-" : "";
-            document.documentElement.setAttribute(
-                "data-theme",
-                `${themePrefix}${isDarkMode ? "dark" : "light"}`
-            );
+        const themePrefix = themeType !== "normal" ? "monochrome-" : "";
+        document.documentElement.setAttribute(
+            "data-theme",
+            `${themePrefix}${isDarkMode ? "dark" : "light"}`
+        );
 
-            document.documentElement.setAttribute("data-theme-type", themeType);
-        }, 100);
-
-        return () => {
-            clearTimeout(timeoutId);
-        };
+        document.documentElement.setAttribute("data-theme-type", themeType);
     }, [isDarkMode, themeType]);
 
     const handleThemeChange = (keys: Set<Key>) => {

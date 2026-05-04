@@ -1,240 +1,256 @@
-:where(.checkbox-group) {
-    --padding: var(--md-sys-layout-space-16);
-
-    > [slot="description"],
-    > [slot="label"],
-    > [slot="errorMessage"] {
-        padding: var(--padding);
-    }
-}
-
-:where(.checkbox-items) {
-    display: grid;
-}
-
-:where(.checkbox) {
-    --padding-checkbox: var(--padding, var(--md-sys-layout-space-16));
-
-    /* state layer */
-    --_state-opacity: 0;
-    --_state-color: var(--md-sys-color-on-surface);
-
-    --state-color: rgb(from var(--_state-color) r g b / var(--_state-opacity));
-
-    /* styles */
-    display: inline-flex;
-    gap: var(--md-sys-layout-space-16);
-    align-items: center;
-
-    color: inherit;
-    cursor: pointer;
-
-    padding: var(--padding-checkbox);
-
-    border-radius: var(--md-sys-shape-corner-radius-extra-small);
-
-    background-color: var(--state-color);
-
-    transition: background-color var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration);
-
-    @media (prefers-reduced-motion) {
-        transition: none;
+@layer adgytec.comps {
+    .checkbox-group {
+        display: grid;
+        gap: var(--md-sys-layout-space-12);
     }
 
-    &[data-invalid] {
-        --_state-color: var(--md-sys-color-error);
+    .checkbox-items {
+        display: inline-grid;
     }
 
-    &[data-selected],
-    &[data-indeterminate] {
-        --_state-color: var(--md-sys-color-primary);
+    .checkbox {
+        --padding-checkbox: var(--padding, var(--md-sys-layout-space-16));
+
+        /* state layer */
+        --_state-opacity: 0;
+        --_state-color: var(--md-sys-color-on-surface);
+
+        --state-color: rgb(
+            from var(--_state-color) r g b /
+            var(--_state-opacity)
+        );
+
+        /* styles */
+        position: relative;
+
+        display: inline-flex;
+        gap: var(--md-sys-layout-space-16);
+        align-items: center;
+
+        color: inherit;
+        cursor: pointer;
+
+        & * {
+            cursor: inherit;
+        }
 
         &[data-invalid] {
             --_state-color: var(--md-sys-color-error);
         }
+
+        &[data-selected],
+        &[data-indeterminate] {
+            --_state-color: var(--md-sys-color-primary);
+
+            &[data-invalid] {
+                --_state-color: var(--md-sys-color-error);
+            }
+        }
+
+        &[data-disabled] {
+            color: rgb(
+                from currentColor r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            cursor: default;
+        }
+
+        /* state opacity */
+        &[data-hovered] {
+            --_state-opacity: var(--md-sys-state-hover);
+            z-index: 1;
+        }
+
+        &[data-focus-visible] {
+            --_state-opacity: var(--md-sys-state-focus);
+            z-index: 1;
+        }
+
+        &[data-pressed] {
+            --_state-opacity: var(--md-sys-state-pressed);
+        }
     }
 
-    &[data-disabled] {
-        color: rgb(
-            from currentColor r g b /
+    .state-layer::before {
+        content: "";
+
+        position: absolute;
+        inset: calc(-1 * var(--md-sys-layout-space-12));
+
+        background-color: var(--state-color);
+        border-radius: var(--md-sys-shape-corner-radius-extra-small);
+
+        pointer-events: none;
+
+        transition: background-color
+            var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    .indicator {
+        /* size */
+        --container-size: calc(18 * var(--dp, 1px));
+        --container-shape: calc(2 * var(--dp, 1px));
+
+        /* outline */
+        --container-outline-thickness: var(--md-sys-shape-border-width-thick);
+
+        --container-outline-unselected-color: var(--md-sys-color-on-surface);
+        --container-outline-unselected-error-color: var(--md-sys-color-error);
+
+        /* color */
+        --container-selected-color: var(--md-sys-color-primary);
+        --container-selected-error-color: var(--md-sys-color-error);
+
+        /* enabled */
+        --container-outline-enabled-unselected-color: var(
+            --md-sys-color-on-surface-variant
+        );
+
+        /* disabled */
+        --container-disabled-base-color: rgb(
+            from var(--md-sys-color-on-surface) r g b /
             var(--md-sys-state-disabled-content)
         );
-        cursor: default;
-    }
 
-    /* state opacity */
-    &[data-hovered] {
-        --_state-opacity: var(--md-sys-state-hover);
-    }
+        /* derived states */
+        --outline-color: var(--container-outline-enabled-unselected-color);
+        --color: transparent;
 
-    &[data-focus-visible] {
-        --_state-opacity: var(--md-sys-state-focus);
-    }
+        --icon-color: var(--md-sys-color-on-primary);
 
-    &[data-pressed] {
-        --_state-opacity: var(--md-sys-state-pressed);
-    }
-}
+        /* styles */
+        position: relative;
 
-.indicator {
-    /* size */
-    --container-size: calc(18 * var(--dp, 1px));
-    --container-shape: calc(2 * var(--dp, 1px));
+        inline-size: var(--container-size);
+        aspect-ratio: 1;
+        border-radius: var(--container-shape);
 
-    /* outline */
-    --container-outline-thickness: var(--md-sys-shape-border-width-thick);
+        background-color: var(--color);
+        border: var(--container-outline-thickness) solid var(--outline-color);
 
-    --container-outline-unselected-color: var(--md-sys-color-on-surface);
-    --container-outline-unselected-error-color: var(--md-sys-color-error);
+        transition:
+            background-color var(--md-sys-motion-expressive-default-effects)
+            var(--md-sys-motion-expressive-default-effects-duration),
+            border-color var(--md-sys-motion-expressive-default-effects)
+            var(--md-sys-motion-expressive-default-effects-duration);
 
-    /* color */
-    --container-selected-color: var(--md-sys-color-primary);
-    --container-selected-error-color: var(--md-sys-color-error);
-
-    /* enabled */
-    --container-outline-enabled-unselected-color: var(
-        --md-sys-color-on-surface-variant
-    );
-
-    /* disabled */
-    --container-disabled-base-color: rgb(
-        from var(--md-sys-color-on-surface) r g b /
-        var(--md-sys-state-disabled-content)
-    );
-
-    /* derived states */
-    --outline-color: var(--container-outline-enabled-unselected-color);
-    --color: transparent;
-
-    --icon-color: var(--md-sys-color-on-primary);
-
-    /* styles */
-    position: relative;
-
-    inline-size: var(--container-size);
-    aspect-ratio: 1;
-    border-radius: var(--container-shape);
-
-    background-color: var(--color);
-    border: var(--container-outline-thickness) solid var(--outline-color);
-
-    transition:
-        background-color var(--md-sys-motion-expressive-default-effects)
-        var(--md-sys-motion-expressive-default-effects-duration),
-        border-color var(--md-sys-motion-expressive-default-effects)
-        var(--md-sys-motion-expressive-default-effects-duration);
-
-    @media (prefers-reduced-motion) {
-        transition: none;
-    }
-
-    &[data-invalid] {
-        --outline-color: var(--container-outline-unselected-error-color);
-        --icon-color: var(--md-sys-color-on-error);
-    }
-
-    &[data-selected],
-    &[data-indeterminate] {
-        --outline-color: transparent;
-        --color: var(--container-selected-color);
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
 
         &[data-invalid] {
-            --color: var(--container-selected-error-color);
-        }
-    }
-
-    &[data-disabled] {
-        --outline-color: var(--container-disabled-base-color);
-        --icon-color: var(--md-sys-color-surface);
-
-        &[data-selected],
-        &[data-indeterminate] {
-            --outline-color: transparent;
-            --color: var(--container-disabled-base-color);
-        }
-    }
-
-    &[data-focus-visible],
-    &[data-hovered],
-    &[data-pressed] {
-        &:not([data-invalid]) {
-            --outline-color: var(--container-outline-unselected-color);
+            --outline-color: var(--container-outline-unselected-error-color);
+            --icon-color: var(--md-sys-color-on-error);
         }
 
         &[data-selected],
         &[data-indeterminate] {
             --outline-color: transparent;
+            --color: var(--container-selected-color);
+
+            &[data-invalid] {
+                --color: var(--container-selected-error-color);
+            }
+        }
+
+        &[data-disabled] {
+            --outline-color: var(--container-disabled-base-color);
+            --icon-color: var(--md-sys-color-surface);
+
+            &[data-selected],
+            &[data-indeterminate] {
+                --outline-color: transparent;
+                --color: var(--container-disabled-base-color);
+            }
+        }
+
+        &[data-focus-visible],
+        &[data-hovered],
+        &[data-pressed] {
+            &:not([data-invalid]) {
+                --outline-color: var(--container-outline-unselected-color);
+            }
+
+            &[data-selected],
+            &[data-indeterminate] {
+                --outline-color: transparent;
+            }
         }
     }
-}
 
-/* state layer */
-.indicator::before {
-    --state-size: calc(40 * var(--dp, 1px));
+    /* state layer */
+    .indicator::before {
+        --state-size: calc(40 * var(--dp, 1px));
 
-    content: "";
+        content: "";
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
 
-    inline-size: var(--state-size);
-    aspect-ratio: 1 / 1;
-    border-radius: var(--md-sys-shape-corner-radius-full);
+        inline-size: var(--state-size);
+        aspect-ratio: 1 / 1;
+        border-radius: var(--md-sys-shape-corner-radius-full);
 
-    background-color: var(--state-color);
+        background-color: var(--state-color);
 
-    transition: background-color var(--md-sys-motion-expressive-default-effects)
-        var(--md-sys-motion-expressive-default-effects-duration);
+        transition: background-color
+            var(--md-sys-motion-expressive-default-effects)
+            var(--md-sys-motion-expressive-default-effects-duration);
 
-    @media (prefers-reduced-motion) {
-        transition: none;
-    }
-}
-
-.indicator[data-focus-visible] {
-    --focus-indicator-thickness: calc(3 * var(--dp, 1px));
-    --focus-indicator-offset: calc(2 * var(--dp, 1px));
-    --focus-indicator-color: var(--md-sys-color-secondary);
-
-    outline-width: var(--focus-indicator-thickness);
-    outline-style: solid;
-    outline-offset: var(--focus-indicator-offset);
-    outline-color: var(--focus-indicator-color);
-}
-
-/* https://react-aria.adobe.com/Checkbox */
-/* ref this for check animation */
-.svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: calc(12 * var(--dp, 1px));
-    aspect-ratio: 1 / 1;
-    fill: none;
-
-    stroke: var(--icon-color);
-
-    stroke-width: calc(3 * var(--dp, 1px));
-    stroke-dasharray: calc(22 * var(--dp, 1px));
-    stroke-dashoffset: 66;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-
-    transition: stroke-dashoffset
-        var(--md-sys-motion-expressive-default-effects)
-        var(--md-sys-motion-expressive-default-effects-duration);
-
-    &[data-selected] {
-        stroke-dashoffset: 44;
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
     }
 
-    &[data-indeterminate] {
-        stroke: none;
-        fill: var(--icon-color);
+    .indicator[data-focus-visible] {
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
+
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
+    }
+
+    /* https://react-aria.adobe.com/Checkbox */
+    /* ref this for check animation */
+    .svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: calc(12 * var(--dp, 1px));
+        aspect-ratio: 1 / 1;
+        fill: none;
+
+        stroke: var(--icon-color);
+
+        stroke-width: calc(3 * var(--dp, 1px));
+        stroke-dasharray: calc(22 * var(--dp, 1px));
+        stroke-dashoffset: 66;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+
+        transition: stroke-dashoffset
+            var(--md-sys-motion-expressive-default-effects)
+            var(--md-sys-motion-expressive-default-effects-duration);
+
+        &[data-selected] {
+            stroke-dashoffset: 44;
+        }
+
+        &[data-indeterminate] {
+            stroke: none;
+            fill: var(--icon-color);
+        }
     }
 }

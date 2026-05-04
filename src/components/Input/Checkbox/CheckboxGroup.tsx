@@ -4,6 +4,7 @@ import { Description } from "../Description";
 import { FieldError } from "../FieldError";
 import { Label } from "../Label";
 import styles from "./checkbox.module.css";
+import { CheckboxGroupContext } from "./context";
 import type { CheckboxGroupProps } from "./types";
 
 export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
@@ -12,34 +13,38 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     errorMessage,
     children,
     className,
-    checkboxItemsGap = 0,
+    checkboxItemsGap = 24,
+    labelPlacement,
+    containerStateLayer,
     ...props
 }) => {
     return (
-        <AriaCheckboxGroup
-            className={(renderProps) =>
-                clsx(
-                    styles["checkbox-group"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
-            {...props}
-        >
-            {label && <Label>{label}</Label>}
-
-            <div
-                className={clsx(styles["checkbox-items"])}
-                style={{
-                    gap: `calc(${checkboxItemsGap} * var(--dp, 1px))`,
-                }}
+        <CheckboxGroupContext value={{ labelPlacement, containerStateLayer }}>
+            <AriaCheckboxGroup
+                className={(renderProps) =>
+                    clsx(
+                        styles["checkbox-group"],
+                        typeof className === "function"
+                            ? className(renderProps)
+                            : className
+                    )
+                }
+                {...props}
             >
-                {children}
-            </div>
+                {label && <Label>{label}</Label>}
 
-            {description && <Description>{description}</Description>}
-            <FieldError>{errorMessage}</FieldError>
-        </AriaCheckboxGroup>
+                <div
+                    className={clsx(styles["checkbox-items"])}
+                    style={{
+                        gap: `calc(${checkboxItemsGap} * var(--dp, 1px))`,
+                    }}
+                >
+                    {children}
+                </div>
+
+                {description && <Description>{description}</Description>}
+                <FieldError>{errorMessage}</FieldError>
+            </AriaCheckboxGroup>
+        </CheckboxGroupContext>
     );
 };

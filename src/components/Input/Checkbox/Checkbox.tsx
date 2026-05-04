@@ -1,19 +1,31 @@
 import clsx from "clsx";
+import { useContext } from "react";
 import { Checkbox as AriaCheckbox } from "react-aria-components";
 import { TapTarget } from "@/utils/tapTarget";
 import styles from "./checkbox.module.css";
+import { CheckboxGroupContext } from "./context";
 import type { CheckboxProps } from "./types";
 
 export const Checkbox: React.FC<CheckboxProps> = ({
     children,
     className,
+    labelPlacement,
+    containerStateLayer,
     ...props
 }) => {
+    const {
+        labelPlacement: groupLabelPlacement,
+        containerStateLayer: groupContainerStateLayer,
+    } = useContext(CheckboxGroupContext);
+    const placement = labelPlacement ?? groupLabelPlacement ?? "end";
+    const stateLayer = containerStateLayer ?? groupContainerStateLayer ?? false;
+
     return (
         <AriaCheckbox
             className={(renderProps) =>
                 clsx(
                     styles["checkbox"],
+                    stateLayer && styles["state-layer"],
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -21,16 +33,18 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             }
             {...props}
         >
-            {({
-                isSelected,
-                isHovered,
-                isDisabled,
-                isFocused,
-                isFocusVisible,
-                isPressed,
-                isInvalid,
-                isIndeterminate,
-            }) => {
+            {(renderProps) => {
+                const {
+                    isSelected,
+                    isHovered,
+                    isDisabled,
+                    isFocused,
+                    isFocusVisible,
+                    isPressed,
+                    isInvalid,
+                    isIndeterminate,
+                } = renderProps;
+
                 const dataAttrs = {
                     "data-selected": isSelected || undefined,
                     "data-hovered": isHovered || undefined,
@@ -42,9 +56,15 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                     "data-indeterminate": isIndeterminate || undefined,
                 };
 
+                const label =
+                    typeof children === "function"
+                        ? children(renderProps)
+                        : children;
                 return (
                     <>
-                        <div
+                        {placement === "start" && label}
+
+                        <span
                             className={clsx(styles["indicator"], TapTarget)}
                             {...dataAttrs}
                         >
@@ -63,8 +83,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                                     <polyline points="2 9 7 14 16 4" />
                                 )}
                             </svg>
-                        </div>
-                        {children}
+                        </span>
+
+                        {placement === "end" && label}
                     </>
                 );
             }}

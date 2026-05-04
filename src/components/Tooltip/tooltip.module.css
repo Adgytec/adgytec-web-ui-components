@@ -1,41 +1,43 @@
-.tooltip {
-    --offset: calc(4 * var(--dp, 1px));
+@layer adgytec.comps {
+    .tooltip {
+        --offset: calc(4 * var(--dp, 1px));
 
-    background-color: var(--md-sys-color-inverse-surface);
-    color: var(--md-sys-color-inverse-on-surface);
+        background-color: var(--md-sys-color-inverse-surface);
+        color: var(--md-sys-color-inverse-on-surface);
 
-    padding-inline: var(--md-sys-layout-space-8);
-    padding-block: var(--md-sys-layout-space-4);
+        padding-inline: var(--md-sys-layout-space-8);
+        padding-block: var(--md-sys-layout-space-4);
 
-    max-inline-size: calc(300 * var(--dp, 1px));
-    border-radius: var(--md-sys-shape-corner-radius-extra-small);
+        max-inline-size: calc(300 * var(--dp, 1px));
+        border-radius: var(--md-sys-shape-corner-radius-extra-small);
 
-    transform: translate3d(0, 0, 0);
-    transition:
-        transform var(--md-sys-motion-expressive-fast-spatial)
-        var(--md-sys-motion-expressive-fast-spatial-duration),
-        opacity var(--md-sys-motion-expressive-fast-effects)
-        var(--md-sys-motion-expressive-fast-effects-duration);
+        transform: translate3d(0, 0, 0);
+        transition:
+            transform var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            opacity var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
-    &[data-placement="bottom"] {
-        --origin: translateY(calc(-1 * var(--offset)));
-    }
+        &[data-placement="bottom"] {
+            --origin: translateY(calc(-1 * var(--offset)));
+        }
 
-    &[data-placement="top"] {
-        --origin: translateY(var(--offset));
-    }
+        &[data-placement="top"] {
+            --origin: translateY(var(--offset));
+        }
 
-    &[data-placement="right"] {
-        --origin: translateX(calc(-1 * var(--offset)));
-    }
+        &[data-placement="right"] {
+            --origin: translateX(calc(-1 * var(--offset)));
+        }
 
-    &[data-placement="left"] {
-        --origin: translateX(var(--offset));
-    }
+        &[data-placement="left"] {
+            --origin: translateX(var(--offset));
+        }
 
-    &[data-entering],
-    &[data-exiting] {
-        transform: var(--origin);
-        opacity: 0;
+        &[data-entering],
+        &[data-exiting] {
+            transform: var(--origin);
+            opacity: 0;
+        }
     }
 }

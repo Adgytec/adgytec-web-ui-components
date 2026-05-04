@@ -1,18 +1,31 @@
 import { clsx } from "clsx";
-import { Radio as AriaRadio, type RadioProps } from "react-aria-components";
+import { useContext } from "react";
+import { Radio as AriaRadio } from "react-aria-components";
 import { TapTarget } from "@/utils/tapTarget";
+import { RadioGroupContext } from "./context";
 import styles from "./radio.module.css";
+import type { RadioProps } from "./types";
 
 export const Radio: React.FC<RadioProps> = ({
     className,
     children,
+    labelPlacement,
+    containerStateLayer,
     ...props
 }) => {
+    const {
+        labelPlacement: groupLabelPlacement,
+        containerStateLayer: groupContainerStateLayer,
+    } = useContext(RadioGroupContext);
+    const placement = labelPlacement ?? groupLabelPlacement ?? "end";
+    const stateLayer = containerStateLayer ?? groupContainerStateLayer ?? false;
+
     return (
         <AriaRadio
             className={(renderProps) =>
                 clsx(
                     styles["radio"],
+                    stateLayer && styles["state-layer"],
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -20,14 +33,16 @@ export const Radio: React.FC<RadioProps> = ({
             }
             {...props}
         >
-            {({
-                isSelected,
-                isHovered,
-                isDisabled,
-                isFocused,
-                isFocusVisible,
-                isPressed,
-            }) => {
+            {(renderProps) => {
+                const {
+                    isSelected,
+                    isHovered,
+                    isDisabled,
+                    isFocused,
+                    isFocusVisible,
+                    isPressed,
+                } = renderProps;
+
                 const dataAttrs = {
                     "data-selected": isSelected || undefined,
                     "data-hovered": isHovered || undefined,
@@ -37,18 +52,25 @@ export const Radio: React.FC<RadioProps> = ({
                     "data-pressed": isPressed || undefined,
                 };
 
+                const label =
+                    typeof children === "function"
+                        ? children(renderProps)
+                        : children;
                 return (
                     <>
-                        <div
+                        {placement === "start" && label}
+
+                        <span
                             className={clsx(styles["indicator"], TapTarget)}
                             {...dataAttrs}
                         >
-                            <div
+                            <span
                                 className={clsx(styles["indicator-icon"])}
                                 {...dataAttrs}
-                            ></div>
-                        </div>
-                        {children}
+                            ></span>
+                        </span>
+
+                        {placement === "end" && label}
                     </>
                 );
             }}

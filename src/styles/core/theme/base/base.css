@@ -1,2 +1,2 @@
-@import "dark.css";
-@import "light.css";
+@import "dark.css" layer(adgytec.tokens);
+@import "light.css" layer(adgytec.tokens);

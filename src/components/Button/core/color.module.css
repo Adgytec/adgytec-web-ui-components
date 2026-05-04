@@ -1,175 +1,182 @@
-.color {
-    --outline-color: var(--outline-color-normal, transparent);
+@layer adgytec.comps {
+    .color {
+        --outline-color: var(--outline-color-normal, transparent);
+
+        /* state layer */
+        --state-layer-normal: var(--color-normal, transparent);
+        --state-layer-selected: var(--color-selected, transparent);
+        --state-layer-unselected: var(--color-unselected, transparent);
+
+        --state-color: var(--state-layer-normal);
+        --state-layer-opacity: 0;
+
+        --state-layer-color: rgb(
+            from var(--state-color) r g b /
+            var(--state-layer-opacity)
+        );
+
+        /* variable to use */
+        --background-color: var(--background-color-normal, transparent);
+        --color: var(--color-normal, transparent);
+
+        /* styles */
+        background-color: var(--background-color);
+        color: var(--color);
+
+        &[data-toggle-button] {
+            --background-color: var(--background-color-unselected, transparent);
+            --color: var(--color-unselected, transparent);
+            --outline-color: var(--outline-color-unselected, transparent);
+
+            --state-color: var(--state-layer-unselected);
+        }
+
+        &[data-selected] {
+            --background-color: var(--background-color-selected, transparent);
+            --color: var(--color-selected, transparent);
+            --outline-color: var(--outline-color-selected, transparent);
+
+            --state-color: var(--state-layer-selected);
+        }
+
+        &[data-hovered] {
+            --state-layer-opacity: var(--md-sys-state-hover);
+        }
+
+        &[data-focus-visible] {
+            --state-layer-opacity: var(--md-sys-state-focus);
+        }
+
+        &[data-pressed] {
+            --state-layer-opacity: var(--md-sys-state-pressed);
+        }
+
+        &[data-disabled] {
+            --background-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-container)
+            );
+            --color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+        }
+    }
 
     /* state layer */
-    --state-layer-normal: var(--color-normal, transparent);
-    --state-layer-selected: var(--color-selected, transparent);
-    --state-layer-unselected: var(--color-unselected, transparent);
+    .color::before {
+        content: "";
 
-    --state-color: var(--state-layer-normal);
-    --state-layer-opacity: 0;
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
 
-    --state-layer-color: rgb(
-        from var(--state-color) r g b /
-        var(--state-layer-opacity)
-    );
+        background-color: var(--state-layer-color);
 
-    /* variable to use */
-    --background-color: var(--background-color-normal, transparent);
-    --color: var(--color-normal, transparent);
-
-    /* styles */
-    background-color: var(--background-color);
-    color: var(--color);
-
-    &[data-toggle-button] {
-        --background-color: var(--background-color-unselected, transparent);
-        --color: var(--color-unselected, transparent);
-        --outline-color: var(--outline-color-unselected, transparent);
-
-        --state-color: var(--state-layer-unselected);
+        transition: background-color var(--md-sys-motion-standard-fast-spatial)
+            var(--md-sys-motion-standard-fast-spatial-duration);
     }
 
-    &[data-selected] {
-        --background-color: var(--background-color-selected, transparent);
-        --color: var(--color-selected, transparent);
-        --outline-color: var(--outline-color-selected, transparent);
+    /* focus indicator */
+    .color[data-focus-visible] {
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
 
-        --state-color: var(--state-layer-selected);
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
+
+        z-index: 1;
     }
 
-    &[data-hovered] {
-        --state-layer-opacity: var(--md-sys-state-hover);
+    .filled {
+        /* background */
+        --background-color-normal: var(--md-sys-color-primary);
+        --background-color-selected: var(--md-sys-color-primary);
+        --background-color-unselected: var(--md-sys-color-surface-container);
+
+        /* text and icon */
+        --color-normal: var(--md-sys-color-on-primary);
+        --color-selected: var(--md-sys-color-on-primary);
+        --color-unselected: var(--md-sys-color-on-surface-variant);
     }
 
-    &[data-focus-visible] {
-        --state-layer-opacity: var(--md-sys-state-focus);
+    .tonal {
+        /* background */
+        --background-color-normal: var(--md-sys-color-secondary-container);
+        --background-color-selected: var(--md-sys-color-secondary);
+        --background-color-unselected: var(--md-sys-color-secondary-container);
+
+        /* text and icon */
+        --color-normal: var(--md-sys-color-on-secondary-container);
+        --color-selected: var(--md-sys-color-on-secondary);
+        --color-unselected: var(--md-sys-color-on-secondary-container);
     }
 
-    &[data-pressed] {
-        --state-layer-opacity: var(--md-sys-state-pressed);
+    .outlined {
+        /* outline */
+        --outline-color-normal: var(--md-sys-color-outline-variant);
+        --outline-color-unselected: var(--md-sys-color-outline-variant);
+
+        /* background */
+        --background-color-selected: var(--md-sys-color-inverse-surface);
+
+        /* text and icon */
+        --color-normal: var(--md-sys-color-on-surface-variant);
+        --color-selected: var(--md-sys-color-inverse-on-surface);
+        --color-unselected: var(--md-sys-color-on-surface-variant);
+
+        /* styles limited to outlined color */
+        border-width: var(--outline-width);
+        border-style: solid;
+        border-color: var(--outline-color);
     }
 
-    &[data-disabled] {
-        --background-color: rgb(
-            from var(--md-sys-color-on-surface) r g b /
-            var(--md-sys-state-disabled-container)
+    /* outlined padding block considers border width */
+    .outlined.outlined {
+        --padding-block: calc(
+            var(--padding-block-base) -
+            var(--outline-width, 0)
         );
-        --color: rgb(
-            from var(--md-sys-color-on-surface) r g b /
-            var(--md-sys-state-disabled-content)
+    }
+
+    /* no toggle button states are there */
+    .text {
+        /* text and icon */
+        --color-normal: var(--md-sys-color-primary);
+    }
+
+    .standard {
+        /* text and icon */
+        --color-normal: var(--md-sys-color-on-surface-variant);
+        --color-selected: var(--md-sys-color-primary);
+        --color-unselected: var(--md-sys-color-on-surface-variant);
+
+        &[data-disabled] {
+            --background-color: transparent;
+        }
+    }
+
+    .elevated {
+        /* background */
+        --background-color-normal: var(--md-sys-color-surface-container-low);
+        --background-color-selected: var(--md-sys-color-primary);
+        --background-color-unselected: var(
+            --md-sys-color-surface-container-low
         );
-    }
-}
 
-/* state layer */
-.color::before {
-    content: "";
+        /* text and icon */
+        --color-normal: var(--md-sys-color-primary);
+        --color-selected: var(--md-sys-color-on-primary);
+        --color-unselected: var(--md-sys-color-primary);
 
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
+        /* styles limited to elevated color */
+        box-shadow: var(--md-sys-elevation-shadow-1);
 
-    background-color: var(--state-layer-color);
-
-    transition: background-color var(--md-sys-motion-standard-fast-spatial)
-        var(--md-sys-motion-standard-fast-spatial-duration);
-}
-
-/* focus indicator */
-.color[data-focus-visible] {
-    --focus-indicator-thickness: calc(3 * var(--dp, 1px));
-    --focus-indicator-offset: calc(2 * var(--dp, 1px));
-    --focus-indicator-color: var(--md-sys-color-secondary);
-
-    outline-width: var(--focus-indicator-thickness);
-    outline-style: solid;
-    outline-offset: var(--focus-indicator-offset);
-    outline-color: var(--focus-indicator-color);
-
-    z-index: 1;
-}
-
-.filled {
-    /* background */
-    --background-color-normal: var(--md-sys-color-primary);
-    --background-color-selected: var(--md-sys-color-primary);
-    --background-color-unselected: var(--md-sys-color-surface-container);
-
-    /* text and icon */
-    --color-normal: var(--md-sys-color-on-primary);
-    --color-selected: var(--md-sys-color-on-primary);
-    --color-unselected: var(--md-sys-color-on-surface-variant);
-}
-
-.tonal {
-    /* background */
-    --background-color-normal: var(--md-sys-color-secondary-container);
-    --background-color-selected: var(--md-sys-color-secondary);
-    --background-color-unselected: var(--md-sys-color-secondary-container);
-
-    /* text and icon */
-    --color-normal: var(--md-sys-color-on-secondary-container);
-    --color-selected: var(--md-sys-color-on-secondary);
-    --color-unselected: var(--md-sys-color-on-secondary-container);
-}
-
-.outlined {
-    /* outline */
-    --outline-color-normal: var(--md-sys-color-outline-variant);
-    --outline-color-unselected: var(--md-sys-color-outline-variant);
-
-    /* background */
-    --background-color-selected: var(--md-sys-color-inverse-surface);
-
-    /* text and icon */
-    --color-normal: var(--md-sys-color-on-surface-variant);
-    --color-selected: var(--md-sys-color-inverse-on-surface);
-    --color-unselected: var(--md-sys-color-on-surface-variant);
-
-    /* styles limited to outlined color */
-    border-width: var(--outline-width);
-    border-style: solid;
-    border-color: var(--outline-color);
-}
-
-/* outlined padding block considers border width */
-.outlined.outlined {
-    --padding-block: calc(var(--padding-block-base) - var(--outline-width, 0));
-}
-
-/* no toggle button states are there */
-.text {
-    /* text and icon */
-    --color-normal: var(--md-sys-color-primary);
-}
-
-.standard {
-    /* text and icon */
-    --color-normal: var(--md-sys-color-on-surface-variant);
-    --color-selected: var(--md-sys-color-primary);
-    --color-unselected: var(--md-sys-color-on-surface-variant);
-
-    &[data-disabled] {
-        --background-color: transparent;
-    }
-}
-
-.elevated {
-    /* background */
-    --background-color-normal: var(--md-sys-color-surface-container-low);
-    --background-color-selected: var(--md-sys-color-primary);
-    --background-color-unselected: var(--md-sys-color-surface-container-low);
-
-    /* text and icon */
-    --color-normal: var(--md-sys-color-primary);
-    --color-selected: var(--md-sys-color-on-primary);
-    --color-unselected: var(--md-sys-color-primary);
-
-    /* styles limited to elevated color */
-    box-shadow: var(--md-sys-elevation-shadow-1);
-
-    &[data-disabled] {
-        box-shadow: none;
+        &[data-disabled] {
+            box-shadow: none;
+        }
     }
 }

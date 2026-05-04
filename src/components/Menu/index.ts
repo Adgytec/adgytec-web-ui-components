@@ -6,4 +6,3 @@ export * from "./MenuSectionHeader";
 export * from "./MenuShortcut";
 export * from "./MenuTrailingText";
 export * from "./MenuTrigger";
-export * from "./SubmenuTrigger";

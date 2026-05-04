@@ -1,75 +1,77 @@
-.button-group {
-    display: inline-flex;
-    align-items: center;
+@layer adgytec.comps {
+    .button-group {
+        display: inline-flex;
+        align-items: center;
 
-    gap: var(--button-group-gap);
-}
+        gap: var(--button-group-gap);
+    }
 
-.button-group [data-visual] {
-    padding-inline: calc(var(--padding-inline) + var(--morph, 0px));
-}
+    .button-group [data-visual] {
+        padding-inline: calc(var(--padding-inline) + var(--morph, 0px));
+    }
 
-/* pressed item */
-.button-group > [data-pressed] {
-    --morph: var(--morph-pressed, 0px);
-}
+    /* pressed item */
+    .button-group > [data-pressed] {
+        --morph: var(--morph-pressed, 0px);
+    }
 
-/* next sibling */
-.button-group > [data-pressed] + * {
-    --morph: var(--morph-pressed-sibling, 0px);
-}
+    /* next sibling */
+    .button-group > [data-pressed] + * {
+        --morph: var(--morph-pressed-sibling, 0px);
+    }
 
-/* previous sibling */
-.button-group > *:has(+ [data-pressed]) {
-    --morph: var(--morph-pressed-sibling, 0px);
-}
+    /* previous sibling */
+    .button-group > *:has(+ [data-pressed]) {
+        --morph: var(--morph-pressed-sibling, 0px);
+    }
 
-/* next sibling ONLY if pressed is first */
-.button-group > [data-pressed]:first-child + * {
-    --morph: var(--morph-edge-pressed-sibling, 0px);
-}
+    /* next sibling ONLY if pressed is first */
+    .button-group > [data-pressed]:first-child + * {
+        --morph: var(--morph-edge-pressed-sibling, 0px);
+    }
 
-/* previous sibling ONLY if pressed is last */
-.button-group > *:has(+ [data-pressed]:last-child) {
-    --morph: var(--morph-edge-pressed-sibling, 0px);
-}
+    /* previous sibling ONLY if pressed is last */
+    .button-group > *:has(+ [data-pressed]:last-child) {
+        --morph: var(--morph-edge-pressed-sibling, 0px);
+    }
 
-.extra-small {
-    --button-group-gap: calc(18 * var(--dp, 1px));
+    .extra-small {
+        --button-group-gap: calc(18 * var(--dp, 1px));
 
-    --morph-pressed: var(--md-sys-layout-space-4);
-    --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
-    --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
-}
+        --morph-pressed: var(--md-sys-layout-space-4);
+        --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
+        --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
+    }
 
-.small {
-    --button-group-gap: var(--md-sys-layout-space-12);
+    .small {
+        --button-group-gap: var(--md-sys-layout-space-12);
 
-    --morph-pressed: calc(6 * var(--dp, 1px));
-    --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
-    --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
-}
+        --morph-pressed: calc(6 * var(--dp, 1px));
+        --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
+        --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
+    }
 
-.medium {
-    --button-group-gap: var(--md-sys-layout-space-8);
+    .medium {
+        --button-group-gap: var(--md-sys-layout-space-8);
 
-    --morph-pressed: var(--md-sys-layout-space-12);
-    --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
-    --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
-}
+        --morph-pressed: var(--md-sys-layout-space-12);
+        --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
+        --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
+    }
 
-.large {
-    --button-group-gap: var(--md-sys-layout-space-8);
+    .large {
+        --button-group-gap: var(--md-sys-layout-space-8);
 
-    --morph-pressed: var(--md-sys-layout-space-16);
-    --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
-    --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
-}
+        --morph-pressed: var(--md-sys-layout-space-16);
+        --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
+        --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
+    }
 
-.extra-large {
-    --button-group-gap: var(--md-sys-layout-space-8);
+    .extra-large {
+        --button-group-gap: var(--md-sys-layout-space-8);
 
-    --morph-pressed: var(--md-sys-layout-space-20);
-    --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
-    --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
+        --morph-pressed: var(--md-sys-layout-space-20);
+        --morph-pressed-sibling: calc(-1 * calc(var(--morph-pressed) / 2));
+        --morph-edge-pressed-sibling: calc(-1 * var(--morph-pressed));
+    }
 }
