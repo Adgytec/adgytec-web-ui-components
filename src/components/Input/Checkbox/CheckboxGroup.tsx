@@ -16,6 +16,7 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     checkboxItemsGap = 24,
     labelPlacement,
     containerStateLayer,
+    showDescriptionOnInvalid = false,
     ...props
 }) => {
     return (
@@ -31,19 +32,31 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                 }
                 {...props}
             >
-                {label && <Label>{label}</Label>}
+                {({ isInvalid }) => {
+                    const showDescription =
+                        description &&
+                        (!isInvalid || (isInvalid && showDescriptionOnInvalid));
 
-                <div
-                    className={clsx(styles["checkbox-items"])}
-                    style={{
-                        gap: `calc(${checkboxItemsGap} * var(--dp, 1px))`,
-                    }}
-                >
-                    {children}
-                </div>
+                    return (
+                        <>
+                            {label && <Label>{label}</Label>}
 
-                {description && <Description>{description}</Description>}
-                <FieldError>{errorMessage}</FieldError>
+                            <div
+                                className={clsx(styles["checkbox-items"])}
+                                style={{
+                                    gap: `calc(${checkboxItemsGap} * var(--dp, 1px))`,
+                                }}
+                            >
+                                {children}
+                            </div>
+
+                            {showDescription && (
+                                <Description>{description}</Description>
+                            )}
+                            <FieldError>{errorMessage}</FieldError>
+                        </>
+                    );
+                }}
             </AriaCheckboxGroup>
         </CheckboxGroupContext>
     );

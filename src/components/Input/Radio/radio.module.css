@@ -1,7 +1,15 @@
 @layer adgytec.comps {
     .radio-group {
         display: grid;
-        gap: var(--md-sys-layout-space-12);
+        gap: var(--md-sys-layout-space-16);
+
+        &[data-disabled] {
+            color: rgb(
+                from currentcolor r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            cursor: default;
+        }
     }
 
     .radio-items {

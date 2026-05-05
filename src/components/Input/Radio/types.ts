@@ -11,6 +11,7 @@ export interface RadioGroupProps extends Omit<AriaRadioGroupProps, "children"> {
     label?: string;
     description?: string;
     errorMessage?: string | ((validation: ValidationResult) => string);
+    showDescriptionOnInvalid?: boolean;
     children?: ReactNode;
     radioItemsGap?: number;
     labelPlacement?: RadioLabelPlacement;

@@ -4,6 +4,7 @@ import {
     TextField as AriaTextField,
 } from "react-aria-components";
 import { typography } from "@/utils";
+import { CharacterCount } from "../CharacterCount";
 import {
     Colors,
     EditorInputStyles,
@@ -22,8 +23,9 @@ export const TextArea: React.FC<TextAreaProps> = ({
     label,
     description,
     errorMessage,
+    showDescriptionOnInvalid = false,
     placeholder,
-    showCharacterCount,
+    showCharacterCount: hasCharacterCount,
     rows,
     className,
     maxLength,
@@ -55,36 +57,58 @@ export const TextArea: React.FC<TextAreaProps> = ({
             onChange={setValue}
             {...props}
         >
-            {label && <Label>{label}</Label>}
+            {({ isInvalid }) => {
+                const hasDescription =
+                    description &&
+                    (!isInvalid || (isInvalid && showDescriptionOnInvalid));
 
-            <AriaTextArea
-                rows={rows}
-                placeholder={placeholder}
-                className={clsx(
-                    UnsetStyles,
-                    EditorStyles,
-                    EditorInputStyles,
-                    typography.bodyLarge
-                )}
-                data-textarea={true}
-            />
+                return (
+                    <>
+                        {label && <Label>{label}</Label>}
 
-            {(showCharacterCount || description) && (
-                <span
-                    data-description={description ? true : undefined}
-                    className={clsx(SupportingTextStyles)}
-                >
-                    {description && <Description>{description}</Description>}
+                        <AriaTextArea
+                            rows={rows}
+                            placeholder={placeholder}
+                            className={clsx(
+                                UnsetStyles,
+                                EditorStyles,
+                                EditorInputStyles,
+                                typography.bodyLarge
+                            )}
+                            data-textarea={true}
+                        />
 
-                    {showCharacterCount && (
-                        <span className={clsx(typography.labelMedium)}>
-                            {currentValue.length}
-                            {maxLength && `/${maxLength}`}
-                        </span>
-                    )}
-                </span>
-            )}
-            <FieldError>{errorMessage}</FieldError>
+                        {hasDescription && (
+                            <span className={clsx(SupportingTextStyles)}>
+                                <Description>{description}</Description>
+
+                                {hasCharacterCount && (
+                                    <CharacterCount
+                                        count={currentValue.length}
+                                        maxLength={maxLength}
+                                    />
+                                )}
+                            </span>
+                        )}
+
+                        {!hasDescription && hasCharacterCount && (
+                            <span className={clsx(SupportingTextStyles)}>
+                                <FieldError>{errorMessage}</FieldError>
+
+                                <CharacterCount
+                                    count={currentValue.length}
+                                    maxLength={maxLength}
+                                />
+                            </span>
+                        )}
+
+                        {/* Error placement */}
+                        {hasDescription || !hasCharacterCount ? (
+                            <FieldError>{errorMessage}</FieldError>
+                        ) : null}
+                    </>
+                );
+            }}
         </AriaTextField>
     );
 };

@@ -9,4 +9,5 @@ export interface DateFieldProps<T extends DateValue>
     label?: string;
     description?: string;
     errorMessage?: string | ((validation: ValidationResult) => string);
+    showDescriptionOnInvalid?: boolean;
 }

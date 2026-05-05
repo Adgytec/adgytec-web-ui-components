@@ -1,0 +1,5 @@
+@layer adgytec.comps {
+    .popover {
+        min-inline-size: var(--trigger-width);
+    }
+}

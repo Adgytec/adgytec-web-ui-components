@@ -1,0 +1,59 @@
+@layer adgytec.comps {
+    .trigger {
+        --rotate: 0;
+
+        justify-content: space-between;
+
+        &[data-pressed] {
+            --rotate: 180deg;
+        }
+
+        > svg {
+            rotate: var(--rotate);
+            transition: rotate var(--md-sys-motion-expressive-fast-spatial)
+                var(--md-sys-motion-expressive-fast-spatial-duration);
+
+            @media (prefers-reduced-motion) {
+                transition: none;
+            }
+        }
+    }
+
+    .select-value {
+        flex: 1;
+        text-align: start;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &[data-placeholder] {
+            color: var(--placeholder-color);
+        }
+    }
+}
+
+@layer adgytec.overrides {
+    .trigger {
+        &:not([data-disabled]) {
+            &[data-pressed] {
+                --outline-color: var(--outline-color-focused-normal);
+                --outline-color-focused: var(--outline-color);
+            }
+
+            &[data-invalid] {
+                --outline-color: var(--outline-color-focused-invalid);
+            }
+
+            &:not([data-focus-visible]) {
+                &[data-focused] {
+                    --outline-color: var(--outline-color-normal);
+                    --outline-color-focused: transparent;
+
+                    &[data-invalid] {
+                        --outline-color: var(--outline-color-invalid);
+                    }
+                }
+            }
+        }
+    }
+}

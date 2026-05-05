@@ -31,8 +31,8 @@
         color: var(--dialog-body-text-color);
         box-shadow: var(--dialog-container-elevation);
 
-        min-inline-size: min(100svi, var(--dialog-container-min-inline-size));
-        max-inline-size: var(--dialog-container-max-inline-size);
+        min-inline-size: min(90svi, var(--dialog-container-min-inline-size));
+        max-inline-size: min(90svi, var(--dialog-container-max-inline-size));
         max-block-size: var(--dialog-container-max-block-size);
     }
 }

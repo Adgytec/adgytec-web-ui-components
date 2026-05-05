@@ -25,6 +25,7 @@ export const TimeField = <T extends TimeValue>({
     label,
     description,
     errorMessage,
+    showDescriptionOnInvalid = false,
     className,
     ...props
 }: TimeFieldProps<T>) => {
@@ -41,40 +42,47 @@ export const TimeField = <T extends TimeValue>({
             }
             {...props}
         >
-            {label && <Label>{label}</Label>}
+            {({ isInvalid }) => {
+                const showDescription =
+                    description &&
+                    (!isInvalid || (isInvalid && showDescriptionOnInvalid));
 
-            <DateInput
-                className={clsx(
-                    UnsetStyles,
-                    EditorStyles,
-                    EditorInputStyles,
-                    typography.bodyLarge,
-                    DateInputStyles
-                )}
-                data-date-input={true}
-            >
-                {(segment) => {
-                    return (
-                        <DateSegment
+                return (
+                    <>
+                        {label && <Label>{label}</Label>}
+
+                        <DateInput
                             className={clsx(
-                                DateSegmentStyles,
-                                typography.bodyLarge
+                                UnsetStyles,
+                                EditorStyles,
+                                EditorInputStyles,
+                                typography.bodyLarge,
+                                DateInputStyles
                             )}
-                            segment={segment}
-                        />
-                    );
-                }}
-            </DateInput>
+                            data-date-input={true}
+                        >
+                            {(segment) => {
+                                return (
+                                    <DateSegment
+                                        className={clsx(
+                                            DateSegmentStyles,
+                                            typography.bodyLarge
+                                        )}
+                                        segment={segment}
+                                    />
+                                );
+                            }}
+                        </DateInput>
 
-            {description && (
-                <Description
-                    className={clsx(SupportingTextStyles)}
-                    data-description={true}
-                >
-                    {description}
-                </Description>
-            )}
-            <FieldError>{errorMessage}</FieldError>
+                        {showDescription && (
+                            <Description className={clsx(SupportingTextStyles)}>
+                                {description}
+                            </Description>
+                        )}
+                        <FieldError>{errorMessage}</FieldError>
+                    </>
+                );
+            }}
         </AriaTimeField>
     );
 };

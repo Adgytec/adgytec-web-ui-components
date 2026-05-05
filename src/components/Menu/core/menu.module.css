@@ -11,6 +11,9 @@
         gap: var(--gap);
 
         min-inline-size: min(100svi, calc(160 * var(--dp, 1px)));
+
+        transition: border-radius var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
     }
 
     .menu-section {
@@ -21,6 +24,9 @@
 
         display: grid;
         gap: var(--gap);
+
+        transition: border-radius var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
     }
 
     .menu-section-header {

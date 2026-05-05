@@ -1,15 +1,14 @@
 import type {
-    TextFieldProps as AriaTextFieldProps,
+    SelectProps as AriaSelectProps,
     ValidationResult,
 } from "react-aria-components";
 
-export interface TextAreaProps
-    extends Omit<AriaTextFieldProps, "children" | "type"> {
+export interface SelectProps<
+    T extends object,
+    M extends "single" | "multiple" = "single",
+> extends AriaSelectProps<T, M> {
     label?: string;
     description?: string;
     errorMessage?: string | ((validation: ValidationResult) => string);
     showDescriptionOnInvalid?: boolean;
-    placeholder?: string;
-    showCharacterCount?: boolean;
-    rows?: number;
 }

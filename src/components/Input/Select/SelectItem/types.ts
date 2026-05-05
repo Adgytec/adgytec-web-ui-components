@@ -1,8 +1,8 @@
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
-import type { MenuItemProps as AriaMenuItemProps } from "react-aria-components";
+import type { ListBoxItemProps } from "react-aria-components";
 
-export interface MenuItemProps extends Omit<AriaMenuItemProps, "children"> {
+export interface SelectItemProps extends Omit<ListBoxItemProps, "children"> {
     leadingIcon?: LucideIcon;
     label: string;
     supportingText?: string;

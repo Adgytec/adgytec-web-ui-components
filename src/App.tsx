@@ -69,6 +69,13 @@ import {
     DateField,
     Input,
     Label,
+    Select,
+    SelectItem,
+    SelectList,
+    SelectListSection,
+    SelectListSectionHeader,
+    SelectPopover,
+    SelectTrigger,
     TextArea,
     TimeField,
 } from "./components/Input";
@@ -77,14 +84,13 @@ import { Radio, RadioGroup } from "./components/Input/Radio";
 import { Switch } from "./components/Input/Switch";
 import {
     Menu,
-    type MenuColor,
     MenuItem,
-    type MenuLayout,
     MenuSection,
     MenuSectionHeader,
     MenuShortcut,
     MenuTrigger,
 } from "./components/Menu";
+import { SubmenuPopover } from "./components/Menu/SubmenuPopover";
 import { Popover } from "./components/Popover";
 import { Separator } from "./components/Separator";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
@@ -190,6 +196,7 @@ const RadioPreview = () => {
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
                 isInvalid
                 containerStateLayer
+                showDescriptionOnInvalid
             >
                 <Radio value="cat">Cat</Radio>
                 <Radio value="dog" containerStateLayer={false}>
@@ -288,8 +295,9 @@ const CheckboxPreview = () => {
                 label="lorem ipsum"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
                 labelPlacement="start"
+                showDescriptionOnInvalid
             >
-                <Checkbox value="one" labelPlacement="end">
+                <Checkbox value="one">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Checkbox>
 
@@ -870,21 +878,16 @@ const MenuPreview = () => {
                     )
                 }
                 trailingIcon={item.trailingIcon}
-            >
-                {item.label}
-            </MenuItem>
+                label={item.label}
+            />
         );
     };
 
-    const renderMenu = (
-        item: MenuNode,
-        menuLayout: MenuLayout,
-        menuColor: MenuColor
-    ) => {
+    const renderMenu = (item: MenuNode) => {
         if (item.type === "section") {
             return (
                 <MenuSection items={item.items} selectionMode="multiple">
-                    {(item) => renderMenu(item, menuLayout, menuColor)}
+                    {(item) => renderMenu(item)}
                 </MenuSection>
             );
         }
@@ -896,16 +899,11 @@ const MenuPreview = () => {
                 <SubmenuTrigger>
                     {renderMenuItem(item)}
 
-                    <Popover offset={-1}>
-                        <Menu
-                            layout={menuLayout}
-                            color={menuColor}
-                            items={item.submenu}
-                            selectionMode="multiple"
-                        >
-                            {(item) => renderMenu(item, menuLayout, menuColor)}
+                    <SubmenuPopover>
+                        <Menu items={item.submenu} selectionMode="multiple">
+                            {(item) => renderMenu(item)}
                         </Menu>
-                    </Popover>
+                    </SubmenuPopover>
                 </SubmenuTrigger>
             );
         }
@@ -922,7 +920,11 @@ const MenuPreview = () => {
                 const triggerColor = randomButtonColor();
 
                 return (
-                    <MenuTrigger key={combo.title}>
+                    <MenuTrigger
+                        key={combo.title}
+                        layout={menuLayout}
+                        color={menuColor}
+                    >
                         <Button
                             color={triggerColor}
                             tooltip={`layout: ${menuLayout}, color: ${menuColor}`}
@@ -931,18 +933,9 @@ const MenuPreview = () => {
                         </Button>
 
                         <Popover>
-                            <Menu
-                                layout={menuLayout}
-                                color={menuColor}
-                                items={combo.menu}
-                                selectionMode="multiple"
-                            >
+                            <Menu items={combo.menu} selectionMode="multiple">
                                 {(item) => {
-                                    return renderMenu(
-                                        item,
-                                        menuLayout,
-                                        menuColor
-                                    );
+                                    return renderMenu(item);
                                 }}
                             </Menu>
                         </Popover>
@@ -993,21 +986,21 @@ const SplitButtonPreview = () => {
                     {label && "Download"}
                 </SplitButtonPrimary>
 
-                <MenuTrigger>
+                <MenuTrigger
+                    color={!label ? "standard" : "vibrant"}
+                    layout={!label ? "standard" : "grouped"}
+                >
                     <SplitButtonTrigger tooltip="more actions" />
                     <Popover>
-                        <Menu
-                            color={!label ? "standard" : "vibrant"}
-                            layout={!label ? "standard" : "grouped"}
-                        >
+                        <Menu>
                             <MenuSection>
                                 <MenuSectionHeader>
                                     Quick Actions
                                 </MenuSectionHeader>
 
-                                <MenuItem trailingIcon={Eye}>Preview</MenuItem>
+                                <MenuItem trailingIcon={Eye} label="Preview" />
 
-                                <MenuItem trailingIcon={Share2}>Share</MenuItem>
+                                <MenuItem trailingIcon={Share2} label="Share" />
                             </MenuSection>
 
                             {!label && <Separator />}
@@ -1018,9 +1011,26 @@ const SplitButtonPreview = () => {
                                 <MenuItem
                                     trailingIcon={GlobeLock}
                                     supportingText="Make item private"
-                                >
-                                    Private
-                                </MenuItem>
+                                    label="Private"
+                                />
+
+                                <SubmenuTrigger>
+                                    <MenuItem
+                                        trailingIcon={GlobeLock}
+                                        supportingText="Make item private"
+                                        label="More"
+                                    />
+
+                                    <SubmenuPopover>
+                                        <Menu>
+                                            <MenuSection>
+                                                <MenuItem label="Lock" />
+
+                                                <MenuItem label="Archive" />
+                                            </MenuSection>
+                                        </Menu>
+                                    </SubmenuPopover>
+                                </SubmenuTrigger>
                             </MenuSection>
                         </Menu>
                     </Popover>
@@ -1383,6 +1393,7 @@ const InputPreview = () => {
                 maxLength={64}
                 isInvalid={isInvalid}
                 isDisabled={isDisabled}
+                showDescriptionOnInvalid={isInvalid}
             />
         );
     };
@@ -1416,6 +1427,7 @@ const TextAreaPreview = () => {
                 description="Describe your issue"
                 showCharacterCount
                 isInvalid={isInvalid}
+                showDescriptionOnInvalid={isInvalid}
                 isDisabled={isDisabled}
                 placeholder="Define you issue..."
             />
@@ -1449,6 +1461,7 @@ const TimeFieldPreview = () => {
                 description="Add your appointment time"
                 isDisabled={isDisabled}
                 isInvalid={isInvalid}
+                showDescriptionOnInvalid={isInvalid}
                 granularity="second"
             />
         );
@@ -1481,6 +1494,7 @@ const DateFieldPreview = () => {
                 description="Add your appointment date"
                 isDisabled={isDisabled}
                 isInvalid={isInvalid}
+                showDescriptionOnInvalid={isInvalid}
                 granularity="second"
             />
         );
@@ -1499,6 +1513,65 @@ const DateFieldPreview = () => {
     );
 };
 
+export const SelectPreview = () => {
+    return (
+        <div className="items">
+            <Select
+                label="Icecream"
+                description="Flavors of icecream"
+                placeholder="Select Icecream"
+                isInvalid
+                showDescriptionOnInvalid
+            >
+                <SelectTrigger />
+
+                <SelectPopover>
+                    <SelectList>
+                        <SelectItem label="Strawberry" />
+
+                        <SelectItem label="Mango" />
+
+                        <Separator />
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </SelectPopover>
+            </Select>
+
+            <Select
+                label="Icecream"
+                description="Flavors of icecream"
+                placeholder="Select Icecream"
+                selectionMode="multiple"
+            >
+                <SelectTrigger />
+
+                <SelectPopover>
+                    <SelectList>
+                        <SelectListSection>
+                            <SelectListSectionHeader>
+                                Specials 😋
+                            </SelectListSectionHeader>
+
+                            <SelectItem label="Strawberry" />
+
+                            <SelectItem label="Mango" />
+                        </SelectListSection>
+
+                        <Separator />
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </SelectPopover>
+            </Select>
+        </div>
+    );
+};
+
 const App = () => {
     type PreviewItem = {
         id: string;
@@ -1512,6 +1585,7 @@ const App = () => {
             label: "Theme Switcher",
             Component: VisualSettingsPreview,
         },
+        { id: "select", label: "Select", Component: SelectPreview },
         { id: "date-field", label: "Date Field", Component: DateFieldPreview },
         { id: "time-field", label: "Time Field", Component: TimeFieldPreview },
         { id: "text-area", label: "Text Area", Component: TextAreaPreview },
