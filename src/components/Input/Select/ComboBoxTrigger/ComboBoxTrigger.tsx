@@ -55,6 +55,7 @@ export const ComboBoxTrigger: React.FC<
                     EditorInputStyles,
                     typography.bodyLarge
                 )}
+                data-input={true}
                 dir={dir}
             />
             <IconButton

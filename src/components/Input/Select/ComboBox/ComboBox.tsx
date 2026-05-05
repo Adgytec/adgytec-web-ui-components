@@ -55,7 +55,17 @@ export const ComboBox = <
                                         styles["selected-value"],
                                         typography.bodyLarge
                                     )}
-                                />
+                                >
+                                    {({
+                                        selectedText,
+                                        isPlaceholder,
+                                        defaultChildren,
+                                    }) =>
+                                        isPlaceholder
+                                            ? defaultChildren
+                                            : selectedText
+                                    }
+                                </ComboBoxValue>
                             )}
 
                         {showDescription && (
