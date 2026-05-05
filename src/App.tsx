@@ -67,6 +67,7 @@ import {
 import { Icon } from "./components/Icon";
 import {
     ComboBox,
+    ComboBoxPopover,
     ComboBoxTrigger,
     DateField,
     Input,
@@ -83,7 +84,6 @@ import {
 } from "./components/Input";
 import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
 import { Radio, RadioGroup } from "./components/Input/Radio";
-import { ComboBoxPopover } from "./components/Input/Select/ComboBoxPopover/ComboBoxPopover";
 import { Switch } from "./components/Input/Switch";
 import {
     Menu,

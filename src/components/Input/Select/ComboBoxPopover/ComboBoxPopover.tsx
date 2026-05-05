@@ -4,8 +4,8 @@ import { Popover } from "@/components/Popover";
 import styles from "./comboBoxPopover.module.css";
 
 export const ComboBoxPopover: React.FC<PopoverProps> = ({
-    offset = 24,
-    crossOffset = -17,
+    offset = 25, // (58dp trigger height - 20dp text line-height) / 2 + 2dp outline + 4dp space
+    crossOffset = -17, // 16dp padding + 1dp border
     className,
     ...props
 }) => {
