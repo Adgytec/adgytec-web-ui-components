@@ -177,14 +177,14 @@
     .editor-input-group {
         display: inline-flex;
         align-items: center;
-        width: 100%;
+        inline-size: 100%;
     }
 
     .editor-input {
         color: var(--editor-color);
 
         &[data-input] {
-            width: 100%;
+            inline-size: 100%;
         }
 
         &[data-textarea] {
