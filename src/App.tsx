@@ -1029,6 +1029,22 @@ const SplitButtonPreview = () => {
                                     supportingText="Make item private"
                                     label="Private"
                                 />
+
+                                <SubmenuTrigger>
+                                    <MenuItem
+                                        trailingIcon={GlobeLock}
+                                        supportingText="Make item private"
+                                        label="More"
+                                    />
+
+                                    <SubmenuPopover>
+                                        <Menu>
+                                            <MenuItem label="Lock" />
+
+                                            <MenuItem label="Archive" />
+                                        </Menu>
+                                    </SubmenuPopover>
+                                </SubmenuTrigger>
                             </MenuSection>
                         </Menu>
                     </Popover>
