@@ -83,6 +83,7 @@ import {
 } from "./components/Input";
 import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
 import { Radio, RadioGroup } from "./components/Input/Radio";
+import { ComboBoxPopover } from "./components/Input/Select/ComboBoxPopover/ComboBoxPopover";
 import { Switch } from "./components/Input/Switch";
 import {
     Menu,
@@ -1604,7 +1605,7 @@ export const SelectPreview = () => {
             <ComboBox label="Icecream" description="Flavors of icecream">
                 <ComboBoxTrigger placeholder="Select Icecream" />
 
-                <SelectPopover>
+                <ComboBoxPopover>
                     <SelectList>
                         <SelectListSection>
                             <SelectListSectionHeader>
@@ -1620,7 +1621,7 @@ export const SelectPreview = () => {
 
                         <SelectItem label="Cherry" />
                     </SelectList>
-                </SelectPopover>
+                </ComboBoxPopover>
             </ComboBox>
 
             <ComboBox
@@ -1632,7 +1633,7 @@ export const SelectPreview = () => {
             >
                 <ComboBoxTrigger placeholder="Select Icecream" />
 
-                <SelectPopover>
+                <ComboBoxPopover>
                     <SelectList>
                         <SelectListSection>
                             <SelectListSectionHeader>
@@ -1648,7 +1649,7 @@ export const SelectPreview = () => {
 
                         <SelectItem label="Cherry" />
                     </SelectList>
-                </SelectPopover>
+                </ComboBoxPopover>
             </ComboBox>
 
             <ComboBox
@@ -1658,7 +1659,7 @@ export const SelectPreview = () => {
             >
                 <ComboBoxTrigger placeholder="Select Icecream" />
 
-                <SelectPopover>
+                <ComboBoxPopover>
                     <SelectList>
                         <SelectListSection>
                             <SelectListSectionHeader>
@@ -1674,7 +1675,7 @@ export const SelectPreview = () => {
 
                         <SelectItem label="Cherry" />
                     </SelectList>
-                </SelectPopover>
+                </ComboBoxPopover>
             </ComboBox>
         </div>
     );
