@@ -3,6 +3,7 @@
         all: unset;
         cursor: pointer;
         position: relative;
+        text-align: center;
 
         &[data-disabled] {
             cursor: default;

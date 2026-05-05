@@ -2,6 +2,8 @@
     .trigger {
         --rotate: 0;
 
+        justify-content: space-between;
+
         &[data-pressed] {
             --rotate: 180deg;
         }
@@ -23,7 +25,6 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        inline-size: 100%;
 
         &[data-placeholder] {
             color: var(--placeholder-color);

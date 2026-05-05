@@ -120,6 +120,8 @@
 
         color: var(--editor-infix-color);
 
+        overflow: auto;
+
         transition:
             border-color var(--md-sys-motion-standard-fast-effects)
             var(--md-sys-motion-standard-fast-effects-duration),

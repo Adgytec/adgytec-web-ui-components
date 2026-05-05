@@ -36,7 +36,11 @@ export const SelectTrigger: React.FC<Omit<ButtonProps, "children">> = (
             data-invalid={invalid || undefined}
             data-select-trigger={true}
         >
-            <SelectValue className={clsx(styles["select-value"])} />
+            <SelectValue className={clsx(styles["select-value"])}>
+                {({ selectedText, isPlaceholder, defaultChildren }) =>
+                    isPlaceholder ? defaultChildren : selectedText
+                }
+            </SelectValue>
 
             <Icon icon={ChevronDown} size={TextFieldIconSize} />
         </Button>
