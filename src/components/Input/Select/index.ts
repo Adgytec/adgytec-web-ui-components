@@ -1,3 +1,4 @@
+export * from "./ComboBox";
 export * from "./Select";
 export * from "./SelectItem";
 export * from "./SelectList";
