@@ -9,8 +9,8 @@ import {
 } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { typography } from "@/utils";
+import { CharacterCount } from "../CharacterCount";
 import {
-    CharacterCountStyles,
     Colors,
     EditorInputGroupStyles,
     EditorInputStyles,
@@ -38,7 +38,7 @@ export const Input: React.FC<InputProps> = ({
     leadingIcon,
     trailing,
     className,
-    showCharacterCount,
+    showCharacterCount: hasCharacterCount,
     maxLength,
     value,
     defaultValue,
@@ -93,7 +93,7 @@ export const Input: React.FC<InputProps> = ({
                     "data-invalid": isInvalid || undefined,
                 };
 
-                const showDescription =
+                const hasDescription =
                     description &&
                     (!isInvalid || (isInvalid && showDescriptionOnInvalid));
 
@@ -140,29 +140,40 @@ export const Input: React.FC<InputProps> = ({
                                 : trailing}
                         </span>
 
-                        {(showCharacterCount || showDescription) && (
+                        {hasDescription && (
                             <span
                                 {...layoutDataAttrs}
                                 className={clsx(SupportingTextStyles)}
                             >
-                                {showDescription && (
-                                    <Description>{description}</Description>
-                                )}
+                                <Description>{description}</Description>
 
-                                {showCharacterCount && (
-                                    <span
-                                        className={clsx(
-                                            CharacterCountStyles,
-                                            typography.labelMedium
-                                        )}
-                                    >
-                                        {currentValue.length}
-                                        {maxLength && `/${maxLength}`}
-                                    </span>
+                                {hasCharacterCount && (
+                                    <CharacterCount
+                                        count={currentValue.length}
+                                        maxLength={maxLength}
+                                    />
                                 )}
                             </span>
                         )}
-                        <FieldError>{errorMessage}</FieldError>
+
+                        {!hasDescription && hasCharacterCount && (
+                            <span
+                                {...layoutDataAttrs}
+                                className={clsx(SupportingTextStyles)}
+                            >
+                                <FieldError>{errorMessage}</FieldError>
+
+                                <CharacterCount
+                                    count={currentValue.length}
+                                    maxLength={maxLength}
+                                />
+                            </span>
+                        )}
+
+                        {/* Error placement */}
+                        {hasDescription || !hasCharacterCount ? (
+                            <FieldError>{errorMessage}</FieldError>
+                        ) : null}
                     </>
                 );
             }}

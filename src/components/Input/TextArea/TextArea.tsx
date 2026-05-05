@@ -4,8 +4,8 @@ import {
     TextField as AriaTextField,
 } from "react-aria-components";
 import { typography } from "@/utils";
+import { CharacterCount } from "../CharacterCount";
 import {
-    CharacterCountStyles,
     Colors,
     EditorInputStyles,
     EditorStyles,
@@ -25,7 +25,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
     errorMessage,
     showDescriptionOnInvalid = false,
     placeholder,
-    showCharacterCount,
+    showCharacterCount: hasCharacterCount,
     rows,
     className,
     maxLength,
@@ -58,7 +58,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
             {...props}
         >
             {({ isInvalid }) => {
-                const showDescription =
+                const hasDescription =
                     description &&
                     (!isInvalid || (isInvalid && showDescriptionOnInvalid));
 
@@ -78,26 +78,34 @@ export const TextArea: React.FC<TextAreaProps> = ({
                             data-textarea={true}
                         />
 
-                        {(showCharacterCount || showDescription) && (
+                        {hasDescription && (
                             <span className={clsx(SupportingTextStyles)}>
-                                {showDescription && (
-                                    <Description>{description}</Description>
-                                )}
+                                <Description>{description}</Description>
 
-                                {showCharacterCount && (
-                                    <span
-                                        className={clsx(
-                                            CharacterCountStyles,
-                                            typography.labelMedium
-                                        )}
-                                    >
-                                        {currentValue.length}
-                                        {maxLength && `/${maxLength}`}
-                                    </span>
+                                {hasCharacterCount && (
+                                    <CharacterCount
+                                        count={currentValue.length}
+                                        maxLength={maxLength}
+                                    />
                                 )}
                             </span>
                         )}
-                        <FieldError>{errorMessage}</FieldError>
+
+                        {!hasDescription && hasCharacterCount && (
+                            <span className={clsx(SupportingTextStyles)}>
+                                <FieldError>{errorMessage}</FieldError>
+
+                                <CharacterCount
+                                    count={currentValue.length}
+                                    maxLength={maxLength}
+                                />
+                            </span>
+                        )}
+
+                        {/* Error placement */}
+                        {hasDescription || !hasCharacterCount ? (
+                            <FieldError>{errorMessage}</FieldError>
+                        ) : null}
                     </>
                 );
             }}
