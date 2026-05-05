@@ -196,6 +196,7 @@ const RadioPreview = () => {
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
                 isInvalid
                 containerStateLayer
+                showDescriptionOnInvalid
             >
                 <Radio value="cat">Cat</Radio>
                 <Radio value="dog" containerStateLayer={false}>
@@ -294,8 +295,9 @@ const CheckboxPreview = () => {
                 label="lorem ipsum"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
                 labelPlacement="start"
+                showDescriptionOnInvalid
             >
-                <Checkbox value="one" labelPlacement="end">
+                <Checkbox value="one">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Checkbox>
 
@@ -1387,6 +1389,7 @@ const InputPreview = () => {
                 maxLength={64}
                 isInvalid={isInvalid}
                 isDisabled={isDisabled}
+                showDescriptionOnInvalid={isInvalid}
             />
         );
     };
@@ -1420,6 +1423,7 @@ const TextAreaPreview = () => {
                 description="Describe your issue"
                 showCharacterCount
                 isInvalid={isInvalid}
+                showDescriptionOnInvalid={isInvalid}
                 isDisabled={isDisabled}
                 placeholder="Define you issue..."
             />
@@ -1453,6 +1457,7 @@ const TimeFieldPreview = () => {
                 description="Add your appointment time"
                 isDisabled={isDisabled}
                 isInvalid={isInvalid}
+                showDescriptionOnInvalid={isInvalid}
                 granularity="second"
             />
         );
@@ -1485,6 +1490,7 @@ const DateFieldPreview = () => {
                 description="Add your appointment date"
                 isDisabled={isDisabled}
                 isInvalid={isInvalid}
+                showDescriptionOnInvalid={isInvalid}
                 granularity="second"
             />
         );
@@ -1511,6 +1517,7 @@ export const SelectPreview = () => {
                 description="Flavors of icecream"
                 placeholder="Select Icecream"
                 isInvalid
+                showDescriptionOnInvalid
             >
                 <SelectTrigger />
 
