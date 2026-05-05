@@ -84,9 +84,7 @@ import { Radio, RadioGroup } from "./components/Input/Radio";
 import { Switch } from "./components/Input/Switch";
 import {
     Menu,
-    type MenuColor,
     MenuItem,
-    type MenuLayout,
     MenuSection,
     MenuSectionHeader,
     MenuShortcut,
@@ -885,15 +883,11 @@ const MenuPreview = () => {
         );
     };
 
-    const renderMenu = (
-        item: MenuNode,
-        menuLayout: MenuLayout,
-        menuColor: MenuColor
-    ) => {
+    const renderMenu = (item: MenuNode) => {
         if (item.type === "section") {
             return (
                 <MenuSection items={item.items} selectionMode="multiple">
-                    {(item) => renderMenu(item, menuLayout, menuColor)}
+                    {(item) => renderMenu(item)}
                 </MenuSection>
             );
         }
@@ -906,13 +900,8 @@ const MenuPreview = () => {
                     {renderMenuItem(item)}
 
                     <SubmenuPopover>
-                        <Menu
-                            layout={menuLayout}
-                            color={menuColor}
-                            items={item.submenu}
-                            selectionMode="multiple"
-                        >
-                            {(item) => renderMenu(item, menuLayout, menuColor)}
+                        <Menu items={item.submenu} selectionMode="multiple">
+                            {(item) => renderMenu(item)}
                         </Menu>
                     </SubmenuPopover>
                 </SubmenuTrigger>
@@ -931,7 +920,11 @@ const MenuPreview = () => {
                 const triggerColor = randomButtonColor();
 
                 return (
-                    <MenuTrigger key={combo.title}>
+                    <MenuTrigger
+                        key={combo.title}
+                        layout={menuLayout}
+                        color={menuColor}
+                    >
                         <Button
                             color={triggerColor}
                             tooltip={`layout: ${menuLayout}, color: ${menuColor}`}
@@ -940,18 +933,9 @@ const MenuPreview = () => {
                         </Button>
 
                         <Popover>
-                            <Menu
-                                layout={menuLayout}
-                                color={menuColor}
-                                items={combo.menu}
-                                selectionMode="multiple"
-                            >
+                            <Menu items={combo.menu} selectionMode="multiple">
                                 {(item) => {
-                                    return renderMenu(
-                                        item,
-                                        menuLayout,
-                                        menuColor
-                                    );
+                                    return renderMenu(item);
                                 }}
                             </Menu>
                         </Popover>
@@ -1002,13 +986,13 @@ const SplitButtonPreview = () => {
                     {label && "Download"}
                 </SplitButtonPrimary>
 
-                <MenuTrigger>
+                <MenuTrigger
+                    color={!label ? "standard" : "vibrant"}
+                    layout={!label ? "standard" : "grouped"}
+                >
                     <SplitButtonTrigger tooltip="more actions" />
                     <Popover>
-                        <Menu
-                            color={!label ? "standard" : "vibrant"}
-                            layout={!label ? "standard" : "grouped"}
-                        >
+                        <Menu>
                             <MenuSection>
                                 <MenuSectionHeader>
                                     Quick Actions
@@ -1039,9 +1023,11 @@ const SplitButtonPreview = () => {
 
                                     <SubmenuPopover>
                                         <Menu>
-                                            <MenuItem label="Lock" />
+                                            <MenuSection>
+                                                <MenuItem label="Lock" />
 
-                                            <MenuItem label="Archive" />
+                                                <MenuItem label="Archive" />
+                                            </MenuSection>
                                         </Menu>
                                     </SubmenuPopover>
                                 </SubmenuTrigger>
