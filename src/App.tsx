@@ -66,6 +66,9 @@ import {
 } from "./components/Dialog";
 import { Icon } from "./components/Icon";
 import {
+    ComboBox,
+    ComboBoxTrigger,
+    ComboBoxTriggerInput,
     DateField,
     Input,
     Label,
@@ -1568,6 +1571,117 @@ export const SelectPreview = () => {
                     </SelectList>
                 </SelectPopover>
             </Select>
+
+            <Select
+                label="Icecream"
+                description="Flavors of icecream"
+                placeholder="Select Icecream"
+                selectionMode="multiple"
+                isDisabled
+            >
+                <SelectTrigger />
+
+                <SelectPopover>
+                    <SelectList>
+                        <SelectListSection>
+                            <SelectListSectionHeader>
+                                Specials 😋
+                            </SelectListSectionHeader>
+
+                            <SelectItem label="Strawberry" />
+
+                            <SelectItem label="Mango" />
+                        </SelectListSection>
+
+                        <Separator />
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </SelectPopover>
+            </Select>
+
+            <ComboBox label="Icecream" description="Flavors of icecream">
+                <ComboBoxTrigger>
+                    <ComboBoxTriggerInput placeholder="Select Icecream" />
+                </ComboBoxTrigger>
+
+                <SelectPopover>
+                    <SelectList>
+                        <SelectListSection>
+                            <SelectListSectionHeader>
+                                Specials 😋
+                            </SelectListSectionHeader>
+
+                            <SelectItem label="Strawberry" />
+
+                            <SelectItem label="Mango" />
+                        </SelectListSection>
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </SelectPopover>
+            </ComboBox>
+
+            <ComboBox
+                label="Icecream"
+                description="Flavors of icecream"
+                selectionMode="multiple"
+                isInvalid
+            >
+                <ComboBoxTrigger>
+                    <ComboBoxTriggerInput placeholder="Select Icecream" />
+                </ComboBoxTrigger>
+
+                <SelectPopover>
+                    <SelectList>
+                        <SelectListSection>
+                            <SelectListSectionHeader>
+                                Specials 😋
+                            </SelectListSectionHeader>
+
+                            <SelectItem label="Strawberry" />
+
+                            <SelectItem label="Mango" />
+                        </SelectListSection>
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </SelectPopover>
+            </ComboBox>
+
+            <ComboBox
+                label="Icecream"
+                description="Flavors of icecream"
+                isDisabled
+            >
+                <ComboBoxTrigger>
+                    <ComboBoxTriggerInput placeholder="Select Icecream" />
+                </ComboBoxTrigger>
+
+                <SelectPopover>
+                    <SelectList>
+                        <SelectListSection>
+                            <SelectListSectionHeader>
+                                Specials 😋
+                            </SelectListSectionHeader>
+
+                            <SelectItem label="Strawberry" />
+
+                            <SelectItem label="Mango" />
+                        </SelectListSection>
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </SelectPopover>
+            </ComboBox>
         </div>
     );
 };

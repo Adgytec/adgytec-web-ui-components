@@ -4,7 +4,7 @@ import { MenuSectionHeaderStyles } from "@/components/Menu";
 import { typography } from "@/utils";
 
 export const SelectListSectionHeader: React.FC<
-    React.ComponentPropsWithoutRef<"header">
+    React.ComponentPropsWithRef<"header">
 > = ({ className, ...props }) => {
     return (
         <Header
