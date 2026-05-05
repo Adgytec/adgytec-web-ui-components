@@ -8,6 +8,7 @@ export interface TextAreaProps
     label?: string;
     description?: string;
     errorMessage?: string | ((validation: ValidationResult) => string);
+    showDescriptionOnInvalid?: boolean;
     placeholder?: string;
     showCharacterCount?: boolean;
     rows?: number;

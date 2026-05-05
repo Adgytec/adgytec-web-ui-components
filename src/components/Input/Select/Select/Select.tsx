@@ -13,6 +13,7 @@ export const Select = <
     label,
     description,
     errorMessage,
+    showDescriptionOnInvalid = false,
     children,
     className,
     ...props
@@ -30,23 +31,30 @@ export const Select = <
             }
             {...props}
         >
-            {(renderProps) => (
-                <>
-                    {label && <Label>{label}</Label>}
+            {(renderProps) => {
+                const { isInvalid } = renderProps;
+                const showDescription =
+                    description &&
+                    (!isInvalid || (isInvalid && showDescriptionOnInvalid));
 
-                    {typeof children === "function"
-                        ? children(renderProps)
-                        : children}
+                return (
+                    <>
+                        {label && <Label>{label}</Label>}
 
-                    {description && (
-                        <Description className={clsx(SupportingTextStyles)}>
-                            {description}
-                        </Description>
-                    )}
+                        {typeof children === "function"
+                            ? children(renderProps)
+                            : children}
 
-                    <FieldError>{errorMessage}</FieldError>
-                </>
-            )}
+                        {showDescription && (
+                            <Description className={clsx(SupportingTextStyles)}>
+                                {description}
+                            </Description>
+                        )}
+
+                        <FieldError>{errorMessage}</FieldError>
+                    </>
+                );
+            }}
         </AriaSelect>
     );
 };

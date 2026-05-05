@@ -11,6 +11,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
     label,
     description,
     errorMessage,
+    showDescriptionOnInvalid = false,
     children,
     className,
     radioItemsGap = 24,
@@ -31,26 +32,32 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
                 }
                 {...props}
             >
-                {({ orientation }) => (
-                    <>
-                        {label && <Label>{label}</Label>}
+                {({ orientation, isInvalid }) => {
+                    const showDescription =
+                        description &&
+                        (!isInvalid || (isInvalid && showDescriptionOnInvalid));
 
-                        <div
-                            data-orientation={orientation}
-                            className={clsx(styles["radio-items"])}
-                            style={{
-                                gap: `calc(${radioItemsGap} * var(--dp, 1px))`,
-                            }}
-                        >
-                            {children}
-                        </div>
+                    return (
+                        <>
+                            {label && <Label>{label}</Label>}
 
-                        {description && (
-                            <Description>{description}</Description>
-                        )}
-                        <FieldError>{errorMessage}</FieldError>
-                    </>
-                )}
+                            <div
+                                data-orientation={orientation}
+                                className={clsx(styles["radio-items"])}
+                                style={{
+                                    gap: `calc(${radioItemsGap} * var(--dp, 1px))`,
+                                }}
+                            >
+                                {children}
+                            </div>
+
+                            {showDescription && (
+                                <Description>{description}</Description>
+                            )}
+                            <FieldError>{errorMessage}</FieldError>
+                        </>
+                    );
+                }}
             </AriaRadioGroup>
         </RadioGroupContext>
     );

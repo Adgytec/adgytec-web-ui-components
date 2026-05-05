@@ -30,6 +30,7 @@ export const Input: React.FC<InputProps> = ({
     label,
     description,
     errorMessage,
+    showDescriptionOnInvalid = false,
     placeholder,
     editorDir,
     prefix,
@@ -92,6 +93,10 @@ export const Input: React.FC<InputProps> = ({
                     "data-invalid": isInvalid || undefined,
                 };
 
+                const showDescription =
+                    description &&
+                    (!isInvalid || (isInvalid && showDescriptionOnInvalid));
+
                 return (
                     <>
                         {label && <Label>{label}</Label>}
@@ -135,12 +140,12 @@ export const Input: React.FC<InputProps> = ({
                                 : trailing}
                         </span>
 
-                        {(showCharacterCount || description) && (
+                        {(showCharacterCount || showDescription) && (
                             <span
                                 {...layoutDataAttrs}
                                 className={clsx(SupportingTextStyles)}
                             >
-                                {description && (
+                                {showDescription && (
                                     <Description>{description}</Description>
                                 )}
 

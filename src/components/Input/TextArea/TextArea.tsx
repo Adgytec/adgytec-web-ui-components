@@ -23,6 +23,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
     label,
     description,
     errorMessage,
+    showDescriptionOnInvalid = false,
     placeholder,
     showCharacterCount,
     rows,
@@ -56,38 +57,50 @@ export const TextArea: React.FC<TextAreaProps> = ({
             onChange={setValue}
             {...props}
         >
-            {label && <Label>{label}</Label>}
+            {({ isInvalid }) => {
+                const showDescription =
+                    description &&
+                    (!isInvalid || (isInvalid && showDescriptionOnInvalid));
 
-            <AriaTextArea
-                rows={rows}
-                placeholder={placeholder}
-                className={clsx(
-                    UnsetStyles,
-                    EditorStyles,
-                    EditorInputStyles,
-                    typography.bodyLarge
-                )}
-                data-textarea={true}
-            />
+                return (
+                    <>
+                        {label && <Label>{label}</Label>}
 
-            {(showCharacterCount || description) && (
-                <span className={clsx(SupportingTextStyles)}>
-                    {description && <Description>{description}</Description>}
-
-                    {showCharacterCount && (
-                        <span
+                        <AriaTextArea
+                            rows={rows}
+                            placeholder={placeholder}
                             className={clsx(
-                                CharacterCountStyles,
-                                typography.labelMedium
+                                UnsetStyles,
+                                EditorStyles,
+                                EditorInputStyles,
+                                typography.bodyLarge
                             )}
-                        >
-                            {currentValue.length}
-                            {maxLength && `/${maxLength}`}
-                        </span>
-                    )}
-                </span>
-            )}
-            <FieldError>{errorMessage}</FieldError>
+                            data-textarea={true}
+                        />
+
+                        {(showCharacterCount || showDescription) && (
+                            <span className={clsx(SupportingTextStyles)}>
+                                {showDescription && (
+                                    <Description>{description}</Description>
+                                )}
+
+                                {showCharacterCount && (
+                                    <span
+                                        className={clsx(
+                                            CharacterCountStyles,
+                                            typography.labelMedium
+                                        )}
+                                    >
+                                        {currentValue.length}
+                                        {maxLength && `/${maxLength}`}
+                                    </span>
+                                )}
+                            </span>
+                        )}
+                        <FieldError>{errorMessage}</FieldError>
+                    </>
+                );
+            }}
         </AriaTextField>
     );
 };

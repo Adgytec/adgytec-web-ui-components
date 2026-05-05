@@ -25,6 +25,7 @@ export const DateField = <T extends DateValue>({
     label,
     description,
     errorMessage,
+    showDescriptionOnInvalid = false,
     className,
     ...props
 }: DateFieldProps<T>) => {
@@ -41,35 +42,45 @@ export const DateField = <T extends DateValue>({
             }
             {...props}
         >
-            {label && <Label>{label}</Label>}
+            {({ isInvalid }) => {
+                const showDescription =
+                    description &&
+                    (!isInvalid || (isInvalid && showDescriptionOnInvalid));
 
-            <DateInput
-                className={clsx(
-                    UnsetStyles,
-                    EditorStyles,
-                    EditorInputStyles,
-                    typography.bodyLarge,
-                    DateInputStyles
-                )}
-                data-date-input={true}
-            >
-                {(segment) => (
-                    <DateSegment
-                        className={clsx(
-                            DateSegmentStyles,
-                            typography.bodyLarge
+                return (
+                    <>
+                        {label && <Label>{label}</Label>}
+
+                        <DateInput
+                            className={clsx(
+                                UnsetStyles,
+                                EditorStyles,
+                                EditorInputStyles,
+                                typography.bodyLarge,
+                                DateInputStyles
+                            )}
+                            data-date-input={true}
+                        >
+                            {(segment) => (
+                                <DateSegment
+                                    className={clsx(
+                                        DateSegmentStyles,
+                                        typography.bodyLarge
+                                    )}
+                                    segment={segment}
+                                />
+                            )}
+                        </DateInput>
+
+                        {showDescription && (
+                            <Description className={clsx(SupportingTextStyles)}>
+                                {description}
+                            </Description>
                         )}
-                        segment={segment}
-                    />
-                )}
-            </DateInput>
-
-            {description && (
-                <Description className={clsx(SupportingTextStyles)}>
-                    {description}
-                </Description>
-            )}
-            <FieldError>{errorMessage}</FieldError>
+                        <FieldError>{errorMessage}</FieldError>
+                    </>
+                );
+            }}
         </AriaDateField>
     );
 };

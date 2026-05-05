@@ -12,6 +12,7 @@ export interface CheckboxGroupProps
     label?: string;
     description?: string;
     errorMessage?: string | ((validation: ValidationResult) => string);
+    showDescriptionOnInvalid?: boolean;
     children?: ReactNode;
     checkboxItemsGap?: number;
     labelPlacement?: CheckboxLabelPlacement;

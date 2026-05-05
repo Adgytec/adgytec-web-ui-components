@@ -13,6 +13,7 @@ export interface InputProps extends Omit<AriaTextFieldProps, "children"> {
     label?: string;
     description?: string;
     errorMessage?: string | ((validation: ValidationResult) => string);
+    showDescriptionOnInvalid?: boolean;
     placeholder?: string;
     editorDir?: string;
     prefix?: InputRenderProp;

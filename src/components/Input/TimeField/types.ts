@@ -9,4 +9,5 @@ export interface TimeFieldProps<T extends TimeValue>
     label?: string;
     description?: string;
     errorMessage?: string | ((validation: ValidationResult) => string);
+    showDescriptionOnInvalid?: boolean;
 }

@@ -10,4 +10,5 @@ export interface SelectProps<
     label?: string;
     description?: string;
     errorMessage?: string | ((validation: ValidationResult) => string);
+    showDescriptionOnInvalid?: boolean;
 }
