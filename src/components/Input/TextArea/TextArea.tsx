@@ -5,6 +5,7 @@ import {
 } from "react-aria-components";
 import { typography } from "@/utils";
 import {
+    CharacterCountStyles,
     Colors,
     EditorInputStyles,
     EditorStyles,
@@ -70,14 +71,16 @@ export const TextArea: React.FC<TextAreaProps> = ({
             />
 
             {(showCharacterCount || description) && (
-                <span
-                    data-description={description ? true : undefined}
-                    className={clsx(SupportingTextStyles)}
-                >
+                <span className={clsx(SupportingTextStyles)}>
                     {description && <Description>{description}</Description>}
 
                     {showCharacterCount && (
-                        <span className={clsx(typography.labelMedium)}>
+                        <span
+                            className={clsx(
+                                CharacterCountStyles,
+                                typography.labelMedium
+                            )}
+                        >
                             {currentValue.length}
                             {maxLength && `/${maxLength}`}
                         </span>

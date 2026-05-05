@@ -10,6 +10,7 @@ import {
 import { Icon } from "@/components/Icon";
 import { typography } from "@/utils";
 import {
+    CharacterCountStyles,
     Colors,
     EditorInputGroupStyles,
     EditorInputStyles,
@@ -136,9 +137,6 @@ export const Input: React.FC<InputProps> = ({
 
                         {(showCharacterCount || description) && (
                             <span
-                                data-description={
-                                    description ? true : undefined
-                                }
                                 {...layoutDataAttrs}
                                 className={clsx(SupportingTextStyles)}
                             >
@@ -148,7 +146,10 @@ export const Input: React.FC<InputProps> = ({
 
                                 {showCharacterCount && (
                                     <span
-                                        className={clsx(typography.labelMedium)}
+                                        className={clsx(
+                                            CharacterCountStyles,
+                                            typography.labelMedium
+                                        )}
                                     >
                                         {currentValue.length}
                                         {maxLength && `/${maxLength}`}

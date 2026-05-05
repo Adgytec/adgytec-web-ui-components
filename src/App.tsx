@@ -1510,6 +1510,7 @@ export const SelectPreview = () => {
                 label="Icecream"
                 description="Flavors of icecream"
                 placeholder="Select Icecream"
+                isInvalid
             >
                 <SelectTrigger />
 

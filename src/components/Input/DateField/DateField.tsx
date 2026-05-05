@@ -65,10 +65,7 @@ export const DateField = <T extends DateValue>({
             </DateInput>
 
             {description && (
-                <Description
-                    className={clsx(SupportingTextStyles)}
-                    data-description={true}
-                >
+                <Description className={clsx(SupportingTextStyles)}>
                     {description}
                 </Description>
             )}

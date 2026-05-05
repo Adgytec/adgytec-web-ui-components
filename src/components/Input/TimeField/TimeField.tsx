@@ -67,10 +67,7 @@ export const TimeField = <T extends TimeValue>({
             </DateInput>
 
             {description && (
-                <Description
-                    className={clsx(SupportingTextStyles)}
-                    data-description={true}
-                >
+                <Description className={clsx(SupportingTextStyles)}>
                     {description}
                 </Description>
             )}

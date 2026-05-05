@@ -1,4 +1,6 @@
+import clsx from "clsx";
 import { Select as AriaSelect } from "react-aria-components";
+import { Colors, InputGroupStyles, SupportingTextStyles } from "../../core";
 import { Description } from "../../Description";
 import { FieldError } from "../../FieldError";
 import { Label } from "../../Label";
@@ -16,7 +18,18 @@ export const Select = <
     ...props
 }: SelectProps<T, M>) => {
     return (
-        <AriaSelect {...props}>
+        <AriaSelect
+            className={(renderProps) =>
+                clsx(
+                    Colors,
+                    InputGroupStyles,
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
+            {...props}
+        >
             {(renderProps) => (
                 <>
                     {label && <Label>{label}</Label>}
@@ -25,7 +38,11 @@ export const Select = <
                         ? children(renderProps)
                         : children}
 
-                    {description && <Description>{description}</Description>}
+                    {description && (
+                        <Description className={clsx(SupportingTextStyles)}>
+                            {description}
+                        </Description>
+                    )}
 
                     <FieldError>{errorMessage}</FieldError>
                 </>
