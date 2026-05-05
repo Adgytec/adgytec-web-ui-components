@@ -7,7 +7,7 @@
         --padding: var(--md-sys-layout-space-4);
 
         /* shape */
-        --shape: var(--md-sys-shape-corner-radius-large);
+        --shape: var(--md-sys-shape-corner-radius-small);
         --section-shape: var(--md-sys-shape-corner-radius-small);
 
         /* menu item */
@@ -30,6 +30,10 @@
 
         /* Spacing between elements inside a menu item (icon, text, trailing, etc.) */
         --menu-item-content-gap: var(--md-sys-layout-space-8);
+
+        &:focus-within {
+            --shape: var(--md-sys-shape-corner-radius-large);
+        }
     }
 
     .standard {
