@@ -143,10 +143,16 @@
 
             &[data-focus-visible],
             &[data-focus-within],
-            &[data-focused],
             &[data-pressed] {
                 --outline-color: var(--outline-color-focused-normal);
                 --outline-color-focused: var(--outline-color);
+            }
+
+            &:not([data-select-trigger]) {
+                &[data-focused] {
+                    --outline-color: var(--outline-color-focused-normal);
+                    --outline-color-focused: var(--outline-color);
+                }
             }
 
             &[data-invalid] {
@@ -156,9 +162,14 @@
 
                 &[data-focus-visible],
                 &[data-focus-within],
-                &[data-focused],
                 &[data-pressed] {
                     --outline-color: var(--outline-color-focused-invalid);
+                }
+
+                &:not([data-select-trigger]) {
+                    &[data-focused] {
+                        --outline-color: var(--outline-color-focused-invalid);
+                    }
                 }
             }
         }

@@ -32,6 +32,7 @@ export const SelectTrigger: React.FC<Omit<ButtonProps, "children">> = (
             )}
             {...props}
             data-invalid={invalid || undefined}
+            data-select-trigger={true}
         >
             <SelectValue />
 
