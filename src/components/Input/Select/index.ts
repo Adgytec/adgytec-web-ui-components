@@ -5,4 +5,3 @@ export * from "./SelectListSection";
 export * from "./SelectListSectionHeader";
 export * from "./SelectPopover";
 export * from "./SelectTrigger";
-export * from "./SelectTriggerCustom";
