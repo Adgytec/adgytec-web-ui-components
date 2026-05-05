@@ -92,6 +92,7 @@ import {
     MenuShortcut,
     MenuTrigger,
 } from "./components/Menu";
+import { SubmenuPopover } from "./components/Menu/SubmenuPopover";
 import { Popover } from "./components/Popover";
 import { Separator } from "./components/Separator";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
@@ -904,7 +905,7 @@ const MenuPreview = () => {
                 <SubmenuTrigger>
                     {renderMenuItem(item)}
 
-                    <Popover offset={-1}>
+                    <SubmenuPopover>
                         <Menu
                             layout={menuLayout}
                             color={menuColor}
@@ -913,7 +914,7 @@ const MenuPreview = () => {
                         >
                             {(item) => renderMenu(item, menuLayout, menuColor)}
                         </Menu>
-                    </Popover>
+                    </SubmenuPopover>
                 </SubmenuTrigger>
             );
         }
