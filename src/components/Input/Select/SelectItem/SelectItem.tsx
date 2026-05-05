@@ -1,19 +1,19 @@
-import { ListBoxItem } from "react-aria-components";
-import type { SelectItemProps } from "./types";
-import { useSplash } from "@/components/Splash/useSplash";
 import clsx from "clsx";
+import { Check } from "lucide-react";
+import { ListBoxItem } from "react-aria-components";
+import { Icon } from "@/components/Icon";
 import {
-    menuItemBaseColor,
     MenuItemIconSize,
-    menuItemLabelColor,
     MenuItemLeadingStyles,
     MenuItemStyles,
     MenuItemTrailingStyles,
+    menuItemBaseColor,
+    menuItemLabelColor,
 } from "@/components/Menu";
-import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
+import { useSplash } from "@/components/Splash/useSplash";
 import { typography } from "@/utils";
-import { Check } from "lucide-react";
+import type { SelectItemProps } from "./types";
 
 export const SelectItem: React.FC<SelectItemProps> = ({
     leadingIcon,

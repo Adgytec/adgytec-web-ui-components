@@ -74,6 +74,7 @@ import {
     SelectList,
     SelectListSection,
     SelectListSectionHeader,
+    SelectPopover,
     SelectTrigger,
     TextArea,
     TimeField,
@@ -1521,7 +1522,7 @@ export const SelectPreview = () => {
             >
                 <SelectTrigger />
 
-                <Popover>
+                <SelectPopover>
                     <SelectList>
                         <SelectItem label="Strawberry" />
 
@@ -1533,7 +1534,7 @@ export const SelectPreview = () => {
 
                         <SelectItem label="Cherry" />
                     </SelectList>
-                </Popover>
+                </SelectPopover>
             </Select>
 
             <Select
@@ -1544,7 +1545,7 @@ export const SelectPreview = () => {
             >
                 <SelectTrigger />
 
-                <Popover>
+                <SelectPopover>
                     <SelectList>
                         <SelectListSection>
                             <SelectListSectionHeader>
@@ -1562,7 +1563,7 @@ export const SelectPreview = () => {
 
                         <SelectItem label="Cherry" />
                     </SelectList>
-                </Popover>
+                </SelectPopover>
             </Select>
         </div>
     );
