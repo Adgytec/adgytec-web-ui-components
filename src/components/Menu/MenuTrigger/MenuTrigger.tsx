@@ -13,7 +13,7 @@ export const MenuTrigger: React.FC<
 > = ({ color, layout, ...props }) => {
     return (
         <MenuConfigContext value={{ color, layout }}>
-            <AriaMenuTrigger {...props} />{" "}
+            <AriaMenuTrigger {...props} />
         </MenuConfigContext>
     );
 };

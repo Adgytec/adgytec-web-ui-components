@@ -1,1 +1,1 @@
-export * from "./SelectPopover.tsx";
+export * from "./SelectPopover";
