@@ -1,0 +1,5 @@
+@layer adgytec.comps {
+    .popover {
+        inline-size: calc(var(--trigger-width) + calc(30 * var(--dp, 1px)));
+    }
+}

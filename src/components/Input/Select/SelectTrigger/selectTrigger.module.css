@@ -1,4 +1,4 @@
-@layer adgytec.comps {
+@layer adgytec.overrides {
     .trigger {
         --rotate: 0;
 
@@ -17,23 +17,7 @@
                 transition: none;
             }
         }
-    }
 
-    .select-value {
-        flex: 1;
-        text-align: start;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-
-        &[data-placeholder] {
-            color: var(--placeholder-color);
-        }
-    }
-}
-
-@layer adgytec.overrides {
-    .trigger {
         &:not([data-disabled]) {
             &[data-pressed] {
                 --outline-color: var(--outline-color-focused-normal);
@@ -54,6 +38,18 @@
                     }
                 }
             }
+        }
+    }
+
+    .select-value {
+        flex: 1;
+        text-align: start;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        &[data-placeholder] {
+            color: var(--placeholder-color);
         }
     }
 }

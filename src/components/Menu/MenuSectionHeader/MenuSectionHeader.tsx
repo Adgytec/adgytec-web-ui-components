@@ -4,7 +4,7 @@ import { typography } from "@/utils";
 import { MenuSectionHeaderStyles } from "../core";
 
 export const MenuSectionHeader: React.FC<
-    React.ComponentPropsWithoutRef<"header">
+    React.ComponentPropsWithRef<"header">
 > = ({ className, ...props }) => {
     return (
         <Header
