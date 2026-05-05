@@ -68,7 +68,6 @@ import { Icon } from "./components/Icon";
 import {
     ComboBox,
     ComboBoxTrigger,
-    ComboBoxTriggerInput,
     DateField,
     Input,
     Label,
@@ -1603,9 +1602,7 @@ export const SelectPreview = () => {
             </Select>
 
             <ComboBox label="Icecream" description="Flavors of icecream">
-                <ComboBoxTrigger>
-                    <ComboBoxTriggerInput placeholder="Select Icecream" />
-                </ComboBoxTrigger>
+                <ComboBoxTrigger placeholder="Select Icecream" />
 
                 <SelectPopover>
                     <SelectList>
@@ -1633,9 +1630,7 @@ export const SelectPreview = () => {
                 isInvalid
                 showDescriptionOnInvalid
             >
-                <ComboBoxTrigger>
-                    <ComboBoxTriggerInput placeholder="Select Icecream" />
-                </ComboBoxTrigger>
+                <ComboBoxTrigger placeholder="Select Icecream" />
 
                 <SelectPopover>
                     <SelectList>
@@ -1661,9 +1656,7 @@ export const SelectPreview = () => {
                 description="Flavors of icecream"
                 isDisabled
             >
-                <ComboBoxTrigger>
-                    <ComboBoxTriggerInput placeholder="Select Icecream" />
-                </ComboBoxTrigger>
+                <ComboBoxTrigger placeholder="Select Icecream" />
 
                 <SelectPopover>
                     <SelectList>
