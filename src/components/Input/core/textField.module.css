@@ -47,6 +47,8 @@
         --outline-color: var(--outline-color-normal);
         --outline-color-focused: transparent;
 
+        --placeholder-color: var(--group-color-normal);
+
         &[data-invalid] {
             --group-color: var(--group-color-invalid);
             --caret-color: var(--caret-color-invalid);
@@ -62,6 +64,7 @@
             --caret-color: var(--disabled-color);
 
             --outline-color: var(--disabled-color);
+            --placeholder-color: var(--disabled-color);
         }
     }
 
@@ -143,16 +146,9 @@
 
             &[data-focus-visible],
             &[data-focus-within],
-            &[data-pressed] {
+            &[data-focused] {
                 --outline-color: var(--outline-color-focused-normal);
                 --outline-color-focused: var(--outline-color);
-            }
-
-            &:not([data-select-trigger]) {
-                &[data-focused] {
-                    --outline-color: var(--outline-color-focused-normal);
-                    --outline-color-focused: var(--outline-color);
-                }
             }
 
             &[data-invalid] {
@@ -162,14 +158,8 @@
 
                 &[data-focus-visible],
                 &[data-focus-within],
-                &[data-pressed] {
+                &[data-focused] {
                     --outline-color: var(--outline-color-focused-invalid);
-                }
-
-                &:not([data-select-trigger]) {
-                    &[data-focused] {
-                        --outline-color: var(--outline-color-focused-invalid);
-                    }
                 }
             }
         }
@@ -207,6 +197,10 @@
             &[data-disabled] {
                 resize: none;
             }
+        }
+
+        &::placeholder {
+            color: var(--placeholder-color);
         }
     }
 

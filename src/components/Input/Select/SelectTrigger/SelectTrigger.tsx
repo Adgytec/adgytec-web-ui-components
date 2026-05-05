@@ -15,6 +15,7 @@ import {
     TextFieldIconSize,
     UnsetStyles,
 } from "../../core";
+import styles from "./selectTrigger.module.css";
 
 export const SelectTrigger: React.FC<Omit<ButtonProps, "children">> = (
     props
@@ -28,13 +29,14 @@ export const SelectTrigger: React.FC<Omit<ButtonProps, "children">> = (
                 UnsetStyles,
                 EditorStyles,
                 EditorInputStyles,
-                typography.bodyLarge
+                typography.bodyLarge,
+                styles["trigger"]
             )}
             {...props}
             data-invalid={invalid || undefined}
             data-select-trigger={true}
         >
-            <SelectValue />
+            <SelectValue className={clsx(styles["select-value"])} />
 
             <Icon icon={ChevronDown} size={TextFieldIconSize} />
         </Button>
