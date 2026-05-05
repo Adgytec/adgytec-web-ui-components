@@ -1,0 +1,9 @@
+@layer adgytec.comps {
+    .selected-value {
+        color: var(--editor-color);
+
+        &[data-placeholder] {
+            color: var(--placeholder-color);
+        }
+    }
+}

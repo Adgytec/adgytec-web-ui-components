@@ -1,9 +1,11 @@
 import clsx from "clsx";
 import { ComboBox as AriaComboBox, ComboBoxValue } from "react-aria-components";
+import { typography } from "@/utils";
 import { Colors, InputGroupStyles, SupportingTextStyles } from "../../core";
 import { Description } from "../../Description";
 import { FieldError } from "../../FieldError";
 import { Label } from "../../Label";
+import styles from "./comboBox.module.css";
 import type { ComboBoxProps } from "./types";
 
 export const ComboBox = <
@@ -16,6 +18,7 @@ export const ComboBox = <
     showDescriptionOnInvalid = false,
     children,
     className,
+    hideMultiSelectionValue = false,
     ...props
 }: ComboBoxProps<T, M>) => {
     return (
@@ -45,9 +48,15 @@ export const ComboBox = <
                             ? children(renderProps)
                             : children}
 
-                        {props.selectionMode === "multiple" && (
-                            <ComboBoxValue placeholder="No items selected" />
-                        )}
+                        {props.selectionMode === "multiple" &&
+                            !hideMultiSelectionValue && (
+                                <ComboBoxValue
+                                    className={clsx(
+                                        styles["selected-value"],
+                                        typography.bodyLarge
+                                    )}
+                                />
+                            )}
 
                         {showDescription && (
                             <Description className={clsx(SupportingTextStyles)}>

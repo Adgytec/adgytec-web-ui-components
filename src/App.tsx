@@ -1631,6 +1631,7 @@ export const SelectPreview = () => {
                 description="Flavors of icecream"
                 selectionMode="multiple"
                 isInvalid
+                showDescriptionOnInvalid
             >
                 <ComboBoxTrigger>
                     <ComboBoxTriggerInput placeholder="Select Icecream" />

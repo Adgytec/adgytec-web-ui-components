@@ -11,4 +11,5 @@ export interface ComboBoxProps<
     description?: string;
     errorMessage?: string | ((validation: ValidationResult) => string);
     showDescriptionOnInvalid?: boolean;
+    hideMultiSelectionValue?: boolean;
 }
