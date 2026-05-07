@@ -8,4 +8,5 @@ export const fluidTypography = {
     headlineSmall: "typography-headline-small-fluid",
 } as const;
 
-export type FluidTypographyVariant = keyof typeof fluidTypography;
+export type FluidTypographyVariant =
+    (typeof fluidTypography)[keyof typeof fluidTypography];

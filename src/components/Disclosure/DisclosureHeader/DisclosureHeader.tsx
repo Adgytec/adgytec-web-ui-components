@@ -13,17 +13,20 @@ import {
     buttonColorConfig,
 } from "@/components/Button";
 import { Icon } from "@/components/Icon";
-import { TapTarget, typography } from "@/utils";
+import {
+    type FluidTypographyVariant,
+    TapTarget,
+    type TypographyVariant,
+    typography,
+} from "@/utils";
 import styles from "./disclosureHeader.module.css";
 
 export const DisclosureHeader: React.FC<
     Omit<ButtonProps, "slot" | "className"> & {
-        iconSize?: number;
-        labelTypography?: string;
+        labelTypography?: TypographyVariant | FluidTypographyVariant;
     }
 > = ({
     children,
-    iconSize = 20,
     labelTypography = typography.titleMediumEmphasized,
     ...props
 }) => {
@@ -48,7 +51,7 @@ export const DisclosureHeader: React.FC<
             >
                 {(renderProps) => (
                     <>
-                        <Icon size={iconSize} icon={ChevronRight} />
+                        <Icon withText icon={ChevronRight} />
 
                         {typeof children === "function"
                             ? children(renderProps)

@@ -45,4 +45,4 @@ export const typography = {
     labelSmallEmphasized: "typography-label-small-emphasized",
 } as const;
 
-export type TypographyVariant = keyof typeof typography;
+export type TypographyVariant = (typeof typography)[keyof typeof typography];
