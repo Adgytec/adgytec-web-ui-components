@@ -64,6 +64,7 @@ import {
     Modal,
     ModalOverlay,
 } from "./components/Dialog";
+import { DisclosureHeader } from "./components/Disclosure";
 import { Icon } from "./components/Icon";
 import {
     ComboBox,
@@ -1681,6 +1682,14 @@ export const SelectPreview = () => {
     );
 };
 
+const DisclosurePreview = () => {
+    return (
+        <>
+            <DisclosureHeader>Click here to open</DisclosureHeader>
+        </>
+    );
+};
+
 const App = () => {
     type PreviewItem = {
         id: string;
@@ -1694,6 +1703,7 @@ const App = () => {
             label: "Theme Switcher",
             Component: VisualSettingsPreview,
         },
+        { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },
         { id: "select", label: "Select", Component: SelectPreview },
         { id: "date-field", label: "Date Field", Component: DateFieldPreview },
         { id: "time-field", label: "Time Field", Component: TimeFieldPreview },
