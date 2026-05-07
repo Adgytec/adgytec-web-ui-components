@@ -1,0 +1,5 @@
+@layer adgytec.comps {
+    .disclosure {
+        --spacing: var(--md-sys-layout-space-12);
+    }
+}

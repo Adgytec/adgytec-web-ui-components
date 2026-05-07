@@ -28,7 +28,6 @@ import "./styles/app.css";
 import { clsx } from "clsx";
 import {
     DialogTrigger,
-    Disclosure,
     DisclosureGroup,
     SubmenuTrigger,
     Tab,
@@ -66,7 +65,11 @@ import {
     Modal,
     ModalOverlay,
 } from "./components/Dialog";
-import { DisclosureHeader, DisclosurePanel } from "./components/Disclosure";
+import {
+    Disclosure,
+    DisclosureHeader,
+    DisclosurePanel,
+} from "./components/Disclosure";
 import { Icon } from "./components/Icon";
 import {
     ComboBox,

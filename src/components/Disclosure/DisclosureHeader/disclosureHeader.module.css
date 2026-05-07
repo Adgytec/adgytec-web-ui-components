@@ -13,7 +13,7 @@
     }
 
     .trigger::before {
-        --inset: calc(-1 * var(--md-sys-layout-space-12));
+        --inset: calc(-1 * var(--spacing));
         inset: var(--inset);
     }
 }

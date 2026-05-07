@@ -1,7 +1,9 @@
 @layer adgytec.comps {
     .panel {
         height: var(--disclosure-panel-height);
-        transition: height 250ms;
+
+        transition: height var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
         overflow: clip;
 
         @media (prefers-reduced-motion) {
@@ -9,7 +11,7 @@
         }
 
         > div {
-            padding-block-start: var(--md-sys-layout-space-16);
+            padding-block-start: var(--spacing);
         }
     }
 }
