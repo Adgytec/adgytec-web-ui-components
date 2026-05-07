@@ -1796,7 +1796,7 @@ const App = () => {
     ];
 
     return (
-        <div className="preview-parent">
+        <div className={clsx(typography.bodyLarge, "preview-parent")}>
             <Tabs className="tabs">
                 <TabList className={"tab-list"}>
                     {previewItems.map((item) => (

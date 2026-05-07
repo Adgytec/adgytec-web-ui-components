@@ -1,0 +1,49 @@
+@layer adgytec.overrides {
+    .trigger[data-focus-visible] {
+        outline: none;
+
+        &::before {
+            outline-width: var(--focus-indicator-thickness);
+            outline-style: solid;
+            outline-offset: var(--focus-indicator-offset);
+            outline-color: var(--focus-indicator-color);
+
+            z-index: 1;
+        }
+    }
+
+    .trigger::before {
+        --inset: calc(-1 * var(--md-sys-layout-space-12));
+        inset: var(--inset);
+    }
+}
+
+@layer adgytec.comps {
+    .trigger {
+        --rotate: 0;
+
+        display: inline-flex;
+        gap: var(--md-sys-layout-space-4);
+        align-items: center;
+
+        border-radius: var(--md-sys-shape-corner-radius-medium);
+
+        &[data-pressed] {
+            border-radius: var(--md-sys-shape-corner-radius-small);
+        }
+
+        &[data-expanded] {
+            --rotate: 90deg;
+        }
+
+        > svg {
+            rotate: var(--rotate);
+            transition: rotate var(--md-sys-motion-expressive-fast-spatial)
+                var(--md-sys-motion-expressive-fast-spatial-duration);
+
+            @media (prefers-reduced-motion) {
+                transition: none;
+            }
+        }
+    }
+}
