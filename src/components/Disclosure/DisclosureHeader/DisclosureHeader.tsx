@@ -3,9 +3,9 @@ import { ChevronRight } from "lucide-react";
 import { useContext } from "react";
 import {
     Button,
-    type ButtonProps,
     DisclosureStateContext,
     Heading,
+    type HeadingProps,
 } from "react-aria-components";
 import {
     ButtonReset,
@@ -13,28 +13,24 @@ import {
     buttonColorConfig,
 } from "@/components/Button";
 import { Icon } from "@/components/Icon";
-import {
-    type FluidTypographyVariant,
-    TapTarget,
-    type TypographyVariant,
-    typography,
-} from "@/utils";
+import { TapTarget, type Typography } from "@/utils";
+import { useDisclosureTypographyContext } from "../context";
 import styles from "./disclosureHeader.module.css";
 
 export const DisclosureHeader: React.FC<
-    Omit<ButtonProps, "slot" | "className"> & {
-        labelTypography?: TypographyVariant | FluidTypographyVariant;
+    HeadingProps & {
+        labelTypography?: Typography;
     }
-> = ({
-    children,
-    labelTypography = typography.titleMediumEmphasized,
-    ...props
-}) => {
+> = ({ children, labelTypography, ...props }) => {
     const disclosureContext = useContext(DisclosureStateContext);
     const { isExpanded } = disclosureContext || {};
 
+    const { label } = useDisclosureTypographyContext({
+        label: labelTypography,
+    });
+
     return (
-        <Heading>
+        <Heading {...props}>
             <Button
                 className={clsx(
                     ButtonReset,
@@ -42,22 +38,14 @@ export const DisclosureHeader: React.FC<
                     styles["trigger"],
                     buttonColorBase,
                     buttonColorConfig("standard"),
-                    labelTypography
+                    label
                 )}
                 slot="trigger"
-                {...props}
                 data-expanded={isExpanded || undefined}
                 data-shape="square"
             >
-                {(renderProps) => (
-                    <>
-                        <Icon withText icon={ChevronRight} />
-
-                        {typeof children === "function"
-                            ? children(renderProps)
-                            : children}
-                    </>
-                )}
+                <Icon withText icon={ChevronRight} />
+                {children}
             </Button>
         </Heading>
     );

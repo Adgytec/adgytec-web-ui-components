@@ -28,7 +28,6 @@ import "./styles/app.css";
 import { clsx } from "clsx";
 import {
     DialogTrigger,
-    DisclosureGroup,
     SubmenuTrigger,
     Tab,
     TabList,
@@ -67,6 +66,7 @@ import {
 } from "./components/Dialog";
 import {
     Disclosure,
+    DisclosureGroup,
     DisclosureHeader,
     DisclosurePanel,
 } from "./components/Disclosure";
