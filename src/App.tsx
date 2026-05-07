@@ -28,6 +28,8 @@ import "./styles/app.css";
 import { clsx } from "clsx";
 import {
     DialogTrigger,
+    Disclosure,
+    DisclosureGroup,
     SubmenuTrigger,
     Tab,
     TabList,
@@ -64,7 +66,7 @@ import {
     Modal,
     ModalOverlay,
 } from "./components/Dialog";
-import { DisclosureHeader } from "./components/Disclosure";
+import { DisclosureHeader, DisclosurePanel } from "./components/Disclosure";
 import { Icon } from "./components/Icon";
 import {
     ComboBox,
@@ -1685,7 +1687,60 @@ export const SelectPreview = () => {
 const DisclosurePreview = () => {
     return (
         <>
-            <DisclosureHeader>Click here to open</DisclosureHeader>
+            <Disclosure>
+                <DisclosureHeader>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </DisclosureHeader>
+
+                <DisclosurePanel>
+                    Morbi eget arcu non sapien semper imperdiet. Pellentesque
+                    tristique, quam et ullamcorper sagittis, mi massa ultricies
+                    ligula, quis malesuada sem nunc sit amet orci. Nulla
+                    interdum lacus sit amet tortor pretium vulputate. Sed a
+                    tellus lacus. Nullam tempus consequat ex ultricies
+                    fringilla. Sed nunc lectus, scelerisque sit amet tristique
+                    eu, consequat sed quam. Aliquam et odio placerat,
+                    pellentesque purus et, maximus dui. Cras id accumsan est, ac
+                    euismod tellus. Proin non mattis justo. Donec ornare dui a
+                    turpis placerat ullamcorper. Phasellus aliquet, mauris eget
+                    sagittis cursus, orci justo ullamcorper ante, a viverra
+                    risus leo ac neque. Integer tincidunt sapien vitae elit
+                    rutrum cursus. In eleifend ultricies nisl, ut pretium ipsum
+                    vulputate sit amet. Nulla viverra nulla nisi, tincidunt
+                    varius leo interdum quis.
+                </DisclosurePanel>
+            </Disclosure>
+
+            <Disclosure isDisabled>
+                <DisclosureHeader>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </DisclosureHeader>
+
+                <DisclosurePanel>
+                    Nulla viverra nulla nisi, tincidunt varius leo interdum
+                    quis.
+                </DisclosurePanel>
+            </Disclosure>
+
+            <h3 className={typography.headlineSmallEmphasized}>
+                Disclosure Group
+            </h3>
+
+            <DisclosureGroup>
+                <Disclosure>
+                    <DisclosureHeader>Personal Information</DisclosureHeader>
+                    <DisclosurePanel>
+                        Personal information form here.
+                    </DisclosurePanel>
+                </Disclosure>
+
+                <Disclosure>
+                    <DisclosureHeader>Billing Address</DisclosureHeader>
+                    <DisclosurePanel>
+                        Billing address form here.
+                    </DisclosurePanel>
+                </Disclosure>
+            </DisclosureGroup>
         </>
     );
 };
