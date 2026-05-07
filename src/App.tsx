@@ -64,6 +64,12 @@ import {
     Modal,
     ModalOverlay,
 } from "./components/Dialog";
+import {
+    Disclosure,
+    DisclosureGroup,
+    DisclosureHeader,
+    DisclosurePanel,
+} from "./components/Disclosure";
 import { Icon } from "./components/Icon";
 import {
     ComboBox,
@@ -1681,6 +1687,67 @@ export const SelectPreview = () => {
     );
 };
 
+const DisclosurePreview = () => {
+    return (
+        <>
+            <Disclosure>
+                <DisclosureHeader>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </DisclosureHeader>
+
+                <DisclosurePanel>
+                    Morbi eget arcu non sapien semper imperdiet. Pellentesque
+                    tristique, quam et ullamcorper sagittis, mi massa ultricies
+                    ligula, quis malesuada sem nunc sit amet orci. Nulla
+                    interdum lacus sit amet tortor pretium vulputate. Sed a
+                    tellus lacus. Nullam tempus consequat ex ultricies
+                    fringilla. Sed nunc lectus, scelerisque sit amet tristique
+                    eu, consequat sed quam. Aliquam et odio placerat,
+                    pellentesque purus et, maximus dui. Cras id accumsan est, ac
+                    euismod tellus. Proin non mattis justo. Donec ornare dui a
+                    turpis placerat ullamcorper. Phasellus aliquet, mauris eget
+                    sagittis cursus, orci justo ullamcorper ante, a viverra
+                    risus leo ac neque. Integer tincidunt sapien vitae elit
+                    rutrum cursus. In eleifend ultricies nisl, ut pretium ipsum
+                    vulputate sit amet. Nulla viverra nulla nisi, tincidunt
+                    varius leo interdum quis.
+                </DisclosurePanel>
+            </Disclosure>
+
+            <Disclosure isDisabled>
+                <DisclosureHeader>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </DisclosureHeader>
+
+                <DisclosurePanel>
+                    Nulla viverra nulla nisi, tincidunt varius leo interdum
+                    quis.
+                </DisclosurePanel>
+            </Disclosure>
+
+            <h3 className={typography.headlineSmallEmphasized}>
+                Disclosure Group
+            </h3>
+
+            <DisclosureGroup>
+                <Disclosure>
+                    <DisclosureHeader>Personal Information</DisclosureHeader>
+                    <DisclosurePanel>
+                        Personal information form here.
+                    </DisclosurePanel>
+                </Disclosure>
+
+                <Disclosure>
+                    <DisclosureHeader>Billing Address</DisclosureHeader>
+                    <DisclosurePanel>
+                        Billing address form here.
+                    </DisclosurePanel>
+                </Disclosure>
+            </DisclosureGroup>
+        </>
+    );
+};
+
 const App = () => {
     type PreviewItem = {
         id: string;
@@ -1694,6 +1761,7 @@ const App = () => {
             label: "Theme Switcher",
             Component: VisualSettingsPreview,
         },
+        { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },
         { id: "select", label: "Select", Component: SelectPreview },
         { id: "date-field", label: "Date Field", Component: DateFieldPreview },
         { id: "time-field", label: "Time Field", Component: TimeFieldPreview },
@@ -1731,7 +1799,7 @@ const App = () => {
     ];
 
     return (
-        <div className="preview-parent">
+        <div className={clsx(typography.bodyLarge, "preview-parent")}>
             <Tabs className="tabs">
                 <TabList className={"tab-list"}>
                     {previewItems.map((item) => (
