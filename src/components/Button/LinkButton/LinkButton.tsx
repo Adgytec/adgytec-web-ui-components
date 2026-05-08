@@ -13,6 +13,7 @@ import {
     buttonColorBase,
     buttonColorConfig,
     buttonSizeConfig,
+    newButtonBaseDataAttrs,
     useButtonConfig,
     withTooltip,
 } from "../core";
@@ -37,11 +38,18 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
 
+    const baseButtonDataAttrs = newButtonBaseDataAttrs({
+        shape: buttonShape,
+        size: buttonSize,
+        color: buttonColor,
+    });
+
     return withTooltip(
         <Link
             onPress={handlePress}
             className={clsx(ButtonReset, TapTarget)}
             {...props}
+            {...baseButtonDataAttrs}
         >
             {(renderProps) => {
                 const {
@@ -53,12 +61,12 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
                 } = renderProps;
 
                 const dataAttrs = {
+                    ...baseButtonDataAttrs,
                     "data-hovered": isHovered || undefined,
                     "data-disabled": isDisabled || undefined,
                     "data-focused": isFocused || undefined,
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
-                    "data-shape": buttonShape,
                     "data-visual": true,
                 };
 

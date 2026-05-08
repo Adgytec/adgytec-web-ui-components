@@ -13,6 +13,7 @@ import {
     buttonColorBase,
     buttonColorConfig,
     buttonSizeConfig,
+    newButtonBaseDataAttrs,
     useButtonConfig,
     withTooltip,
 } from "../core";
@@ -38,11 +39,19 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
 
+    const baseButtonDataAttrs = newButtonBaseDataAttrs({
+        shape: buttonShape,
+        size: buttonSize,
+        color: buttonColor,
+    });
+
     return withTooltip(
         <AriaToggleButton
             onPress={handlePress}
             className={clsx(ButtonReset, TapTarget)}
             {...props}
+            {...baseButtonDataAttrs}
+            data-toggle-button={true}
         >
             {(renderProps) => {
                 const {
@@ -55,6 +64,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
                 } = renderProps;
 
                 const dataAttrs = {
+                    ...baseButtonDataAttrs,
                     "data-hovered": isHovered || undefined,
                     "data-disabled": isDisabled || undefined,
                     "data-focused": isFocused || undefined,
@@ -62,7 +72,6 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
                     "data-pressed": isPressed || undefined,
                     "data-selected": isSelected || undefined,
                     "data-toggle-button": true,
-                    "data-shape": buttonShape,
                     "data-visual": true,
                 };
 

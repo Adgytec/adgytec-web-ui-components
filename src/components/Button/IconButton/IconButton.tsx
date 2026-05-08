@@ -13,6 +13,7 @@ import {
     buttonColorConfig,
     buttonSizeConfig,
     IconButtonIconSizeMapping,
+    newButtonBaseDataAttrs,
     useButtonConfig,
     withTooltip,
 } from "../core";
@@ -37,6 +38,12 @@ export const IconButton: React.FC<IconButtonProps> = ({
 
     const { splashInfo, handlePress } = useSplash(onPress);
 
+    const baseButtonDataAttrs = newButtonBaseDataAttrs({
+        shape: buttonShape,
+        size: buttonSize,
+        color: buttonColor,
+    });
+
     return withTooltip(
         <AriaButton
             onPress={handlePress}
@@ -50,6 +57,9 @@ export const IconButton: React.FC<IconButtonProps> = ({
                 )
             }
             {...props}
+            {...baseButtonDataAttrs}
+            data-width={width}
+            data-icon-button={true}
         >
             {({
                 isPending,
@@ -60,14 +70,12 @@ export const IconButton: React.FC<IconButtonProps> = ({
                 isHovered,
             }) => {
                 const dataAttrs = {
+                    ...baseButtonDataAttrs,
                     "data-hovered": isHovered || undefined,
                     "data-disabled": isDisabled || undefined,
                     "data-focused": isFocused || undefined,
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
-                    "data-shape": buttonShape,
-                    "data-width": width,
-                    "data-icon-button": true,
                     "data-visual": true,
                 };
 
