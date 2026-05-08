@@ -44,6 +44,12 @@ export const IconButton: React.FC<IconButtonProps> = ({
         color: buttonColor,
     });
 
+    const iconButtonDataAttrs = {
+        ...baseButtonDataAttrs,
+        "data-width": width,
+        "data-icon-button": true,
+    };
+
     return withTooltip(
         <AriaButton
             onPress={handlePress}
@@ -57,9 +63,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
                 )
             }
             {...props}
-            {...baseButtonDataAttrs}
-            data-width={width}
-            data-icon-button={true}
+            {...iconButtonDataAttrs}
         >
             {({
                 isPending,
@@ -70,7 +74,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
                 isHovered,
             }) => {
                 const dataAttrs = {
-                    ...baseButtonDataAttrs,
+                    ...iconButtonDataAttrs,
                     "data-hovered": isHovered || undefined,
                     "data-disabled": isDisabled || undefined,
                     "data-focused": isFocused || undefined,

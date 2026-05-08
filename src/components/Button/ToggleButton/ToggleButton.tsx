@@ -45,13 +45,17 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
         color: buttonColor,
     });
 
+    const toggleButtonDataAttrs = {
+        ...baseButtonDataAttrs,
+        "data-toggle-button": true,
+    };
+
     return withTooltip(
         <AriaToggleButton
             onPress={handlePress}
             className={clsx(ButtonReset, TapTarget)}
             {...props}
-            {...baseButtonDataAttrs}
-            data-toggle-button={true}
+            {...toggleButtonDataAttrs}
         >
             {(renderProps) => {
                 const {
@@ -64,14 +68,13 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
                 } = renderProps;
 
                 const dataAttrs = {
-                    ...baseButtonDataAttrs,
+                    ...toggleButtonDataAttrs,
                     "data-hovered": isHovered || undefined,
                     "data-disabled": isDisabled || undefined,
                     "data-focused": isFocused || undefined,
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
                     "data-selected": isSelected || undefined,
-                    "data-toggle-button": true,
                     "data-visual": true,
                 };
 

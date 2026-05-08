@@ -42,14 +42,18 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
         color: buttonColor,
     });
 
+    const iconButtonDataAttrs = {
+        ...baseButtonDataAttrs,
+        "data-width": width,
+        "data-icon-button": true,
+    };
+
     return withTooltip(
         <Link
             onPress={handlePress}
             className={clsx(ButtonReset, TapTarget)}
             {...props}
-            {...baseButtonDataAttrs}
-            data-width={width}
-            data-icon-button={true}
+            {...iconButtonDataAttrs}
         >
             {({
                 isDisabled,
@@ -59,7 +63,7 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
                 isHovered,
             }) => {
                 const dataAttrs = {
-                    ...baseButtonDataAttrs,
+                    ...iconButtonDataAttrs,
                     "data-hovered": isHovered || undefined,
                     "data-disabled": isDisabled || undefined,
                     "data-focused": isFocused || undefined,
