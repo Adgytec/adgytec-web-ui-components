@@ -1,6 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import styles from "./button.module.css";
-import type { ButtonColor, IconButtonColor } from "./color";
+import type { AllButtonColor, ButtonColor, IconButtonColor } from "./color";
 import type { ButtonShape } from "./shape";
 import type { ButtonSize } from "./sizes";
 import type { IconButtonWidth } from "./width";
@@ -24,3 +24,19 @@ export interface IconButtonBaseProps {
 
 export const ButtonReset = styles["button-reset"];
 export const ButtonCore = styles["button-core"];
+
+export function newButtonBaseDataAttrs({
+    shape,
+    size,
+    color,
+}: {
+    shape: ButtonShape;
+    color: AllButtonColor;
+    size: ButtonSize;
+}) {
+    return {
+        "data-shape": shape,
+        "data-size": size,
+        "data-color": color,
+    };
+}

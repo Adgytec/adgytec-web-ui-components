@@ -12,13 +12,13 @@ export type SplitButtonColor = CoreButtonColor | "elevated";
 
 export type ConnectedButtonGroupColor = CoreButtonColor | "elevated";
 
-export const buttonColorConfig = (
-    color:
-        | ButtonColor
-        | IconButtonColor
-        | SplitButtonColor
-        | ConnectedButtonGroupColor
-) => {
+export type AllButtonColor =
+    | ButtonColor
+    | IconButtonColor
+    | SplitButtonColor
+    | ConnectedButtonGroupColor;
+
+export const buttonColorConfig = (color: AllButtonColor) => {
     return styles[color];
 };
 
