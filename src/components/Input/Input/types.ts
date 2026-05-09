@@ -1,6 +1,10 @@
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
-import type { TextFieldProps as AriaTextFieldProps } from "react-aria-components";
+import type {
+    TextFieldProps as AriaTextFieldProps,
+    Input,
+} from "react-aria-components";
+import type { RefProp } from "@/utils";
 import type { CoreInputProps } from "../core";
 
 export type InputRenderProp =
@@ -9,7 +13,8 @@ export type InputRenderProp =
 
 export interface InputProps
     extends Omit<AriaTextFieldProps, "children">,
-        CoreInputProps {
+        CoreInputProps,
+        RefProp<typeof Input> {
     placeholder?: string;
     editorDir?: string;
     prefix?: InputRenderProp;

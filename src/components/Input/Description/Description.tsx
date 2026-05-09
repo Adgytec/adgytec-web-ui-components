@@ -1,12 +1,10 @@
 import clsx from "clsx";
-import { Text, type TextProps } from "react-aria-components";
+import { Text } from "react-aria-components";
 import { typography } from "@/utils/typography";
 
-export const Description: React.FC<TextProps> = ({
-    className,
-    slot: _,
-    ...props
-}) => {
+export const Description: React.FC<
+    React.ComponentPropsWithRef<typeof Text>
+> = ({ className, slot: _, ...props }) => {
     return (
         <Text
             slot="description"

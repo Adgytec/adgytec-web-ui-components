@@ -27,6 +27,7 @@ export const TimeField = <T extends TimeValue>({
     errorMessage,
     showDescriptionOnInvalid = false,
     className,
+    ref,
     ...props
 }: TimeFieldProps<T>) => {
     return (
@@ -52,6 +53,7 @@ export const TimeField = <T extends TimeValue>({
                         {label && <Label>{label}</Label>}
 
                         <DateInput
+                            ref={ref}
                             className={clsx(
                                 UnsetStyles,
                                 EditorStyles,

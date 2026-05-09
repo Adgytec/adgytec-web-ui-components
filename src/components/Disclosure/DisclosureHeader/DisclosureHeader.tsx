@@ -1,12 +1,7 @@
 import { clsx } from "clsx";
 import { ChevronRight } from "lucide-react";
 import { useContext } from "react";
-import {
-    Button,
-    DisclosureStateContext,
-    Heading,
-    type HeadingProps,
-} from "react-aria-components";
+import { Button, DisclosureStateContext, Heading } from "react-aria-components";
 import {
     ButtonReset,
     buttonColorBase,
@@ -18,7 +13,7 @@ import { useDisclosureTypographyContext } from "../context";
 import styles from "./disclosureHeader.module.css";
 
 export const DisclosureHeader: React.FC<
-    HeadingProps & {
+    React.ComponentPropsWithRef<typeof Heading> & {
         labelTypography?: Typography;
     }
 > = ({ children, labelTypography, ...props }) => {

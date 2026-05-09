@@ -1,14 +1,11 @@
 import type { ReactNode } from "react";
-import type {
-    CheckboxGroupProps as AriaCheckboxGroupProps,
-    CheckboxProps as AriaCheckboxProps,
-} from "react-aria-components";
+import type { Checkbox, CheckboxGroup } from "react-aria-components";
 import type { CoreInputProps } from "../core";
 
 export type CheckboxLabelPlacement = "start" | "end";
 
 export interface CheckboxGroupProps
-    extends Omit<AriaCheckboxGroupProps, "children">,
+    extends Omit<React.ComponentPropsWithRef<typeof CheckboxGroup>, "children">,
         CoreInputProps {
     children?: ReactNode;
     checkboxItemsGap?: number;
@@ -16,7 +13,8 @@ export interface CheckboxGroupProps
     containerStateLayer?: boolean;
 }
 
-export interface CheckboxProps extends AriaCheckboxProps {
+export interface CheckboxProps
+    extends React.ComponentPropsWithRef<typeof Checkbox> {
     labelPlacement?: CheckboxLabelPlacement;
     containerStateLayer?: boolean;
 }

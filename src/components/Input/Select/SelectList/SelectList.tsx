@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { ListBox, type ListBoxProps } from "react-aria-components";
+import { ListBox } from "react-aria-components";
 import {
     MenuBaseLayout,
     type MenuColor,
@@ -14,7 +14,7 @@ export const SelectList = <T extends object>({
     menuLayout = "standard",
     className,
     ...props
-}: ListBoxProps<T> & {
+}: React.ComponentPropsWithRef<typeof ListBox<T>> & {
     color?: MenuColor;
     menuLayout?: MenuLayout;
 }) => {

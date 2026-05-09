@@ -1,15 +1,10 @@
-import type {
-    ComboBoxProps as AriaComboBoxProps,
-    ValidationResult,
-} from "react-aria-components";
+import type { ComboBox } from "react-aria-components";
+import type { CoreInputProps } from "../../core";
 
 export interface ComboBoxProps<
     T extends object,
     M extends "single" | "multiple" = "single",
-> extends AriaComboBoxProps<T, M> {
-    label?: string;
-    description?: string;
-    errorMessage?: string | ((validation: ValidationResult) => string);
-    showDescriptionOnInvalid?: boolean;
+> extends React.ComponentPropsWithRef<typeof ComboBox<T, M>>,
+        CoreInputProps {
     hideMultiSelectionValue?: boolean;
 }

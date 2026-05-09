@@ -1,14 +1,11 @@
 import clsx from "clsx";
-import {
-    DisclosureGroup as AriaDisclosureGroup,
-    type DisclosureGroupProps,
-} from "react-aria-components";
+import { DisclosureGroup as AriaDisclosureGroup } from "react-aria-components";
 import type { Typography } from "@/utils";
 import { DisclosureTypographyContext } from "../context";
 import styles from "./disclosureGroup.module.css";
 
 export const DisclosureGroup: React.FC<
-    DisclosureGroupProps & {
+    React.ComponentPropsWithRef<typeof AriaDisclosureGroup> & {
         labelTypography?: Typography;
         panelTypography?: Typography;
     }

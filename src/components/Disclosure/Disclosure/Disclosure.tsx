@@ -1,14 +1,10 @@
 import clsx from "clsx";
-import {
-    Disclosure as AriaDisclosure,
-    type DisclosureProps,
-} from "react-aria-components";
+import { Disclosure as AriaDisclosure } from "react-aria-components";
 import styles from "./disclosure.module.css";
 
-export const Disclosure: React.FC<DisclosureProps> = ({
-    className,
-    ...props
-}) => {
+export const Disclosure: React.FC<
+    React.ComponentPropsWithRef<typeof AriaDisclosure>
+> = ({ className, ...props }) => {
     return (
         <AriaDisclosure
             className={(renderProps) =>

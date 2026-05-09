@@ -1,6 +1,9 @@
-import type { ButtonProps as AriaButtonProps } from "react-aria-components";
+import type { Button } from "react-aria-components";
 
 export interface SplitButtonTriggerProps
-    extends Omit<AriaButtonProps, "children" | "className"> {
+    extends Omit<
+        React.ComponentPropsWithRef<typeof Button>,
+        "children" | "className"
+    > {
     tooltip?: string;
 }

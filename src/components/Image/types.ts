@@ -6,16 +6,12 @@ export type Preset =
     | "full"
     | "grid3Col";
 
-type NativeImageProps = Omit<
-    React.ImgHTMLAttributes<HTMLImageElement>,
-    "src" | "srcSet"
->;
-
-export type ImageProps = NativeImageProps & {
+export interface ImageProps
+    extends Omit<React.ComponentPropsWithRef<"img">, "src" | "srcSet"> {
     preset?: Preset;
     thumbnail: string;
     small: string;
     medium: string;
     large: string;
     extraLarge: string;
-};
+}
