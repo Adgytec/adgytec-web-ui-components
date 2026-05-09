@@ -102,6 +102,13 @@ import {
 import { SubmenuPopover } from "./components/Menu/SubmenuPopover";
 import { Popover } from "./components/Popover";
 import { Separator } from "./components/Separator";
+import {
+    RichTooltip,
+    RichTooltipActions,
+    RichTooltipInfo,
+    RichTooltipSubhead,
+    RichTooltipText,
+} from "./components/Tooltip/RichTooltip";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
 
@@ -353,10 +360,41 @@ const TooltipPreview = () => {
     return (
         <div className="items">
             <TooltipTrigger>
-                <Button>Tooltip demo</Button>
+                <Button>Tooltip</Button>
 
                 <Tooltip>Lorem ipsum dolor sit amet.</Tooltip>
             </TooltipTrigger>
+
+            <DialogTrigger>
+                <Button>Rich Tooltip</Button>
+
+                <Popover isNonModal>
+                    <RichTooltip>
+                        <RichTooltipInfo>
+                            <RichTooltipSubhead>Lorem Ipsum</RichTooltipSubhead>
+
+                            <RichTooltipText>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit. Mauris porttitor laoreet purus
+                                eu elementum. Vestibulum vitae vulputate justo,
+                                ac feugiat dolor.
+                            </RichTooltipText>
+                        </RichTooltipInfo>
+
+                        <RichTooltipActions>
+                            <LinkButton
+                                color="text"
+                                href="https://m3.material.io/components/tooltips/guidelines"
+                                target="_blank"
+                            >
+                                Lorem Ipsum
+                            </LinkButton>
+
+                            <Button color="text">Lorem</Button>
+                        </RichTooltipActions>
+                    </RichTooltip>
+                </Popover>
+            </DialogTrigger>
         </div>
     );
 };
