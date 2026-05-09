@@ -1,12 +1,7 @@
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
 import { useContext } from "react";
-import {
-    Button,
-    type ButtonProps,
-    SelectStateContext,
-    SelectValue,
-} from "react-aria-components";
+import { Button, SelectStateContext, SelectValue } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { typography } from "@/utils";
 import {
@@ -17,9 +12,9 @@ import {
 } from "../../core";
 import styles from "./selectTrigger.module.css";
 
-export const SelectTrigger: React.FC<Omit<ButtonProps, "children">> = (
-    props
-) => {
+export const SelectTrigger: React.FC<
+    Omit<React.ComponentPropsWithRef<typeof Button>, "children">
+> = (props) => {
     const selectContextVal = useContext(SelectStateContext);
     const invalid = selectContextVal?.displayValidation.isInvalid;
 

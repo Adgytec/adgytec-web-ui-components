@@ -1,16 +1,11 @@
 import clsx from "clsx";
-import {
-    Tooltip as AriaTooltip,
-    type TooltipProps,
-} from "react-aria-components";
+import { Tooltip as AriaTooltip } from "react-aria-components";
 import { typography } from "@/utils/typography";
 import styles from "./tooltip.module.css";
 
-export const Tooltip: React.FC<TooltipProps> = ({
-    className,
-    offset = 4,
-    ...props
-}) => {
+export const Tooltip: React.FC<
+    React.ComponentPropsWithRef<typeof AriaTooltip>
+> = ({ className, offset = 4, ...props }) => {
     return (
         <AriaTooltip
             offset={offset}

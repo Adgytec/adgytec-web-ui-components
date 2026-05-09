@@ -1,6 +1,9 @@
-import type { LinkProps } from "react-aria-components";
+import type { Link } from "react-aria-components";
 import type { IconButtonBaseProps } from "../core";
 
 export interface LinkIconButtonProps
-    extends Omit<LinkProps, "children" | "className">,
+    extends Omit<
+            React.ComponentPropsWithRef<typeof Link>,
+            "children" | "className"
+        >,
         IconButtonBaseProps {}

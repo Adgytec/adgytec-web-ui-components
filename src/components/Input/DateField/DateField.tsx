@@ -27,6 +27,7 @@ export const DateField = <T extends DateValue>({
     errorMessage,
     showDescriptionOnInvalid = false,
     className,
+    ref,
     ...props
 }: DateFieldProps<T>) => {
     return (
@@ -52,6 +53,7 @@ export const DateField = <T extends DateValue>({
                         {label && <Label>{label}</Label>}
 
                         <DateInput
+                            ref={ref}
                             className={clsx(
                                 UnsetStyles,
                                 EditorStyles,

@@ -1,4 +1,4 @@
-import type { ToggleButtonGroupProps as AriaToggleButtonGroupProps } from "react-aria-components";
+import type { ToggleButtonGroup } from "react-aria-components";
 import type {
     ButtonShape,
     ButtonSize,
@@ -6,7 +6,10 @@ import type {
 } from "../../core";
 
 export interface ConnectedButtonGroupProps
-    extends Omit<AriaToggleButtonGroupProps, "orientation"> {
+    extends Omit<
+        React.ComponentPropsWithRef<typeof ToggleButtonGroup>,
+        "orientation"
+    > {
     size?: ButtonSize;
     shape?: ButtonShape;
     color?: ConnectedButtonGroupColor;

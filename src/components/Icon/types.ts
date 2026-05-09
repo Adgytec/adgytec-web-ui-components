@@ -1,4 +1,4 @@
-import type { LucideIcon, LucideProps } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 export type IconSize =
     | "dense"
@@ -7,8 +7,9 @@ export type IconSize =
     | "large"
     | "extra-large";
 
-export type IconProps = Omit<LucideProps, "size"> & {
+export interface IconProps
+    extends Omit<React.ComponentPropsWithRef<LucideIcon>, "size"> {
     icon: LucideIcon;
     size?: IconSize | number;
     withText?: boolean;
-};
+}

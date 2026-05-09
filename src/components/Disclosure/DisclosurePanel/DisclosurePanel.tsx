@@ -1,14 +1,11 @@
 import { clsx } from "clsx";
-import {
-    DisclosurePanel as AriaDisclosurePanel,
-    type DisclosurePanelProps,
-} from "react-aria-components";
+import { DisclosurePanel as AriaDisclosurePanel } from "react-aria-components";
 import type { Typography } from "@/utils";
 import { useDisclosureTypographyContext } from "../context";
 import styles from "./disclosurePanel.module.css";
 
 export const DisclosurePanel: React.FC<
-    DisclosurePanelProps & {
+    React.ComponentPropsWithRef<typeof AriaDisclosurePanel> & {
         panelTypography?: Typography;
     }
 > = ({ className, children, panelTypography, ...props }) => {

@@ -1,15 +1,11 @@
 import { clsx } from "clsx";
-import {
-    FieldError as AriaFieldError,
-    type FieldErrorProps,
-} from "react-aria-components";
+import { FieldError as AriaFieldError } from "react-aria-components";
 import { typography } from "@/utils/typography";
 import styles from "./fieldError.module.css";
 
-export const FieldError: React.FC<FieldErrorProps> = ({
-    className,
-    ...props
-}) => {
+export const FieldError: React.FC<
+    React.ComponentPropsWithRef<typeof AriaFieldError>
+> = ({ className, ...props }) => {
     return (
         <AriaFieldError
             className={(renderProps) =>

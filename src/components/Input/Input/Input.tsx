@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import { useRef } from "react";
 import { useFocusRing } from "react-aria/useFocusRing";
 import { useHover } from "react-aria/useHover";
+import { useObjectRef } from "react-aria/useObjectRef";
 import { usePress } from "react-aria/usePress";
 import {
     Input as AriaInput,
@@ -42,10 +42,12 @@ export const Input: React.FC<InputProps> = ({
     maxLength,
     value,
     defaultValue,
+    ref,
     onChange,
     ...props
 }) => {
-    const inputRef = useRef<HTMLInputElement | null>(null);
+    const inputRef = useObjectRef(ref);
+
     const { currentValue, setValue } = useControllableState({
         value,
         defaultValue,
@@ -119,12 +121,12 @@ export const Input: React.FC<InputProps> = ({
                                     ? prefix(isDisabled, isInvalid)
                                     : prefix}
                                 <AriaInput
+                                    ref={inputRef}
                                     className={clsx(
                                         UnsetStyles,
                                         EditorInputStyles,
                                         typography.bodyLarge
                                     )}
-                                    ref={inputRef}
                                     {...focusProps}
                                     placeholder={placeholder}
                                     dir={editorDir}

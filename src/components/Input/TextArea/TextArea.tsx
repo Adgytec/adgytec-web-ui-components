@@ -32,6 +32,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
     value,
     defaultValue,
     onChange,
+    ref,
     ...props
 }) => {
     const { currentValue, setValue } = useControllableState({
@@ -67,6 +68,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
                         {label && <Label>{label}</Label>}
 
                         <AriaTextArea
+                            ref={ref}
                             rows={rows}
                             placeholder={placeholder}
                             className={clsx(

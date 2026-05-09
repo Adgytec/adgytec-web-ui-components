@@ -1,11 +1,11 @@
 import clsx from "clsx";
-import {
-    Modal as AriaModal,
-    type ModalOverlayProps,
-} from "react-aria-components";
+import { Modal as AriaModal } from "react-aria-components";
 import styles from "./modal.module.css";
 
-export const Modal: React.FC<ModalOverlayProps> = ({ className, ...props }) => {
+export const Modal: React.FC<React.ComponentPropsWithRef<typeof AriaModal>> = ({
+    className,
+    ...props
+}) => {
     return (
         <AriaModal
             className={(renderProps) =>

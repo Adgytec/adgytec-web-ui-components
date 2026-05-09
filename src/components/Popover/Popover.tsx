@@ -1,11 +1,10 @@
 import clsx from "clsx";
-import {
-    Popover as AriaPopover,
-    type PopoverProps,
-} from "react-aria-components";
+import { Popover as AriaPopover } from "react-aria-components";
 import styles from "./popover.module.css";
 
-export const Popover: React.FC<PopoverProps> = ({ className, ...props }) => {
+export const Popover: React.FC<
+    React.ComponentPropsWithRef<typeof AriaPopover>
+> = ({ className, ...props }) => {
     return (
         <AriaPopover
             className={(renderProps) =>

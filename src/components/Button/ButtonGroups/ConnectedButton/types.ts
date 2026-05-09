@@ -1,8 +1,11 @@
 import type { LucideIcon } from "lucide-react";
-import type { ToggleButtonProps as AriaToggleButtonProps } from "react-aria-components";
+import type { ToggleButton } from "react-aria-components";
 
 export interface ConnectedButtonProps
-    extends Omit<AriaToggleButtonProps, "className"> {
+    extends Omit<
+        React.ComponentPropsWithRef<typeof ToggleButton>,
+        "className"
+    > {
     icon?: LucideIcon;
     selectedIcon?: LucideIcon;
 }
