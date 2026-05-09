@@ -2,16 +2,14 @@ import type { ReactNode } from "react";
 import type {
     RadioGroupProps as AriaRadioGroupProps,
     RadioProps as AriaRadioProps,
-    ValidationResult,
 } from "react-aria-components";
+import type { CoreInputProps } from "../core";
 
 export type RadioLabelPlacement = "start" | "end";
 
-export interface RadioGroupProps extends Omit<AriaRadioGroupProps, "children"> {
-    label?: string;
-    description?: string;
-    errorMessage?: string | ((validation: ValidationResult) => string);
-    showDescriptionOnInvalid?: boolean;
+export interface RadioGroupProps
+    extends Omit<AriaRadioGroupProps, "children">,
+        CoreInputProps {
     children?: ReactNode;
     radioItemsGap?: number;
     labelPlacement?: RadioLabelPlacement;

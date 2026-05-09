@@ -1,13 +1,9 @@
 import type {
     DateFieldProps as AriaDateFieldProps,
     DateValue,
-    ValidationResult,
 } from "react-aria-components";
+import type { CoreInputProps } from "../core";
 
 export interface DateFieldProps<T extends DateValue>
-    extends Omit<AriaDateFieldProps<T>, "children"> {
-    label?: string;
-    description?: string;
-    errorMessage?: string | ((validation: ValidationResult) => string);
-    showDescriptionOnInvalid?: boolean;
-}
+    extends Omit<AriaDateFieldProps<T>, "children">,
+        CoreInputProps {}
