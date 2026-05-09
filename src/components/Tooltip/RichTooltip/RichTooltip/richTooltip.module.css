@@ -11,5 +11,7 @@
 
         border-radius: var(--md-sys-shape-corner-radius-medium);
         box-shadow: var(--md-sys-elevation-shadow-3);
+
+        max-inline-size: calc(300 * var(--dp, 1px));
     }
 }

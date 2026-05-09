@@ -1,6 +1,6 @@
 @layer adgytec.comps {
     .info {
-        padding-inline: var(--md-sys-layout-space-4);
+        padding-inline: var(--md-sys-layout-space-16);
 
         display: grid;
         gap: var(--md-sys-layout-space-4);
