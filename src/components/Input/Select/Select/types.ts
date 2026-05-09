@@ -1,14 +1,8 @@
-import type {
-    SelectProps as AriaSelectProps,
-    ValidationResult,
-} from "react-aria-components";
+import type { SelectProps as AriaSelectProps } from "react-aria-components";
+import type { CoreInputProps } from "../../core";
 
 export interface SelectProps<
     T extends object,
     M extends "single" | "multiple" = "single",
-> extends AriaSelectProps<T, M> {
-    label?: string;
-    description?: string;
-    errorMessage?: string | ((validation: ValidationResult) => string);
-    showDescriptionOnInvalid?: boolean;
-}
+> extends AriaSelectProps<T, M>,
+        CoreInputProps {}
