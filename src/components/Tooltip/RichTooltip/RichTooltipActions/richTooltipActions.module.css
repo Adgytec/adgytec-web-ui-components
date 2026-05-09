@@ -1,5 +1,5 @@
 @layer adgytec.comps {
-    .layer {
+    .actions {
         display: flex;
         align-items: center;
         gap: var(--md-sys-layout-space-4);

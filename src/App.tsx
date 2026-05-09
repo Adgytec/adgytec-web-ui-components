@@ -389,6 +389,8 @@ const TooltipPreview = () => {
                             >
                                 Lorem Ipsum
                             </LinkButton>
+
+                            <Button color="text">Lorem</Button>
                         </RichTooltipActions>
                     </RichTooltip>
                 </Popover>
