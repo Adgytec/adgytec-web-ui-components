@@ -84,7 +84,7 @@
         }
     }
 
-    .toolbar :not([data-color="filled"]),
+    .toolbar [data-visual]:not([data-color="filled"]),
     .toolbar [data-toggle-button] {
         /* colors */
         --background-color-normal: var(--toolbar-button-container-color);
