@@ -4,10 +4,13 @@
         --tab-list-divider-width: calc(1 * var(--dp, 1px));
         --tab-list-divider-color: var(--md-sys-color-surface-variant);
 
+        --indicator-size: calc(2 * var(--dp, 1px));
+        --indicator-color: var(--md-sys-color-primary);
+
         background-color: var(--tab-list-background);
 
         [data-selection-indicator] {
-            background-color: var(--md-sys-color-primary);
+            background-color: var(--indicator-color);
         }
 
         &[data-orientation="horizontal"] {
@@ -32,7 +35,7 @@
                 left: 0;
                 bottom: 0px;
                 width: 100%;
-                height: 3px;
+                height: var(--indicator-size);
                 transition-property: translate, width;
             }
         }
@@ -48,7 +51,7 @@
                 top: 0;
                 right: 0px;
                 height: 100%;
-                width: 3px;
+                width: var(--indicator-size);
                 transition-property: translate, height;
             }
         }

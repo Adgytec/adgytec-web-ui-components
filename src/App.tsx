@@ -1,5 +1,6 @@
 import {
     Armchair,
+    Bell,
     Clipboard,
     CloudSnow,
     CloudSun,
@@ -22,9 +23,8 @@ import {
     Sun,
     SunMoon,
     SunSnow,
-    User,
     SwatchBook,
-    Bell,
+    User,
     UserRound,
 } from "lucide-react";
 import { Fragment, type ReactNode, useState } from "react";
@@ -2255,7 +2255,11 @@ const App = () => {
     return (
         <div className="tab-container">
             <Tabs orientation={isVertical ? "vertical" : "horizontal"}>
-                <TabList>
+                <TabList
+                    style={{
+                        scrollbarWidth: "none",
+                    }}
+                >
                     <Tab
                         label="Change Orientation"
                         onPress={() => setVertical((prev) => !prev)}
