@@ -118,6 +118,7 @@ import {
 } from "./components/Tooltip/RichTooltip";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
+import { ToolbarToggleButtonGroup } from "./components/Toolbar/ToolbarToggleButtonGroup";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1867,6 +1868,86 @@ const ToolbarPreview = () => {
                             color="tonal"
                             isDisabled={isDisabled}
                         />
+                    </Toolbar>
+
+                    <Toolbar
+                        color={color}
+                        variant={variant}
+                        orientation={orientation}
+                    >
+                        <ToolbarToggleButtonGroup>
+                            <ToggleIconButton
+                                id={1}
+                                icon={Globe}
+                                isDisabled={isDisabled}
+                                selectedIcon={GlobeOff}
+                            />
+
+                            <ToggleIconButton
+                                id={2}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="outlined"
+                                isDisabled={isDisabled}
+                            />
+
+                            <ToggleIconButton
+                                id={3}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="standard"
+                                isDisabled={isDisabled}
+                            />
+
+                            <ToggleIconButton
+                                id={4}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="tonal"
+                                isDisabled={isDisabled}
+                            />
+                        </ToolbarToggleButtonGroup>
+
+                        <Separator
+                            orientation={
+                                orientation === "vertical"
+                                    ? "horizontal"
+                                    : "vertical"
+                            }
+                        />
+
+                        <ToolbarToggleButtonGroup>
+                            <ToggleIconButton
+                                id={1}
+                                icon={Globe}
+                                isDisabled={isDisabled}
+                                selectedIcon={GlobeOff}
+                            />
+
+                            <ToggleIconButton
+                                id={2}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="outlined"
+                                isDisabled={isDisabled}
+                            />
+
+                            <ToggleIconButton
+                                id={3}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="standard"
+                                isDisabled={isDisabled}
+                            />
+
+                            <ToggleIconButton
+                                id={4}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="tonal"
+                                isDisabled={isDisabled}
+                            />
+                        </ToolbarToggleButtonGroup>
                     </Toolbar>
 
                     {orientation === "horizontal" && (

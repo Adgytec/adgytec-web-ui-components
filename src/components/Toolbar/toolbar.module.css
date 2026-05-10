@@ -7,11 +7,18 @@
         padding: var(--md-sys-layout-space-8);
 
         display: flex;
-        align-items: ceter;
+        align-items: center;
         justify-content: space-between;
         gap: var(--toolbar-space-between-actions);
 
         background-color: var(--toolbar-container-color);
+
+        .section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--toolbar-space-between-actions);
+        }
 
         &[data-variant="floating"] {
             box-shadow: var(--md-sys-elevation-shadow-3);
@@ -19,6 +26,10 @@
 
         &[data-orientation="vertical"] {
             flex-direction: column;
+
+            .section {
+                flex-direction: column;
+            }
         }
     }
 
