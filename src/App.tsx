@@ -103,6 +103,11 @@ import { SubmenuPopover } from "./components/Menu/SubmenuPopover";
 import { Popover } from "./components/Popover";
 import { Separator } from "./components/Separator";
 import {
+    Toolbar,
+    type ToolbarColor,
+    type ToolbarVariant,
+} from "./components/Toolbar";
+import {
     RichTooltip,
     RichTooltipActions,
     RichTooltipInfo,
@@ -1786,6 +1791,184 @@ const DisclosurePreview = () => {
     );
 };
 
+const ToolbarPreview = () => {
+    type Orientation = "horizontal" | "vertical";
+
+    const RenderToolbar = ({
+        color,
+        variant,
+        orientation,
+    }: {
+        color?: ToolbarColor;
+        variant?: ToolbarVariant;
+        orientation?: Orientation;
+    }) => {
+        return (
+            <>
+                <div
+                    className={
+                        orientation === "vertical" ? "items" : "items-grid"
+                    }
+                >
+                    <Toolbar
+                        color={color}
+                        variant={variant}
+                        orientation={orientation}
+                    >
+                        <IconButton icon={Armchair} />
+
+                        <IconButton icon={Armchair} color="outlined" />
+
+                        <IconButton icon={Armchair} color="standard" />
+
+                        <IconButton icon={Armchair} color="tonal" />
+                    </Toolbar>
+
+                    <Toolbar
+                        color={color}
+                        variant={variant}
+                        orientation={orientation}
+                    >
+                        <Button icon={Armchair}>Chair</Button>
+                        <Button icon={Armchair} color="outlined">
+                            Chair
+                        </Button>
+                        <Button icon={Armchair} color="text">
+                            Chair
+                        </Button>
+                        <Button icon={Armchair} color="tonal">
+                            Chair
+                        </Button>
+                        <Button icon={Armchair} color="elevated">
+                            Chair
+                        </Button>
+                    </Toolbar>
+
+                    <Toolbar
+                        color={color}
+                        variant={variant}
+                        orientation={orientation}
+                    >
+                        <ButtonGroup>
+                            <ToggleButton id={1} icon={Armchair}>
+                                Chair
+                            </ToggleButton>
+                            <ToggleButton id={2} icon={Armchair}>
+                                Chair
+                            </ToggleButton>
+                            <ToggleButton id={3} icon={Armchair}>
+                                Chair
+                            </ToggleButton>
+                        </ButtonGroup>
+
+                        <ButtonGroup color="outlined">
+                            <ToggleButton id={1} icon={Armchair}>
+                                Chair
+                            </ToggleButton>
+                            <ToggleButton id={2} icon={Armchair}>
+                                Chair
+                            </ToggleButton>
+                            <ToggleButton id={3} icon={Armchair}>
+                                Chair
+                            </ToggleButton>
+                        </ButtonGroup>
+
+                        <ButtonGroup color="tonal">
+                            <ToggleButton id={1} icon={Armchair}>
+                                Chair
+                            </ToggleButton>
+                            <ToggleButton id={2} icon={Armchair}>
+                                Chair
+                            </ToggleButton>
+                            <ToggleButton id={3} icon={Armchair}>
+                                Chair
+                            </ToggleButton>
+                        </ButtonGroup>
+                    </Toolbar>
+
+                    <Toolbar
+                        color={color}
+                        variant={variant}
+                        orientation={orientation}
+                    >
+                        <ConnectedButtonGroup>
+                            <ConnectedButton id={1} icon={Armchair}>
+                                Chair
+                            </ConnectedButton>
+                            <ConnectedButton id={2} icon={Armchair}>
+                                Chair
+                            </ConnectedButton>
+                            <ConnectedButton id={3} icon={Armchair}>
+                                Chair
+                            </ConnectedButton>
+                        </ConnectedButtonGroup>
+
+                        <ConnectedButtonGroup color="elevated">
+                            <ConnectedButton id={1} icon={Armchair}>
+                                Chair
+                            </ConnectedButton>
+                            <ConnectedButton id={2} icon={Armchair}>
+                                Chair
+                            </ConnectedButton>
+                            <ConnectedButton id={3} icon={Armchair}>
+                                Chair
+                            </ConnectedButton>
+                        </ConnectedButtonGroup>
+
+                        <ConnectedButtonGroup color="tonal">
+                            <ConnectedButton id={1} icon={Armchair}>
+                                Chair
+                            </ConnectedButton>
+                            <ConnectedButton id={2} icon={Armchair}>
+                                Chair
+                            </ConnectedButton>
+                            <ConnectedButton id={3} icon={Armchair}>
+                                Chair
+                            </ConnectedButton>
+                        </ConnectedButtonGroup>
+
+                        <ConnectedButtonGroup color="outlined">
+                            <ConnectedButton id={1} icon={Armchair}>
+                                Chair
+                            </ConnectedButton>
+                            <ConnectedButton id={2} icon={Armchair}>
+                                Chair
+                            </ConnectedButton>
+                            <ConnectedButton id={3} icon={Armchair}>
+                                Chair
+                            </ConnectedButton>
+                        </ConnectedButtonGroup>
+                    </Toolbar>
+                </div>
+
+                <Separator />
+            </>
+        );
+    };
+
+    const orientation: Orientation[] = ["horizontal", "vertical"];
+
+    return (
+        <div className="items-grid">
+            {orientation.map((o) => (
+                <Fragment key={o}>
+                    <RenderToolbar orientation={o} />
+
+                    <RenderToolbar variant="floating" orientation={o} />
+
+                    <RenderToolbar color="vibrant" orientation={o} />
+
+                    <RenderToolbar
+                        color="vibrant"
+                        variant="floating"
+                        orientation={o}
+                    />
+                </Fragment>
+            ))}
+        </div>
+    );
+};
+
 const App = () => {
     type PreviewItem = {
         id: string;
@@ -1799,6 +1982,7 @@ const App = () => {
             label: "Theme Switcher",
             Component: VisualSettingsPreview,
         },
+        { id: "toolbar", label: "Toolbar", Component: ToolbarPreview },
         { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },
         { id: "select", label: "Select", Component: SelectPreview },
         { id: "date-field", label: "Date Field", Component: DateFieldPreview },
