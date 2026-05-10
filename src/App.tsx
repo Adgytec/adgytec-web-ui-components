@@ -31,7 +31,12 @@ import { Fragment, type ReactNode, useState } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
 import { clsx } from "clsx";
-import { DialogTrigger, Form, SubmenuTrigger } from "react-aria-components";
+import {
+    Collection,
+    DialogTrigger,
+    Form,
+    SubmenuTrigger,
+} from "react-aria-components";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@/components/Tabs";
 import {
     Button,
@@ -2194,6 +2199,8 @@ const TabsPreview = () => {
 };
 
 const App = () => {
+    const [isVertical, setVertical] = useState(false);
+
     type PreviewItem = {
         id: string;
         label: string;
@@ -2247,11 +2254,16 @@ const App = () => {
 
     return (
         <div className="tab-container">
-            <Tabs orientation={"vertical"}>
-                <TabList items={previewItems}>
-                    {(item) => (
-                        <Tab key={item.id} id={item.id} label={item.label} />
-                    )}
+            <Tabs orientation={isVertical ? "vertical" : "horizontal"}>
+                <TabList>
+                    <Tab
+                        label="Change Orientation"
+                        onPress={() => setVertical((prev) => !prev)}
+                    />
+
+                    <Collection items={previewItems}>
+                        {(item) => <Tab id={item.id} label={item.label} />}
+                    </Collection>
                 </TabList>
 
                 <TabPanels items={previewItems}>
@@ -2259,7 +2271,7 @@ const App = () => {
                         const Component = item.Component;
 
                         return (
-                            <TabPanel key={item.id} id={item.id}>
+                            <TabPanel id={item.id}>
                                 <PreviewContainer label={item.label}>
                                     <Component />
                                 </PreviewContainer>

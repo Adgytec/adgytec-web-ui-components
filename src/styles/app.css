@@ -77,5 +77,5 @@
     block-size: 100svb;
     display: grid;
 
-    padding-block: var(--md-sys-layout-space-16);
+    padding: var(--md-sys-layout-space-16);
 }
