@@ -7,7 +7,9 @@ import {
     ExternalLinkIcon,
     Eye,
     FileBraces,
+    Globe,
     GlobeLock,
+    GlobeOff,
     LogOut,
     type LucideIcon,
     Mail,
@@ -1813,13 +1815,13 @@ const ToolbarPreview = () => {
                         variant={variant}
                         orientation={orientation}
                     >
-                        <IconButton icon={Armchair} isDisabled={isDisabled} />
-
                         <IconButton
                             icon={Armchair}
                             isDisabled={isDisabled}
                             color="outlined"
                         />
+
+                        <IconButton icon={Armchair} isDisabled={isDisabled} />
 
                         <IconButton
                             icon={Armchair}
@@ -1840,24 +1842,28 @@ const ToolbarPreview = () => {
                         orientation={orientation}
                     >
                         <ToggleIconButton
-                            icon={Armchair}
+                            icon={Globe}
                             isDisabled={isDisabled}
+                            selectedIcon={GlobeOff}
                         />
 
                         <ToggleIconButton
-                            icon={Armchair}
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
                             color="outlined"
                             isDisabled={isDisabled}
                         />
 
                         <ToggleIconButton
-                            icon={Armchair}
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
                             color="standard"
                             isDisabled={isDisabled}
                         />
 
                         <ToggleIconButton
-                            icon={Armchair}
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
                             color="tonal"
                             isDisabled={isDisabled}
                         />
@@ -1870,9 +1876,6 @@ const ToolbarPreview = () => {
                                 variant={variant}
                                 orientation={orientation}
                             >
-                                <Button icon={Armchair} isDisabled={isDisabled}>
-                                    Chair
-                                </Button>
                                 <Button
                                     icon={Armchair}
                                     color="outlined"
@@ -1887,6 +1890,11 @@ const ToolbarPreview = () => {
                                 >
                                     Chair
                                 </Button>
+
+                                <Button icon={Armchair} isDisabled={isDisabled}>
+                                    Chair
+                                </Button>
+
                                 <Button
                                     icon={Armchair}
                                     color="tonal"
@@ -1894,6 +1902,7 @@ const ToolbarPreview = () => {
                                 >
                                     Chair
                                 </Button>
+
                                 <Button
                                     icon={Armchair}
                                     color="elevated"
@@ -1909,156 +1918,39 @@ const ToolbarPreview = () => {
                                 orientation={orientation}
                             >
                                 <ToggleButton
-                                    icon={Armchair}
+                                    icon={Globe}
+                                    selectedIcon={GlobeOff}
                                     isDisabled={isDisabled}
                                 >
-                                    Chair
+                                    Globe
                                 </ToggleButton>
 
                                 <ToggleButton
-                                    icon={Armchair}
+                                    icon={Globe}
+                                    selectedIcon={GlobeOff}
                                     color="outlined"
                                     isDisabled={isDisabled}
                                 >
-                                    Chair
+                                    Globe
                                 </ToggleButton>
 
                                 <ToggleButton
-                                    icon={Armchair}
+                                    icon={Globe}
+                                    selectedIcon={GlobeOff}
                                     color="tonal"
                                     isDisabled={isDisabled}
                                 >
-                                    Chair
+                                    Globe
                                 </ToggleButton>
 
                                 <ToggleButton
-                                    icon={Armchair}
+                                    icon={Globe}
+                                    selectedIcon={GlobeOff}
                                     color="elevated"
                                     isDisabled={isDisabled}
                                 >
-                                    Chair
+                                    Globe
                                 </ToggleButton>
-                            </Toolbar>
-
-                            <Toolbar
-                                color={color}
-                                variant={variant}
-                                orientation={orientation}
-                            >
-                                <ButtonGroup isDisabled={isDisabled}>
-                                    <ToggleButton id={1} icon={Armchair}>
-                                        Chair
-                                    </ToggleButton>
-                                    <ToggleButton id={2} icon={Armchair}>
-                                        Chair
-                                    </ToggleButton>
-                                    <ToggleButton id={3} icon={Armchair}>
-                                        Chair
-                                    </ToggleButton>
-                                </ButtonGroup>
-
-                                <Separator orientation="vertical" />
-
-                                <ButtonGroup
-                                    color="outlined"
-                                    isDisabled={isDisabled}
-                                >
-                                    <ToggleButton id={1} icon={Armchair}>
-                                        Chair
-                                    </ToggleButton>
-                                    <ToggleButton id={2} icon={Armchair}>
-                                        Chair
-                                    </ToggleButton>
-                                    <ToggleButton id={3} icon={Armchair}>
-                                        Chair
-                                    </ToggleButton>
-                                </ButtonGroup>
-
-                                <Separator orientation="vertical" />
-
-                                <ButtonGroup
-                                    color="tonal"
-                                    isDisabled={isDisabled}
-                                >
-                                    <ToggleButton id={1} icon={Armchair}>
-                                        Chair
-                                    </ToggleButton>
-                                    <ToggleButton id={2} icon={Armchair}>
-                                        Chair
-                                    </ToggleButton>
-                                    <ToggleButton id={3} icon={Armchair}>
-                                        Chair
-                                    </ToggleButton>
-                                </ButtonGroup>
-                            </Toolbar>
-
-                            <Toolbar
-                                color={color}
-                                variant={variant}
-                                orientation={orientation}
-                            >
-                                <ConnectedButtonGroup isDisabled={isDisabled}>
-                                    <ConnectedButton id={1} icon={Armchair}>
-                                        Chair
-                                    </ConnectedButton>
-                                    <ConnectedButton id={2} icon={Armchair}>
-                                        Chair
-                                    </ConnectedButton>
-                                    <ConnectedButton id={3} icon={Armchair}>
-                                        Chair
-                                    </ConnectedButton>
-                                </ConnectedButtonGroup>
-
-                                <Separator orientation="vertical" />
-
-                                <ConnectedButtonGroup
-                                    color="elevated"
-                                    isDisabled={isDisabled}
-                                >
-                                    <ConnectedButton id={1} icon={Armchair}>
-                                        Chair
-                                    </ConnectedButton>
-                                    <ConnectedButton id={2} icon={Armchair}>
-                                        Chair
-                                    </ConnectedButton>
-                                    <ConnectedButton id={3} icon={Armchair}>
-                                        Chair
-                                    </ConnectedButton>
-                                </ConnectedButtonGroup>
-
-                                <Separator orientation="vertical" />
-
-                                <ConnectedButtonGroup
-                                    color="tonal"
-                                    isDisabled={isDisabled}
-                                >
-                                    <ConnectedButton id={1} icon={Armchair}>
-                                        Chair
-                                    </ConnectedButton>
-                                    <ConnectedButton id={2} icon={Armchair}>
-                                        Chair
-                                    </ConnectedButton>
-                                    <ConnectedButton id={3} icon={Armchair}>
-                                        Chair
-                                    </ConnectedButton>
-                                </ConnectedButtonGroup>
-
-                                <Separator orientation="vertical" />
-
-                                <ConnectedButtonGroup
-                                    color="outlined"
-                                    isDisabled={isDisabled}
-                                >
-                                    <ConnectedButton id={1} icon={Armchair}>
-                                        Chair
-                                    </ConnectedButton>
-                                    <ConnectedButton id={2} icon={Armchair}>
-                                        Chair
-                                    </ConnectedButton>
-                                    <ConnectedButton id={3} icon={Armchair}>
-                                        Chair
-                                    </ConnectedButton>
-                                </ConnectedButtonGroup>
                             </Toolbar>
                         </>
                     )}
