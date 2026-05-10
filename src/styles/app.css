@@ -3,6 +3,7 @@
 }
 
 .preview-container {
+    padding: var(--md-sys-layout-space-16);
     > h2 {
         margin-block-end: var(--md-sys-layout-space-32);
     }
