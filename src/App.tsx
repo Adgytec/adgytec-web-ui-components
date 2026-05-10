@@ -373,7 +373,7 @@ const TooltipPreview = () => {
             <DialogTrigger>
                 <Button>Rich Tooltip</Button>
 
-                <Popover isNonModal>
+                <Popover>
                     <RichTooltip>
                         <RichTooltipInfo>
                             <RichTooltipSubhead>Lorem Ipsum</RichTooltipSubhead>
