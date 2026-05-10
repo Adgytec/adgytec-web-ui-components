@@ -69,7 +69,7 @@
     }
 
     /* button reset */
-    .toolbar [data-visual] {
+    .toolbar [data-visual-button] {
         /* outlined button */
         --outline-width: 0px;
         border: none;
@@ -84,7 +84,7 @@
         }
     }
 
-    .toolbar [data-visual]:not([data-color="filled"]),
+    .toolbar [data-visual-button]:not([data-color="filled"]),
     .toolbar [data-toggle-button] {
         /* colors */
         --background-color-normal: var(--toolbar-button-container-color);

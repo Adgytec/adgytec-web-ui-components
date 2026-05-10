@@ -54,7 +54,7 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
                     "data-selected": isSelected || undefined,
                     "data-toggle-button": true,
                     "data-shape": shape,
-                    "data-visual": true,
+                    "data-visual-button": true,
                 };
 
                 let iconToRender = icon;

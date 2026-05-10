@@ -69,7 +69,7 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
                     "data-focused": isFocused || undefined,
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
-                    "data-visual": true,
+                    "data-visual-button": true,
                 };
 
                 const iconSize = IconButtonIconSizeMapping[buttonSize];
