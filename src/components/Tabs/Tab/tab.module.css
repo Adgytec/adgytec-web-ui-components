@@ -11,7 +11,7 @@
             var(--state-layer-opacity)
         );
 
-        --color: var(-inactive-color);
+        --color: var(--inactive-color);
 
         --focus-inset-inline-start: var(--md-sys-layout-space-4);
         --focus-inset-inline-end: var(--md-sys-layout-space-4);
@@ -34,6 +34,9 @@
         color: var(--color);
 
         cursor: pointer;
+
+        transition: color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
         &[data-icon] {
             padding-block: var(--md-sys-layout-space-12);

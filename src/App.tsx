@@ -137,7 +137,7 @@ const SwitchPreview = () => {
     return (
         <>
             <div className="items">
-                <Switch isDisabled icon="none" labelPlacement="end">
+                <Switch isDisabled icon="none">
                     <Label>Disabled no icon</Label>
                 </Switch>
 
@@ -153,7 +153,7 @@ const SwitchPreview = () => {
                     <Label>Selected icon</Label>
                 </Switch>
 
-                <Switch containerStateLayer icon="both" labelPlacement="end">
+                <Switch containerStateLayer icon="both">
                     <Label>Both icon</Label>
                 </Switch>
 
@@ -163,7 +163,7 @@ const SwitchPreview = () => {
             </div>
 
             <div className="items-grid">
-                <Switch isDisabled icon="none" labelPlacement="end">
+                <Switch isDisabled icon="none">
                     <Label>Disabled no icon</Label>
                 </Switch>
 
@@ -179,7 +179,7 @@ const SwitchPreview = () => {
                     <Label>Selected icon</Label>
                 </Switch>
 
-                <Switch icon="both" labelPlacement="end" containerStateLayer>
+                <Switch icon="both" containerStateLayer>
                     <Label>Both icon</Label>
                 </Switch>
 
@@ -224,9 +224,7 @@ const RadioPreview = () => {
                 showDescriptionOnInvalid
             >
                 <Radio value="cat">Cat</Radio>
-                <Radio value="dog" containerStateLayer={false}>
-                    Dog
-                </Radio>
+                <Radio value="dog">Dog</Radio>
                 <Radio value="dragon">Dragon</Radio>
             </RadioGroup>
 
@@ -235,9 +233,10 @@ const RadioPreview = () => {
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
                 orientation="horizontal"
                 labelPlacement="start"
+                containerStateLayer
             >
                 <Radio value="cat">Cat</Radio>
-                <Radio value="dog" containerStateLayer>
+                <Radio value="dog">
                     <Label>Dog</Label>
                 </Radio>
                 <Radio value="dragon">Dragon</Radio>
@@ -254,11 +253,11 @@ const CheckboxPreview = () => {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Checkbox>
 
-                <Checkbox isDisabled isSelected labelPlacement="start">
+                <Checkbox isDisabled isSelected>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Checkbox>
 
-                <Checkbox>
+                <Checkbox containerStateLayer>
                     <Label>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </Label>
@@ -319,8 +318,8 @@ const CheckboxPreview = () => {
                 isInvalid
                 label="lorem ipsum"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
-                labelPlacement="start"
                 showDescriptionOnInvalid
+                containerStateLayer
             >
                 <Checkbox value="one">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -2256,8 +2255,16 @@ const App = () => {
         <div className="tab-container">
             <Tabs orientation={isVertical ? "vertical" : "horizontal"}>
                 <TabList
-                    style={{
-                        scrollbarWidth: "none",
+                    style={({ orientation }) => {
+                        let pos = {};
+                        if (orientation === "horizontal") {
+                            pos = {
+                                position: "sticky",
+                                top: "0",
+                                zIndex: "10",
+                            };
+                        }
+                        return { scrollbarWidth: "none", ...pos };
                     }}
                 >
                     <Tab
