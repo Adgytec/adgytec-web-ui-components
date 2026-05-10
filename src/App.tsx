@@ -109,6 +109,7 @@ import {
     type ToolbarColor,
     type ToolbarVariant,
 } from "./components/Toolbar";
+import { ToolbarToggleButtonGroup } from "./components/Toolbar/ToolbarToggleButtonGroup";
 import {
     RichTooltip,
     RichTooltipActions,
@@ -118,7 +119,6 @@ import {
 } from "./components/Tooltip/RichTooltip";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
-import { ToolbarToggleButtonGroup } from "./components/Toolbar/ToolbarToggleButtonGroup";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {

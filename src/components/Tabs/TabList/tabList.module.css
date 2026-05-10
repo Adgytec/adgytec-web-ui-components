@@ -1,0 +1,5 @@
+@layer adgytec.comps {
+    .tab-list {
+        outline: 2px solid red;
+    }
+}
