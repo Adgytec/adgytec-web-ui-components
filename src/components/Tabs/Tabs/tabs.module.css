@@ -14,5 +14,9 @@
                 overflow-y: auto;
             }
         }
+
+        &[data-orientation="horizontal"] {
+            grid-template-rows: auto 1fr;
+        }
     }
 }
