@@ -1,6 +1,6 @@
 @layer adgytec.comps {
     .separator {
-        --thickness: calc(1 * var(--dp, 1px));
+        --thickness: calc(2 * var(--dp, 1px));
         --color: var(--separator-color, var(--md-sys-color-outline-variant));
 
         background-color: rgb(
@@ -10,6 +10,9 @@
 
         inline-size: 100%;
         block-size: var(--thickness);
+
+        border: none;
+        margin: 0;
 
         &[aria-orientation="vertical"] {
             block-size: 100%;

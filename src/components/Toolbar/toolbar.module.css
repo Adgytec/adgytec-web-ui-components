@@ -1,5 +1,7 @@
 @layer adgytec.comps {
     .toolbar {
+        --separator-color: var(--toolbar-button-label-color);
+
         /* tokens for use by client */
         --toolbar-space-between-actions: var(--md-sys-layout-space-4);
 
@@ -61,6 +63,11 @@
 }
 
 @layer adgytec.overrides {
+    .toolbar[data-orientation="horizontal"] [role="separator"] {
+        block-size: auto;
+        align-self: stretch;
+    }
+
     /* button reset */
     .toolbar [data-visual] {
         /* outlined button */
