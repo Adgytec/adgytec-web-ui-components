@@ -109,8 +109,11 @@
 
     .selection-indicator {
         position: absolute;
-        transition-duration: 200ms;
-        border-radius: 3px;
+
+        transition-timing-function: var(--md-sys-motion-standard-fast-spatial);
+        transition-duration: var(
+            --md-sys-motion-standard-fast-spatial-duration
+        );
 
         @media (prefers-reduced-motion) {
             transition: none;
