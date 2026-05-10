@@ -1,0 +1,63 @@
+@layer adgytec.comps {
+    .tab-list {
+        --tab-list-background: var(--md-sys-color-surface);
+        --tab-list-divider-width: calc(1 * var(--dp, 1px));
+        --tab-list-divider-color: var(--md-sys-color-surface-variant);
+
+        --indicator-size: calc(2 * var(--dp, 1px));
+        --indicator-color: var(--md-sys-color-primary);
+
+        background-color: var(--tab-list-background);
+
+        [data-selection-indicator] {
+            background-color: var(--indicator-color);
+        }
+
+        &[data-orientation="horizontal"] {
+            --focus-inset-block-end-active: var(--md-sys-layout-space-8);
+            --focus-inset-inline-end-active: var(--md-sys-layout-space-4);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            overflow-x: auto;
+
+            border-block-end: var(--tab-list-divider-width) solid
+                var(--tab-list-divider-color);
+
+            [data-tab] {
+                flex: 1;
+                text-align: center;
+            }
+
+            [data-selection-indicator] {
+                inset-inline-start: 0;
+                inset-block-end: 0px;
+
+                inline-size: 100%;
+                block-size: var(--indicator-size);
+
+                transition-property: translate, inline-size;
+            }
+        }
+
+        &[data-orientation="vertical"] {
+            --focus-inset-block-end-active: var(--md-sys-layout-space-4);
+            --focus-inset-inline-end-active: var(--md-sys-layout-space-8);
+
+            border-inline-end: var(--tab-list-divider-width) solid
+                var(--tab-list-divider-color);
+
+            [data-selection-indicator] {
+                inset-block-start: 0;
+                inset-inline-end: 0px;
+
+                block-size: 100%;
+                inline-size: var(--indicator-size);
+
+                transition-property: translate, block-size;
+            }
+        }
+    }
+}

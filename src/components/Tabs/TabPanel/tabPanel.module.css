@@ -1,0 +1,18 @@
+@layer adgytec.comps {
+    .tab-panel {
+        transition: opacity var(--md-sys-motion-expressive-slow-effects)
+            var(--md-sys-motion-expressive-slow-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-entering] {
+            opacity: 0;
+        }
+
+        &[data-exiting] {
+            display: none;
+        }
+    }
+}

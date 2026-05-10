@@ -1,5 +1,6 @@
 import {
     Armchair,
+    Bell,
     Clipboard,
     CloudSnow,
     CloudSun,
@@ -22,21 +23,21 @@ import {
     Sun,
     SunMoon,
     SunSnow,
+    SwatchBook,
     User,
+    UserRound,
 } from "lucide-react";
 import { Fragment, type ReactNode, useState } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
 import { clsx } from "clsx";
 import {
+    Collection,
     DialogTrigger,
+    Form,
     SubmenuTrigger,
-    Tab,
-    TabList,
-    TabPanel,
-    TabPanels,
-    Tabs,
 } from "react-aria-components";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@/components/Tabs";
 import {
     Button,
     type ButtonColor,
@@ -109,6 +110,7 @@ import {
     type ToolbarColor,
     type ToolbarVariant,
 } from "./components/Toolbar";
+import { ToolbarToggleButtonGroup } from "./components/Toolbar/ToolbarToggleButtonGroup";
 import {
     RichTooltip,
     RichTooltipActions,
@@ -118,7 +120,7 @@ import {
 } from "./components/Tooltip/RichTooltip";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
-import { ToolbarToggleButtonGroup } from "./components/Toolbar/ToolbarToggleButtonGroup";
+import type { Orientation } from "react-aria";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -136,7 +138,7 @@ const SwitchPreview = () => {
     return (
         <>
             <div className="items">
-                <Switch isDisabled icon="none" labelPlacement="end">
+                <Switch isDisabled icon="none">
                     <Label>Disabled no icon</Label>
                 </Switch>
 
@@ -152,7 +154,7 @@ const SwitchPreview = () => {
                     <Label>Selected icon</Label>
                 </Switch>
 
-                <Switch containerStateLayer icon="both" labelPlacement="end">
+                <Switch containerStateLayer icon="both">
                     <Label>Both icon</Label>
                 </Switch>
 
@@ -162,7 +164,7 @@ const SwitchPreview = () => {
             </div>
 
             <div className="items-grid">
-                <Switch isDisabled icon="none" labelPlacement="end">
+                <Switch isDisabled icon="none">
                     <Label>Disabled no icon</Label>
                 </Switch>
 
@@ -178,7 +180,7 @@ const SwitchPreview = () => {
                     <Label>Selected icon</Label>
                 </Switch>
 
-                <Switch icon="both" labelPlacement="end" containerStateLayer>
+                <Switch icon="both" containerStateLayer>
                     <Label>Both icon</Label>
                 </Switch>
 
@@ -223,9 +225,7 @@ const RadioPreview = () => {
                 showDescriptionOnInvalid
             >
                 <Radio value="cat">Cat</Radio>
-                <Radio value="dog" containerStateLayer={false}>
-                    Dog
-                </Radio>
+                <Radio value="dog">Dog</Radio>
                 <Radio value="dragon">Dragon</Radio>
             </RadioGroup>
 
@@ -234,9 +234,10 @@ const RadioPreview = () => {
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
                 orientation="horizontal"
                 labelPlacement="start"
+                containerStateLayer
             >
                 <Radio value="cat">Cat</Radio>
-                <Radio value="dog" containerStateLayer>
+                <Radio value="dog">
                     <Label>Dog</Label>
                 </Radio>
                 <Radio value="dragon">Dragon</Radio>
@@ -253,11 +254,11 @@ const CheckboxPreview = () => {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Checkbox>
 
-                <Checkbox isDisabled isSelected labelPlacement="start">
+                <Checkbox isDisabled isSelected>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Checkbox>
 
-                <Checkbox>
+                <Checkbox containerStateLayer>
                     <Label>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </Label>
@@ -318,8 +319,8 @@ const CheckboxPreview = () => {
                 isInvalid
                 label="lorem ipsum"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
-                labelPlacement="start"
                 showDescriptionOnInvalid
+                containerStateLayer
             >
                 <Checkbox value="one">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -2078,7 +2079,163 @@ const ToolbarPreview = () => {
     );
 };
 
+const TabsPreview = () => {
+    const RenderTabs = ({
+        isDisabled,
+        orientation,
+    }: {
+        isDisabled?: boolean;
+        orientation?: Orientation;
+    }) => {
+        return (
+            <Tabs keyboardActivation="manual" orientation={orientation}>
+                <TabList aria-label="Settings">
+                    <Tab
+                        id="general"
+                        label="General"
+                        icon={SwatchBook}
+                        isDisabled={isDisabled}
+                    />
+                    <Tab
+                        id="appearance"
+                        label="Appearance"
+                        isDisabled={isDisabled}
+                    />
+                    <Tab
+                        id="notifications"
+                        label="Notifications"
+                        icon={Bell}
+                        isDisabled={isDisabled}
+                    />
+                    <Tab
+                        id="profile"
+                        label="Profile"
+                        icon={UserRound}
+                        isDisabled={isDisabled}
+                    />
+                </TabList>
+                <TabPanels>
+                    <TabPanel id="general">
+                        <Form
+                            style={{
+                                display: "grid",
+                                gap: "1.5rem",
+                            }}
+                        >
+                            <Input
+                                label="Homepage"
+                                defaultValue="react-aria.adobe.com"
+                            />
+                            <Checkbox containerStateLayer defaultSelected>
+                                Show sidebar
+                            </Checkbox>
+                            <Checkbox containerStateLayer>
+                                Show status bar
+                            </Checkbox>
+                        </Form>
+                    </TabPanel>
+                    <TabPanel id="appearance">
+                        <Form
+                            style={{
+                                display: "grid",
+                                gap: "1.5rem",
+                            }}
+                        >
+                            <RadioGroup
+                                containerStateLayer
+                                label="Theme"
+                                defaultValue="auto"
+                            >
+                                <Radio value="auto">Auto</Radio>
+                                <Radio value="light">Light</Radio>
+                                <Radio value="dark">Dark</Radio>
+                            </RadioGroup>
+                            <RadioGroup
+                                containerStateLayer
+                                label="Font size"
+                                defaultValue="medium"
+                            >
+                                <Radio value="small">Small</Radio>
+                                <Radio value="medium">Medium</Radio>
+                                <Radio value="large">Large</Radio>
+                            </RadioGroup>
+                        </Form>
+                    </TabPanel>
+                    <TabPanel id="notifications">
+                        <CheckboxGroup
+                            containerStateLayer
+                            label="Notifications settings"
+                            defaultValue={["account", "dms"]}
+                        >
+                            <Checkbox value="account">
+                                Account activity
+                            </Checkbox>
+                            <Checkbox value="mentions">Mentions</Checkbox>
+                            <Checkbox value="dms">Direct message</Checkbox>
+                            <Checkbox value="marketing">
+                                Marketing emails
+                            </Checkbox>
+                        </CheckboxGroup>
+                    </TabPanel>
+                    <TabPanel id="profile">
+                        <Form
+                            style={{
+                                display: "grid",
+                                gap: "1.5rem",
+                            }}
+                        >
+                            <Input label="Name" defaultValue="Devon Govett" />
+                            <Input
+                                label="Username"
+                                defaultValue="@devongovett"
+                            />
+                            <Button>Update profile</Button>
+                        </Form>
+                    </TabPanel>
+                </TabPanels>
+            </Tabs>
+        );
+    };
+    return (
+        <div className="items">
+            <div
+                style={{
+                    width: "45%",
+                }}
+            >
+                <RenderTabs />
+            </div>
+
+            <div
+                style={{
+                    width: "45%",
+                }}
+            >
+                <RenderTabs orientation="vertical" />
+            </div>
+
+            <div
+                style={{
+                    width: "45%",
+                }}
+            >
+                <RenderTabs isDisabled />
+            </div>
+
+            <div
+                style={{
+                    width: "45%",
+                }}
+            >
+                <RenderTabs isDisabled orientation="vertical" />
+            </div>
+        </div>
+    );
+};
+
 const App = () => {
+    const [isVertical, setVertical] = useState(false);
+
     type PreviewItem = {
         id: string;
         label: string;
@@ -2091,6 +2248,7 @@ const App = () => {
             label: "Theme Switcher",
             Component: VisualSettingsPreview,
         },
+        { id: "tabs", label: "Tabs", Component: TabsPreview },
         { id: "toolbar", label: "Toolbar", Component: ToolbarPreview },
         { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },
         { id: "select", label: "Select", Component: SelectPreview },
@@ -2130,28 +2288,46 @@ const App = () => {
     ];
 
     return (
-        <div className={clsx(typography.bodyLarge, "preview-parent")}>
-            <Tabs className="tabs">
-                <TabList className={"tab-list"}>
-                    {previewItems.map((item) => (
-                        <Tab key={item.id} id={item.id} className={"tab"}>
-                            {item.label}
-                        </Tab>
-                    ))}
+        <div className="tab-container">
+            <Tabs
+                orientation={isVertical ? "vertical" : "horizontal"}
+                className="tabs"
+            >
+                <TabList
+                    style={({ orientation }) => {
+                        let pos = {};
+                        if (orientation === "horizontal") {
+                            pos = {
+                                position: "sticky",
+                                top: "0",
+                                zIndex: "10",
+                            };
+                        }
+                        return { scrollbarWidth: "none", ...pos };
+                    }}
+                >
+                    <Tab
+                        label="Change Orientation"
+                        onPress={() => setVertical((prev) => !prev)}
+                    />
+
+                    <Collection items={previewItems}>
+                        {(item) => <Tab id={item.id} label={item.label} />}
+                    </Collection>
                 </TabList>
 
-                <TabPanels>
-                    {previewItems.map((item) => {
+                <TabPanels items={previewItems}>
+                    {(item) => {
                         const Component = item.Component;
 
                         return (
-                            <TabPanel key={item.id} id={item.id}>
+                            <TabPanel id={item.id}>
                                 <PreviewContainer label={item.label}>
                                     <Component />
                                 </PreviewContainer>
                             </TabPanel>
                         );
-                    })}
+                    }}
                 </TabPanels>
             </Tabs>
         </div>
