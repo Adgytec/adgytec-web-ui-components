@@ -28,15 +28,8 @@ import { Fragment, type ReactNode, useState } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
 import { clsx } from "clsx";
-import {
-    DialogTrigger,
-    SubmenuTrigger,
-    Tab,
-    TabList,
-    TabPanel,
-    TabPanels,
-    Tabs,
-} from "react-aria-components";
+import { DialogTrigger, SubmenuTrigger } from "react-aria-components";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@/components/Tabs";
 import {
     Button,
     type ButtonColor,
@@ -127,6 +120,7 @@ const PreviewContainer = (props: { label: string; children: ReactNode }) => {
             <h2 className={typography.headlineLargeEmphasized}>
                 {props.label}
             </h2>
+
             <div className="preview-container__items">{props.children}</div>
         </div>
     );
@@ -2078,6 +2072,10 @@ const ToolbarPreview = () => {
     );
 };
 
+const TabsPreview = () => {
+    return <div className="items"></div>;
+};
+
 const App = () => {
     type PreviewItem = {
         id: string;
@@ -2091,6 +2089,7 @@ const App = () => {
             label: "Theme Switcher",
             Component: VisualSettingsPreview,
         },
+        { id: "tabs", label: "Tabs", Component: TabsPreview },
         { id: "toolbar", label: "Toolbar", Component: ToolbarPreview },
         { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },
         { id: "select", label: "Select", Component: SelectPreview },
@@ -2131,17 +2130,17 @@ const App = () => {
 
     return (
         <div className={clsx(typography.bodyLarge, "preview-parent")}>
-            <Tabs className="tabs">
-                <TabList className={"tab-list"}>
-                    {previewItems.map((item) => (
-                        <Tab key={item.id} id={item.id} className={"tab"}>
+            <Tabs>
+                <TabList className={"tab-list"} items={previewItems}>
+                    {(item) => (
+                        <Tab key={item.id} id={item.id}>
                             {item.label}
                         </Tab>
-                    ))}
+                    )}
                 </TabList>
 
-                <TabPanels>
-                    {previewItems.map((item) => {
+                <TabPanels items={previewItems}>
+                    {(item) => {
                         const Component = item.Component;
 
                         return (
@@ -2151,7 +2150,7 @@ const App = () => {
                                 </PreviewContainer>
                             </TabPanel>
                         );
-                    })}
+                    }}
                 </TabPanels>
             </Tabs>
         </div>
