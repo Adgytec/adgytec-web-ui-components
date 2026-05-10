@@ -3,7 +3,6 @@
         position: relative;
 
         height: var(--tab-panel-height);
-        width: var(--tab-panel-width);
         transition: height var(--md-sys-motion-standard-fast-spatial)
             var(--md-sys-motion-standard-fast-spatial-duration);
 

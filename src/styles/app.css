@@ -79,3 +79,13 @@
 
     padding: var(--md-sys-layout-space-16);
 }
+
+.tabs {
+    &[data-orientation="vertical"] {
+        min-block-size: 0;
+
+        > * {
+            overflow-y: auto;
+        }
+    }
+}

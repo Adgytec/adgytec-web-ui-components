@@ -120,6 +120,7 @@ import {
 } from "./components/Tooltip/RichTooltip";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
+import type { Orientation } from "react-aria";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -2079,9 +2080,15 @@ const ToolbarPreview = () => {
 };
 
 const TabsPreview = () => {
-    const RenderTabs = ({ isDisabled }: { isDisabled?: boolean }) => {
+    const RenderTabs = ({
+        isDisabled,
+        orientation,
+    }: {
+        isDisabled?: boolean;
+        orientation?: Orientation;
+    }) => {
         return (
-            <Tabs keyboardActivation="manual">
+            <Tabs keyboardActivation="manual" orientation={orientation}>
                 <TabList aria-label="Settings">
                     <Tab
                         id="general"
@@ -2191,8 +2198,37 @@ const TabsPreview = () => {
     };
     return (
         <div className="items">
-            <RenderTabs />
-            <RenderTabs isDisabled />
+            <div
+                style={{
+                    width: "45%",
+                }}
+            >
+                <RenderTabs />
+            </div>
+
+            <div
+                style={{
+                    width: "45%",
+                }}
+            >
+                <RenderTabs orientation="vertical" />
+            </div>
+
+            <div
+                style={{
+                    width: "45%",
+                }}
+            >
+                <RenderTabs isDisabled />
+            </div>
+
+            <div
+                style={{
+                    width: "45%",
+                }}
+            >
+                <RenderTabs isDisabled orientation="vertical" />
+            </div>
         </div>
     );
 };
@@ -2253,7 +2289,10 @@ const App = () => {
 
     return (
         <div className="tab-container">
-            <Tabs orientation={isVertical ? "vertical" : "horizontal"}>
+            <Tabs
+                orientation={isVertical ? "vertical" : "horizontal"}
+                className="tabs"
+            >
                 <TabList
                     style={({ orientation }) => {
                         let pos = {};
