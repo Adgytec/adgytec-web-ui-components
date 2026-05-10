@@ -72,3 +72,10 @@
     display: grid;
     gap: var(--md-sys-layout-space-28);
 }
+
+.tab-container {
+    block-size: 100svb;
+    display: grid;
+
+    padding-block: var(--md-sys-layout-space-16);
+}

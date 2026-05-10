@@ -23,12 +23,15 @@ import {
     SunMoon,
     SunSnow,
     User,
+    SwatchBook,
+    Bell,
+    UserRound,
 } from "lucide-react";
 import { Fragment, type ReactNode, useState } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
 import { clsx } from "clsx";
-import { DialogTrigger, SubmenuTrigger } from "react-aria-components";
+import { DialogTrigger, Form, SubmenuTrigger } from "react-aria-components";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@/components/Tabs";
 import {
     Button,
@@ -2072,7 +2075,122 @@ const ToolbarPreview = () => {
 };
 
 const TabsPreview = () => {
-    return <div className="items"></div>;
+    const RenderTabs = ({ isDisabled }: { isDisabled?: boolean }) => {
+        return (
+            <Tabs keyboardActivation="manual">
+                <TabList aria-label="Settings">
+                    <Tab
+                        id="general"
+                        label="General"
+                        icon={SwatchBook}
+                        isDisabled={isDisabled}
+                    />
+                    <Tab
+                        id="appearance"
+                        label="Appearance"
+                        isDisabled={isDisabled}
+                    />
+                    <Tab
+                        id="notifications"
+                        label="Notifications"
+                        icon={Bell}
+                        isDisabled={isDisabled}
+                    />
+                    <Tab
+                        id="profile"
+                        label="Profile"
+                        icon={UserRound}
+                        isDisabled={isDisabled}
+                    />
+                </TabList>
+                <TabPanels>
+                    <TabPanel id="general">
+                        <Form
+                            style={{
+                                display: "grid",
+                                gap: "1.5rem",
+                            }}
+                        >
+                            <Input
+                                label="Homepage"
+                                defaultValue="react-aria.adobe.com"
+                            />
+                            <Checkbox containerStateLayer defaultSelected>
+                                Show sidebar
+                            </Checkbox>
+                            <Checkbox containerStateLayer>
+                                Show status bar
+                            </Checkbox>
+                        </Form>
+                    </TabPanel>
+                    <TabPanel id="appearance">
+                        <Form
+                            style={{
+                                display: "grid",
+                                gap: "1.5rem",
+                            }}
+                        >
+                            <RadioGroup
+                                containerStateLayer
+                                label="Theme"
+                                defaultValue="auto"
+                            >
+                                <Radio value="auto">Auto</Radio>
+                                <Radio value="light">Light</Radio>
+                                <Radio value="dark">Dark</Radio>
+                            </RadioGroup>
+                            <RadioGroup
+                                containerStateLayer
+                                label="Font size"
+                                defaultValue="medium"
+                            >
+                                <Radio value="small">Small</Radio>
+                                <Radio value="medium">Medium</Radio>
+                                <Radio value="large">Large</Radio>
+                            </RadioGroup>
+                        </Form>
+                    </TabPanel>
+                    <TabPanel id="notifications">
+                        <CheckboxGroup
+                            containerStateLayer
+                            label="Notifications settings"
+                            defaultValue={["account", "dms"]}
+                        >
+                            <Checkbox value="account">
+                                Account activity
+                            </Checkbox>
+                            <Checkbox value="mentions">Mentions</Checkbox>
+                            <Checkbox value="dms">Direct message</Checkbox>
+                            <Checkbox value="marketing">
+                                Marketing emails
+                            </Checkbox>
+                        </CheckboxGroup>
+                    </TabPanel>
+                    <TabPanel id="profile">
+                        <Form
+                            style={{
+                                display: "grid",
+                                gap: "1.5rem",
+                            }}
+                        >
+                            <Input label="Name" defaultValue="Devon Govett" />
+                            <Input
+                                label="Username"
+                                defaultValue="@devongovett"
+                            />
+                            <Button>Update profile</Button>
+                        </Form>
+                    </TabPanel>
+                </TabPanels>
+            </Tabs>
+        );
+    };
+    return (
+        <div className="items">
+            <RenderTabs />
+            <RenderTabs isDisabled />
+        </div>
+    );
 };
 
 const App = () => {
@@ -2128,13 +2246,11 @@ const App = () => {
     ];
 
     return (
-        <div className={clsx(typography.bodyLarge, "preview-parent")}>
-            <Tabs className="tabs">
+        <div className="tab-container">
+            <Tabs orientation={"vertical"}>
                 <TabList items={previewItems}>
                     {(item) => (
-                        <Tab key={item.id} id={item.id} className={"tab"}>
-                            {item.label}
-                        </Tab>
+                        <Tab key={item.id} id={item.id} label={item.label} />
                     )}
                 </TabList>
 

@@ -1,5 +1,27 @@
 @layer adgytec.comps {
     .tabs {
-        outline: 2px solid red;
+        display: grid;
+
+        &[data-orientation="vertical"] {
+            grid-template-columns: auto 1fr;
+            max-block-size: 100%;
+            min-block-size: 0;
+
+            > * {
+                min-block-size: 0;
+                max-block-size: 100%;
+                overflow-y: auto;
+            }
+
+            [data-tab-panels] {
+                padding-inline: var(--md-sys-layout-space-16);
+            }
+        }
+
+        &[data-orientation="horizontal"] {
+            [data-tab-panels] {
+                padding-block: var(--md-sys-layout-space-16);
+            }
+        }
     }
 }

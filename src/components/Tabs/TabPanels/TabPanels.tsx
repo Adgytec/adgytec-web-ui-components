@@ -10,6 +10,7 @@ export const TabPanels = <T extends object>({
         <AriaTabPanels
             className={clsx(styles["tab-panels"], className)}
             {...props}
+            data-tab-panels={true}
         />
     );
 };
