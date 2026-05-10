@@ -7,7 +7,9 @@ import {
     ExternalLinkIcon,
     Eye,
     FileBraces,
+    Globe,
     GlobeLock,
+    GlobeOff,
     LogOut,
     type LucideIcon,
     Mail,
@@ -103,6 +105,11 @@ import { SubmenuPopover } from "./components/Menu/SubmenuPopover";
 import { Popover } from "./components/Popover";
 import { Separator } from "./components/Separator";
 import {
+    Toolbar,
+    type ToolbarColor,
+    type ToolbarVariant,
+} from "./components/Toolbar";
+import {
     RichTooltip,
     RichTooltipActions,
     RichTooltipInfo,
@@ -111,6 +118,7 @@ import {
 } from "./components/Tooltip/RichTooltip";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
+import { ToolbarToggleButtonGroup } from "./components/Toolbar/ToolbarToggleButtonGroup";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -368,7 +376,7 @@ const TooltipPreview = () => {
             <DialogTrigger>
                 <Button>Rich Tooltip</Button>
 
-                <Popover isNonModal>
+                <Popover>
                     <RichTooltip>
                         <RichTooltipInfo>
                             <RichTooltipSubhead>Lorem Ipsum</RichTooltipSubhead>
@@ -1786,6 +1794,290 @@ const DisclosurePreview = () => {
     );
 };
 
+const ToolbarPreview = () => {
+    type Orientation = "horizontal" | "vertical";
+
+    const RenderToolbar = ({
+        color,
+        variant,
+        orientation = "horizontal",
+        isDisabled,
+    }: {
+        color?: ToolbarColor;
+        variant?: ToolbarVariant;
+        orientation?: Orientation;
+        isDisabled?: boolean;
+    }) => {
+        return (
+            <>
+                <div className={"items"}>
+                    <Toolbar
+                        color={color}
+                        variant={variant}
+                        orientation={orientation}
+                    >
+                        <IconButton
+                            icon={Armchair}
+                            isDisabled={isDisabled}
+                            color="outlined"
+                        />
+
+                        <IconButton icon={Armchair} isDisabled={isDisabled} />
+
+                        <IconButton
+                            icon={Armchair}
+                            color="standard"
+                            isDisabled={isDisabled}
+                        />
+
+                        <IconButton
+                            icon={Armchair}
+                            color="tonal"
+                            isDisabled={isDisabled}
+                        />
+                    </Toolbar>
+
+                    <Toolbar
+                        color={color}
+                        variant={variant}
+                        orientation={orientation}
+                    >
+                        <ToggleIconButton
+                            icon={Globe}
+                            isDisabled={isDisabled}
+                            selectedIcon={GlobeOff}
+                        />
+
+                        <ToggleIconButton
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
+                            color="outlined"
+                            isDisabled={isDisabled}
+                        />
+
+                        <ToggleIconButton
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
+                            color="standard"
+                            isDisabled={isDisabled}
+                        />
+
+                        <ToggleIconButton
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
+                            color="tonal"
+                            isDisabled={isDisabled}
+                        />
+                    </Toolbar>
+
+                    <Toolbar
+                        color={color}
+                        variant={variant}
+                        orientation={orientation}
+                    >
+                        <ToolbarToggleButtonGroup>
+                            <ToggleIconButton
+                                id={1}
+                                icon={Globe}
+                                isDisabled={isDisabled}
+                                selectedIcon={GlobeOff}
+                            />
+
+                            <ToggleIconButton
+                                id={2}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="outlined"
+                                isDisabled={isDisabled}
+                            />
+
+                            <ToggleIconButton
+                                id={3}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="standard"
+                                isDisabled={isDisabled}
+                            />
+
+                            <ToggleIconButton
+                                id={4}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="tonal"
+                                isDisabled={isDisabled}
+                            />
+                        </ToolbarToggleButtonGroup>
+
+                        <Separator
+                            orientation={
+                                orientation === "vertical"
+                                    ? "horizontal"
+                                    : "vertical"
+                            }
+                        />
+
+                        <ToolbarToggleButtonGroup>
+                            <ToggleIconButton
+                                id={1}
+                                icon={Globe}
+                                isDisabled={isDisabled}
+                                selectedIcon={GlobeOff}
+                            />
+
+                            <ToggleIconButton
+                                id={2}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="outlined"
+                                isDisabled={isDisabled}
+                            />
+
+                            <ToggleIconButton
+                                id={3}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="standard"
+                                isDisabled={isDisabled}
+                            />
+
+                            <ToggleIconButton
+                                id={4}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="tonal"
+                                isDisabled={isDisabled}
+                            />
+                        </ToolbarToggleButtonGroup>
+                    </Toolbar>
+
+                    {orientation === "horizontal" && (
+                        <>
+                            <Toolbar
+                                color={color}
+                                variant={variant}
+                                orientation={orientation}
+                            >
+                                <Button
+                                    icon={Armchair}
+                                    color="outlined"
+                                    isDisabled={isDisabled}
+                                >
+                                    Chair
+                                </Button>
+                                <Button
+                                    icon={Armchair}
+                                    color="text"
+                                    isDisabled={isDisabled}
+                                >
+                                    Chair
+                                </Button>
+
+                                <Button icon={Armchair} isDisabled={isDisabled}>
+                                    Chair
+                                </Button>
+
+                                <Button
+                                    icon={Armchair}
+                                    color="tonal"
+                                    isDisabled={isDisabled}
+                                >
+                                    Chair
+                                </Button>
+
+                                <Button
+                                    icon={Armchair}
+                                    color="elevated"
+                                    isDisabled={isDisabled}
+                                >
+                                    Chair
+                                </Button>
+                            </Toolbar>
+
+                            <Toolbar
+                                color={color}
+                                variant={variant}
+                                orientation={orientation}
+                            >
+                                <ToggleButton
+                                    icon={Globe}
+                                    selectedIcon={GlobeOff}
+                                    isDisabled={isDisabled}
+                                >
+                                    Globe
+                                </ToggleButton>
+
+                                <ToggleButton
+                                    icon={Globe}
+                                    selectedIcon={GlobeOff}
+                                    color="outlined"
+                                    isDisabled={isDisabled}
+                                >
+                                    Globe
+                                </ToggleButton>
+
+                                <ToggleButton
+                                    icon={Globe}
+                                    selectedIcon={GlobeOff}
+                                    color="tonal"
+                                    isDisabled={isDisabled}
+                                >
+                                    Globe
+                                </ToggleButton>
+
+                                <ToggleButton
+                                    icon={Globe}
+                                    selectedIcon={GlobeOff}
+                                    color="elevated"
+                                    isDisabled={isDisabled}
+                                >
+                                    Globe
+                                </ToggleButton>
+                            </Toolbar>
+                        </>
+                    )}
+                </div>
+
+                <Separator />
+            </>
+        );
+    };
+
+    const orientation: Orientation[] = ["horizontal", "vertical"];
+
+    return (
+        <div className="items-grid">
+            {orientation.map((o) => (
+                <Fragment key={o}>
+                    <RenderToolbar orientation={o} />
+                    <RenderToolbar orientation={o} isDisabled />
+
+                    <RenderToolbar variant="floating" orientation={o} />
+                    <RenderToolbar
+                        variant="floating"
+                        orientation={o}
+                        isDisabled
+                    />
+
+                    <RenderToolbar color="vibrant" orientation={o} />
+                    <RenderToolbar color="vibrant" orientation={o} isDisabled />
+
+                    <RenderToolbar
+                        color="vibrant"
+                        variant="floating"
+                        orientation={o}
+                    />
+                    <RenderToolbar
+                        color="vibrant"
+                        variant="floating"
+                        orientation={o}
+                        isDisabled
+                    />
+                </Fragment>
+            ))}
+        </div>
+    );
+};
+
 const App = () => {
     type PreviewItem = {
         id: string;
@@ -1799,6 +2091,7 @@ const App = () => {
             label: "Theme Switcher",
             Component: VisualSettingsPreview,
         },
+        { id: "toolbar", label: "Toolbar", Component: ToolbarPreview },
         { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },
         { id: "select", label: "Select", Component: SelectPreview },
         { id: "date-field", label: "Date Field", Component: DateFieldPreview },

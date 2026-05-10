@@ -75,7 +75,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
                     "data-selected": isSelected || undefined,
-                    "data-visual": true,
+                    "data-visual-button": true,
                 };
 
                 let iconToRender = icon;

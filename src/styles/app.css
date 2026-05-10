@@ -11,6 +11,8 @@
     padding: var(--md-sys-layout-space-24);
     overflow: auto;
 
+    max-height: 90svb;
+
     h2 {
         margin: 0;
         padding: 0;

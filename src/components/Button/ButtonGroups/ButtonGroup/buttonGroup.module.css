@@ -6,7 +6,7 @@
         gap: var(--button-group-gap);
     }
 
-    .button-group [data-visual] {
+    .button-group [data-visual-button] {
         padding-inline: calc(var(--padding-inline) + var(--morph, 0px));
     }
 

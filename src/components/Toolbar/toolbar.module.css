@@ -1,0 +1,100 @@
+@layer adgytec.comps {
+    .toolbar {
+        --separator-color: var(--toolbar-button-label-color);
+
+        /* tokens for use by client */
+        --toolbar-space-between-actions: var(--md-sys-layout-space-4);
+
+        border-radius: var(--md-sys-shape-corner-radius-full);
+        padding: var(--md-sys-layout-space-8);
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--toolbar-space-between-actions);
+
+        background-color: var(--toolbar-container-color);
+
+        .section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--toolbar-space-between-actions);
+        }
+
+        &[data-variant="floating"] {
+            box-shadow: var(--md-sys-elevation-shadow-3);
+        }
+
+        &[data-orientation="vertical"] {
+            flex-direction: column;
+
+            .section {
+                flex-direction: column;
+            }
+        }
+    }
+
+    .toolbar[data-color="standard"] {
+        --toolbar-container-color: var(--md-sys-color-surface-container);
+
+        --toolbar-button-container-color: var(--md-sys-color-surface-container);
+        --toolbar-button-selected-container-color: var(
+            --md-sys-color-secondary-container
+        );
+
+        --toolbar-button-label-color: var(--md-sys-color-on-surface-variant);
+        --toolbar-button-selected-label-color: var(
+            --md-sys-color-on-secondary-container
+        );
+    }
+
+    .toolbar[data-color="vibrant"] {
+        --toolbar-container-color: var(--md-sys-color-primary-container);
+
+        --toolbar-button-container-color: var(--md-sys-color-primary-container);
+        --toolbar-button-selected-container-color: var(
+            --md-sys-color-surface-container
+        );
+
+        --toolbar-button-label-color: var(--md-sys-color-on-primary-container);
+        --toolbar-button-selected-label-color: var(--md-sys-color-on-surface);
+    }
+}
+
+@layer adgytec.overrides {
+    .toolbar[data-orientation="horizontal"] [role="separator"] {
+        block-size: auto;
+        align-self: stretch;
+    }
+
+    /* button reset */
+    .toolbar [data-visual-button] {
+        /* outlined button */
+        --outline-width: 0px;
+        border: none;
+
+        /* elevated button */
+        box-shadow: none;
+
+        --shape-selected: var(--shape-normal);
+
+        &[data-disabled] {
+            background-color: transparent;
+        }
+    }
+
+    .toolbar [data-visual-button]:not([data-color="filled"]),
+    .toolbar [data-toggle-button] {
+        /* colors */
+        --background-color-normal: var(--toolbar-button-container-color);
+        --background-color-selected: var(
+            --toolbar-button-selected-container-color
+        );
+        --background-color-unselected: var(--toolbar-button-container-color);
+
+        --color-normal: var(--toolbar-button-label-color);
+        --color-selected: var(--toolbar-button-selected-label-color);
+        --color-unselected: var(--toolbar-button-label-color);
+    }
+}
