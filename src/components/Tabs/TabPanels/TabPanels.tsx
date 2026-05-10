@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { TabPanels as AriaTabPanels } from "react-aria-components";
+import { TabPanels as AriaTabPanels } from "react-aria-components";
 import styles from "./tabPanels.module.css";
 
 export const TabPanels = <T extends object>({
@@ -7,7 +7,7 @@ export const TabPanels = <T extends object>({
     ...props
 }: React.ComponentPropsWithRef<typeof AriaTabPanels<T>>) => {
     return (
-        <TabPanels
+        <AriaTabPanels
             className={clsx(styles["tab-panels"], className)}
             {...props}
         />

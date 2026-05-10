@@ -120,7 +120,6 @@ const PreviewContainer = (props: { label: string; children: ReactNode }) => {
             <h2 className={typography.headlineLargeEmphasized}>
                 {props.label}
             </h2>
-
             <div className="preview-container__items">{props.children}</div>
         </div>
     );
@@ -2130,10 +2129,10 @@ const App = () => {
 
     return (
         <div className={clsx(typography.bodyLarge, "preview-parent")}>
-            <Tabs>
-                <TabList className={"tab-list"} items={previewItems}>
+            <Tabs className="tabs">
+                <TabList items={previewItems}>
                     {(item) => (
-                        <Tab key={item.id} id={item.id}>
+                        <Tab key={item.id} id={item.id} className={"tab"}>
                             {item.label}
                         </Tab>
                     )}
