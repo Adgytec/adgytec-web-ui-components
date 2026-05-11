@@ -1,0 +1,12 @@
+@layer adgytec.comps {
+    .tag {
+    }
+
+    .avatar-constraint {
+        inline-size: var(--md-sys-layout-space-24);
+        aspect-ratio: 1 / 1;
+
+        border-radius: var(--md-sys-shape-corner-radius-medium);
+        overflow: clip;
+    }
+}
