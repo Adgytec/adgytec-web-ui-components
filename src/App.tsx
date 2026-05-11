@@ -31,6 +31,7 @@ import { Fragment, type ReactNode, useState } from "react";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
 import { clsx } from "clsx";
+import type { Orientation } from "react-aria";
 import {
     Collection,
     DialogTrigger,
@@ -120,7 +121,6 @@ import {
 } from "./components/Tooltip/RichTooltip";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
-import type { Orientation } from "react-aria";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -2306,28 +2306,38 @@ const App = () => {
                         return { scrollbarWidth: "none", ...pos };
                     }}
                 >
-                    <Tab
-                        label="Change Orientation"
-                        onPress={() => setVertical((prev) => !prev)}
-                    />
+                    <Tab id="orientation" label="Tab Orientation" />
 
                     <Collection items={previewItems}>
                         {(item) => <Tab id={item.id} label={item.label} />}
                     </Collection>
                 </TabList>
 
-                <TabPanels items={previewItems}>
-                    {(item) => {
-                        const Component = item.Component;
+                <TabPanels>
+                    <TabPanel id="orientation">
+                        <PreviewContainer label="Tab Orientation">
+                            <Button
+                                onPress={() => setVertical((prev) => !prev)}
+                                color="outlined"
+                            >
+                                Change Orientation
+                            </Button>
+                        </PreviewContainer>
+                    </TabPanel>
 
-                        return (
-                            <TabPanel id={item.id}>
-                                <PreviewContainer label={item.label}>
-                                    <Component />
-                                </PreviewContainer>
-                            </TabPanel>
-                        );
-                    }}
+                    <Collection items={previewItems}>
+                        {(item) => {
+                            const Component = item.Component;
+
+                            return (
+                                <TabPanel id={item.id}>
+                                    <PreviewContainer label={item.label}>
+                                        <Component />
+                                    </PreviewContainer>
+                                </TabPanel>
+                            );
+                        }}
+                    </Collection>
                 </TabPanels>
             </Tabs>
         </div>
