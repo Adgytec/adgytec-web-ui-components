@@ -1,5 +1,11 @@
 import clsx from "clsx";
-import { ComboBox as AriaComboBox, ComboBoxValue } from "react-aria-components";
+import {
+    ComboBox as AriaComboBox,
+    ComboBoxValue,
+    TagGroup,
+    TagList,
+} from "react-aria-components";
+import { Tag } from "@/components/Tag";
 import { typography } from "@/utils";
 import { Colors, InputGroupStyles, SupportingTextStyles } from "../../core";
 import { Description } from "../../Description";
@@ -50,21 +56,48 @@ export const ComboBox = <
 
                         {props.selectionMode === "multiple" &&
                             !hideMultiSelectionValue && (
-                                <ComboBoxValue
+                                <ComboBoxValue<T>
                                     className={clsx(
                                         styles["selected-value"],
                                         typography.bodyLarge
                                     )}
                                 >
-                                    {({
-                                        selectedText,
-                                        isPlaceholder,
-                                        defaultChildren,
-                                    }) =>
-                                        isPlaceholder
-                                            ? defaultChildren
-                                            : selectedText
-                                    }
+                                    {({ state }) => {
+                                        return (
+                                            <TagGroup
+                                                onRemove={(keys) => {
+                                                    if (
+                                                        Array.isArray(
+                                                            state.value
+                                                        )
+                                                    ) {
+                                                        state.setValue(
+                                                            state.value.filter(
+                                                                (k) =>
+                                                                    !keys.has(k)
+                                                            )
+                                                        );
+                                                    }
+                                                }}
+                                            >
+                                                <TagList
+                                                    items={state.selectedItems}
+                                                    className={clsx(
+                                                        styles["tag-list"]
+                                                    )}
+                                                >
+                                                    {(item) => (
+                                                        <Tag
+                                                            id={item.key}
+                                                            label={
+                                                                item.textValue
+                                                            }
+                                                        />
+                                                    )}
+                                                </TagList>
+                                            </TagGroup>
+                                        );
+                                    }}
                                 </ComboBoxValue>
                             )}
 

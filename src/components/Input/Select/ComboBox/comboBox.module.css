@@ -9,4 +9,11 @@
             color: var(--placeholder-color);
         }
     }
+
+    .tag-list {
+        display: flex;
+        gap: var(--md-sys-layout-space-8);
+
+        flex-wrap: wrap;
+    }
 }
