@@ -2279,13 +2279,23 @@ const TagsPreview = () => {
                 reset lists
             </Button>
 
-            <TagGroup selectionMode="multiple">
+            <TagGroup
+                selectionMode="multiple"
+                disabledKeys={["Travel"]}
+                shouldSelectOnPressUp
+            >
                 <TagList items={items} className="tag-list">
-                    {(item) => <Tag label={item.label} icon={item.icon} />}
+                    {(item) => (
+                        <Tag
+                            id={item.label}
+                            label={item.label}
+                            icon={item.icon}
+                        />
+                    )}
                 </TagList>
             </TagGroup>
 
-            <TagGroup selectionMode="multiple" onAction={(key) => alert(key)}>
+            <TagGroup onAction={(key) => alert(key)}>
                 <TagList items={items} className="tag-list">
                     {(item) => (
                         <Tag
@@ -2323,6 +2333,21 @@ const TagsPreview = () => {
             <TagGroup>
                 <TagList className="tag-list">
                     <Tag
+                        label="avatar"
+                        avatar={<div className="avatar">R</div>}
+                    />
+
+                    <Tag
+                        label="avatar overflow"
+                        avatar={<div className="avatar">RRRRRRRRRRRR</div>}
+                    />
+                </TagList>
+            </TagGroup>
+
+            <TagGroup disabledKeys={["avatar"]}>
+                <TagList className="tag-list">
+                    <Tag
+                        id="avatar"
                         label="avatar"
                         avatar={<div className="avatar">R</div>}
                     />

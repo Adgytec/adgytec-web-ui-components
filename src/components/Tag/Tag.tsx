@@ -1,9 +1,11 @@
 import clsx from "clsx";
-import { X } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { Tag as AriaTag } from "react-aria-components";
 import { typography } from "@/utils";
 import { IconButton } from "../Button";
 import { Icon } from "../Icon";
+import { Splash } from "../Splash/Splash";
+import { useSplash } from "../Splash/useSplash";
 import { TagIconSize } from "./core";
 import styles from "./tag.module.css";
 import type { TagProps } from "./types";
@@ -13,10 +15,14 @@ export const Tag: React.FC<TagProps> = ({
     avatar,
     label,
     className,
+    onPress,
     ...props
 }) => {
+    const { splashInfo, handlePress } = useSplash(onPress);
+
     return (
         <AriaTag
+            onPress={handlePress}
             className={(renderProps) =>
                 clsx(
                     styles["tag"],
@@ -29,17 +35,25 @@ export const Tag: React.FC<TagProps> = ({
             data-avatar={avatar ? true : undefined}
             data-icon={!avatar && icon ? true : undefined}
         >
-            {({ allowsRemoving }) => (
+            {({ isSelected, allowsRemoving, isDisabled }) => (
                 <>
+                    {splashInfo && <Splash {...splashInfo} />}
                     {avatar ? (
-                        <div className={clsx(styles["avatar-constraint"])}>
+                        <div
+                            className={clsx(styles["avatar-constraint"])}
+                            data-disabled={isDisabled || undefined}
+                        >
                             {avatar}
                         </div>
+                    ) : isSelected ? (
+                        <Icon icon={Check} size={TagIconSize} />
                     ) : (
                         icon && <Icon icon={icon} size={TagIconSize} />
                     )}
 
-                    <p className={clsx(typography.labelLarge)}>{label}</p>
+                    <p className={clsx(typography.labelLarge, styles["label"])}>
+                        {label}
+                    </p>
 
                     {allowsRemoving && (
                         <IconButton
