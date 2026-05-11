@@ -24,7 +24,6 @@ export const SelectItem: React.FC<SelectItemProps> = ({
     className,
     onPress,
     textValue = label,
-    id = label,
     ...props
 }) => {
     const { splashInfo, handlePress } = useSplash(onPress);
@@ -40,7 +39,6 @@ export const SelectItem: React.FC<SelectItemProps> = ({
                         : className
                 )
             }
-            id={id}
             textValue={textValue}
             onPress={handlePress}
             {...props}

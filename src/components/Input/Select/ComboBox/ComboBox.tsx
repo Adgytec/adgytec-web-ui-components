@@ -65,6 +65,7 @@ export const ComboBox = <
                                     {({ state }) => {
                                         return (
                                             <TagGroup
+                                                aria-label="Selected Items"
                                                 onRemove={(keys) => {
                                                     if (
                                                         Array.isArray(

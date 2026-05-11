@@ -2280,6 +2280,7 @@ const TagsPreview = () => {
             </Button>
 
             <TagGroup
+                aria-label="Demo"
                 selectionMode="multiple"
                 disabledKeys={["Travel"]}
                 shouldSelectOnPressUp
@@ -2295,7 +2296,7 @@ const TagsPreview = () => {
                 </TagList>
             </TagGroup>
 
-            <TagGroup onAction={(key) => alert(key)}>
+            <TagGroup onAction={(key) => alert(key)} aria-label="Demo">
                 <TagList items={items} className="tag-list">
                     {(item) => (
                         <Tag
@@ -2307,7 +2308,10 @@ const TagsPreview = () => {
                 </TagList>
             </TagGroup>
 
-            <TagGroup onRemove={(keys) => list1.remove(...keys)}>
+            <TagGroup
+                onRemove={(keys) => list1.remove(...keys)}
+                aria-label="Demo"
+            >
                 <TagList
                     className="tag-list"
                     items={list1.items}
@@ -2318,6 +2322,7 @@ const TagsPreview = () => {
             </TagGroup>
 
             <TagGroup
+                aria-label="Demo"
                 selectionMode="multiple"
                 onRemove={(keys) => list2.remove(...keys)}
             >
@@ -2330,7 +2335,7 @@ const TagsPreview = () => {
                 </TagList>
             </TagGroup>
 
-            <TagGroup>
+            <TagGroup aria-label="Demo">
                 <TagList className="tag-list">
                     <Tag
                         label="avatar"
@@ -2344,7 +2349,7 @@ const TagsPreview = () => {
                 </TagList>
             </TagGroup>
 
-            <TagGroup disabledKeys={["avatar"]}>
+            <TagGroup disabledKeys={["avatar"]} aria-label="Demo">
                 <TagList className="tag-list">
                     <Tag
                         id="avatar"
