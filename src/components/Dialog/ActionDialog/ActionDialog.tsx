@@ -19,13 +19,14 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
 }) => {
     const headingDivider = divider === "all" || divider === "after-heading";
     const actionDivider = divider === "all" || divider === "before-actions";
+    const hasActions = Array.isArray(actions) ? actions.length > 0 : !!actions;
 
     return (
         <Dialog
             className={clsx(styles["action-dialog"])}
             {...props}
             data-dialog-head={heading || icon ? true : undefined}
-            data-actions={actions ? true : undefined}
+            data-actions={hasActions ? true : undefined}
         >
             {(renderProps) => (
                 <>
@@ -57,7 +58,7 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
                             : children}
                     </div>
 
-                    {actions && actions.length > 0 && (
+                    {hasActions && (
                         <div
                             className={clsx(styles["action-container"])}
                             data-divider={actionDivider ? true : undefined}
