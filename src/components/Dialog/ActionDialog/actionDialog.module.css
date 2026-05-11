@@ -10,6 +10,10 @@
         grid-template-rows: 1fr;
         padding-inline: 0;
 
+        &[data-actions] {
+            grid-template-rows: 1fr auto;
+        }
+
         &[data-dialog-head] {
             grid-template-rows: auto 1fr;
 
