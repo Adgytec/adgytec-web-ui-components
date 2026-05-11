@@ -16,6 +16,7 @@ export const Tag: React.FC<TagProps> = ({
     label,
     className,
     onPress,
+    textValue = label,
     ...props
 }) => {
     const { splashInfo, handlePress } = useSplash(onPress);
@@ -31,6 +32,7 @@ export const Tag: React.FC<TagProps> = ({
                         : className
                 )
             }
+            textValue={textValue}
             {...props}
             data-avatar={avatar ? true : undefined}
             data-icon={!avatar && icon ? true : undefined}

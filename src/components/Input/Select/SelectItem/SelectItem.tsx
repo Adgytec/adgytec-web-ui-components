@@ -23,6 +23,7 @@ export const SelectItem: React.FC<SelectItemProps> = ({
     trailingIcon,
     className,
     onPress,
+    textValue = label,
     ...props
 }) => {
     const { splashInfo, handlePress } = useSplash(onPress);
@@ -38,7 +39,7 @@ export const SelectItem: React.FC<SelectItemProps> = ({
                         : className
                 )
             }
-            textValue={label}
+            textValue={textValue}
             onPress={handlePress}
             {...props}
             data-multi-line={supportingText ? true : undefined}
