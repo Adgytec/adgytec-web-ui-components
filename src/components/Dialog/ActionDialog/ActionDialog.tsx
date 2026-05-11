@@ -17,7 +17,12 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
     ...props
 }) => {
     return (
-        <Dialog className={clsx(styles["action-dialog"])} {...props}>
+        <Dialog
+            className={clsx(styles["action-dialog"])}
+            {...props}
+            data-dialog-head={heading || icon ? true : undefined}
+            data-actions={actions ? true : undefined}
+        >
             {(renderProps) => (
                 <>
                     {(heading || icon) && (
@@ -50,7 +55,9 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
                     {actions && actions.length > 0 && (
                         <div className={clsx(styles["action-container"])}>
                             <div className={clsx(styles["actions"])}>
-                                {actions}
+                                {typeof actions === "function"
+                                    ? actions(renderProps)
+                                    : actions}
                             </div>
                         </div>
                     )}

@@ -5,8 +5,9 @@
             var(--md-sys-state-backdrop)
         );
 
-        position: fixed;
+        position: absolute;
         inset: 0;
+        z-index: 1000;
 
         display: flex;
         align-items: center;

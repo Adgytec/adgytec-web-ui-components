@@ -1,8 +1,16 @@
 @layer adgytec.comps {
     .action-dialog {
         display: grid;
-        grid-template-rows: auto 1fr auto;
+        grid-template-rows: 1fr;
         padding-inline: 0;
+
+        &[data-dialog-head] {
+            grid-template-rows: auto 1fr;
+
+            &[data-actions] {
+                grid-template-rows: auto 1fr auto;
+            }
+        }
     }
 
     .heading-container {
