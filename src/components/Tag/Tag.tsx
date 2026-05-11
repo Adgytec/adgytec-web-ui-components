@@ -32,14 +32,14 @@ export const Tag: React.FC<TagProps> = ({
             {({ allowsRemoving }) => (
                 <>
                     {avatar ? (
-                        <span className={clsx(styles["avatar-constraint"])}>
-                            avatar
-                        </span>
+                        <div className={clsx(styles["avatar-constraint"])}>
+                            {avatar}
+                        </div>
                     ) : (
                         icon && <Icon icon={icon} size={TagIconSize} />
                     )}
 
-                    <span className={clsx(typography.labelLarge)}>{label}</span>
+                    <p className={clsx(typography.labelLarge)}>{label}</p>
 
                     {allowsRemoving && (
                         <IconButton
