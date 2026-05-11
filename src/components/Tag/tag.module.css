@@ -1,0 +1,186 @@
+@layer adgytec.overrides {
+    .tag {
+        [data-visual-button] {
+            --focus-indicator-offset: calc(-4 * var(--dp, 1px));
+        }
+    }
+}
+
+@layer adgytec.comps {
+    .tag {
+        --background-color-unselected: var(
+            --md-sys-color-surface-container-low
+        );
+        --background-color-selected: var(--md-sys-color-secondary-container);
+
+        --icon-color-unselected: var(--md-sys-color-primary);
+        --icon-color-selected: var(--md-sys-color-on-secondary-container);
+
+        --label-color-unselected: var(--md-sys-color-on-surface-variant);
+        --label-color-selected: var(--md-sys-color-on-secondary-container);
+
+        /* derived */
+        --background: var(--background-color-unselected);
+        --label-color: var(--label-color-unselected);
+        --icon-color: var(--icon-color-unselected);
+
+        --state-layer-opacity: 0;
+
+        --state-layer-color: rgb(
+            from var(--label-color) r g b /
+            var(--state-layer-opacity)
+        );
+
+        /* styles  */
+
+        display: flex;
+        align-items: center;
+        gap: var(--md-sys-layout-space-8);
+
+        position: relative;
+        overflow: clip;
+
+        background-color: var(--background);
+        color: var(--icon-color);
+
+        padding-inline: var(--md-sys-layout-space-12);
+        padding-block: calc(5 * var(--dp, 1px));
+        border-radius: var(--md-sys-shape-corner-radius-small);
+
+        border: calc(1 * var(--dp, 1px)) solid
+            var(--md-sys-color-outline-variant);
+        outline: none;
+
+        transition:
+            background-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            border-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            padding var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-icon] {
+            padding-inline-start: var(--md-sys-layout-space-8);
+        }
+
+        &[data-avatar] {
+            padding-block: calc(3 * var(--dp, 1px));
+            padding-inline-start: var(--md-sys-layout-space-4);
+        }
+
+        &[data-allows-removing] {
+            padding-block: 0;
+            padding-inline-end: calc(2 * var(--dp, 1px));
+        }
+
+        &[data-selection-mode] {
+            cursor: pointer;
+        }
+
+        &[data-selected] {
+            --background: var(--background-color-selected);
+            --label-color: var(--label-color-selected);
+            --icon-color: var(--icon-color-selected);
+
+            border-color: transparent;
+        }
+
+        &[data-hovered] {
+            --state-layer-opacity: var(--md-sys-state-hover);
+        }
+
+        &[data-focus-visible] {
+            --state-layer-opacity: var(--md-sys-state-focus);
+        }
+
+        &[data-pressed] {
+            --state-layer-opacity: var(--md-sys-state-pressed);
+        }
+
+        &[data-disabled] {
+            cursor: default;
+            border-color: transparent;
+
+            --background: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-container)
+            );
+            --label-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            --icon-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+        }
+    }
+
+    /* state layer */
+    .tag::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+
+        background-color: var(--state-layer-color);
+
+        transition: background-color var(--md-sys-motion-standard-fast-spatial)
+            var(--md-sys-motion-standard-fast-spatial-duration);
+    }
+
+    /* focus indicator */
+    .tag[data-focus-visible] {
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
+
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
+
+        z-index: 1;
+    }
+
+    .label {
+        color: var(--label-color);
+
+        transition: color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    .avatar-constraint {
+        inline-size: var(--md-sys-layout-space-24);
+        aspect-ratio: 1 / 1;
+
+        overflow: clip;
+
+        &[data-disabled] {
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: 50%;
+
+                background: rgb(
+                    from var(--md-sys-color-on-surface) r g b /
+                    var(--md-sys-state-disabled-content)
+                );
+            }
+        }
+    }
+}

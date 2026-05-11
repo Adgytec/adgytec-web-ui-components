@@ -8,6 +8,7 @@ import {
     ExternalLinkIcon,
     Eye,
     FileBraces,
+    Gamepad,
     Globe,
     GlobeLock,
     GlobeOff,
@@ -16,8 +17,11 @@ import {
     Mail,
     Mouse,
     MouseOff,
+    Newspaper,
+    PlaneTakeoff,
     Settings,
     Share2,
+    ShoppingCart,
     Sofa,
     Squirrel,
     Sun,
@@ -28,6 +32,7 @@ import {
     UserRound,
 } from "lucide-react";
 import { Fragment, type ReactNode, useState } from "react";
+import { useListData } from "react-aria-components/useListData";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
 import { clsx } from "clsx";
@@ -37,6 +42,8 @@ import {
     DialogTrigger,
     Form,
     SubmenuTrigger,
+    TagGroup,
+    TagList,
 } from "react-aria-components";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@/components/Tabs";
 import {
@@ -106,6 +113,7 @@ import {
 import { SubmenuPopover } from "./components/Menu/SubmenuPopover";
 import { Popover } from "./components/Popover";
 import { Separator } from "./components/Separator";
+import { Tag } from "./components/Tag";
 import {
     Toolbar,
     type ToolbarColor,
@@ -2233,6 +2241,126 @@ const TabsPreview = () => {
         </div>
     );
 };
+const TagsPreview = () => {
+    const items = [
+        { id: 1, label: "News", icon: Newspaper },
+        { id: 2, label: "Travel", icon: PlaneTakeoff },
+        { id: 3, label: "Gaming", icon: Gamepad },
+        { id: 4, label: "Shopping", icon: ShoppingCart },
+    ];
+
+    const itemKeys = items.map((item) => item.id);
+
+    const list1 = useListData({
+        initialItems: items,
+    });
+
+    const list2 = useListData({
+        initialItems: items,
+    });
+
+    return (
+        <div
+            className="items-grid"
+            style={{
+                justifyItems: "center",
+            }}
+        >
+            <Button
+                color="tonal"
+                onPress={() => {
+                    list1.remove(...itemKeys);
+                    list2.remove(...itemKeys);
+
+                    list1.append(...items);
+                    list2.append(...items);
+                }}
+            >
+                reset lists
+            </Button>
+
+            <TagGroup
+                selectionMode="multiple"
+                disabledKeys={["Travel"]}
+                shouldSelectOnPressUp
+            >
+                <TagList items={items} className="tag-list">
+                    {(item) => (
+                        <Tag
+                            id={item.label}
+                            label={item.label}
+                            icon={item.icon}
+                        />
+                    )}
+                </TagList>
+            </TagGroup>
+
+            <TagGroup onAction={(key) => alert(key)}>
+                <TagList items={items} className="tag-list">
+                    {(item) => (
+                        <Tag
+                            id={item.label}
+                            label={item.label}
+                            icon={item.icon}
+                        />
+                    )}
+                </TagList>
+            </TagGroup>
+
+            <TagGroup onRemove={(keys) => list1.remove(...keys)}>
+                <TagList
+                    className="tag-list"
+                    items={list1.items}
+                    renderEmptyState={() => <div>No categories</div>}
+                >
+                    {(item) => <Tag label={item.label} icon={item.icon} />}
+                </TagList>
+            </TagGroup>
+
+            <TagGroup
+                selectionMode="multiple"
+                onRemove={(keys) => list2.remove(...keys)}
+            >
+                <TagList
+                    className="tag-list"
+                    items={list2.items}
+                    renderEmptyState={() => <div>No categories</div>}
+                >
+                    {(item) => <Tag label={item.label} icon={item.icon} />}
+                </TagList>
+            </TagGroup>
+
+            <TagGroup>
+                <TagList className="tag-list">
+                    <Tag
+                        label="avatar"
+                        avatar={<div className="avatar">R</div>}
+                    />
+
+                    <Tag
+                        label="avatar overflow"
+                        avatar={<div className="avatar">RRRRRRRRRRRR</div>}
+                    />
+                </TagList>
+            </TagGroup>
+
+            <TagGroup disabledKeys={["avatar"]}>
+                <TagList className="tag-list">
+                    <Tag
+                        id="avatar"
+                        label="avatar"
+                        avatar={<div className="avatar">R</div>}
+                    />
+
+                    <Tag
+                        label="avatar overflow"
+                        avatar={<div className="avatar">RRRRRRRRRRRR</div>}
+                    />
+                </TagList>
+            </TagGroup>
+        </div>
+    );
+};
 
 const App = () => {
     const [isVertical, setVertical] = useState(false);
@@ -2249,6 +2377,7 @@ const App = () => {
             label: "Theme Switcher",
             Component: VisualSettingsPreview,
         },
+        { id: "tags", label: "Tags", Component: TagsPreview },
         { id: "tabs", label: "Tabs", Component: TabsPreview },
         { id: "toolbar", label: "Toolbar", Component: ToolbarPreview },
         { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },
