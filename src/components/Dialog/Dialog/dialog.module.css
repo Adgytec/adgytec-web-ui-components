@@ -1,38 +1,15 @@
 @layer adgytec.comps {
     .dialog {
-        /* container */
-        --dialog-container-min-inline-size: calc(280 * var(--dp, 1px));
-        --dialog-container-max-inline-size: calc(560 * var(--dp, 1px));
-        --dialog-container-max-block-size: 90svb;
-
-        --dialog-container-background: var(
-            --md-sys-color-surface-container-high
-        );
-        --dialog-container-shape: var(--md-sys-shape-corner-radius-extra-large);
-        --dialog-container-elevation: var(--md-sys-elevation-shadow-3);
-        --dialog-container-padding: var(--md-sys-layout-space-24);
-
-        /* color */
-        --dialog-headline-text-color: var(--md-sys-color-on-surface);
-        --dialog-icon-color: var(--md-sys-color-secondary);
-        --dialog-body-text-color: var(--md-sys-color-on-surface-variant);
-
         /* spacing */
         --dialog-action-gap: var(--md-sys-layout-space-8);
         --dialog-title-body-gap: var(--md-sys-layout-space-16);
         --dialog-title-icon-gap: var(--md-sys-layout-space-16);
         --dialog-body-action-gap: var(--md-sys-layout-space-24);
+        --dialog-container-padding: var(--md-sys-layout-space-24);
 
-        /* styles */
         padding: var(--dialog-container-padding);
-        border-radius: var(--dialog-container-shape);
+        border-radius: inherit;
 
-        background-color: var(--dialog-container-background);
-        color: var(--dialog-body-text-color);
-        box-shadow: var(--dialog-container-elevation);
-
-        min-inline-size: min(90svi, var(--dialog-container-min-inline-size));
-        max-inline-size: min(90svi, var(--dialog-container-max-inline-size));
-        max-block-size: var(--dialog-container-max-block-size);
+        --separator-color: currentcolor;
     }
 }
