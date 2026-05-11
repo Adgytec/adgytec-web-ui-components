@@ -1,5 +1,11 @@
 @layer adgytec.comps {
     .action-dialog {
+        --divider-thickness: calc(1 * var(--dp, 1px));
+        --divider-color: rgb(
+            from currentColor r g b /
+            var(--md-sys-state-divider)
+        );
+
         display: grid;
         grid-template-rows: 1fr;
         padding-inline: 0;
@@ -15,11 +21,16 @@
 
     .heading-container {
         color: var(--dialog-icon-color);
-        margin-block-end: var(--dialog-title-body-gap);
+        padding-block-end: calc(var(--dialog-title-body-gap) / 2);
         padding-inline: var(--dialog-container-padding);
 
         display: grid;
         gap: var(--dialog-title-icon-gap);
+
+        &[data-divider] {
+            border-block-end: var(--divider-thickness) solid
+                var(--divider-color);
+        }
 
         &[data-icon] {
             text-align: center;
@@ -33,7 +44,12 @@
 
     .action-container {
         padding-inline: var(--dialog-container-padding);
-        margin-block-start: var(--dialog-body-action-gap);
+        padding-block-start: calc(var(--dialog-body-action-gap) / 2);
+
+        &[data-divider] {
+            border-block-start: var(--divider-thickness) solid
+                var(--divider-color);
+        }
     }
 
     .actions {
@@ -45,5 +61,8 @@
     .body {
         padding-inline: var(--dialog-container-padding);
         overflow: auto;
+
+        margin-block-start: calc(var(--dialog-title-body-gap) / 2);
+        margin-block-end: calc(var(--dialog-body-action-gap) / 2);
     }
 }

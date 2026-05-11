@@ -9,5 +9,7 @@
 
         padding: var(--dialog-container-padding);
         border-radius: inherit;
+
+        --separator-color: currentcolor;
     }
 }

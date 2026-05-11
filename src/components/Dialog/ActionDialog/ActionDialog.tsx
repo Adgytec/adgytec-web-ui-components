@@ -14,8 +14,12 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
     icon,
     actions,
     children,
+    divider = "none",
     ...props
 }) => {
+    const headingDivider = divider === "all" || divider === "after-heading";
+    const actionDivider = divider === "all" || divider === "before-actions";
+
     return (
         <Dialog
             className={clsx(styles["action-dialog"])}
@@ -29,6 +33,7 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
                         <div
                             className={clsx(styles["heading-container"])}
                             data-icon={icon ? true : undefined}
+                            data-divider={headingDivider ? true : undefined}
                         >
                             {icon && <Icon icon={icon} size={DialogIconSize} />}
 
@@ -53,7 +58,10 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
                     </div>
 
                     {actions && actions.length > 0 && (
-                        <div className={clsx(styles["action-container"])}>
+                        <div
+                            className={clsx(styles["action-container"])}
+                            data-divider={actionDivider ? true : undefined}
+                        >
                             <div className={clsx(styles["actions"])}>
                                 {typeof actions === "function"
                                     ? actions(renderProps)

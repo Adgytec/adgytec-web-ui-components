@@ -1321,6 +1321,7 @@ const DialogPreview = () => {
                 <ModalOverlay>
                     <Modal>
                         <ActionDialog
+                            divider="all"
                             heading="Squirrel?"
                             icon={Squirrel}
                             actions={[
