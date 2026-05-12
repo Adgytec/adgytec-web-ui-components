@@ -45,6 +45,7 @@ import {
     TagGroup,
     TagList,
 } from "react-aria-components";
+import { useLocalStorage } from "usehooks-ts";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@/components/Tabs";
 import {
     Button,
@@ -129,7 +130,6 @@ import {
 } from "./components/Tooltip/RichTooltip";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
-import { useLocalStorage } from "usehooks-ts";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
