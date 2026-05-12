@@ -129,6 +129,7 @@ import {
 } from "./components/Tooltip/RichTooltip";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
+import { useLocalStorage } from "usehooks-ts";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -2368,7 +2369,10 @@ const TagsPreview = () => {
 };
 
 const App = () => {
-    const [isVertical, setVertical] = useState(false);
+    const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
+        "tab-orientation",
+        "horizontal"
+    );
 
     type PreviewItem = {
         id: string;
@@ -2424,10 +2428,7 @@ const App = () => {
 
     return (
         <div className="tab-container">
-            <Tabs
-                orientation={isVertical ? "vertical" : "horizontal"}
-                className="tabs"
-            >
+            <Tabs orientation={tabOrientation} className="tabs">
                 <TabList
                     style={({ orientation }) => {
                         let pos = {};
@@ -2452,7 +2453,13 @@ const App = () => {
                     <TabPanel id="orientation">
                         <PreviewContainer label="Tab Orientation">
                             <Button
-                                onPress={() => setVertical((prev) => !prev)}
+                                onPress={() =>
+                                    setOrientation((prev) => {
+                                        return prev === "horizontal"
+                                            ? "vertical"
+                                            : "horizontal";
+                                    })
+                                }
                                 color="outlined"
                             >
                                 Change Orientation
