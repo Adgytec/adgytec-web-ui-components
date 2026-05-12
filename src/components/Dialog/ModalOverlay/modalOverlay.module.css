@@ -5,7 +5,7 @@
             var(--md-sys-state-backdrop)
         );
 
-        position: absolute;
+        position: fixed;
         inset: 0;
         z-index: 1000;
 
