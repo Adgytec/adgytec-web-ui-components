@@ -121,6 +121,7 @@
         color: var(--editor-infix-color);
 
         overflow: auto;
+        scrollbar-width: none;
 
         transition:
             border-color var(--md-sys-motion-standard-fast-effects)

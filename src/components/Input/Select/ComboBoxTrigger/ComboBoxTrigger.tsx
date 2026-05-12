@@ -56,7 +56,8 @@ export const ComboBoxTrigger: React.FC<
                 className={clsx(
                     UnsetStyles,
                     EditorInputStyles,
-                    typography.bodyLarge
+                    typography.bodyLarge,
+                    styles["input"]
                 )}
                 data-input={true}
                 dir={dir}

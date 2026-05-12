@@ -16,4 +16,12 @@
             }
         }
     }
+
+    .input {
+        flex: 1;
+        text-align: start;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
