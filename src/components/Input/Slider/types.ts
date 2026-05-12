@@ -16,6 +16,7 @@ export interface SliderProps<T extends number | number[]>
     size?: SliderSize;
     variant?: SliderVariant;
     insetIcon?: LucideIcon;
+    minInsetIcon?: LucideIcon;
     label?: ReactNode;
     thumbLabels?: string[];
 }

@@ -30,6 +30,8 @@ import {
     SwatchBook,
     User,
     UserRound,
+    Volume,
+    VolumeOff,
 } from "lucide-react";
 import { Fragment, type ReactNode, useState } from "react";
 import { useListData } from "react-aria-components/useListData";
@@ -97,6 +99,9 @@ import {
     SelectListSectionHeader,
     SelectPopover,
     SelectTrigger,
+    Slider,
+    type SliderSize,
+    type SliderVariant,
     TextArea,
     TimeField,
 } from "./components/Input";
@@ -2368,6 +2373,78 @@ const TagsPreview = () => {
     );
 };
 
+const SliderPreview = () => {
+    const sizes: SliderSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+
+    const orientation: Orientation[] = ["horizontal", "vertical"];
+
+    const sliderVariant: SliderVariant[] = ["standard", "centered", "range"];
+
+    return (
+        <div className="items-grid">
+            {sliderVariant.map((variant) => {
+                return (
+                    <div key={variant} className="items-grid">
+                        <h3 className={clsx(typography.titleLargeEmphasized)}>
+                            {variant}
+                        </h3>
+
+                        {orientation.map((o) => {
+                            return (
+                                <div
+                                    key={o}
+                                    className={clsx(
+                                        o === "horizontal" && "items-grid",
+                                        o === "vertical" && "items"
+                                    )}
+                                    style={{
+                                        justifyContent: "center",
+                                    }}
+                                >
+                                    {sizes.map((size) => (
+                                        <Fragment key={size}>
+                                            <Slider
+                                                variant={variant}
+                                                orientation={o}
+                                                size={size}
+                                                label={`${variant}--${o}--${size}`}
+                                                style={{
+                                                    textAlign: "center",
+                                                }}
+                                                insetIcon={Volume}
+                                                minInsetIcon={VolumeOff}
+                                            />
+
+                                            <Slider
+                                                variant={variant}
+                                                orientation={o}
+                                                size={size}
+                                                step={10}
+                                                label={`${variant}--${o}--${size}`}
+                                                style={{
+                                                    textAlign: "center",
+                                                }}
+                                                insetIcon={Volume}
+                                                minInsetIcon={VolumeOff}
+                                            />
+                                        </Fragment>
+                                    ))}
+                                </div>
+                            );
+                        })}
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -2386,6 +2463,7 @@ const App = () => {
             label: "Theme Switcher",
             Component: VisualSettingsPreview,
         },
+        { id: "slider", label: "Slider", Component: SliderPreview },
         { id: "tags", label: "Tags", Component: TagsPreview },
         { id: "tabs", label: "Tabs", Component: TabsPreview },
         { id: "toolbar", label: "Toolbar", Component: ToolbarPreview },

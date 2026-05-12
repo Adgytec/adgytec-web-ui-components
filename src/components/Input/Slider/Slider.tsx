@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Slider as AriaSlider } from "react-aria-components";
-import { Label } from "../Input";
+import { Label } from "../Label";
 import type { SliderProps } from "./types";
 
 export const Slider = <T extends number | number[]>({
