@@ -33,6 +33,7 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
             <Toolbar
                 className={clsx(
                     styles["split-button"],
+                    styles[size],
                     splitButtonSizeConfig(size),
                     className
                 )}

@@ -11,7 +11,7 @@
         padding-block: var(--padding-block);
         border-radius: var(--shape);
 
-        display: inline-flex;
+        display: flex;
         gap: var(--icon-label-gap);
         align-items: center;
         justify-content: center;
