@@ -2384,7 +2384,7 @@ const SliderPreview = () => {
 
     const orientation: Orientation[] = ["horizontal", "vertical"];
 
-    const sliderVariant: SliderVariant[] = ["standard", "centered", "range"];
+    const sliderVariant: SliderVariant[] = ["standard", "centered"];
 
     return (
         <div className="items-grid">

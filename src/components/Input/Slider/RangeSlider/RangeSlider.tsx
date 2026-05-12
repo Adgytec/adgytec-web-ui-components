@@ -1,14 +1,14 @@
 import clsx from "clsx";
 import { Slider as AriaSlider } from "react-aria-components";
-import { Label } from "../Label";
-import type { SliderProps } from "./types";
+import { Label } from "../../Label";
+import type { RangeSliderProps } from "./types";
 
-export const Slider = <T extends number | number[]>({
+export const RangeSlider = <T extends number[]>({
     label,
     thumbLabels,
     className,
     ...props
-}: SliderProps<T>) => {
+}: RangeSliderProps<T>) => {
     return (
         <AriaSlider
             className={(renderProps) =>
