@@ -3,6 +3,10 @@
         &[data-entering] {
             animation: modal-zoom var(--md-sys-motion-expressive-fast-spatial)
                 var(--md-sys-motion-expressive-fast-spatial-duration);
+
+            @media (prefers-reduced-motion) {
+                animation: none;
+            }
         }
     }
 
