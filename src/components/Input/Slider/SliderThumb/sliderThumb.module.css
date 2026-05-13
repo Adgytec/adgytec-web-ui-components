@@ -1,0 +1,140 @@
+@layer adgytec.comps {
+    .thumb {
+        /* thumb */
+        --thumb-thickness: var(--md-sys-layout-space-4);
+    }
+
+    .extra-small {
+        /* thumb */
+        --thumb-size: calc(44 * var(--dp, 1px));
+    }
+
+    .small {
+        /* thumb */
+        --thumb-size: calc(44 * var(--dp, 1px));
+    }
+
+    .medium {
+        /* thumb */
+        --thumb-size: calc(52 * var(--dp, 1px));
+    }
+
+    .large {
+        /* thumb */
+        --thumb-size: calc(68 * var(--dp, 1px));
+    }
+
+    .extra-large {
+        /* thumb */
+        --thumb-size: calc(108 * var(--dp, 1px));
+    }
+
+    .thumb {
+        --thumb-block-size: var(--thumb-size);
+        --thumb-inline-size: var(--thumb-thickness);
+
+        &[data-orientation="vertical"] {
+            --thumb-block-size: var(--thumb-thickness);
+            --thumb-inline-size: var(--thumb-size);
+        }
+
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+
+        inline-size: var(--thumb-inline-size);
+        block-size: var(--thumb-block-size);
+
+        border-radius: var(--md-sys-shape-corner-radius-full);
+
+        background-color: var(--md-sys-color-primary);
+
+        transition:
+            block-size var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            inline-size var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-z-index-increase] {
+            z-index: 1;
+        }
+
+        &[data-orientation="vertical"] {
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+
+        &[data-focus-visible] {
+            --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+            --focus-indicator-offset: calc(4 * var(--dp, 1px));
+            --focus-indicator-color: var(--md-sys-color-secondary);
+
+            outline-width: var(--focus-indicator-thickness);
+            outline-style: solid;
+            outline-offset: var(--focus-indicator-offset);
+            outline-color: var(--focus-indicator-color);
+        }
+
+        &[data-dragging],
+        &[data-focus-visible] {
+            --thumb-thickness: calc(2 * var(--dp, 1px));
+        }
+
+        &[data-disabled] {
+            background-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+        }
+    }
+
+    .output {
+        position: absolute;
+
+        padding-block: var(--md-sys-layout-space-12);
+        padding-inline: var(--md-sys-layout-space-16);
+
+        background-color: var(--md-sys-color-inverse-surface);
+        color: var(--md-sys-color-inverse-on-surface);
+        border-radius: var(--md-sys-shape-corner-radius-full);
+
+        &[data-orientation="horizontal"] {
+            bottom: 100%;
+            left: 50%;
+            translate: -50% calc(-4 * var(--dp, 1px));
+
+            transform-origin: bottom;
+        }
+
+        &[data-orientation="vertical"] {
+            right: 100%;
+            top: 50%;
+            translate: calc(-4 * var(--dp, 1px)) -50%;
+
+            transform-origin: right;
+        }
+
+        scale: 0;
+        opacity: 0;
+
+        transition:
+            scale var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            opacity var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-dragging],
+        &[data-focus-visible] {
+            scale: 1;
+            opacity: 1;
+        }
+    }
+}

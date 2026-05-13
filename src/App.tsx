@@ -2433,9 +2433,16 @@ const RangeSliderPreview = () => {
         >
             {sizes.map((size) => (
                 <Fragment key={size}>
-                    <RangeSlider label={size} size={size} />
+                    <h4 className={typography.labelSmall}>{size}</h4>
 
-                    <RangeSlider size={size} isDisabled />
+                    <div className="items" data-slider-orientation="horizontal">
+                        <div>
+                            <RangeSlider size={size} />
+                        </div>
+                        <div>
+                            <RangeSlider isDisabled />
+                        </div>
+                    </div>
                 </Fragment>
             ))}
         </div>
