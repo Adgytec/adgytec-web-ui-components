@@ -250,6 +250,10 @@
             var(--md-sys-motion-expressive-default-effects)
             var(--md-sys-motion-expressive-default-effects-duration);
 
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
         &[data-selected] {
             stroke-dashoffset: 44;
         }

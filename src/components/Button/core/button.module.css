@@ -16,7 +16,7 @@
 
     .button-core {
         position: relative;
-        overflow: hidden;
+        overflow: clip;
 
         transition:
             border-radius var(--md-sys-motion-expressive-fast-spatial)

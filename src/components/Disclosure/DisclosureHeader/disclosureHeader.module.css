@@ -1,20 +1,41 @@
 @layer adgytec.overrides {
-    .trigger[data-focus-visible] {
-        outline: none;
+    .state-layer {
+        --inset: calc(-1 * var(--spacing));
 
-        &::before {
-            outline-width: var(--focus-indicator-thickness);
-            outline-style: solid;
-            outline-offset: var(--focus-indicator-offset);
-            outline-color: var(--focus-indicator-color);
+        position: absolute;
+        inset: var(--inset);
+        border-radius: inherit;
 
-            z-index: 1;
+        overflow: clip;
+
+        background-color: var(--state-layer-color);
+
+        transition: background-color var(--md-sys-motion-standard-fast-spatial)
+            var(--md-sys-motion-standard-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
         }
     }
 
     .trigger::before {
-        --inset: calc(-1 * var(--spacing));
-        inset: var(--inset);
+        background-color: transparent;
+    }
+
+    .trigger[data-focus-visible] {
+        outline: none;
+
+        &::before {
+            outline: none;
+            z-index: 1;
+        }
+
+        .state-layer {
+            outline-width: var(--focus-indicator-thickness);
+            outline-style: solid;
+            outline-offset: var(--focus-indicator-offset);
+            outline-color: var(--focus-indicator-color);
+        }
     }
 }
 

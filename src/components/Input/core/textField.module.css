@@ -218,6 +218,10 @@
         transition: color var(--md-sys-motion-standard-fast-effects)
             var(--md-sys-motion-standard-fast-effects-duration);
 
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
         &[data-leading] {
             padding-inline-start: var(--md-sys-layout-space-12);
         }
