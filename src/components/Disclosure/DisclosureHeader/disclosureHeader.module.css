@@ -22,7 +22,7 @@
     .trigger {
         --rotate: 0;
 
-        display: inline-flex;
+        display: flex;
         gap: var(--md-sys-layout-space-4);
         align-items: center;
 

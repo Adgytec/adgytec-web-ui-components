@@ -33,7 +33,7 @@ import {
     Volume,
     VolumeOff,
 } from "lucide-react";
-import { Fragment, type ReactNode, useState } from "react";
+import { type CSSProperties, Fragment, type ReactNode, useState } from "react";
 import { useListData } from "react-aria-components/useListData";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
@@ -58,6 +58,7 @@ import {
     ConnectedButton,
     ConnectedButtonGroup,
     type ConnectedButtonGroupColor,
+    type CoreButtonColor,
     IconButton,
     type IconButtonColor,
     type IconButtonWidth,
@@ -92,6 +93,7 @@ import {
     DateField,
     Input,
     Label,
+    RangeSlider,
     Select,
     SelectItem,
     SelectList,
@@ -1173,29 +1175,70 @@ const ButtonGroupPreview = () => {
         "extra-large",
     ];
 
+    const shapes: ButtonShape[] = ["round", "square"];
+
+    const colors: CoreButtonColor[] = ["outlined", "tonal", "filled"];
+
     return (
         <>
-            {sizes.map((size) => (
-                <div className="items" key={size}>
-                    <ButtonGroup size={size} shape="square" color="outlined">
-                        <ToggleButton id={"one"}>One</ToggleButton>
+            {colors.map((color) => (
+                <Fragment key={color}>
+                    {shapes.map((shape) => (
+                        <Fragment key={shape}>
+                            <h3
+                                className={typography.titleLargeEmphasized}
+                                style={{
+                                    textAlign: "center",
+                                }}
+                            >{`${color}-${shape}`}</h3>
 
-                        <ToggleButton id={"two"}>Two</ToggleButton>
+                            {sizes.map((size) => (
+                                <Fragment key={size}>
+                                    <div className="items">
+                                        <ButtonGroup
+                                            size={size}
+                                            color={color}
+                                            shape={shape}
+                                        >
+                                            <ToggleButton id={"one"}>
+                                                One
+                                            </ToggleButton>
 
-                        <ToggleButton
-                            id={"three"}
-                            icon={Armchair}
-                            shape="round"
-                            color="elevated"
-                        >
-                            Three
-                        </ToggleButton>
+                                            <ToggleButton id={"two"}>
+                                                Two
+                                            </ToggleButton>
 
-                        <ToggleIconButton id={"four"} icon={Sofa} />
+                                            <ToggleButton
+                                                id={"three"}
+                                                icon={Armchair}
+                                            >
+                                                Three
+                                            </ToggleButton>
 
-                        <ToggleButton id={"five"}>Five</ToggleButton>
-                    </ButtonGroup>
-                </div>
+                                            <ToggleIconButton
+                                                id={"four"}
+                                                icon={Sofa}
+                                            />
+
+                                            <ToggleButton id={"five"}>
+                                                Five
+                                            </ToggleButton>
+                                        </ButtonGroup>
+                                    </div>
+                                </Fragment>
+                            ))}
+
+                            <Separator
+                                style={
+                                    {
+                                        "--separator-color":
+                                            "var(--md-sys-color-primary)",
+                                    } as CSSProperties
+                                }
+                            />
+                        </Fragment>
+                    ))}
+                </Fragment>
             ))}
         </>
     );
@@ -2373,6 +2416,33 @@ const TagsPreview = () => {
     );
 };
 
+const RangeSliderPreview = () => {
+    const sizes: SliderSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+
+    return (
+        <div
+            className="items-grid"
+            style={{
+                justifyContent: "center",
+            }}
+        >
+            {sizes.map((size) => (
+                <Fragment key={size}>
+                    <RangeSlider label={size} size={size} />
+
+                    <RangeSlider size={size} isDisabled />
+                </Fragment>
+            ))}
+        </div>
+    );
+};
+
 const SliderPreview = () => {
     const sizes: SliderSize[] = [
         "extra-small",
@@ -2414,9 +2484,6 @@ const SliderPreview = () => {
                                                 orientation={o}
                                                 size={size}
                                                 label={`${variant}--${o}--${size}`}
-                                                style={{
-                                                    textAlign: "center",
-                                                }}
                                                 insetIcon={Volume}
                                                 minInsetIcon={VolumeOff}
                                             />
@@ -2427,9 +2494,6 @@ const SliderPreview = () => {
                                                 size={size}
                                                 step={10}
                                                 label={`${variant}--${o}--${size}`}
-                                                style={{
-                                                    textAlign: "center",
-                                                }}
                                                 insetIcon={Volume}
                                                 minInsetIcon={VolumeOff}
                                             />
@@ -2462,6 +2526,11 @@ const App = () => {
             id: "visual-settings",
             label: "Theme Switcher",
             Component: VisualSettingsPreview,
+        },
+        {
+            id: "range-slider",
+            label: "Range Slider",
+            Component: RangeSliderPreview,
         },
         { id: "slider", label: "Slider", Component: SliderPreview },
         { id: "tags", label: "Tags", Component: TagsPreview },
@@ -2530,18 +2599,20 @@ const App = () => {
                 <TabPanels>
                     <TabPanel id="orientation">
                         <PreviewContainer label="Tab Orientation">
-                            <Button
-                                onPress={() =>
-                                    setOrientation((prev) => {
-                                        return prev === "horizontal"
-                                            ? "vertical"
-                                            : "horizontal";
-                                    })
-                                }
-                                color="outlined"
-                            >
-                                Change Orientation
-                            </Button>
+                            <div className="items">
+                                <Button
+                                    onPress={() =>
+                                        setOrientation((prev) => {
+                                            return prev === "horizontal"
+                                                ? "vertical"
+                                                : "horizontal";
+                                        })
+                                    }
+                                    color="outlined"
+                                >
+                                    Change Orientation
+                                </Button>
+                            </div>
                         </PreviewContainer>
                     </TabPanel>
 
