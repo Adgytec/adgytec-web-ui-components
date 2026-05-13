@@ -24,6 +24,7 @@ import { Description } from "../Description";
 import { FieldError } from "../FieldError";
 import { useControllableState } from "../hooks";
 import { Label } from "../Label";
+import { addStateAttrsToInputButton } from "./handleInputButton";
 import type { InputProps } from "./types";
 
 export const Input: React.FC<InputProps> = ({
@@ -139,7 +140,11 @@ export const Input: React.FC<InputProps> = ({
 
                             {trailing && typeof trailing === "function"
                                 ? trailing(isDisabled, isInvalid)
-                                : trailing}
+                                : addStateAttrsToInputButton({
+                                      node: trailing,
+                                      isDisabled,
+                                      isInvalid,
+                                  })}
                         </span>
 
                         {hasDescription && (

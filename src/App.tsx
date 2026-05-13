@@ -92,6 +92,7 @@ import {
     ComboBoxTrigger,
     DateField,
     Input,
+    InputButton,
     Label,
     RangeSlider,
     Select,
@@ -1493,14 +1494,12 @@ const InputPreview = () => {
                 suffix={"@adgytec.in"}
                 // editorDir="rtl"
                 leadingIcon={Mail}
-                trailing={(isDisabled) => (
-                    <IconButton
+                trailing={
+                    <InputButton
                         icon={Armchair}
-                        color="standard"
                         onPress={() => setVal("hello")}
-                        isDisabled={isDisabled}
                     />
-                )}
+                }
                 showCharacterCount
                 value={val}
                 onChange={setVal}
