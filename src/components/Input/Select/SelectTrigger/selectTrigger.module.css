@@ -10,6 +10,7 @@
         }
 
         > svg {
+            color: var(--group-color);
             rotate: var(--rotate);
             transition: rotate var(--md-sys-motion-expressive-fast-spatial)
                 var(--md-sys-motion-expressive-fast-spatial-duration);
