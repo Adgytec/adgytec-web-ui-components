@@ -2475,27 +2475,46 @@ const SliderPreview = () => {
                                     style={{
                                         justifyContent: "center",
                                     }}
+                                    data-slider-orientation={o}
                                 >
                                     {sizes.map((size) => (
                                         <Fragment key={size}>
-                                            <Slider
-                                                variant={variant}
-                                                orientation={o}
-                                                size={size}
-                                                label={`${variant}--${o}--${size}`}
-                                                insetIcon={Volume}
-                                                minInsetIcon={VolumeOff}
-                                            />
+                                            <div>
+                                                <h4
+                                                    className={
+                                                        typography.labelSmall
+                                                    }
+                                                >
+                                                    {`${variant}--${o}--${size}`}
+                                                </h4>
 
-                                            <Slider
-                                                variant={variant}
-                                                orientation={o}
-                                                size={size}
-                                                step={10}
-                                                label={`${variant}--${o}--${size}`}
-                                                insetIcon={Volume}
-                                                minInsetIcon={VolumeOff}
-                                            />
+                                                <Slider
+                                                    variant={variant}
+                                                    orientation={o}
+                                                    size={size}
+                                                    insetIcon={Volume}
+                                                    minInsetIcon={VolumeOff}
+                                                />
+                                            </div>
+
+                                            <div>
+                                                <h4
+                                                    className={
+                                                        typography.labelSmall
+                                                    }
+                                                >
+                                                    {`${variant}--${o}--${size}-steps`}
+                                                </h4>
+
+                                                <Slider
+                                                    variant={variant}
+                                                    orientation={o}
+                                                    size={size}
+                                                    step={10}
+                                                    insetIcon={Volume}
+                                                    minInsetIcon={VolumeOff}
+                                                />
+                                            </div>
                                         </Fragment>
                                     ))}
                                 </div>

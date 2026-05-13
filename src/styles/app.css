@@ -109,3 +109,28 @@
     display: flex;
     gap: var(--md-sys-layout-space-16);
 }
+
+[data-slider-orientation] {
+    > div {
+        display: inline-grid;
+        gap: var(--md-sys-layout-space-4);
+        grid-template-rows: auto 1fr;
+
+        > h4 {
+            text-align: center;
+        }
+    }
+}
+
+[data-slider-orientation="horizontal"] {
+    > div {
+        inline-size: 20rem;
+    }
+}
+
+[data-slider-orientation="vertical"] {
+    > div {
+        justify-items: center;
+        block-size: 20rem;
+    }
+}
