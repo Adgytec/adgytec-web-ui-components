@@ -48,6 +48,7 @@
         align-items: center;
 
         border-radius: var(--md-sys-shape-corner-radius-medium);
+        text-align: start;
 
         &[data-pressed] {
             border-radius: var(--md-sys-shape-corner-radius-small);

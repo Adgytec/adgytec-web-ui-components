@@ -3,8 +3,10 @@
         --track-gap: var(--md-sys-layout-space-16);
         --orientation-inset: calc(-1 * calc(var(--track-gap) / 2));
 
-        --motion-spatial: var(--md-sys-motion-standard-fast-spatial);
-        --motion-duration: var(--md-sys-motion-standard-fast-spatial-duration);
+        --motion-spatial: var(--md-sys-motion-expressive-fast-effects);
+        --motion-duration: var(
+            --md-sys-motion-expressive-fast-effects-duration
+        );
 
         display: grid;
         gap: var(--md-sys-layout-space-4);

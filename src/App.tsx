@@ -2580,6 +2580,84 @@ const SliderPreview = () => {
     );
 };
 
+const CenteredSliderPreview = () => {
+    const sizes: SliderSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+
+    const orientation: Orientation[] = ["horizontal", "vertical"];
+
+    return (
+        <div className="items-grid">
+            {orientation.map((o) => {
+                return (
+                    <div
+                        key={o}
+                        className={clsx("items")}
+                        style={{
+                            justifyContent: "center",
+                        }}
+                        data-slider-orientation={o}
+                    >
+                        {sizes.map((size) => (
+                            <Fragment key={size}>
+                                <div>
+                                    <h4 className={typography.labelSmall}>
+                                        {`${o}--${size}`}
+                                    </h4>
+
+                                    <RangeSlider
+                                        orientation={o}
+                                        size={size}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <h4 className={typography.labelSmall}>
+                                        {`${o}--${size}--steps`}
+                                    </h4>
+
+                                    <RangeSlider
+                                        orientation={o}
+                                        size={size}
+                                        step={10}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <h4 className={typography.labelSmall}>
+                                        {`${o}--${size}--disabled`}
+                                    </h4>
+
+                                    <RangeSlider
+                                        isDisabled
+                                        orientation={o}
+                                        step={5}
+                                        size={size}
+                                        defaultValue={[30, 50]}
+                                    />
+                                </div>
+                            </Fragment>
+                        ))}
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -2597,6 +2675,12 @@ const App = () => {
             id: "visual-settings",
             label: "Theme Switcher",
             Component: VisualSettingsPreview,
+        },
+
+        {
+            id: "centered-slider",
+            label: "Centered Slider",
+            Component: CenteredSliderPreview,
         },
         {
             id: "range-slider",
