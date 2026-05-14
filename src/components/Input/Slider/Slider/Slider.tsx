@@ -31,8 +31,27 @@ export const Slider = <T extends number>({
             }
             {...props}
         >
-            {({ orientation }) => (
+            {({ orientation, state }) => (
                 <SliderTrack className={clsx(styles["track"], styles[size])}>
+                    <div
+                        className={clsx(styles["visual-track"])}
+                        data-orientation={orientation}
+                    >
+                        <div
+                            className={clsx(styles["active-track"])}
+                            data-orientation={orientation}
+                            style={{
+                                flexGrow: state.getThumbPercent(0),
+                            }}
+                        />
+                        <div
+                            className={clsx(styles["inactive-track"])}
+                            style={{
+                                flexGrow: 1 - state.getThumbPercent(0),
+                            }}
+                            data-orientation={orientation}
+                        />
+                    </div>
                     <SliderStops
                         minValue={minValue}
                         maxValue={maxValue}

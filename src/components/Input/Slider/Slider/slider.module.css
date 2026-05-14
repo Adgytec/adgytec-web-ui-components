@@ -10,9 +10,6 @@
         --track-active-color: var(--md-sys-color-primary);
         --track-inactive-color: var(--md-sys-color-secondary-container);
 
-        background-color: var(--track-inactive-color);
-        border-radius: var(--track-shape);
-
         &[data-orientation="horizontal"] {
             inline-size: 100%;
             block-size: var(--track-size);
@@ -47,5 +44,56 @@
     .extra-large {
         --track-shape: var(--md-sys-shape-corner-radius-extra-large);
         --track-size: var(--md-sys-layout-space-96);
+    }
+
+    .visual-track {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+
+        border-radius: var(--track-shape);
+
+        display: flex;
+        gap: 16px;
+
+        &[data-orientation="vertical"] {
+            flex-direction: column-reverse;
+        }
+
+        > * {
+            flex: 1;
+        }
+    }
+
+    .active-track {
+        background-color: var(--track-active-color);
+
+        border-radius: var(--track-shape);
+
+        &[data-orientation="horizontal"] {
+            border-start-end-radius: var(--track-inner-shape);
+            border-end-end-radius: var(--track-inner-shape);
+        }
+
+        &[data-orientation="vertical"] {
+            border-start-end-radius: var(--track-inner-shape);
+            border-start-start-radius: var(--track-inner-shape);
+        }
+    }
+
+    .inactive-track {
+        background-color: var(--track-inactive-color);
+
+        border-radius: var(--track-shape);
+
+        &[data-orientation="horizontal"] {
+            border-start-start-radius: var(--track-inner-shape);
+            border-end-start-radius: var(--track-inner-shape);
+        }
+
+        &[data-orientation="vertical"] {
+            border-end-end-radius: var(--track-inner-shape);
+            border-end-start-radius: var(--track-inner-shape);
+        }
     }
 }
