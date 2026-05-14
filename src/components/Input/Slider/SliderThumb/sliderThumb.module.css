@@ -36,9 +36,15 @@
         position: absolute;
         transform-origin: center;
 
+        &[data-orientation="horizontal"] {
+            top: 50%;
+        }
+
         &[data-orientation="vertical"] {
             --thumb-block-size: var(--thumb-thickness);
             --thumb-inline-size: var(--thumb-size);
+
+            left: 50%;
         }
 
         inline-size: var(--thumb-inline-size);
@@ -53,7 +59,11 @@
             block-size var(--md-sys-motion-expressive-fast-spatial)
             var(--md-sys-motion-expressive-fast-spatial-duration),
             inline-size var(--md-sys-motion-expressive-fast-spatial)
-            var(--md-sys-motion-expressive-fast-spatial-duration);
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            left var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            top var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
         @media (prefers-reduced-motion) {
             transition: none;

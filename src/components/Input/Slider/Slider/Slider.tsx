@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { Slider as AriaSlider, SliderTrack } from "react-aria-components";
+import { SliderStops } from "../SliderStops";
 import { SliderThumb } from "../SliderThumb";
 import styles from "./slider.module.css";
 import type { SliderProps } from "./types";
@@ -35,16 +36,6 @@ export const Slider = <T extends number>({
                         />
 
                         <div
-                            className={clsx(styles["thumb"])}
-                            data-orientation={orientation}
-                        >
-                            <SliderThumb
-                                size={size}
-                                orientation={orientation}
-                            />
-                        </div>
-
-                        <div
                             className={clsx(styles["inactive-track"])}
                             style={{
                                 flexGrow: 1 - state.getThumbPercent(0),
@@ -52,6 +43,14 @@ export const Slider = <T extends number>({
                             data-orientation={orientation}
                         />
                     </div>
+                    <SliderThumb size={size} orientation={orientation} />
+
+                    <SliderStops
+                        minValue={minValue}
+                        maxValue={maxValue}
+                        step={step}
+                        orientation={orientation}
+                    />
                 </SliderTrack>
             )}
         </AriaSlider>

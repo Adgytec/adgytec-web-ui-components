@@ -10,12 +10,12 @@
         pointer-events: none;
 
         &[data-orientation="horizontal"] {
-            padding-inline: var(--md-sys-layout-space-4);
+            inset-inline: -2px;
         }
 
         &[data-orientation="vertical"] {
-            padding-block: var(--md-sys-layout-space-4);
             flex-direction: column;
+            inset-block: -2px;
         }
     }
 
