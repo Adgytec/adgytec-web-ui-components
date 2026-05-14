@@ -34,8 +34,11 @@
         --thumb-inline-size: var(--thumb-thickness);
 
         position: absolute;
-        top: 50%;
-        transform: translate(0, -50%);
+
+        &[data-orientation="horizontal"] {
+            top: 50%;
+            transform: translate(0, -50%);
+        }
 
         &[data-orientation="vertical"] {
             --thumb-block-size: var(--thumb-thickness);

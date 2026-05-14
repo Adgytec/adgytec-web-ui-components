@@ -6,7 +6,11 @@
     }
 
     .track {
-        background-color: red;
+        --track-inner-shape: calc(2 * var(--dp, 1px));
+        --track-active-color: var(--md-sys-color-primary);
+        --track-inactive-color: var(--md-sys-color-secondary-container);
+
+        background-color: var(--track-inactive-color);
         border-radius: var(--track-shape);
 
         &[data-orientation="horizontal"] {

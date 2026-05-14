@@ -9,9 +9,12 @@
 
         pointer-events: none;
 
-        padding-inline: var(--md-sys-layout-space-4);
+        &[data-orientation="horizontal"] {
+            padding-inline: var(--md-sys-layout-space-4);
+        }
 
         &[data-orientation="vertical"] {
+            padding-block: var(--md-sys-layout-space-4);
             flex-direction: column;
         }
     }
