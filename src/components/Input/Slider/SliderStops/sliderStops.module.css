@@ -34,8 +34,20 @@
             transition: none;
         }
 
-        &[data-in-selected] {
+        &[data-in-active] {
             background-color: var(--md-sys-color-on-primary);
+        }
+
+        &[data-disabled] {
+            background-color: var(--md-sys-color-on-surface);
+
+            &[data-in-active] {
+                background-color: var(--md-sys-color-inverse-on-surface);
+            }
+        }
+
+        &[data-below-thumb] {
+            background-color: transparent;
         }
     }
 }

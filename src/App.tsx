@@ -2533,6 +2533,7 @@ const SliderPreview = () => {
                                     </h4>
 
                                     <Slider
+                                        step={5}
                                         defaultValue={33}
                                         isDisabled
                                         orientation={o}

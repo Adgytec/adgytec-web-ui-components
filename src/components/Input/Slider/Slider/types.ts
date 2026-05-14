@@ -11,4 +11,5 @@ export interface SliderProps<T extends number>
     insetIcon?: LucideIcon;
     minInsetIcon?: LucideIcon;
     thumbLabels?: string;
+    showInBetweenStop?: boolean;
 }

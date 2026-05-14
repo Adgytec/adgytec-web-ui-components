@@ -1,4 +1,5 @@
 import type { Orientation } from "react-aria";
+import type { SliderVariant } from "../core";
 
 export type SliderStopsProps = {
     minValue: number;
@@ -6,8 +7,11 @@ export type SliderStopsProps = {
     step: number;
     showInBetweenSteps?: boolean;
     orientation: Orientation;
+    slider?: SliderVariant;
 };
 
+export type Stop = { stopValue: number };
+
 export type CalculateStops = (
-    values: Omit<SliderStopsProps, "orientation">
-) => number;
+    values: Omit<SliderStopsProps, "orientation" | "thumbCount">
+) => Stop[];

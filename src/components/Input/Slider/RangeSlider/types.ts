@@ -11,4 +11,5 @@ export interface RangeSliderProps<T extends RangeSliderType>
     > {
     size?: SliderSize;
     thumbLabels?: Tuple<string>;
+    showInBetweenSteps?: boolean;
 }

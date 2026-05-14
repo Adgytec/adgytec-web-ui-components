@@ -11,6 +11,7 @@ export const Slider = <T extends number>({
     step = 1,
     minValue = 0,
     maxValue = 100,
+    showInBetweenStop,
     ...props
 }: SliderProps<T>) => {
     return (
@@ -50,6 +51,7 @@ export const Slider = <T extends number>({
                         maxValue={maxValue}
                         step={step}
                         orientation={orientation}
+                        showInBetweenSteps={showInBetweenStop}
                     />
                 </SliderTrack>
             )}
