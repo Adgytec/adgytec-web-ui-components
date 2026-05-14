@@ -1,6 +1,9 @@
 import clsx from "clsx";
 import type { Orientation } from "react-aria";
-import { SliderThumb as AriaSliderThumb } from "react-aria-components";
+import {
+    SliderThumb as AriaSliderThumb,
+    SliderOutput,
+} from "react-aria-components";
 import { typography } from "@/utils";
 import type { SliderSize } from "../core";
 import styles from "./sliderThumb.module.css";
@@ -27,9 +30,9 @@ export const SliderThumb: React.FC<
             data-orientation={orientation}
             {...props}
         >
-            {({ state, isFocusVisible, isDragging }) => {
+            {({ isFocusVisible, isDragging }) => {
                 return (
-                    <output
+                    <SliderOutput
                         className={clsx(
                             styles["output"],
                             typography.labelLarge
@@ -38,8 +41,8 @@ export const SliderThumb: React.FC<
                         data-focus-visible={isFocusVisible || undefined}
                         data-dragging={isDragging || undefined}
                     >
-                        {state.getThumbValue(index)}
-                    </output>
+                        {({ state }) => state.getThumbValueLabel(index)}
+                    </SliderOutput>
                 );
             }}
         </AriaSliderThumb>

@@ -2438,11 +2438,24 @@ const RangeSliderPreview = () => {
 
                     <div className="items" data-slider-orientation="horizontal">
                         <div>
-                            <RangeSlider size={size} />
+                            <RangeSlider
+                                size={size}
+                                formatOptions={{
+                                    style: "currency",
+                                    currency: "USD",
+                                }}
+                            />
                         </div>
 
                         <div>
-                            <RangeSlider size={size} step={10} />
+                            <RangeSlider
+                                size={size}
+                                step={10}
+                                formatOptions={{
+                                    style: "currency",
+                                    currency: "INR",
+                                }}
+                            />
                         </div>
 
                         <div>
@@ -2507,6 +2520,10 @@ const SliderPreview = () => {
                                                     size={size}
                                                     insetIcon={Volume}
                                                     minInsetIcon={VolumeOff}
+                                                    formatOptions={{
+                                                        style: "currency",
+                                                        currency: "USD",
+                                                    }}
                                                 />
                                             </div>
 
@@ -2526,6 +2543,10 @@ const SliderPreview = () => {
                                                     step={10}
                                                     insetIcon={Volume}
                                                     minInsetIcon={VolumeOff}
+                                                    formatOptions={{
+                                                        style: "currency",
+                                                        currency: "INR",
+                                                    }}
                                                 />
                                             </div>
                                         </Fragment>
