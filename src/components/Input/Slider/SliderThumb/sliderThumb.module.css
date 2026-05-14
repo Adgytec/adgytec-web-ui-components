@@ -33,14 +33,17 @@
         --thumb-block-size: var(--thumb-size);
         --thumb-inline-size: var(--thumb-thickness);
 
-        &[data-orientation="vertical"] {
-            --thumb-block-size: var(--thumb-thickness);
-            --thumb-inline-size: var(--thumb-size);
-        }
-
         position: absolute;
         top: 50%;
         transform: translate(0, -50%);
+
+        &[data-orientation="vertical"] {
+            --thumb-block-size: var(--thumb-thickness);
+            --thumb-inline-size: var(--thumb-size);
+
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
 
         inline-size: var(--thumb-inline-size);
         block-size: var(--thumb-block-size);
@@ -61,11 +64,6 @@
 
         &[data-z-index-increase] {
             z-index: 1;
-        }
-
-        &[data-orientation="vertical"] {
-            left: 50%;
-            transform: translate(-50%, 0);
         }
 
         &[data-focus-visible] {

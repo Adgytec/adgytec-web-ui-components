@@ -1,0 +1,39 @@
+@layer adgytec.comps {
+    .stops {
+        position: absolute;
+        inset: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        pointer-events: none;
+        background-color: blue;
+
+        padding-inline: var(--md-sys-layout-space-4);
+
+        &[data-orientation="vertical"] {
+            flex-direction: column;
+        }
+    }
+
+    .stop {
+        flex-shrink: 0;
+        inline-size: var(--md-sys-layout-space-4);
+        aspect-ratio: 1 / 1;
+
+        border-radius: var(--md-sys-shape-corner-radius-full);
+        background-color: var(--md-sys-color-on-secondary-container);
+
+        transition: background-color var(--md-sys-motion-standard-fast-spatial)
+            var(--md-sys-motion-standard-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-in-selected] {
+            background-color: var(--md-sys-color-on-primary);
+        }
+    }
+}

@@ -2429,6 +2429,7 @@ const RangeSliderPreview = () => {
             className="items-grid"
             style={{
                 justifyContent: "center",
+                textAlign: "center",
             }}
         >
             {sizes.map((size) => (
@@ -2439,6 +2440,11 @@ const RangeSliderPreview = () => {
                         <div>
                             <RangeSlider size={size} />
                         </div>
+
+                        <div>
+                            <RangeSlider size={size} step={10} />
+                        </div>
+
                         <div>
                             <RangeSlider isDisabled />
                         </div>

@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { Slider as AriaSlider, SliderTrack } from "react-aria-components";
+import { SliderStops } from "../SliderStops";
 import { SliderThumb } from "../SliderThumb";
 import styles from "./rangeSlider.module.css";
 import type { RangeSliderProps, RangeSliderType } from "./types";
@@ -10,6 +11,7 @@ export const RangeSlider = <T extends RangeSliderType>({
     size = "small",
     minValue = 0,
     maxValue = 100,
+    step = 1,
     defaultValue = [minValue, minValue] as T,
     ...props
 }: RangeSliderProps<T>) => {
@@ -17,6 +19,7 @@ export const RangeSlider = <T extends RangeSliderType>({
         <AriaSlider
             minValue={minValue}
             maxValue={maxValue}
+            step={step}
             defaultValue={defaultValue}
             className={(renderProps) =>
                 clsx(
@@ -27,9 +30,16 @@ export const RangeSlider = <T extends RangeSliderType>({
             }
             {...props}
         >
-            <SliderTrack className={clsx(styles["track"], styles[size])}>
-                {({ state }) =>
-                    state.values.map((_, i) => {
+            {({ orientation, state }) => (
+                <SliderTrack className={clsx(styles["track"], styles[size])}>
+                    <SliderStops
+                        minValue={minValue}
+                        maxValue={maxValue}
+                        step={step}
+                        orientation={orientation}
+                    />
+
+                    {state.values.map((_, i) => {
                         const increaseZindex =
                             i === 0 && state.getThumbValue(i) === maxValue;
                         return (
@@ -45,9 +55,9 @@ export const RangeSlider = <T extends RangeSliderType>({
                                 }
                             />
                         );
-                    })
-                }
-            </SliderTrack>
+                    })}
+                </SliderTrack>
+            )}
         </AriaSlider>
     );
 };
