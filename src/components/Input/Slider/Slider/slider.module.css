@@ -82,8 +82,8 @@
         }
 
         > div {
-            transition: flex-grow var(--md-sys-motion-expressive-fast-effects)
-                var(--md-sys-motion-expressive-fast-effects-duration);
+            transition: flex-grow var(--md-sys-motion-standard-fast-spatial)
+                var(--md-sys-motion-standard-fast-spatial-duration);
 
             @media (prefers-reduced-motion) {
                 transition: none;
