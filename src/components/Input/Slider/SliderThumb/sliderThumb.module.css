@@ -48,6 +48,7 @@
         inline-size: var(--thumb-inline-size);
         block-size: var(--thumb-block-size);
 
+        outline: none;
         border-radius: var(--md-sys-shape-corner-radius-full);
 
         background-color: var(--md-sys-color-primary);
@@ -66,10 +67,17 @@
             z-index: 1;
         }
 
-        &[data-focus-visible] {
+        &[data-focus-visible]::before {
             --focus-indicator-thickness: calc(3 * var(--dp, 1px));
             --focus-indicator-offset: calc(4 * var(--dp, 1px));
             --focus-indicator-color: var(--md-sys-color-secondary);
+
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+
+            z-index: 2;
 
             outline-width: var(--focus-indicator-thickness);
             outline-style: solid;
