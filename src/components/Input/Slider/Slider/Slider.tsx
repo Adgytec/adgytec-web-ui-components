@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { Slider as AriaSlider, SliderTrack } from "react-aria-components";
+import { SliderSizeStyles, SliderStyles, TrackStyles } from "../core";
 import { SliderStops } from "../SliderStops";
 import { SliderThumb } from "../SliderThumb";
 import styles from "./slider.module.css";
@@ -19,11 +20,13 @@ export const Slider = <T extends number>({
             minValue={minValue}
             maxValue={maxValue}
             step={step}
-            className={clsx(styles["slider"], styles[size])}
+            className={clsx(SliderStyles)}
             {...props}
         >
             {({ orientation, state }) => (
-                <SliderTrack className={clsx(styles["track"], styles[size])}>
+                <SliderTrack
+                    className={clsx(TrackStyles, SliderSizeStyles(size))}
+                >
                     <div
                         className={clsx(styles["visual-track"])}
                         data-orientation={orientation}

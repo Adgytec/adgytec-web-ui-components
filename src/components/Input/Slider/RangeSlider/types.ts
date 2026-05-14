@@ -7,7 +7,7 @@ export type RangeSliderType = Tuple<number>;
 export interface RangeSliderProps<T extends RangeSliderType>
     extends Omit<
         React.ComponentPropsWithRef<typeof Slider<T>>,
-        "children" | "orientation"
+        "children" | "className"
     > {
     size?: SliderSize;
     thumbLabels?: Tuple<string>;

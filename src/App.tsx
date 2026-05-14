@@ -2423,46 +2423,71 @@ const RangeSliderPreview = () => {
         "extra-large",
     ];
 
+    const orientation: Orientation[] = ["horizontal", "vertical"];
+
     return (
-        <div
-            className="items-grid"
-            style={{
-                justifyContent: "center",
-                textAlign: "center",
-            }}
-        >
-            {sizes.map((size) => (
-                <Fragment key={size}>
-                    <h4 className={typography.labelSmall}>{size}</h4>
+        <div className="items-grid">
+            {orientation.map((o) => {
+                return (
+                    <div
+                        key={o}
+                        className={clsx("items")}
+                        style={{
+                            justifyContent: "center",
+                        }}
+                        data-slider-orientation={o}
+                    >
+                        {sizes.map((size) => (
+                            <Fragment key={size}>
+                                <div>
+                                    <h4 className={typography.labelSmall}>
+                                        {`${o}--${size}`}
+                                    </h4>
 
-                    <div className="items" data-slider-orientation="horizontal">
-                        <div>
-                            <RangeSlider
-                                size={size}
-                                formatOptions={{
-                                    style: "currency",
-                                    currency: "USD",
-                                }}
-                            />
-                        </div>
+                                    <RangeSlider
+                                        orientation={o}
+                                        size={size}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
+                                </div>
 
-                        <div>
-                            <RangeSlider
-                                size={size}
-                                step={10}
-                                formatOptions={{
-                                    style: "currency",
-                                    currency: "INR",
-                                }}
-                            />
-                        </div>
+                                <div>
+                                    <h4 className={typography.labelSmall}>
+                                        {`${o}--${size}--steps`}
+                                    </h4>
 
-                        <div>
-                            <RangeSlider isDisabled />
-                        </div>
+                                    <RangeSlider
+                                        orientation={o}
+                                        size={size}
+                                        step={10}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <h4 className={typography.labelSmall}>
+                                        {`${o}--${size}--disabled`}
+                                    </h4>
+
+                                    <RangeSlider
+                                        isDisabled
+                                        orientation={o}
+                                        step={5}
+                                        size={size}
+                                        defaultValue={[30, 50]}
+                                    />
+                                </div>
+                            </Fragment>
+                        ))}
                     </div>
-                </Fragment>
-            ))}
+                );
+            })}
         </div>
     );
 };
