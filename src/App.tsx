@@ -104,7 +104,6 @@ import {
     SelectTrigger,
     Slider,
     type SliderSize,
-    type SliderVariant,
     TextArea,
     TimeField,
 } from "./components/Input";
@@ -2479,81 +2478,75 @@ const SliderPreview = () => {
 
     const orientation: Orientation[] = ["horizontal", "vertical"];
 
-    const sliderVariant: SliderVariant[] = ["standard", "centered"];
-
     return (
         <div className="items-grid">
-            {sliderVariant.map((variant) => {
+            {orientation.map((o) => {
                 return (
-                    <div key={variant} className="items-grid">
-                        <h3 className={clsx(typography.titleLargeEmphasized)}>
-                            {variant}
-                        </h3>
+                    <div
+                        key={o}
+                        className={clsx("items")}
+                        style={{
+                            justifyContent: "center",
+                        }}
+                        data-slider-orientation={o}
+                    >
+                        {sizes.map((size) => (
+                            <Fragment key={size}>
+                                <div>
+                                    <h4 className={typography.labelSmall}>
+                                        {`${o}--${size}`}
+                                    </h4>
 
-                        {orientation.map((o) => {
-                            return (
-                                <div
-                                    key={o}
-                                    className={clsx(
-                                        o === "horizontal" && "items-grid",
-                                        o === "vertical" && "items"
-                                    )}
-                                    style={{
-                                        justifyContent: "center",
-                                    }}
-                                    data-slider-orientation={o}
-                                >
-                                    {sizes.map((size) => (
-                                        <Fragment key={size}>
-                                            <div>
-                                                <h4
-                                                    className={
-                                                        typography.labelSmall
-                                                    }
-                                                >
-                                                    {`${variant}--${o}--${size}`}
-                                                </h4>
-
-                                                <Slider
-                                                    variant={variant}
-                                                    orientation={o}
-                                                    size={size}
-                                                    insetIcon={Volume}
-                                                    minInsetIcon={VolumeOff}
-                                                    formatOptions={{
-                                                        style: "currency",
-                                                        currency: "USD",
-                                                    }}
-                                                />
-                                            </div>
-
-                                            <div>
-                                                <h4
-                                                    className={
-                                                        typography.labelSmall
-                                                    }
-                                                >
-                                                    {`${variant}--${o}--${size}-steps`}
-                                                </h4>
-
-                                                <Slider
-                                                    variant={variant}
-                                                    orientation={o}
-                                                    size={size}
-                                                    step={10}
-                                                    insetIcon={Volume}
-                                                    minInsetIcon={VolumeOff}
-                                                    formatOptions={{
-                                                        style: "currency",
-                                                        currency: "INR",
-                                                    }}
-                                                />
-                                            </div>
-                                        </Fragment>
-                                    ))}
+                                    <Slider
+                                        orientation={o}
+                                        size={size}
+                                        insetIcon={Volume}
+                                        minInsetIcon={VolumeOff}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
                                 </div>
-                            );
-                        })}
+
+                                <div>
+                                    <h4 className={typography.labelSmall}>
+                                        {`${o}--${size}-steps`}
+                                    </h4>
+
+                                    <Slider
+                                        orientation={o}
+                                        size={size}
+                                        step={10}
+                                        insetIcon={Volume}
+                                        minInsetIcon={VolumeOff}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <h4 className={typography.labelSmall}>
+                                        {`${o}--${size}-disabled`}
+                                    </h4>
+
+                                    <Slider
+                                        defaultValue={33}
+                                        isDisabled
+                                        orientation={o}
+                                        size={size}
+                                        insetIcon={Volume}
+                                        minInsetIcon={VolumeOff}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
+                                </div>
+                            </Fragment>
+                        ))}
                     </div>
                 );
             })}
