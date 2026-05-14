@@ -87,6 +87,7 @@ import {
 } from "./components/Disclosure";
 import { Icon } from "./components/Icon";
 import {
+    CenteredSlider,
     ComboBox,
     ComboBoxPopover,
     ComboBoxTrigger,
@@ -2610,7 +2611,7 @@ const CenteredSliderPreview = () => {
                                         {`${o}--${size}`}
                                     </h4>
 
-                                    <RangeSlider
+                                    <CenteredSlider
                                         orientation={o}
                                         size={size}
                                         formatOptions={{
@@ -2622,10 +2623,10 @@ const CenteredSliderPreview = () => {
 
                                 <div>
                                     <h4 className={typography.labelSmall}>
-                                        {`${o}--${size}--steps`}
+                                        {`${o}--${size}--steps-odd`}
                                     </h4>
 
-                                    <RangeSlider
+                                    <CenteredSlider
                                         orientation={o}
                                         size={size}
                                         step={10}
@@ -2638,15 +2639,32 @@ const CenteredSliderPreview = () => {
 
                                 <div>
                                     <h4 className={typography.labelSmall}>
+                                        {`${o}--${size}--steps-even`}
+                                    </h4>
+
+                                    <CenteredSlider
+                                        orientation={o}
+                                        size={size}
+                                        step={11}
+                                        maxValue={33}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <h4 className={typography.labelSmall}>
                                         {`${o}--${size}--disabled`}
                                     </h4>
 
-                                    <RangeSlider
+                                    <CenteredSlider
                                         isDisabled
                                         orientation={o}
                                         step={5}
                                         size={size}
-                                        defaultValue={[30, 50]}
+                                        defaultValue={45}
                                     />
                                 </div>
                             </Fragment>

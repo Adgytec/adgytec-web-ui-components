@@ -3,23 +3,25 @@ import { Slider as AriaSlider, SliderTrack } from "react-aria-components";
 import { SliderSizeStyles, SliderStyles, TrackStyles } from "../core";
 import { SliderStops } from "../SliderStops";
 import { SliderThumb } from "../SliderThumb";
-import styles from "./slider.module.css";
-import type { SliderProps } from "./types";
+import styles from "./centeredSlider.module.css";
+import type { CenteredSliderProps } from "./types";
 
-export const Slider = <T extends number>({
+export const CenteredSlider = <T extends number>({
     thumbLabels,
     size = "small",
-    step = 1,
     minValue = 0,
     maxValue = 100,
+    step = 1,
+    defaultValue = ((minValue + maxValue) / 2) as T,
     showInBetweenSteps,
     ...props
-}: SliderProps<T>) => {
+}: CenteredSliderProps<T>) => {
     return (
         <AriaSlider
             minValue={minValue}
             maxValue={maxValue}
             step={step}
+            defaultValue={defaultValue}
             className={clsx(SliderStyles)}
             {...props}
         >
