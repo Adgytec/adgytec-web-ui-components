@@ -52,6 +52,7 @@ export const CenteredSlider = <T extends number>({
                     <SliderThumb size={size} orientation={orientation} />
 
                     <SliderStops
+                        slider="centered"
                         minValue={minValue}
                         maxValue={maxValue}
                         step={step}

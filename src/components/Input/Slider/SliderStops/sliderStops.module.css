@@ -55,5 +55,9 @@
         &[data-below-thumb] {
             background-color: transparent;
         }
+
+        &[data-hide] {
+            background-color: transparent;
+        }
     }
 }

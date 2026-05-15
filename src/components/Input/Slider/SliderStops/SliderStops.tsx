@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useContext } from "react";
 import { SliderStateContext } from "react-aria-components";
-import type { SliderVariant } from "../core";
+import { checkInActiveRange, checkIsBelowThumb, shouldHide } from "./core";
 import styles from "./sliderStops.module.css";
 import type { CalculateStops, SliderStopsProps, Stop } from "./types";
 
@@ -31,12 +31,6 @@ const calcStops: CalculateStops = ({
     return stops;
 };
 
-const SliderThumbCount: Record<SliderVariant, number> = {
-    standard: 1,
-    centered: 1,
-    range: 2,
-} as const;
-
 export const SliderStops: React.FC<SliderStopsProps> = ({
     orientation,
     slider = "standard",
@@ -49,21 +43,29 @@ export const SliderStops: React.FC<SliderStopsProps> = ({
     if (orientation === "vertical") {
         stops.reverse();
     }
-    const thumbCount = SliderThumbCount[slider];
+
+    const midValue = (props.minValue + props.maxValue) / 2;
+    const firstThumbValue = sliderState.getThumbValue(0);
+    const secondThumbValue = sliderState.getThumbValue(1);
 
     return (
         <div className={clsx(styles["stops"])} data-orientation={orientation}>
             {stops.map(({ stopValue }) => {
-                const first = sliderState.getThumbValue(0);
-                const second =
-                    thumbCount === 2 ? sliderState.getThumbValue(1) : NaN;
+                const inActiveRange = checkInActiveRange({
+                    slider,
+                    midValue,
+                    firstThumbValue,
+                    secondThumbValue,
+                    stopValue,
+                });
 
-                const inActiveRange =
-                    thumbCount === 1
-                        ? stopValue < first
-                        : stopValue > first && stopValue < second;
+                const belowThumb = checkIsBelowThumb({
+                    firstThumbValue,
+                    secondThumbValue,
+                    stopValue,
+                });
 
-                const belowThumb = stopValue === first || stopValue === second;
+                const hide = shouldHide({ slider, midValue, stopValue });
 
                 return (
                     <div
@@ -75,6 +77,7 @@ export const SliderStops: React.FC<SliderStopsProps> = ({
                         data-in-active={
                             (!belowThumb && inActiveRange) || undefined
                         }
+                        data-hide={hide || undefined}
                     />
                 );
             })}
