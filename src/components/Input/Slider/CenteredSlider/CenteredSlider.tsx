@@ -6,14 +6,6 @@ import { SliderThumb } from "../SliderThumb";
 import styles from "./centeredSlider.module.css";
 import type { CenteredSliderProps } from "./types";
 
-function remapBoth(value: number) {
-    const initial = Math.min(1, Math.max(0, value * 2));
-
-    const final = Math.min(1, Math.max(0, (value - 0.5) * 2));
-
-    return { initial, final };
-}
-
 export const CenteredSlider = <T extends number>({
     thumbLabels,
     size = "small",
@@ -35,20 +27,14 @@ export const CenteredSlider = <T extends number>({
         >
             {({ orientation, state }) => {
                 const thumbValue = state.getThumbPercent(0);
-
-                const isInitial = thumbValue < 0.5;
-                const isFinal = thumbValue > 0.5;
-                const isMiddle = thumbValue === 0.5;
-
-                const { initial, final } = remapBoth(thumbValue);
-                const initialInactive = initial * 100;
-                const initialActive = (1 - initial) * 100;
-
-                const finalActive = final * 100;
-                const finalInactive = (1 - final) * 100;
-
                 const sizeKey =
                     orientation === "horizontal" ? "inlineSize" : "blockSize";
+
+                const center = 0.5;
+
+                const middle = Math.abs(thumbValue - center) * 100;
+                const left = Math.min(thumbValue, center) * 100;
+                const right = Math.min(1 - thumbValue, center) * 100;
 
                 return (
                     <SliderTrack
@@ -59,58 +45,32 @@ export const CenteredSlider = <T extends number>({
                             data-orientation={orientation}
                         >
                             <div
-                                className={clsx(styles["track"])}
-                                data-track="initial"
+                                className={clsx(styles["inactive-track"])}
                                 data-orientation={orientation}
-                                data-active-track={isInitial || undefined}
-                                data-middle={isMiddle || undefined}
-                            >
-                                <div
-                                    className={clsx(styles["inactive-track"])}
-                                    style={{
-                                        [sizeKey]: `${initialInactive}%`,
-                                    }}
-                                />
-                                <div
-                                    className={clsx(styles["active-track"])}
-                                    style={{
-                                        [sizeKey]: `${initialActive}%`,
-                                    }}
-                                    data-orientation={orientation}
-                                    data-track="initial"
-                                    data-active-track={isInitial || undefined}
-                                    data-middle={isMiddle || undefined}
-                                >
-                                    <div />
-                                </div>
-                            </div>
+                                style={{
+                                    [sizeKey]: `${left}%`,
+                                }}
+                            />
+
                             <div
-                                className={clsx(styles["track"])}
-                                data-track="final"
+                                className={clsx(styles["active-track"])}
                                 data-orientation={orientation}
-                                data-active-track={isFinal || undefined}
-                                data-middle={isMiddle || undefined}
+                                style={{
+                                    [sizeKey]: `${middle}%`,
+                                }}
                             >
-                                <div
-                                    className={clsx(styles["active-track"])}
-                                    style={{
-                                        [sizeKey]: `${finalActive}%`,
-                                    }}
-                                    data-orientation={orientation}
-                                    data-track="final"
-                                    data-active-track={isFinal || undefined}
-                                    data-middle={isMiddle || undefined}
-                                >
-                                    <div />
-                                </div>
-                                <div
-                                    className={clsx(styles["inactive-track"])}
-                                    style={{
-                                        [sizeKey]: `${finalInactive}%`,
-                                    }}
-                                />
+                                <div />
                             </div>
+
+                            <div
+                                className={clsx(styles["inactive-track"])}
+                                data-orientation={orientation}
+                                style={{
+                                    [sizeKey]: `${right}%`,
+                                }}
+                            />
                         </div>
+
                         <SliderThumb size={size} orientation={orientation} />
 
                         <SliderStops
