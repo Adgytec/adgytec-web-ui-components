@@ -1,9 +1,15 @@
 import clsx from "clsx";
 import { Slider as AriaSlider, SliderTrack } from "react-aria-components";
-import { SliderSizeStyles, SliderStyles, TrackStyles } from "../core";
+import {
+    ActiveTrackStyles,
+    InactiveTrackStyles,
+    SliderSizeStyles,
+    SliderStyles,
+    TrackStyles,
+    VisualTrackStyles,
+} from "../core";
 import { SliderStops } from "../SliderStops";
 import { SliderThumb } from "../SliderThumb";
-import styles from "./rangeSlider.module.css";
 import type { RangeSliderProps, RangeSliderType } from "./types";
 
 export const RangeSlider = <T extends RangeSliderType>({
@@ -41,11 +47,11 @@ export const RangeSlider = <T extends RangeSliderType>({
                         className={clsx(TrackStyles, SliderSizeStyles(size))}
                     >
                         <div
-                            className={clsx(styles["visual-track"])}
+                            className={clsx(VisualTrackStyles)}
                             data-orientation={orientation}
                         >
                             <div
-                                className={clsx(styles["inactive-track"])}
+                                className={clsx(InactiveTrackStyles)}
                                 data-orientation={orientation}
                                 style={{
                                     [sizeKey]: `${left}%`,
@@ -53,7 +59,7 @@ export const RangeSlider = <T extends RangeSliderType>({
                             />
 
                             <div
-                                className={clsx(styles["active-track"])}
+                                className={clsx(ActiveTrackStyles)}
                                 data-orientation={orientation}
                                 style={{
                                     [sizeKey]: `${middle}%`,
@@ -63,7 +69,7 @@ export const RangeSlider = <T extends RangeSliderType>({
                             </div>
 
                             <div
-                                className={clsx(styles["inactive-track"])}
+                                className={clsx(InactiveTrackStyles)}
                                 data-orientation={orientation}
                                 style={{
                                     [sizeKey]: `${right}%`,

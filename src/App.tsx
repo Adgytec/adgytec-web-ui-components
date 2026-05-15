@@ -2656,7 +2656,7 @@ const CenteredSliderPreview = () => {
                                         orientation={o}
                                         step={5}
                                         size={size}
-                                        defaultValue={45}
+                                        defaultValue={35}
                                     />
                                 </div>
                             </Fragment>
