@@ -38,6 +38,10 @@
             background-color: var(--md-sys-color-on-primary);
         }
 
+        &[data-hide] {
+            background-color: transparent;
+        }
+
         &[data-disabled] {
             background-color: rgb(
                 from var(--md-sys-color-on-surface) r g b /
@@ -50,13 +54,13 @@
                     var(--md-sys-state-disabled-content)
                 );
             }
+
+            &[data-hide] {
+                background-color: transparent;
+            }
         }
 
         &[data-below-thumb] {
-            background-color: transparent;
-        }
-
-        &[data-hide] {
             background-color: transparent;
         }
     }
