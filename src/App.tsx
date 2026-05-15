@@ -1868,7 +1868,7 @@ const ToolbarPreview = () => {
     }) => {
         return (
             <>
-                <div className={"items"}>
+                <div className={"items"} data-toolbar={true}>
                     <Toolbar
                         color={color}
                         variant={variant}
@@ -2014,6 +2014,7 @@ const ToolbarPreview = () => {
                                 color={color}
                                 variant={variant}
                                 orientation={orientation}
+                                className="toolbar-overflow"
                             >
                                 <Button
                                     icon={Armchair}
@@ -2055,6 +2056,7 @@ const ToolbarPreview = () => {
                                 color={color}
                                 variant={variant}
                                 orientation={orientation}
+                                className="toolbar-overflow"
                             >
                                 <ToggleButton
                                     icon={Globe}
@@ -2145,8 +2147,22 @@ const TabsPreview = () => {
         orientation?: Orientation;
     }) => {
         return (
-            <Tabs keyboardActivation="manual" orientation={orientation}>
-                <TabList aria-label="Settings">
+            <Tabs
+                keyboardActivation="manual"
+                orientation={orientation}
+                style={{
+                    padding: "var(--md-sys-layout-space-28)",
+                    borderRadius: "var(--md-sys-shape-corner-radius-large)",
+                    outline:
+                        "var(--md-sys-shape-border-width-thin) solid var(--md-sys-color-outline)",
+                }}
+            >
+                <TabList
+                    aria-label="Settings"
+                    style={{
+                        scrollbarWidth: "none",
+                    }}
+                >
                     <Tab
                         id="general"
                         label="General"
@@ -2255,37 +2271,13 @@ const TabsPreview = () => {
     };
     return (
         <div className="items">
-            <div
-                style={{
-                    width: "45%",
-                }}
-            >
-                <RenderTabs />
-            </div>
+            <RenderTabs />
 
-            <div
-                style={{
-                    width: "45%",
-                }}
-            >
-                <RenderTabs orientation="vertical" />
-            </div>
+            <RenderTabs orientation="vertical" />
 
-            <div
-                style={{
-                    width: "45%",
-                }}
-            >
-                <RenderTabs isDisabled />
-            </div>
+            <RenderTabs isDisabled />
 
-            <div
-                style={{
-                    width: "45%",
-                }}
-            >
-                <RenderTabs isDisabled orientation="vertical" />
-            </div>
+            <RenderTabs isDisabled orientation="vertical" />
         </div>
     );
 };

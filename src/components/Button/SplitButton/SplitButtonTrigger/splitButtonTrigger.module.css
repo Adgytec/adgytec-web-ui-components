@@ -8,8 +8,8 @@
 
         > svg {
             rotate: var(--rotate);
-            transition: rotate var(--md-sys-motion-expressive-fast-spatial)
-                var(--md-sys-motion-expressive-fast-spatial-duration);
+            transition: rotate var(--md-sys-motion-standard-fast-spatial)
+                var(--md-sys-motion-standard-fast-spatial-duration);
 
             @media (prefers-reduced-motion) {
                 transition: none;

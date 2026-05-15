@@ -108,6 +108,8 @@
 .tag-list {
     display: flex;
     gap: var(--md-sys-layout-space-16);
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 [data-slider-orientation] {
@@ -132,5 +134,16 @@
     > div {
         justify-items: center;
         block-size: 20rem;
+    }
+}
+
+[data-toolbar] {
+    > div {
+        overflow: auto;
+
+        max-inline-size: 75svi;
+        max-block-size: 75svb;
+
+        scrollbar-width: none;
     }
 }

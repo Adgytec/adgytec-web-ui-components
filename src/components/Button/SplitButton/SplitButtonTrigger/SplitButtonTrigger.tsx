@@ -56,6 +56,7 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
                     "data-focused": isFocused || undefined,
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
+                    "data-visual-button": true,
                 };
 
                 return (

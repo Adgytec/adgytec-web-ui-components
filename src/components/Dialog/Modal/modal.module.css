@@ -1,5 +1,7 @@
 @layer adgytec.comps {
     .modal {
+        padding-inline: var(--md-sys-layout-window-size-compact-margin);
+
         &[data-entering] {
             animation: modal-zoom var(--md-sys-motion-expressive-fast-spatial)
                 var(--md-sys-motion-expressive-fast-spatial-duration);

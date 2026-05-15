@@ -45,7 +45,7 @@
 
         display: flex;
         gap: var(--md-sys-layout-space-4);
-        align-items: center;
+        align-items: start;
 
         border-radius: var(--md-sys-shape-corner-radius-medium);
         text-align: start;
@@ -59,6 +59,7 @@
         }
 
         > svg {
+            margin-block-start: calc(2.5 * var(--dp, 1px));
             rotate: var(--rotate);
             transition: rotate var(--md-sys-motion-expressive-fast-spatial)
                 var(--md-sys-motion-expressive-fast-spatial-duration);
