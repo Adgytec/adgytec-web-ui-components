@@ -32,12 +32,12 @@ export const RangeSlider = <T extends RangeSliderType>({
             {...props}
         >
             {({ orientation, state }) => {
-                const start = state.getThumbPercent(0);
-                const end = state.getThumbPercent(1);
+                const startThumbValue = state.getThumbPercent(0);
+                const endThumbValue = state.getThumbPercent(1);
 
-                const left = start * 100;
-                const middle = (end - start) * 100;
-                const right = (1 - end) * 100;
+                const start = startThumbValue * 100;
+                const mid = (endThumbValue - startThumbValue) * 100;
+                const end = (1 - endThumbValue) * 100;
 
                 const sizeKey =
                     orientation === "horizontal" ? "inlineSize" : "blockSize";
@@ -53,16 +53,18 @@ export const RangeSlider = <T extends RangeSliderType>({
                             <div
                                 className={clsx(InactiveTrackStyles)}
                                 data-orientation={orientation}
+                                data-track="start"
                                 style={{
-                                    [sizeKey]: `${left}%`,
+                                    [sizeKey]: `${start}%`,
                                 }}
                             />
 
                             <div
                                 className={clsx(ActiveTrackStyles)}
                                 data-orientation={orientation}
+                                data-track="mid"
                                 style={{
-                                    [sizeKey]: `${middle}%`,
+                                    [sizeKey]: `${mid}%`,
                                 }}
                             >
                                 <div />
@@ -71,8 +73,9 @@ export const RangeSlider = <T extends RangeSliderType>({
                             <div
                                 className={clsx(InactiveTrackStyles)}
                                 data-orientation={orientation}
+                                data-track="end"
                                 style={{
-                                    [sizeKey]: `${right}%`,
+                                    [sizeKey]: `${end}%`,
                                 }}
                             />
                         </div>

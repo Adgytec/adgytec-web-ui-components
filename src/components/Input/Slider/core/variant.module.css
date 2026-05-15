@@ -1,6 +1,7 @@
 @layer adgytec.comps {
     .visual-track {
         --range-gap: calc(var(--track-gap) / 2);
+        --range-gap-half: calc(var(--range-gap) / 2);
 
         position: absolute;
         inset: 0;
@@ -41,12 +42,28 @@
         &[data-orientation="horizontal"] {
             > div {
                 margin-inline: var(--range-gap);
+
+                &[data-direction="start"] {
+                    margin-inline-end: var(--range-gap-half);
+                }
+
+                &[data-direction="end"] {
+                    margin-inline-start: var(--range-gap-half);
+                }
             }
         }
 
         &[data-orientation="vertical"] {
             > div {
                 margin-block: var(--range-gap);
+
+                &[data-direction="start"] {
+                    margin-block-start: var(--range-gap-half);
+                }
+
+                &[data-direction="end"] {
+                    margin-block-end: var(--range-gap-half);
+                }
             }
         }
     }
@@ -56,24 +73,24 @@
         border-radius: var(--track-shape);
 
         &[data-orientation="horizontal"] {
-            &:first-child {
+            &[data-track="start"] {
                 border-start-end-radius: var(--track-inner-shape);
                 border-end-end-radius: var(--track-inner-shape);
             }
 
-            &:last-child {
+            &[data-track="end"] {
                 border-start-start-radius: var(--track-inner-shape);
                 border-end-start-radius: var(--track-inner-shape);
             }
         }
 
         &[data-orientation="vertical"] {
-            &:first-child {
+            &[data-track="start"] {
                 border-start-end-radius: var(--track-inner-shape);
                 border-start-start-radius: var(--track-inner-shape);
             }
 
-            &:last-child {
+            &[data-track="end"] {
                 border-end-end-radius: var(--track-inner-shape);
                 border-end-start-radius: var(--track-inner-shape);
             }

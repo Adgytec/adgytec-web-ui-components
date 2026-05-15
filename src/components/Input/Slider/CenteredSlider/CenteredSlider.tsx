@@ -10,6 +10,7 @@ import {
 } from "../core";
 import { SliderStops } from "../SliderStops";
 import { SliderThumb } from "../SliderThumb";
+import styles from "./centerdSlider.module.css";
 import type { CenteredSliderProps } from "./types";
 
 export const CenteredSlider = <T extends number>({
@@ -31,16 +32,23 @@ export const CenteredSlider = <T extends number>({
             className={clsx(SliderStyles)}
             {...props}
         >
-            {({ orientation, state }) => {
+            {({ orientation, state, isDisabled }) => {
                 const thumbValue = state.getThumbPercent(0);
                 const sizeKey =
                     orientation === "horizontal" ? "inlineSize" : "blockSize";
 
                 const center = 0.5;
 
-                const middle = Math.abs(thumbValue - center) * 100;
-                const left = Math.min(thumbValue, center) * 100;
-                const right = Math.min(1 - thumbValue, center) * 100;
+                const mid = Math.abs(thumbValue - center) * 100;
+                const start = Math.min(thumbValue, center) * 100;
+                const end = Math.min(1 - thumbValue, center) * 100;
+
+                const activeDirection =
+                    thumbValue < 0.5
+                        ? "start"
+                        : thumbValue > 0.5
+                          ? "end"
+                          : undefined;
 
                 return (
                     <SliderTrack
@@ -51,28 +59,48 @@ export const CenteredSlider = <T extends number>({
                             data-orientation={orientation}
                         >
                             <div
-                                className={clsx(InactiveTrackStyles)}
+                                className={clsx(
+                                    InactiveTrackStyles,
+                                    styles["inactive-track"]
+                                )}
+                                data-active-direction={
+                                    activeDirection === "start" || undefined
+                                }
+                                data-track="start"
                                 data-orientation={orientation}
+                                data-mid={thumbValue === center || undefined}
+                                data-disabled={isDisabled || undefined}
                                 style={{
-                                    [sizeKey]: `${left}%`,
+                                    [sizeKey]: `${start}%`,
                                 }}
                             />
 
                             <div
                                 className={clsx(ActiveTrackStyles)}
                                 data-orientation={orientation}
+                                data-track="mid"
+                                data-disabled={isDisabled || undefined}
                                 style={{
-                                    [sizeKey]: `${middle}%`,
+                                    [sizeKey]: `${mid}%`,
                                 }}
                             >
-                                <div />
+                                <div data-direction={activeDirection} />
                             </div>
 
                             <div
-                                className={clsx(InactiveTrackStyles)}
+                                className={clsx(
+                                    InactiveTrackStyles,
+                                    styles["inactive-track"]
+                                )}
                                 data-orientation={orientation}
+                                data-track="end"
+                                data-active-direction={
+                                    activeDirection === "end" || undefined
+                                }
+                                data-mid={thumbValue === center || undefined}
+                                data-disabled={isDisabled || undefined}
                                 style={{
-                                    [sizeKey]: `${right}%`,
+                                    [sizeKey]: `${end}%`,
                                 }}
                             />
                         </div>

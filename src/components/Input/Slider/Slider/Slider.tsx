@@ -13,8 +13,13 @@ export const Slider = <T extends number>({
     minValue = 0,
     maxValue = 100,
     showInBetweenSteps,
+    insetIcon,
+    minInsetIcon,
     ...props
 }: SliderProps<T>) => {
+    // const canShowIcon = size !== "extra-small" && size !== "small";
+    // const iconSize = size === "extra-large" ? 32 : 24;
+
     return (
         <AriaSlider
             minValue={minValue}
