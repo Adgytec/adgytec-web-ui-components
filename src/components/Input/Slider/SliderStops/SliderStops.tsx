@@ -48,6 +48,8 @@ export const SliderStops: React.FC<SliderStopsProps> = ({
     const firstThumbValue = sliderState.getThumbValue(0);
     const secondThumbValue = sliderState.getThumbValue(1);
 
+    const shouldHideActive = stops.length === 2;
+
     return (
         <div className={clsx(styles["stops"])} data-orientation={orientation}>
             {stops.map(({ stopValue }) => {
@@ -74,10 +76,12 @@ export const SliderStops: React.FC<SliderStopsProps> = ({
                         data-disabled={sliderState.isDisabled || undefined}
                         data-below-thumb={belowThumb || undefined}
                         data-stop-value={stopValue}
-                        data-in-active={
-                            (!belowThumb && inActiveRange) || undefined
+                        data-in-active={inActiveRange || undefined}
+                        data-hide={
+                            hide ||
+                            (shouldHideActive && inActiveRange) ||
+                            undefined
                         }
-                        data-hide={hide || undefined}
                     />
                 );
             })}
