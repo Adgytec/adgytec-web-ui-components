@@ -115,28 +115,44 @@ export const calcStops: CalculateStops = ({
         return [];
     }
 
+    const range = maxValue - minValue;
+
+    /**
+     * React Aria consistent last valid stop.
+     *
+     * Example:
+     * min=0
+     * max=10
+     * step=3
+     *
+     * valid values:
+     * 0 3 6 9
+     */
+    const lastStopValue = snapValueToStep({
+        value: maxValue,
+        minValue,
+        maxValue,
+        step,
+    });
+
+    const createStop = (stopValue: number): Stop => ({
+        stopValue,
+        percent: range === 0 ? 0 : (stopValue - minValue) / range,
+    });
+
     /**
      * Reduced stop rendering mode.
      */
     if (step === 1 || !showInBetweenSteps) {
-        return [
-            {
-                stopValue: minValue,
-            },
-            {
-                stopValue: maxValue,
-            },
-        ];
+        return [createStop(minValue), createStop(lastStopValue)];
     }
 
     const stops: Stop[] = [];
 
     let value = minValue;
 
-    while (value <= maxValue) {
-        stops.push({
-            stopValue: value,
-        });
+    while (value <= lastStopValue) {
+        stops.push(createStop(value));
 
         const nextValue = snapValueToStep({
             value: value + step,
@@ -147,7 +163,7 @@ export const calcStops: CalculateStops = ({
 
         /**
          * Prevent infinite loops caused by
-         * precision edge cases.
+         * floating precision edge cases.
          */
         if (nextValue === value) {
             break;
@@ -159,14 +175,7 @@ export const calcStops: CalculateStops = ({
          * DOM safety guard.
          */
         if (stops.length > maxStops) {
-            return [
-                {
-                    stopValue: minValue,
-                },
-                {
-                    stopValue: maxValue,
-                },
-            ];
+            return [createStop(minValue), createStop(lastStopValue)];
         }
     }
 

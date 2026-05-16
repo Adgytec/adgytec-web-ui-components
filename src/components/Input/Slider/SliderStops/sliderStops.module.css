@@ -2,25 +2,22 @@
     .stops {
         position: absolute;
         inset: 0;
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
         pointer-events: none;
-
-        &[data-orientation="horizontal"] {
-            inset-inline: -2px;
-        }
-
-        &[data-orientation="vertical"] {
-            flex-direction: column;
-            inset-block: -2px;
-        }
     }
 
     .stop {
-        flex-shrink: 0;
+        position: absolute;
+
+        &[data-orientation="horizontal"] {
+            inset-block-start: 50%;
+            translate: -50% -50%;
+        }
+
+        &[data-orientation="vertical"] {
+            inset-inline-start: 50%;
+            translate: -50% 50%;
+        }
+
         inline-size: var(--md-sys-layout-space-4);
         aspect-ratio: 1 / 1;
 

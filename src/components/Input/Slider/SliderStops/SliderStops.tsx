@@ -39,13 +39,13 @@ export const SliderStops: React.FC<SliderStopsProps> = ({
 
     const midValue = (minValue + maxValue) / 2;
     const firstThumbValue = sliderState.getThumbValue(0);
-    const secondThumbValue = sliderState.getThumbValue(1) || NaN;
+    const secondThumbValue = sliderState.getThumbValue(1) ?? NaN;
 
     const shouldHideActive = stops.length === 2;
 
     return (
         <div className={clsx(styles["stops"])} data-orientation={orientation}>
-            {stops.map(({ stopValue }) => {
+            {stops.map(({ stopValue, percent }) => {
                 const inActiveRange = checkInActiveRange({
                     slider,
                     midValue,
@@ -62,9 +62,16 @@ export const SliderStops: React.FC<SliderStopsProps> = ({
 
                 const hide = shouldHide({ slider, midValue, stopValue });
 
+                const style =
+                    orientation === "horizontal"
+                        ? { insetInlineStart: `${percent * 100}%` }
+                        : { insetBlockEnd: `${percent * 100}%` };
+
                 return (
                     <div
                         key={stopValue}
+                        style={style}
+                        data-orientation={orientation}
                         className={clsx(styles["stop"])}
                         data-disabled={sliderState.isDisabled || undefined}
                         data-below-thumb={belowThumb || undefined}

@@ -8,7 +8,7 @@ export interface CenteredSliderProps<T extends number>
         "children" | "className"
     > {
     size?: SliderSize;
-    thumbLabels?: string;
+    thumbLabel?: string;
     showInBetweenSteps?: boolean;
     maxStops?: number;
     label?: ReactNode;

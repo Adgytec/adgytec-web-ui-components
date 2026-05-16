@@ -11,7 +11,7 @@ export type SliderStopsProps = {
     maxStops?: number;
 };
 
-export type Stop = { stopValue: number };
+export type Stop = { stopValue: number; percent: number };
 
 export type CalculateStops = (
     values: Omit<SliderStopsProps, "orientation" | "thumbCount">

@@ -15,7 +15,7 @@ import type { SliderProps } from "./types";
 
 export const Slider = <T extends number>({
     label,
-    thumbLabels,
+    thumbLabel,
     size = "small",
     step = 1,
     minValue = 0,
@@ -99,6 +99,7 @@ export const Slider = <T extends number>({
                                 <SliderThumb
                                     size={size}
                                     orientation={orientation}
+                                    aria-label={thumbLabel}
                                 />
 
                                 <SliderStops

@@ -2533,6 +2533,21 @@ const SliderPreview = () => {
 
                                 <div>
                                     <Slider
+                                        label={`${o}--${size}--steps--not-aligned`}
+                                        orientation={o}
+                                        size={size}
+                                        minValue={0}
+                                        maxValue={10}
+                                        step={3}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <Slider
                                         label={`${o}--${size}--disabled`}
                                         step={5}
                                         defaultValue={33}

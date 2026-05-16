@@ -17,7 +17,7 @@ import type { CenteredSliderProps } from "./types";
 
 export const CenteredSlider = <T extends number>({
     label,
-    thumbLabels,
+    thumbLabel,
     size = "small",
     minValue = 0,
     maxValue = 100,
@@ -128,6 +128,7 @@ export const CenteredSlider = <T extends number>({
                                 <SliderThumb
                                     size={size}
                                     orientation={orientation}
+                                    aria-label={thumbLabel}
                                 />
 
                                 <SliderStops
