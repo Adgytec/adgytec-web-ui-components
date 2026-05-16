@@ -23,3 +23,9 @@ export type ThemeReturn = ThemeStorage & {
     setContrast: (contrast: ThemeContrast) => void;
     setMonochrome: (isMonochrome: boolean) => void;
 };
+
+export type ThemeBuildOptions = {
+    contrast: ThemeContrast;
+    isDarkMode: boolean;
+    isMonochrome: boolean;
+};
