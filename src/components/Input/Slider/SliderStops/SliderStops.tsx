@@ -1,52 +1,43 @@
 import clsx from "clsx";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { SliderStateContext } from "react-aria-components";
-import { checkInActiveRange, checkIsBelowThumb, shouldHide } from "./core";
+import {
+    calcStops,
+    checkInActiveRange,
+    checkIsBelowThumb,
+    shouldHide,
+} from "./core";
 import styles from "./sliderStops.module.css";
-import type { CalculateStops, SliderStopsProps, Stop } from "./types";
-
-const calcStops: CalculateStops = ({
-    minValue,
-    maxValue,
-    step,
-    showInBetweenSteps = true,
-}) => {
-    // only show starting and ending stop for step = 1
-    // and when explicitly not required
-    if (step === 1 || !showInBetweenSteps) {
-        return [{ stopValue: minValue }, { stopValue: maxValue }];
-    }
-
-    const stopCount = Math.round((maxValue - minValue) / step) + 1;
-    const stops: Stop[] = [];
-
-    for (let i = 0; i < stopCount; i++) {
-        const stopValue = minValue + i * step;
-
-        stops.push({
-            stopValue,
-        });
-    }
-
-    return stops;
-};
+import type { SliderStopsProps } from "./types";
 
 export const SliderStops: React.FC<SliderStopsProps> = ({
     orientation,
     slider = "standard",
-    ...props
+    minValue,
+    maxValue,
+    step,
+    showInBetweenSteps,
 }) => {
+    const stops = useMemo(() => {
+        const stops = calcStops({
+            minValue,
+            maxValue,
+            step,
+            showInBetweenSteps,
+        });
+        if (orientation === "vertical") {
+            stops.reverse();
+        }
+
+        return stops;
+    }, [minValue, maxValue, step, showInBetweenSteps, orientation]);
+
     const sliderState = useContext(SliderStateContext);
     if (!sliderState) return null;
 
-    const stops = calcStops(props);
-    if (orientation === "vertical") {
-        stops.reverse();
-    }
-
-    const midValue = (props.minValue + props.maxValue) / 2;
+    const midValue = (minValue + maxValue) / 2;
     const firstThumbValue = sliderState.getThumbValue(0);
-    const secondThumbValue = sliderState.getThumbValue(1);
+    const secondThumbValue = sliderState.getThumbValue(1) || NaN;
 
     const shouldHideActive = stops.length === 2;
 
