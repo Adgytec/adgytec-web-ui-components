@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import { useEffect, useMemo } from "react";
-import { buildThemeString, useTheme } from "@/utils";
+import { useMemo } from "react";
+import { useTheme } from "@/utils";
 import { ConnectedButton, ConnectedButtonGroup } from "../Button";
 import { Switch } from "../Input";
 import { contrastItems, isThemeContrast, isThemeMode, modeItems } from "./core";
@@ -46,22 +46,12 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
 }) => {
     const {
         mode,
-        isDarkMode,
         isMonochrome,
         contrast,
         setContrast,
         setMode,
         setMonochrome,
     } = useTheme();
-
-    useEffect(() => {
-        const themeString = buildThemeString({
-            isDarkMode,
-            isMonochrome,
-            contrast,
-        });
-        document.documentElement.setAttribute("data-theme", themeString);
-    }, [isDarkMode, isMonochrome, contrast]);
 
     const themeModeItems = useMemo(() => modeItems(modeDetails), [modeDetails]);
     const themeContrastItems = useMemo(
@@ -122,7 +112,11 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
                 description={monochromeDetails.description}
                 className={clsx(styles["monochrome"])}
             >
-                <Switch isSelected={isMonochrome} onChange={setMonochrome} />
+                <Switch
+                    aria-label={monochromeDetails.heading}
+                    isSelected={isMonochrome}
+                    onChange={setMonochrome}
+                />
             </ThemeItem>
         </div>
     );

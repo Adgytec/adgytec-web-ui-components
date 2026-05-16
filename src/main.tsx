@@ -8,13 +8,16 @@ import "./styles/main.css";
 import "./styles/core";
 import "./styles/defaultTheme";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "./components/ThemeSelector/ThemeProvider.tsx";
 
 const rootEl = document.getElementById("root");
 if (!rootEl) throw new Error("missing root element");
 
 createRoot(rootEl).render(
     <StrictMode>
-        <Toaster duration={7500} visibleToasts={5} />
-        <App />
+        <ThemeProvider>
+            <Toaster duration={7500} visibleToasts={5} />
+            <App />
+        </ThemeProvider>
     </StrictMode>
 );

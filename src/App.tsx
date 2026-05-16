@@ -105,12 +105,12 @@ import {
     SelectTrigger,
     Slider,
     type SliderSize,
+    Switch,
     TextArea,
     TimeField,
 } from "./components/Input";
 import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
 import { Radio, RadioGroup } from "./components/Input/Radio";
-import { Switch } from "./components/Input/Switch";
 import {
     Menu,
     MenuItem,
