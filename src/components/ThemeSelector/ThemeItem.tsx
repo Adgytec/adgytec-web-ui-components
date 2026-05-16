@@ -7,20 +7,22 @@ export const ThemeItem = ({
     heading,
     description,
     children,
+    className,
 }: {
     heading: string;
     description?: string;
     children: ReactNode;
+    className?: string;
 }) => {
     return (
-        <div className={clsx(styles["theme-item"])}>
-            <h3 className={clsx(typography.titleMediumEmphasized)}>
-                {heading}
-            </h3>
+        <div className={clsx(styles["theme-item"], className)}>
+            <div className={clsx(styles["theme-item-info"])}>
+                <h3 className={clsx(typography.titleMedium)}>{heading}</h3>
 
-            {description && (
-                <p className={clsx(typography.bodyMedium)}>{description}</p>
-            )}
+                {description && (
+                    <p className={clsx(typography.bodyMedium)}>{description}</p>
+                )}
+            </div>
 
             {children}
         </div>

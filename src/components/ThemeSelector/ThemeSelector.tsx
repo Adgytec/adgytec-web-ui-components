@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { useEffect, useMemo } from "react";
 import { buildThemeString, useTheme } from "@/utils";
 import { ConnectedButton, ConnectedButtonGroup } from "../Button";
-import { Label, Switch } from "../Input";
+import { Switch } from "../Input";
 import { contrastItems, isThemeContrast, isThemeMode, modeItems } from "./core";
 import { ThemeItem } from "./ThemeItem";
 import styles from "./themeSelector.module.css";
@@ -37,7 +37,6 @@ const defaultMonochrome: ThemeMonochromeTranslations = {
     heading: "Monochrome",
     description:
         "Use a monochrome appearance with neutral tones instead of the default colorful theme. This can provide a cleaner and more focused visual experience.",
-    label: "Apply Monochrome",
 };
 
 export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
@@ -108,6 +107,7 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
 
                         setContrast(themeContrast);
                     }}
+                    isDisabled={isMonochrome}
                 >
                     {themeContrastItems.map((item) => (
                         <ConnectedButton key={item.id} id={item.id}>
@@ -120,14 +120,9 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
             <ThemeItem
                 heading={monochromeDetails.heading}
                 description={monochromeDetails.description}
+                className={clsx(styles["monochrome"])}
             >
-                <Switch
-                    containerStateLayer
-                    isSelected={isMonochrome}
-                    onChange={setMonochrome}
-                >
-                    <Label>{monochromeDetails.label}</Label>
-                </Switch>
+                <Switch isSelected={isMonochrome} onChange={setMonochrome} />
             </ThemeItem>
         </div>
     );

@@ -1,0 +1,19 @@
+@layer adgytec.overrides {
+    .monochrome {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@layer adgytec.comps {
+    .selector {
+        display: grid;
+        gap: var(--md-sys-layout-space-24);
+    }
+
+    .theme-item {
+        display: grid;
+        gap: var(--md-sys-layout-space-16);
+    }
+}

@@ -15,9 +15,7 @@ export interface ThemeContrastTranslations extends ThemeBaseTranslations {
     high: string;
 }
 
-export interface ThemeMonochromeTranslations extends ThemeBaseTranslations {
-    label: string;
-}
+export interface ThemeMonochromeTranslations extends ThemeBaseTranslations {}
 
 export type ThemeSelectorProps = {
     modeDetails?: ThemeModeTranslations;
