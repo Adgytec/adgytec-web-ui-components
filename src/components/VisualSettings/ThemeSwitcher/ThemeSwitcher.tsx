@@ -30,9 +30,28 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
         "data-theme-type",
         "normal"
     );
+    const [themeContrast, setThemeContrast] = useLocalStorage(
+        "data-theme-contrast",
+        "standard"
+    );
 
     const { isDarkMode, ternaryDarkMode, setTernaryDarkMode } =
         useTernaryDarkMode();
+
+    const themeContrastTypes = [
+        {
+            id: "standard",
+            value: "Standard",
+        },
+        {
+            id: "medium",
+            value: "Medium",
+        },
+        {
+            id: "high",
+            value: "High",
+        },
+    ];
 
     const themeTypes = [
         {
@@ -61,14 +80,22 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
     ];
 
     useEffect(() => {
-        const themePrefix = themeType !== "normal" ? "monochrome-" : "";
-        document.documentElement.setAttribute(
-            "data-theme",
-            `${themePrefix}${isDarkMode ? "dark" : "light"}`
-        );
+        let theme = isDarkMode ? "dark" : "light";
+
+        if (themeType === "monochrome") {
+            theme = `monochrome-${theme}`;
+        } else if (themeContrast !== "standard") {
+            theme = `${theme}-${themeContrast}-contrast`;
+        }
+
+        document.documentElement.setAttribute("data-theme", theme);
 
         document.documentElement.setAttribute("data-theme-type", themeType);
-    }, [isDarkMode, themeType]);
+        document.documentElement.setAttribute(
+            "data-theme-contrast",
+            themeContrast
+        );
+    }, [isDarkMode, themeType, themeContrast]);
 
     const handleThemeChange = (keys: Set<Key>) => {
         const theme = Array.from(keys)[0] as TernaryDarkMode;
@@ -80,6 +107,12 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
     const handleThemeTypeChange = (keys: Set<Key>) => {
         const selectedType = Array.from(keys)[0];
         if (typeof selectedType === "string") setThemeType(selectedType);
+    };
+
+    const handleThemeContrastChange = (keys: Set<Key>) => {
+        const selectedContrast = Array.from(keys)[0];
+        if (typeof selectedContrast === "string")
+            setThemeContrast(selectedContrast);
     };
 
     if (!ui) return null;
@@ -106,6 +139,19 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
                 color="outlined"
             >
                 {themeItems.map((item) => (
+                    <ToggleButton key={item.id} id={item.id}>
+                        {item.value}
+                    </ToggleButton>
+                ))}
+            </ButtonGroup>
+
+            <ButtonGroup
+                selectionMode="single"
+                selectedKeys={[themeContrast]}
+                onSelectionChange={handleThemeContrastChange}
+                color="outlined"
+            >
+                {themeContrastTypes.map((item) => (
                     <ToggleButton key={item.id} id={item.id}>
                         {item.value}
                     </ToggleButton>
