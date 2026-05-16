@@ -105,12 +105,12 @@ import {
     SelectTrigger,
     Slider,
     type SliderSize,
+    Switch,
     TextArea,
     TimeField,
 } from "./components/Input";
 import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
 import { Radio, RadioGroup } from "./components/Input/Radio";
-import { Switch } from "./components/Input/Switch";
 import {
     Menu,
     MenuItem,
@@ -123,6 +123,7 @@ import { SubmenuPopover } from "./components/Menu/SubmenuPopover";
 import { Popover } from "./components/Popover";
 import { Separator } from "./components/Separator";
 import { Tag } from "./components/Tag";
+import { ThemeSelector } from "./components/ThemeSelector";
 import {
     Toolbar,
     type ToolbarColor,
@@ -136,7 +137,6 @@ import {
     RichTooltipSubhead,
     RichTooltipText,
 } from "./components/Tooltip/RichTooltip";
-import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
 
 // preview container
@@ -355,13 +355,8 @@ const CheckboxPreview = () => {
     );
 };
 
-const VisualSettingsPreview = () => {
-    return (
-        <>
-            <ThemeSwitcher ui={false} />
-            <ThemeSwitcher />
-        </>
-    );
+const ThemeSelectorPreview = () => {
+    return <ThemeSelector />;
 };
 
 const IconPreview = () => {
@@ -2666,9 +2661,9 @@ const App = () => {
 
     const previewItems: PreviewItem[] = [
         {
-            id: "visual-settings",
-            label: "Theme Switcher",
-            Component: VisualSettingsPreview,
+            id: "theme-selector",
+            label: "Theme Selector",
+            Component: ThemeSelectorPreview,
         },
 
         {
