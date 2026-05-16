@@ -37,14 +37,14 @@
         transform-origin: center;
 
         &[data-orientation="horizontal"] {
-            top: 50%;
+            inset-block-start: 50%;
         }
 
         &[data-orientation="vertical"] {
             --thumb-block-size: var(--thumb-thickness);
             --thumb-inline-size: var(--thumb-size);
 
-            left: 50%;
+            inset-inline-start: 50%;
         }
 
         inline-size: var(--thumb-inline-size);
@@ -113,16 +113,16 @@
         border-radius: var(--md-sys-shape-corner-radius-full);
 
         &[data-orientation="horizontal"] {
-            bottom: 100%;
-            left: 50%;
+            inset-block-end: 100%;
+            inset-inline-start: 50%;
             translate: -50% calc(-4 * var(--dp, 1px));
 
             transform-origin: bottom;
         }
 
         &[data-orientation="vertical"] {
-            right: 100%;
-            top: 50%;
+            inset-inline-end: 100%;
+            inset-block-start: 50%;
             translate: calc(-4 * var(--dp, 1px)) -50%;
 
             transform-origin: right;

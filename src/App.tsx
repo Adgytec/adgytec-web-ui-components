@@ -2731,7 +2731,7 @@ const App = () => {
                         if (orientation === "horizontal") {
                             pos = {
                                 position: "sticky",
-                                top: "0",
+                                insetBlockStart: "0",
                                 zIndex: "10",
                             };
                         }

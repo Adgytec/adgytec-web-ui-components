@@ -168,8 +168,8 @@
         content: "";
 
         position: absolute;
-        top: 50%;
-        left: 50%;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
         transform: translate(-50%, -50%);
 
         inline-size: var(--state-size);
@@ -195,8 +195,8 @@
         inline-size: var(--indicator-icon-size);
         aspect-ratio: 1 / 1;
 
-        left: 50%;
-        top: 50%;
+        inset-inline-start: 50%;
+        inset-block-start: 50%;
         translate: -50% -50%;
 
         background-color: var(--color);

@@ -36,7 +36,7 @@ export const getStepPrecision = (step: number): number => {
         const pointIndex = stepString.indexOf(".");
 
         if (pointIndex >= 0) {
-            precision = stepString.length - pointIndex - 1;
+            precision = stepString.length - pointIndex;
         }
     }
 

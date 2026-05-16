@@ -11,7 +11,7 @@ export interface SliderProps<T extends number>
     size?: SliderSize;
     insetIcon?: LucideIcon;
     minInsetIcon?: LucideIcon;
-    thumbLabels?: string;
+    thumbLabel?: string;
     showInBetweenSteps?: boolean;
     maxStops?: number;
     label?: ReactNode;

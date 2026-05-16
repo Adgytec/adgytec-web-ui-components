@@ -135,7 +135,7 @@
 
         /* handle style */
         position: absolute;
-        top: 50%;
+        inset-block-start: 50%;
         translate: var(--handle-x) -50%;
 
         inline-size: var(--handle-size);
@@ -205,8 +205,8 @@
         content: "";
 
         position: absolute;
-        top: 50%;
-        left: 50%;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
         transform: translate(-50%, -50%);
 
         inline-size: var(--state-size);
