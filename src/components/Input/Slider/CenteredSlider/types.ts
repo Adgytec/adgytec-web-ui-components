@@ -9,4 +9,5 @@ export interface CenteredSliderProps<T extends number>
     size?: SliderSize;
     thumbLabels?: string;
     showInBetweenSteps?: boolean;
+    maxStops?: number;
 }

@@ -17,6 +17,7 @@ export const SliderStops: React.FC<SliderStopsProps> = ({
     maxValue,
     step,
     showInBetweenSteps,
+    maxStops,
 }) => {
     const stops = useMemo(() => {
         const stops = calcStops({
@@ -24,13 +25,14 @@ export const SliderStops: React.FC<SliderStopsProps> = ({
             maxValue,
             step,
             showInBetweenSteps,
+            maxStops,
         });
         if (orientation === "vertical") {
             stops.reverse();
         }
 
         return stops;
-    }, [minValue, maxValue, step, showInBetweenSteps, orientation]);
+    }, [minValue, maxValue, step, showInBetweenSteps, orientation, maxStops]);
 
     const sliderState = useContext(SliderStateContext);
     if (!sliderState) return null;

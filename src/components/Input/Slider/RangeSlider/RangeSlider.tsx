@@ -20,6 +20,7 @@ export const RangeSlider = <T extends RangeSliderType>({
     step = 1,
     defaultValue = [minValue, minValue] as T,
     showInBetweenSteps,
+    maxStops,
     ...props
 }: RangeSliderProps<T>) => {
     return (
@@ -87,6 +88,7 @@ export const RangeSlider = <T extends RangeSliderType>({
                             orientation={orientation}
                             slider="range"
                             showInBetweenSteps={showInBetweenSteps}
+                            maxStops={maxStops}
                         />
 
                         {state.values.map((_, i) => {

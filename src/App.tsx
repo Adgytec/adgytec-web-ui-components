@@ -4,6 +4,7 @@ import {
     Clipboard,
     CloudSnow,
     CloudSun,
+    DollarSign,
     Download,
     ExternalLinkIcon,
     Eye,
@@ -12,6 +13,7 @@ import {
     Globe,
     GlobeLock,
     GlobeOff,
+    HandCoins,
     LogOut,
     type LucideIcon,
     Mail,
@@ -30,8 +32,6 @@ import {
     SwatchBook,
     User,
     UserRound,
-    Volume2,
-    VolumeOff,
 } from "lucide-react";
 import { type CSSProperties, Fragment, type ReactNode, useState } from "react";
 import { useListData } from "react-aria-components/useListData";
@@ -2518,8 +2518,8 @@ const SliderPreview = () => {
                                     <Slider
                                         orientation={o}
                                         size={size}
-                                        insetIcon={Volume2}
-                                        minInsetIcon={VolumeOff}
+                                        insetIcon={DollarSign}
+                                        minInsetIcon={HandCoins}
                                         formatOptions={{
                                             style: "currency",
                                             currency: "USD",
@@ -2535,9 +2535,10 @@ const SliderPreview = () => {
                                     <Slider
                                         orientation={o}
                                         size={size}
-                                        step={10}
-                                        insetIcon={Volume2}
-                                        minInsetIcon={VolumeOff}
+                                        minValue={0}
+                                        maxValue={1}
+                                        step={0.04}
+                                        maxStops={25}
                                         formatOptions={{
                                             style: "currency",
                                             currency: "INR",
@@ -2556,8 +2557,6 @@ const SliderPreview = () => {
                                         isDisabled
                                         orientation={o}
                                         size={size}
-                                        insetIcon={Volume2}
-                                        minInsetIcon={VolumeOff}
                                         formatOptions={{
                                             style: "currency",
                                             currency: "USD",

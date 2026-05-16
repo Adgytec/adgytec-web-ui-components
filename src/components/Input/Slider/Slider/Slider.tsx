@@ -16,6 +16,7 @@ export const Slider = <T extends number>({
     showInBetweenSteps,
     insetIcon,
     minInsetIcon,
+    maxStops,
     ...props
 }: SliderProps<T>) => {
     const canShowIcon = size !== "extra-small" && size !== "small";
@@ -83,6 +84,7 @@ export const Slider = <T extends number>({
                             step={step}
                             orientation={orientation}
                             showInBetweenSteps={showInBetweenSteps}
+                            maxStops={maxStops}
                         />
                     </SliderTrack>
                 );

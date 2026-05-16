@@ -12,7 +12,6 @@ export const SliderThumb: React.FC<
     Omit<React.ComponentPropsWithRef<typeof AriaSliderThumb>, "children"> & {
         orientation: Orientation;
         size: SliderSize;
-        maxValue?: number;
     }
 > = ({ index = 0, orientation, className, size, ...props }) => {
     return (

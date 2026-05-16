@@ -8,6 +8,7 @@ export type SliderStopsProps = {
     showInBetweenSteps?: boolean;
     orientation: Orientation;
     slider?: SliderVariant;
+    maxStops?: number;
 };
 
 export type Stop = { stopValue: number };

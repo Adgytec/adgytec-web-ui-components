@@ -1,56 +1,176 @@
 import type { SliderVariant } from "../core";
 import type { CalculateStops, Stop } from "./types";
 
-const MAX_STOPS = 100;
+const DEFAULT_MAX_STOPS = 20;
 
+/**
+ * React Aria style clamp.
+ */
+export const clamp = (
+    value: number,
+    min: number = -Infinity,
+    max: number = Infinity
+): number => {
+    return Math.min(Math.max(value, min), max);
+};
+
+/**
+ * React Aria precision extraction.
+ *
+ * Handles:
+ * - 0.1
+ * - 0.01
+ * - 1e-7
+ */
+export const getStepPrecision = (step: number): number => {
+    let precision = 0;
+
+    const stepString = step.toString();
+
+    const exponentialIndex = stepString.toLowerCase().indexOf("e-");
+
+    if (exponentialIndex > 0) {
+        precision =
+            Math.abs(Math.floor(Math.log10(Math.abs(step)))) + exponentialIndex;
+    } else {
+        const pointIndex = stepString.indexOf(".");
+
+        if (pointIndex >= 0) {
+            precision = stepString.length - pointIndex - 1;
+        }
+    }
+
+    return precision;
+};
+
+/**
+ * React Aria style precision correction.
+ */
+export const roundToStepPrecision = (value: number, step: number): number => {
+    const precision = getStepPrecision(step);
+
+    if (precision <= 0) {
+        return value;
+    }
+
+    const pow = 10 ** precision;
+
+    return Math.round(value * pow) / pow;
+};
+
+/**
+ * React Aria snap implementation.
+ */
+export const snapValueToStep = ({
+    value,
+    minValue,
+    maxValue,
+    step,
+}: {
+    value: number;
+    minValue: number;
+    maxValue: number;
+    step: number;
+}): number => {
+    const remainder = (value - minValue) % step;
+
+    let snappedValue = roundToStepPrecision(
+        Math.abs(remainder) * 2 >= step
+            ? value + Math.sign(remainder) * (step - Math.abs(remainder))
+            : value - remainder,
+        step
+    );
+
+    if (snappedValue < minValue) {
+        snappedValue = minValue;
+    } else if (snappedValue > maxValue) {
+        snappedValue =
+            minValue +
+            Math.floor(
+                roundToStepPrecision((maxValue - minValue) / step, step)
+            ) *
+                step;
+    }
+
+    snappedValue = roundToStepPrecision(snappedValue, step);
+
+    return snappedValue;
+};
+
+/**
+ * Generates all valid slider stops using
+ * the same stepping logic as React Aria.
+ */
 export const calcStops: CalculateStops = ({
     minValue,
     maxValue,
     step,
     showInBetweenSteps = true,
+    maxStops = DEFAULT_MAX_STOPS,
 }) => {
-    // invalid configuration fallback
-    if (step <= 0 || maxValue < minValue) {
+    /**
+     * Invalid configuration fallback.
+     */
+    if (step <= 0 || Number.isNaN(step) || maxValue < minValue) {
         return [];
     }
 
-    // only show starting and ending stop for step = 1
-    // and when explicitly not required
+    /**
+     * Reduced stop rendering mode.
+     */
     if (step === 1 || !showInBetweenSteps) {
-        return [{ stopValue: minValue }, { stopValue: maxValue }];
-    }
-
-    const stopCount = Math.floor((maxValue - minValue) / step) + 1;
-
-    // protect against excessive DOM nodes
-    if (stopCount > MAX_STOPS) {
-        return [{ stopValue: minValue }, { stopValue: maxValue }];
+        return [
+            {
+                stopValue: minValue,
+            },
+            {
+                stopValue: maxValue,
+            },
+        ];
     }
 
     const stops: Stop[] = [];
 
-    // derive decimal precision from step value
-    // so floating point math like 0.30000000000000004
-    // becomes stable values like 0.3
-    const precision = step.toString().split(".")[1]?.length ?? 0;
-    for (let i = 0; i < stopCount; i++) {
-        const stopValue = Number((minValue + i * step).toFixed(precision));
+    let value = minValue;
 
+    while (value <= maxValue) {
         stops.push({
-            stopValue,
+            stopValue: value,
         });
+
+        const nextValue = snapValueToStep({
+            value: value + step,
+            minValue,
+            maxValue,
+            step,
+        });
+
+        /**
+         * Prevent infinite loops caused by
+         * precision edge cases.
+         */
+        if (nextValue === value) {
+            break;
+        }
+
+        value = nextValue;
+
+        /**
+         * DOM safety guard.
+         */
+        if (stops.length > maxStops) {
+            return [
+                {
+                    stopValue: minValue,
+                },
+                {
+                    stopValue: maxValue,
+                },
+            ];
+        }
     }
 
     return stops;
-};
-
-const FLOAT_PRECISION_TOLERANCE = 1e-7;
-
-// floating point arithmetic can produce tiny precision errors
-// (e.g. 0.30000000000000004 instead of 0.3)
-// so compare numbers within a small tolerance
-const isEqual = (a: number, b: number, epsilon = FLOAT_PRECISION_TOLERANCE) => {
-    return Math.abs(a - b) < epsilon;
 };
 
 const checkInActiveRangeStandardSlider = ({
@@ -80,14 +200,14 @@ const checkInActiveRangeCenteredSlider = ({
     stopValue,
     midValue,
 }: {
-    midValue: number;
     thumbValue: number;
     stopValue: number;
+    midValue: number;
 }): boolean => {
     return (
         (stopValue < midValue && stopValue > thumbValue) ||
         (stopValue > midValue && stopValue < thumbValue) ||
-        isEqual(stopValue, midValue)
+        stopValue === midValue
     );
 };
 
@@ -136,10 +256,7 @@ export const checkIsBelowThumb = ({
     secondThumbValue: number;
     stopValue: number;
 }): boolean => {
-    return (
-        isEqual(stopValue, firstThumbValue) ||
-        isEqual(stopValue, secondThumbValue)
-    );
+    return stopValue === firstThumbValue || stopValue === secondThumbValue;
 };
 
 export const shouldHide = ({
@@ -151,6 +268,9 @@ export const shouldHide = ({
     midValue: number;
     stopValue: number;
 }): boolean => {
-    if (slider !== "centered") return false;
-    return isEqual(stopValue, midValue);
+    if (slider !== "centered") {
+        return false;
+    }
+
+    return stopValue === midValue;
 };
