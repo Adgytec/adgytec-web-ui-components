@@ -30,7 +30,7 @@ import {
     SwatchBook,
     User,
     UserRound,
-    Volume,
+    Volume2,
     VolumeOff,
 } from "lucide-react";
 import { type CSSProperties, Fragment, type ReactNode, useState } from "react";
@@ -2518,7 +2518,7 @@ const SliderPreview = () => {
                                     <Slider
                                         orientation={o}
                                         size={size}
-                                        insetIcon={Volume}
+                                        insetIcon={Volume2}
                                         minInsetIcon={VolumeOff}
                                         formatOptions={{
                                             style: "currency",
@@ -2536,7 +2536,7 @@ const SliderPreview = () => {
                                         orientation={o}
                                         size={size}
                                         step={10}
-                                        insetIcon={Volume}
+                                        insetIcon={Volume2}
                                         minInsetIcon={VolumeOff}
                                         formatOptions={{
                                             style: "currency",
@@ -2556,7 +2556,7 @@ const SliderPreview = () => {
                                         isDisabled
                                         orientation={o}
                                         size={size}
-                                        insetIcon={Volume}
+                                        insetIcon={Volume2}
                                         minInsetIcon={VolumeOff}
                                         formatOptions={{
                                             style: "currency",
