@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Slider } from "react-aria-components";
 import type { SliderSize } from "../core";
 
@@ -10,4 +11,5 @@ export interface CenteredSliderProps<T extends number>
     thumbLabels?: string;
     showInBetweenSteps?: boolean;
     maxStops?: number;
+    label?: ReactNode;
 }

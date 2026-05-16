@@ -8,6 +8,8 @@ export type SliderSize =
     | "extra-large";
 
 export const SliderStyles = styles["slider"];
+
+export const TrackContainerStyles = styles["track-container"];
 export const TrackStyles = styles["track"];
 
 export function SliderSizeStyles(size: SliderSize) {

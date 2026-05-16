@@ -8,11 +8,20 @@
             --md-sys-motion-expressive-fast-effects-duration
         );
 
-        display: grid;
+        display: flex;
+        flex-direction: column;
         gap: var(--md-sys-layout-space-4);
-        block-size: 100%;
 
+        block-size: 100%;
+    }
+
+    .track-container {
+        flex: 1;
         padding: calc(-1 * var(--orientation-inset));
+
+        &[data-orientation="vertical"] {
+            align-self: center;
+        }
     }
 
     .track {

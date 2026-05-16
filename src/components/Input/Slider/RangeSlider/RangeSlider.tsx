@@ -1,10 +1,12 @@
 import clsx from "clsx";
 import { Slider as AriaSlider, SliderTrack } from "react-aria-components";
+import { Label } from "../../Label";
 import {
     ActiveTrackStyles,
     InactiveTrackStyles,
     SliderSizeStyles,
     SliderStyles,
+    TrackContainerStyles,
     TrackStyles,
     VisualTrackStyles,
 } from "../core";
@@ -13,6 +15,7 @@ import { SliderThumb } from "../SliderThumb";
 import type { RangeSliderProps, RangeSliderType } from "./types";
 
 export const RangeSlider = <T extends RangeSliderType>({
+    label,
     thumbLabels,
     size = "small",
     minValue = 0,
@@ -44,71 +47,84 @@ export const RangeSlider = <T extends RangeSliderType>({
                     orientation === "horizontal" ? "inlineSize" : "blockSize";
 
                 return (
-                    <SliderTrack
-                        className={clsx(TrackStyles, SliderSizeStyles(size))}
-                    >
+                    <>
+                        {label && <Label>{label}</Label>}
+
                         <div
-                            className={clsx(VisualTrackStyles)}
+                            className={clsx(TrackContainerStyles)}
                             data-orientation={orientation}
                         >
-                            <div
-                                className={clsx(InactiveTrackStyles)}
-                                data-orientation={orientation}
-                                data-track="start"
-                                style={{
-                                    [sizeKey]: `${start}%`,
-                                }}
-                            />
-
-                            <div
-                                className={clsx(ActiveTrackStyles)}
-                                data-orientation={orientation}
-                                data-track="mid"
-                                style={{
-                                    [sizeKey]: `${mid}%`,
-                                }}
+                            <SliderTrack
+                                className={clsx(
+                                    TrackStyles,
+                                    SliderSizeStyles(size)
+                                )}
                             >
-                                <div />
-                            </div>
+                                <div
+                                    className={clsx(VisualTrackStyles)}
+                                    data-orientation={orientation}
+                                >
+                                    <div
+                                        className={clsx(InactiveTrackStyles)}
+                                        data-orientation={orientation}
+                                        data-track="start"
+                                        style={{
+                                            [sizeKey]: `${start}%`,
+                                        }}
+                                    />
 
-                            <div
-                                className={clsx(InactiveTrackStyles)}
-                                data-orientation={orientation}
-                                data-track="end"
-                                style={{
-                                    [sizeKey]: `${end}%`,
-                                }}
-                            />
-                        </div>
+                                    <div
+                                        className={clsx(ActiveTrackStyles)}
+                                        data-orientation={orientation}
+                                        data-track="mid"
+                                        style={{
+                                            [sizeKey]: `${mid}%`,
+                                        }}
+                                    >
+                                        <div />
+                                    </div>
 
-                        <SliderStops
-                            minValue={minValue}
-                            maxValue={maxValue}
-                            step={step}
-                            orientation={orientation}
-                            slider="range"
-                            showInBetweenSteps={showInBetweenSteps}
-                            maxStops={maxStops}
-                        />
+                                    <div
+                                        className={clsx(InactiveTrackStyles)}
+                                        data-orientation={orientation}
+                                        data-track="end"
+                                        style={{
+                                            [sizeKey]: `${end}%`,
+                                        }}
+                                    />
+                                </div>
 
-                        {state.values.map((_, i) => {
-                            const increaseZindex =
-                                i === 0 && state.getThumbValue(i) === maxValue;
-                            return (
-                                <SliderThumb
-                                    // biome-ignore lint: index is stable here
-                                    key={i}
-                                    index={i}
-                                    size={size}
+                                <SliderStops
+                                    minValue={minValue}
+                                    maxValue={maxValue}
+                                    step={step}
                                     orientation={orientation}
-                                    aria-label={thumbLabels?.[i]}
-                                    data-z-index-increase={
-                                        increaseZindex || undefined
-                                    }
+                                    slider="range"
+                                    showInBetweenSteps={showInBetweenSteps}
+                                    maxStops={maxStops}
                                 />
-                            );
-                        })}
-                    </SliderTrack>
+
+                                {state.values.map((_, i) => {
+                                    const increaseZindex =
+                                        i === 0 &&
+                                        state.getThumbValue(i) === maxValue;
+                                    return (
+                                        <SliderThumb
+                                            // biome-ignore lint: index is stable here
+                                            key={i}
+                                            index={i}
+                                            size={size}
+                                            orientation={orientation}
+                                            aria-label={thumbLabels?.[i]}
+                                            data-z-index-increase={
+                                                increaseZindex || undefined
+                                            }
+                                        />
+                                    );
+                                })}
+                            </SliderTrack>
+                        </div>
+                    </>
                 );
             }}
         </AriaSlider>

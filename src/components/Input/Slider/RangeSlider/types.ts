@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Slider } from "react-aria-components";
 import type { SliderSize } from "../core";
 
@@ -13,4 +14,5 @@ export interface RangeSliderProps<T extends RangeSliderType>
     thumbLabels?: Tuple<string>;
     showInBetweenSteps?: boolean;
     maxStops?: number;
+    label?: ReactNode;
 }

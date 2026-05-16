@@ -1,13 +1,20 @@
 import clsx from "clsx";
 import { Slider as AriaSlider, SliderTrack } from "react-aria-components";
 import { Icon } from "@/components/Icon";
-import { SliderSizeStyles, SliderStyles, TrackStyles } from "../core";
+import { Label } from "../../Label";
+import {
+    SliderSizeStyles,
+    SliderStyles,
+    TrackContainerStyles,
+    TrackStyles,
+} from "../core";
 import { SliderStops } from "../SliderStops";
 import { SliderThumb } from "../SliderThumb";
 import styles from "./slider.module.css";
 import type { SliderProps } from "./types";
 
 export const Slider = <T extends number>({
+    label,
     thumbLabels,
     size = "small",
     step = 1,
@@ -39,54 +46,72 @@ export const Slider = <T extends number>({
                 }
 
                 return (
-                    <SliderTrack
-                        className={clsx(TrackStyles, SliderSizeStyles(size))}
-                    >
+                    <>
+                        {label && <Label>{label}</Label>}
+
                         <div
-                            className={clsx(styles["visual-track"])}
+                            className={clsx(TrackContainerStyles)}
                             data-orientation={orientation}
                         >
-                            <div
-                                className={clsx(styles["active-track"])}
-                                data-orientation={orientation}
-                                style={{
-                                    flexGrow: state.getThumbPercent(0),
-                                }}
-                            />
+                            <SliderTrack
+                                className={clsx(
+                                    TrackStyles,
+                                    SliderSizeStyles(size)
+                                )}
+                            >
+                                <div
+                                    className={clsx(styles["visual-track"])}
+                                    data-orientation={orientation}
+                                >
+                                    <div
+                                        className={clsx(styles["active-track"])}
+                                        data-orientation={orientation}
+                                        style={{
+                                            flexGrow: state.getThumbPercent(0),
+                                        }}
+                                    />
 
-                            <div
-                                className={clsx(styles["inactive-track"])}
-                                style={{
-                                    flexGrow: 1 - state.getThumbPercent(0),
-                                }}
-                                data-orientation={orientation}
-                            />
+                                    <div
+                                        className={clsx(
+                                            styles["inactive-track"]
+                                        )}
+                                        style={{
+                                            flexGrow:
+                                                1 - state.getThumbPercent(0),
+                                        }}
+                                        data-orientation={orientation}
+                                    />
+                                </div>
+
+                                {canShowIcon && visibleIcon && (
+                                    <Icon
+                                        icon={visibleIcon}
+                                        size={iconSize}
+                                        className={clsx(styles["icon"])}
+                                        data-minimum-value={
+                                            thumbValue === 0 || undefined
+                                        }
+                                        data-disabled={isDisabled || undefined}
+                                        data-orientation={orientation}
+                                    />
+                                )}
+
+                                <SliderThumb
+                                    size={size}
+                                    orientation={orientation}
+                                />
+
+                                <SliderStops
+                                    minValue={minValue}
+                                    maxValue={maxValue}
+                                    step={step}
+                                    orientation={orientation}
+                                    showInBetweenSteps={showInBetweenSteps}
+                                    maxStops={maxStops}
+                                />
+                            </SliderTrack>
                         </div>
-
-                        {canShowIcon && visibleIcon && (
-                            <Icon
-                                icon={visibleIcon}
-                                size={iconSize}
-                                className={clsx(styles["icon"])}
-                                data-minimum-value={
-                                    thumbValue === 0 || undefined
-                                }
-                                data-disabled={isDisabled || undefined}
-                                data-orientation={orientation}
-                            />
-                        )}
-
-                        <SliderThumb size={size} orientation={orientation} />
-
-                        <SliderStops
-                            minValue={minValue}
-                            maxValue={maxValue}
-                            step={step}
-                            orientation={orientation}
-                            showInBetweenSteps={showInBetweenSteps}
-                            maxStops={maxStops}
-                        />
-                    </SliderTrack>
+                    </>
                 );
             }}
         </AriaSlider>

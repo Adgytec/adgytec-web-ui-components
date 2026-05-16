@@ -2433,11 +2433,8 @@ const RangeSliderPreview = () => {
                         {sizes.map((size) => (
                             <Fragment key={size}>
                                 <div>
-                                    <h4 className={typography.labelSmall}>
-                                        {`${o}--${size}`}
-                                    </h4>
-
                                     <RangeSlider
+                                        label={`${o}--${size}`}
                                         orientation={o}
                                         size={size}
                                         formatOptions={{
@@ -2448,11 +2445,8 @@ const RangeSliderPreview = () => {
                                 </div>
 
                                 <div>
-                                    <h4 className={typography.labelSmall}>
-                                        {`${o}--${size}--steps`}
-                                    </h4>
-
                                     <RangeSlider
+                                        label={`${o}--${size}--steps`}
                                         orientation={o}
                                         size={size}
                                         step={10}
@@ -2464,11 +2458,8 @@ const RangeSliderPreview = () => {
                                 </div>
 
                                 <div>
-                                    <h4 className={typography.labelSmall}>
-                                        {`${o}--${size}--disabled`}
-                                    </h4>
-
                                     <RangeSlider
+                                        label={`${o}--${size}--disabled`}
                                         isDisabled
                                         orientation={o}
                                         step={5}
@@ -2511,11 +2502,8 @@ const SliderPreview = () => {
                         {sizes.map((size) => (
                             <Fragment key={size}>
                                 <div>
-                                    <h4 className={typography.labelSmall}>
-                                        {`${o}--${size}`}
-                                    </h4>
-
                                     <Slider
+                                        label={`${o}--${size}`}
                                         orientation={o}
                                         size={size}
                                         insetIcon={DollarSign}
@@ -2528,11 +2516,8 @@ const SliderPreview = () => {
                                 </div>
 
                                 <div>
-                                    <h4 className={typography.labelSmall}>
-                                        {`${o}--${size}-steps`}
-                                    </h4>
-
                                     <Slider
+                                        label={`${o}--${size}--steps`}
                                         orientation={o}
                                         size={size}
                                         minValue={0}
@@ -2547,11 +2532,8 @@ const SliderPreview = () => {
                                 </div>
 
                                 <div>
-                                    <h4 className={typography.labelSmall}>
-                                        {`${o}--${size}-disabled`}
-                                    </h4>
-
                                     <Slider
+                                        label={`${o}--${size}--disabled`}
                                         step={5}
                                         defaultValue={33}
                                         isDisabled
@@ -2598,11 +2580,8 @@ const CenteredSliderPreview = () => {
                         {sizes.map((size) => (
                             <Fragment key={size}>
                                 <div>
-                                    <h4 className={typography.labelSmall}>
-                                        {`${o}--${size}`}
-                                    </h4>
-
                                     <CenteredSlider
+                                        label={`${o}--${size}`}
                                         orientation={o}
                                         size={size}
                                         formatOptions={{
@@ -2613,11 +2592,8 @@ const CenteredSliderPreview = () => {
                                 </div>
 
                                 <div>
-                                    <h4 className={typography.labelSmall}>
-                                        {`${o}--${size}--steps-odd`}
-                                    </h4>
-
                                     <CenteredSlider
+                                        label={`${o}--${size}--steps-odd`}
                                         orientation={o}
                                         size={size}
                                         step={10}
@@ -2629,11 +2605,8 @@ const CenteredSliderPreview = () => {
                                 </div>
 
                                 <div>
-                                    <h4 className={typography.labelSmall}>
-                                        {`${o}--${size}--steps-even`}
-                                    </h4>
-
                                     <CenteredSlider
+                                        label={`${o}--${size}--steps-even`}
                                         orientation={o}
                                         size={size}
                                         step={11}
@@ -2646,11 +2619,8 @@ const CenteredSliderPreview = () => {
                                 </div>
 
                                 <div>
-                                    <h4 className={typography.labelSmall}>
-                                        {`${o}--${size}--disabled`}
-                                    </h4>
-
                                     <CenteredSlider
+                                        label={`${o}--${size}--disabled`}
                                         isDisabled
                                         orientation={o}
                                         step={5}
