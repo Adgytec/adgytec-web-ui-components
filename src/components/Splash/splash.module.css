@@ -15,6 +15,10 @@
 
         animation: ripple var(--md-sys-motion-expressive-slow-spatial)
             var(--md-sys-motion-expressive-slow-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            animation: none;
+        }
     }
 
     @keyframes ripple {

@@ -38,6 +38,10 @@
         transition: color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration);
 
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
         &[data-icon] {
             padding-block: var(--md-sys-layout-space-12);
         }
@@ -86,6 +90,10 @@
 
         transition: background-color var(--md-sys-motion-standard-fast-spatial)
             var(--md-sys-motion-standard-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
     }
 
     /* focus indicator */

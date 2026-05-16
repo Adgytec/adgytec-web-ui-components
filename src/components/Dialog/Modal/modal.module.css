@@ -1,36 +1,14 @@
 @layer adgytec.comps {
     .modal {
-        /* container */
-        --modal-min-inline-size: calc(280 * var(--dp, 1px));
-        --modal-max-inline-size: calc(560 * var(--dp, 1px));
-        --modal-max-block-size: 90svb;
-
-        --modal-background: var(--md-sys-color-surface-container-high);
-        --dialog-container-shape: var(--md-sys-shape-corner-radius-extra-large);
-        --modal-elevation: var(--md-sys-elevation-shadow-3);
-
-        /* color */
-        --dialog-headline-text-color: var(--md-sys-color-on-surface);
-        --dialog-icon-color: var(--md-sys-color-secondary);
-        --modal-text-color: var(--md-sys-color-on-surface-variant);
-
-        /* styles */
-        border-radius: var(--dialog-container-shape);
-
-        background-color: var(--modal-background);
-        color: var(--modal-text-color);
-        box-shadow: var(--modal-elevation);
-
-        min-inline-size: min(90svi, var(--modal-min-inline-size));
-        max-inline-size: min(90svi, var(--modal-max-inline-size));
-        max-block-size: var(--modal-max-block-size);
-
-        display: grid;
-        grid-template-rows: minmax(0, 1fr);
+        padding-inline: var(--md-sys-layout-window-size-compact-margin);
 
         &[data-entering] {
             animation: modal-zoom var(--md-sys-motion-expressive-fast-spatial)
                 var(--md-sys-motion-expressive-fast-spatial-duration);
+
+            @media (prefers-reduced-motion) {
+                animation: none;
+            }
         }
     }
 

@@ -14,6 +14,10 @@
 
         transition: border-radius var(--md-sys-motion-expressive-fast-spatial)
             var(--md-sys-motion-expressive-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
     }
 
     .menu-section {
@@ -27,6 +31,10 @@
 
         transition: border-radius var(--md-sys-motion-expressive-fast-spatial)
             var(--md-sys-motion-expressive-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
     }
 
     .menu-section-header {
@@ -40,7 +48,7 @@
 
         position: relative;
         outline: none;
-        overflow: hidden;
+        overflow: clip;
 
         display: flex;
         gap: var(--menu-item-content-gap);

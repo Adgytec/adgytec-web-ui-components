@@ -196,8 +196,8 @@
         content: "";
 
         position: absolute;
-        top: 50%;
-        left: 50%;
+        inset-inline-start: 50%;
+        inset-block-start: 50%;
         transform: translate(-50%, -50%);
 
         inline-size: var(--state-size);
@@ -230,8 +230,8 @@
     /* ref this for check animation */
     .svg {
         position: absolute;
-        top: 50%;
-        left: 50%;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
         transform: translate(-50%, -50%);
 
         width: calc(12 * var(--dp, 1px));
@@ -249,6 +249,10 @@
         transition: stroke-dashoffset
             var(--md-sys-motion-expressive-default-effects)
             var(--md-sys-motion-expressive-default-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
 
         &[data-selected] {
             stroke-dashoffset: 44;

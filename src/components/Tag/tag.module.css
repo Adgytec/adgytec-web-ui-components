@@ -134,6 +134,10 @@
 
         transition: background-color var(--md-sys-motion-standard-fast-spatial)
             var(--md-sys-motion-standard-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
     }
 
     /* focus indicator */

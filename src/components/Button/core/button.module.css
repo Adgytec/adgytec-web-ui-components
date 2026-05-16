@@ -16,11 +16,15 @@
 
     .button-core {
         position: relative;
-        overflow: hidden;
+        overflow: clip;
+
+        --shape-motion: var(--md-sys-motion-expressive-fast-spatial);
+        --shape-motion-duration: var(
+            --md-sys-motion-expressive-fast-spatial-duration
+        );
 
         transition:
-            border-radius var(--md-sys-motion-expressive-fast-spatial)
-            var(--md-sys-motion-expressive-fast-spatial-duration),
+            border-radius var(--shape-motion) var(--shape-motion-duration),
             background-color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration),
             color var(--md-sys-motion-expressive-fast-effects)

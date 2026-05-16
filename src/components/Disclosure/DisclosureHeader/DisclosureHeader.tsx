@@ -8,6 +8,8 @@ import {
     buttonColorConfig,
 } from "@/components/Button";
 import { Icon } from "@/components/Icon";
+import { Splash } from "@/components/Splash/Splash";
+import { useSplash } from "@/components/Splash/useSplash";
 import { TapTarget, type Typography } from "@/utils";
 import { useDisclosureTypographyContext } from "../context";
 import styles from "./disclosureHeader.module.css";
@@ -17,6 +19,8 @@ export const DisclosureHeader: React.FC<
         labelTypography?: Typography;
     }
 > = ({ children, labelTypography, ...props }) => {
+    const { splashInfo, handlePress } = useSplash();
+
     const disclosureContext = useContext(DisclosureStateContext);
     const { isExpanded } = disclosureContext || {};
 
@@ -27,6 +31,7 @@ export const DisclosureHeader: React.FC<
     return (
         <Heading {...props}>
             <Button
+                onPress={handlePress}
                 className={clsx(
                     ButtonReset,
                     TapTarget,
@@ -39,6 +44,9 @@ export const DisclosureHeader: React.FC<
                 data-expanded={isExpanded || undefined}
                 data-shape="square"
             >
+                <span className={styles["state-layer"]}>
+                    {splashInfo && <Splash {...splashInfo} />}
+                </span>
                 <Icon withText icon={ChevronRight} />
                 {children}
             </Button>

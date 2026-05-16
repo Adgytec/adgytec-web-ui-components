@@ -4,6 +4,7 @@ import {
     Clipboard,
     CloudSnow,
     CloudSun,
+    DollarSign,
     Download,
     ExternalLinkIcon,
     Eye,
@@ -12,6 +13,7 @@ import {
     Globe,
     GlobeLock,
     GlobeOff,
+    HandCoins,
     LogOut,
     type LucideIcon,
     Mail,
@@ -31,7 +33,7 @@ import {
     User,
     UserRound,
 } from "lucide-react";
-import { Fragment, type ReactNode, useState } from "react";
+import { type CSSProperties, Fragment, type ReactNode, useState } from "react";
 import { useListData } from "react-aria-components/useListData";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
@@ -45,6 +47,7 @@ import {
     TagGroup,
     TagList,
 } from "react-aria-components";
+import { useLocalStorage } from "usehooks-ts";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@/components/Tabs";
 import {
     Button,
@@ -55,6 +58,7 @@ import {
     ConnectedButton,
     ConnectedButtonGroup,
     type ConnectedButtonGroupColor,
+    type CoreButtonColor,
     IconButton,
     type IconButtonColor,
     type IconButtonWidth,
@@ -83,12 +87,15 @@ import {
 } from "./components/Disclosure";
 import { Icon } from "./components/Icon";
 import {
+    CenteredSlider,
     ComboBox,
     ComboBoxPopover,
     ComboBoxTrigger,
     DateField,
     Input,
+    InputButton,
     Label,
+    RangeSlider,
     Select,
     SelectItem,
     SelectList,
@@ -96,6 +103,8 @@ import {
     SelectListSectionHeader,
     SelectPopover,
     SelectTrigger,
+    Slider,
+    type SliderSize,
     TextArea,
     TimeField,
 } from "./components/Input";
@@ -129,7 +138,6 @@ import {
 } from "./components/Tooltip/RichTooltip";
 import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
 import { typography } from "./utils/typography";
-import { useLocalStorage } from "usehooks-ts";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -1168,29 +1176,70 @@ const ButtonGroupPreview = () => {
         "extra-large",
     ];
 
+    const shapes: ButtonShape[] = ["round", "square"];
+
+    const colors: CoreButtonColor[] = ["outlined", "tonal", "filled"];
+
     return (
         <>
-            {sizes.map((size) => (
-                <div className="items" key={size}>
-                    <ButtonGroup size={size} shape="square" color="outlined">
-                        <ToggleButton id={"one"}>One</ToggleButton>
+            {colors.map((color) => (
+                <Fragment key={color}>
+                    {shapes.map((shape) => (
+                        <Fragment key={shape}>
+                            <h3
+                                className={typography.titleLargeEmphasized}
+                                style={{
+                                    textAlign: "center",
+                                }}
+                            >{`${color}-${shape}`}</h3>
 
-                        <ToggleButton id={"two"}>Two</ToggleButton>
+                            {sizes.map((size) => (
+                                <Fragment key={size}>
+                                    <div className="items">
+                                        <ButtonGroup
+                                            size={size}
+                                            color={color}
+                                            shape={shape}
+                                        >
+                                            <ToggleButton id={"one"}>
+                                                One
+                                            </ToggleButton>
 
-                        <ToggleButton
-                            id={"three"}
-                            icon={Armchair}
-                            shape="round"
-                            color="elevated"
-                        >
-                            Three
-                        </ToggleButton>
+                                            <ToggleButton id={"two"}>
+                                                Two
+                                            </ToggleButton>
 
-                        <ToggleIconButton id={"four"} icon={Sofa} />
+                                            <ToggleButton
+                                                id={"three"}
+                                                icon={Armchair}
+                                            >
+                                                Three
+                                            </ToggleButton>
 
-                        <ToggleButton id={"five"}>Five</ToggleButton>
-                    </ButtonGroup>
-                </div>
+                                            <ToggleIconButton
+                                                id={"four"}
+                                                icon={Sofa}
+                                            />
+
+                                            <ToggleButton id={"five"}>
+                                                Five
+                                            </ToggleButton>
+                                        </ButtonGroup>
+                                    </div>
+                                </Fragment>
+                            ))}
+
+                            <Separator
+                                style={
+                                    {
+                                        "--separator-color":
+                                            "var(--md-sys-color-primary)",
+                                    } as CSSProperties
+                                }
+                            />
+                        </Fragment>
+                    ))}
+                </Fragment>
             ))}
         </>
     );
@@ -1445,14 +1494,12 @@ const InputPreview = () => {
                 suffix={"@adgytec.in"}
                 // editorDir="rtl"
                 leadingIcon={Mail}
-                trailing={(isDisabled) => (
-                    <IconButton
+                trailing={
+                    <InputButton
                         icon={Armchair}
-                        color="standard"
                         onPress={() => setVal("hello")}
-                        isDisabled={isDisabled}
                     />
-                )}
+                }
                 showCharacterCount
                 value={val}
                 onChange={setVal}
@@ -1821,7 +1868,7 @@ const ToolbarPreview = () => {
     }) => {
         return (
             <>
-                <div className={"items"}>
+                <div className={"items"} data-toolbar={true}>
                     <Toolbar
                         color={color}
                         variant={variant}
@@ -1967,6 +2014,7 @@ const ToolbarPreview = () => {
                                 color={color}
                                 variant={variant}
                                 orientation={orientation}
+                                className="toolbar-overflow"
                             >
                                 <Button
                                     icon={Armchair}
@@ -2008,6 +2056,7 @@ const ToolbarPreview = () => {
                                 color={color}
                                 variant={variant}
                                 orientation={orientation}
+                                className="toolbar-overflow"
                             >
                                 <ToggleButton
                                     icon={Globe}
@@ -2098,8 +2147,22 @@ const TabsPreview = () => {
         orientation?: Orientation;
     }) => {
         return (
-            <Tabs keyboardActivation="manual" orientation={orientation}>
-                <TabList aria-label="Settings">
+            <Tabs
+                keyboardActivation="manual"
+                orientation={orientation}
+                style={{
+                    padding: "var(--md-sys-layout-space-28)",
+                    borderRadius: "var(--md-sys-shape-corner-radius-large)",
+                    outline:
+                        "var(--md-sys-shape-border-width-thin) solid var(--md-sys-color-outline)",
+                }}
+            >
+                <TabList
+                    aria-label="Settings"
+                    style={{
+                        scrollbarWidth: "none",
+                    }}
+                >
                     <Tab
                         id="general"
                         label="General"
@@ -2208,37 +2271,13 @@ const TabsPreview = () => {
     };
     return (
         <div className="items">
-            <div
-                style={{
-                    width: "45%",
-                }}
-            >
-                <RenderTabs />
-            </div>
+            <RenderTabs />
 
-            <div
-                style={{
-                    width: "45%",
-                }}
-            >
-                <RenderTabs orientation="vertical" />
-            </div>
+            <RenderTabs orientation="vertical" />
 
-            <div
-                style={{
-                    width: "45%",
-                }}
-            >
-                <RenderTabs isDisabled />
-            </div>
+            <RenderTabs isDisabled />
 
-            <div
-                style={{
-                    width: "45%",
-                }}
-            >
-                <RenderTabs isDisabled orientation="vertical" />
-            </div>
+            <RenderTabs isDisabled orientation="vertical" />
         </div>
     );
 };
@@ -2368,6 +2407,251 @@ const TagsPreview = () => {
     );
 };
 
+const RangeSliderPreview = () => {
+    const sizes: SliderSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+
+    const orientation: Orientation[] = ["horizontal", "vertical"];
+
+    return (
+        <div className="items-grid">
+            {orientation.map((o) => {
+                return (
+                    <div
+                        key={o}
+                        className={clsx("items")}
+                        style={{
+                            justifyContent: "center",
+                        }}
+                        data-slider-orientation={o}
+                    >
+                        {sizes.map((size) => (
+                            <Fragment key={size}>
+                                <div>
+                                    <RangeSlider
+                                        label={`${o}--${size}`}
+                                        orientation={o}
+                                        size={size}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <RangeSlider
+                                        label={`${o}--${size}--steps`}
+                                        orientation={o}
+                                        size={size}
+                                        step={10}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <RangeSlider
+                                        label={`${o}--${size}--disabled`}
+                                        isDisabled
+                                        orientation={o}
+                                        step={5}
+                                        size={size}
+                                        defaultValue={[30, 50]}
+                                    />
+                                </div>
+                            </Fragment>
+                        ))}
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
+
+const SliderPreview = () => {
+    const sizes: SliderSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+
+    const orientation: Orientation[] = ["horizontal", "vertical"];
+
+    return (
+        <div className="items-grid">
+            {orientation.map((o) => {
+                return (
+                    <div
+                        key={o}
+                        className={clsx("items")}
+                        style={{
+                            justifyContent: "center",
+                        }}
+                        data-slider-orientation={o}
+                    >
+                        {sizes.map((size) => (
+                            <Fragment key={size}>
+                                <div>
+                                    <Slider
+                                        label={`${o}--${size}`}
+                                        orientation={o}
+                                        size={size}
+                                        insetIcon={DollarSign}
+                                        minInsetIcon={HandCoins}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <Slider
+                                        label={`${o}--${size}--steps`}
+                                        orientation={o}
+                                        size={size}
+                                        minValue={0}
+                                        maxValue={1}
+                                        step={0.04}
+                                        maxStops={25}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <Slider
+                                        label={`${o}--${size}--steps--not-aligned`}
+                                        orientation={o}
+                                        size={size}
+                                        minValue={0}
+                                        maxValue={10}
+                                        step={3}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <Slider
+                                        label={`${o}--${size}--disabled`}
+                                        step={5}
+                                        defaultValue={33}
+                                        isDisabled
+                                        orientation={o}
+                                        size={size}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
+                                </div>
+                            </Fragment>
+                        ))}
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
+
+const CenteredSliderPreview = () => {
+    const sizes: SliderSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+
+    const orientation: Orientation[] = ["horizontal", "vertical"];
+
+    return (
+        <div className="items-grid">
+            {orientation.map((o) => {
+                return (
+                    <div
+                        key={o}
+                        className={clsx("items")}
+                        style={{
+                            justifyContent: "center",
+                        }}
+                        data-slider-orientation={o}
+                    >
+                        {sizes.map((size) => (
+                            <Fragment key={size}>
+                                <div>
+                                    <CenteredSlider
+                                        label={`${o}--${size}`}
+                                        orientation={o}
+                                        size={size}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <CenteredSlider
+                                        label={`${o}--${size}--steps-odd`}
+                                        orientation={o}
+                                        size={size}
+                                        step={10}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <CenteredSlider
+                                        label={`${o}--${size}--steps-even`}
+                                        orientation={o}
+                                        size={size}
+                                        step={11}
+                                        maxValue={33}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <CenteredSlider
+                                        label={`${o}--${size}--disabled`}
+                                        isDisabled
+                                        orientation={o}
+                                        step={5}
+                                        size={size}
+                                        defaultValue={35}
+                                    />
+                                </div>
+                            </Fragment>
+                        ))}
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -2386,6 +2670,18 @@ const App = () => {
             label: "Theme Switcher",
             Component: VisualSettingsPreview,
         },
+
+        {
+            id: "centered-slider",
+            label: "Centered Slider",
+            Component: CenteredSliderPreview,
+        },
+        {
+            id: "range-slider",
+            label: "Range Slider",
+            Component: RangeSliderPreview,
+        },
+        { id: "slider", label: "Slider", Component: SliderPreview },
         { id: "tags", label: "Tags", Component: TagsPreview },
         { id: "tabs", label: "Tabs", Component: TabsPreview },
         { id: "toolbar", label: "Toolbar", Component: ToolbarPreview },
@@ -2435,7 +2731,7 @@ const App = () => {
                         if (orientation === "horizontal") {
                             pos = {
                                 position: "sticky",
-                                top: "0",
+                                insetBlockStart: "0",
                                 zIndex: "10",
                             };
                         }
@@ -2452,18 +2748,20 @@ const App = () => {
                 <TabPanels>
                     <TabPanel id="orientation">
                         <PreviewContainer label="Tab Orientation">
-                            <Button
-                                onPress={() =>
-                                    setOrientation((prev) => {
-                                        return prev === "horizontal"
-                                            ? "vertical"
-                                            : "horizontal";
-                                    })
-                                }
-                                color="outlined"
-                            >
-                                Change Orientation
-                            </Button>
+                            <div className="items">
+                                <Button
+                                    onPress={() =>
+                                        setOrientation((prev) => {
+                                            return prev === "horizontal"
+                                                ? "vertical"
+                                                : "horizontal";
+                                        })
+                                    }
+                                    color="outlined"
+                                >
+                                    Change Orientation
+                                </Button>
+                            </div>
                         </PreviewContainer>
                     </TabPanel>
 

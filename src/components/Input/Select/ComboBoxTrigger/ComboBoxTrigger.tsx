@@ -56,7 +56,8 @@ export const ComboBoxTrigger: React.FC<
                 className={clsx(
                     UnsetStyles,
                     EditorInputStyles,
-                    typography.bodyLarge
+                    typography.bodyLarge,
+                    styles["input"]
                 )}
                 data-input={true}
                 dir={dir}
@@ -65,6 +66,7 @@ export const ComboBoxTrigger: React.FC<
                 className={clsx(styles["trigger"])}
                 icon={ChevronDown}
                 color="standard"
+                data-invalid={isInvalid || undefined}
             />
         </span>
     );

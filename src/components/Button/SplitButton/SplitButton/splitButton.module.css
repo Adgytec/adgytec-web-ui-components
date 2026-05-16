@@ -1,7 +1,15 @@
+@layer adgytec.overrides {
+    .split-button [data-visual-button] {
+        --shape-motion: var(--md-sys-motion-standard-fast-spatial);
+        --shape-motion-duration: var(
+            --md-sys-motion-standard-fast-spatial-duration
+        );
+    }
+}
+
 @layer adgytec.comps {
     .split-button {
         display: inline-flex;
-        align-items: center;
         gap: calc(2 * var(--dp, 1px));
     }
 }

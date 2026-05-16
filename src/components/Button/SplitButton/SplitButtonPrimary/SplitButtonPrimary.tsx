@@ -58,6 +58,7 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
                     "data-focused": isFocused || undefined,
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
+                    "data-visual-button": true,
                 };
 
                 const iconSize = ButtonIconSizeMapping[splitButtonState.size];
