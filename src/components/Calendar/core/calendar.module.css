@@ -10,12 +10,23 @@
         grid-template-rows: auto 1fr;
 
         min-inline-size: min(100%, var(--calendar-inline-size));
+        max-inline-size: var(--calendar-inline-size);
         block-size: var(--calendar-block-size);
         min-block-size: var(--calendar-block-size);
     }
 
     .docked {
-        background-color: var(--md-sys-color-surface-container-high);
+        --calendar-docked-color: var(--md-sys-color-surface-container-high);
+        --calendar-header-cell-color: var(--md-sys-color-on-surface);
+
+        --calendar-cell-color: var(--md-sys-color-on-surface);
+        --calendar-cell-state-layer-color: var(
+            --md-sys-color-on-surface-variant
+        );
+        --calendar-cell-highlight-background: var(--md-sys-color-primary);
+        --calendar-cell-highlight-color: var(--md-sys-color-on-primary);
+
+        background-color: var(--calendar-docked-color);
         box-shadow: var(--md-sys-elevation-shadow-3);
         border-radius: var(--md-sys-shape-corner-radius-large);
 

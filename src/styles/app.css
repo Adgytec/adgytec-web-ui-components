@@ -135,3 +135,36 @@
         scrollbar-width: none;
     }
 }
+
+[data-calendar] > div {
+    display: grid;
+    gap: var(--md-sys-layout-space-16);
+
+    > h3 {
+        text-align: center;
+    }
+}
+
+.calendar-vibrant {
+    --calendar-docked-color: var(--md-sys-color-tertiary-container);
+    --calendar-header-cell-color: var(--md-sys-color-on-tertiary-container);
+
+    --calendar-cell-color: var(--md-sys-color-on-tertiary-container);
+    --calendar-cell-state-layer-color: var(
+        --md-sys-color-on-tertiary-container
+    );
+    --calendar-cell-highlight-background: var(--md-sys-color-tertiary);
+    --calendar-cell-highlight-color: var(--md-sys-color-on-tertiary);
+
+    background-color: var(--calendar-docked-color);
+
+    &[data-container="standard"] {
+        padding: var(--md-sys-layout-space-12);
+        padding-block-start: var(--md-sys-layout-space-20);
+        border-radius: var(--md-sys-shape-corner-radius-large);
+    }
+
+    [data-visual-button] {
+        --color-normal: var(--calendar-cell-color);
+    }
+}

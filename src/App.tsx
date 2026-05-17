@@ -2699,8 +2699,48 @@ const CenteredSliderPreview = () => {
 
 const CalendarPreview = () => {
     return (
-        <div className="items">
-            <Calendar />
+        <div className="items-grid" data-calendar>
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>Standard</h3>
+
+                <div className="items">
+                    <Calendar />
+
+                    <Calendar
+                        className="calendar-vibrant"
+                        data-container="standard"
+                    />
+                </div>
+            </div>
+
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>Docked</h3>
+
+                <div className="items">
+                    <Calendar containerStyle="docked" />
+
+                    <Calendar
+                        containerStyle="docked"
+                        className="calendar-vibrant"
+                    />
+                </div>
+            </div>
+
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>States</h3>
+
+                <div className="items">
+                    <Calendar isDisabled />
+
+                    <Calendar isInvalid />
+
+                    <Calendar
+                        isDateUnavailable={({ day }) => {
+                            return day % 2 === 0;
+                        }}
+                    />
+                </div>
+            </div>
         </div>
     );
 };

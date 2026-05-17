@@ -15,8 +15,8 @@
         }
 
         &[data-invalid] {
-            --state-color: var(--md-sys-color-on-error-container);
             color: var(--md-sys-color-on-error-container);
+            --state-layer: currentColor;
 
             &::before {
                 background-color: var(--md-sys-color-error-container);
@@ -32,7 +32,10 @@
     }
 
     .cell {
-        --state-color: var(--md-sys-color-on-surface-variant);
+        --state-color: var(
+            --calendar-cell-state-layer-color,
+            var(--md-sys-color-on-surface-variant)
+        );
         --state-layer-opacity: 0;
 
         --state-layer-color: rgb(
@@ -48,7 +51,7 @@
         align-items: center;
         justify-content: center;
 
-        color: var(--md-sys-color-on-surface);
+        color: var(--calendar-cell-color, var(--md-sys-color-on-surface));
         cursor: pointer;
 
         transition: color var(--md-sys-motion-expressive-fast-effects)
@@ -112,23 +115,32 @@
         }
 
         &[data-today] {
-            --state-color: var(--md-sys-color-primary);
-            color: var(--md-sys-color-primary);
+            color: var(
+                --calendar-cell-highlight-background,
+                var(--md-sys-color-primary)
+            );
+            --state-color: currentColor;
 
             &::before {
-                border: calc(1 * var(--dp, 1px)) solid
-                    var(--md-sys-color-primary);
+                border: calc(1 * var(--dp, 1px)) solid currentColor;
             }
         }
 
         &[data-selected],
         &[data-selection-start],
         &[data-selection-end] {
-            --state-color: var(--md-sys-color-on-primary);
-            color: var(--md-sys-color-on-primary);
+            color: var(
+                --calendar-cell-highlight-color,
+                var(--md-sys-color-on-primary)
+            );
+            --state-color: currentColor;
 
             &::before {
-                background-color: var(--md-sys-color-primary);
+                border-width: 0;
+                background-color: var(
+                    --calendar-cell-highlight-background,
+                    var(--md-sys-color-primary)
+                );
             }
         }
     }

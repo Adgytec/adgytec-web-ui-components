@@ -1,6 +1,9 @@
 @layer adgytec.comps {
     .header {
-        color: var(--md-sys-color-on-surface);
+        color: var(
+            --calendar-header-cell-color,
+            var(--md-sys-color-on-surface)
+        );
     }
 
     .header-cell {
