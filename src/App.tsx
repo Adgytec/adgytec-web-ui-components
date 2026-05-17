@@ -71,6 +71,7 @@ import {
     ToggleButton,
     ToggleIconButton,
 } from "./components/Button";
+import { Calendar } from "./components/Calendar";
 import {
     ActionDialog,
     Dialog,
@@ -2696,6 +2697,14 @@ const CenteredSliderPreview = () => {
     );
 };
 
+const CalendarPreview = () => {
+    return (
+        <div className="items">
+            <Calendar />
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -2715,6 +2724,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "calendar",
+            label: "Calendar",
+            Component: CalendarPreview,
+        },
         {
             id: "centered-slider",
             label: "Centered Slider",
