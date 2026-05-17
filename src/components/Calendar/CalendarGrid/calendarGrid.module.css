@@ -1,0 +1,9 @@
+@layer adgytec.comps {
+    .header {
+        color: var(--md-sys-color-on-surface);
+    }
+
+    .header-cell {
+        padding-block-end: var(--md-sys-layout-space-16);
+    }
+}

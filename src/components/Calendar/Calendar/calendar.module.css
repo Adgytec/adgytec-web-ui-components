@@ -26,12 +26,4 @@
         align-items: center;
         justify-content: space-between;
     }
-
-    .header {
-        color: var(--md-sys-color-on-surface);
-    }
-
-    .header-cell {
-        padding-block-end: var(--md-sys-layout-space-16);
-    }
 }
