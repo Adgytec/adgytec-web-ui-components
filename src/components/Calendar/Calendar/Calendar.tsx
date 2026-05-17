@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
     Calendar as AriaCalendar,
-    CalendarCell,
     CalendarGrid,
     CalendarGridBody,
     CalendarGridHeader,
@@ -11,6 +10,7 @@ import {
 } from "react-aria-components";
 import { IconButton } from "@/components/Button";
 import { typography } from "@/utils";
+import { CalendarCell } from "../CalendarCell";
 import styles from "./calendar.module.css";
 
 export const Calendar: React.FC<
