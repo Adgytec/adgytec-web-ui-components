@@ -1,5 +1,10 @@
 @layer adgytec.overrides {
     .cell {
+        &[data-selection-start],
+        &[data-selection-end] {
+            z-index: 5;
+        }
+
         &[data-disabled],
         &[data-outside-month],
         &[data-outside-visible-range] {
@@ -8,6 +13,11 @@
                 var(--md-sys-state-disabled-content)
             );
             cursor: default;
+
+            &::before {
+                border-width: 0;
+                background-color: transparent;
+            }
         }
 
         &[data-unavailable] {
@@ -15,11 +25,23 @@
         }
 
         &[data-invalid] {
-            color: var(--md-sys-color-on-error-container);
+            color: var(--md-sys-color-on-error);
             --state-layer: currentColor;
 
             &::before {
-                background-color: var(--md-sys-color-error-container);
+                background-color: var(--md-sys-color-error);
+            }
+
+            &[data-range-calendar]:not([data-selection-start]):not(
+                    [data-selection-end]
+                ) {
+                color: var(
+                    --md-sys-color-on-error-container,
+                );
+
+                &::before {
+                    background-color: var(--md-sys-color-error-container);
+                }
             }
         }
     }
@@ -27,7 +49,6 @@
 
 @layer adgytec.comps {
     .splash-container {
-        z-index: -1;
         overflow: hidden;
     }
 
@@ -44,8 +65,8 @@
         );
 
         position: relative;
-        z-index: 0;
         outline: none;
+        z-index: 0;
 
         display: flex;
         align-items: center;
@@ -65,9 +86,12 @@
         &::before,
         &::after,
         .splash-container {
-            z-index: -3;
             content: "";
             position: absolute;
+
+            /* for before  */
+            z-index: -10;
+
             block-size: var(--md-sys-layout-space-40);
             aspect-ratio: 1 / 1;
 
@@ -86,20 +110,28 @@
             }
         }
 
+        /* state layer */
         &::after {
-            z-index: -2;
+            z-index: -5;
             background-color: var(--state-layer-color);
         }
 
+        .splash-container {
+            z-index: -5;
+        }
+
         &[data-hovered] {
+            z-index: 1;
             --state-layer-opacity: var(--md-sys-state-hover);
         }
 
         &[data-pressed] {
+            z-index: 1;
             --state-layer-opacity: var(--md-sys-state-pressed);
         }
 
         &[data-focus-visible] {
+            z-index: 1;
             --state-layer-opacity: var(--md-sys-state-focus);
 
             &::before {
@@ -141,6 +173,22 @@
                     --calendar-cell-highlight-background,
                     var(--md-sys-color-primary)
                 );
+            }
+        }
+
+        &[data-range-calendar][data-selected] {
+            &:not([data-selection-start]):not([data-selection-end]) {
+                color: var(
+                    --calendar-active-range-color,
+                    var(--md-sys-color-on-secondary-container)
+                );
+
+                &::before {
+                    background-color: var(
+                        --calendar-active-range-background,
+                        var(--md-sys-color-secondary-container)
+                    );
+                }
             }
         }
     }

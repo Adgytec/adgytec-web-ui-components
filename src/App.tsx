@@ -71,7 +71,7 @@ import {
     ToggleButton,
     ToggleIconButton,
 } from "./components/Button";
-import { Calendar } from "./components/Calendar";
+import { Calendar, RangeCalendar } from "./components/Calendar";
 import {
     ActionDialog,
     Dialog,
@@ -2745,6 +2745,54 @@ const CalendarPreview = () => {
     );
 };
 
+const RangeCalendarPreview = () => {
+    return (
+        <div className="items-grid" data-calendar>
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>Standard</h3>
+
+                <div className="items">
+                    <RangeCalendar />
+
+                    <RangeCalendar
+                        className="calendar-vibrant"
+                        data-container="standard"
+                    />
+                </div>
+            </div>
+
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>Docked</h3>
+
+                <div className="items">
+                    <RangeCalendar containerStyle="docked" />
+
+                    <RangeCalendar
+                        containerStyle="docked"
+                        className="calendar-vibrant"
+                    />
+                </div>
+            </div>
+
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>States</h3>
+
+                <div className="items">
+                    <RangeCalendar isDisabled />
+
+                    <RangeCalendar isInvalid />
+
+                    <RangeCalendar
+                        isDateUnavailable={({ day }) => {
+                            return day % 2 === 0;
+                        }}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -2764,6 +2812,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "range-calendar",
+            label: "Range Calendar",
+            Component: RangeCalendarPreview,
+        },
         {
             id: "calendar",
             label: "Calendar",

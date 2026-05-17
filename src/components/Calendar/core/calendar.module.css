@@ -1,9 +1,7 @@
 @layer adgytec.comps {
     .calendar {
         --calendar-inline-size: calc(360 * var(--dp, 1px));
-
-        /* removed text button and its gap height: 44dp */
-        --calendar-block-size: calc(412 * var(--dp, 1px));
+        --calendar-block-size: calc(456 * var(--dp, 1px));
 
         display: grid;
         gap: calc(30 * var(--dp, 1px));
@@ -25,6 +23,13 @@
         );
         --calendar-cell-highlight-background: var(--md-sys-color-primary);
         --calendar-cell-highlight-color: var(--md-sys-color-on-primary);
+
+        --calendar-active-range-background: var(
+            --md-sys-color-secondary-container
+        );
+        --calendar-active-range-color: var(
+            --md-sys-color-on-secondary-container
+        );
 
         background-color: var(--calendar-docked-color);
         box-shadow: var(--md-sys-elevation-shadow-3);

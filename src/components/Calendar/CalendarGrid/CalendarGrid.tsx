@@ -13,8 +13,8 @@ export const CalendarGrid: React.FC<
     Omit<
         React.ComponentPropsWithRef<typeof AriaCalendarGrid>,
         "children" | "className"
-    >
-> = (...props) => {
+    > & { isRangeCalendar?: boolean }
+> = ({ isRangeCalendar, ...props }) => {
     return (
         <AriaCalendarGrid {...props} className={clsx(styles["grid"])}>
             <CalendarGridHeader className={clsx(styles["header"])}>
@@ -31,7 +31,12 @@ export const CalendarGrid: React.FC<
             </CalendarGridHeader>
 
             <CalendarGridBody className={clsx(styles["body"])}>
-                {(date) => <CalendarCell date={date} />}
+                {(date) => (
+                    <CalendarCell
+                        isRangeCalendar={isRangeCalendar}
+                        date={date}
+                    />
+                )}
             </CalendarGridBody>
         </AriaCalendarGrid>
     );

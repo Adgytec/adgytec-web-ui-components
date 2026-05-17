@@ -156,6 +156,11 @@
     --calendar-cell-highlight-background: var(--md-sys-color-tertiary);
     --calendar-cell-highlight-color: var(--md-sys-color-on-tertiary);
 
+    --calendar-active-range-background: var(--md-sys-color-tertiary-fixed-dim);
+    --calendar-active-range-color: var(
+        --md-sys-color-on-tertiary-fixed-variant
+    );
+
     background-color: var(--calendar-docked-color);
 
     &[data-container="standard"] {

@@ -7,8 +7,10 @@ import { typography } from "@/utils";
 import styles from "./calendarCell.module.css";
 
 export const CalendarCell: React.FC<
-    Omit<React.ComponentPropsWithRef<typeof AriaCalendarCell>, "children">
-> = ({ className, ...props }) => {
+    Omit<React.ComponentPropsWithRef<typeof AriaCalendarCell>, "children"> & {
+        isRangeCalendar?: boolean;
+    }
+> = ({ className, isRangeCalendar = false, ...props }) => {
     const { splashInfo, handlePress } = useSplash();
     const { pressProps } = usePress({ onPress: handlePress });
 
@@ -25,6 +27,7 @@ export const CalendarCell: React.FC<
             }
             {...pressProps}
             {...props}
+            data-range-calendar={isRangeCalendar || undefined}
         >
             {({
                 formattedDate,
