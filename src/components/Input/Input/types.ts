@@ -9,7 +9,13 @@ import type { CoreInputProps } from "../core";
 
 export type InputRenderProp =
     | ReactNode
-    | ((isDisabled: boolean, isInvalid: boolean) => ReactNode);
+    | (({
+          isDisabled,
+          isInvalid,
+      }: {
+          isDisabled: boolean;
+          isInvalid: boolean;
+      }) => ReactNode);
 
 export interface InputProps
     extends Omit<AriaTextFieldProps, "children">,

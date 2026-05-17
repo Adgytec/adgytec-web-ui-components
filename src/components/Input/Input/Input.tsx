@@ -119,7 +119,7 @@ export const Input: React.FC<InputProps> = ({
                             )}
                             <span className={clsx(EditorInputGroupStyles)}>
                                 {prefix && typeof prefix === "function"
-                                    ? prefix(isDisabled, isInvalid)
+                                    ? prefix({ isDisabled, isInvalid })
                                     : prefix}
                                 <AriaInput
                                     ref={inputRef}
@@ -134,12 +134,12 @@ export const Input: React.FC<InputProps> = ({
                                     data-input={true}
                                 />
                                 {suffix && typeof suffix === "function"
-                                    ? suffix(isDisabled, isInvalid)
+                                    ? suffix({ isDisabled, isInvalid })
                                     : suffix}
                             </span>
 
                             {trailing && typeof trailing === "function"
-                                ? trailing(isDisabled, isInvalid)
+                                ? trailing({ isDisabled, isInvalid })
                                 : addStateAttrsToInputButton({
                                       node: trailing,
                                       isDisabled,

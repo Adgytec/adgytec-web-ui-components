@@ -104,6 +104,7 @@ import {
     SelectPopover,
     SelectTrigger,
     Slider,
+    SliderOutput,
     type SliderSize,
     Switch,
     TextArea,
@@ -2496,6 +2497,54 @@ const SliderPreview = () => {
                     >
                         {sizes.map((size) => (
                             <Fragment key={size}>
+                                <div>
+                                    <Slider
+                                        label={`${o}--${size}`}
+                                        orientation={o}
+                                        size={size}
+                                        insetIcon={DollarSign}
+                                        minInsetIcon={HandCoins}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <Slider
+                                        label={`${o}--${size}--custom-output`}
+                                        orientation={o}
+                                        size={size}
+                                        insetIcon={DollarSign}
+                                        minInsetIcon={HandCoins}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                        outputRenderer={({ thumbIndex }) => (
+                                            <SliderOutput>
+                                                {({ state }) => {
+                                                    const value =
+                                                        state.getThumbPercent(
+                                                            thumbIndex
+                                                        );
+
+                                                    if (value < 0.5) {
+                                                        return "less";
+                                                    }
+
+                                                    if (value > 0.5) {
+                                                        return "more";
+                                                    }
+
+                                                    return "half";
+                                                }}
+                                            </SliderOutput>
+                                        )}
+                                    />
+                                </div>
+
                                 <div>
                                     <Slider
                                         label={`${o}--${size}`}
