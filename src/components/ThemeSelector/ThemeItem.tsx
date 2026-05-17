@@ -11,7 +11,7 @@ export const ThemeItem = ({
 }: {
     heading: string;
     description?: string;
-    children: ReactNode;
+    children?: ReactNode;
     className?: string;
 }) => {
     return (

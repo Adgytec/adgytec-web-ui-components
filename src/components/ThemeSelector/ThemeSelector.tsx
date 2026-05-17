@@ -107,17 +107,17 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
                 </ConnectedButtonGroup>
             </ThemeItem>
 
-            <ThemeItem
-                heading={monochromeDetails.heading}
-                description={monochromeDetails.description}
-                className={clsx(styles["monochrome"])}
+            <Switch
+                aria-label={monochromeDetails.heading}
+                isSelected={isMonochrome}
+                onChange={setMonochrome}
+                containerStateLayer
             >
-                <Switch
-                    aria-label={monochromeDetails.heading}
-                    isSelected={isMonochrome}
-                    onChange={setMonochrome}
-                />
-            </ThemeItem>
+                <ThemeItem
+                    heading={monochromeDetails.heading}
+                    description={monochromeDetails.description}
+                ></ThemeItem>
+            </Switch>
         </div>
     );
 };
