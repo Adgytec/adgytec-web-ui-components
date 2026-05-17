@@ -277,10 +277,13 @@
 
         /* handle will be absolute to track */
         position: relative;
+        border-radius: var(--track-shape);
 
         inline-size: var(--track-inline-size);
+        min-inline-size: var(--track-inline-size);
+
         block-size: var(--track-block-size);
-        border-radius: var(--track-shape);
+        min-block-size: var(--track-block-size);
 
         border-width: var(--track-outline-thickness);
         border-style: solid;
