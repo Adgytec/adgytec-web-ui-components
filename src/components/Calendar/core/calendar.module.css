@@ -9,13 +9,15 @@
         gap: calc(30 * var(--dp, 1px));
         grid-template-rows: auto 1fr;
 
-        background-color: var(--md-sys-color-surface-container-high);
-        box-shadow: var(--md-sys-elevation-shadow-3);
-        border-radius: var(--md-sys-shape-corner-radius-large);
-
         min-inline-size: min(100%, var(--calendar-inline-size));
         block-size: var(--calendar-block-size);
         min-block-size: var(--calendar-block-size);
+    }
+
+    .docked {
+        background-color: var(--md-sys-color-surface-container-high);
+        box-shadow: var(--md-sys-elevation-shadow-3);
+        border-radius: var(--md-sys-shape-corner-radius-large);
 
         padding: var(--md-sys-layout-space-12);
         padding-block-start: var(--md-sys-layout-space-20);
