@@ -108,7 +108,6 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
             </ThemeItem>
 
             <Switch
-                aria-label={monochromeDetails.heading}
                 isSelected={isMonochrome}
                 onChange={setMonochrome}
                 containerStateLayer
@@ -116,6 +115,7 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
                 <ThemeItem
                     heading={monochromeDetails.heading}
                     description={monochromeDetails.description}
+                    useInline
                 ></ThemeItem>
             </Switch>
         </div>

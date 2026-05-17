@@ -8,12 +8,36 @@ export const ThemeItem = ({
     description,
     children,
     className,
+    useInline = false,
 }: {
     heading: string;
     description?: string;
     children?: ReactNode;
     className?: string;
+    useInline?: boolean;
 }) => {
+    if (useInline) {
+        return (
+            <span className={clsx(styles["theme-item"], className)}>
+                <span className={clsx(styles["theme-item-info"])}>
+                    <span className={clsx(typography.titleMedium)} slot="label">
+                        {heading}
+                    </span>
+
+                    {description && (
+                        <span
+                            className={clsx(typography.bodyMedium)}
+                            slot="description"
+                        >
+                            {description}
+                        </span>
+                    )}
+                </span>
+
+                {children}
+            </span>
+        );
+    }
     return (
         <div className={clsx(styles["theme-item"], className)}>
             <div className={clsx(styles["theme-item-info"])}>
