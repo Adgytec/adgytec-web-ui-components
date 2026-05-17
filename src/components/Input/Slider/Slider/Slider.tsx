@@ -24,6 +24,7 @@ export const Slider = <T extends number>({
     insetIcon,
     minInsetIcon,
     maxStops,
+    outputRenderer,
     ...props
 }: SliderProps<T>) => {
     const canShowIcon = size !== "extra-small" && size !== "small";
@@ -100,6 +101,7 @@ export const Slider = <T extends number>({
                                     size={size}
                                     orientation={orientation}
                                     aria-label={thumbLabel}
+                                    outputRenderer={outputRenderer}
                                 />
 
                                 <SliderStops

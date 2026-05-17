@@ -1,18 +1,14 @@
-import type { ReactNode } from "react";
 import type { Slider } from "react-aria-components";
-import type { SliderSize } from "../core";
+import type { BaseSliderProps } from "../core";
 
 type Tuple<T> = [T, T];
 export type RangeSliderType = Tuple<number>;
 
 export interface RangeSliderProps<T extends RangeSliderType>
     extends Omit<
-        React.ComponentPropsWithRef<typeof Slider<T>>,
-        "children" | "className"
-    > {
-    size?: SliderSize;
+            React.ComponentPropsWithRef<typeof Slider<T>>,
+            "children" | "className"
+        >,
+        BaseSliderProps {
     thumbLabels?: Tuple<string>;
-    showInBetweenSteps?: boolean;
-    maxStops?: number;
-    label?: ReactNode;
 }

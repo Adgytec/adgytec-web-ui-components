@@ -25,6 +25,7 @@ export const CenteredSlider = <T extends number>({
     defaultValue = ((minValue + maxValue) / 2) as T,
     showInBetweenSteps,
     maxStops,
+    outputRenderer,
     ...props
 }: CenteredSliderProps<T>) => {
     return (
@@ -129,6 +130,7 @@ export const CenteredSlider = <T extends number>({
                                     size={size}
                                     orientation={orientation}
                                     aria-label={thumbLabel}
+                                    outputRenderer={outputRenderer}
                                 />
 
                                 <SliderStops

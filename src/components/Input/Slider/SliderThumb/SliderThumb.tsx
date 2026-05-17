@@ -1,19 +1,18 @@
 import clsx from "clsx";
 import type { Orientation } from "react-aria";
-import {
-    SliderThumb as AriaSliderThumb,
-    SliderOutput,
-} from "react-aria-components";
-import { typography } from "@/utils";
-import type { SliderSize } from "../core";
+import { SliderThumb as AriaSliderThumb } from "react-aria-components";
+import type { OutputRenderer, SliderSize } from "../core";
+import { SliderOutput } from "../SliderOutput";
+import { SliderThumbStateContext } from "./context";
 import styles from "./sliderThumb.module.css";
 
 export const SliderThumb: React.FC<
     Omit<React.ComponentPropsWithRef<typeof AriaSliderThumb>, "children"> & {
         orientation: Orientation;
         size: SliderSize;
+        outputRenderer?: OutputRenderer;
     }
-> = ({ index = 0, orientation, className, size, ...props }) => {
+> = ({ index = 0, orientation, className, size, outputRenderer, ...props }) => {
     return (
         <AriaSliderThumb
             index={index}
@@ -29,21 +28,24 @@ export const SliderThumb: React.FC<
             data-orientation={orientation}
             {...props}
         >
-            {({ isFocusVisible, isDragging }) => {
-                return (
-                    <SliderOutput
-                        className={clsx(
-                            styles["output"],
-                            typography.labelLarge
-                        )}
-                        data-orientation={orientation}
-                        data-focus-visible={isFocusVisible || undefined}
-                        data-dragging={isDragging || undefined}
-                    >
-                        {({ state }) => state.getThumbValueLabel(index)}
-                    </SliderOutput>
-                );
-            }}
+            {(renderProp) => (
+                <SliderThumbStateContext value={renderProp}>
+                    {outputRenderer ? (
+                        typeof outputRenderer === "function" ? (
+                            outputRenderer({
+                                ...renderProp,
+                                thumbIndex: index,
+                            })
+                        ) : (
+                            outputRenderer
+                        )
+                    ) : (
+                        <SliderOutput>
+                            {({ state }) => state.getThumbValueLabel(index)}
+                        </SliderOutput>
+                    )}
+                </SliderThumbStateContext>
+            )}
         </AriaSliderThumb>
     );
 };

@@ -24,6 +24,7 @@ export const RangeSlider = <T extends RangeSliderType>({
     defaultValue = [minValue, minValue] as T,
     showInBetweenSteps,
     maxStops,
+    outputRenderer,
     ...props
 }: RangeSliderProps<T>) => {
     return (
@@ -119,6 +120,7 @@ export const RangeSlider = <T extends RangeSliderType>({
                                             data-z-index-increase={
                                                 increaseZindex || undefined
                                             }
+                                            outputRenderer={outputRenderer}
                                         />
                                     );
                                 })}
