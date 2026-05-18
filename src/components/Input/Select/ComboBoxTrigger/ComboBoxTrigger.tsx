@@ -5,10 +5,11 @@ import { useObjectRef } from "react-aria";
 import { useFocusRing } from "react-aria/useFocusRing";
 import { useHover } from "react-aria/useHover";
 import { usePress } from "react-aria/usePress";
-import { GroupContext, type GroupProps, Input } from "react-aria-components";
+import { Input } from "react-aria-components";
 import { IconButton } from "@/components/Button";
 import { type RefProp, typography } from "@/utils";
 import { EditorInputStyles, EditorStyles, UnsetStyles } from "../../core";
+import { ComboboxContext } from "../ComboBox/context";
 import styles from "./comboBoxTrigger.module.css";
 
 export const ComboBoxTrigger: React.FC<
@@ -19,10 +20,7 @@ export const ComboBoxTrigger: React.FC<
 > = ({ className, placeholder, dir, ref, ...props }) => {
     const inputRef = useObjectRef(ref);
 
-    const { isInvalid, isDisabled } = useContext(
-        GroupContext
-    ) as Partial<GroupProps>;
-
+    const { isInvalid, isDisabled, isOpen } = useContext(ComboboxContext);
     const { isFocused, isFocusVisible, focusProps } = useFocusRing({
         isTextInput: true,
     });
@@ -41,6 +39,7 @@ export const ComboBoxTrigger: React.FC<
         "data-invalid": isInvalid || undefined,
         "data-input": true,
         "data-disabled": isDisabled || undefined,
+        "data-open": isOpen || undefined,
     };
 
     return (
