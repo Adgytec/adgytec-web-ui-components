@@ -1,0 +1,9 @@
+@layer adgytec.comps {
+    .group {
+        white-space: nowrap;
+    }
+
+    .range-group {
+        white-space: nowrap;
+    }
+}
