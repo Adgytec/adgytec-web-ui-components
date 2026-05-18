@@ -23,7 +23,9 @@ export const ComboBoxTrigger: React.FC<
         GroupContext
     ) as Partial<GroupProps>;
 
-    const { isFocused, isFocusVisible, focusProps } = useFocusRing();
+    const { isFocused, isFocusVisible, focusProps } = useFocusRing({
+        isTextInput: true,
+    });
     const { isHovered, hoverProps } = useHover({});
     const { pressProps } = usePress({
         onPress: () => {

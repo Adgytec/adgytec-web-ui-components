@@ -112,6 +112,7 @@ import {
     TimeField,
 } from "./components/Input";
 import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
+import { DatePicker } from "./components/Input/DatePicker";
 import { Radio, RadioGroup } from "./components/Input/Radio";
 import {
     Menu,
@@ -2793,6 +2794,27 @@ const RangeCalendarPreview = () => {
     );
 };
 
+const DatePickerPreview = () => {
+    return (
+        <div className="items">
+            <DatePicker label="Birthday" description="Add your birthday" />
+
+            <DatePicker
+                label="Birthday"
+                description="Add your birthday"
+                showDescriptionOnInvalid
+                isInvalid
+            />
+
+            <DatePicker
+                label="Birthday"
+                description="Add your birthday"
+                isDisabled
+            />
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -2812,6 +2834,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "date-picker",
+            label: "Date Picker",
+            Component: DatePickerPreview,
+        },
         {
             id: "range-calendar",
             label: "Range Calendar",

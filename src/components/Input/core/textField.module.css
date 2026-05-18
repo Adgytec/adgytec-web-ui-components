@@ -149,7 +149,8 @@
 
             &[data-focus-visible],
             &[data-focus-within],
-            &[data-focused] {
+            &[data-focused],
+            &[data-open] {
                 --outline-color: var(--outline-color-focused-normal);
                 --outline-color-focused: var(--outline-color);
             }
@@ -161,7 +162,8 @@
 
                 &[data-focus-visible],
                 &[data-focus-within],
-                &[data-focused] {
+                &[data-focused],
+                &[data-open] {
                     --outline-color: var(--outline-color-focused-invalid);
                 }
             }
