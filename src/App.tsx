@@ -93,6 +93,8 @@ import {
     ComboBoxPopover,
     ComboBoxTrigger,
     DateField,
+    DatePicker,
+    DateRangePicker,
     Input,
     InputButton,
     Label,
@@ -112,7 +114,6 @@ import {
     TimeField,
 } from "./components/Input";
 import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
-import { DatePicker } from "./components/Input/DatePicker";
 import { Radio, RadioGroup } from "./components/Input/Radio";
 import {
     Menu,
@@ -2815,6 +2816,27 @@ const DatePickerPreview = () => {
     );
 };
 
+const DateRangePickerPreview = () => {
+    return (
+        <div className="items">
+            <DateRangePicker label="Dates" description="Select date range" />
+
+            <DateRangePicker
+                label="Dates"
+                description="Select date range"
+                showDescriptionOnInvalid
+                isInvalid
+            />
+
+            <DateRangePicker
+                label="Dates"
+                description="Select date range"
+                isDisabled
+            />
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -2834,6 +2856,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "range-date-picker",
+            label: "Date Range Picker",
+            Component: DateRangePickerPreview,
+        },
         {
             id: "date-picker",
             label: "Date Picker",
