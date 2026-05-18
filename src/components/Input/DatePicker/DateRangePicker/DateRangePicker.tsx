@@ -140,7 +140,7 @@ export const DateRangePicker = <T extends DateValue>({
                         </FieldError>
 
                         <Popover className={clsx(DatePickerPopoverStyles)}>
-                            <RangeCalendar containerStyle="docked" />
+                            <RangeCalendar />
                         </Popover>
                     </>
                 );

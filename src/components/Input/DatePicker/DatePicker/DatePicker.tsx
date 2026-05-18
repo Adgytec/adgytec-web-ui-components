@@ -105,7 +105,7 @@ export const DatePicker = <T extends DateValue>({
                         </FieldError>
 
                         <Popover className={clsx(DatePickerPopoverStyles)}>
-                            <Calendar containerStyle="docked" />
+                            <Calendar />
                         </Popover>
                     </>
                 );

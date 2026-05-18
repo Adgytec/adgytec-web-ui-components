@@ -163,11 +163,9 @@
 
     background-color: var(--calendar-docked-color);
 
-    &[data-container="standard"] {
-        padding: var(--md-sys-layout-space-12);
-        padding-block-start: var(--md-sys-layout-space-20);
-        border-radius: var(--md-sys-shape-corner-radius-large);
-    }
+    padding: var(--md-sys-layout-space-12);
+    padding-block-start: var(--md-sys-layout-space-20);
+    border-radius: var(--md-sys-shape-corner-radius-large);
 
     [data-visual-button] {
         --color-normal: var(--calendar-cell-color);

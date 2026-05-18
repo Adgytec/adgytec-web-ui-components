@@ -6,4 +6,18 @@
     .range-group {
         white-space: nowrap;
     }
+
+    .popover {
+        --calendar-docked-color: var(--md-sys-color-surface-container-high);
+
+        background-color: var(--calendar-docked-color);
+        box-shadow: var(--md-sys-elevation-shadow-3);
+        border-radius: var(--md-sys-shape-corner-radius-large);
+
+        padding: var(--md-sys-layout-space-12);
+        padding-block-start: var(--md-sys-layout-space-20);
+
+        overflow: auto;
+        scrollbar-width: none;
+    }
 }

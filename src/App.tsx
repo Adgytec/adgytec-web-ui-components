@@ -2708,23 +2708,7 @@ const CalendarPreview = () => {
                 <div className="items">
                     <Calendar />
 
-                    <Calendar
-                        className="calendar-vibrant"
-                        data-container="standard"
-                    />
-                </div>
-            </div>
-
-            <div>
-                <h3 className={typography.titleLargeEmphasized}>Docked</h3>
-
-                <div className="items">
-                    <Calendar containerStyle="docked" />
-
-                    <Calendar
-                        containerStyle="docked"
-                        className="calendar-vibrant"
-                    />
+                    <Calendar className="calendar-vibrant" />
                 </div>
             </div>
 
@@ -2756,23 +2740,7 @@ const RangeCalendarPreview = () => {
                 <div className="items">
                     <RangeCalendar />
 
-                    <RangeCalendar
-                        className="calendar-vibrant"
-                        data-container="standard"
-                    />
-                </div>
-            </div>
-
-            <div>
-                <h3 className={typography.titleLargeEmphasized}>Docked</h3>
-
-                <div className="items">
-                    <RangeCalendar containerStyle="docked" />
-
-                    <RangeCalendar
-                        containerStyle="docked"
-                        className="calendar-vibrant"
-                    />
+                    <RangeCalendar className="calendar-vibrant" />
                 </div>
             </div>
 

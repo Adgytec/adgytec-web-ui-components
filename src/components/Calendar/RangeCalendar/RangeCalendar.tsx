@@ -6,12 +6,7 @@ import {
 } from "react-aria-components";
 import { IconButton } from "@/components/Button";
 import { CalendarGrid } from "../CalendarGrid";
-import {
-    CalendarBaseStyles,
-    type CalendarContainer,
-    CalendarContainerStyles,
-    CalendarHeaderStyles,
-} from "../core";
+import { CalendarBaseStyles, CalendarHeaderStyles } from "../core";
 
 export const RangeCalendar: React.FC<
     Omit<
@@ -19,15 +14,13 @@ export const RangeCalendar: React.FC<
         "children" | "visibleDuration" | "pageBehavior"
     > & {
         weekdayStyle?: "narrow" | "short" | "long";
-        containerStyle?: CalendarContainer;
     }
-> = ({ weekdayStyle, className, containerStyle = "standard", ...props }) => {
+> = ({ weekdayStyle, className, ...props }) => {
     return (
         <AriaRangeCalendar
             className={(renderProps) =>
                 clsx(
                     CalendarBaseStyles,
-                    CalendarContainerStyles(containerStyle),
                     typeof className === "function"
                         ? className(renderProps)
                         : className

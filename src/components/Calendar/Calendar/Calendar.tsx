@@ -3,12 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Calendar as AriaCalendar, Heading } from "react-aria-components";
 import { IconButton } from "@/components/Button";
 import { CalendarGrid } from "../CalendarGrid";
-import {
-    CalendarBaseStyles,
-    type CalendarContainer,
-    CalendarContainerStyles,
-    CalendarHeaderStyles,
-} from "../core";
+import { CalendarBaseStyles, CalendarHeaderStyles } from "../core";
 
 export const Calendar: React.FC<
     Omit<
@@ -16,15 +11,13 @@ export const Calendar: React.FC<
         "children" | "visibleDuration" | "pageBehavior"
     > & {
         weekdayStyle?: "narrow" | "short" | "long";
-        containerStyle?: CalendarContainer;
     }
-> = ({ weekdayStyle, className, containerStyle = "standard", ...props }) => {
+> = ({ weekdayStyle, className, ...props }) => {
     return (
         <AriaCalendar
             className={(renderProps) =>
                 clsx(
                     CalendarBaseStyles,
-                    CalendarContainerStyles(containerStyle),
                     typeof className === "function"
                         ? className(renderProps)
                         : className
