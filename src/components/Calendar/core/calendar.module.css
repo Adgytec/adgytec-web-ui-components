@@ -15,6 +15,12 @@
         --calendar-active-range-color: var(
             --md-sys-color-on-secondary-container
         );
+
+        --calendar-cell-size: clamp(
+            var(--md-sys-layout-space-40),
+            7svi,
+            var(--md-sys-layout-space-48)
+        );
     }
 
     .actions {

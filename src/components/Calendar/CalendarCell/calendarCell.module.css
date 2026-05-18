@@ -15,8 +15,8 @@
         text-align: center;
         outline: none;
 
-        inline-size: var(--md-sys-layout-space-48);
-        block-size: var(--md-sys-layout-space-48);
+        inline-size: var(--calendar-cell-size);
+        block-size: var(--calendar-cell-size);
 
         display: flex;
         align-items: center;
