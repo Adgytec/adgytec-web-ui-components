@@ -88,12 +88,8 @@
                     var(--md-sys-color-on-secondary-container)
                 );
 
-                /* TODO: will update this */
                 &::before {
-                    background-color: var(
-                        --calendar-active-range-background,
-                        var(--md-sys-color-secondary-container)
-                    );
+                    background-color: transparent;
                 }
             }
         }
@@ -129,7 +125,7 @@
                 );
 
                 &::before {
-                    background-color: var(--md-sys-color-error-container);
+                    background-color: transparent;
                 }
             }
         }
@@ -171,5 +167,57 @@
         outline-style: solid;
         outline-offset: var(--focus-indicator-offset);
         outline-color: var(--focus-indicator-color);
+    }
+
+    .range-indicator {
+        --range-indicator-background: var(
+            --calendar-active-range-background,
+            var(--md-sys-color-secondary-container)
+        );
+
+        z-index: -2;
+        position: absolute;
+        inset: 0;
+        inset-block: var(--md-sys-layout-space-4);
+
+        transition: background-color
+            var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-invalid] {
+            --range-indicator-background: var(--md-sys-color-error-container);
+        }
+
+        &[data-in-range] {
+            background-color: var(--range-indicator-background);
+        }
+
+        &[data-selection-start] {
+            inset-inline-start: var(--md-sys-layout-space-4);
+
+            border-start-start-radius: var(--md-sys-shape-corner-radius-full);
+            border-end-start-radius: var(--md-sys-shape-corner-radius-full);
+
+            background-color: var(--range-indicator-background);
+        }
+
+        &[data-selection-end] {
+            inset-inline-end: var(--md-sys-layout-space-4);
+
+            border-start-end-radius: var(--md-sys-shape-corner-radius-full);
+            border-end-end-radius: var(--md-sys-shape-corner-radius-full);
+
+            background-color: var(--range-indicator-background);
+        }
+
+        &[data-disabled],
+        &[data-outside-month],
+        &[data-outside-visible-range] {
+            --range-indicator-background: transparent;
+        }
     }
 }

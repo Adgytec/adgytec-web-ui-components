@@ -34,7 +34,17 @@ export const CalendarCell: React.FC<
                 isDisabled,
                 isOutsideVisibleRange,
                 isOutsideMonth,
+                isInvalid,
+                isSelected,
+                isSelectionStart,
+                isSelectionEnd,
             }) => {
+                const inBetweenRange =
+                    isRangeCalendar &&
+                    isSelected &&
+                    !isSelectionStart &&
+                    !isSelectionEnd;
+
                 const disableSplash =
                     isDisabled || isOutsideMonth || isOutsideVisibleRange;
 
@@ -44,6 +54,23 @@ export const CalendarCell: React.FC<
                             <span className={clsx(styles["splash-container"])}>
                                 <Splash {...splashInfo} />
                             </span>
+                        )}
+
+                        {isRangeCalendar && (
+                            <span
+                                className={clsx(styles["range-indicator"])}
+                                data-in-range={inBetweenRange || undefined}
+                                data-selection-start={
+                                    isSelectionStart || undefined
+                                }
+                                data-selection-end={isSelectionEnd || undefined}
+                                data-invalid={isInvalid || undefined}
+                                data-disabeld={isDisabled || undefined}
+                                data-outside-month={isOutsideMonth || undefined}
+                                data-outside-visible-range={
+                                    isOutsideVisibleRange || undefined
+                                }
+                            ></span>
                         )}
 
                         {formattedDate}
