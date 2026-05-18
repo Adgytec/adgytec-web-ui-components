@@ -1,57 +1,4 @@
-@layer adgytec.overrides {
-    .cell {
-        &[data-selection-start],
-        &[data-selection-end] {
-            z-index: 5;
-        }
-
-        &[data-disabled],
-        &[data-outside-month],
-        &[data-outside-visible-range] {
-            color: rgb(
-                from currentColor r g b /
-                var(--md-sys-state-disabled-content)
-            );
-            cursor: default;
-
-            &::before {
-                border-width: 0;
-                background-color: transparent;
-            }
-        }
-
-        &[data-unavailable] {
-            text-decoration: line-through;
-        }
-
-        &[data-invalid] {
-            color: var(--md-sys-color-on-error);
-            --state-layer: currentColor;
-
-            &::before {
-                background-color: var(--md-sys-color-error);
-            }
-
-            &[data-range-calendar]:not([data-selection-start]):not(
-                    [data-selection-end]
-                ) {
-                color: var(
-                    --md-sys-color-on-error-container,
-                );
-
-                &::before {
-                    background-color: var(--md-sys-color-error-container);
-                }
-            }
-        }
-    }
-}
-
 @layer adgytec.comps {
-    .splash-container {
-        overflow: hidden;
-    }
-
     .cell {
         --state-color: var(
             --calendar-cell-state-layer-color,
@@ -65,15 +12,20 @@
         );
 
         position: relative;
+        text-align: center;
         outline: none;
-        z-index: 0;
+
+        inline-size: var(--md-sys-layout-space-48);
+        block-size: var(--md-sys-layout-space-48);
 
         display: flex;
         align-items: center;
         justify-content: center;
 
-        color: var(--calendar-cell-color, var(--md-sys-color-on-surface));
+        z-index: 0;
+
         cursor: pointer;
+        color: var(--calendar-cell-color, var(--md-sys-color-on-surface));
 
         transition: color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration);
@@ -82,68 +34,17 @@
             transition: none;
         }
 
-        /* biome-ignore lint: styles are part of diff layer */
-        &::before,
-        &::after,
-        .splash-container {
-            content: "";
-            position: absolute;
-
-            /* for before  */
-            z-index: -10;
-
-            block-size: var(--md-sys-layout-space-40);
-            aspect-ratio: 1 / 1;
-
-            inset-block-start: 50%;
-            inset-inline-start: 50%;
-            translate: -50% -50%;
-
-            border-radius: var(--md-sys-shape-corner-radius-full);
-
-            transition: background-color
-                var(--md-sys-motion-expressive-fast-effects)
-                var(--md-sys-motion-expressive-fast-effects-duration);
-
-            @media (prefers-reduced-motion) {
-                transition: none;
-            }
-        }
-
-        /* state layer */
-        &::after {
-            z-index: -5;
-            background-color: var(--state-layer-color);
-        }
-
-        .splash-container {
-            z-index: -5;
+        &[data-focus-visible] {
+            z-index: 1;
+            --state-layer-opacity: var(--md-sys-state-focus);
         }
 
         &[data-hovered] {
-            z-index: 1;
             --state-layer-opacity: var(--md-sys-state-hover);
         }
 
         &[data-pressed] {
-            z-index: 1;
             --state-layer-opacity: var(--md-sys-state-pressed);
-        }
-
-        &[data-focus-visible] {
-            z-index: 1;
-            --state-layer-opacity: var(--md-sys-state-focus);
-
-            &::before {
-                --focus-indicator-thickness: calc(3 * var(--dp, 1px));
-                --focus-indicator-offset: calc(2 * var(--dp, 1px));
-                --focus-indicator-color: var(--md-sys-color-secondary);
-
-                outline-width: var(--focus-indicator-thickness);
-                outline-style: solid;
-                outline-offset: var(--focus-indicator-offset);
-                outline-color: var(--focus-indicator-color);
-            }
         }
 
         &[data-today] {
@@ -176,6 +77,10 @@
             }
         }
 
+        &[data-unavailable] {
+            text-decoration: line-through;
+        }
+
         &[data-range-calendar][data-selected] {
             &:not([data-selection-start]):not([data-selection-end]) {
                 color: var(
@@ -183,6 +88,7 @@
                     var(--md-sys-color-on-secondary-container)
                 );
 
+                /* TODO: will update this */
                 &::before {
                     background-color: var(
                         --calendar-active-range-background,
@@ -191,5 +97,79 @@
                 }
             }
         }
+
+        &[data-disabled],
+        &[data-outside-month],
+        &[data-outside-visible-range] {
+            color: rgb(
+                from currentColor r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            cursor: default;
+
+            &::before {
+                border-width: 0;
+                background-color: transparent;
+            }
+        }
+
+        &[data-invalid] {
+            color: var(--md-sys-color-on-error);
+            --state-layer: currentColor;
+
+            &::before {
+                background-color: var(--md-sys-color-error);
+            }
+
+            &[data-range-calendar]:not([data-selection-start]):not(
+                    [data-selection-end]
+                ) {
+                color: var(
+                    --md-sys-color-on-error-container,
+                );
+
+                &::before {
+                    background-color: var(--md-sys-color-error-container);
+                }
+            }
+        }
+    }
+
+    .cell::before,
+    .cell::after,
+    .splash-container {
+        z-index: -1;
+        content: "";
+
+        position: absolute;
+        inset: var(--md-sys-layout-space-4);
+        border-radius: var(--md-sys-shape-corner-radius-full);
+
+        transition: background-color
+            var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    .splash-container {
+        overflow: hidden;
+    }
+
+    .cell::after {
+        background-color: var(--state-layer-color);
+    }
+
+    .cell[data-focus-visible]::before {
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
+
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
     }
 }

@@ -1,4 +1,8 @@
 @layer adgytec.comps {
+    .grid {
+        border-spacing: 0;
+    }
+
     .header {
         color: var(
             --calendar-header-cell-color,
@@ -6,7 +10,20 @@
         );
     }
 
+    .header::before {
+        content: "";
+        display: block;
+        block-size: calc(18 * var(--dp, 1px));
+    }
+
+    .header::after {
+        content: "";
+        display: block;
+        block-size: var(--md-sys-layout-space-4);
+    }
+
     .header-cell {
-        padding-block-end: var(--md-sys-layout-space-16);
+        inline-size: var(--md-sys-layout-space-48);
+        block-size: var(--md-sys-layout-space-48);
     }
 }

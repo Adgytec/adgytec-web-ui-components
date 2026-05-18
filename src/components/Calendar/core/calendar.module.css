@@ -1,19 +1,4 @@
 @layer adgytec.comps {
-    .calendar {
-        --calendar-inline-size: calc(360 * var(--dp, 1px));
-        --calendar-block-size: calc(456 * var(--dp, 1px));
-
-        display: grid;
-        gap: calc(30 * var(--dp, 1px));
-        grid-template-rows: auto 1fr;
-
-        min-inline-size: min(100%, var(--calendar-inline-size));
-        inline-size: var(--calendar-inline-size);
-        max-inline-size: var(--calendar-inline-size);
-        block-size: var(--calendar-block-size);
-        min-block-size: var(--calendar-block-size);
-    }
-
     .docked {
         --calendar-docked-color: var(--md-sys-color-surface-container-high);
         --calendar-header-cell-color: var(--md-sys-color-on-surface);
