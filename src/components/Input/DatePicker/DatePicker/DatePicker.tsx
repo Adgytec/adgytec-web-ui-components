@@ -24,6 +24,7 @@ import { Description } from "../../Description";
 import { FieldError } from "../../FieldError";
 import { InputButton } from "../../Input";
 import { Label } from "../../Label";
+import { DatePickerGroupStyles, DatePickerPopoverStyles } from "../core";
 import type { DatePickerProps } from "./types";
 
 export const DatePicker = <T extends DateValue>({
@@ -58,9 +59,13 @@ export const DatePicker = <T extends DateValue>({
                         {label && <Label>{label}</Label>}
 
                         <Group
-                            className={clsx(EditorStyles)}
+                            className={clsx(
+                                EditorStyles,
+                                DatePickerGroupStyles
+                            )}
                             data-trailing={true}
                             data-open={isOpen || undefined}
+                            data-date-input={true}
                         >
                             <DateInput
                                 ref={ref}
@@ -97,7 +102,7 @@ export const DatePicker = <T extends DateValue>({
                         )}
                         <FieldError>{errorMessage}</FieldError>
 
-                        <Popover>
+                        <Popover className={clsx(DatePickerPopoverStyles)}>
                             <Calendar containerStyle="docked" />
                         </Popover>
                     </>
