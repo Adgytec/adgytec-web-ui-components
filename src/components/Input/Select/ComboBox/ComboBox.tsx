@@ -109,7 +109,9 @@ export const ComboBox = <
                             </Description>
                         )}
 
-                        <FieldError>{errorMessage}</FieldError>
+                        <FieldError className={clsx(SupportingTextStyles)}>
+                            {errorMessage}
+                        </FieldError>
                     </ComboboxContext>
                 );
             }}

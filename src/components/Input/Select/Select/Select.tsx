@@ -51,7 +51,9 @@ export const Select = <
                             </Description>
                         )}
 
-                        <FieldError>{errorMessage}</FieldError>
+                        <FieldError className={clsx(SupportingTextStyles)}>
+                            {errorMessage}
+                        </FieldError>
                     </>
                 );
             }}

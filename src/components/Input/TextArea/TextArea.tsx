@@ -93,21 +93,16 @@ export const TextArea: React.FC<TextAreaProps> = ({
                             </span>
                         )}
 
-                        {!hasDescription && hasCharacterCount && (
-                            <span className={clsx(SupportingTextStyles)}>
-                                <FieldError>{errorMessage}</FieldError>
+                        <span className={clsx(SupportingTextStyles)}>
+                            <FieldError>{errorMessage}</FieldError>
 
+                            {!hasDescription && hasCharacterCount && (
                                 <CharacterCount
                                     count={currentValue.length}
                                     maxLength={maxLength}
                                 />
-                            </span>
-                        )}
-
-                        {/* Error placement */}
-                        {hasDescription || !hasCharacterCount ? (
-                            <FieldError>{errorMessage}</FieldError>
-                        ) : null}
+                            )}
+                        </span>
                     </>
                 );
             }}

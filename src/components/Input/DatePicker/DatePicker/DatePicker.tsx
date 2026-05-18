@@ -100,7 +100,9 @@ export const DatePicker = <T extends DateValue>({
                                 {description}
                             </Description>
                         )}
-                        <FieldError>{errorMessage}</FieldError>
+                        <FieldError className={clsx(SupportingTextStyles)}>
+                            {errorMessage}
+                        </FieldError>
 
                         <Popover className={clsx(DatePickerPopoverStyles)}>
                             <Calendar containerStyle="docked" />

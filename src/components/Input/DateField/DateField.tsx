@@ -79,7 +79,9 @@ export const DateField = <T extends DateValue>({
                                 {description}
                             </Description>
                         )}
-                        <FieldError>{errorMessage}</FieldError>
+                        <FieldError className={clsx(SupportingTextStyles)}>
+                            {errorMessage}
+                        </FieldError>
                     </>
                 );
             }}
