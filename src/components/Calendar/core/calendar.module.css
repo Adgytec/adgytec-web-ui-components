@@ -35,10 +35,4 @@
             --color-normal: var(--md-calendar-cell-color);
         }
     }
-
-    .actions {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
 }

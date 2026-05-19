@@ -7,12 +7,9 @@ import {
     RangeCalendarStateContext,
 } from "react-aria-components";
 import { Button, IconButton } from "@/components/Button";
+import { Icon } from "@/components/Icon";
 import { CalendarGrid } from "../CalendarGrid";
-import {
-    CalendarHeaderStyles,
-    type MonthItem,
-    type WeekdayStyle,
-} from "../core";
+import type { MonthItem, WeekdayStyle } from "../core";
 import styles from "./baseCalendar.module.css";
 
 export const BaseCalendar: React.FC<{
@@ -28,7 +25,7 @@ export const BaseCalendar: React.FC<{
     }
 
     const monthFormatter = useDateFormatter({
-        month: "long",
+        month: "short",
         timeZone: state.timeZone,
     });
 
@@ -61,32 +58,60 @@ export const BaseCalendar: React.FC<{
 
     return (
         <>
-            <header className={clsx(CalendarHeaderStyles)}>
-                <IconButton
-                    slot="previous"
-                    icon={ChevronLeft}
-                    color="standard"
-                    size="extra-small"
-                />
+            <header className={clsx(styles["header"])}>
+                <div className={clsx(styles["options"])}>
+                    <IconButton
+                        slot="previous"
+                        icon={ChevronLeft}
+                        color="standard"
+                        size="extra-small"
+                    />
 
-                <Button
-                    slot={null}
-                    color="text"
-                    iconPlacement="end"
-                    icon={ChevronDown}
-                    shape="square"
-                    size="extra-small"
-                    className={clsx(styles["selection"])}
-                >
-                    {`${focusedMonth} ${focusedYear}`}
-                </Button>
+                    <Button
+                        slot={null}
+                        color="text"
+                        shape="square"
+                        size="extra-small"
+                        className={clsx(styles["selection"])}
+                    >
+                        {focusedMonth}
+                        <Icon icon={ChevronDown} size={18} />
+                    </Button>
 
-                <IconButton
-                    slot="next"
-                    icon={ChevronRight}
-                    color="standard"
-                    size="extra-small"
-                />
+                    <IconButton
+                        slot="next"
+                        icon={ChevronRight}
+                        color="standard"
+                        size="extra-small"
+                    />
+                </div>
+
+                <div className={clsx(styles["options"])}>
+                    <IconButton
+                        slot="previous"
+                        icon={ChevronLeft}
+                        color="standard"
+                        size="extra-small"
+                    />
+
+                    <Button
+                        slot={null}
+                        color="text"
+                        shape="square"
+                        size="extra-small"
+                        className={clsx(styles["selection"])}
+                    >
+                        {focusedYear}
+                        <Icon icon={ChevronDown} size={18} />
+                    </Button>
+
+                    <IconButton
+                        slot="next"
+                        icon={ChevronRight}
+                        color="standard"
+                        size="extra-small"
+                    />
+                </div>
             </header>
 
             <CalendarGrid
