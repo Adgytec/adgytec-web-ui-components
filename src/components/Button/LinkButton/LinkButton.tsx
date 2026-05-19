@@ -27,6 +27,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
     icon,
     children,
     onPress,
+    className,
     iconPlacement = "start",
     ...props
 }) => {
@@ -48,7 +49,15 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
     return withTooltip(
         <Link
             onPress={handlePress}
-            className={clsx(ButtonReset, TapTarget)}
+            className={(renderProps) =>
+                clsx(
+                    ButtonReset,
+                    TapTarget,
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
             {...props}
             {...baseButtonDataAttrs}
         >

@@ -7,12 +7,6 @@ import {
     RangeCalendarStateContext,
 } from "react-aria-components";
 import { Button, IconButton } from "@/components/Button";
-import {
-    Select,
-    SelectItem,
-    SelectList,
-    SelectPopover,
-} from "@/components/Input";
 import { CalendarGrid } from "../CalendarGrid";
 import {
     CalendarHeaderStyles,
@@ -75,31 +69,17 @@ export const BaseCalendar: React.FC<{
                     size="extra-small"
                 />
 
-                <Select
-                    value={state.focusedDate.month}
-                    onChange={(key) => {
-                        if (typeof key === "number") {
-                            state.setFocusedDate(months[key - 1].date);
-                        }
-                    }}
+                <Button
+                    slot={null}
+                    color="text"
+                    iconPlacement="end"
+                    icon={ChevronDown}
+                    shape="square"
+                    size="extra-small"
+                    className={clsx(styles["selection"])}
                 >
-                    <Button
-                        color="text"
-                        iconPlacement="end"
-                        icon={ChevronDown}
-                        shape="square"
-                        size="extra-small"
-                        className={clsx(styles["selection"])}
-                    >
-                        {`${focusedMonth} ${focusedYear}`}
-                    </Button>
-
-                    <SelectPopover>
-                        <SelectList items={months}>
-                            {(item) => <SelectItem label={item.formatted} />}
-                        </SelectList>
-                    </SelectPopover>
-                </Select>
+                    {`${focusedMonth} ${focusedYear}`}
+                </Button>
 
                 <IconButton
                     slot="next"

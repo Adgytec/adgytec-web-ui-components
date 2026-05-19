@@ -27,6 +27,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     selectedIcon,
     icon,
     onPress,
+    className,
     ...props
 }) => {
     const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
@@ -53,7 +54,15 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     return withTooltip(
         <AriaToggleButton
             onPress={handlePress}
-            className={clsx(ButtonReset, TapTarget)}
+            className={(renderProps) =>
+                clsx(
+                    ButtonReset,
+                    TapTarget,
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
             {...props}
             {...iconButtonDataAttrs}
         >
