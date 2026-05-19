@@ -34,6 +34,7 @@ export const DatePicker = <T extends DateValue>({
     showDescriptionOnInvalid = false,
     className,
     ref,
+    weekdayStyle,
     ...props
 }: DatePickerProps<T>) => {
     return (
@@ -105,7 +106,7 @@ export const DatePicker = <T extends DateValue>({
                         </FieldError>
 
                         <Popover className={clsx(DatePickerPopoverStyles)}>
-                            <Calendar />
+                            <Calendar weekdayStyle={weekdayStyle} />
                         </Popover>
                     </>
                 );

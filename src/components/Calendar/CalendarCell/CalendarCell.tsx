@@ -65,7 +65,7 @@ export const CalendarCell: React.FC<
                                 }
                                 data-selection-end={isSelectionEnd || undefined}
                                 data-invalid={isInvalid || undefined}
-                                data-disabeld={isDisabled || undefined}
+                                data-disabled={isDisabled || undefined}
                                 data-outside-month={isOutsideMonth || undefined}
                                 data-outside-visible-range={
                                     isOutsideVisibleRange || undefined

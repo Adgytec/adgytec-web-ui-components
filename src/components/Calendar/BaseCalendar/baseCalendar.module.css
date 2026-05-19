@@ -53,12 +53,13 @@
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
 
-        &[data-entering] {
+        &[data-entering],
+        &[data-exiting] {
             opacity: 0;
         }
 
         &[data-exiting] {
-            display: none;
+            position: absolute;
         }
 
         [data-menu] {

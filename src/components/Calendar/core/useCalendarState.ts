@@ -10,7 +10,9 @@ export function useCalendarState() {
     const state = calendarState || rangeCalendarState || null;
 
     if (!state) {
-        throw "BaseCalendar used outside Calendar or RangeCalendar component";
+        throw Error(
+            "BaseCalendar used outside Calendar or RangeCalendar component"
+        );
     }
 
     return state;

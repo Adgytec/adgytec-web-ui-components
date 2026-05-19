@@ -3,7 +3,7 @@ import styles from "./calendar.module.css";
 
 export const CalendarBaseStyles = styles["calendar"];
 
-export type WeekdayStyle = "narrow" | "short" | "long";
+export type WeekdayStyle = "narrow" | "short";
 
 export interface MonthItem {
     id: number;

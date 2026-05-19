@@ -19,26 +19,31 @@ export const BaseCalendar: React.FC<{
     weekdayStyle?: WeekdayStyle;
 }> = ({ isRangeCalendar, weekdayStyle }) => {
     const [view, setView] = useState<View>("calendar");
-    const nodeRef = useRef<HTMLDivElement>(null);
+    const nodeRefs = {
+        calendar: useRef<HTMLDivElement>(null),
+        month: useRef<HTMLDivElement>(null),
+        year: useRef<HTMLDivElement>(null),
+    };
+    const currentRef = nodeRefs[view];
 
-    const state = useCalendarState();
+    const calendarState = useCalendarState();
 
     const monthFormatter = useDateFormatter({
         month: "short",
-        timeZone: state.timeZone,
+        timeZone: calendarState.timeZone,
     });
 
     const yearFormatter = useDateFormatter({
         year: "numeric",
-        timeZone: state.timeZone,
+        timeZone: calendarState.timeZone,
     });
 
     const focusedMonth = monthFormatter.format(
-        state.focusedDate.toDate(state.timeZone)
+        calendarState.focusedDate.toDate(calendarState.timeZone)
     );
 
     const focusedYear = yearFormatter.format(
-        state.focusedDate.toDate(state.timeZone)
+        calendarState.focusedDate.toDate(calendarState.timeZone)
     );
 
     return (
@@ -47,21 +52,23 @@ export const BaseCalendar: React.FC<{
                 slots: {
                     "previous-month": {
                         onPress: () => {
-                            const newDate = state.focusedDate.add({
+                            const newDate = calendarState.focusedDate.add({
                                 months: -1,
                             });
-                            state.setFocusedDate(newDate);
+                            calendarState.setFocusedDate(newDate);
                         },
-                        isDisabled: state.isDisabled || view !== "calendar",
+                        isDisabled:
+                            calendarState.isDisabled || view !== "calendar",
                     },
                     "next-month": {
                         onPress: () => {
-                            const newDate = state.focusedDate.add({
+                            const newDate = calendarState.focusedDate.add({
                                 months: 1,
                             });
-                            state.setFocusedDate(newDate);
+                            calendarState.setFocusedDate(newDate);
                         },
-                        isDisabled: state.isDisabled || view !== "calendar",
+                        isDisabled:
+                            calendarState.isDisabled || view !== "calendar",
                     },
                     "month-view": {
                         onPress: () =>
@@ -69,26 +76,28 @@ export const BaseCalendar: React.FC<{
                                 if (prev === "month") return "calendar";
                                 return "month";
                             }),
-                        isDisabled: state.isDisabled || view === "year",
+                        isDisabled: calendarState.isDisabled || view === "year",
                     },
 
                     "previous-year": {
                         onPress: () => {
-                            const newDate = state.focusedDate.add({
+                            const newDate = calendarState.focusedDate.add({
                                 years: -1,
                             });
-                            state.setFocusedDate(newDate);
+                            calendarState.setFocusedDate(newDate);
                         },
-                        isDisabled: state.isDisabled || view !== "calendar",
+                        isDisabled:
+                            calendarState.isDisabled || view !== "calendar",
                     },
                     "next-year": {
                         onPress: () => {
-                            const newDate = state.focusedDate.add({
+                            const newDate = calendarState.focusedDate.add({
                                 years: 1,
                             });
-                            state.setFocusedDate(newDate);
+                            calendarState.setFocusedDate(newDate);
                         },
-                        isDisabled: state.isDisabled || view !== "calendar",
+                        isDisabled:
+                            calendarState.isDisabled || view !== "calendar",
                     },
                     "year-view": {
                         onPress: () =>
@@ -96,7 +105,8 @@ export const BaseCalendar: React.FC<{
                                 if (prev === "year") return "calendar";
                                 return "year";
                             }),
-                        isDisabled: state.isDisabled || view === "month",
+                        isDisabled:
+                            calendarState.isDisabled || view === "month",
                     },
                 },
             }}
@@ -160,14 +170,20 @@ export const BaseCalendar: React.FC<{
             </header>
 
             <TransitionGroup>
-                <Transition key={view} nodeRef={nodeRef} timeout={150}>
-                    {(state) => (
+                <Transition key={view} nodeRef={currentRef} timeout={150}>
+                    {(transitionState) => (
                         <div
-                            ref={nodeRef}
+                            ref={currentRef}
                             className={clsx(styles["view"])}
-                            data-entering={state === "entering" || undefined}
-                            data-exiting={state === "exiting" || undefined}
-                            data-entered={state === "entered" || undefined}
+                            data-entering={
+                                transitionState === "entering" || undefined
+                            }
+                            data-exiting={
+                                transitionState === "exiting" || undefined
+                            }
+                            data-entered={
+                                transitionState === "entered" || undefined
+                            }
                         >
                             {view === "calendar" && (
                                 <CalendarGrid
