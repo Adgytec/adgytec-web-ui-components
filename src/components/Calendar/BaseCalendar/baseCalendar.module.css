@@ -1,0 +1,24 @@
+@layer adgytec.comps {
+    .selection {
+        --rotate: 0;
+
+        &[data-pressed] {
+            --rotate: 180deg;
+        }
+
+        svg {
+            rotate: var(--rotate);
+            transition: rotate var(--md-sys-motion-expressive-fast-spatial)
+                var(--md-sys-motion-expressive-fast-spatial-duration);
+
+            @media (prefers-reduced-motion) {
+                transition: none;
+            }
+        }
+    }
+
+    .selection-menu {
+        overflow: auto;
+        scrollbar-width: none;
+    }
+}

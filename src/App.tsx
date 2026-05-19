@@ -118,12 +118,13 @@ import { Radio, RadioGroup } from "./components/Input/Radio";
 import {
     Menu,
     MenuItem,
+    MenuPopover,
     MenuSection,
     MenuSectionHeader,
     MenuShortcut,
     MenuTrigger,
+    SubmenuPopover,
 } from "./components/Menu";
-import { SubmenuPopover } from "./components/Menu/SubmenuPopover";
 import { Popover } from "./components/Popover";
 import { Separator } from "./components/Separator";
 import { Tag } from "./components/Tag";
@@ -1004,13 +1005,13 @@ const MenuPreview = () => {
                             {combo.title}
                         </Button>
 
-                        <Popover>
+                        <MenuPopover>
                             <Menu items={combo.menu} selectionMode="multiple">
                                 {(item) => {
                                     return renderMenu(item);
                                 }}
                             </Menu>
-                        </Popover>
+                        </MenuPopover>
                     </MenuTrigger>
                 );
             })}

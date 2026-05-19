@@ -1,13 +1,12 @@
 import clsx from "clsx";
 import { Popover } from "@/components/Popover";
-import styles from "./submenuPopover.module.css";
+import styles from "./menuPopover.module.css";
 
-export const SubmenuPopover: React.FC<
+export const MenuPopover: React.FC<
     React.ComponentPropsWithRef<typeof Popover>
-> = ({ offset = -1, className, ...props }) => {
+> = ({ className, ...props }) => {
     return (
         <Popover
-            offset={offset}
             className={(renderProps) =>
                 clsx(
                     styles["popover"],

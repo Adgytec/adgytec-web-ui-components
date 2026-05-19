@@ -73,6 +73,7 @@ export default defineConfig({
                 "zod",
                 "sonner",
                 "clsx",
+                "@internationalized/date",
             ],
         },
     },

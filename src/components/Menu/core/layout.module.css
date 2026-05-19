@@ -54,7 +54,7 @@
     .grouped {
         --menu-elevation: none;
         --menu-padding: 0;
-        --menu-shape: 0;
+        --menu-shape: var(--shape);
         --menu-background: transparent;
 
         --menu-section-elevation: var(--elevation);

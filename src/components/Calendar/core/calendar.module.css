@@ -20,8 +20,8 @@
         );
 
         --_md-calendar-cell-size: clamp(
-            var(--md-sys-layout-space-40),
-            7svi,
+            var(--md-sys-layout-space-36),
+            8svi,
             var(--md-sys-layout-space-48)
         );
 

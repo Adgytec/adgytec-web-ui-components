@@ -7,8 +7,19 @@ import {
     RangeCalendarStateContext,
 } from "react-aria-components";
 import { Button, IconButton } from "@/components/Button";
+import {
+    Select,
+    SelectItem,
+    SelectList,
+    SelectPopover,
+} from "@/components/Input";
 import { CalendarGrid } from "../CalendarGrid";
-import { CalendarHeaderStyles, type WeekdayStyle } from "../core";
+import {
+    CalendarHeaderStyles,
+    type MonthItem,
+    type WeekdayStyle,
+} from "../core";
+import styles from "./baseCalendar.module.css";
 
 export const BaseCalendar: React.FC<{
     isRangeCalendar?: boolean;
@@ -18,19 +29,19 @@ export const BaseCalendar: React.FC<{
     const rangeCalendarState = useContext(RangeCalendarStateContext);
     const state = calendarState || rangeCalendarState || null;
 
+    if (!state) {
+        throw "BaseCalendar used outside Calendar or RangeCalendar component";
+    }
+
     const monthFormatter = useDateFormatter({
-        month: "short",
-        timeZone: state?.timeZone,
+        month: "long",
+        timeZone: state.timeZone,
     });
 
     const yearFormatter = useDateFormatter({
         year: "numeric",
-        timeZone: state?.timeZone,
+        timeZone: state.timeZone,
     });
-
-    if (!state) {
-        throw "BaseCalendar used outside Calendar or RangeCalendar component";
-    }
 
     const focusedMonth = monthFormatter.format(
         state.focusedDate.toDate(state.timeZone)
@@ -39,6 +50,20 @@ export const BaseCalendar: React.FC<{
     const focusedYear = yearFormatter.format(
         state.focusedDate.toDate(state.timeZone)
     );
+
+    const months: MonthItem[] = [];
+    const numMonths = state.focusedDate.calendar.getMonthsInYear(
+        state.focusedDate
+    );
+
+    for (let i = 1; i <= numMonths; i++) {
+        const date = state.focusedDate.set({ month: i });
+        months.push({
+            id: i,
+            date,
+            formatted: monthFormatter.format(date.toDate(state.timeZone)),
+        });
+    }
 
     return (
         <>
@@ -50,16 +75,31 @@ export const BaseCalendar: React.FC<{
                     size="extra-small"
                 />
 
-                <Button
-                    slot={null}
-                    color="text"
-                    iconPlacement="end"
-                    icon={ChevronDown}
-                    shape="square"
-                    size="extra-small"
+                <Select
+                    value={state.focusedDate.month}
+                    onChange={(key) => {
+                        if (typeof key === "number") {
+                            state.setFocusedDate(months[key - 1].date);
+                        }
+                    }}
                 >
-                    {`${focusedMonth} ${focusedYear}`}
-                </Button>
+                    <Button
+                        color="text"
+                        iconPlacement="end"
+                        icon={ChevronDown}
+                        shape="square"
+                        size="extra-small"
+                        className={clsx(styles["selection"])}
+                    >
+                        {`${focusedMonth} ${focusedYear}`}
+                    </Button>
+
+                    <SelectPopover>
+                        <SelectList items={months}>
+                            {(item) => <SelectItem label={item.formatted} />}
+                        </SelectList>
+                    </SelectPopover>
+                </Select>
 
                 <IconButton
                     slot="next"

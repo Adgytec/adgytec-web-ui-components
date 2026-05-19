@@ -29,6 +29,7 @@ export const Button: React.FC<ButtonProps> = ({
     children,
     onPress,
     iconPlacement = "start",
+    className,
     ...props
 }) => {
     const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
@@ -49,7 +50,15 @@ export const Button: React.FC<ButtonProps> = ({
     return withTooltip(
         <AriaButton
             onPress={handlePress}
-            className={clsx(ButtonReset, TapTarget)}
+            className={(renderProps) =>
+                clsx(
+                    ButtonReset,
+                    TapTarget,
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
             {...props}
             {...baseButtonDataAttrs}
         >
