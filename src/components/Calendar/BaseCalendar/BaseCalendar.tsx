@@ -1,19 +1,15 @@
 import clsx from "clsx";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
-import { useContext, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDateFormatter } from "react-aria";
-import {
-    ButtonContext,
-    CalendarStateContext,
-    RangeCalendarStateContext,
-} from "react-aria-components";
+import { ButtonContext } from "react-aria-components";
 import { SwitchTransition, Transition } from "react-transition-group";
 import { Button, IconButton } from "@/components/Button";
 import { Icon } from "@/components/Icon";
 import { CalendarGrid } from "../CalendarGrid";
 import { CalendarMonthMenu } from "../CalendarMonthMenu";
 import { CalendarYearMenu } from "../CalendarYearMenu";
-import type { MonthItem, WeekdayStyle } from "../core";
+import { type MonthItem, useCalendarState, type WeekdayStyle } from "../core";
 import styles from "./baseCalendar.module.css";
 
 type View = "calendar" | "month" | "year";
@@ -25,13 +21,7 @@ export const BaseCalendar: React.FC<{
     const [view, setView] = useState<View>("calendar");
     const nodeRef = useRef<HTMLDivElement>(null);
 
-    const calendarState = useContext(CalendarStateContext);
-    const rangeCalendarState = useContext(RangeCalendarStateContext);
-    const state = calendarState || rangeCalendarState || null;
-
-    if (!state) {
-        throw "BaseCalendar used outside Calendar or RangeCalendar component";
-    }
+    const state = useCalendarState();
 
     const monthFormatter = useDateFormatter({
         month: "short",
