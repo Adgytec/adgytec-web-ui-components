@@ -11,6 +11,12 @@
             }
         }
 
+        &[data-disabled] {
+            [data-visual-button] {
+                background-color: transparent;
+            }
+        }
+
         svg {
             rotate: var(--rotate);
             transition: rotate var(--md-sys-motion-expressive-fast-spatial)
@@ -60,6 +66,9 @@
 
             max-inline-size: calc(7 * var(--_md-calendar-cell-size));
             inline-size: calc(7 * var(--_md-calendar-cell-size));
+
+            overflow-y: auto;
+            scrollbar-width: none;
         }
     }
 }
