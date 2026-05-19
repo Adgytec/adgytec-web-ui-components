@@ -53,13 +53,12 @@
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
 
-        &[data-entering],
-        &[data-exiting] {
+        &[data-entering] {
             opacity: 0;
         }
 
         &[data-exiting] {
-            position: absolute;
+            display: none;
         }
 
         [data-menu] {
@@ -71,6 +70,7 @@
 
             overflow-y: auto;
             padding-block-start: var(--md-sys-layout-space-12);
+            padding-block-end: var(--md-sys-layout-space-4);
 
             border-block-start: calc(1 * var(--dp, 1px)) solid
                 var(--md-calendar-menu-divider-color);

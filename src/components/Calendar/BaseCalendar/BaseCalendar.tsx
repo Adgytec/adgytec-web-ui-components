@@ -66,7 +66,7 @@ export const BaseCalendar: React.FC<{
                             });
                             state.setFocusedDate(newDate);
                         },
-                        isDisabled: state.isDisabled,
+                        isDisabled: state.isDisabled || view !== "calendar",
                     },
                     "next-month": {
                         onPress: () => {
@@ -75,7 +75,7 @@ export const BaseCalendar: React.FC<{
                             });
                             state.setFocusedDate(newDate);
                         },
-                        isDisabled: state.isDisabled,
+                        isDisabled: state.isDisabled || view !== "calendar",
                     },
                     "month-view": {
                         onPress: () =>
@@ -83,7 +83,7 @@ export const BaseCalendar: React.FC<{
                                 if (prev === "month") return "calendar";
                                 return "month";
                             }),
-                        isDisabled: state.isDisabled,
+                        isDisabled: state.isDisabled || view === "year",
                     },
 
                     "previous-year": {
@@ -93,7 +93,7 @@ export const BaseCalendar: React.FC<{
                             });
                             state.setFocusedDate(newDate);
                         },
-                        isDisabled: state.isDisabled,
+                        isDisabled: state.isDisabled || view !== "calendar",
                     },
                     "next-year": {
                         onPress: () => {
@@ -102,7 +102,7 @@ export const BaseCalendar: React.FC<{
                             });
                             state.setFocusedDate(newDate);
                         },
-                        isDisabled: state.isDisabled,
+                        isDisabled: state.isDisabled || view !== "calendar",
                     },
                     "year-view": {
                         onPress: () =>
@@ -110,7 +110,7 @@ export const BaseCalendar: React.FC<{
                                 if (prev === "year") return "calendar";
                                 return "year";
                             }),
-                        isDisabled: state.isDisabled,
+                        isDisabled: state.isDisabled || view === "month",
                     },
                 },
             }}
