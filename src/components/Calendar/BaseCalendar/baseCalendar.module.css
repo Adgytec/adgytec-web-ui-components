@@ -41,8 +41,17 @@
             transition: none;
         }
 
-        &[data-entering] {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+
+        &[data-entering],
+        &[data-exiting] {
             opacity: 0;
+        }
+
+        &[data-exiting] {
+            position: absolute;
         }
 
         [data-menu] {

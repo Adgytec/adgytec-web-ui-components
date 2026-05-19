@@ -3,7 +3,7 @@ import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState } from "react";
 import { useDateFormatter } from "react-aria";
 import { ButtonContext } from "react-aria-components";
-import { SwitchTransition, Transition } from "react-transition-group";
+import { Transition, TransitionGroup } from "react-transition-group";
 import { Button, IconButton } from "@/components/Button";
 import { Icon } from "@/components/Icon";
 import { CalendarGrid } from "../CalendarGrid";
@@ -173,7 +173,7 @@ export const BaseCalendar: React.FC<{
                 </div>
             </header>
 
-            <SwitchTransition mode="out-in">
+            <TransitionGroup>
                 <Transition key={view} nodeRef={nodeRef} timeout={200}>
                     {(state) => (
                         <div
@@ -204,7 +204,7 @@ export const BaseCalendar: React.FC<{
                         </div>
                     )}
                 </Transition>
-            </SwitchTransition>
+            </TransitionGroup>
         </ButtonContext>
     );
 };
