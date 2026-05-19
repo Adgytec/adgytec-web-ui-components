@@ -46,8 +46,8 @@
         }
 
         [data-menu] {
-            max-block-size: calc(7 * var(--_md-calendar-cell-size));
-            block-size: calc(7 * var(--_md-calendar-cell-size));
+            max-block-size: calc(6 * var(--_md-calendar-cell-size));
+            block-size: calc(6 * var(--_md-calendar-cell-size));
 
             max-inline-size: calc(7 * var(--_md-calendar-cell-size));
             inline-size: calc(7 * var(--_md-calendar-cell-size));

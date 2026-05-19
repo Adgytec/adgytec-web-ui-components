@@ -70,9 +70,21 @@ export const BaseCalendar: React.FC<{
             value={{
                 slots: {
                     "previous-month": {
+                        onPress: () => {
+                            const newDate = state.focusedDate.add({
+                                months: -1,
+                            });
+                            state.setFocusedDate(newDate);
+                        },
                         isDisabled: state.isDisabled,
                     },
                     "next-month": {
+                        onPress: () => {
+                            const newDate = state.focusedDate.add({
+                                months: 1,
+                            });
+                            state.setFocusedDate(newDate);
+                        },
                         isDisabled: state.isDisabled,
                     },
                     "month-view": {
@@ -85,9 +97,21 @@ export const BaseCalendar: React.FC<{
                     },
 
                     "previous-year": {
+                        onPress: () => {
+                            const newDate = state.focusedDate.add({
+                                years: -1,
+                            });
+                            state.setFocusedDate(newDate);
+                        },
                         isDisabled: state.isDisabled,
                     },
                     "next-year": {
+                        onPress: () => {
+                            const newDate = state.focusedDate.add({
+                                years: 1,
+                            });
+                            state.setFocusedDate(newDate);
+                        },
                         isDisabled: state.isDisabled,
                     },
                     "year-view": {
