@@ -1,26 +1,39 @@
 @layer adgytec.comps {
     .calendar {
-        --calendar-header-cell-color: var(--md-sys-color-on-surface);
+        --md-calendar-background: var(--md-sys-color-surface-container-high);
+        --md-calendar-header-cell-color: var(--md-sys-color-on-surface);
 
-        --calendar-cell-color: var(--md-sys-color-on-surface);
-        --calendar-cell-state-layer-color: var(
+        --md-calendar-cell-color: var(--md-sys-color-on-surface);
+        --md-calendar-cell-state-layer-color: var(
             --md-sys-color-on-surface-variant
         );
-        --calendar-cell-highlight-background: var(--md-sys-color-primary);
-        --calendar-cell-highlight-color: var(--md-sys-color-on-primary);
+        --md-calendar-cell-today-color: var(--md-sys-color-primary);
 
-        --calendar-active-range-background: var(
+        --md-calendar-cell-selected-background: var(--md-sys-color-primary);
+        --md-calendar-selected-color: var(--md-sys-color-on-primary);
+
+        --md-calendar-in-active-range-background: var(
             --md-sys-color-secondary-container
         );
-        --calendar-active-range-color: var(
+        --md-calendar-in-active-range-color: var(
             --md-sys-color-on-secondary-container
         );
 
-        --calendar-cell-size: clamp(
+        --_md-calendar-cell-size: clamp(
             var(--md-sys-layout-space-40),
             7svi,
             var(--md-sys-layout-space-48)
         );
+
+        padding: var(--md-sys-layout-space-12);
+        padding-block-start: var(--md-sys-layout-space-20);
+
+        background-color: var(--md-calendar-background);
+        border-radius: var(--md-sys-shape-corner-radius-large);
+
+        [data-visual-button] {
+            --color-normal: var(--md-calendar-cell-color);
+        }
     }
 
     .actions {

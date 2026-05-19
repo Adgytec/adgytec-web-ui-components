@@ -24,6 +24,7 @@ export const Calendar: React.FC<
                 )
             }
             {...props}
+            data-calendar
         >
             <header className={clsx(CalendarHeaderStyles)}>
                 <IconButton

@@ -146,28 +146,23 @@
 }
 
 .calendar-vibrant {
-    --calendar-docked-color: var(--md-sys-color-tertiary-container);
-    --calendar-header-cell-color: var(--md-sys-color-on-tertiary-container);
+    --md-calendar-background: var(--md-sys-color-tertiary-container);
+    --md-calendar-header-cell-color: var(--md-sys-color-on-tertiary-container);
 
-    --calendar-cell-color: var(--md-sys-color-on-tertiary-container);
-    --calendar-cell-state-layer-color: var(
+    --md-calendar-cell-color: var(--md-sys-color-on-tertiary-container);
+    --md-calendar-cell-state-layer-color: var(
         --md-sys-color-on-tertiary-container
     );
-    --calendar-cell-highlight-background: var(--md-sys-color-tertiary);
-    --calendar-cell-highlight-color: var(--md-sys-color-on-tertiary);
 
-    --calendar-active-range-background: var(--md-sys-color-tertiary-fixed-dim);
-    --calendar-active-range-color: var(
+    --md-calendar-cell-today-color: var(--md-sys-color-tertiary);
+
+    --md-calendar-cell-selected-background: var(--md-sys-color-tertiary);
+    --md-calendar-selected-color: var(--md-sys-color-on-tertiary);
+
+    --md-calendar-in-active-range-background: var(
+        --md-sys-color-tertiary-fixed-dim
+    );
+    --md-calendar-in-active-range-color: var(
         --md-sys-color-on-tertiary-fixed-variant
     );
-
-    background-color: var(--calendar-docked-color);
-
-    padding: var(--md-sys-layout-space-12);
-    padding-block-start: var(--md-sys-layout-space-20);
-    border-radius: var(--md-sys-shape-corner-radius-large);
-
-    [data-visual-button] {
-        --color-normal: var(--calendar-cell-color);
-    }
 }

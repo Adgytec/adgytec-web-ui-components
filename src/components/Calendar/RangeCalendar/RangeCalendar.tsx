@@ -27,6 +27,8 @@ export const RangeCalendar: React.FC<
                 )
             }
             {...props}
+            data-calendar
+            data-range-calendar
         >
             <header className={clsx(CalendarHeaderStyles)}>
                 <IconButton

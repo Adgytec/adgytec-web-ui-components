@@ -1,22 +1,21 @@
 @layer adgytec.comps {
     .cell {
-        --state-color: var(
-            --calendar-cell-state-layer-color,
-            var(--md-sys-color-on-surface-variant)
+        --_state-color: var(
+            --md-calendar-cell-state-layer-color,
         );
-        --state-layer-opacity: 0;
+        --_state-layer-opacity: 0;
 
-        --state-layer-color: rgb(
-            from var(--state-color) r g b /
-            var(--state-layer-opacity)
+        --_state-layer-color: rgb(
+            from var(--_state-color) r g b /
+            var(--_state-layer-opacity)
         );
 
         position: relative;
         text-align: center;
         outline: none;
 
-        inline-size: var(--calendar-cell-size);
-        block-size: var(--calendar-cell-size);
+        inline-size: var(--_md-calendar-cell-size);
+        block-size: var(--_md-calendar-cell-size);
 
         display: flex;
         align-items: center;
@@ -25,7 +24,7 @@
         z-index: 0;
 
         cursor: pointer;
-        color: var(--calendar-cell-color, var(--md-sys-color-on-surface));
+        color: var(--md-calendar-cell-color);
 
         transition: color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration);
@@ -36,23 +35,20 @@
 
         &[data-focus-visible] {
             z-index: 1;
-            --state-layer-opacity: var(--md-sys-state-focus);
+            --_state-layer-opacity: var(--md-sys-state-focus);
         }
 
         &[data-hovered] {
-            --state-layer-opacity: var(--md-sys-state-hover);
+            --_state-layer-opacity: var(--md-sys-state-hover);
         }
 
         &[data-pressed] {
-            --state-layer-opacity: var(--md-sys-state-pressed);
+            --_state-layer-opacity: var(--md-sys-state-pressed);
         }
 
         &[data-today] {
-            color: var(
-                --calendar-cell-highlight-background,
-                var(--md-sys-color-primary)
-            );
-            --state-color: currentColor;
+            color: var(--md-calendar-cell-today-color);
+            --_state-color: currentColor;
 
             &::before {
                 border: calc(1 * var(--dp, 1px)) solid currentColor;
@@ -62,18 +58,12 @@
         &[data-selected],
         &[data-selection-start],
         &[data-selection-end] {
-            color: var(
-                --calendar-cell-highlight-color,
-                var(--md-sys-color-on-primary)
-            );
-            --state-color: currentColor;
+            color: var(--md-calendar-selected-color);
+            --_state-color: currentColor;
 
             &::before {
                 border-width: 0;
-                background-color: var(
-                    --calendar-cell-highlight-background,
-                    var(--md-sys-color-primary)
-                );
+                background-color: var(--md-calendar-cell-selected-background);
             }
         }
 
@@ -83,10 +73,7 @@
 
         &[data-range-calendar][data-selected] {
             &:not([data-selection-start]):not([data-selection-end]) {
-                color: var(
-                    --calendar-active-range-color,
-                    var(--md-sys-color-on-secondary-container)
-                );
+                color: var(--md-calendar-in-active-range-color);
 
                 &::before {
                     background-color: transparent;
@@ -111,7 +98,7 @@
 
         &[data-invalid] {
             color: var(--md-sys-color-on-error);
-            --state-layer: currentColor;
+            --_state-layer: currentColor;
 
             &::before {
                 background-color: var(--md-sys-color-error);
@@ -155,24 +142,23 @@
     }
 
     .cell::after {
-        background-color: var(--state-layer-color);
+        background-color: var(--_state-layer-color);
     }
 
     .cell[data-focus-visible]::before {
-        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
-        --focus-indicator-offset: calc(2 * var(--dp, 1px));
-        --focus-indicator-color: var(--md-sys-color-secondary);
+        --_focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --_focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --_focus-indicator-color: var(--md-sys-color-secondary);
 
-        outline-width: var(--focus-indicator-thickness);
+        outline-width: var(--_focus-indicator-thickness);
         outline-style: solid;
-        outline-offset: var(--focus-indicator-offset);
-        outline-color: var(--focus-indicator-color);
+        outline-offset: var(--_focus-indicator-offset);
+        outline-color: var(--_focus-indicator-color);
     }
 
     .range-indicator {
-        --range-indicator-background: var(
-            --calendar-active-range-background,
-            var(--md-sys-color-secondary-container)
+        --_range-indicator-background: var(
+            --md-calendar-in-active-range-background
         );
 
         z-index: -2;
@@ -189,11 +175,11 @@
         }
 
         &[data-invalid] {
-            --range-indicator-background: var(--md-sys-color-error-container);
+            --_range-indicator-background: var(--md-sys-color-error-container);
         }
 
         &[data-in-range] {
-            background-color: var(--range-indicator-background);
+            background-color: var(--_range-indicator-background);
         }
 
         &[data-selection-start] {
@@ -202,7 +188,7 @@
             border-start-start-radius: var(--md-sys-shape-corner-radius-full);
             border-end-start-radius: var(--md-sys-shape-corner-radius-full);
 
-            background-color: var(--range-indicator-background);
+            background-color: var(--_range-indicator-background);
         }
 
         &[data-selection-end] {
@@ -211,13 +197,13 @@
             border-start-end-radius: var(--md-sys-shape-corner-radius-full);
             border-end-end-radius: var(--md-sys-shape-corner-radius-full);
 
-            background-color: var(--range-indicator-background);
+            background-color: var(--_range-indicator-background);
         }
 
         &[data-disabled],
         &[data-outside-month],
         &[data-outside-visible-range] {
-            --range-indicator-background: transparent;
+            --_range-indicator-background: transparent;
         }
     }
 }
