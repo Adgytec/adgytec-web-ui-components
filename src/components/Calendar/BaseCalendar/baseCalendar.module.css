@@ -2,8 +2,13 @@
     .selection {
         --rotate: 0;
 
-        &[data-pressed] {
+        &[data-pressed],
+        &[data-current] {
             --rotate: 180deg;
+
+            [data-visual-button] {
+                --state-layer-opacity: var(--md-sys-state-pressed);
+            }
         }
 
         svg {
@@ -26,5 +31,26 @@
     .options {
         display: flex;
         align-items: center;
+    }
+
+    .view {
+        transition: opacity var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-entering] {
+            opacity: 0;
+        }
+
+        [data-menu] {
+            max-block-size: calc(7 * var(--_md-calendar-cell-size));
+            block-size: calc(7 * var(--_md-calendar-cell-size));
+
+            max-inline-size: calc(7 * var(--_md-calendar-cell-size));
+            inline-size: calc(7 * var(--_md-calendar-cell-size));
+        }
     }
 }

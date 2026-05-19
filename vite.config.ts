@@ -74,6 +74,7 @@ export default defineConfig({
                 "sonner",
                 "clsx",
                 "@internationalized/date",
+                "react-transition-group",
             ],
         },
     },

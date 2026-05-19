@@ -20,7 +20,7 @@
         );
 
         --_md-calendar-cell-size: clamp(
-            var(--md-sys-layout-space-36),
+            var(--md-sys-layout-space-40),
             8svi,
             var(--md-sys-layout-space-48)
         );
@@ -30,6 +30,9 @@
 
         background-color: var(--md-calendar-background);
         border-radius: var(--md-sys-shape-corner-radius-large);
+
+        display: grid;
+        gap: calc(18 * var(--dp, 1px));
 
         [data-visual-button] {
             --color-normal: var(--md-calendar-cell-color);
