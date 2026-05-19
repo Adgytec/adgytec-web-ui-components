@@ -9,7 +9,7 @@ import { Icon } from "@/components/Icon";
 import { CalendarGrid } from "../CalendarGrid";
 import { CalendarMonthMenu } from "../CalendarMonthMenu";
 import { CalendarYearMenu } from "../CalendarYearMenu";
-import { type MonthItem, useCalendarState, type WeekdayStyle } from "../core";
+import { useCalendarState, type WeekdayStyle } from "../core";
 import styles from "./baseCalendar.module.css";
 
 type View = "calendar" | "month" | "year";
@@ -40,20 +40,6 @@ export const BaseCalendar: React.FC<{
     const focusedYear = yearFormatter.format(
         state.focusedDate.toDate(state.timeZone)
     );
-
-    const months: MonthItem[] = [];
-    const numMonths = state.focusedDate.calendar.getMonthsInYear(
-        state.focusedDate
-    );
-
-    for (let i = 1; i <= numMonths; i++) {
-        const date = state.focusedDate.set({ month: i });
-        months.push({
-            id: i,
-            date,
-            formatted: monthFormatter.format(date.toDate(state.timeZone)),
-        });
-    }
 
     return (
         <ButtonContext
@@ -174,7 +160,7 @@ export const BaseCalendar: React.FC<{
             </header>
 
             <TransitionGroup>
-                <Transition key={view} nodeRef={nodeRef} timeout={200}>
+                <Transition key={view} nodeRef={nodeRef} timeout={150}>
                     {(state) => (
                         <div
                             ref={nodeRef}

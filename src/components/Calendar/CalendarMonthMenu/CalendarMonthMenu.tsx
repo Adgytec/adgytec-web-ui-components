@@ -36,6 +36,7 @@ export const CalendarMonthMenu: React.FC<{
     return (
         <Virtualizer layout={ListLayout}>
             <ListBox
+                autoFocus
                 data-menu
                 items={months}
                 selectionMode="single"

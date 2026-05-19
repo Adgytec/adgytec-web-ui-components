@@ -1,14 +1,78 @@
-import { Button } from "@/components/Button";
+import { Check } from "lucide-react";
+import { useDateFormatter } from "react-aria";
+import {
+    ListBox,
+    ListLayout,
+    SelectionIndicator,
+    Virtualizer,
+} from "react-aria-components";
+
+import { Icon } from "@/components/Icon";
+import { CalendarMenuItem } from "../CalendarMenuItem";
+import { useCalendarState, type YearItem } from "../core";
 
 export const CalendarYearMenu: React.FC<{
     onSelection: () => void;
 }> = ({ onSelection }) => {
+    const state = useCalendarState();
+
+    const formatter = useDateFormatter({
+        year: "numeric",
+        timeZone: state.timeZone,
+    });
+
+    const currentYear = new Date().getFullYear();
+
+    const minYear = state.minValue?.year ?? 1900;
+
+    const maxYear = state.maxValue?.year ?? currentYear + 100;
+
+    const years: YearItem[] = [];
+
+    for (let year = minYear; year <= maxYear; year++) {
+        const date = state.focusedDate.set({
+            year,
+        });
+
+        years.push({
+            id: year,
+            date,
+            formatted: formatter.format(date.toDate(state.timeZone)),
+        });
+    }
+
     return (
-        <div data-menu>
-            year menu
-            <Button slot={null} onPress={onSelection}>
-                calendar
-            </Button>
-        </div>
+        <Virtualizer layout={ListLayout}>
+            <ListBox
+                autoFocus
+                data-menu
+                items={years}
+                selectionMode="single"
+                selectedKeys={new Set([state.focusedDate.year])}
+                onSelectionChange={(keys) => {
+                    const key = [...keys][0];
+
+                    if (key == null) return;
+
+                    const year = years.find((y) => y.id === key);
+
+                    if (!year) return;
+
+                    state.setFocusedDate(year.date);
+
+                    onSelection();
+                }}
+            >
+                {(item) => (
+                    <CalendarMenuItem>
+                        <SelectionIndicator>
+                            <Icon icon={Check} size={24} data-selected-icon />
+                        </SelectionIndicator>
+
+                        {item.formatted}
+                    </CalendarMenuItem>
+                )}
+            </ListBox>
+        </Virtualizer>
     );
 };
