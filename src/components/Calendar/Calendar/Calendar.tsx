@@ -1,16 +1,14 @@
 import clsx from "clsx";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Calendar as AriaCalendar, Heading } from "react-aria-components";
-import { IconButton } from "@/components/Button";
-import { CalendarGrid } from "../CalendarGrid";
-import { CalendarBaseStyles, CalendarHeaderStyles } from "../core";
+import { Calendar as AriaCalendar } from "react-aria-components";
+import { BaseCalendar } from "../BaseCalendar";
+import { CalendarBaseStyles, type WeekdayStyle } from "../core";
 
 export const Calendar: React.FC<
     Omit<
         React.ComponentPropsWithRef<typeof AriaCalendar>,
         "children" | "visibleDuration" | "pageBehavior"
     > & {
-        weekdayStyle?: "narrow" | "short" | "long";
+        weekdayStyle?: WeekdayStyle;
     }
 > = ({ weekdayStyle, className, ...props }) => {
     return (
@@ -26,17 +24,7 @@ export const Calendar: React.FC<
             {...props}
             data-calendar
         >
-            <header className={clsx(CalendarHeaderStyles)}>
-                <IconButton
-                    slot="previous"
-                    icon={ChevronLeft}
-                    color="standard"
-                />
-                <Heading />
-                <IconButton slot="next" icon={ChevronRight} color="standard" />
-            </header>
-
-            <CalendarGrid weekdayStyle={weekdayStyle} />
+            <BaseCalendar weekdayStyle={weekdayStyle} />
         </AriaCalendar>
     );
 };
