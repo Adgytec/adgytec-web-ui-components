@@ -41,19 +41,14 @@ export const CalendarMonthMenu: React.FC<{
                 items={months}
                 selectionMode="single"
                 selectedKeys={new Set([state.focusedDate.month])}
-                onSelectionChange={(keys) => {
-                    const key = [...keys][0];
-                    if (key == null) return;
-
-                    const month = months.find((m) => m.id === key);
-                    if (!month) return;
-
-                    state.setFocusedDate(month.date);
-                    onSelection();
-                }}
             >
                 {(item) => (
-                    <CalendarMenuItem>
+                    <CalendarMenuItem
+                        onPress={() => {
+                            state.setFocusedDate(item.date);
+                            onSelection();
+                        }}
+                    >
                         <SelectionIndicator>
                             <Icon icon={Check} size={24} data-selected-icon />
                         </SelectionIndicator>

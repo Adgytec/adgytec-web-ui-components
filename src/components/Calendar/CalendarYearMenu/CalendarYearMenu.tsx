@@ -49,22 +49,14 @@ export const CalendarYearMenu: React.FC<{
                 items={years}
                 selectionMode="single"
                 selectedKeys={new Set([state.focusedDate.year])}
-                onSelectionChange={(keys) => {
-                    const key = [...keys][0];
-
-                    if (key == null) return;
-
-                    const year = years.find((y) => y.id === key);
-
-                    if (!year) return;
-
-                    state.setFocusedDate(year.date);
-
-                    onSelection();
-                }}
             >
                 {(item) => (
-                    <CalendarMenuItem>
+                    <CalendarMenuItem
+                        onPress={() => {
+                            state.setFocusedDate(item.date);
+                            onSelection();
+                        }}
+                    >
                         <SelectionIndicator>
                             <Icon icon={Check} size={24} data-selected-icon />
                         </SelectionIndicator>

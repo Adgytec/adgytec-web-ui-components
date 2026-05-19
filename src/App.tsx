@@ -37,6 +37,7 @@ import { type CSSProperties, Fragment, type ReactNode, useState } from "react";
 import { useListData } from "react-aria-components/useListData";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
+import { CalendarDate } from "@internationalized/date";
 import { clsx } from "clsx";
 import type { Orientation } from "react-aria";
 import {
@@ -2765,9 +2766,16 @@ const RangeCalendarPreview = () => {
 };
 
 const DatePickerPreview = () => {
+    const minValue = new CalendarDate(1999, 1, 1);
+    const maxValue = new CalendarDate(1999, 1, 1);
     return (
         <div className="items">
-            <DatePicker label="Birthday" description="Add your birthday" />
+            <DatePicker
+                label="Birthday"
+                description="Add your birthday"
+                minValue={minValue}
+                maxValue={maxValue}
+            />
 
             <DatePicker
                 label="Birthday"
