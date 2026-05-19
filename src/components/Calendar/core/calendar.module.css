@@ -19,13 +19,19 @@
             --md-sys-color-on-secondary-container
         );
 
+        --md-calendar-menu-divider-color: var(--md-sys-color-outline-variant);
+        --md-calendar-menu-selected-background: var(
+            --md-sys-color-surface-variant
+        );
+        --md-calendar-menu-selected-color: var(--md-sys-color-on-surface);
+
         --_md-calendar-cell-size: clamp(
             var(--md-sys-layout-space-40),
             8svi,
             var(--md-sys-layout-space-48)
         );
 
-        padding: var(--md-sys-layout-space-12);
+        padding-block-end: var(--md-sys-layout-space-12);
         padding-block-start: var(--md-sys-layout-space-20);
 
         background-color: var(--md-calendar-background);

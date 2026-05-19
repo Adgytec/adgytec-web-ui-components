@@ -29,6 +29,8 @@
     }
 
     .header {
+        padding-inline: var(--md-sys-layout-space-12);
+
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -68,7 +70,10 @@
             inline-size: calc(7 * var(--_md-calendar-cell-size));
 
             overflow-y: auto;
-            scrollbar-width: none;
+            padding-block-start: var(--md-sys-layout-space-12);
+
+            border-block-start: calc(1 * var(--dp, 1px)) solid
+                var(--md-calendar-menu-divider-color);
         }
     }
 }

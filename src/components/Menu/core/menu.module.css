@@ -13,7 +13,7 @@
         min-inline-size: min(100svi, calc(160 * var(--dp, 1px)));
 
         overflow: auto;
-        scrollbar-width: none;
+        scrollbar-width: thin;
 
         transition: border-radius var(--md-sys-motion-expressive-fast-spatial)
             var(--md-sys-motion-expressive-fast-spatial-duration);

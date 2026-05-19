@@ -1,0 +1,30 @@
+@layer adgytec.comps {
+    .item {
+        padding-block: var(--md-sys-layout-space-12);
+        padding-inline-start: calc(52 * var(--dp, 1px));
+        margin-inline-end: var(--md-sys-layout-space-12);
+
+        color: var(--md-calendar-cell-color);
+
+        position: relative;
+
+        cursor: pointer;
+
+        [data-selected-icon] {
+            position: absolute;
+
+            inset-inline-start: var(--md-sys-layout-space-12);
+            inset-block-start: 50%;
+            translate: 0 -50%;
+        }
+
+        &[data-selected] {
+            color: var(--md-calendar-menu-selected-color);
+            background-color: var(--md-calendar-menu-selected-background);
+        }
+
+        &[data-disabled] {
+            cursor: default;
+        }
+    }
+}

@@ -1,9 +1,13 @@
+import { Check } from "lucide-react";
 import { useDateFormatter } from "react-aria";
 import {
     ListBox,
-    ListBoxItem,
+    ListLayout,
     SelectionIndicator,
+    Virtualizer,
 } from "react-aria-components";
+import { Icon } from "@/components/Icon";
+import { CalendarMenuItem } from "../CalendarMenuItem";
 import { type MonthItem, useCalendarState } from "../core";
 
 export const CalendarMonthMenu: React.FC<{
@@ -30,11 +34,11 @@ export const CalendarMonthMenu: React.FC<{
     }
 
     return (
-        <div data-menu>
+        <Virtualizer layout={ListLayout}>
             <ListBox
+                data-menu
                 items={months}
                 selectionMode="single"
-                selectionBehavior="replace"
                 selectedKeys={new Set([state.focusedDate.month])}
                 onSelectionChange={(keys) => {
                     const key = [...keys][0];
@@ -48,29 +52,14 @@ export const CalendarMonthMenu: React.FC<{
                 }}
             >
                 {(item) => (
-                    <ListBoxItem>
-                        {({ isSelected }) => (
-                            <>
-                                {item.formatted}
-                                {isSelected && (
-                                    <SelectionIndicator
-                                        style={{
-                                            display: "block",
-                                            width: 8,
-                                            height: 8,
-                                            background: "red",
-                                            borderRadius: 999,
-                                        }}
-                                        isSelected={isSelected}
-                                    >
-                                        Selected
-                                    </SelectionIndicator>
-                                )}
-                            </>
-                        )}
-                    </ListBoxItem>
+                    <CalendarMenuItem>
+                        <SelectionIndicator>
+                            <Icon icon={Check} size={24} data-selected-icon />
+                        </SelectionIndicator>
+                        {item.formatted}
+                    </CalendarMenuItem>
                 )}
             </ListBox>
-        </div>
+        </Virtualizer>
     );
 };

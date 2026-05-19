@@ -12,6 +12,6 @@
         border-radius: var(--md-sys-shape-corner-radius-large);
 
         overflow: auto;
-        scrollbar-width: none;
+        scrollbar-width: thin;
     }
 }
