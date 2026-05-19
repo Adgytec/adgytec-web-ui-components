@@ -27,6 +27,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
     icon,
     children,
     onPress,
+    iconPlacement = "start",
     ...props
 }) => {
     const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
@@ -71,6 +72,8 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
                 };
 
                 const iconSize = ButtonIconSizeMapping[buttonSize];
+                const iconComp = icon && <Icon icon={icon} size={iconSize} />;
+
                 return (
                     <span
                         className={clsx(
@@ -84,9 +87,12 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
                         {...dataAttrs}
                     >
                         {splashInfo && <Splash {...splashInfo} />}
-                        {icon && <Icon icon={icon} size={iconSize} />}
+
+                        {iconPlacement === "start" && iconComp}
 
                         {isChildFunc ? children(renderProps) : children}
+
+                        {iconPlacement === "end" && iconComp}
                     </span>
                 );
             }}

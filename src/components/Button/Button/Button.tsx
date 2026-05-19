@@ -28,6 +28,7 @@ export const Button: React.FC<ButtonProps> = ({
     icon,
     children,
     onPress,
+    iconPlacement = "start",
     ...props
 }) => {
     const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
@@ -73,6 +74,11 @@ export const Button: React.FC<ButtonProps> = ({
                 };
 
                 const iconSize = ButtonIconSizeMapping[buttonSize];
+                const iconComp = isPending ? (
+                    <Loader size={iconSize} />
+                ) : (
+                    icon && <Icon icon={icon} size={iconSize} />
+                );
                 return (
                     <span
                         className={clsx(
@@ -86,13 +92,12 @@ export const Button: React.FC<ButtonProps> = ({
                         {...dataAttrs}
                     >
                         {splashInfo && <Splash {...splashInfo} />}
-                        {isPending ? (
-                            <Loader size={iconSize} />
-                        ) : (
-                            icon && <Icon icon={icon} size={iconSize} />
-                        )}
+
+                        {iconPlacement === "start" && iconComp}
 
                         {isChildFunc ? children(renderProps) : children}
+
+                        {iconPlacement === "end" && iconComp}
                     </span>
                 );
             }}

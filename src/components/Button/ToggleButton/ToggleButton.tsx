@@ -28,6 +28,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
     icon,
     children,
     onPress,
+    iconPlacement = "start",
     ...props
 }) => {
     const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
@@ -82,6 +83,11 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
                 if (isSelected && selectedIcon) iconToRender = selectedIcon;
 
                 const iconSize = ButtonIconSizeMapping[buttonSize];
+
+                const iconComp = iconToRender && (
+                    <Icon icon={iconToRender} size={iconSize} />
+                );
+
                 return (
                     <span
                         className={clsx(
@@ -96,11 +102,11 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
                     >
                         {splashInfo && <Splash {...splashInfo} />}
 
-                        {iconToRender && (
-                            <Icon icon={iconToRender} size={iconSize} />
-                        )}
+                        {iconPlacement === "start" && iconComp}
 
                         {isChildFunc ? children(renderProps) : children}
+
+                        {iconPlacement === "end" && iconComp}
                     </span>
                 );
             }}
