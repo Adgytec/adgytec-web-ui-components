@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import {
+    type CalendarState,
     CalendarStateContext,
+    type RangeCalendarState,
     RangeCalendarStateContext,
 } from "react-aria-components";
 
@@ -16,4 +18,10 @@ export function useCalendarState() {
     }
 
     return state;
+}
+
+export function isRangeCalendarState(
+    state: CalendarState | RangeCalendarState
+): state is RangeCalendarState {
+    return "anchorDate" in state;
 }

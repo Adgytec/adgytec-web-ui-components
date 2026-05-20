@@ -1,4 +1,4 @@
-import { today } from "@internationalized/date";
+import { type CalendarDate, today } from "@internationalized/date";
 import clsx from "clsx";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
@@ -13,6 +13,7 @@ import { CalendarYearMenu } from "../CalendarYearMenu";
 import {
     defaultMaxYearIncrement,
     defaultMinYear,
+    isRangeCalendarState,
     type MonthItem,
     useCalendarState,
     type WeekdayStyle,
@@ -33,6 +34,8 @@ export const BaseCalendar: React.FC<{
         year: useRef<HTMLDivElement>(null),
     };
     const currentRef = nodeRefs[view];
+    // fixes menu selection issue in range calendar
+    const anchorDate = useRef<CalendarDate | null>(null);
 
     const calendarState = useCalendarState();
     const timeZone = calendarState.timeZone;
@@ -149,6 +152,25 @@ export const BaseCalendar: React.FC<{
         );
     };
 
+    const saveAnchorDateForRangeCalendar = () => {
+        if (!isRangeCalendarState(calendarState)) return;
+
+        anchorDate.current = calendarState.anchorDate;
+        calendarState.setAnchorDate(null);
+    };
+
+    const restoreAnchorDateForRangeCalendar = () => {
+        if (!isRangeCalendarState(calendarState)) return;
+
+        calendarState.setAnchorDate(anchorDate.current);
+        anchorDate.current = null;
+    };
+
+    const menuItemOnSelection = () => {
+        setView("calendar");
+        restoreAnchorDateForRangeCalendar();
+    };
+
     return (
         <ButtonContext
             value={{
@@ -171,6 +193,8 @@ export const BaseCalendar: React.FC<{
                         onPress: () =>
                             setView((prev) => {
                                 if (prev === "month") return "calendar";
+
+                                saveAnchorDateForRangeCalendar();
                                 return "month";
                             }),
                         isDisabled: calendarState.isDisabled || view === "year",
@@ -202,6 +226,8 @@ export const BaseCalendar: React.FC<{
                         onPress: () =>
                             setView((prev) => {
                                 if (prev === "year") return "calendar";
+
+                                saveAnchorDateForRangeCalendar();
                                 return "year";
                             }),
                         isDisabled:
@@ -293,14 +319,14 @@ export const BaseCalendar: React.FC<{
 
                             {view === "month" && (
                                 <CalendarMonthMenu
-                                    onSelection={() => setView("calendar")}
+                                    onSelection={menuItemOnSelection}
                                     months={months}
                                 />
                             )}
 
                             {view === "year" && (
                                 <CalendarYearMenu
-                                    onSelection={() => setView("calendar")}
+                                    onSelection={menuItemOnSelection}
                                     years={years}
                                 />
                             )}
