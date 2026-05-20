@@ -1,15 +1,77 @@
 @layer adgytec.comps {
     .switch {
-        --state-selected-base-color: var(--md-sys-color-primary);
-        --state-unselected-base-color: var(--md-sys-color-on-surface);
+        /* switch tokens */
+        /* handle tokens */
+        --md-switch-handle-color: var(--md-sys-color-outline);
+        --md-switch-selected-handle-color: var(--md-sys-color-on-primary);
 
-        --_state-opacity: 0;
-        --_state-color: var(--state-unselected-base-color);
-
-        --state-color: rgb(
-            from var(--_state-color) r g b /
-            var(--_state-opacity)
+        /* for hovered, focused and pressed state */
+        --md-switch-handle-interaction-color: var(
+            --md-sys-color-on-surface-variant
         );
+        --md-switch-selected-handle-interaction-color: var(
+            --md-sys-color-primary-container
+        );
+
+        /* handle icon tokens */
+        --md-switch-handle-icon-color: var(
+            --md-sys-color-surface-container-highest
+        );
+        --md-switch-selected-handle-icon-color: var(--md-sys-color-primary);
+
+        /* track tokens */
+        --md-switch-track-color: var(--md-sys-color-surface-container-highest);
+        --md-switch-selected-track-color: var(--md-sys-color-primary);
+        --md-switch-track-outline-color: var(--md-sys-color-outline);
+
+        /* state layer tokens */
+        --md-switch-state-layer-color: var(--md-sys-color-on-surface);
+        --md-switch-selected-state-layer-color: var(--md-sys-color-primary);
+
+        /* focus indicator token */
+        --md-switch-focus-indicator-color: var(--md-sys-color-secondary);
+
+        /* configurable tokens end */
+
+        /* handle specific tokens */
+        /* size */
+        --_md-switch-handle-size: calc(16 * var(--dp, 1px));
+        --_md-switch-handle-with-icon-size: calc(24 * var(--dp, 1px));
+        --_md-switch-selected-handle-size: calc(24 * var(--dp, 1px));
+        --_md-switch-pressed-handle-size: calc(28 * var(--dp, 1px));
+
+        /* shape */
+        --_md-switch-handle-shape: var(--md-sys-shape-corner-radius-full);
+
+        /* handle tokens end */
+
+        /* track tokens */
+        /* dimensions and shape */
+        --_md-switch-track-block-size: calc(32 * var(--dp, 1px));
+        --_md-switch-track-inline-size: calc(52 * var(--dp, 1px));
+        --_md-switch-track-shape: var(--md-sys-shape-corner-radius-full);
+
+        /* outline */
+        --_md-switch-track-outline-thickness: calc(2 * var(--dp, 1px));
+
+        /* track tokens end */
+
+        /* focus indicator tokens */
+        --_md-switch-focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --_md-switch-focus-indicator-offset: calc(2 * var(--dp, 1px));
+
+        /* focus indicator tokens end */
+
+        /* state layer tokens */
+        --_state-layer-opacity: 0;
+        --_state-color: var(--md-switch-state-layer-color);
+
+        --_state-layer-color: rgb(
+            from var(--_state-color) r g b /
+            var(--_state-layer-opacity)
+        );
+
+        /* state layer tokens end */
 
         position: relative;
         display: inline-flex;
@@ -34,21 +96,21 @@
         }
 
         &[data-selected] {
-            --_state-color: var(--state-selected-base-color);
+            --_state-color: var(--md-switch-selected-state-layer-color);
         }
 
         &[data-hovered] {
-            --_state-opacity: var(--md-sys-state-hover);
+            --_state-layer-opacity: var(--md-sys-state-hover);
             z-index: 1;
         }
 
         &[data-focus-visible] {
-            --_state-opacity: var(--md-sys-state-focus);
+            --_state-layer-opacity: var(--md-sys-state-focus);
             z-index: 1;
         }
 
         &[data-pressed] {
-            --_state-opacity: var(--md-sys-state-pressed);
+            --_state-layer-opacity: var(--md-sys-state-pressed);
         }
     }
 
@@ -58,7 +120,7 @@
         position: absolute;
         inset: calc(-1 * var(--md-sys-layout-space-12));
 
-        background-color: var(--state-color);
+        background-color: var(--_state-layer-color);
         border-radius: var(--md-sys-shape-corner-radius-extra-small);
 
         pointer-events: none;
@@ -73,76 +135,27 @@
     }
 
     .icon {
-        color: var(--icon-color);
+        color: var(--_icon-color);
     }
 
     .handle {
-        /* ================= BASE TOKENS ================= */
-
-        /* size */
-        --handle-unselected-size: calc(16 * var(--dp, 1px));
-        --handle-base-size: calc(24 * var(--dp, 1px));
-        --handle-pressed-size: calc(28 * var(--dp, 1px));
-
-        /* shape */
-        --handle-shape: var(--md-sys-shape-corner-radius-full);
-
-        /* color */
-        --handle-selected-base-color: var(--md-sys-color-primary-container);
-        --handle-unselected-base-color: var(--md-sys-color-on-surface-variant);
-
-        /* icon color (if present) */
-        --handle-icon-selected-base-color: var(--md-sys-color-primary);
-        --handle-icon-unselected-base-color: var(
-            --md-sys-color-surface-container-highest
-        );
-
-        /* elevation (M3 uses shadow levels instead of raw shadow) */
-        --handle-elevation: var(--md-sys-elevation-level1);
-        --handle-pressed-elevation: var(--md-sys-elevation-level2);
-
-        /* ================= ENABLED ================= */
-        --handle-selected-enabled-color: var(--md-sys-color-on-primary);
-        --handle-unselected-enabled-color: var(--md-sys-color-outline);
-
-        /* ================= DISABLED ================= */
-
-        --handle-selected-disabled-color: rgb(
-            from var(--md-sys-color-surface) r g b /
-            1
-        );
-        --handle-unselected-disabled-color: rgb(
-            from var(--md-sys-color-on-surface) r g b /
-            var(--md-sys-state-disabled-content)
-        );
-
-        /* icon color */
-        --handle-icon-selected-disabled-color: rgb(
-            from var(--md-sys-color-on-surface) r g b /
-            var(--md-sys-state-disabled-content)
-        );
-        --handle-icon-unselected-disabled-color: rgb(
-            from var(--md-sys-color-surface-container-highest) r g b /
-            var(--md-sys-state-disabled-content)
-        );
-
         /* derived size */
-        --handle-size: var(--handle-unselected-size);
-        --handle-color: var(--handle-unselected-enabled-color);
-        --handle-x: calc(6 * var(--dp, 1px));
+        --_handle-size: var(--_md-switch-handle-size);
+        --_handle-color: var(--md-switch-handle-color);
+        --_handle-x: calc(6 * var(--dp, 1px));
 
-        --icon-color: var(--handle-icon-unselected-base-color);
+        --_icon-color: var(--md-switch-handle-icon-color);
 
         /* handle style */
         position: absolute;
         inset-block-start: 50%;
-        translate: var(--handle-x) -50%;
+        translate: var(--_handle-x) -50%;
 
-        inline-size: var(--handle-size);
+        inline-size: var(--_handle-size);
         aspect-ratio: 1 / 1;
-        border-radius: var(--handle-shape);
+        border-radius: var(--_md-switch-handle-shape);
 
-        background-color: var(--handle-color);
+        background-color: var(--_handle-color);
 
         transition:
             translate var(--md-sys-motion-expressive-fast-spatial)
@@ -159,49 +172,66 @@
         }
 
         &[data-icon] {
-            --handle-size: var(--handle-base-size);
-            --handle-x: calc(2 * var(--dp, 1px));
+            --_handle-size: var(--_md-switch-handle-with-icon-size);
+            --_handle-x: calc(2 * var(--dp, 1px));
         }
 
         &[data-selected] {
-            --handle-color: var(--handle-selected-enabled-color);
-            --handle-size: var(--handle-base-size);
-            --handle-x: calc(22 * var(--dp, 1px));
-            --icon-color: var(--handle-icon-selected-base-color);
+            --_handle-color: var(--md-switch-selected-handle-color);
+            --_handle-size: var(--_md-switch-selected-handle-size);
+            --_handle-x: calc(22 * var(--dp, 1px));
+            --_icon-color: var(--md-switch-selected-handle-icon-color);
         }
 
         &[data-disabled] {
-            --handle-color: var(--handle-unselected-disabled-color);
-            --icon-color: var(--handle-icon-unselected-disabled-color);
+            --_icon-color: rgb(
+                from var(--md-sys-color-surface-container-highest) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            background-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
 
             &[data-selected] {
-                --handle-color: var(--handle-selected-disabled-color);
-                --icon-color: var(--handle-icon-selected-disabled-color);
+                --_icon-color: rgb(
+                    from var(--md-sys-color-on-surface) r g b /
+                    var(--md-sys-state-disabled-content)
+                );
+                background-color: rgb(
+                    from var(--md-sys-color-surface) r g b /
+                    1
+                );
             }
         }
 
         &[data-pressed] {
-            --handle-size: var(--handle-pressed-size);
-            --handle-x: 0;
+            --_handle-size: var(--_md-switch-pressed-handle-size);
+            --_handle-x: 0;
 
             &[data-selected] {
-                --handle-x: calc(20 * var(--dp, 1px));
+                --_handle-x: calc(20 * var(--dp, 1px));
             }
         }
 
         &[data-focus-visible],
         &[data-hovered],
         &[data-pressed] {
-            --handle-color: var(--handle-unselected-base-color);
+            --_handle-color: var(--md-switch-handle-interaction-color);
 
             &[data-selected] {
-                --handle-color: var(--handle-selected-base-color);
+                --_handle-color: var(
+                    --md-switch-selected-handle-interaction-color
+                );
             }
         }
     }
 
     /* handle state layer */
     .handle::before {
+        --_state-size: calc(40 * var(--dp, 1px));
+        --_state-shape: var(--md-sys-shape-corner-radius-full);
+
         content: "";
 
         position: absolute;
@@ -209,11 +239,11 @@
         inset-inline-start: 50%;
         transform: translate(-50%, -50%);
 
-        inline-size: var(--state-size);
+        inline-size: var(--_state-size);
         aspect-ratio: 1 / 1;
-        border-radius: var(--state-shape);
+        border-radius: var(--_state-shape);
 
-        background-color: var(--state-color);
+        background-color: var(--_state-layer-color);
 
         transition: background-color
             var(--md-sys-motion-expressive-fast-effects)
@@ -231,65 +261,20 @@
     }
 
     .track {
-        /* dimensions and shape */
-        --track-block-size: calc(32 * var(--dp, 1px));
-        --track-inline-size: calc(52 * var(--dp, 1px));
-        --track-shape: var(--md-sys-shape-corner-radius-full);
-
-        /* outline */
-        --track-outline-thickness: calc(2 * var(--dp, 1px));
-
-        /* ================= BASE TOKENS ================= */
-
-        --track-selected-base-color: var(--md-sys-color-primary);
-        --track-unselected-base-color: var(
-            --md-sys-color-surface-container-highest
-        );
-
-        --track-outline-base-color: var(--md-sys-color-outline);
-        --track-selected-outline-color: transparent;
-
-        /* ================= DISABLED (unchanged) ================= */
-
-        --track-unselected-disabled-color: rgb(
-            from var(--md-sys-color-surface-container-highest) r g b /
-            var(--md-sys-state-disabled-container)
-        );
-        --track-selected-disabled-color: rgb(
-            from var(--md-sys-color-on-surface) r g b /
-            var(--md-sys-state-disabled-container)
-        );
-        --track-unselected-disabled-outline-color: rgb(
-            from var(--md-sys-color-on-surface) r g b /
-            var(--md-sys-state-disabled-container)
-        );
-
-        /* focus indicator */
-        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
-        --focus-indicator-offset: calc(2 * var(--dp, 1px));
-        --focus-indicator-color: var(--md-sys-color-secondary);
-
-        /* track state size and shape for use */
-        --state-size: calc(40 * var(--dp, 1px));
-        --state-shape: var(--md-sys-shape-corner-radius-full);
-
-        /* track style */
-
-        /* handle will be absolute to track */
         position: relative;
-        border-radius: var(--track-shape);
+        border-radius: var(--_md-switch-track-shape);
 
-        inline-size: var(--track-inline-size);
-        min-inline-size: var(--track-inline-size);
+        inline-size: var(--_md-switch-track-inline-size);
+        min-inline-size: var(--_md-switch-track-inline-size);
 
-        block-size: var(--track-block-size);
-        min-block-size: var(--track-block-size);
+        block-size: var(--_md-switch-track-block-size);
+        min-block-size: var(--_md-switch-track-block-size);
 
-        border-width: var(--track-outline-thickness);
+        border-width: var(--_md-switch-track-outline-thickness);
         border-style: solid;
-        border-color: var(--track-outline-base-color);
+        border-color: var(--md-switch-track-outline-color);
 
-        background-color: var(--track-unselected-base-color);
+        background-color: var(--md-switch-track-color);
 
         transition:
             background-color var(--md-sys-motion-expressive-fast-effects)
@@ -303,24 +288,33 @@
     }
 
     .track[data-selected] {
-        background-color: var(--track-selected-base-color);
-        border-color: var(--track-selected-outline-color);
+        background-color: var(--md-switch-selected-track-color);
+        border-color: transparent;
     }
 
     .track[data-disabled] {
-        background-color: var(--track-unselected-disabled-color);
-        border-color: var(--track-unselected-disabled-outline-color);
+        background-color: rgb(
+            from var(--md-sys-color-surface-container-highest) r g b /
+            var(--md-sys-state-disabled-container)
+        );
+        border-color: rgb(
+            from var(--md-sys-color-on-surface) r g b /
+            var(--md-sys-state-disabled-container)
+        );
 
         &[data-selected] {
-            background-color: var(--track-selected-disabled-color);
-            border-color: var(--track-selected-outline-color);
+            background-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-container)
+            );
+            border-color: transparent;
         }
     }
 
     .track[data-focus-visible] {
-        outline-width: var(--focus-indicator-thickness);
+        outline-width: var(--_md-switch-focus-indicator-thickness);
         outline-style: solid;
-        outline-offset: var(--focus-indicator-offset);
-        outline-color: var(--focus-indicator-color);
+        outline-offset: var(--_md-switch-focus-indicator-offset);
+        outline-color: var(--md-switch-focus-indicator-color);
     }
 }

@@ -170,3 +170,29 @@
     --md-calendar-menu-selected-background: var(--md-sys-color-tertiary);
     --md-calendar-menu-selected-color: var(--md-sys-color-on-tertiary);
 }
+
+.switch-config {
+    /* handle tokens */
+    --md-switch-handle-color: tomato;
+    --md-switch-selected-handle-color: dodgerblue;
+
+    /* hovered / focused / pressed */
+    --md-switch-handle-interaction-color: limegreen;
+    --md-switch-selected-handle-interaction-color: hotpink;
+
+    /* handle icon */
+    --md-switch-handle-icon-color: gold;
+    --md-switch-selected-handle-icon-color: navy;
+
+    /* track */
+    --md-switch-track-color: cyan;
+    --md-switch-selected-track-color: orange;
+    --md-switch-track-outline-color: purple;
+
+    /* state layer */
+    --md-switch-state-layer-color: yellow;
+    --md-switch-selected-state-layer-color: indigo;
+
+    /* focus indicator */
+    --md-switch-focus-indicator-color: deeppink;
+}

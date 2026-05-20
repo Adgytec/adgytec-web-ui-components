@@ -27,6 +27,7 @@ export const Switch: React.FC<SwitchProps> = ({
                 )
             }
             {...props}
+            data-switch
         >
             {(renderProps) => {
                 const {

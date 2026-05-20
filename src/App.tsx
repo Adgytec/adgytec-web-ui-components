@@ -177,6 +177,10 @@ const SwitchPreview = () => {
                     <Label>Selected icon</Label>
                 </Switch>
 
+                <Switch className="switch-config">
+                    <Label>Selected icon config</Label>
+                </Switch>
+
                 <Switch containerStateLayer icon="both">
                     <Label>Both icon</Label>
                 </Switch>
@@ -201,6 +205,10 @@ const SwitchPreview = () => {
 
                 <Switch>
                     <Label>Selected icon</Label>
+                </Switch>
+
+                <Switch className="switch-config" containerStateLayer>
+                    <Label>Selected icon config</Label>
                 </Switch>
 
                 <Switch icon="both" containerStateLayer>
