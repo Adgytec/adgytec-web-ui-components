@@ -1,7 +1,7 @@
 import { type CalendarDate, today } from "@internationalized/date";
 import clsx from "clsx";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
-import { useMemo, useRef, useState } from "react";
+import { createRef, useMemo, useRef, useState } from "react";
 import { useDateFormatter } from "react-aria";
 import { ButtonContext } from "react-aria-components";
 import { Transition, TransitionGroup } from "react-transition-group";
@@ -28,11 +28,11 @@ export const BaseCalendar: React.FC<{
     weekdayStyle?: WeekdayStyle;
 }> = ({ isRangeCalendar, weekdayStyle }) => {
     const [view, setView] = useState<View>("calendar");
-    const nodeRefs = {
-        calendar: useRef<HTMLDivElement>(null),
-        month: useRef<HTMLDivElement>(null),
-        year: useRef<HTMLDivElement>(null),
-    };
+    const nodeRefs = useRef({
+        calendar: createRef<HTMLDivElement>(),
+        month: createRef<HTMLDivElement>(),
+        year: createRef<HTMLDivElement>(),
+    }).current;
     const currentRef = nodeRefs[view];
     // fixes menu selection issue in range calendar
     const anchorDate = useRef<CalendarDate | null>(null);
@@ -211,7 +211,7 @@ export const BaseCalendar: React.FC<{
                             }
 
                             saveAnchorDateForRangeCalendar();
-                            setView("month");
+                            setView("year");
                         },
                         isDisabled:
                             calendarState.isDisabled || view === "month",
