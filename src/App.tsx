@@ -37,6 +37,7 @@ import { type CSSProperties, Fragment, type ReactNode, useState } from "react";
 import { useListData } from "react-aria-components/useListData";
 import { Tooltip, TooltipTrigger } from "./components/Tooltip";
 import "./styles/app.css";
+import { CalendarDate } from "@internationalized/date";
 import { clsx } from "clsx";
 import type { Orientation } from "react-aria";
 import {
@@ -71,6 +72,7 @@ import {
     ToggleButton,
     ToggleIconButton,
 } from "./components/Button";
+import { Calendar, RangeCalendar } from "./components/Calendar";
 import {
     ActionDialog,
     Dialog,
@@ -92,6 +94,8 @@ import {
     ComboBoxPopover,
     ComboBoxTrigger,
     DateField,
+    DatePicker,
+    DateRangePicker,
     Input,
     InputButton,
     Label,
@@ -115,12 +119,13 @@ import { Radio, RadioGroup } from "./components/Input/Radio";
 import {
     Menu,
     MenuItem,
+    MenuPopover,
     MenuSection,
     MenuSectionHeader,
     MenuShortcut,
     MenuTrigger,
+    SubmenuPopover,
 } from "./components/Menu";
-import { SubmenuPopover } from "./components/Menu/SubmenuPopover";
 import { Popover } from "./components/Popover";
 import { Separator } from "./components/Separator";
 import { Tag } from "./components/Tag";
@@ -1001,13 +1006,13 @@ const MenuPreview = () => {
                             {combo.title}
                         </Button>
 
-                        <Popover>
+                        <MenuPopover>
                             <Menu items={combo.menu} selectionMode="multiple">
                                 {(item) => {
                                     return renderMenu(item);
                                 }}
                             </Menu>
-                        </Popover>
+                        </MenuPopover>
                     </MenuTrigger>
                 );
             })}
@@ -2696,6 +2701,124 @@ const CenteredSliderPreview = () => {
     );
 };
 
+const CalendarPreview = () => {
+    return (
+        <div className="items-grid" data-calendar>
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>Standard</h3>
+
+                <div className="items">
+                    <Calendar />
+
+                    <Calendar className="calendar-vibrant" />
+                </div>
+            </div>
+
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>States</h3>
+
+                <div className="items">
+                    <Calendar isDisabled />
+
+                    <Calendar isInvalid />
+
+                    <Calendar
+                        isDateUnavailable={({ day }) => {
+                            return day % 2 === 0;
+                        }}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const RangeCalendarPreview = () => {
+    return (
+        <div className="items-grid" data-calendar>
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>Standard</h3>
+
+                <div className="items">
+                    select
+                    <RangeCalendar commitBehavior="select" />
+                    reset
+                    <RangeCalendar commitBehavior="reset" />
+                    clear
+                    <RangeCalendar commitBehavior="clear" />
+                    <RangeCalendar className="calendar-vibrant" />
+                </div>
+            </div>
+
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>States</h3>
+
+                <div className="items">
+                    <RangeCalendar isDisabled />
+
+                    <RangeCalendar isInvalid />
+
+                    <RangeCalendar
+                        isDateUnavailable={({ day }) => {
+                            return day % 2 === 0;
+                        }}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const DatePickerPreview = () => {
+    const minValue = new CalendarDate(1998, 12, 31);
+    const maxValue = new CalendarDate(1999, 2, 1);
+    return (
+        <div className="items">
+            <DatePicker
+                label="Birthday"
+                description="Add your birthday"
+                minValue={minValue}
+                maxValue={maxValue}
+                weekdayStyle="short"
+            />
+
+            <DatePicker
+                label="Birthday"
+                description="Add your birthday"
+                showDescriptionOnInvalid
+                isInvalid
+            />
+
+            <DatePicker
+                label="Birthday"
+                description="Add your birthday"
+                isDisabled
+            />
+        </div>
+    );
+};
+
+const DateRangePickerPreview = () => {
+    return (
+        <div className="items">
+            <DateRangePicker label="Dates" description="Select date range" />
+
+            <DateRangePicker
+                label="Dates"
+                description="Select date range"
+                showDescriptionOnInvalid
+                isInvalid
+            />
+
+            <DateRangePicker
+                label="Dates"
+                description="Select date range"
+                isDisabled
+            />
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -2715,6 +2838,26 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "range-date-picker",
+            label: "Date Range Picker",
+            Component: DateRangePickerPreview,
+        },
+        {
+            id: "date-picker",
+            label: "Date Picker",
+            Component: DatePickerPreview,
+        },
+        {
+            id: "range-calendar",
+            label: "Range Calendar",
+            Component: RangeCalendarPreview,
+        },
+        {
+            id: "calendar",
+            label: "Calendar",
+            Component: CalendarPreview,
+        },
         {
             id: "centered-slider",
             label: "Centered Slider",

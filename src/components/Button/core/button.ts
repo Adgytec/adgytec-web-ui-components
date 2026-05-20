@@ -11,6 +11,7 @@ export interface ButtonBaseProps {
     shape?: ButtonShape;
     tooltip?: string;
     icon?: LucideIcon;
+    iconPlacement?: "start" | "end";
 }
 
 export interface IconButtonBaseProps {

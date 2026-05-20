@@ -1,5 +1,8 @@
 @layer adgytec.comps {
     .popover {
         min-inline-size: var(--trigger-width);
+
+        display: grid;
+        grid-template-rows: 1fr;
     }
 }

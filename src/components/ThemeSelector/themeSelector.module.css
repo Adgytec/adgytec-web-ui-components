@@ -8,4 +8,8 @@
         display: grid;
         gap: var(--md-sys-layout-space-16);
     }
+
+    .theme-item-info {
+        display: grid;
+    }
 }

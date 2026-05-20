@@ -1,0 +1,93 @@
+@layer adgytec.comps {
+    .item {
+        --_state-color: var(
+            --md-calendar-cell-state-layer-color,
+        );
+        --_state-layer-opacity: 0;
+
+        --_state-layer-color: rgb(
+            from var(--_state-color) r g b /
+            var(--_state-layer-opacity)
+        );
+
+        padding-block: var(--md-sys-layout-space-12);
+        padding-inline-start: calc(52 * var(--dp, 1px));
+        margin-inline-end: var(--md-sys-layout-space-12);
+
+        color: var(--md-calendar-cell-color);
+
+        position: relative;
+
+        cursor: pointer;
+
+        border-end-end-radius: var(--md-sys-shape-corner-radius-extra-small);
+        border-start-end-radius: var(--md-sys-shape-corner-radius-extra-small);
+        outline: none;
+
+        [data-selected-icon] {
+            position: absolute;
+
+            inset-inline-start: var(--md-sys-layout-space-12);
+            inset-block-start: 50%;
+            translate: 0 -50%;
+        }
+
+        &[data-selected] {
+            color: var(--md-calendar-menu-selected-color);
+            background-color: var(--md-calendar-menu-selected-background);
+        }
+
+        &[data-focus-visible] {
+            z-index: 1;
+            --_state-layer-opacity: var(--md-sys-state-focus);
+        }
+
+        &[data-hovered] {
+            --_state-layer-opacity: var(--md-sys-state-hover);
+        }
+
+        &[data-pressed] {
+            --_state-layer-opacity: var(--md-sys-state-pressed);
+        }
+
+        &[data-disabled] {
+            color: rgb(
+                from currentColor r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            cursor: default;
+        }
+    }
+
+    .item::before,
+    .item::after {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+
+        transition: background-color
+            var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    .item::after {
+        background-color: var(--_state-layer-color);
+    }
+
+    .item[data-focus-visible]::before {
+        --_focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --_focus-indicator-offset: calc(1 * var(--dp, 1px));
+        --_focus-indicator-color: var(--md-sys-color-secondary);
+
+        outline-width: var(--_focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--_focus-indicator-offset);
+        outline-color: var(--_focus-indicator-color);
+    }
+}

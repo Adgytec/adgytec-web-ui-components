@@ -106,7 +106,9 @@ export const TextArea: React.FC<TextAreaProps> = ({
 
                         {/* Error placement */}
                         {hasDescription || !hasCharacterCount ? (
-                            <FieldError>{errorMessage}</FieldError>
+                            <FieldError className={clsx(SupportingTextStyles)}>
+                                {errorMessage}
+                            </FieldError>
                         ) : null}
                     </>
                 );

@@ -179,7 +179,9 @@ export const Input: React.FC<InputProps> = ({
 
                         {/* Error placement */}
                         {hasDescription || !hasCharacterCount ? (
-                            <FieldError>{errorMessage}</FieldError>
+                            <FieldError className={clsx(SupportingTextStyles)}>
+                                {errorMessage}
+                            </FieldError>
                         ) : null}
                     </>
                 );

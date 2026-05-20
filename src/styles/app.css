@@ -135,3 +135,38 @@
         scrollbar-width: none;
     }
 }
+
+[data-calendar] > div {
+    display: grid;
+    gap: var(--md-sys-layout-space-16);
+
+    > h3 {
+        text-align: center;
+    }
+}
+
+.calendar-vibrant {
+    --md-calendar-background: var(--md-sys-color-tertiary-container);
+    --md-calendar-header-cell-color: var(--md-sys-color-on-tertiary-container);
+
+    --md-calendar-cell-color: var(--md-sys-color-on-tertiary-container);
+    --md-calendar-cell-state-layer-color: var(
+        --md-sys-color-on-tertiary-container
+    );
+
+    --md-calendar-cell-today-color: var(--md-sys-color-tertiary);
+
+    --md-calendar-cell-selected-background: var(--md-sys-color-tertiary);
+    --md-calendar-selected-color: var(--md-sys-color-on-tertiary);
+
+    --md-calendar-in-active-range-background: var(
+        --md-sys-color-tertiary-fixed-dim
+    );
+    --md-calendar-in-active-range-color: var(
+        --md-sys-color-on-tertiary-fixed-variant
+    );
+
+    --md-calendar-menu-divider-color: var(--md-sys-color-on-tertiary);
+    --md-calendar-menu-selected-background: var(--md-sys-color-tertiary);
+    --md-calendar-menu-selected-color: var(--md-sys-color-on-tertiary);
+}

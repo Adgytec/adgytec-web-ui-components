@@ -12,6 +12,7 @@ import { Description } from "../../Description";
 import { FieldError } from "../../FieldError";
 import { Label } from "../../Label";
 import styles from "./comboBox.module.css";
+import { ComboboxContext } from "./context";
 import type { ComboBoxProps } from "./types";
 
 export const ComboBox = <
@@ -47,7 +48,7 @@ export const ComboBox = <
                     (!isInvalid || (isInvalid && showDescriptionOnInvalid));
 
                 return (
-                    <>
+                    <ComboboxContext value={renderProps}>
                         {label && <Label>{label}</Label>}
 
                         {typeof children === "function"
@@ -108,8 +109,10 @@ export const ComboBox = <
                             </Description>
                         )}
 
-                        <FieldError>{errorMessage}</FieldError>
-                    </>
+                        <FieldError className={clsx(SupportingTextStyles)}>
+                            {errorMessage}
+                        </FieldError>
+                    </ComboboxContext>
                 );
             }}
         </AriaComboBox>

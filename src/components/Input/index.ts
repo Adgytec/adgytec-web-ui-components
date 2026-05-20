@@ -1,5 +1,6 @@
 export * from "./Checkbox";
 export * from "./DateField";
+export * from "./DatePicker";
 export * from "./Description";
 export * from "./FieldError";
 export * from "./hooks";

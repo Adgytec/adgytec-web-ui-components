@@ -1,0 +1,47 @@
+@layer adgytec.comps {
+    .calendar {
+        --md-calendar-background: var(--md-sys-color-surface-container-high);
+        --md-calendar-header-cell-color: var(--md-sys-color-on-surface);
+
+        --md-calendar-cell-color: var(--md-sys-color-on-surface);
+        --md-calendar-cell-state-layer-color: var(
+            --md-sys-color-on-surface-variant
+        );
+        --md-calendar-cell-today-color: var(--md-sys-color-primary);
+
+        --md-calendar-cell-selected-background: var(--md-sys-color-primary);
+        --md-calendar-selected-color: var(--md-sys-color-on-primary);
+
+        --md-calendar-in-active-range-background: var(
+            --md-sys-color-secondary-container
+        );
+        --md-calendar-in-active-range-color: var(
+            --md-sys-color-on-secondary-container
+        );
+
+        --md-calendar-menu-divider-color: var(--md-sys-color-outline-variant);
+        --md-calendar-menu-selected-background: var(
+            --md-sys-color-surface-variant
+        );
+        --md-calendar-menu-selected-color: var(--md-sys-color-on-surface);
+
+        --_md-calendar-cell-size: clamp(
+            var(--md-sys-layout-space-40),
+            8svi,
+            var(--md-sys-layout-space-48)
+        );
+
+        padding-block-end: var(--md-sys-layout-space-12);
+        padding-block-start: var(--md-sys-layout-space-20);
+
+        background-color: var(--md-calendar-background);
+        border-radius: var(--md-sys-shape-corner-radius-large);
+
+        display: grid;
+        gap: calc(18 * var(--dp, 1px));
+
+        [data-visual-button] {
+            --color-normal: var(--md-calendar-cell-color);
+        }
+    }
+}

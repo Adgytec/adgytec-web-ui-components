@@ -17,14 +17,6 @@
             flex-direction: column-reverse;
             inset-block: var(--orientation-inset);
         }
-
-        > div {
-            transition: flex-grow var(--motion-spatial) var(--motion-duration);
-
-            @media (prefers-reduced-motion) {
-                transition: none;
-            }
-        }
     }
 
     .active-track {

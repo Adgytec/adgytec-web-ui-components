@@ -73,6 +73,8 @@ export default defineConfig({
                 "zod",
                 "sonner",
                 "clsx",
+                "@internationalized/date",
+                "react-transition-group",
             ],
         },
     },

@@ -81,7 +81,9 @@ export const TimeField = <T extends TimeValue>({
                                 {description}
                             </Description>
                         )}
-                        <FieldError>{errorMessage}</FieldError>
+                        <FieldError className={clsx(SupportingTextStyles)}>
+                            {errorMessage}
+                        </FieldError>
                     </>
                 );
             }}

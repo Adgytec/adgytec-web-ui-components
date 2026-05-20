@@ -59,9 +59,7 @@
             block-size var(--md-sys-motion-expressive-fast-spatial)
             var(--md-sys-motion-expressive-fast-spatial-duration),
             inline-size var(--md-sys-motion-expressive-fast-spatial)
-            var(--md-sys-motion-expressive-fast-spatial-duration),
-            left var(--motion-spatial) var(--motion-duration),
-            top var(--motion-spatial) var(--motion-duration);
+            var(--md-sys-motion-expressive-fast-spatial-duration);
 
         @media (prefers-reduced-motion) {
             transition: none;

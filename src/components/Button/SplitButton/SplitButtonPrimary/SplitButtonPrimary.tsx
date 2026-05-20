@@ -25,6 +25,8 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
     onPress,
     isDisabled,
     isPending,
+    className,
+    iconPlacement = "start",
     ...props
 }) => {
     const splitButtonState = useSplitButtonContext();
@@ -41,7 +43,15 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
             isDisabled={disabled}
             isPending={pending}
             {...props}
-            className={clsx(ButtonReset, TapTarget)}
+            className={(renderProps) =>
+                clsx(
+                    ButtonReset,
+                    TapTarget,
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
         >
             {(renderProps) => {
                 const {
@@ -62,6 +72,12 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
                 };
 
                 const iconSize = ButtonIconSizeMapping[splitButtonState.size];
+                const iconComp = renderProps.isPending ? (
+                    <Loader size={iconSize} />
+                ) : (
+                    icon && <Icon icon={icon} size={iconSize} />
+                );
+
                 return (
                     <span
                         className={clsx(
@@ -76,13 +92,11 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
                     >
                         {splashInfo && <Splash {...splashInfo} />}
 
-                        {renderProps.isPending ? (
-                            <Loader size={iconSize} />
-                        ) : (
-                            icon && <Icon icon={icon} size={iconSize} />
-                        )}
+                        {iconPlacement === "start" && iconComp}
 
                         {isChildFunc ? children(renderProps) : children}
+
+                        {iconPlacement === "end" && iconComp}
                     </span>
                 );
             }}
