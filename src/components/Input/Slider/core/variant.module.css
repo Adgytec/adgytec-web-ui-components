@@ -19,16 +19,6 @@
             flex-direction: column-reverse;
             inset-block: var(--orientation-inset);
         }
-
-        > div {
-            transition:
-                inline-size var(--motion-spatial) var(--motion-duration),
-                block-size var(--motion-spatial) var(--motion-duration);
-
-            @media (prefers-reduced-motion) {
-                transition: none;
-            }
-        }
     }
 
     .active-track {
