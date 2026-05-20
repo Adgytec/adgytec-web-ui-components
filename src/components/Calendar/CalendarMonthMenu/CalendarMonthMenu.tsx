@@ -22,7 +22,7 @@ export const CalendarMonthMenu: React.FC<{
                 data-menu
                 items={months}
                 selectionMode="single"
-                selectedKeys={new Set([state.focusedDate.month])}
+                selectedKeys={[state.focusedDate.month]}
             >
                 {(item) => {
                     const nextDate = state.focusedDate.set({

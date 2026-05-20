@@ -109,9 +109,12 @@ export const BaseCalendar: React.FC<{
             day: 1,
         });
 
+        const lastMonth = nextYear.calendar.getMonthsInYear(nextYear);
         const endOfYear = nextYear.set({
-            month: 12,
-            day: 31,
+            month: lastMonth,
+            day: nextYear.calendar.getDaysInMonth(
+                nextYear.set({ month: lastMonth })
+            ),
         });
 
         return (
@@ -130,10 +133,11 @@ export const BaseCalendar: React.FC<{
             day: 1,
         });
 
+        const lastMonth = previousYear.calendar.getMonthsInYear(previousYear);
         const endOfYear = previousYear.set({
-            month: 12,
+            month: lastMonth,
             day: previousYear.calendar.getDaysInMonth(
-                previousYear.set({ month: 12 })
+                previousYear.set({ month: lastMonth })
             ),
         });
 

@@ -23,7 +23,7 @@ export const CalendarYearMenu: React.FC<{
                 data-menu
                 items={years}
                 selectionMode="single"
-                selectedKeys={new Set([state.focusedDate.year])}
+                selectedKeys={[state.focusedDate.year]}
             >
                 {(item) => (
                     <CalendarMenuItem

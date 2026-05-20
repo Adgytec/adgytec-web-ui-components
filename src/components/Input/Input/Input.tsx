@@ -163,19 +163,26 @@ export const Input: React.FC<InputProps> = ({
                             </span>
                         )}
 
-                        <span
-                            {...layoutDataAttrs}
-                            className={clsx(SupportingTextStyles)}
-                        >
-                            <FieldError>{errorMessage}</FieldError>
+                        {!hasDescription && hasCharacterCount && (
+                            <span
+                                {...layoutDataAttrs}
+                                className={clsx(SupportingTextStyles)}
+                            >
+                                <FieldError>{errorMessage}</FieldError>
 
-                            {!hasDescription && hasCharacterCount && (
                                 <CharacterCount
                                     count={currentValue.length}
                                     maxLength={maxLength}
                                 />
-                            )}
-                        </span>
+                            </span>
+                        )}
+
+                        {/* Error placement */}
+                        {hasDescription || !hasCharacterCount ? (
+                            <FieldError className={clsx(SupportingTextStyles)}>
+                                {errorMessage}
+                            </FieldError>
+                        ) : null}
                     </>
                 );
             }}
