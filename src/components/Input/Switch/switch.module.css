@@ -1,5 +1,38 @@
 @layer adgytec.comps {
     .switch {
+        /* switch tokens */
+        /* handle tokens */
+        --md-switch-handle-color: var(--md-sys-color-outline);
+        --md-switch-selected-handle-color: var(--md-sys-color-on-primary);
+
+        /* for hovered, focused and pressed state */
+        --md-switch-handle-interaction-color: var(
+            --md-sys-color-on-surface-variant
+        );
+        --md-switch-selected-handle-interaction-color: var(
+            --md-sys-color-primary-container
+        );
+
+        /* handle icon tokens */
+        --md-switch-handle-icon-color: var(
+            --md-sys-color-surface-container-highest
+        );
+        --md-switch-selected-handle-icon-color: var(--md-sys-color-primary);
+
+        /* track tokens */
+        --md-switch-track-color: var(--md-sys-color-surface-container-highest);
+        --md-switch-selected-track-color: var(--md-sys-color-primary);
+        --md-switch-track-outline-color: var(--md-sys-color-outline);
+
+        /* state layer tokens */
+        --md-switch-state-layer-color: var(--md-sys-color-on-surface);
+        --md-switch-selected-state-layer-color: var(--md-sys-color-primary);
+
+        /* focus indicator token */
+        --md-switch-focus-indicator-color: var(--md-sys-color-secondary);
+
+        /* configurable tokens end */
+
         --state-selected-base-color: var(--md-sys-color-primary);
         --state-unselected-base-color: var(--md-sys-color-on-surface);
 
@@ -80,12 +113,12 @@
         /* ================= BASE TOKENS ================= */
 
         /* size */
-        --handle-unselected-size: calc(16 * var(--dp, 1px));
-        --handle-base-size: calc(24 * var(--dp, 1px));
-        --handle-pressed-size: calc(28 * var(--dp, 1px));
+        --_md-switch-handle-unselected-size: calc(16 * var(--dp, 1px));
+        --_md-switch-handle-base-size: calc(24 * var(--dp, 1px));
+        --_md-switch-handle-pressed-size: calc(28 * var(--dp, 1px));
 
         /* shape */
-        --handle-shape: var(--md-sys-shape-corner-radius-full);
+        --_md-switch-handle-shape: var(--md-sys-shape-corner-radius-full);
 
         /* color */
         --handle-selected-base-color: var(--md-sys-color-primary-container);
@@ -98,8 +131,8 @@
         );
 
         /* elevation (M3 uses shadow levels instead of raw shadow) */
-        --handle-elevation: var(--md-sys-elevation-level1);
-        --handle-pressed-elevation: var(--md-sys-elevation-level2);
+        --_md-switch-handle-elevation: var(--md-sys-elevation-level1);
+        --_md-switch-handle-pressed-elevation: var(--md-sys-elevation-level2);
 
         /* ================= ENABLED ================= */
         --handle-selected-enabled-color: var(--md-sys-color-on-primary);
@@ -127,7 +160,7 @@
         );
 
         /* derived size */
-        --handle-size: var(--handle-unselected-size);
+        --handle-size: var(--_md-switch-handle-unselected-size);
         --handle-color: var(--handle-unselected-enabled-color);
         --handle-x: calc(6 * var(--dp, 1px));
 
@@ -140,7 +173,7 @@
 
         inline-size: var(--handle-size);
         aspect-ratio: 1 / 1;
-        border-radius: var(--handle-shape);
+        border-radius: var(--_md-switch-handle-shape);
 
         background-color: var(--handle-color);
 
@@ -159,13 +192,13 @@
         }
 
         &[data-icon] {
-            --handle-size: var(--handle-base-size);
+            --handle-size: var(--_md-switch-handle-base-size);
             --handle-x: calc(2 * var(--dp, 1px));
         }
 
         &[data-selected] {
             --handle-color: var(--handle-selected-enabled-color);
-            --handle-size: var(--handle-base-size);
+            --handle-size: var(--_md-switch-handle-base-size);
             --handle-x: calc(22 * var(--dp, 1px));
             --icon-color: var(--handle-icon-selected-base-color);
         }
@@ -181,7 +214,7 @@
         }
 
         &[data-pressed] {
-            --handle-size: var(--handle-pressed-size);
+            --handle-size: var(--_md-switch-handle-pressed-size);
             --handle-x: 0;
 
             &[data-selected] {
