@@ -19,6 +19,7 @@ export const CalendarYearMenu: React.FC<{
     return (
         <Virtualizer layout={ListLayout}>
             <ListBox
+                aria-label="year selection"
                 autoFocus
                 data-menu
                 items={years}
@@ -33,6 +34,7 @@ export const CalendarYearMenu: React.FC<{
                             );
                             onSelection();
                         }}
+                        textValue={item.formatted}
                     >
                         <SelectionIndicator>
                             <Icon icon={Check} size={24} data-selected-icon />

@@ -18,6 +18,7 @@ export const CalendarMonthMenu: React.FC<{
     return (
         <Virtualizer layout={ListLayout}>
             <ListBox
+                aria-label="month selection"
                 autoFocus
                 data-menu
                 items={months}
@@ -49,6 +50,7 @@ export const CalendarMonthMenu: React.FC<{
                                 onSelection();
                             }}
                             isDisabled={monthCompletelyInvalid ?? undefined}
+                            textValue={item.formatted}
                         >
                             <SelectionIndicator>
                                 <Icon
