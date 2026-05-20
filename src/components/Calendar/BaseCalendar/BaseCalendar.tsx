@@ -167,13 +167,16 @@ export const BaseCalendar: React.FC<{
                             calendarState.isNextVisibleRangeInvalid(),
                     },
                     "month-view": {
-                        onPress: () =>
-                            setView((prev) => {
-                                if (prev === "month") return "calendar";
+                        onPress: () => {
+                            if (view === "month") {
+                                restoreAnchorDateForRangeCalendar();
+                                setView("calendar");
+                                return;
+                            }
 
-                                saveAnchorDateForRangeCalendar();
-                                return "month";
-                            }),
+                            saveAnchorDateForRangeCalendar();
+                            setView("month");
+                        },
                         isDisabled: calendarState.isDisabled || view === "year",
                     },
 
@@ -200,13 +203,16 @@ export const BaseCalendar: React.FC<{
                             nextYearIsInvalid(),
                     },
                     "year-view": {
-                        onPress: () =>
-                            setView((prev) => {
-                                if (prev === "year") return "calendar";
+                        onPress: () => {
+                            if (view === "year") {
+                                restoreAnchorDateForRangeCalendar();
+                                setView("calendar");
+                                return;
+                            }
 
-                                saveAnchorDateForRangeCalendar();
-                                return "year";
-                            }),
+                            saveAnchorDateForRangeCalendar();
+                            setView("month");
+                        },
                         isDisabled:
                             calendarState.isDisabled || view === "month",
                     },
