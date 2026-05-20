@@ -60,6 +60,7 @@ export const Switch: React.FC<SwitchProps> = ({
                     "data-pressed": isPressed || undefined,
                     "data-readonly": isReadOnly || undefined,
                     "data-icon": iconValue ? true : undefined,
+                    "data-show-state-layer": !containerStateLayer || undefined,
                 };
 
                 let iconElement: ReactNode;

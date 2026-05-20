@@ -53,6 +53,7 @@ export const Radio: React.FC<RadioProps> = ({
                     "data-focused": isFocused || undefined,
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
+                    "data-show-state-layer": !stateLayer || undefined,
                 };
 
                 const label =

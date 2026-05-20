@@ -26,7 +26,9 @@
 
         /* state layer tokens */
         --md-switch-state-layer-color: var(--md-sys-color-on-surface);
-        --md-switch-selected-state-layer-color: var(--md-sys-color-primary);
+        --md-switch-selected-state-layer-color: var(
+            --md-switch-selected-track-color
+        );
 
         /* focus indicator token */
         --md-switch-focus-indicator-color: var(--md-sys-color-secondary);
@@ -228,7 +230,7 @@
     }
 
     /* handle state layer */
-    .handle::before {
+    .handle[data-show-state-layer]::before {
         --_state-size: calc(40 * var(--dp, 1px));
         --_state-shape: var(--md-sys-shape-corner-radius-full);
 
