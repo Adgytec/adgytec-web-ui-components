@@ -1,5 +1,4 @@
 import { Check } from "lucide-react";
-import { useDateFormatter } from "react-aria";
 import {
     ListBox,
     ListLayout,
@@ -12,26 +11,9 @@ import { type MonthItem, useCalendarState } from "../core";
 
 export const CalendarMonthMenu: React.FC<{
     onSelection: () => void;
-}> = ({ onSelection }) => {
+    months: MonthItem[];
+}> = ({ onSelection, months }) => {
     const state = useCalendarState();
-    const formatter = useDateFormatter({
-        month: "long",
-        timeZone: state.timeZone,
-    });
-
-    const months: MonthItem[] = [];
-    const numMonths = state.focusedDate.calendar.getMonthsInYear(
-        state.focusedDate
-    );
-
-    for (let i = 1; i <= numMonths; i++) {
-        const date = state.focusedDate.set({ month: i });
-        months.push({
-            id: i,
-            date,
-            formatted: formatter.format(date.toDate(state.timeZone)),
-        });
-    }
 
     return (
         <Virtualizer layout={ListLayout}>
@@ -45,7 +27,9 @@ export const CalendarMonthMenu: React.FC<{
                 {(item) => (
                     <CalendarMenuItem
                         onPress={() => {
-                            state.setFocusedDate(item.date);
+                            state.setFocusedDate(
+                                state.focusedDate.set({ month: item.id })
+                            );
                             onSelection();
                         }}
                     >

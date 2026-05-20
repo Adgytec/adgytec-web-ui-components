@@ -2775,6 +2775,7 @@ const DatePickerPreview = () => {
                 description="Add your birthday"
                 minValue={minValue}
                 maxValue={maxValue}
+                weekdayStyle="short"
             />
 
             <DatePicker

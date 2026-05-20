@@ -121,7 +121,7 @@
         color: var(--editor-infix-color);
 
         overflow: auto;
-        scrollbar-width: thin;
+        scrollbar-width: none;
 
         transition:
             border-color var(--md-sys-motion-standard-fast-effects)
@@ -202,6 +202,10 @@
             &[data-disabled] {
                 resize: none;
             }
+        }
+
+        &[data-date-input] {
+            inline-size: 100%;
         }
 
         &::placeholder {

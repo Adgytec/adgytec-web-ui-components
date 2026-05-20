@@ -1,5 +1,4 @@
 import { Check } from "lucide-react";
-import { useDateFormatter } from "react-aria";
 import {
     ListBox,
     ListLayout,
@@ -13,33 +12,9 @@ import { useCalendarState, type YearItem } from "../core";
 
 export const CalendarYearMenu: React.FC<{
     onSelection: () => void;
-}> = ({ onSelection }) => {
+    years: YearItem[];
+}> = ({ onSelection, years }) => {
     const state = useCalendarState();
-
-    const formatter = useDateFormatter({
-        year: "numeric",
-        timeZone: state.timeZone,
-    });
-
-    const currentYear = new Date().getFullYear();
-
-    const minYear = state.minValue?.year ?? 1900;
-
-    const maxYear = state.maxValue?.year ?? currentYear + 100;
-
-    const years: YearItem[] = [];
-
-    for (let year = minYear; year <= maxYear; year++) {
-        const date = state.focusedDate.set({
-            year,
-        });
-
-        years.push({
-            id: year,
-            date,
-            formatted: formatter.format(date.toDate(state.timeZone)),
-        });
-    }
 
     return (
         <Virtualizer layout={ListLayout}>
@@ -53,7 +28,9 @@ export const CalendarYearMenu: React.FC<{
                 {(item) => (
                     <CalendarMenuItem
                         onPress={() => {
-                            state.setFocusedDate(item.date);
+                            state.setFocusedDate(
+                                state.focusedDate.set({ year: item.id })
+                            );
                             onSelection();
                         }}
                     >

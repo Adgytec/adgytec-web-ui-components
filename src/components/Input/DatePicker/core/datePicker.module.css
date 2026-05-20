@@ -1,8 +1,6 @@
 @layer adgytec.comps {
     .group {
         white-space: nowrap;
-        display: flex;
-        justify-content: space-between;
     }
 
     .range-group {
