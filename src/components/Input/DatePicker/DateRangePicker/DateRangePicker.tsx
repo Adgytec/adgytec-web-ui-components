@@ -99,7 +99,7 @@ export const DateRangePicker = <T extends DateValue>({
                                     )}
                                 </DateInput>
 
-                                <span>--</span>
+                                <span aria-hidden="true">–</span>
 
                                 <DateInput
                                     slot="end"

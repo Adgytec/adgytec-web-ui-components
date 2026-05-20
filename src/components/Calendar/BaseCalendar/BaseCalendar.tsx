@@ -104,20 +104,13 @@ export const BaseCalendar: React.FC<{
         return items;
     }, [calendarState.focusedDate.calendar, timeZone, monthLongFormatter]);
 
-    const nextYearIsInvalid = () => {
-        const nextYear = calendarState.focusedDate.cycle("year", 1);
+    const isYearInvalid = (date: CalendarDate) => {
+        const startOfYear = date.set({ month: 1, day: 1 });
 
-        const startOfYear = nextYear.set({
-            month: 1,
-            day: 1,
-        });
-
-        const lastMonth = nextYear.calendar.getMonthsInYear(nextYear);
-        const endOfYear = nextYear.set({
+        const lastMonth = date.calendar.getMonthsInYear(date);
+        const endOfYear = date.set({
             month: lastMonth,
-            day: nextYear.calendar.getDaysInMonth(
-                nextYear.set({ month: lastMonth })
-            ),
+            day: date.calendar.getDaysInMonth(date.set({ month: lastMonth })),
         });
 
         return (
@@ -128,28 +121,12 @@ export const BaseCalendar: React.FC<{
         );
     };
 
+    const nextYearIsInvalid = () => {
+        return isYearInvalid(calendarState.focusedDate.cycle("year", 1));
+    };
+
     const prevYearIsInvalid = () => {
-        const previousYear = calendarState.focusedDate.cycle("year", -1);
-
-        const startOfYear = previousYear.set({
-            month: 1,
-            day: 1,
-        });
-
-        const lastMonth = previousYear.calendar.getMonthsInYear(previousYear);
-        const endOfYear = previousYear.set({
-            month: lastMonth,
-            day: previousYear.calendar.getDaysInMonth(
-                previousYear.set({ month: lastMonth })
-            ),
-        });
-
-        return (
-            (calendarState.maxValue != null &&
-                startOfYear.compare(calendarState.maxValue) > 0) ||
-            (calendarState.minValue != null &&
-                endOfYear.compare(calendarState.minValue) < 0)
-        );
+        return isYearInvalid(calendarState.focusedDate.cycle("year", -1));
     };
 
     const saveAnchorDateForRangeCalendar = () => {
