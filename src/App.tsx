@@ -2766,8 +2766,8 @@ const RangeCalendarPreview = () => {
 };
 
 const DatePickerPreview = () => {
-    const minValue = new CalendarDate(1999, 1, 1);
-    const maxValue = new CalendarDate(1999, 1, 1);
+    const minValue = new CalendarDate(1998, 12, 31);
+    const maxValue = new CalendarDate(1999, 2, 1);
     return (
         <div className="items">
             <DatePicker

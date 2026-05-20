@@ -51,6 +51,10 @@
         }
 
         &[data-disabled] {
+            color: rgb(
+                from currentColor r g b /
+                var(--md-sys-state-disabled-content)
+            );
             cursor: default;
         }
     }

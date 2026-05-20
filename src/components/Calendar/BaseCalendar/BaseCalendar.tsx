@@ -1,3 +1,4 @@
+import { today } from "@internationalized/date";
 import clsx from "clsx";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
@@ -36,16 +37,20 @@ export const BaseCalendar: React.FC<{
     const calendarState = useCalendarState();
     const timeZone = calendarState.timeZone;
 
-    const monthFormatter = useDateFormatter({
+    const monthShortFormatter = useDateFormatter({
         month: "short",
         timeZone: timeZone,
+    });
+    const monthLongFormatter = useDateFormatter({
+        month: "long",
+        timeZone,
     });
     const yearFormatter = useDateFormatter({
         year: "numeric",
         timeZone: timeZone,
     });
 
-    const focusedMonth = monthFormatter.format(
+    const focusedMonth = monthShortFormatter.format(
         calendarState.focusedDate.toDate(timeZone)
     );
     const focusedYear = yearFormatter.format(
@@ -53,7 +58,7 @@ export const BaseCalendar: React.FC<{
     );
 
     // create year menu items
-    const currentYear = new Date().getFullYear();
+    const currentYear = today(timeZone).year;
 
     const minYear = calendarState.minValue?.year ?? defaultMinYear;
     const maxYear =
@@ -78,11 +83,6 @@ export const BaseCalendar: React.FC<{
     // create month menu items
     // biome-ignore lint/correctness/useExhaustiveDependencies: focusedDate month/day changes do not affect generated month items
     const months = useMemo(() => {
-        const monthFormatter = new Intl.DateTimeFormat(undefined, {
-            month: "long",
-            timeZone,
-        });
-
         const items: MonthItem[] = [];
 
         const numMonths = calendarState.focusedDate.calendar.getMonthsInYear(
@@ -94,36 +94,74 @@ export const BaseCalendar: React.FC<{
 
             items.push({
                 id: month,
-                formatted: monthFormatter.format(date.toDate(timeZone)),
+                formatted: monthLongFormatter.format(date.toDate(timeZone)),
             });
         }
 
         return items;
-    }, [calendarState.focusedDate.calendar, timeZone]);
+    }, [calendarState.focusedDate.calendar, timeZone, monthLongFormatter]);
+
+    const nextYearIsInvalid = () => {
+        const nextYear = calendarState.focusedDate.cycle("year", 1);
+
+        const startOfYear = nextYear.set({
+            month: 1,
+            day: 1,
+        });
+
+        const endOfYear = nextYear.set({
+            month: 12,
+            day: 31,
+        });
+
+        return (
+            (calendarState.maxValue != null &&
+                startOfYear.compare(calendarState.maxValue) > 0) ||
+            (calendarState.minValue != null &&
+                endOfYear.compare(calendarState.minValue) < 0)
+        );
+    };
+
+    const prevYearIsInvalid = () => {
+        const previousYear = calendarState.focusedDate.cycle("year", -1);
+
+        const startOfYear = previousYear.set({
+            month: 1,
+            day: 1,
+        });
+
+        const endOfYear = previousYear.set({
+            month: 12,
+            day: previousYear.calendar.getDaysInMonth(
+                previousYear.set({ month: 12 })
+            ),
+        });
+
+        return (
+            (calendarState.maxValue != null &&
+                startOfYear.compare(calendarState.maxValue) > 0) ||
+            (calendarState.minValue != null &&
+                endOfYear.compare(calendarState.minValue) < 0)
+        );
+    };
 
     return (
         <ButtonContext
             value={{
                 slots: {
                     "previous-month": {
-                        onPress: () => {
-                            const newDate = calendarState.focusedDate.add({
-                                months: -1,
-                            });
-                            calendarState.setFocusedDate(newDate);
-                        },
+                        onPress: () => calendarState.focusPreviousPage(),
                         isDisabled:
-                            calendarState.isDisabled || view !== "calendar",
+                            calendarState.isDisabled ||
+                            view !== "calendar" ||
+                            calendarState.isPreviousVisibleRangeInvalid(),
                     },
                     "next-month": {
-                        onPress: () => {
-                            const newDate = calendarState.focusedDate.add({
-                                months: 1,
-                            });
-                            calendarState.setFocusedDate(newDate);
-                        },
+                        onPress: () => calendarState.focusNextPage(),
                         isDisabled:
-                            calendarState.isDisabled || view !== "calendar",
+                            calendarState.isDisabled ||
+                            view !== "calendar" ||
+                            calendarState.isNextVisibleRangeInvalid(),
                     },
                     "month-view": {
                         onPress: () =>
@@ -136,23 +174,25 @@ export const BaseCalendar: React.FC<{
 
                     "previous-year": {
                         onPress: () => {
-                            const newDate = calendarState.focusedDate.add({
-                                years: -1,
-                            });
-                            calendarState.setFocusedDate(newDate);
+                            calendarState.setFocusedDate(
+                                calendarState.focusedDate.cycle("year", -1)
+                            );
                         },
                         isDisabled:
-                            calendarState.isDisabled || view !== "calendar",
+                            calendarState.isDisabled ||
+                            view !== "calendar" ||
+                            prevYearIsInvalid(),
                     },
                     "next-year": {
                         onPress: () => {
-                            const newDate = calendarState.focusedDate.add({
-                                years: 1,
-                            });
-                            calendarState.setFocusedDate(newDate);
+                            calendarState.setFocusedDate(
+                                calendarState.focusedDate.cycle("year", 1)
+                            );
                         },
                         isDisabled:
-                            calendarState.isDisabled || view !== "calendar",
+                            calendarState.isDisabled ||
+                            view !== "calendar" ||
+                            nextYearIsInvalid(),
                     },
                     "year-view": {
                         onPress: () =>

@@ -103,7 +103,6 @@ export const DateRangePicker = <T extends DateValue>({
 
                                 <DateInput
                                     slot="end"
-                                    ref={ref}
                                     className={clsx(
                                         UnsetStyles,
                                         EditorInputStyles,

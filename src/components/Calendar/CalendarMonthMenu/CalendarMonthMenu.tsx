@@ -24,21 +24,43 @@ export const CalendarMonthMenu: React.FC<{
                 selectionMode="single"
                 selectedKeys={new Set([state.focusedDate.month])}
             >
-                {(item) => (
-                    <CalendarMenuItem
-                        onPress={() => {
-                            state.setFocusedDate(
-                                state.focusedDate.set({ month: item.id })
-                            );
-                            onSelection();
-                        }}
-                    >
-                        <SelectionIndicator>
-                            <Icon icon={Check} size={24} data-selected-icon />
-                        </SelectionIndicator>
-                        {item.formatted}
-                    </CalendarMenuItem>
-                )}
+                {(item) => {
+                    const nextDate = state.focusedDate.set({
+                        month: item.id,
+                        day: 1,
+                    });
+
+                    const endOfMonth = nextDate.set({
+                        day: nextDate.calendar.getDaysInMonth(nextDate),
+                    });
+
+                    const monthCompletelyInvalid =
+                        (state.maxValue &&
+                            nextDate.compare(state.maxValue) > 0) ||
+                        (state.minValue &&
+                            endOfMonth.compare(state.minValue) < 0);
+
+                    return (
+                        <CalendarMenuItem
+                            onPress={() => {
+                                state.setFocusedDate(
+                                    state.focusedDate.set({ month: item.id })
+                                );
+                                onSelection();
+                            }}
+                            isDisabled={monthCompletelyInvalid ?? undefined}
+                        >
+                            <SelectionIndicator>
+                                <Icon
+                                    icon={Check}
+                                    size={24}
+                                    data-selected-icon
+                                />
+                            </SelectionIndicator>
+                            {item.formatted}
+                        </CalendarMenuItem>
+                    );
+                }}
             </ListBox>
         </Virtualizer>
     );
