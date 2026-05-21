@@ -65,6 +65,8 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
             }
             {...props}
             {...iconButtonDataAttrs}
+            data-button
+            data-link-button
         >
             {({
                 isDisabled,

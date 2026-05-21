@@ -66,6 +66,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
             }
             {...props}
             {...iconButtonDataAttrs}
+            data-button
         >
             {({
                 isPending,

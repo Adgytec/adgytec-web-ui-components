@@ -70,6 +70,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
             }
             {...props}
             {...toggleButtonDataAttrs}
+            data-button
         >
             {(renderProps) => {
                 const {

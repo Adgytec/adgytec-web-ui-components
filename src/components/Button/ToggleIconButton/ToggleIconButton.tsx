@@ -67,6 +67,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
             }
             {...props}
             {...iconButtonDataAttrs}
+            data-button
         >
             {({
                 isSelected,

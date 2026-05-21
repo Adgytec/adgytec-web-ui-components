@@ -65,6 +65,7 @@ export const Button: React.FC<ButtonProps> = ({
             }
             {...props}
             {...baseButtonDataAttrs}
+            data-button
         >
             {(renderProps) => {
                 const {

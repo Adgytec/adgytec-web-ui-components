@@ -64,6 +64,8 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
             }
             {...props}
             {...baseButtonDataAttrs}
+            data-button
+            data-link-button
         >
             {(renderProps) => {
                 const {
