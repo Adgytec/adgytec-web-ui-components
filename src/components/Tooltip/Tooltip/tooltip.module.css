@@ -1,3 +1,10 @@
+/* configurable tokens
+*
+* --md-tooltip-background
+* --md-tooltip-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .tooltip {
         /* configurable tokens */

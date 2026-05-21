@@ -1,3 +1,23 @@
+/* configurable tokens
+*
+* --md-switch-handle-color
+* --md-switch-selected-handle-color
+*
+* --md-switch-handle-interaction-color
+* --md-switch-selected-handle-interaction-color
+*
+* --md-switch-handle-icon-color
+* --md-switch-selected-handle-icon-color
+*
+* --md-switch-track-color
+* --md-switch-selected-track-color
+* --md-switch-track-outline-color
+*
+* --md-switch-state-layer-color
+* --md-switch-selected-state-layer-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .switch {
         /* switch tokens */

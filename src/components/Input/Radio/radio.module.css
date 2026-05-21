@@ -1,3 +1,16 @@
+/* configurable tokens
+*
+* --md-radio-icon-color
+* --md-radio-selected-icon-color
+*
+* --md-radio-interaction-icon-color
+* --md-radio-selected-interaction-icon-color
+*
+* --md-radio-state-layer-color
+* --md-radio-selected-state-layer-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .radio-group {
         display: grid;

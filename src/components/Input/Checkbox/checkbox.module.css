@@ -1,3 +1,17 @@
+/* configurable tokens
+*
+* --md-checkbox-outline-color
+* --md-checkbox-container-color
+*
+* --md-checkbox-interaction-outline-color
+*
+* --md-checkbox-icon-color
+*
+* --md-checkbox-state-layer-color
+* --md-checkbox-selected-state-layer-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .checkbox-group {
         display: grid;
