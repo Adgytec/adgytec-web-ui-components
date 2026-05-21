@@ -28,14 +28,16 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
     children,
     onPress,
     className,
-    iconPlacement = "start",
+    iconPlacement,
     ...props
 }) => {
-    const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
-        size,
-        shape,
-        color,
-    });
+    const { buttonColor, buttonShape, buttonSize, buttonIconPlacement } =
+        useButtonConfig({
+            size,
+            shape,
+            color,
+            iconPlacement,
+        });
 
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
@@ -97,11 +99,11 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
                     >
                         {splashInfo && <Splash {...splashInfo} />}
 
-                        {iconPlacement === "start" && iconComp}
+                        {buttonIconPlacement === "start" && iconComp}
 
                         {isChildFunc ? children(renderProps) : children}
 
-                        {iconPlacement === "end" && iconComp}
+                        {buttonIconPlacement === "end" && iconComp}
                     </span>
                 );
             }}
