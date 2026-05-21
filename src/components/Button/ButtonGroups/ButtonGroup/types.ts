@@ -1,5 +1,10 @@
 import type { ToggleButtonGroup } from "react-aria-components";
-import type { ButtonShape, ButtonSize, CoreButtonColor } from "../../core";
+import type {
+    ButtonIconPlacement,
+    ButtonShape,
+    ButtonSize,
+    CoreButtonColor,
+} from "../../core";
 
 export interface ButtonGroupProps
     extends Omit<
@@ -9,4 +14,5 @@ export interface ButtonGroupProps
     size?: ButtonSize;
     shape?: ButtonShape;
     color?: CoreButtonColor;
+    iconPlacement?: ButtonIconPlacement;
 }

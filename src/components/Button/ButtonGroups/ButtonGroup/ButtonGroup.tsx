@@ -10,11 +10,12 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
     shape,
     color,
     className,
+    iconPlacement,
     ...props
 }) => {
     const contextValue = useMemo(
-        () => ({ size, shape, color }),
-        [size, shape, color]
+        () => ({ size, shape, color, iconPlacement }),
+        [size, shape, color, iconPlacement]
     );
 
     return (

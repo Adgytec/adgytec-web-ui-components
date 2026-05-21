@@ -21,9 +21,17 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
     selectedIcon,
     children,
     onPress,
+    iconPlacement,
     ...props
 }) => {
-    const { shape, size, color } = useConnectedButtonGroupContext();
+    const {
+        shape,
+        size,
+        color,
+        iconPlacement: groupIconPlacement,
+    } = useConnectedButtonGroupContext();
+
+    const buttonIconPlacement = iconPlacement ?? groupIconPlacement ?? "start";
 
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
@@ -61,6 +69,10 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
                 if (isSelected && selectedIcon) iconToRender = selectedIcon;
 
                 const iconSize = ButtonIconSizeMapping[size];
+                const iconComp = iconToRender && (
+                    <Icon icon={iconToRender} size={iconSize} />
+                );
+
                 return (
                     <span
                         {...dataAttrs}
@@ -74,11 +86,11 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
                     >
                         {splashInfo && <Splash {...splashInfo} />}
 
-                        {iconToRender && (
-                            <Icon icon={iconToRender} size={iconSize} />
-                        )}
+                        {buttonIconPlacement === "start" && iconComp}
 
                         {isChildFunc ? children(renderProps) : children}
+
+                        {buttonIconPlacement === "end" && iconComp}
                     </span>
                 );
             }}

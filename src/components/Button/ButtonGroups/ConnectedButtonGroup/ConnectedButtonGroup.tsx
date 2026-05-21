@@ -9,12 +9,13 @@ export const ConnectedButtonGroup: React.FC<ConnectedButtonGroupProps> = ({
     size = "small",
     shape = "round",
     color = "filled",
+    iconPlacement,
     className,
     ...props
 }) => {
     const contextValue = useMemo(
-        () => ({ size, shape, color }),
-        [size, shape, color]
+        () => ({ size, shape, color, iconPlacement }),
+        [size, shape, color, iconPlacement]
     );
 
     return (

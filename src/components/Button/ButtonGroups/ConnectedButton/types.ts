@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import type { ToggleButton } from "react-aria-components";
+import type { ButtonIconPlacement } from "../../core";
 
 export interface ConnectedButtonProps
     extends Omit<
@@ -8,4 +9,5 @@ export interface ConnectedButtonProps
     > {
     icon?: LucideIcon;
     selectedIcon?: LucideIcon;
+    iconPlacement?: ButtonIconPlacement;
 }
