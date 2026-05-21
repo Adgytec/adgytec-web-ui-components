@@ -38,6 +38,7 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
                     className
                 )}
                 {...props}
+                data-split-button
             >
                 {children}
             </Toolbar>

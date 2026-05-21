@@ -42,6 +42,8 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
             isPending={pending}
             className={clsx(ButtonReset, TapTarget)}
             {...props}
+            data-button
+            data-split-button-trigger
         >
             {({
                 isDisabled,

@@ -52,6 +52,8 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
                         : className
                 )
             }
+            data-button
+            data-split-button-primary
         >
             {(renderProps) => {
                 const {
