@@ -2827,33 +2827,55 @@ const DateRangePickerPreview = () => {
     );
 };
 
-const ButtonConfigPreview = () => {
+const ConfigPreview = () => {
     return (
-        <div className="items">
-            <Button className="primary">primary</Button>
-            <Button className="primary-container">primary container</Button>
+        <>
+            <div className="items">
+                <Button className="primary">primary</Button>
+                <Button className="primary-container">primary container</Button>
 
-            <Button className="error">error</Button>
-            <Button className="error-container">error container</Button>
+                <Button className="error">error</Button>
+                <Button className="error-container">error container</Button>
 
-            <Button className="secondary">secondary</Button>
-            <Button className="secondary-container">secondary container</Button>
+                <Button className="secondary">secondary</Button>
+                <Button className="secondary-container">
+                    secondary container
+                </Button>
 
-            <Button className="tertiary">tertiary</Button>
-            <Button className="tertiary-container">tertiary container</Button>
+                <Button className="tertiary">tertiary</Button>
+                <Button className="tertiary-container">
+                    tertiary container
+                </Button>
 
-            <Button className="inverse">inverse</Button>
-            <Button className="inverse-primary">inverse primary</Button>
+                <Button className="inverse">inverse</Button>
+                <Button className="inverse-primary">inverse primary</Button>
 
-            <Button className="primary-fixed">primary fixed</Button>
-            <Button className="primary-fixed-dim">primary fixed dim</Button>
+                <Button className="primary-fixed">primary fixed</Button>
+                <Button className="primary-fixed-dim">primary fixed dim</Button>
 
-            <Button className="secondary-fixed">secondary fixed</Button>
-            <Button className="secondary-fixed-dim">secondary fixed dim</Button>
+                <Button className="secondary-fixed">secondary fixed</Button>
+                <Button className="secondary-fixed-dim">
+                    secondary fixed dim
+                </Button>
 
-            <Button className="tertiary-fixed">tertiary fixed</Button>
-            <Button className="tertiary-fixed-dim">tertiary fixed dim</Button>
-        </div>
+                <Button className="tertiary-fixed">tertiary fixed</Button>
+                <Button className="tertiary-fixed-dim">
+                    tertiary fixed dim
+                </Button>
+            </div>
+
+            <div className="items" data-slider-orientation="horizontal">
+                <Slider className="slider-tertiary" />
+
+                <RangeSlider className="slider-primary-fixed" />
+
+                <CenteredSlider className="slider-secondary-fixed" />
+
+                <Slider className="slider-tertiary-fixed" />
+
+                <RangeSlider className="slider-inverse" />
+            </div>
+        </>
     );
 };
 
@@ -2877,9 +2899,9 @@ const App = () => {
         },
 
         {
-            id: "button-config-preview",
-            label: "Button Config",
-            Component: ButtonConfigPreview,
+            id: "config-preview",
+            label: "Config",
+            Component: ConfigPreview,
         },
 
         {

@@ -26,6 +26,7 @@ export const Slider = <T extends number>({
     minInsetIcon,
     maxStops,
     outputRenderer,
+    className,
     ...props
 }: SliderProps<T>) => {
     const canShowIcon = size !== "extra-small" && size !== "small";
@@ -36,7 +37,15 @@ export const Slider = <T extends number>({
             minValue={minValue}
             maxValue={maxValue}
             step={step}
-            className={clsx(SliderStyles, SliderColors)}
+            className={(renderProps) =>
+                clsx(
+                    SliderStyles,
+                    SliderColors,
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
             {...props}
         >
             {({ orientation, state, isDisabled }) => {

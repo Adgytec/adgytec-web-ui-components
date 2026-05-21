@@ -26,6 +26,7 @@ export const RangeSlider = <T extends RangeSliderType>({
     showInBetweenSteps,
     maxStops,
     outputRenderer,
+    className,
     ...props
 }: RangeSliderProps<T>) => {
     return (
@@ -34,7 +35,15 @@ export const RangeSlider = <T extends RangeSliderType>({
             maxValue={maxValue}
             step={step}
             defaultValue={defaultValue}
-            className={clsx(SliderStyles, SliderColors)}
+            className={(renderProps) =>
+                clsx(
+                    SliderStyles,
+                    SliderColors,
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
             {...props}
         >
             {({ orientation, state }) => {

@@ -27,6 +27,7 @@ export const CenteredSlider = <T extends number>({
     showInBetweenSteps,
     maxStops,
     outputRenderer,
+    className,
     ...props
 }: CenteredSliderProps<T>) => {
     return (
@@ -35,7 +36,15 @@ export const CenteredSlider = <T extends number>({
             maxValue={maxValue}
             step={step}
             defaultValue={defaultValue}
-            className={clsx(SliderStyles, SliderColors)}
+            className={(renderProps) =>
+                clsx(
+                    SliderStyles,
+                    SliderColors,
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
             {...props}
         >
             {({ orientation, state, isDisabled }) => {

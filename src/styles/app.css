@@ -280,3 +280,97 @@
     --md-button-color: var(--md-sys-color-on-tertiary-fixed-variant);
     --md-button-outline-color: transparent;
 }
+
+.slider-tertiary {
+    --md-slider-active-track-color: var(--md-sys-color-tertiary);
+    --md-slider-inactive-track-color: var(--md-sys-color-tertiary-container);
+
+    --md-slider-thumb-color: var(--md-slider-active-track-color);
+
+    --md-slider-active-stop-color: var(--md-sys-color-on-tertiary);
+    --md-slider-inactive-stop-color: var(--md-sys-color-on-tertiary-container);
+
+    --md-slider-output-background: var(--md-sys-color-tertiary-container);
+    --md-slider-output-color: var(--md-sys-color-on-tertiary-container);
+
+    --md-slider-icon-color: var(--md-sys-color-on-tertiary);
+    --md-slider-minimum-value-icon-color: var(
+        --md-sys-color-on-tertiary-container
+    );
+}
+
+.slider-primary-fixed {
+    --md-slider-active-track-color: var(--md-sys-color-primary-fixed-dim);
+    --md-slider-inactive-track-color: var(--md-sys-color-primary-fixed);
+
+    --md-slider-thumb-color: var(--md-slider-active-track-color);
+
+    --md-slider-active-stop-color: var(--md-sys-color-on-primary-fixed);
+    --md-slider-inactive-stop-color: var(
+        --md-sys-color-on-primary-fixed-variant
+    );
+
+    --md-slider-output-background: var(--md-sys-color-primary-fixed-dim);
+    --md-slider-output-color: var(--md-sys-color-on-primary-fixed);
+
+    --md-slider-icon-color: var(--md-sys-color-on-primary-fixed);
+    --md-slider-minimum-value-icon-color: var(
+        --md-sys-color-on-primary-fixed-variant
+    );
+}
+
+.slider-secondary-fixed {
+    --md-slider-active-track-color: var(--md-sys-color-secondary-fixed-dim);
+    --md-slider-inactive-track-color: var(--md-sys-color-secondary-fixed);
+
+    --md-slider-thumb-color: var(--md-slider-active-track-color);
+
+    --md-slider-active-stop-color: var(--md-sys-color-on-secondary-fixed);
+    --md-slider-inactive-stop-color: var(
+        --md-sys-color-on-secondary-fixed-variant
+    );
+
+    --md-slider-output-background: var(--md-sys-color-secondary-fixed-dim);
+    --md-slider-output-color: var(--md-sys-color-on-secondary-fixed);
+
+    --md-slider-icon-color: var(--md-sys-color-on-secondary-fixed);
+    --md-slider-minimum-value-icon-color: var(
+        --md-sys-color-on-secondary-fixed-variant
+    );
+}
+
+.slider-tertiary-fixed {
+    --md-slider-active-track-color: var(--md-sys-color-tertiary-fixed-dim);
+    --md-slider-inactive-track-color: var(--md-sys-color-tertiary-fixed);
+
+    --md-slider-thumb-color: var(--md-slider-active-track-color);
+
+    --md-slider-active-stop-color: var(--md-sys-color-on-tertiary-fixed);
+    --md-slider-inactive-stop-color: var(
+        --md-sys-color-on-tertiary-fixed-variant
+    );
+
+    --md-slider-output-background: var(--md-sys-color-tertiary-fixed-dim);
+    --md-slider-output-color: var(--md-sys-color-on-tertiary-fixed);
+
+    --md-slider-icon-color: var(--md-sys-color-on-tertiary-fixed);
+    --md-slider-minimum-value-icon-color: var(
+        --md-sys-color-on-tertiary-fixed-variant
+    );
+}
+
+.slider-inverse {
+    --md-slider-active-track-color: var(--md-sys-color-inverse-primary);
+    --md-slider-inactive-track-color: var(--md-sys-color-inverse-surface);
+
+    --md-slider-thumb-color: var(--md-slider-active-track-color);
+
+    --md-slider-active-stop-color: var(--md-sys-color-inverse-on-surface);
+    --md-slider-inactive-stop-color: var(--md-sys-color-inverse-primary);
+
+    --md-slider-output-background: var(--md-sys-color-inverse-surface);
+    --md-slider-output-color: var(--md-sys-color-inverse-on-surface);
+
+    --md-slider-icon-color: var(--md-sys-color-inverse-on-surface);
+    --md-slider-minimum-value-icon-color: var(--md-sys-color-inverse-primary);
+}
