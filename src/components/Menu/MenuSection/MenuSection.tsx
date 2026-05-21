@@ -10,6 +10,7 @@ export const MenuSection = <T extends object>({
         <AriaMenuSection
             className={clsx(MenuSectionStyles, className)}
             {...props}
+            data-menu-section
         />
     );
 };

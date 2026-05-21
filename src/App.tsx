@@ -87,6 +87,7 @@ import {
     DisclosureHeader,
     DisclosurePanel,
 } from "./components/Disclosure";
+import { Divider } from "./components/Divider";
 import { Icon } from "./components/Icon";
 import {
     CenteredSlider,
@@ -127,7 +128,6 @@ import {
     SubmenuPopover,
 } from "./components/Menu";
 import { Popover } from "./components/Popover";
-import { Divider } from "./components/Divider";
 import { Tag } from "./components/Tag";
 import { ThemeSelector } from "./components/ThemeSelector";
 import {

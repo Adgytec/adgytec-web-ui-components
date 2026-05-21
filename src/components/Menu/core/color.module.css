@@ -2,59 +2,59 @@
     /* this is used by individual menu items */
     .color {
         /* state layer */
-        --state-color: var(--label-color);
-        --state-layer-opacity: 0;
+        --_state-color: var(--_label-color);
+        --_state-layer-opacity: 0;
 
-        --state-layer-color: rgb(
-            from var(--state-color) r g b /
-            var(--state-layer-opacity)
+        --_state-layer-color: rgb(
+            from var(--_state-color) r g b /
+            var(--_state-layer-opacity)
         );
 
         /* variables to use */
-        --background-color: var(--menu-item-background-normal);
-        --color: var(--menu-item-color-normal);
-        --label-color: var(--menu-item-label-color-normal);
+        --_background-color: var(--_md-menu-item-background);
+        --_color: var(--_md-menu-item-color);
+        --_label-color: var(--_md-menu-item-label-color);
 
         /* styles */
-        background-color: var(--background-color);
-        color: var(--color);
+        background-color: var(--_background-color);
+        color: var(--_color);
 
         &[data-selected] {
-            --background-color: var(--menu-item-background-selected);
-            --color: var(--menu-item-color-selected);
-            --label-color: var(--menu-item-label-color-selected);
+            --_background-color: var(--_md-menu-item-selected-background);
+            --_color: var(--_md-menu-item-selected-color);
+            --_label-color: var(--_menu-item-selected-label-color);
         }
 
         &[data-hovered] {
-            --state-layer-opacity: var(--md-sys-state-hover);
+            --_state-layer-opacity: var(--md-sys-state-hover);
         }
 
         &[data-focus-visible] {
-            --state-layer-opacity: var(--md-sys-state-focus);
+            --_state-layer-opacity: var(--md-sys-state-focus);
         }
 
         &[data-open] {
-            --state-layer-opacity: 0.08;
+            --_state-layer-opacity: 0.08;
         }
 
         &[data-pressed] {
-            --state-layer-opacity: var(--md-sys-state-pressed);
+            --_state-layer-opacity: var(--md-sys-state-pressed);
         }
 
         &[data-disabled] {
-            --label-color: rgb(
-                from var(--menu-item-label-color-normal) r g b /
+            --_label-color: rgb(
+                from var(--_md-menu-item-label-color) r g b /
                 var(--md-sys-state-disabled-content)
             );
-            --color: var(--label-color);
+            --_color: var(--_label-color);
 
             &[data-selected] {
-                --background-color: rgb(
-                    from var(--menu-item-background-selected) r g b /
+                --_background-color: rgb(
+                    from var(--_md-menu-item-selected-background) r g b /
                     var(--md-sys-state-disabled-container)
                 );
-                --label-color: rgb(
-                    from var(--menu-item-label-color-selected) r g b /
+                --_label-color: rgb(
+                    from var(--_menu-item-selected-label-color) r g b /
                     var(--md-sys-state-disabled-content)
                 );
             }
@@ -69,7 +69,7 @@
         inset: 0;
         border-radius: inherit;
 
-        background-color: var(--state-layer-color);
+        background-color: var(--_state-layer-color);
 
         transition: background-color var(--md-sys-motion-standard-fast-spatial)
             var(--md-sys-motion-standard-fast-spatial-duration);
@@ -81,67 +81,69 @@
 
     /* focus indicator */
     .color[data-focus-visible] {
-        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
-        --focus-indicator-offset: calc(2 * var(--dp, 1px));
-        --focus-indicator-color: var(--md-sys-color-secondary);
+        --_focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --_focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --_focus-indicator-color: var(--md-sys-color-secondary);
 
-        outline-width: var(--focus-indicator-thickness);
+        outline-width: var(--_focus-indicator-thickness);
         outline-style: solid;
-        outline-offset: var(--focus-indicator-offset);
-        outline-color: var(--focus-indicator-color);
+        outline-offset: var(--_focus-indicator-offset);
+        outline-color: var(--_focus-indicator-color);
         z-index: 1;
     }
 
     /* menu label */
     .label {
-        color: var(--label-color);
+        color: var(--_label-color);
     }
 
     .standard {
-        --background: var(--md-sys-color-surface-container-low);
-        --menu-section-label-color: var(--md-sys-color-on-surface-variant);
+        --_md-menu-background: var(--md-sys-color-surface-container-low);
+        --_md-menu-section-label-color: var(--md-sys-color-on-surface-variant);
 
-        --separator-color: var(--menu-item-color-normal);
+        --md-divider-color: var(--_md-menu-item-color);
 
         /* menu item */
 
         /* background */
-        --menu-item-background-normal: var(
-            --md-sys-color-surface-container-low
+        --_md-menu-item-background: var(--md-sys-color-surface-container-low);
+        --_md-menu-item-selected-background: var(
+            --md-sys-color-tertiary-container
         );
-        --menu-item-background-selected: var(--md-sys-color-tertiary-container);
 
         /* color */
-        --menu-item-color-normal: var(--md-sys-color-on-surface-variant);
-        --menu-item-color-selected: var(--md-sys-color-on-tertiary-container);
+        --_md-menu-item-color: var(--md-sys-color-on-surface-variant);
+        --_md-menu-item-selected-color: var(
+            --md-sys-color-on-tertiary-container
+        );
 
         /* label color */
-        --menu-item-label-color-normal: var(--md-sys-color-on-surface);
-        --menu-item-label-color-selected: var(
+        --_md-menu-item-label-color: var(--md-sys-color-on-surface);
+        --_menu-item-selected-label-color: var(
             --md-sys-color-on-tertiary-container
         );
     }
 
     .vibrant {
-        --background: var(--md-sys-color-tertiary-container);
-        --menu-section-label-color: var(--md-sys-color-on-tertiary-container);
+        --_md-menu-background: var(--md-sys-color-tertiary-container);
+        --_md-menu-section-label-color: var(
+            --md-sys-color-on-tertiary-container
+        );
 
-        --separator-color: var(--menu-item-color-normal);
+        --md-divider-color: var(--_md-menu-item-color);
 
         /* menu item */
 
         /* background */
-        --menu-item-background-normal: var(--md-sys-color-tertiary-container);
-        --menu-item-background-selected: var(--md-sys-color-tertiary);
+        --_md-menu-item-background: var(--md-sys-color-tertiary-container);
+        --_md-menu-item-selected-background: var(--md-sys-color-tertiary);
 
         /* color */
-        --menu-item-color-normal: var(--md-sys-color-on-tertiary-container);
-        --menu-item-color-selected: var(--md-sys-color-on-tertiary);
+        --_md-menu-item-color: var(--md-sys-color-on-tertiary-container);
+        --_md-menu-item-selected-color: var(--md-sys-color-on-tertiary);
 
         /* label color */
-        --menu-item-label-color-normal: var(
-            --md-sys-color-on-tertiary-container
-        );
-        --menu-item-label-color-selected: var(--md-sys-color-on-tertiary);
+        --_md-menu-item-label-color: var(--md-sys-color-on-tertiary-container);
+        --_menu-item-selected-label-color: var(--md-sys-color-on-tertiary);
     }
 }

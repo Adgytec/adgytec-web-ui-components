@@ -36,6 +36,7 @@ export const Menu = <T extends object>({
             }
             {...props}
             data-layout={layout}
+            data-menu
         />
     );
 };
