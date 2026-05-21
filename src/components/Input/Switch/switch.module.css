@@ -30,9 +30,6 @@
             --md-switch-selected-track-color
         );
 
-        /* focus indicator token */
-        --md-switch-focus-indicator-color: var(--md-sys-color-secondary);
-
         /* configurable tokens end */
 
         /* handle specific tokens */
@@ -57,12 +54,6 @@
         --_md-switch-track-outline-thickness: calc(2 * var(--dp, 1px));
 
         /* track tokens end */
-
-        /* focus indicator tokens */
-        --_md-switch-focus-indicator-thickness: calc(3 * var(--dp, 1px));
-        --_md-switch-focus-indicator-offset: calc(2 * var(--dp, 1px));
-
-        /* focus indicator tokens end */
 
         /* state layer tokens */
         --_state-layer-opacity: 0;
@@ -316,9 +307,13 @@
     }
 
     .track[data-focus-visible] {
-        outline-width: var(--_md-switch-focus-indicator-thickness);
+        --_focus-indicator-color: var(--md-sys-color-secondary);
+        --_focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --_focus-indicator-offset: calc(2 * var(--dp, 1px));
+
+        outline-width: var(--_focus-indicator-thickness);
         outline-style: solid;
-        outline-offset: var(--_md-switch-focus-indicator-offset);
-        outline-color: var(--md-switch-focus-indicator-color);
+        outline-offset: var(--_focus-indicator-offset);
+        outline-color: var(--_focus-indicator-color);
     }
 }

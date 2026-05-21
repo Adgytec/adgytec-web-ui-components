@@ -192,7 +192,4 @@
     /* state layer */
     --md-switch-state-layer-color: yellow;
     --md-switch-selected-state-layer-color: indigo;
-
-    /* focus indicator */
-    --md-switch-focus-indicator-color: deeppink;
 }
