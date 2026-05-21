@@ -61,6 +61,8 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
                 clsx(
                     ButtonReset,
                     TapTarget,
+                    buttonSizeConfig(buttonSize),
+                    buttonColorConfig(buttonColor),
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -105,8 +107,6 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
                             ButtonCore,
                             buttonColorBase,
                             ButtonSizeBase,
-                            buttonColorConfig(buttonColor),
-                            buttonSizeConfig(buttonSize),
                             ButtonLabelTextMapping[buttonSize]
                         )}
                         {...dataAttrs}

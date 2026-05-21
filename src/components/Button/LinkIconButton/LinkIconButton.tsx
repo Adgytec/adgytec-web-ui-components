@@ -56,6 +56,8 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
                 clsx(
                     ButtonReset,
                     TapTarget,
+                    buttonSizeConfig(buttonSize),
+                    buttonColorConfig(buttonColor),
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -87,9 +89,7 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
-                            ButtonSizeBase,
-                            buttonColorConfig(buttonColor),
-                            buttonSizeConfig(buttonSize)
+                            ButtonSizeBase
                         )}
                         {...dataAttrs}
                     >

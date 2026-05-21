@@ -3,9 +3,6 @@
         /* shape */
         --shape: var(--shape-normal);
 
-        /* padding  */
-        --padding-block: var(--padding-block-base);
-
         /* styles */
         padding-inline: var(--padding-inline);
         padding-block: var(--padding-block);
@@ -30,6 +27,7 @@
         --md-sys-shape-corner-radius-full: calc(16 * var(--dp, 1px));
 
         --padding-block-base: calc(6 * var(--dp, 1px));
+        --padding-block: var(--padding-block-base);
         --padding-inline: var(--md-sys-layout-space-12);
 
         --icon-label-gap: var(--md-sys-layout-space-4);
@@ -64,6 +62,7 @@
         --md-sys-shape-corner-radius-full: calc(20 * var(--dp, 1px));
 
         --padding-block-base: calc(10 * var(--dp, 1px));
+        --padding-block: var(--padding-block-base);
         --padding-inline: var(--md-sys-layout-space-16);
 
         --icon-label-gap: var(--md-sys-layout-space-8);
@@ -103,6 +102,7 @@
         --md-sys-shape-corner-radius-full: calc(28 * var(--dp, 1px));
 
         --padding-block-base: var(--md-sys-layout-space-16);
+        --padding-block: var(--padding-block-base);
         --padding-inline: var(--md-sys-layout-space-24);
 
         --icon-label-gap: var(--md-sys-layout-space-8);
@@ -137,6 +137,7 @@
         --md-sys-shape-corner-radius-full: calc(48 * var(--dp, 1px));
 
         --padding-block-base: var(--md-sys-layout-space-32);
+        --padding-block: var(--padding-block-base);
         --padding-inline: var(--md-sys-layout-space-48);
 
         --icon-label-gap: var(--md-sys-layout-space-12);
@@ -171,6 +172,7 @@
         --md-sys-shape-corner-radius-full: calc(68 * var(--dp, 1px));
 
         --padding-block-base: var(--md-sys-layout-space-48);
+        --padding-block: var(--padding-block-base);
         --padding-inline: var(--md-sys-layout-space-64);
 
         --icon-label-gap: var(--md-sys-layout-space-16);

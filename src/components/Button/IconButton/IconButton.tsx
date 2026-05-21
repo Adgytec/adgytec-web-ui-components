@@ -57,6 +57,8 @@ export const IconButton: React.FC<IconButtonProps> = ({
                 clsx(
                     ButtonReset,
                     TapTarget,
+                    buttonSizeConfig(buttonSize),
+                    buttonColorConfig(buttonColor),
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -89,9 +91,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
-                            ButtonSizeBase,
-                            buttonColorConfig(buttonColor),
-                            buttonSizeConfig(buttonSize)
+                            ButtonSizeBase
                         )}
                         {...dataAttrs}
                     >

@@ -56,6 +56,8 @@ export const Button: React.FC<ButtonProps> = ({
                 clsx(
                     ButtonReset,
                     TapTarget,
+                    buttonSizeConfig(buttonSize),
+                    buttonColorConfig(buttonColor),
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -96,8 +98,6 @@ export const Button: React.FC<ButtonProps> = ({
                             ButtonCore,
                             buttonColorBase,
                             ButtonSizeBase,
-                            buttonColorConfig(buttonColor),
-                            buttonSizeConfig(buttonSize),
                             ButtonLabelTextMapping[buttonSize]
                         )}
                         {...dataAttrs}
