@@ -162,19 +162,6 @@
                     --outline-color: var(--outline-color-focused-invalid);
                 }
             }
-
-            /* &[data-invalid] { */
-            /*     &[data-hovered] { */
-            /*         --outline-color: var(--outline-color-hovered-invalid); */
-            /*     } */
-            /**/
-            /*     &[data-focus-visible], */
-            /*     &[data-focus-within], */
-            /*     &[data-focused], */
-            /*     &[data-open] { */
-            /*         --outline-color: var(--outline-color-focused-invalid); */
-            /*     } */
-            /* } */
         }
 
         &[data-disabled] {

@@ -1,3 +1,24 @@
+/* configurable tokens
+*
+* --md-calendar-background
+* --md-calendar-header-cell-color
+*
+* --md-calendar-cell-color
+* --md-calendar-cell-state-layer-color
+* --md-calendar-cell-today-color
+*
+* --md-calendar-cell-selected-background
+* --md-calendar-selected-color
+*
+* --md-calendar-in-active-range-background
+* --md-calendar-in-active-range-color
+*
+* --md-calendar-menu-divider-color
+* --md-calendar-menu-selected-background
+* --md-calendar-menu-selected-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .calendar {
         --md-calendar-background: var(--md-sys-color-surface-container-high);
