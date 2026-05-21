@@ -193,3 +193,90 @@
     --md-switch-state-layer-color: yellow;
     --md-switch-selected-state-layer-color: indigo;
 }
+
+.primary-container {
+    --md-button-background: var(--md-sys-color-primary-container);
+    --md-button-color: var(--md-sys-color-on-primary-container);
+    --md-button-outline-color: transparent;
+}
+
+.error {
+    --md-button-background: var(--md-sys-color-error);
+    --md-button-color: var(--md-sys-color-on-error);
+    --md-button-outline-color: transparent;
+}
+.error-container {
+    --md-button-background: var(--md-sys-color-error-container);
+    --md-button-color: var(--md-sys-color-on-error-container);
+    --md-button-outline-color: transparent;
+}
+
+.secondary {
+    --md-button-background: var(--md-sys-color-secondary);
+    --md-button-color: var(--md-sys-color-on-secondary);
+    --md-button-outline-color: transparent;
+}
+.secondary-container {
+    --md-button-background: var(--md-sys-color-secondary-container);
+    --md-button-color: var(--md-sys-color-on-secondary-container);
+    --md-button-outline-color: transparent;
+}
+
+.tertiary {
+    --md-button-background: var(--md-sys-color-tertiary);
+    --md-button-color: var(--md-sys-color-on-tertiary);
+    --md-button-outline-color: transparent;
+}
+.tertiary-container {
+    --md-button-background: var(--md-sys-color-tertiary-container);
+    --md-button-color: var(--md-sys-color-on-tertiary-container);
+    --md-button-outline-color: transparent;
+}
+
+.inverse {
+    --md-button-background: var(--md-sys-color-inverse-surface);
+    --md-button-color: var(--md-sys-color-inverse-on-surface);
+    --md-button-outline-color: transparent;
+}
+
+.inverse-primary {
+    --md-button-background: var(--md-sys-color-inverse-primary);
+    --md-button-color: var(--md-sys-color-on-primary);
+    --md-button-outline-color: transparent;
+}
+
+.primary-fixed {
+    --md-button-background: var(--md-sys-color-primary-fixed);
+    --md-button-color: var(--md-sys-color-on-primary-fixed);
+    --md-button-outline-color: transparent;
+}
+
+.primary-fixed-dim {
+    --md-button-background: var(--md-sys-color-primary-fixed-dim);
+    --md-button-color: var(--md-sys-color-on-primary-fixed-variant);
+    --md-button-outline-color: transparent;
+}
+
+.secondary-fixed {
+    --md-button-background: var(--md-sys-color-secondary-fixed);
+    --md-button-color: var(--md-sys-color-on-secondary-fixed);
+    --md-button-outline-color: transparent;
+}
+
+.secondary-fixed-dim {
+    --md-button-background: var(--md-sys-color-secondary-fixed-dim);
+    --md-button-color: var(--md-sys-color-on-secondary-fixed-variant);
+    --md-button-outline-color: transparent;
+}
+
+.tertiary-fixed {
+    --md-button-background: var(--md-sys-color-tertiary-fixed);
+    --md-button-color: var(--md-sys-color-on-tertiary-fixed);
+    --md-button-outline-color: transparent;
+}
+
+.tertiary-fixed-dim {
+    --md-button-background: var(--md-sys-color-tertiary-fixed-dim);
+    --md-button-color: var(--md-sys-color-on-tertiary-fixed-variant);
+    --md-button-outline-color: transparent;
+}

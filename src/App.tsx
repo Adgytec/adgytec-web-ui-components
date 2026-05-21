@@ -2827,6 +2827,36 @@ const DateRangePickerPreview = () => {
     );
 };
 
+const ButtonConfigPreview = () => {
+    return (
+        <div className="items">
+            <Button className="primary">primary</Button>
+            <Button className="primary-container">primary container</Button>
+
+            <Button className="error">error</Button>
+            <Button className="error-container">error container</Button>
+
+            <Button className="secondary">secondary</Button>
+            <Button className="secondary-container">secondary container</Button>
+
+            <Button className="tertiary">tertiary</Button>
+            <Button className="tertiary-container">tertiary container</Button>
+
+            <Button className="inverse">inverse</Button>
+            <Button className="inverse-primary">inverse primary</Button>
+
+            <Button className="primary-fixed">primary fixed</Button>
+            <Button className="primary-fixed-dim">primary fixed dim</Button>
+
+            <Button className="secondary-fixed">secondary fixed</Button>
+            <Button className="secondary-fixed-dim">secondary fixed dim</Button>
+
+            <Button className="tertiary-fixed">tertiary fixed</Button>
+            <Button className="tertiary-fixed-dim">tertiary fixed dim</Button>
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -2844,6 +2874,12 @@ const App = () => {
             id: "theme-selector",
             label: "Theme Selector",
             Component: ThemeSelectorPreview,
+        },
+
+        {
+            id: "button-config-preview",
+            label: "Button Config",
+            Component: ButtonConfigPreview,
         },
 
         {
