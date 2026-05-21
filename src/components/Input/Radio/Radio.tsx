@@ -44,6 +44,7 @@ export const Radio: React.FC<RadioProps> = ({
                     isFocused,
                     isFocusVisible,
                     isPressed,
+                    isInvalid,
                 } = renderProps;
 
                 const dataAttrs = {
@@ -54,6 +55,7 @@ export const Radio: React.FC<RadioProps> = ({
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
                     "data-show-state-layer": !stateLayer || undefined,
+                    "data-invalid": isInvalid || undefined,
                 };
 
                 const label =
