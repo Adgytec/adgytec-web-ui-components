@@ -1,24 +1,24 @@
 @layer adgytec.comps {
     .size {
         /* shape */
-        --shape: var(--shape-normal);
+        --_shape: var(--_md-button-shape);
 
         /* styles */
-        padding-inline: var(--padding-inline);
-        padding-block: var(--padding-block);
-        border-radius: var(--shape);
+        padding-inline: var(--_md-button-padding-inline);
+        padding-block: var(--_md-button-padding-block);
+        border-radius: var(--_shape);
 
         display: flex;
-        gap: var(--icon-label-gap);
+        gap: var(--_md-button-icon-label-gap);
         align-items: center;
         justify-content: center;
 
         &[data-selected] {
-            --shape: var(--shape-selected);
+            --_shape: var(--_md-toggle-button-selected-shape);
         }
 
         &[data-pressed] {
-            --shape: var(--shape-pressed);
+            --_shape: var(--_md-button-pressed-shape);
         }
     }
 
@@ -26,34 +26,38 @@
         /* height for button is 32 */
         --md-sys-shape-corner-radius-full: calc(16 * var(--dp, 1px));
 
-        --padding-block-base: calc(6 * var(--dp, 1px));
-        --padding-block: var(--padding-block-base);
-        --padding-inline: var(--md-sys-layout-space-12);
+        --_md-button-padding-block-base: calc(6 * var(--dp, 1px));
+        --_md-button-padding-block: var(--_md-button-padding-block-base);
+        --_md-button-padding-inline: var(--md-sys-layout-space-12);
 
-        --icon-label-gap: var(--md-sys-layout-space-4);
-        --outline-width: var(--md-sys-shape-border-width-thin);
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-4);
+        --_md-button-outline-width: var(--md-sys-shape-border-width-thin);
 
-        --shape-normal: var(--md-sys-shape-corner-radius-full);
-        --shape-selected: var(--md-sys-shape-corner-radius-medium);
+        --_md-button-shape: var(--md-sys-shape-corner-radius-full);
+        --_md-toggle-button-selected-shape: var(
+            --md-sys-shape-corner-radius-medium
+        );
 
-        --shape-pressed: var(--md-sys-shape-corner-radius-small);
+        --_md-button-pressed-shape: var(--md-sys-shape-corner-radius-small);
 
         &[data-shape="square"] {
-            --shape-normal: var(--md-sys-shape-corner-radius-medium);
-            --shape-selected: var(--md-sys-shape-corner-radius-full);
+            --_md-button-shape: var(--md-sys-shape-corner-radius-medium);
+            --_md-toggle-button-selected-shape: var(
+                --md-sys-shape-corner-radius-full
+            );
         }
 
         /* icon button width */
         &[data-width="narrow"] {
-            --padding-inline: var(--md-sys-layout-space-4);
+            --_md-button-padding-inline: var(--md-sys-layout-space-4);
         }
 
         &[data-width="default"] {
-            --padding-inline: calc(6 * var(--dp, 1px));
+            --_md-button-padding-inline: calc(6 * var(--dp, 1px));
         }
 
         &[data-width="wide"] {
-            --padding-inline: calc(10 * var(--dp, 1px));
+            --_md-button-padding-inline: calc(10 * var(--dp, 1px));
         }
     }
 
@@ -61,39 +65,43 @@
         /* height for button is 40 */
         --md-sys-shape-corner-radius-full: calc(20 * var(--dp, 1px));
 
-        --padding-block-base: calc(10 * var(--dp, 1px));
-        --padding-block: var(--padding-block-base);
-        --padding-inline: var(--md-sys-layout-space-16);
+        --_md-button-padding-block-base: calc(10 * var(--dp, 1px));
+        --_md-button-padding-block: var(--_md-button-padding-block-base);
+        --_md-button-padding-inline: var(--md-sys-layout-space-16);
 
-        --icon-label-gap: var(--md-sys-layout-space-8);
-        --outline-width: var(--md-sys-shape-border-width-thin);
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-8);
+        --_md-button-outline-width: var(--md-sys-shape-border-width-thin);
 
-        --shape-normal: var(--md-sys-shape-corner-radius-full);
-        --shape-selected: var(--md-sys-shape-corner-radius-medium);
+        --_md-button-shape: var(--md-sys-shape-corner-radius-full);
+        --_md-toggle-button-selected-shape: var(
+            --md-sys-shape-corner-radius-medium
+        );
 
-        --shape-pressed: var(--md-sys-shape-corner-radius-small);
+        --_md-button-pressed-shape: var(--md-sys-shape-corner-radius-small);
 
         &[data-shape="square"] {
-            --shape-normal: var(--md-sys-shape-corner-radius-medium);
-            --shape-selected: var(--md-sys-shape-corner-radius-full);
+            --_md-button-shape: var(--md-sys-shape-corner-radius-medium);
+            --_md-toggle-button-selected-shape: var(
+                --md-sys-shape-corner-radius-full
+            );
         }
 
         /* icon button width */
         &[data-width="narrow"] {
-            --padding-inline: var(--md-sys-layout-space-4);
+            --_md-button-padding-inline: var(--md-sys-layout-space-4);
         }
 
         &[data-width="default"] {
-            --padding-inline: var(--md-sys-layout-space-8);
+            --_md-button-padding-inline: var(--md-sys-layout-space-8);
         }
 
         &[data-width="wide"] {
-            --padding-inline: calc(14 * var(--dp, 1px));
+            --_md-button-padding-inline: calc(14 * var(--dp, 1px));
         }
 
         /* icon button height adjustment: icon size is 24 for icon only buttons */
         &[data-icon-button] {
-            --padding-block-base: calc(8 * var(--dp, 1px));
+            --_md-button-padding-block-base: calc(8 * var(--dp, 1px));
         }
     }
 
@@ -101,34 +109,38 @@
         /* height for button is 56 */
         --md-sys-shape-corner-radius-full: calc(28 * var(--dp, 1px));
 
-        --padding-block-base: var(--md-sys-layout-space-16);
-        --padding-block: var(--padding-block-base);
-        --padding-inline: var(--md-sys-layout-space-24);
+        --_md-button-padding-block-base: var(--md-sys-layout-space-16);
+        --_md-button-padding-block: var(--_md-button-padding-block-base);
+        --_md-button-padding-inline: var(--md-sys-layout-space-24);
 
-        --icon-label-gap: var(--md-sys-layout-space-8);
-        --outline-width: var(--md-sys-shape-border-width-thin);
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-8);
+        --_md-button-outline-width: var(--md-sys-shape-border-width-thin);
 
-        --shape-normal: var(--md-sys-shape-corner-radius-full);
-        --shape-selected: var(--md-sys-shape-corner-radius-large);
+        --_md-button-shape: var(--md-sys-shape-corner-radius-full);
+        --_md-toggle-button-selected-shape: var(
+            --md-sys-shape-corner-radius-large
+        );
 
-        --shape-pressed: var(--md-sys-shape-corner-radius-medium);
+        --_md-button-pressed-shape: var(--md-sys-shape-corner-radius-medium);
 
         &[data-shape="square"] {
-            --shape-normal: var(--md-sys-shape-corner-radius-large);
-            --shape-selected: var(--md-sys-shape-corner-radius-full);
+            --_md-button-shape: var(--md-sys-shape-corner-radius-large);
+            --_md-toggle-button-selected-shape: var(
+                --md-sys-shape-corner-radius-full
+            );
         }
 
         /* icon button width */
         &[data-width="narrow"] {
-            --padding-inline: var(--md-sys-layout-space-12);
+            --_md-button-padding-inline: var(--md-sys-layout-space-12);
         }
 
         &[data-width="default"] {
-            --padding-inline: var(--md-sys-layout-space-16);
+            --_md-button-padding-inline: var(--md-sys-layout-space-16);
         }
 
         &[data-width="wide"] {
-            --padding-inline: var(--md-sys-layout-space-24);
+            --_md-button-padding-inline: var(--md-sys-layout-space-24);
         }
     }
 
@@ -136,34 +148,38 @@
         /* height for button is 96 */
         --md-sys-shape-corner-radius-full: calc(48 * var(--dp, 1px));
 
-        --padding-block-base: var(--md-sys-layout-space-32);
-        --padding-block: var(--padding-block-base);
-        --padding-inline: var(--md-sys-layout-space-48);
+        --_md-button-padding-block-base: var(--md-sys-layout-space-32);
+        --_md-button-padding-block: var(--_md-button-padding-block-base);
+        --_md-button-padding-inline: var(--md-sys-layout-space-48);
 
-        --icon-label-gap: var(--md-sys-layout-space-12);
-        --outline-width: var(--md-sys-shape-border-width-thick);
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-12);
+        --_md-button-outline-width: var(--md-sys-shape-border-width-thick);
 
-        --shape-normal: var(--md-sys-shape-corner-radius-full);
-        --shape-selected: var(--md-sys-shape-corner-radius-extra-large);
+        --_md-button-shape: var(--md-sys-shape-corner-radius-full);
+        --_md-toggle-button-selected-shape: var(
+            --md-sys-shape-corner-radius-extra-large
+        );
 
-        --shape-pressed: var(--md-sys-shape-corner-radius-large);
+        --_md-button-pressed-shape: var(--md-sys-shape-corner-radius-large);
 
         &[data-shape="square"] {
-            --shape-normal: var(--md-sys-shape-corner-radius-extra-large);
-            --shape-selected: var(--md-sys-shape-corner-radius-full);
+            --_md-button-shape: var(--md-sys-shape-corner-radius-extra-large);
+            --_md-toggle-button-selected-shape: var(
+                --md-sys-shape-corner-radius-full
+            );
         }
 
         /* icon button width */
         &[data-width="narrow"] {
-            --padding-inline: var(--md-sys-layout-space-16);
+            --_md-button-padding-inline: var(--md-sys-layout-space-16);
         }
 
         &[data-width="default"] {
-            --padding-inline: var(--md-sys-layout-space-32);
+            --_md-button-padding-inline: var(--md-sys-layout-space-32);
         }
 
         &[data-width="wide"] {
-            --padding-inline: var(--md-sys-layout-space-48);
+            --_md-button-padding-inline: var(--md-sys-layout-space-48);
         }
     }
 
@@ -171,34 +187,38 @@
         /* height for button is 136 */
         --md-sys-shape-corner-radius-full: calc(68 * var(--dp, 1px));
 
-        --padding-block-base: var(--md-sys-layout-space-48);
-        --padding-block: var(--padding-block-base);
-        --padding-inline: var(--md-sys-layout-space-64);
+        --_md-button-padding-block-base: var(--md-sys-layout-space-48);
+        --_md-button-padding-block: var(--_md-button-padding-block-base);
+        --_md-button-padding-inline: var(--md-sys-layout-space-64);
 
-        --icon-label-gap: var(--md-sys-layout-space-16);
-        --outline-width: calc(3 * var(--dp, 1px));
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-16);
+        --_md-button-outline-width: calc(3 * var(--dp, 1px));
 
-        --shape-normal: var(--md-sys-shape-corner-radius-full);
-        --shape-selected: var(--md-sys-shape-corner-radius-extra-large);
+        --_md-button-shape: var(--md-sys-shape-corner-radius-full);
+        --_md-toggle-button-selected-shape: var(
+            --md-sys-shape-corner-radius-extra-large
+        );
 
-        --shape-pressed: var(--md-sys-shape-corner-radius-large);
+        --_md-button-pressed-shape: var(--md-sys-shape-corner-radius-large);
 
         &[data-shape="square"] {
-            --shape-normal: var(--md-sys-shape-corner-radius-extra-large);
-            --shape-selected: var(--md-sys-shape-corner-radius-full);
+            --_md-button-shape: var(--md-sys-shape-corner-radius-extra-large);
+            --_md-toggle-button-selected-shape: var(
+                --md-sys-shape-corner-radius-full
+            );
         }
 
         /* icon button width */
         &[data-width="narrow"] {
-            --padding-inline: var(--md-sys-layout-space-32);
+            --_md-button-padding-inline: var(--md-sys-layout-space-32);
         }
 
         &[data-width="default"] {
-            --padding-inline: var(--md-sys-layout-space-48);
+            --_md-button-padding-inline: var(--md-sys-layout-space-48);
         }
 
         &[data-width="wide"] {
-            --padding-inline: var(--md-sys-layout-space-72);
+            --_md-button-padding-inline: var(--md-sys-layout-space-72);
         }
     }
 }
