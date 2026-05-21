@@ -4,6 +4,7 @@ import { Label } from "../../Label";
 import {
     ActiveTrackStyles,
     InactiveTrackStyles,
+    SliderColors,
     SliderSizeStyles,
     SliderStyles,
     TrackContainerStyles,
@@ -33,7 +34,7 @@ export const RangeSlider = <T extends RangeSliderType>({
             maxValue={maxValue}
             step={step}
             defaultValue={defaultValue}
-            className={clsx(SliderStyles)}
+            className={clsx(SliderStyles, SliderColors)}
             {...props}
         >
             {({ orientation, state }) => {

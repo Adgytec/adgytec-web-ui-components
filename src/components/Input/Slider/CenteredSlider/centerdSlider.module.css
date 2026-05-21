@@ -3,13 +3,13 @@
         position: relative;
 
         &[data-orientation="horizontal"] {
-            --inline-size: var(--range-gap-half);
-            --block-size: var(--track-size);
+            --_inline-size: var(--_range-gap-half);
+            --_block-size: var(--_md-slider-track-size);
         }
 
         &[data-orientation="vertical"] {
-            --block-size: var(--range-gap-half);
-            --inline-size: var(--track-size);
+            --_block-size: var(--_range-gap-half);
+            --_inline-size: var(--_md-slider-track-size);
         }
 
         &:not([data-active-direction]):not([data-mid]) {
@@ -18,8 +18,8 @@
                 content: "";
                 position: absolute;
 
-                inline-size: var(--inline-size);
-                block-size: var(--block-size);
+                inline-size: var(--_inline-size);
+                block-size: var(--_block-size);
 
                 background-color: inherit;
             }
@@ -33,8 +33,12 @@
                         inset-inline-end: 0;
                         translate: 100%;
 
-                        border-start-end-radius: var(--track-inner-shape);
-                        border-end-end-radius: var(--track-inner-shape);
+                        border-start-end-radius: var(
+                            --_md-slider-track-inner-shape
+                        );
+                        border-end-end-radius: var(
+                            --_md-slider-track-inner-shape
+                        );
                     }
 
                     &::after {
@@ -51,8 +55,12 @@
                         inset-block-start: 0;
                         translate: 0 -100%;
 
-                        border-start-end-radius: var(--track-inner-shape);
-                        border-start-start-radius: var(--track-inner-shape);
+                        border-start-end-radius: var(
+                            --_md-slider-track-inner-shape
+                        );
+                        border-start-start-radius: var(
+                            --_md-slider-track-inner-shape
+                        );
                     }
 
                     &::after {
@@ -71,8 +79,12 @@
                         inset-inline-start: 0;
                         translate: -100%;
 
-                        border-start-start-radius: var(--track-inner-shape);
-                        border-end-start-radius: var(--track-inner-shape);
+                        border-start-start-radius: var(
+                            --_md-slider-track-inner-shape
+                        );
+                        border-end-start-radius: var(
+                            --_md-slider-track-inner-shape
+                        );
                     }
 
                     &::after {
@@ -89,8 +101,12 @@
                         inset-block-end: 0;
                         translate: 0 100%;
 
-                        border-end-end-radius: var(--track-inner-shape);
-                        border-end-start-radius: var(--track-inner-shape);
+                        border-end-end-radius: var(
+                            --_md-slider-track-inner-shape
+                        );
+                        border-end-start-radius: var(
+                            --_md-slider-track-inner-shape
+                        );
                     }
 
                     &::after {

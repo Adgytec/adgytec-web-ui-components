@@ -5,8 +5,8 @@
         padding-block: var(--md-sys-layout-space-12);
         padding-inline: var(--md-sys-layout-space-16);
 
-        background-color: var(--md-sys-color-inverse-surface);
-        color: var(--md-sys-color-inverse-on-surface);
+        background-color: var(--md-slider-output-background);
+        color: var(--md-slider-output-color);
         border-radius: var(--md-sys-shape-corner-radius-full);
 
         &[data-orientation="horizontal"] {

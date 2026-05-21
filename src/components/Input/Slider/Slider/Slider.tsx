@@ -3,6 +3,7 @@ import { Slider as AriaSlider, SliderTrack } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Label } from "../../Label";
 import {
+    SliderColors,
     SliderSizeStyles,
     SliderStyles,
     TrackContainerStyles,
@@ -35,7 +36,7 @@ export const Slider = <T extends number>({
             minValue={minValue}
             maxValue={maxValue}
             step={step}
-            className={clsx(SliderStyles)}
+            className={clsx(SliderStyles, SliderColors)}
             {...props}
         >
             {({ orientation, state, isDisabled }) => {

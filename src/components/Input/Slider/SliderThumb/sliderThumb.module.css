@@ -1,37 +1,37 @@
 @layer adgytec.comps {
     .thumb {
         /* thumb */
-        --thumb-thickness: var(--md-sys-layout-space-4);
+        --_md-slider-thumb-thickness: var(--md-sys-layout-space-4);
     }
 
     .extra-small {
         /* thumb */
-        --thumb-size: calc(44 * var(--dp, 1px));
+        --_md-slider-thumb-size: calc(44 * var(--dp, 1px));
     }
 
     .small {
         /* thumb */
-        --thumb-size: calc(44 * var(--dp, 1px));
+        --_md-slider-thumb-size: calc(44 * var(--dp, 1px));
     }
 
     .medium {
         /* thumb */
-        --thumb-size: calc(52 * var(--dp, 1px));
+        --_md-slider-thumb-size: calc(52 * var(--dp, 1px));
     }
 
     .large {
         /* thumb */
-        --thumb-size: calc(68 * var(--dp, 1px));
+        --_md-slider-thumb-size: calc(68 * var(--dp, 1px));
     }
 
     .extra-large {
         /* thumb */
-        --thumb-size: calc(108 * var(--dp, 1px));
+        --_md-slider-thumb-size: calc(108 * var(--dp, 1px));
     }
 
     .thumb {
-        --thumb-block-size: var(--thumb-size);
-        --thumb-inline-size: var(--thumb-thickness);
+        --_thumb-block-size: var(--_md-slider-thumb-size);
+        --_thumb-inline-size: var(--_md-slider-thumb-thickness);
 
         position: absolute;
         transform-origin: center;
@@ -41,19 +41,19 @@
         }
 
         &[data-orientation="vertical"] {
-            --thumb-block-size: var(--thumb-thickness);
-            --thumb-inline-size: var(--thumb-size);
+            --_thumb-block-size: var(--_md-slider-thumb-thickness);
+            --_thumb-inline-size: var(--_md-slider-thumb-size);
 
             inset-inline-start: 50%;
         }
 
-        inline-size: var(--thumb-inline-size);
-        block-size: var(--thumb-block-size);
+        inline-size: var(--_thumb-inline-size);
+        block-size: var(--_thumb-block-size);
 
         outline: none;
         border-radius: var(--md-sys-shape-corner-radius-full);
 
-        background-color: var(--md-sys-color-primary);
+        background-color: var(--md-slider-thumb-color);
 
         transition:
             block-size var(--md-sys-motion-expressive-fast-spatial)
@@ -70,9 +70,9 @@
         }
 
         &[data-focus-visible]::before {
-            --focus-indicator-thickness: calc(3 * var(--dp, 1px));
-            --focus-indicator-offset: calc(6 * var(--dp, 1px));
-            --focus-indicator-color: var(--md-sys-color-secondary);
+            --_focus-indicator-thickness: calc(3 * var(--dp, 1px));
+            --_focus-indicator-offset: calc(6 * var(--dp, 1px));
+            --_focus-indicator-color: var(--md-sys-color-secondary);
 
             content: "";
             position: absolute;
@@ -81,15 +81,15 @@
 
             z-index: 2;
 
-            outline-width: var(--focus-indicator-thickness);
+            outline-width: var(--_focus-indicator-thickness);
             outline-style: solid;
-            outline-offset: var(--focus-indicator-offset);
-            outline-color: var(--focus-indicator-color);
+            outline-offset: var(--_focus-indicator-offset);
+            outline-color: var(--_focus-indicator-color);
         }
 
         &[data-dragging],
         &[data-focus-visible] {
-            --thumb-thickness: calc(2 * var(--dp, 1px));
+            --_md-slider-thumb-thickness: calc(2 * var(--dp, 1px));
         }
 
         &[data-disabled] {

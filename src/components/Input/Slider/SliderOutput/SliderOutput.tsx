@@ -28,6 +28,7 @@ export const SliderOutput: React.FC<
             data-dragging={isDragging || undefined}
             data-hovered={isHovered || undefined}
             data-focused={isFocused || undefined}
+            data-slider-output
         />
     );
 };

@@ -1,23 +1,23 @@
 @layer adgytec.comps {
     .visual-track {
-        --range-gap: calc(var(--track-gap) / 2);
-        --range-gap-half: calc(var(--range-gap) / 2);
+        --_range-gap: calc(var(--_track-gap) / 2);
+        --_range-gap-half: calc(var(--_range-gap) / 2);
 
         position: absolute;
         inset: 0;
         z-index: 0;
 
-        border-radius: var(--track-shape);
+        border-radius: var(--_md-slider-track-shape);
         display: flex;
-        gap: var(--range-gap);
+        gap: var(--_range-gap);
 
         &[data-orientation="horizontal"] {
-            inset-inline: var(--orientation-inset);
+            inset-inline: var(--_orientation-inset);
         }
 
         &[data-orientation="vertical"] {
             flex-direction: column-reverse;
-            inset-block: var(--orientation-inset);
+            inset-block: var(--_orientation-inset);
         }
     }
 
@@ -25,64 +25,64 @@
         display: grid;
 
         > div {
-            border-radius: var(--track-inner-shape);
-            background-color: var(--track-active-color);
+            border-radius: var(--_md-slider-track-inner-shape);
+            background-color: var(--_active-track-color);
         }
 
         &[data-orientation="horizontal"] {
             > div {
-                margin-inline: var(--range-gap);
+                margin-inline: var(--_range-gap);
 
                 &[data-direction="start"] {
-                    margin-inline-end: var(--range-gap-half);
+                    margin-inline-end: var(--_range-gap-half);
                 }
 
                 &[data-direction="end"] {
-                    margin-inline-start: var(--range-gap-half);
+                    margin-inline-start: var(--_range-gap-half);
                 }
             }
         }
 
         &[data-orientation="vertical"] {
             > div {
-                margin-block: var(--range-gap);
+                margin-block: var(--_range-gap);
 
                 &[data-direction="start"] {
-                    margin-block-start: var(--range-gap-half);
+                    margin-block-start: var(--_range-gap-half);
                 }
 
                 &[data-direction="end"] {
-                    margin-block-end: var(--range-gap-half);
+                    margin-block-end: var(--_range-gap-half);
                 }
             }
         }
     }
 
     .inactive-track {
-        background-color: var(--track-inactive-color);
-        border-radius: var(--track-shape);
+        background-color: var(--_inactive-track-color);
+        border-radius: var(--_md-slider-track-shape);
 
         &[data-orientation="horizontal"] {
             &[data-track="start"] {
-                border-start-end-radius: var(--track-inner-shape);
-                border-end-end-radius: var(--track-inner-shape);
+                border-start-end-radius: var(--_md-slider-track-inner-shape);
+                border-end-end-radius: var(--_md-slider-track-inner-shape);
             }
 
             &[data-track="end"] {
-                border-start-start-radius: var(--track-inner-shape);
-                border-end-start-radius: var(--track-inner-shape);
+                border-start-start-radius: var(--_md-slider-track-inner-shape);
+                border-end-start-radius: var(--_md-slider-track-inner-shape);
             }
         }
 
         &[data-orientation="vertical"] {
             &[data-track="start"] {
-                border-start-end-radius: var(--track-inner-shape);
-                border-start-start-radius: var(--track-inner-shape);
+                border-start-end-radius: var(--_md-slider-track-inner-shape);
+                border-start-start-radius: var(--_md-slider-track-inner-shape);
             }
 
             &[data-track="end"] {
-                border-end-end-radius: var(--track-inner-shape);
-                border-end-start-radius: var(--track-inner-shape);
+                border-end-end-radius: var(--_md-slider-track-inner-shape);
+                border-end-start-radius: var(--_md-slider-track-inner-shape);
             }
         }
     }
