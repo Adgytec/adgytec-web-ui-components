@@ -1,6 +1,6 @@
 @layer adgytec.comps {
     .dialog {
-        --separator-color: currentcolor;
+        --md-divider-color: currentcolor;
 
         /* container */
         --dialog-container-min-inline-size: calc(280 * var(--dp, 1px));

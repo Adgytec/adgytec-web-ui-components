@@ -127,7 +127,7 @@ import {
     SubmenuPopover,
 } from "./components/Menu";
 import { Popover } from "./components/Popover";
-import { Separator } from "./components/Separator";
+import { Divider } from "./components/Divider";
 import { Tag } from "./components/Tag";
 import { ThemeSelector } from "./components/ThemeSelector";
 import {
@@ -632,10 +632,10 @@ const MenuPreview = () => {
         menu: MenuNode[];
     };
 
-    type MenuNode = MenuItemNode | MenuSectionNode | MenuSeparatorNode;
+    type MenuNode = MenuItemNode | MenuSectionNode | MenuDividerNode;
 
-    type MenuSeparatorNode = {
-        type: "separator";
+    type MenuDividerNode = {
+        type: "divider";
         id: string;
     };
 
@@ -657,7 +657,7 @@ const MenuPreview = () => {
 
         id: string;
 
-        items: (MenuItemNode | MenuSeparatorNode)[];
+        items: (MenuItemNode | MenuDividerNode)[];
     };
 
     type MenuComboList = MenuCombo[];
@@ -974,7 +974,7 @@ const MenuPreview = () => {
             );
         }
 
-        if (item.type === "separator") return <Separator />;
+        if (item.type === "divider") return <Divider />;
 
         if (item.submenu) {
             return (
@@ -1085,7 +1085,7 @@ const SplitButtonPreview = () => {
                                 <MenuItem trailingIcon={Share2} label="Share" />
                             </MenuSection>
 
-                            {!label && <Separator />}
+                            {!label && <Divider />}
 
                             <MenuSection>
                                 <MenuSectionHeader>Security</MenuSectionHeader>
@@ -1238,10 +1238,10 @@ const ButtonGroupPreview = () => {
                                 </Fragment>
                             ))}
 
-                            <Separator
+                            <Divider
                                 style={
                                     {
-                                        "--separator-color":
+                                        "--md-divider-color":
                                             "var(--md-sys-color-primary)",
                                     } as CSSProperties
                                 }
@@ -1348,7 +1348,7 @@ const DialogPreview = () => {
                                     Simple Dialog
                                 </h2>
 
-                                <Separator />
+                                <Divider />
                             </div>
 
                             <div className={clsx(DialogBodyTypography)}>
@@ -1364,7 +1364,7 @@ const DialogPreview = () => {
                             </div>
 
                             <div>
-                                <Separator />
+                                <Divider />
 
                                 <div
                                     style={{
@@ -1653,7 +1653,7 @@ export const SelectPreview = () => {
 
                         <SelectItem label="Mango" />
 
-                        <Separator />
+                        <Divider />
 
                         <SelectItem label="Chocalate" />
 
@@ -1682,7 +1682,7 @@ export const SelectPreview = () => {
                             <SelectItem label="Mango" />
                         </SelectListSection>
 
-                        <Separator />
+                        <Divider />
 
                         <SelectItem label="Chocalate" />
 
@@ -1712,7 +1712,7 @@ export const SelectPreview = () => {
                             <SelectItem label="Mango" />
                         </SelectListSection>
 
-                        <Separator />
+                        <Divider />
 
                         <SelectItem label="Chocalate" />
 
@@ -1975,7 +1975,7 @@ const ToolbarPreview = () => {
                             />
                         </ToolbarToggleButtonGroup>
 
-                        <Separator
+                        <Divider
                             orientation={
                                 orientation === "vertical"
                                     ? "horizontal"
@@ -2106,7 +2106,7 @@ const ToolbarPreview = () => {
                     )}
                 </div>
 
-                <Separator />
+                <Divider />
             </>
         );
     };
