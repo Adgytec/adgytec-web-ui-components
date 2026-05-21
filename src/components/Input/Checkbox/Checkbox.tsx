@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useContext } from "react";
 import { Checkbox as AriaCheckbox } from "react-aria-components";
+import { typography } from "@/utils";
 import { TapTarget } from "@/utils/tapTarget";
 import styles from "./checkbox.module.css";
 import { CheckboxGroupContext } from "./context";
@@ -26,12 +27,14 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                 clsx(
                     styles["checkbox"],
                     stateLayer && styles["state-layer"],
+                    typography.labelLarge,
                     typeof className === "function"
                         ? className(renderProps)
                         : className
                 )
             }
             {...props}
+            data-checkbox
         >
             {(renderProps) => {
                 const {
@@ -54,6 +57,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                     "data-pressed": isPressed || undefined,
                     "data-invalid": isInvalid || undefined,
                     "data-indeterminate": isIndeterminate || undefined,
+                    "data-show-state-layer": !stateLayer || undefined,
+                    "data-filled": isSelected || isIndeterminate || undefined,
                 };
 
                 const label =

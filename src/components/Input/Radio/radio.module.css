@@ -168,16 +168,12 @@
             --_indicator-color: var(--md-radio-selected-icon-color);
         }
 
-        &[data-hovered] {
-            --_indicator-color: var(--md-radio-interaction-icon-color);
-
-            &[data-selected] {
-                --_indicator-color: var(
-                    --md-radio-selected-interaction-icon-color
-                );
-            }
+        &[data-invalid] {
+            --_indicator-color: var(--_md-radio-invalid-icon-color);
         }
 
+        &[data-pressed],
+        &[data-hovered],
         &[data-focus-visible] {
             --_indicator-color: var(--md-radio-interaction-icon-color);
 
@@ -186,22 +182,8 @@
                     --md-radio-selected-interaction-icon-color
                 );
             }
-        }
 
-        &[data-pressed] {
-            --_indicator-color: var(--md-radio-interaction-icon-color);
-
-            &[data-selected] {
-                --_indicator-color: var(
-                    --md-radio-selected-interaction-icon-color
-                );
-            }
-        }
-
-        &[data-invalid] {
-            --_indicator-color: var(--_md-radio-invalid-icon-color);
-
-            &[data-selected] {
+            &[data-invalid] {
                 --_indicator-color: var(--_md-radio-invalid-icon-color);
             }
         }
