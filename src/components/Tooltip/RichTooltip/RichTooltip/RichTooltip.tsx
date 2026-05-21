@@ -8,5 +8,11 @@ export const RichTooltip: React.FC<React.ComponentPropsWithRef<"div">> = ({
     className,
     ...props
 }) => {
-    return <div className={clsx(styles["tooltip"], className)} {...props} />;
+    return (
+        <div
+            className={clsx(styles["tooltip"], className)}
+            {...props}
+            data-rich-tooltip
+        />
+    );
 };

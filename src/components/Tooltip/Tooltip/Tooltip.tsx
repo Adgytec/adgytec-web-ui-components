@@ -19,6 +19,7 @@ export const Tooltip: React.FC<
                 )
             }
             {...props}
+            data-tooltip
         />
     );
 };
