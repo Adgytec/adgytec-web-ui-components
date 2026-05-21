@@ -40,8 +40,8 @@
         display: grid;
         gap: calc(18 * var(--dp, 1px));
 
-        [data-visual-button] {
-            --color-normal: var(--md-calendar-cell-color);
+        [data-button] {
+            --md-button-color: var(--md-calendar-cell-color);
         }
     }
 }

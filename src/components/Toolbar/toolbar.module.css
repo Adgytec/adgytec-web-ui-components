@@ -77,24 +77,26 @@
         /* elevated button */
         box-shadow: none;
 
-        --shape-selected: var(--shape-normal);
+        --_md-toggle-button-selected-shape: var(--_md-button-shape);
 
         &[data-disabled] {
             background-color: transparent;
         }
     }
 
-    .toolbar [data-visual-button]:not([data-color="filled"]),
+    .toolbar [data-button]:not([data-color="filled"]),
     .toolbar [data-toggle-button] {
         /* colors */
-        --background-color-normal: var(--toolbar-button-container-color);
-        --background-color-selected: var(
+        --md-button-background: var(--toolbar-button-container-color);
+        --md-toggle-button-selected-background: var(
             --toolbar-button-selected-container-color
         );
-        --background-color-unselected: var(--toolbar-button-container-color);
+        --md-toggle-button-background: var(--toolbar-button-container-color);
 
-        --color-normal: var(--toolbar-button-label-color);
-        --color-selected: var(--toolbar-button-selected-label-color);
-        --color-unselected: var(--toolbar-button-label-color);
+        --md-button-color: var(--toolbar-button-label-color);
+        --md-toggle-button-selected-color: var(
+            --toolbar-button-selected-label-color
+        );
+        --md-toggle-button-color: var(--toolbar-button-label-color);
     }
 }
