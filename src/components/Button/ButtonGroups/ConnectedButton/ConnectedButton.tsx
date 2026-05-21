@@ -39,9 +39,10 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
     return (
         <AriaToggleButton
             onPress={handlePress}
-            className={clsx(ButtonReset, TapTarget)}
+            className={clsx(ButtonReset, TapTarget, buttonColorConfig(color))}
             {...props}
             data-connected-button={true}
+            data-button
         >
             {(renderProps) => {
                 const {
@@ -79,7 +80,6 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
-                            buttonColorConfig(color),
                             ButtonLabelTextMapping[size],
                             styles["button"]
                         )}

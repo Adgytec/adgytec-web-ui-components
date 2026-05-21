@@ -32,6 +32,7 @@ export const ConnectedButtonGroup: React.FC<ConnectedButtonGroupProps> = ({
                 }
                 {...props}
                 data-shape={shape}
+                data-connected-button-group
             />
         </ConnectedButtonGroupContext>
     );

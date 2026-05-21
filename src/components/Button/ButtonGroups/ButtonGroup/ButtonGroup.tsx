@@ -31,6 +31,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({
                     )
                 }
                 {...props}
+                data-button-group
             />
         </ButtonGroupContext>
     );

@@ -18,13 +18,13 @@
         position: relative;
         overflow: clip;
 
-        --_md-button-shape: var(--md-sys-motion-expressive-fast-spatial);
+        --_md-button-shape-motion: var(--md-sys-motion-expressive-fast-spatial);
         --_md-button-shape-motion-duration: var(
             --md-sys-motion-expressive-fast-spatial-duration
         );
 
         transition:
-            border-radius var(--_md-button-shape)
+            border-radius var(--_md-button-shape-motion)
             var(--_md-button-shape-motion-duration),
             background-color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration),
