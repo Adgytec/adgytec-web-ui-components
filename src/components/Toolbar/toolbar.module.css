@@ -8,7 +8,7 @@
 *
 * --md-toolbar-button-color
 * --md-toolbar-toggle-button-color
-* --md-toolbar-toogle-button-selected-color
+* --md-toolbar-toggle-button-selected-color
 *
 * configurable tokens end */
 
@@ -63,7 +63,7 @@
         --md-toolbar-toggle-button-color: var(
             --md-sys-color-on-surface-variant
         );
-        --md-toolbar-toogle-button-selected-color: var(
+        --md-toolbar-toggle-button-selected-color: var(
             --md-sys-color-on-secondary-container
         );
     }
@@ -83,7 +83,7 @@
         --md-toolbar-toggle-button-color: var(
             --md-sys-color-on-primary-container
         );
-        --md-toolbar-toogle-button-selected-color: var(
+        --md-toolbar-toggle-button-selected-color: var(
             --md-sys-color-on-surface
         );
     }
@@ -124,7 +124,7 @@
 
         --md-button-color: var(--md-toolbar-button-color);
         --md-toggle-button-selected-color: var(
-            --md-toolbar-toogle-button-selected-color
+            --md-toolbar-toggle-button-selected-color
         );
         --md-toggle-button-color: var(--md-toolbar-toggle-button-color);
     }

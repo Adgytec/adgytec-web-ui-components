@@ -30,7 +30,7 @@ import { Button } from '@adgytec/web-ui-components';
 import { Save } from 'lucide-react';
 
 // Basic usage
-<Button label="Save Changes" />
+<Button>Save Changes</Button>
 
 // With icon and custom color
 <Button 

@@ -12,7 +12,7 @@
 | `--md-toolbar-toggle-button-selected-background` | `var(--md-sys-color-secondary-container)` | Background color for selected toggle buttons. |
 | `--md-toolbar-button-color` | `var(--md-sys-color-on-surface-variant)` | Text/icon color for buttons within the toolbar. |
 | `--md-toolbar-toggle-button-color` | `var(--md-sys-color-on-surface-variant)` | Text/icon color for toggle buttons within the toolbar. |
-| `--md-toolbar-toogle-button-selected-color` | `var(--md-sys-color-on-secondary-container)` | Text/icon color for selected toggle buttons. |
+| `--md-toolbar-toggle-button-selected-color` | `var(--md-sys-color-on-secondary-container)` | Text/icon color for selected toggle buttons. |
 
 ### Vibrant Color Scheme
 
@@ -24,7 +24,7 @@
 | `--md-toolbar-toggle-button-selected-background` | `var(--md-sys-color-surface-container)` | Background color for selected toggle buttons. |
 | `--md-toolbar-button-color` | `var(--md-sys-color-on-primary-container)` | Text/icon color for buttons within the toolbar. |
 | `--md-toolbar-toggle-button-color` | `var(--md-sys-color-on-primary-container)` | Text/icon color for toggle buttons within the toolbar. |
-| `--md-toolbar-toogle-button-selected-color` | `var(--md-sys-color-on-surface)` | Text/icon color for selected toggle buttons. |
+| `--md-toolbar-toggle-button-selected-color` | `var(--md-sys-color-on-surface)` | Text/icon color for selected toggle buttons. |
 
 The `Toolbar` component is a container for a set of related actions, such as buttons, toggle buttons, and dividers. It follows Material 3 design patterns for layout and styling.
 

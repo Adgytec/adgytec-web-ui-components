@@ -36,13 +36,13 @@ import {
 import { type CSSProperties, Fragment, type ReactNode, useState } from "react";
 import { useListData } from "react-aria-components/useListData";
 import {
-    Tooltip,
-    TooltipTrigger,
     RichTooltip,
     RichTooltipActions,
     RichTooltipInfo,
     RichTooltipSubhead,
     RichTooltipText,
+    Tooltip,
+    TooltipTrigger,
 } from "./components/Tooltip";
 import "./styles/app.css";
 import { CalendarDate } from "@internationalized/date";
