@@ -146,14 +146,14 @@
     }
 
     .cell[data-focus-visible]::before {
-        --_focus-indicator-thickness: calc(3 * var(--dp, 1px));
-        --_focus-indicator-offset: calc(2 * var(--dp, 1px));
-        --_focus-indicator-color: var(--md-sys-color-secondary);
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
 
-        outline-width: var(--_focus-indicator-thickness);
+        outline-width: var(--focus-indicator-thickness);
         outline-style: solid;
-        outline-offset: var(--_focus-indicator-offset);
-        outline-color: var(--_focus-indicator-color);
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
     }
 
     .range-indicator {

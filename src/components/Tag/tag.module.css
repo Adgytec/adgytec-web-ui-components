@@ -14,7 +14,7 @@
 @layer adgytec.overrides {
     .tag {
         [data-visual-button] {
-            --_focus-indicator-offset: calc(-4 * var(--dp, 1px));
+            --focus-indicator-offset: calc(-4 * var(--dp, 1px));
         }
     }
 }

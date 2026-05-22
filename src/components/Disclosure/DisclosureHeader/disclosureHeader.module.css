@@ -31,10 +31,10 @@
         }
 
         .state-layer {
-            outline-width: var(--_focus-indicator-thickness);
+            outline-width: var(--focus-indicator-thickness);
             outline-style: solid;
-            outline-offset: var(--_focus-indicator-offset);
-            outline-color: var(--_focus-indicator-color);
+            outline-offset: var(--focus-indicator-offset);
+            outline-color: var(--focus-indicator-color);
         }
     }
 }
