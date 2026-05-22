@@ -1,9 +1,22 @@
+/* configurable tokens
+*
+* --md-toolbar-background
+*
+* --md-toolbar-button-background
+* --md-toolbar-toggle-button-background
+* --md-toolbar-toggle-button-selected-background
+*
+* --md-toolbar-button-color
+* --md-toolbar-toggle-button-color
+* --md-toolbar-toogle-button-selected-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .toolbar {
-        --md-divider-color: var(--toolbar-button-label-color);
+        --md-divider-color: var(--md-toolbar-button-color);
 
-        /* tokens for use by client */
-        --toolbar-space-between-actions: var(--md-sys-layout-space-4);
+        --_md-toolbar-space-between-actions: var(--md-sys-layout-space-4);
 
         border-radius: var(--md-sys-shape-corner-radius-full);
         padding: var(--md-sys-layout-space-8);
@@ -11,15 +24,15 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: var(--toolbar-space-between-actions);
+        gap: var(--_md-toolbar-space-between-actions);
 
-        background-color: var(--toolbar-container-color);
+        background-color: var(--md-toolbar-background);
 
         .section {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: var(--toolbar-space-between-actions);
+            gap: var(--_md-toolbar-space-between-actions);
         }
 
         &[data-variant="floating"] {
@@ -36,29 +49,43 @@
     }
 
     .toolbar[data-color="standard"] {
-        --toolbar-container-color: var(--md-sys-color-surface-container);
+        --md-toolbar-background: var(--md-sys-color-surface-container);
 
-        --toolbar-button-container-color: var(--md-sys-color-surface-container);
-        --toolbar-button-selected-container-color: var(
+        --md-toolbar-button-background: var(--md-sys-color-surface-container);
+        --md-toolbar-toggle-button-background: var(
+            --md-sys-color-surface-container
+        );
+        --md-toolbar-toggle-button-selected-background: var(
             --md-sys-color-secondary-container
         );
 
-        --toolbar-button-label-color: var(--md-sys-color-on-surface-variant);
-        --toolbar-button-selected-label-color: var(
+        --md-toolbar-button-color: var(--md-sys-color-on-surface-variant);
+        --md-toolbar-toggle-button-color: var(
+            --md-sys-color-on-surface-variant
+        );
+        --md-toolbar-toogle-button-selected-color: var(
             --md-sys-color-on-secondary-container
         );
     }
 
     .toolbar[data-color="vibrant"] {
-        --toolbar-container-color: var(--md-sys-color-primary-container);
+        --md-toolbar-background: var(--md-sys-color-primary-container);
 
-        --toolbar-button-container-color: var(--md-sys-color-primary-container);
-        --toolbar-button-selected-container-color: var(
+        --md-toolbar-button-background: var(--md-sys-color-primary-container);
+        --md-toolbar-toggle-button-background: var(
+            --md-sys-color-primary-container
+        );
+        --md-toolbar-toggle-button-selected-background: var(
             --md-sys-color-surface-container
         );
 
-        --toolbar-button-label-color: var(--md-sys-color-on-primary-container);
-        --toolbar-button-selected-label-color: var(--md-sys-color-on-surface);
+        --md-toolbar-button-color: var(--md-sys-color-on-primary-container);
+        --md-toolbar-toggle-button-color: var(
+            --md-sys-color-on-primary-container
+        );
+        --md-toolbar-toogle-button-selected-color: var(
+            --md-sys-color-on-surface
+        );
     }
 }
 
@@ -71,7 +98,7 @@
     /* button reset */
     .toolbar [data-visual-button] {
         /* outlined button */
-        --outline-width: 0px;
+        --_md-button-outline-width: 0px;
         border: none;
 
         /* elevated button */
@@ -87,16 +114,18 @@
     .toolbar [data-button]:not([data-color="filled"]),
     .toolbar [data-toggle-button] {
         /* colors */
-        --md-button-background: var(--toolbar-button-container-color);
+        --md-button-background: var(--md-toolbar-button-background);
         --md-toggle-button-selected-background: var(
-            --toolbar-button-selected-container-color
+            --md-toolbar-toggle-button-selected-background
         );
-        --md-toggle-button-background: var(--toolbar-button-container-color);
+        --md-toggle-button-background: var(
+            --md-toolbar-toggle-button-background
+        );
 
-        --md-button-color: var(--toolbar-button-label-color);
+        --md-button-color: var(--md-toolbar-button-color);
         --md-toggle-button-selected-color: var(
-            --toolbar-button-selected-label-color
+            --md-toolbar-toogle-button-selected-color
         );
-        --md-toggle-button-color: var(--toolbar-button-label-color);
+        --md-toggle-button-color: var(--md-toolbar-toggle-button-color);
     }
 }
