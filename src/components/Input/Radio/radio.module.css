@@ -13,6 +13,22 @@
 
 @layer adgytec.comps {
     .radio-group {
+        /* configurable tokens */
+        --md-radio-icon-color: var(--md-sys-color-on-surface-variant);
+        --md-radio-selected-icon-color: var(--md-sys-color-primary);
+
+        --md-radio-interaction-icon-color: var(--md-sys-color-on-surface);
+        --md-radio-selected-interaction-icon-color: var(
+            --md-radio-selected-icon-color
+        );
+
+        --md-radio-state-layer-color: var(--md-sys-color-on-surface);
+        --md-radio-selected-state-layer-color: var(
+            --md-radio-selected-icon-color
+        );
+
+        /* configurable tokens end */
+
         display: grid;
         gap: var(--md-sys-layout-space-16);
 
@@ -34,22 +50,6 @@
     }
 
     .radio {
-        /* configurable tokens */
-        --md-radio-icon-color: var(--md-sys-color-on-surface-variant);
-        --md-radio-selected-icon-color: var(--md-sys-color-primary);
-
-        --md-radio-interaction-icon-color: var(--md-sys-color-on-surface);
-        --md-radio-selected-interaction-icon-color: var(
-            --md-radio-selected-icon-color
-        );
-
-        --md-radio-state-layer-color: var(--md-sys-color-on-surface);
-        --md-radio-selected-state-layer-color: var(
-            --md-radio-selected-icon-color
-        );
-
-        /* configurable tokens end */
-
         /* invalid tokens */
         --_md-radio-invalid-icon-color: var(--md-sys-color-error);
         --_md-radio-invalid-state-layer-color: var(

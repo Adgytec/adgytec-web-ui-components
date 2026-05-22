@@ -162,62 +162,46 @@ const SwitchPreview = () => {
         <>
             <div className="items">
                 <Switch isDisabled icon="none">
-                    <Label>Disabled no icon</Label>
+                    Disabled no icon
                 </Switch>
 
                 <Switch isDisabled icon="both">
-                    <Label>Disabled with icon</Label>
+                    Disabled with icon
                 </Switch>
 
                 <Switch isDisabled isSelected>
-                    <Label>Disabled selected</Label>
+                    Disabled selected
                 </Switch>
 
-                <Switch>
-                    <Label>Selected icon</Label>
-                </Switch>
-
-                <Switch className="switch-config">
-                    <Label>Selected icon config</Label>
-                </Switch>
+                <Switch>Selected icon</Switch>
 
                 <Switch containerStateLayer icon="both">
-                    <Label>Both icon</Label>
+                    Both icon
                 </Switch>
 
-                <Switch icon="none">
-                    <Label>Icon none</Label>
-                </Switch>
+                <Switch icon="none">Icon none</Switch>
             </div>
 
             <div className="items-grid">
                 <Switch isDisabled icon="none">
-                    <Label>Disabled no icon</Label>
+                    Disabled no icon
                 </Switch>
 
                 <Switch isDisabled icon="both">
-                    <Label>Disabled with icon</Label>
+                    Disabled with icon
                 </Switch>
 
                 <Switch isDisabled isSelected>
-                    <Label>Disabled selected</Label>
+                    Disabled selected
                 </Switch>
 
-                <Switch>
-                    <Label>Selected icon</Label>
-                </Switch>
-
-                <Switch className="switch-config" containerStateLayer>
-                    <Label>Selected icon config</Label>
-                </Switch>
+                <Switch>Selected icon</Switch>
 
                 <Switch icon="both" containerStateLayer>
-                    <Label>Both icon</Label>
+                    Both icon
                 </Switch>
 
-                <Switch icon="none">
-                    <Label>Icon none</Label>
-                </Switch>
+                <Switch icon="none">Icon none</Switch>
             </div>
         </>
     );
@@ -2829,10 +2813,15 @@ const DateRangePickerPreview = () => {
 
 const ConfigPreview = () => {
     return (
-        <>
+        <div className="items-grid">
             <div className="items">
                 <Button className="primary">primary</Button>
                 <Button className="primary-container">primary container</Button>
+
+                <Button className="primary-alt">primary alt</Button>
+                <Button className="primary-alt-container">
+                    primary alt container
+                </Button>
 
                 <Button className="error">error</Button>
                 <Button className="error-container">error container</Button>
@@ -2865,17 +2854,177 @@ const ConfigPreview = () => {
             </div>
 
             <div className="items" data-slider-orientation="horizontal">
-                <Slider className="slider-tertiary" />
+                <div>
+                    <RangeSlider className="slider-alt" label="slider alt" />
+                </div>
 
-                <RangeSlider className="slider-primary-fixed" />
+                <div>
+                    <Slider
+                        className="slider-secondary"
+                        label="slider secondary"
+                    />
+                </div>
 
-                <CenteredSlider className="slider-secondary-fixed" />
+                <div>
+                    <Slider
+                        className="slider-tertiary"
+                        label="slider tertiary"
+                    />
+                </div>
 
-                <Slider className="slider-tertiary-fixed" />
+                <div>
+                    <RangeSlider
+                        className="slider-primary-fixed"
+                        label="slider primary fixed"
+                    />
+                </div>
 
-                <RangeSlider className="slider-inverse" />
+                <div>
+                    <CenteredSlider
+                        className="slider-secondary-fixed"
+                        label="slider secondary fixed"
+                    />
+                </div>
+
+                <div>
+                    <Slider
+                        className="slider-tertiary-fixed"
+                        label="slider tertiary fixed"
+                    />
+                </div>
+
+                <div>
+                    <RangeSlider
+                        className="slider-inverse"
+                        label="slider inverse"
+                    />
+                </div>
             </div>
-        </>
+
+            <div className="items">
+                <Switch className="switch-primary" containerStateLayer>
+                    switch-primary
+                </Switch>
+
+                <Switch className="switch-primary-alt" containerStateLayer>
+                    switch-primary-alt
+                </Switch>
+
+                <Switch className="switch-secondary" containerStateLayer>
+                    switch-secondary
+                </Switch>
+
+                <Switch className="switch-tertiary" containerStateLayer>
+                    switch-tertiary
+                </Switch>
+
+                <Switch className="switch-primary-fixed" containerStateLayer>
+                    switch-primary-fixed
+                </Switch>
+
+                <Switch className="switch-secondary-fixed" containerStateLayer>
+                    switch-secondary-fixed
+                </Switch>
+
+                <Switch className="switch-inverse" containerStateLayer>
+                    switch-inverse
+                </Switch>
+            </div>
+
+            <div className="items">
+                <RadioGroup
+                    className="radio-primary"
+                    label="Primary"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-primary-alt"
+                    label="Primary alt"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-tertiary"
+                    label="Tertiary"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-primary-fixed"
+                    containerStateLayer
+                    label="Primary Fixed"
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-secondary-fixed"
+                    label="Secondary Fixed"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-inverse"
+                    label="Inverse"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+            </div>
+
+            <div className="items">
+                <Checkbox className="checkbox-primary" containerStateLayer>
+                    Primary checkbox
+                </Checkbox>
+
+                <Checkbox className="checkbox-primary-alt" containerStateLayer>
+                    Primary alt checkbox
+                </Checkbox>
+
+                <Checkbox className="checkbox-tertiary" containerStateLayer>
+                    Tertiary checkbox
+                </Checkbox>
+
+                <Checkbox
+                    className="checkbox-primary-fixed"
+                    containerStateLayer
+                >
+                    Primary fixed checkbox
+                </Checkbox>
+
+                <Checkbox
+                    className="checkbox-secondary-fixed"
+                    containerStateLayer
+                >
+                    Secondary fixed checkbox
+                </Checkbox>
+
+                <Checkbox className="checkbox-inverse" containerStateLayer>
+                    Inverse checkbox
+                </Checkbox>
+            </div>
+        </div>
     );
 };
 
