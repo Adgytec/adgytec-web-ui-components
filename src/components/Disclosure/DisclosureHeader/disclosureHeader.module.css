@@ -8,7 +8,7 @@
 
         overflow: clip;
 
-        background-color: var(--state-layer-color);
+        background-color: var(--_state-layer-color);
 
         transition: background-color var(--md-sys-motion-standard-fast-spatial)
             var(--md-sys-motion-standard-fast-spatial-duration);
@@ -31,10 +31,10 @@
         }
 
         .state-layer {
-            outline-width: var(--focus-indicator-thickness);
+            outline-width: var(--_focus-indicator-thickness);
             outline-style: solid;
-            outline-offset: var(--focus-indicator-offset);
-            outline-color: var(--focus-indicator-color);
+            outline-offset: var(--_focus-indicator-offset);
+            outline-color: var(--_focus-indicator-color);
         }
     }
 }
