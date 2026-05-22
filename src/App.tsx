@@ -35,7 +35,15 @@ import {
 } from "lucide-react";
 import { type CSSProperties, Fragment, type ReactNode, useState } from "react";
 import { useListData } from "react-aria-components/useListData";
-import { Tooltip, TooltipTrigger } from "./components/Tooltip";
+import {
+    Tooltip,
+    TooltipTrigger,
+    RichTooltip,
+    RichTooltipActions,
+    RichTooltipInfo,
+    RichTooltipSubhead,
+    RichTooltipText,
+} from "./components/Tooltip";
 import "./styles/app.css";
 import { CalendarDate } from "@internationalized/date";
 import { clsx } from "clsx";
@@ -136,13 +144,6 @@ import {
     type ToolbarVariant,
 } from "./components/Toolbar";
 import { ToolbarToggleButtonGroup } from "./components/Toolbar/ToolbarToggleButtonGroup";
-import {
-    RichTooltip,
-    RichTooltipActions,
-    RichTooltipInfo,
-    RichTooltipSubhead,
-    RichTooltipText,
-} from "./components/Tooltip/RichTooltip";
 import { typography } from "./utils/typography";
 
 // preview container

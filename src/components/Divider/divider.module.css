@@ -1,3 +1,9 @@
+/* configurable tokens
+*
+* --md-divider-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .divider {
         --_thickness: calc(1 * var(--dp, 1px));
