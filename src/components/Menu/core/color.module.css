@@ -1,3 +1,19 @@
+/* configurable tokens
+*
+* --md-menu-background
+* --md-menu-section-label-color
+*
+* --md-menu-item-background
+* --md-menu-item-selected-background
+*
+* --md-menu-item-color
+* --md-menu-item-selected-color
+*
+* --md-menu-item-label-color
+* --menu-item-selected-label-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     /* this is used by individual menu items */
     .color {
@@ -97,53 +113,110 @@
         color: var(--_label-color);
     }
 
-    .standard {
-        --_md-menu-background: var(--md-sys-color-surface-container-low);
-        --_md-menu-section-label-color: var(--md-sys-color-on-surface-variant);
-
-        --md-divider-color: var(--_md-menu-item-color);
+    .menu-color {
+        --_md-menu-background: var(
+            --md-menu-background,
+            var(--_md-menu-background-default)
+        );
+        --_md-menu-section-label-color: var(
+            --md-menu-section-label-color,
+            var(--_md-menu-section-label-color-default)
+        );
 
         /* menu item */
 
         /* background */
-        --_md-menu-item-background: var(--md-sys-color-surface-container-low);
+        --_md-menu-item-background: var(
+            --md-menu-item-background,
+            var(--_md-menu-item-background-default)
+        );
         --_md-menu-item-selected-background: var(
+            --md-menu-item-selected-background,
+            var(--_md-menu-item-selected-background-default)
+        );
+
+        /* color */
+        --_md-menu-item-color: var(
+            --md-menu-item-color,
+            var(--_md-menu-item-color-default)
+        );
+        --_md-menu-item-selected-color: var(
+            --md-menu-item-selected-color,
+            var(--_md-menu-item-selected-color-default)
+        );
+
+        /* label color */
+        --_md-menu-item-label-color: var(
+            --md-menu-item-label-color,
+            var(--_md-menu-item-label-color-default)
+        );
+        --_menu-item-selected-label-color: var(
+            --menu-item-selected-label-color,
+            var(--_menu-item-selected-label-color-default)
+        );
+
+        --md-divider-color: var(--_md-menu-item-color);
+    }
+
+    .standard {
+        --_md-menu-background-default: var(
+            --md-sys-color-surface-container-low
+        );
+        --_md-menu-section-label-color-default: var(
+            --md-sys-color-on-surface-variant
+        );
+
+        /* menu item */
+
+        /* background */
+        --_md-menu-item-background-default: var(
+            --md-sys-color-surface-container-low
+        );
+        --_md-menu-item-selected-background-default: var(
             --md-sys-color-tertiary-container
         );
 
         /* color */
-        --_md-menu-item-color: var(--md-sys-color-on-surface-variant);
-        --_md-menu-item-selected-color: var(
+        --_md-menu-item-color-default: var(--md-sys-color-on-surface-variant);
+        --_md-menu-item-selected-color-default: var(
             --md-sys-color-on-tertiary-container
         );
 
         /* label color */
-        --_md-menu-item-label-color: var(--md-sys-color-on-surface);
-        --_menu-item-selected-label-color: var(
+        --_md-menu-item-label-color-default: var(--md-sys-color-on-surface);
+        --_menu-item-selected-label-color-default: var(
             --md-sys-color-on-tertiary-container
         );
     }
 
     .vibrant {
-        --_md-menu-background: var(--md-sys-color-tertiary-container);
-        --_md-menu-section-label-color: var(
+        --_md-menu-background-default: var(--md-sys-color-tertiary-container);
+        --_md-menu-section-label-color-default: var(
             --md-sys-color-on-tertiary-container
         );
-
-        --md-divider-color: var(--_md-menu-item-color);
 
         /* menu item */
 
         /* background */
-        --_md-menu-item-background: var(--md-sys-color-tertiary-container);
-        --_md-menu-item-selected-background: var(--md-sys-color-tertiary);
+        --_md-menu-item-background-default: var(
+            --md-sys-color-tertiary-container
+        );
+        --_md-menu-item-selected-background-default: var(
+            --md-sys-color-tertiary
+        );
 
         /* color */
-        --_md-menu-item-color: var(--md-sys-color-on-tertiary-container);
-        --_md-menu-item-selected-color: var(--md-sys-color-on-tertiary);
+        --_md-menu-item-color-default: var(
+            --md-sys-color-on-tertiary-container
+        );
+        --_md-menu-item-selected-color-default: var(--md-sys-color-on-tertiary);
 
         /* label color */
-        --_md-menu-item-label-color: var(--md-sys-color-on-tertiary-container);
-        --_menu-item-selected-label-color: var(--md-sys-color-on-tertiary);
+        --_md-menu-item-label-color-default: var(
+            --md-sys-color-on-tertiary-container
+        );
+        --_menu-item-selected-label-color-default: var(
+            --md-sys-color-on-tertiary
+        );
     }
 }

@@ -1,7 +1,7 @@
 @layer adgytec.comps {
     .cell {
         --_state-color: var(
-            --md-calendar-cell-state-layer-color,
+            --_md-calendar-cell-state-layer-color,
         );
         --_state-layer-opacity: 0;
 
@@ -24,7 +24,7 @@
         z-index: 0;
 
         cursor: pointer;
-        color: var(--md-calendar-cell-color);
+        color: var(--_md-calendar-cell-color);
 
         transition: color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration);
@@ -47,7 +47,7 @@
         }
 
         &[data-today] {
-            color: var(--md-calendar-cell-today-color);
+            color: var(--_md-calendar-cell-today-color);
             --_state-color: currentColor;
 
             &::before {
@@ -58,12 +58,12 @@
         &[data-selected],
         &[data-selection-start],
         &[data-selection-end] {
-            color: var(--md-calendar-selected-color);
+            color: var(--_md-calendar-selected-color);
             --_state-color: currentColor;
 
             &::before {
                 border-width: 0;
-                background-color: var(--md-calendar-cell-selected-background);
+                background-color: var(--_md-calendar-cell-selected-background);
             }
         }
 
@@ -73,7 +73,7 @@
 
         &[data-range-calendar][data-selected] {
             &:not([data-selection-start]):not([data-selection-end]) {
-                color: var(--md-calendar-in-active-range-color);
+                color: var(--_md-calendar-in-active-range-color);
 
                 &::before {
                     background-color: transparent;
@@ -158,7 +158,7 @@
 
     .range-indicator {
         --_range-indicator-background: var(
-            --md-calendar-in-active-range-background
+            --_md-calendar-in-active-range-background
         );
 
         z-index: -2;

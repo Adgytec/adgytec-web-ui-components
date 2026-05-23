@@ -21,25 +21,35 @@
 
 @layer adgytec.comps {
     .tag {
-        --md-chip-background-color: var(--md-sys-color-surface-container-low);
-        --md-chip-selected-background-color: var(
-            --md-sys-color-secondary-container
+        --_md-chip-background-color: var(
+            --md-chip-background-color,
+            var(--md-sys-color-surface-container-low)
         );
-
-        --md-chip-icon-color: var(--md-sys-color-primary);
-        --md-chip-selected-icon-color: var(
-            --md-sys-color-on-secondary-container
+        --_md-chip-selected-background-color: var(
+            --md-chip-selected-background-color,
+            var(--md-sys-color-secondary-container)
         );
-
-        --md-chip-label-color: var(--md-sys-color-on-surface-variant);
-        --md-chip-selected-label-color: var(
-            --md-sys-color-on-secondary-container
+        --_md-chip-icon-color: var(
+            --md-chip-icon-color,
+            var(--md-sys-color-primary)
+        );
+        --_md-chip-selected-icon-color: var(
+            --md-chip-selected-icon-color,
+            var(--md-sys-color-on-secondary-container)
+        );
+        --_md-chip-label-color: var(
+            --md-chip-label-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+        --_md-chip-selected-label-color: var(
+            --md-chip-selected-label-color,
+            var(--md-sys-color-on-secondary-container)
         );
 
         /* derived */
-        --_background: var(--md-chip-background-color);
-        --_label-color: var(--md-chip-label-color);
-        --_icon-color: var(--md-chip-icon-color);
+        --_background: var(--_md-chip-background-color);
+        --_label-color: var(--_md-chip-label-color);
+        --_icon-color: var(--_md-chip-icon-color);
 
         --_state-layer-opacity: 0;
 
@@ -101,9 +111,9 @@
         }
 
         &[data-selected] {
-            --_background: var(--md-chip-selected-background-color);
-            --_label-color: var(--md-chip-selected-label-color);
-            --_icon-color: var(--md-chip-selected-icon-color);
+            --_background: var(--_md-chip-selected-background-color);
+            --_label-color: var(--_md-chip-selected-label-color);
+            --_icon-color: var(--_md-chip-selected-icon-color);
 
             border-color: transparent;
         }

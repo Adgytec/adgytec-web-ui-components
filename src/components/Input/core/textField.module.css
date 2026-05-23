@@ -1,3 +1,9 @@
+/* configurable tokens
+*
+* --md-textfield-focused-outline-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .unset {
         all: unset;
@@ -19,7 +25,10 @@
         --outline-color-hovered-normal: var(--md-sys-color-on-surface);
         --outline-color-hovered-invalid: var(--md-sys-color-on-error-container);
 
-        --outline-color-focused-normal: var(--md-sys-color-primary);
+        --outline-color-focused-normal: var(
+            --md-textfield-focused-outline-color,
+            var(--md-sys-color-primary)
+        );
         --outline-color-focused-invalid: var(--md-sys-color-error);
 
         /* group color */

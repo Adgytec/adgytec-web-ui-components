@@ -1,5 +1,11 @@
 # ComboBox
 
+## Configurable CSS Tokens
+
+| Token | Default Value | Description |
+|-------|---------------|-------------|
+| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the combo box input is focused or open. |
+
 The `ComboBox` component combines a text input with a listbox, allowing users to filter a list of options or enter a custom value. It supports single and multiple selection.
 
 ## Components

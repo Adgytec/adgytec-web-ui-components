@@ -1,7 +1,7 @@
 @layer adgytec.comps {
     .item {
         --_state-color: var(
-            --md-calendar-cell-state-layer-color,
+            --_md-calendar-cell-state-layer-color,
         );
         --_state-layer-opacity: 0;
 
@@ -14,7 +14,7 @@
         padding-inline-start: calc(52 * var(--dp, 1px));
         margin-inline-end: var(--md-sys-layout-space-12);
 
-        color: var(--md-calendar-cell-color);
+        color: var(--_md-calendar-cell-color);
 
         position: relative;
 
@@ -33,8 +33,8 @@
         }
 
         &[data-selected] {
-            color: var(--md-calendar-menu-selected-color);
-            background-color: var(--md-calendar-menu-selected-background);
+            color: var(--_md-calendar-menu-selected-color);
+            background-color: var(--_md-calendar-menu-selected-background);
         }
 
         &[data-focus-visible] {

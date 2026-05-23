@@ -53,7 +53,7 @@
         outline: none;
         border-radius: var(--md-sys-shape-corner-radius-full);
 
-        background-color: var(--md-slider-thumb-color);
+        background-color: var(--_md-slider-thumb-color);
 
         transition:
             block-size var(--md-sys-motion-expressive-fast-spatial)

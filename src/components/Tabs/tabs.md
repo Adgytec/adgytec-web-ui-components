@@ -4,7 +4,7 @@
 
 | Token | Default Value | Description |
 |-------|---------------|-------------|
-| --md-tabs-color | `currentColor` | Text and icon color for inactive tabs. |
+| --md-tabs-color | `var(--md-sys-color-on-surface-variant)` | Text and icon color for inactive tabs. |
 | `--md-tabs-active-color` | `var(--md-sys-color-on-surface)` | Text and icon color for the active tab. |
 | `--md-tabs-active-indicator-color` | `var(--md-sys-color-primary)` | Color of the selection indicator line. |
 | `--md-tab-list-divider-color` | `var(--md-sys-color-surface-variant)` | Color of the divider line below or beside the tab list. |

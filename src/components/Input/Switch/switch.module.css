@@ -22,32 +22,57 @@
     .switch {
         /* switch tokens */
         /* handle tokens */
-        --md-switch-handle-color: var(--md-sys-color-outline);
-        --md-switch-selected-handle-color: var(--md-sys-color-on-primary);
+        --_md-switch-handle-color: var(
+            --md-switch-handle-color,
+            var(--md-sys-color-outline)
+        );
+        --_md-switch-selected-handle-color: var(
+            --md-switch-selected-handle-color,
+            var(--md-sys-color-on-primary)
+        );
 
         /* for hovered, focused and pressed state */
-        --md-switch-handle-interaction-color: var(
-            --md-sys-color-on-surface-variant
+        --_md-switch-handle-interaction-color: var(
+            --md-switch-handle-interaction-color,
+            var(--md-sys-color-on-surface-variant)
         );
-        --md-switch-selected-handle-interaction-color: var(
-            --md-sys-color-primary-container
+        --_md-switch-selected-handle-interaction-color: var(
+            --md-switch-selected-handle-interaction-color,
+            var(--md-sys-color-primary-container)
         );
 
         /* handle icon tokens */
-        --md-switch-handle-icon-color: var(
-            --md-sys-color-surface-container-highest
+        --_md-switch-handle-icon-color: var(
+            --md-switch-handle-icon-color,
+            var(--md-sys-color-surface-container-highest)
         );
-        --md-switch-selected-handle-icon-color: var(--md-sys-color-primary);
+        --_md-switch-selected-handle-icon-color: var(
+            --md-switch-selected-handle-icon-color,
+            var(--md-sys-color-primary)
+        );
 
         /* track tokens */
-        --md-switch-track-color: var(--md-sys-color-surface-container-highest);
-        --md-switch-selected-track-color: var(--md-sys-color-primary);
-        --md-switch-track-outline-color: var(--md-sys-color-outline);
+        --_md-switch-track-color: var(
+            --md-switch-track-color,
+            var(--md-sys-color-surface-container-highest)
+        );
+        --_md-switch-selected-track-color: var(
+            --md-switch-selected-track-color,
+            var(--md-sys-color-primary)
+        );
+        --_md-switch-track-outline-color: var(
+            --md-switch-track-outline-color,
+            var(--md-sys-color-outline)
+        );
 
         /* state layer tokens */
-        --md-switch-state-layer-color: var(--md-sys-color-on-surface);
-        --md-switch-selected-state-layer-color: var(
-            --md-switch-selected-track-color
+        --_md-switch-state-layer-color: var(
+            --md-switch-state-layer-color,
+            var(--md-sys-color-on-surface)
+        );
+        --_md-switch-selected-state-layer-color: var(
+            --md-switch-selected-state-layer-color,
+            var(--_md-switch-selected-track-color)
         );
 
         /* configurable tokens end */
@@ -77,7 +102,7 @@
 
         /* state layer tokens */
         --_state-layer-opacity: 0;
-        --_state-color: var(--md-switch-state-layer-color);
+        --_state-color: var(--_md-switch-state-layer-color);
 
         --_state-layer-color: rgb(
             from var(--_state-color) r g b /
@@ -109,7 +134,7 @@
         }
 
         &[data-selected] {
-            --_state-color: var(--md-switch-selected-state-layer-color);
+            --_state-color: var(--_md-switch-selected-state-layer-color);
         }
 
         &[data-hovered] {
@@ -154,10 +179,10 @@
     .handle {
         /* derived size */
         --_handle-size: var(--_md-switch-handle-size);
-        --_handle-color: var(--md-switch-handle-color);
+        --_handle-color: var(--_md-switch-handle-color);
         --_handle-x: calc(6 * var(--dp, 1px));
 
-        --_icon-color: var(--md-switch-handle-icon-color);
+        --_icon-color: var(--_md-switch-handle-icon-color);
 
         /* handle style */
         position: absolute;
@@ -190,10 +215,10 @@
         }
 
         &[data-selected] {
-            --_handle-color: var(--md-switch-selected-handle-color);
+            --_handle-color: var(--_md-switch-selected-handle-color);
             --_handle-size: var(--_md-switch-selected-handle-size);
             --_handle-x: calc(22 * var(--dp, 1px));
-            --_icon-color: var(--md-switch-selected-handle-icon-color);
+            --_icon-color: var(--_md-switch-selected-handle-icon-color);
         }
 
         &[data-pressed] {
@@ -208,11 +233,11 @@
         &[data-focus-visible],
         &[data-hovered],
         &[data-pressed] {
-            --_handle-color: var(--md-switch-handle-interaction-color);
+            --_handle-color: var(--_md-switch-handle-interaction-color);
 
             &[data-selected] {
                 --_handle-color: var(
-                    --md-switch-selected-handle-interaction-color
+                    --_md-switch-selected-handle-interaction-color
                 );
             }
         }
@@ -274,8 +299,8 @@
     }
 
     .track {
-        --_track-color: var(--md-switch-track-color);
-        --_track-outline-color: var(--md-switch-track-outline-color);
+        --_track-color: var(--_md-switch-track-color);
+        --_track-outline-color: var(--_md-switch-track-outline-color);
 
         position: relative;
         border-radius: var(--_md-switch-track-shape);
@@ -322,7 +347,7 @@
     }
 
     .track[data-selected] {
-        --_track-color: var(--md-switch-selected-track-color);
+        --_track-color: var(--_md-switch-selected-track-color);
         --_track-outline-color: transparent;
     }
 

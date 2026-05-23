@@ -1,5 +1,11 @@
 # Date Field
 
+## Configurable CSS Tokens
+
+| Token | Default Value | Description |
+|-------|---------------|-------------|
+| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the date field is focused. |
+
 The `DateField` component allows users to enter and edit a date using a keyboard, with validation and segment-based input. It implements Material 3 text field patterns for its layout.
 
 ## Props

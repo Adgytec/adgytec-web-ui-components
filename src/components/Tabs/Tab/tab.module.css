@@ -8,7 +8,7 @@
             var(--_state-layer-opacity)
         );
 
-        --_color: var(--md-tabs-color);
+        --_color: var(--_md-tabs-color);
 
         --_focus-inset-inline-start: var(--md-sys-layout-space-4);
         --_focus-inset-inline-end: var(--md-sys-layout-space-4);
@@ -16,7 +16,6 @@
         --_focus-inset-block-end: var(--md-sys-layout-space-4);
 
         position: relative;
-        /* overflow: clip; */
         outline: none;
 
         padding-block: calc(14 * var(--dp, 1px));
@@ -44,14 +43,14 @@
         }
 
         &[data-selected] {
-            --_color: var(--md-tabs-active-color);
+            --_color: var(--_md-tabs-active-color);
 
-            --_focus-inset-inline-end: var(--focus-inset-inline-end-active);
-            --_focus-inset-block-end: var(--focus-inset-block-end-active);
+            --_focus-inset-inline-end: var(--_focus-inset-inline-end-active);
+            --_focus-inset-block-end: var(--_focus-inset-block-end-active);
         }
 
         &[data-hovered] {
-            --_color: var(--md-tabs-active-color);
+            --_color: var(--_md-tabs-active-color);
             --_state-layer-opacity: var(--md-sys-state-hover);
         }
 
@@ -71,7 +70,7 @@
                 var(--md-sys-state-disabled-content)
             );
 
-            --md-tabs-active-indicator-color: var(--_color);
+            --_md-tabs-active-indicator-color: var(--_color);
         }
     }
 

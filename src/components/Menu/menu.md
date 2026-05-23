@@ -2,6 +2,19 @@
 
 The `Menu` component is an implementation of [Material 3 Menus](https://m3.material.io/components/menus/overview). It displays a list of choices on a temporary surface when users interact with a button, action, or other control.
 
+## Configurable CSS Tokens
+
+| Token | Default (Standard) | Default (Vibrant) | Description |
+|-------|-------------------|------------------|-------------|
+| `--md-menu-background` | `var(--md-sys-color-surface-container-low)` | `var(--md-sys-color-tertiary-container)` | Background color of the menu surface. |
+| `--md-menu-section-label-color` | `var(--md-sys-color-on-surface-variant)` | `var(--md-sys-color-on-tertiary-container)` | Color of the menu section headers. |
+| `--md-menu-item-background` | `var(--md-sys-color-surface-container-low)` | `var(--md-sys-color-tertiary-container)` | Default background color of a menu item. |
+| `--md-menu-item-selected-background` | `var(--md-sys-color-tertiary-container)` | `var(--md-sys-color-tertiary)` | Background color of a selected menu item. |
+| `--md-menu-item-color` | `var(--md-sys-color-on-surface-variant)` | `var(--md-sys-color-on-tertiary-container)` | Color for icons and trailing text in a menu item. |
+| `--md-menu-item-selected-color` | `var(--md-sys-color-on-tertiary-container)` | `var(--md-sys-color-on-tertiary)` | Color for icons and trailing text in a selected menu item. |
+| `--md-menu-item-label-color` | `var(--md-sys-color-on-surface)` | `var(--md-sys-color-on-tertiary-container)` | Text color for the menu item label. |
+| `--menu-item-selected-label-color` | `var(--md-sys-color-on-tertiary-container)` | `var(--md-sys-color-on-tertiary)` | Text color for the selected menu item label. |
+
 ## Components
 
 The `Menu` system is composed of several components that extend [React Aria Components](https://react-spectrum.adobe.com/react-aria/Menu.html):

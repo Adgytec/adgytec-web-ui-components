@@ -1,5 +1,11 @@
 # Select
 
+## Configurable CSS Tokens
+
+| Token | Default Value | Description |
+|-------|---------------|-------------|
+| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the select field is focused or open. |
+
 The `Select` component displays a list of options and allows a user to select one or more of them. It implements Material 3 text field patterns for the collapsed state.
 
 ## Components

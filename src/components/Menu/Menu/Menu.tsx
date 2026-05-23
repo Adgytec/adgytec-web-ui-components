@@ -5,6 +5,7 @@ import { MenuConfigContext } from "../context";
 import {
     MenuBaseLayout,
     MenuStyles,
+    menuBaseColor,
     menuColorConfig,
     menuLayoutConfig,
 } from "../core";
@@ -26,6 +27,7 @@ export const Menu = <T extends object>({
             className={(renderProps) =>
                 clsx(
                     menuColorConfig(menuColor),
+                    menuBaseColor,
                     MenuBaseLayout,
                     menuLayoutConfig(menuLayout),
                     MenuStyles,

@@ -25,16 +25,55 @@
 
 @layer adgytec.comps {
     .color {
-        --_outline-color: var(--md-button-outline-color, transparent);
+        --_md-button-background: var(
+            --md-button-background,
+            var(--_md-button-background-default)
+        );
+        --_md-toggle-button-selected-background: var(
+            --md-toggle-button-selected-background,
+            var(--_md-toggle-button-selected-background-default)
+        );
+        --_md-toggle-button-background: var(
+            --md-toggle-button-background,
+            var(--_md-toggle-button-background-default)
+        );
+
+        --_md-button-color: var(
+            --md-button-color,
+            var(--_md-button-color-default)
+        );
+        --_md-toggle-button-selected-color: var(
+            --md-toggle-button-selected-color,
+            var(--_md-toggle-button-selected-color-default)
+        );
+        --_md-toggle-button-color: var(
+            --md-toggle-button-color,
+            var(--_md-toggle-button-color-default)
+        );
+
+        --_md-button-outline-color: var(
+            --md-button-outline-color,
+            var(--_md-button-outline-color-default)
+        );
+        --_md-toggle-button-outline-color: var(
+            --md-toggle-button-outline-color,
+            var(--_md-toggle-button-outline-color-default)
+        );
+        --_md-toggle-button-selected-outline-color: var(
+            --md-toggle-button-selected-outline-color,
+            var(--_md-toggle-button-selected-outline-color-default)
+        );
+
+        --_outline-color: var(--_md-button-outline-color, transparent);
 
         /* state layer */
-        --_md-button-state-layer: var(--md-button-color, transparent);
+        --_md-button-state-layer: var(--_md-button-color, transparent);
         --_md-toggle-button-state-layer: var(
-            --md-toggle-button-color,
+            --_md-toggle-button-color,
             transparent
         );
         --_md-toggle-button-selected-state-layer: var(
-            --md-toggle-button-selected-color,
+            --_md-toggle-button-selected-color,
             transparent
         );
 
@@ -47,8 +86,8 @@
         );
 
         /* variable to use */
-        --_background-color: var(--md-button-background, transparent);
-        --_color: var(--md-button-color, transparent);
+        --_background-color: var(--_md-button-background, transparent);
+        --_color: var(--_md-button-color, transparent);
 
         /* styles */
         background-color: var(--_background-color);
@@ -56,12 +95,12 @@
 
         &[data-toggle-button] {
             --_background-color: var(
-                --md-toggle-button-background,
+                --_md-toggle-button-background,
                 transparent
             );
-            --_color: var(--md-toggle-button-color, transparent);
+            --_color: var(--_md-toggle-button-color, transparent);
             --_outline-color: var(
-                --md-toggle-button-outline-color,
+                --_md-toggle-button-outline-color,
                 transparent
             );
 
@@ -70,12 +109,12 @@
 
         &[data-selected] {
             --_background-color: var(
-                --md-toggle-button-selected-background,
+                --_md-toggle-button-selected-background,
                 transparent
             );
-            --_color: var(--md-toggle-button-selected-color, transparent);
+            --_color: var(--_md-toggle-button-selected-color, transparent);
             --_outline-color: var(
-                --md-toggle-button-selected-outline-color,
+                --_md-toggle-button-selected-outline-color,
                 transparent
             );
 
@@ -140,44 +179,66 @@
 
     .filled {
         /* background */
-        --md-button-background: var(--md-sys-color-primary);
-        --md-toggle-button-selected-background: var(--md-sys-color-primary);
-        --md-toggle-button-background: var(--md-sys-color-surface-container);
+        --_md-button-background-default: var(--md-sys-color-primary);
+        --_md-toggle-button-selected-background-default: var(
+            --md-sys-color-primary
+        );
+        --_md-toggle-button-background-default: var(
+            --md-sys-color-surface-container
+        );
 
         /* text and icon */
-        --md-button-color: var(--md-sys-color-on-primary);
-        --md-toggle-button-selected-color: var(--md-sys-color-on-primary);
-        --md-toggle-button-color: var(--md-sys-color-on-surface-variant);
+        --_md-button-color-default: var(--md-sys-color-on-primary);
+        --_md-toggle-button-selected-color-default: var(
+            --md-sys-color-on-primary
+        );
+        --_md-toggle-button-color-default: var(
+            --md-sys-color-on-surface-variant
+        );
     }
 
     .tonal {
         /* background */
-        --md-button-background: var(--md-sys-color-secondary-container);
-        --md-toggle-button-selected-background: var(--md-sys-color-secondary);
-        --md-toggle-button-background: var(--md-sys-color-secondary-container);
+        --_md-button-background-default: var(
+            --md-sys-color-secondary-container
+        );
+        --_md-toggle-button-selected-background-default: var(
+            --md-sys-color-secondary
+        );
+        --_md-toggle-button-background-default: var(
+            --md-sys-color-secondary-container
+        );
 
         /* text and icon */
-        --md-button-color: var(--md-sys-color-on-secondary-container);
-        --md-toggle-button-selected-color: var(--md-sys-color-on-secondary);
-        --md-toggle-button-color: var(--md-sys-color-on-secondary-container);
+        --_md-button-color-default: var(--md-sys-color-on-secondary-container);
+        --_md-toggle-button-selected-color-default: var(
+            --md-sys-color-on-secondary
+        );
+        --_md-toggle-button-color-default: var(
+            --md-sys-color-on-secondary-container
+        );
     }
 
     .outlined {
         /* outline */
-        --md-button-outline-color: var(--md-sys-color-outline-variant);
-        --md-toggle-button-outline-color: var(--md-sys-color-outline-variant);
+        --_md-button-outline-color-default: var(--md-sys-color-outline-variant);
+        --_md-toggle-button-outline-color-default: var(
+            --md-sys-color-outline-variant
+        );
 
         /* background */
-        --md-toggle-button-selected-background: var(
+        --_md-toggle-button-selected-background-default: var(
             --md-sys-color-inverse-surface
         );
 
         /* text and icon */
-        --md-button-color: var(--md-sys-color-on-surface-variant);
-        --md-toggle-button-selected-color: var(
+        --_md-button-color-default: var(--md-sys-color-on-surface-variant);
+        --_md-toggle-button-selected-color-default: var(
             --md-sys-color-inverse-on-surface
         );
-        --md-toggle-button-color: var(--md-sys-color-on-surface-variant);
+        --_md-toggle-button-color-default: var(
+            --md-sys-color-on-surface-variant
+        );
 
         > [data-visual-button] {
             /* styles limited to outlined color */
@@ -190,14 +251,16 @@
     /* no toggle button states are there */
     .text {
         /* text and icon */
-        --md-button-color: var(--md-sys-color-primary);
+        --_md-button-color-default: var(--md-sys-color-primary);
     }
 
     .standard {
         /* text and icon */
-        --md-button-color: var(--md-sys-color-on-surface-variant);
-        --md-toggle-button-selected-color: var(--md-sys-color-primary);
-        --md-toggle-button-color: var(--md-sys-color-on-surface-variant);
+        --_md-button-color-default: var(--md-sys-color-on-surface-variant);
+        --_md-toggle-button-selected-color-default: var(--md-sys-color-primary);
+        --_md-toggle-button-color-default: var(
+            --md-sys-color-on-surface-variant
+        );
 
         &[data-disabled] {
             --_background-color: transparent;
@@ -206,16 +269,22 @@
 
     .elevated {
         /* background */
-        --md-button-background: var(--md-sys-color-surface-container-low);
-        --md-toggle-button-selected-background: var(--md-sys-color-primary);
-        --md-toggle-button-background: var(
+        --_md-button-background-default: var(
+            --md-sys-color-surface-container-low
+        );
+        --_md-toggle-button-selected-background-default: var(
+            --md-sys-color-primary
+        );
+        --_md-toggle-button-background-default: var(
             --md-sys-color-surface-container-low
         );
 
         /* text and icon */
-        --md-button-color: var(--md-sys-color-primary);
-        --md-toggle-button-selected-color: var(--md-sys-color-on-primary);
-        --md-toggle-button-color: var(--md-sys-color-primary);
+        --_md-button-color-default: var(--md-sys-color-primary);
+        --_md-toggle-button-selected-color-default: var(
+            --md-sys-color-on-primary
+        );
+        --_md-toggle-button-color-default: var(--md-sys-color-primary);
 
         > [data-visual-button] {
             /* styles limited to elevated color */

@@ -32,16 +32,32 @@
 
     .checkbox {
         /* configurable tokens */
-        --md-checkbox-outline-color: var(--md-sys-color-on-surface-variant);
-        --md-checkbox-container-color: var(--md-sys-color-primary);
+        --_md-checkbox-outline-color: var(
+            --md-checkbox-outline-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+        --_md-checkbox-container-color: var(
+            --md-checkbox-container-color,
+            var(--md-sys-color-primary)
+        );
 
-        --md-checkbox-interaction-outline-color: var(--md-sys-color-on-surface);
+        --_md-checkbox-interaction-outline-color: var(
+            --md-checkbox-interaction-outline-color,
+            var(--md-sys-color-on-surface)
+        );
 
-        --md-checkbox-icon-color: var(--md-sys-color-on-primary);
+        --_md-checkbox-icon-color: var(
+            --md-checkbox-icon-color,
+            var(--md-sys-color-on-primary)
+        );
 
-        --md-checkbox-state-layer-color: var(--md-sys-color-on-surface);
-        --md-checkbox-selected-state-layer-color: var(
-            --md-checkbox-container-color
+        --_md-checkbox-state-layer-color: var(
+            --md-checkbox-state-layer-color,
+            var(--md-sys-color-on-surface)
+        );
+        --_md-checkbox-selected-state-layer-color: var(
+            --md-checkbox-selected-state-layer-color,
+            var(--_md-checkbox-container-color)
         );
 
         /* configurable tokens end */
@@ -67,14 +83,14 @@
         );
 
         --_md-checkbox-pressed-state-layer-color: var(
-            --md-checkbox-selected-state-layer-color
+            --_md-checkbox-selected-state-layer-color
         );
         --_md-checkbox-pressed-selected-state-layer-color: var(
-            --md-checkbox-state-layer-color
+            --_md-checkbox-state-layer-color
         );
 
         --_state-layer-opacity: 0;
-        --_state-color: var(--md-checkbox-state-layer-color);
+        --_state-color: var(--_md-checkbox-state-layer-color);
 
         --_state-layer-color: rgb(
             from var(--_state-color) r g b /
@@ -104,10 +120,10 @@
         }
 
         &[data-indeterminate] {
-            --_state-color: var(--md-checkbox-selected-state-layer-color);
+            --_state-color: var(--_md-checkbox-selected-state-layer-color);
         }
         &[data-selected] {
-            --_state-color: var(--md-checkbox-selected-state-layer-color);
+            --_state-color: var(--_md-checkbox-selected-state-layer-color);
         }
 
         &[data-pressed] {
@@ -169,9 +185,9 @@
     }
 
     .indicator {
-        --_outline-color: var(--md-checkbox-outline-color);
+        --_outline-color: var(--_md-checkbox-outline-color);
         --_background: transparent;
-        --_icon-color: var(--md-checkbox-icon-color);
+        --_icon-color: var(--_md-checkbox-icon-color);
 
         position: relative;
 
@@ -194,7 +210,7 @@
 
         &[data-filled] {
             --_outline-color: transparent;
-            --_background: var(--md-checkbox-container-color);
+            --_background: var(--_md-checkbox-container-color);
         }
 
         &[data-invalid] {
@@ -211,7 +227,7 @@
         &[data-pressed],
         &[data-hovered],
         &[data-focus-visible] {
-            --_outline-color: var(--md-checkbox-interaction-outline-color);
+            --_outline-color: var(--_md-checkbox-interaction-outline-color);
 
             &[data-invalid] {
                 --_outline-color: var(--_md-checkbox-invalid-outline-color);

@@ -22,8 +22,8 @@
     .track {
         --_md-slider-track-inner-shape: calc(2 * var(--dp, 1px));
 
-        --_active-track-color: var(--md-slider-active-track-color);
-        --_inactive-track-color: var(--md-slider-inactive-track-color);
+        --_active-track-color: var(--_md-slider-active-track-color);
+        --_inactive-track-color: var(--_md-slider-inactive-track-color);
 
         &[data-orientation="horizontal"] {
             inline-size: 100%;

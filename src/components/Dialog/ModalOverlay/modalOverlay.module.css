@@ -7,12 +7,15 @@
 @layer adgytec.comps {
     .overlay {
         /* configurable tokens */
-        --md-dialog-overlay: var(--md-sys-color-scrim);
+        --_md-dialog-overlay: var(
+            --md-dialog-overlay,
+            var(--md-sys-color-scrim)
+        );
 
         /* configurable tokens end */
 
         background-color: rgb(
-            from var(--md-dialog-overlay) r g b /
+            from var(--_md-dialog-overlay) r g b /
             var(--md-sys-state-backdrop)
         );
 

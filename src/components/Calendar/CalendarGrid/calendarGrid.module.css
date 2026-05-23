@@ -5,7 +5,7 @@
     }
 
     .header {
-        color: var(--md-calendar-header-cell-color);
+        color: var(--_md-calendar-header-cell-color);
     }
 
     .header::after {

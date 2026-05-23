@@ -18,24 +18,45 @@
 
 @layer adgytec.comps {
     .colors {
-        --md-slider-active-track-color: var(--md-sys-color-primary);
-        --md-slider-inactive-track-color: var(
-            --md-sys-color-secondary-container
+        --_md-slider-active-track-color: var(
+            --md-slider-active-track-color,
+            var(--md-sys-color-primary)
+        );
+        --_md-slider-inactive-track-color: var(
+            --md-slider-inactive-track-color,
+            var(--md-sys-color-secondary-container)
         );
 
-        --md-slider-thumb-color: var(--md-slider-active-track-color);
-
-        --md-slider-active-stop-color: var(--md-sys-color-on-primary);
-        --md-slider-inactive-stop-color: var(
-            --md-sys-color-on-secondary-container
+        --_md-slider-thumb-color: var(
+            --md-slider-thumb-color,
+            var(--_md-slider-active-track-color)
         );
 
-        --md-slider-output-background: var(--md-sys-color-inverse-surface);
-        --md-slider-output-color: var(--md-sys-color-inverse-on-surface);
+        --_md-slider-active-stop-color: var(
+            --md-slider-active-stop-color,
+            var(--md-sys-color-on-primary)
+        );
+        --_md-slider-inactive-stop-color: var(
+            --md-slider-inactive-stop-color,
+            var(--md-sys-color-on-secondary-container)
+        );
 
-        --md-slider-icon-color: var(--md-sys-color-on-primary);
-        --md-slider-minimum-value-icon-color: var(
-            --md-sys-color-on-secondary-container
+        --_md-slider-output-background: var(
+            --md-slider-output-background,
+            var(--md-sys-color-inverse-surface)
+        );
+        --_md-slider-output-color: var(
+            --md-slider-output-color,
+            var(--md-sys-color-inverse-on-surface)
+        );
+
+        --_md-slider-icon-color: var(
+            --md-slider-icon-color,
+            var(--md-sys-color-on-primary)
+        );
+        --_md-slider-minimum-value-icon-color: var(
+            --md-slider-minimum-value-icon-color,
+            var(--md-sys-color-on-secondary-container)
         );
     }
 }

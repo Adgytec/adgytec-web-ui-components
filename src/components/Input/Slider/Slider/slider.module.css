@@ -54,7 +54,7 @@
 
         position: absolute;
 
-        color: var(--md-slider-icon-color);
+        color: var(--_md-slider-icon-color);
         transition: color var(--md-sys-motion-standard-fast-spatial)
             var(--md-sys-motion-standard-fast-spatial-duration);
 
@@ -63,7 +63,7 @@
         }
 
         &[data-minimum-value] {
-            color: var(--md-slider-minimum-value-icon-color);
+            color: var(--_md-slider-minimum-value-icon-color);
         }
 
         &[data-disabled] {

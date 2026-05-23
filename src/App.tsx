@@ -3025,6 +3025,46 @@ const ConfigPreview = () => {
                     Inverse checkbox
                 </Checkbox>
             </div>
+
+            <div className="items">
+                <Input
+                    label="Email"
+                    type="text"
+                    description="Enter your Adgytec work email"
+                    placeholder="username"
+                    suffix={"@adgytec.in"}
+                    // editorDir="rtl"
+                    leadingIcon={Mail}
+                    showCharacterCount
+                    maxLength={64}
+                />
+
+                <Input
+                    className="input-primary-alt"
+                    label="Email"
+                    type="text"
+                    description="Enter your Adgytec work email"
+                    placeholder="username"
+                    suffix={"@adgytec.in"}
+                    // editorDir="rtl"
+                    leadingIcon={Mail}
+                    showCharacterCount
+                    maxLength={64}
+                />
+
+                <Input
+                    className="input-tertiary"
+                    label="Email"
+                    type="text"
+                    description="Enter your Adgytec work email"
+                    placeholder="username"
+                    suffix={"@adgytec.in"}
+                    // editorDir="rtl"
+                    leadingIcon={Mail}
+                    showCharacterCount
+                    maxLength={64}
+                />
+            </div>
         </div>
     );
 };

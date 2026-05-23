@@ -14,17 +14,31 @@
 @layer adgytec.comps {
     .radio-group {
         /* configurable tokens */
-        --md-radio-icon-color: var(--md-sys-color-on-surface-variant);
-        --md-radio-selected-icon-color: var(--md-sys-color-primary);
-
-        --md-radio-interaction-icon-color: var(--md-sys-color-on-surface);
-        --md-radio-selected-interaction-icon-color: var(
-            --md-radio-selected-icon-color
+        --_md-radio-icon-color: var(
+            --md-radio-icon-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+        --_md-radio-selected-icon-color: var(
+            --md-radio-selected-icon-color,
+            var(--md-sys-color-primary)
         );
 
-        --md-radio-state-layer-color: var(--md-sys-color-on-surface);
-        --md-radio-selected-state-layer-color: var(
-            --md-radio-selected-icon-color
+        --_md-radio-interaction-icon-color: var(
+            --md-radio-interaction-icon-color,
+            var(--md-sys-color-on-surface)
+        );
+        --_md-radio-selected-interaction-icon-color: var(
+            --md-radio-selected-interaction-icon-color,
+            var(--_md-radio-selected-icon-color)
+        );
+
+        --_md-radio-state-layer-color: var(
+            --md-radio-state-layer-color,
+            var(--md-sys-color-on-surface)
+        );
+        --_md-radio-selected-state-layer-color: var(
+            --md-radio-selected-state-layer-color,
+            var(--_md-radio-selected-icon-color)
         );
 
         /* configurable tokens end */
@@ -66,14 +80,14 @@
 
         /* state layer tokens */
         --_md-radio-pressed-state-layer-color: var(
-            --md-radio-selected-state-layer-color
+            --_md-radio-selected-state-layer-color
         );
         --_md-radio-pressed-selected-state-layer-color: var(
-            --md-radio-state-layer-color
+            --_md-radio-state-layer-color
         );
 
         --_state-layer-opacity: 0;
-        --_state-color: var(--md-radio-state-layer-color);
+        --_state-color: var(--_md-radio-state-layer-color);
 
         --_state-layer-color: rgb(
             from var(--_state-color) r g b /
@@ -99,7 +113,7 @@
         }
 
         &[data-selected] {
-            --_state-color: var(--md-radio-selected-state-layer-color);
+            --_state-color: var(--_md-radio-selected-state-layer-color);
         }
 
         &[data-pressed] {
@@ -153,7 +167,7 @@
     }
 
     .indicator {
-        --_indicator-color: var(--md-radio-icon-color);
+        --_indicator-color: var(--_md-radio-icon-color);
 
         position: relative;
 
@@ -172,7 +186,7 @@
         }
 
         &[data-selected] {
-            --_indicator-color: var(--md-radio-selected-icon-color);
+            --_indicator-color: var(--_md-radio-selected-icon-color);
         }
 
         &[data-invalid] {
@@ -182,11 +196,11 @@
         &[data-pressed],
         &[data-hovered],
         &[data-focus-visible] {
-            --_indicator-color: var(--md-radio-interaction-icon-color);
+            --_indicator-color: var(--_md-radio-interaction-icon-color);
 
             &[data-selected] {
                 --_indicator-color: var(
-                    --md-radio-selected-interaction-icon-color
+                    --_md-radio-selected-interaction-icon-color
                 );
             }
 

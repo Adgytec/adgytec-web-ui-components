@@ -1,5 +1,11 @@
 # Time Field
 
+## Configurable CSS Tokens
+
+| Token | Default Value | Description |
+|-------|---------------|-------------|
+| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the time field is focused. |
+
 The `TimeField` component allows users to enter and edit a time value using a keyboard, with validation and segment-based input. It implements Material 3 text field patterns for its layout.
 
 ## Props

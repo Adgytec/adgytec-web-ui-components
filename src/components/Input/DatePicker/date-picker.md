@@ -1,5 +1,11 @@
 # Date Picker
 
+## Configurable CSS Tokens
+
+| Token | Default Value | Description |
+|-------|---------------|-------------|
+| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the date picker's input is focused. |
+
 The `DatePicker` component combines a `DateField` with a `Calendar` popover, allowing users to select a date either by typing or by using a visual calendar.
 
 ## Components

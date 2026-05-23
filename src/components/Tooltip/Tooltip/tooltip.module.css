@@ -7,16 +7,19 @@
 
 @layer adgytec.comps {
     .tooltip {
-        /* configurable tokens */
-        --md-tooltip-background: var(--md-sys-color-inverse-surface);
-        --md-tooltip-color: var(--md-sys-color-inverse-on-surface);
-
-        /* configurable tokens end */
+        --_md-tooltip-background: var(
+            --md-tooltip-background,
+            var(--md-sys-color-inverse-surface)
+        );
+        --_md-tooltip-color: var(
+            --md-tooltip-color,
+            var(--md-sys-color-inverse-on-surface)
+        );
 
         --_offset: calc(4 * var(--dp, 1px));
 
-        background-color: var(--md-tooltip-background);
-        color: var(--md-tooltip-color);
+        background-color: var(--_md-tooltip-background);
+        color: var(--_md-tooltip-color);
 
         padding-inline: var(--md-sys-layout-space-8);
         padding-block: var(--md-sys-layout-space-4);

@@ -758,3 +758,13 @@
         --md-sys-color-inverse-primary
     );
 }
+
+.input-primary-alt {
+    --md-textfield-focused-outline-color: var(
+        --md-extended-color-primary-alt-color
+    );
+}
+
+.input-tertiary {
+    --md-textfield-focused-outline-color: var(--md-sys-color-tertiary);
+}

@@ -1,5 +1,11 @@
 # Text Area
 
+## Configurable CSS Tokens
+
+| Token | Default Value | Description |
+|-------|---------------|-------------|
+| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the text area is focused. |
+
 The `TextArea` component is a multi-line version of the `Input` component, allowing for longer text entry. It implements Material 3 text field patterns.
 
 ## Props

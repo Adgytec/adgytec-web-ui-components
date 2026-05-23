@@ -10,17 +10,29 @@
 
 @layer adgytec.comps {
     .tab-list {
-        --md-tabs-color: currentColor;
-        --md-tabs-active-color: var(--md-sys-color-on-surface);
+        --_md-tabs-color: var(
+            --md-tabs-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+        --_md-tabs-active-color: var(
+            --md-tabs-active-color,
+            var(--md-sys-color-on-surface)
+        );
 
         --_md-tab-list-divider-width: calc(1 * var(--dp, 1px));
-        --md-tab-list-divider-color: var(--md-sys-color-surface-variant);
+        --_md-tab-list-divider-color: var(
+            --md-tab-list-divider-color,
+            var(--md-sys-color-surface-variant)
+        );
 
         --_md-tabs-active-indicator-size: calc(2 * var(--dp, 1px));
-        --md-tabs-active-indicator-color: var(--md-sys-color-primary);
+        --_md-tabs-active-indicator-color: var(
+            --md-tabs-active-indicator-color,
+            var(--md-sys-color-primary)
+        );
 
         [data-selection-indicator] {
-            background-color: var(--md-tabs-active-indicator-color);
+            background-color: var(--_md-tabs-active-indicator-color);
         }
 
         &[data-orientation="horizontal"] {
@@ -34,7 +46,7 @@
             overflow-x: auto;
 
             border-block-end: var(--_md-tab-list-divider-width) solid
-                var(--md-tab-list-divider-color);
+                var(--_md-tab-list-divider-color);
 
             [data-tab] {
                 flex: 1;
@@ -57,7 +69,7 @@
             --_focus-inset-inline-end-active: var(--md-sys-layout-space-8);
 
             border-inline-end: var(--_md-tab-list-divider-width) solid
-                var(--md-tab-list-divider-color);
+                var(--_md-tab-list-divider-color);
 
             [data-selection-indicator] {
                 inset-block-start: 0;

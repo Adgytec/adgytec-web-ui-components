@@ -1,5 +1,11 @@
 # Input
 
+## Configurable CSS Tokens
+
+| Token | Default Value | Description |
+|-------|---------------|-------------|
+| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the input field is focused. |
+
 The `Input` component (TextField) allows users to enter and edit text. It implements [Material 3 Text Fields](https://m3.material.io/components/text-fields/overview) and supports icons, prefixes, suffixes, and character counts.
 
 ## Props
