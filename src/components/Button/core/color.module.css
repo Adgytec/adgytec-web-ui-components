@@ -240,7 +240,7 @@
             --md-sys-color-on-surface-variant
         );
 
-        > [data-visual-button] {
+        [data-visual-button] {
             /* styles limited to outlined color */
             border-width: var(--_md-button-outline-width);
             border-style: solid;
@@ -286,7 +286,7 @@
         );
         --_md-toggle-button-color-default: var(--md-sys-color-primary);
 
-        > [data-visual-button] {
+        [data-visual-button] {
             /* styles limited to elevated color */
             box-shadow: var(--md-sys-elevation-shadow-1);
 

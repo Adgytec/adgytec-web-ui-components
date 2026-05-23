@@ -128,6 +128,7 @@ import { Radio, RadioGroup } from "./components/Input/Radio";
 import {
     Menu,
     MenuItem,
+    type MenuLayout,
     MenuPopover,
     MenuSection,
     MenuSectionHeader,
@@ -2813,6 +2814,69 @@ const DateRangePickerPreview = () => {
 };
 
 const ConfigPreview = () => {
+    const SplitButtonConfig = ({
+        className,
+        layout,
+        menuClassName,
+    }: {
+        className?: string;
+        layout?: MenuLayout;
+        menuClassName?: string;
+    }) => {
+        return (
+            <SplitButton className={className}>
+                <SplitButtonPrimary tooltip="download" icon={Download}>
+                    Download
+                </SplitButtonPrimary>
+
+                <MenuTrigger layout={layout}>
+                    <SplitButtonTrigger tooltip="more actions" />
+                    <Popover>
+                        <Menu className={menuClassName}>
+                            <MenuSection>
+                                <MenuSectionHeader>
+                                    Quick Actions
+                                </MenuSectionHeader>
+
+                                <MenuItem trailingIcon={Eye} label="Preview" />
+
+                                <MenuItem trailingIcon={Share2} label="Share" />
+                            </MenuSection>
+
+                            <MenuSection>
+                                <MenuSectionHeader>Security</MenuSectionHeader>
+
+                                <MenuItem
+                                    trailingIcon={GlobeLock}
+                                    supportingText="Make item private"
+                                    label="Private"
+                                />
+
+                                <SubmenuTrigger>
+                                    <MenuItem
+                                        trailingIcon={GlobeLock}
+                                        supportingText="Make item private"
+                                        label="More"
+                                    />
+
+                                    <SubmenuPopover>
+                                        <Menu className={menuClassName}>
+                                            <MenuSection>
+                                                <MenuItem label="Lock" />
+
+                                                <MenuItem label="Archive" />
+                                            </MenuSection>
+                                        </Menu>
+                                    </SubmenuPopover>
+                                </SubmenuTrigger>
+                            </MenuSection>
+                        </Menu>
+                    </Popover>
+                </MenuTrigger>
+            </SplitButton>
+        );
+    };
+
     return (
         <div className="items-grid">
             <div className="items">
@@ -3063,6 +3127,116 @@ const ConfigPreview = () => {
                     leadingIcon={Mail}
                     showCharacterCount
                     maxLength={64}
+                />
+            </div>
+
+            <div className="items">
+                <SplitButtonConfig
+                    className="primary"
+                    layout="standard"
+                    menuClassName="menu-theme-ocean"
+                />
+
+                <SplitButtonConfig
+                    className="primary-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-success"
+                />
+
+                <SplitButtonConfig
+                    className="primary-alt"
+                    layout="standard"
+                    menuClassName="menu-theme-alt"
+                />
+
+                <SplitButtonConfig
+                    className="primary-alt-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-neutral"
+                />
+
+                <SplitButtonConfig
+                    className="error"
+                    layout="standard"
+                    menuClassName="menu-theme-error"
+                />
+
+                <SplitButtonConfig
+                    className="error-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-inverse"
+                />
+
+                <SplitButtonConfig
+                    className="secondary"
+                    layout="standard"
+                    menuClassName="menu-theme-success"
+                />
+
+                <SplitButtonConfig
+                    className="secondary-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-ocean"
+                />
+
+                <SplitButtonConfig
+                    className="tertiary"
+                    layout="standard"
+                    menuClassName="menu-theme-warning"
+                />
+
+                <SplitButtonConfig
+                    className="tertiary-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-neutral"
+                />
+
+                <SplitButtonConfig
+                    className="inverse"
+                    layout="standard"
+                    menuClassName="menu-theme-inverse"
+                />
+
+                <SplitButtonConfig
+                    className="inverse-primary"
+                    layout="grouped"
+                    menuClassName="menu-theme-ocean"
+                />
+
+                <SplitButtonConfig
+                    className="primary-fixed"
+                    layout="standard"
+                    menuClassName="menu-theme-ocean"
+                />
+
+                <SplitButtonConfig
+                    className="primary-fixed-dim"
+                    layout="grouped"
+                    menuClassName="menu-theme-success"
+                />
+
+                <SplitButtonConfig
+                    className="secondary-fixed"
+                    layout="standard"
+                    menuClassName="menu-theme-success"
+                />
+
+                <SplitButtonConfig
+                    className="secondary-fixed-dim"
+                    layout="grouped"
+                    menuClassName="menu-theme-warning"
+                />
+
+                <SplitButtonConfig
+                    className="tertiary-fixed"
+                    layout="standard"
+                    menuClassName="menu-theme-warning"
+                />
+
+                <SplitButtonConfig
+                    className="tertiary-fixed-dim"
+                    layout="grouped"
+                    menuClassName="menu-theme-error"
                 />
             </div>
         </div>

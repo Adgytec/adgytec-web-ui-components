@@ -1,18 +1,18 @@
 @layer adgytec.comps {
     .size {
-        --padding-block: var(--padding-block-base);
+        --_padding-block: var(--_padding-block-base);
 
-        border-start-start-radius: var(--shape-start-start);
-        border-start-end-radius: var(--shape-start-end);
-        border-end-start-radius: var(--shape-end-start);
-        border-end-end-radius: var(--shape-end-end);
+        border-start-start-radius: var(--_shape-start-start);
+        border-start-end-radius: var(--_shape-start-end);
+        border-end-start-radius: var(--_shape-end-start);
+        border-end-end-radius: var(--_shape-end-end);
 
-        padding-inline-start: var(--padding-inline-start);
-        padding-inline-end: var(--padding-inline-end);
-        padding-block: var(--padding-block);
+        padding-inline-start: var(--_padding-inline-start);
+        padding-inline-end: var(--_padding-inline-end);
+        padding-block: var(--_padding-block);
 
         display: flex;
-        gap: var(--icon-label-gap);
+        gap: var(--_md-button-icon-label-gap);
         align-items: center;
         justify-content: center;
 
@@ -22,54 +22,72 @@
 
     .primary {
         /* shape */
-        --inner-shape: var(--inner-corner-shape-normal);
+        --_inner-shape: var(--_md-split-button-inner-corner-shape);
 
-        --shape-start-end: var(--inner-shape);
-        --shape-end-end: var(--inner-shape);
+        --_shape-start-end: var(--_inner-shape);
+        --_shape-end-end: var(--_inner-shape);
 
-        --shape-start-start: var(--outer-corner-shape);
-        --shape-end-start: var(--outer-corner-shape);
+        --_shape-start-start: var(--_md-split-button-outer-corner-shape);
+        --_shape-end-start: var(--_md-split-button-outer-corner-shape);
 
         /* padding */
-        --padding-inline-start: var(--primary-padding-inline-start);
-        --padding-inline-end: var(--primary-padding-inline-end);
+        --_padding-inline-start: var(
+            --_md-split-button-primary-padding-inline-start
+        );
+        --_padding-inline-end: var(
+            --_md-split-button-primary-padding-inline-end
+        );
 
-        --padding-block-base: var(--primary-padding-block);
+        --_padding-block-base: var(--_md-split-button-primary-padding-block);
 
         &[data-hovered] {
-            --inner-shape: var(--inner-corner-shape-interaction);
+            --_inner-shape: var(
+                --_md-split-button-interaction-inner-corner-shape
+            );
         }
 
         &[data-pressed] {
-            --inner-shape: var(--inner-corner-shape-interaction);
+            --_inner-shape: var(
+                --_md-split-button-interaction-inner-corner-shape
+            );
         }
     }
 
     .trigger {
         /* shape */
-        --inner-shape: var(--inner-corner-shape-normal);
+        --_inner-shape: var(--_md-split-button-inner-corner-shape);
 
-        --shape-start-end: var(--outer-corner-shape);
-        --shape-end-end: var(--outer-corner-shape);
+        --_shape-start-end: var(--_md-split-button-outer-corner-shape);
+        --_shape-end-end: var(--_md-split-button-outer-corner-shape);
 
-        --shape-start-start: var(--inner-shape);
-        --shape-end-start: var(--inner-shape);
+        --_shape-start-start: var(--_inner-shape);
+        --_shape-end-start: var(--_inner-shape);
 
         /* padding */
-        --padding-inline-start: var(--trigger-padding-inline-start-normal);
-        --padding-inline-end: var(--trigger-padding-inline-end-normal);
+        --_padding-inline-start: var(
+            --_md-split-button-trigger-padding-inline-start
+        );
+        --_padding-inline-end: var(
+            --_md-split-button-trigger-padding-inline-end
+        );
 
-        --padding-block-base: var(--trigger-padding-block);
+        --_padding-block-base: var(--_md-split-button-trigger-padding-block);
 
         &[data-hovered] {
-            --inner-shape: var(--inner-corner-shape-interaction);
+            --_inner-shape: var(
+                --_md-split-button-interaction-inner-corner-shape
+            );
         }
 
         &[data-pressed] {
-            --inner-shape: var(--trigger-pressed-shape);
+            --_inner-shape: var(--_md-split-button-trigger-pressed-shape);
 
-            --padding-inline-start: var(--trigger-padding-inline-start-pressed);
-            --padding-inline-end: var(--trigger-padding-inline-end-pressed);
+            --_padding-inline-start: var(
+                --_md-split-button-trigger-pressed-padding-inline-start
+            );
+            --_padding-inline-end: var(
+                --_md-split-button-trigger-pressed-padding-inline-end
+            );
         }
     }
 
@@ -77,155 +95,257 @@
         /* height for button is 32 */
         --md-sys-shape-corner-radius-full: calc(16 * var(--dp, 1px));
 
-        --outer-corner-shape: var(--md-sys-shape-corner-radius-full);
-        --inner-corner-shape-normal: var(
+        --_md-split-button-outer-corner-shape: var(
+            --md-sys-shape-corner-radius-full
+        );
+        --_md-split-button-inner-corner-shape: var(
             --md-sys-shape-corner-radius-extra-small
         );
-        --inner-corner-shape-interaction: var(
+        --_md-split-button-interaction-inner-corner-shape: var(
             --md-sys-shape-corner-radius-small
         );
 
-        --icon-label-gap: var(--md-sys-layout-space-4);
-        --outline-width: var(--md-sys-shape-border-width-thin);
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-4);
+        --_md-button-outline-width: var(--md-sys-shape-border-width-thin);
 
         /* primary button */
-        --primary-padding-inline-start: var(--md-sys-layout-space-12);
-        --primary-padding-inline-end: calc(10 * var(--dp, 1px));
+        --_md-split-button-primary-padding-inline-start: var(
+            --md-sys-layout-space-12
+        );
+        --_md-split-button-primary-padding-inline-end: calc(
+            10 *
+            var(--dp, 1px)
+        );
 
-        --primary-padding-block: calc(6 * var(--dp, 1px));
+        --_md-split-button-primary-padding-block: calc(6 * var(--dp, 1px));
 
         /* trigger button */
-        --trigger-padding-inline-start-normal: var(--md-sys-layout-space-12);
-        --trigger-padding-inline-end-normal: calc(14 * var(--dp, 1px));
+        --_md-split-button-trigger-padding-inline-start: var(
+            --md-sys-layout-space-12
+        );
+        --_md-split-button-trigger-padding-inline-end: calc(
+            14 *
+            var(--dp, 1px)
+        );
 
-        --trigger-padding-inline-start-pressed: calc(13 * var(--dp, 1px));
-        --trigger-padding-inline-end-pressed: calc(13 * var(--dp, 1px));
+        --_md-split-button-trigger-pressed-padding-inline-start: calc(
+            13 *
+            var(--dp, 1px)
+        );
+        --_md-split-button-trigger-pressed-padding-inline-end: calc(
+            13 *
+            var(--dp, 1px)
+        );
 
-        --trigger-padding-block: calc(5 * var(--dp, 1px));
-        --trigger-pressed-shape: var(--md-sys-shape-corner-radius-full);
+        --_md-split-button-trigger-padding-block: calc(5 * var(--dp, 1px));
+        --_md-split-button-trigger-pressed-shape: var(
+            --md-sys-shape-corner-radius-full
+        );
     }
 
     .small {
         /* height for button is 40 */
         --md-sys-shape-corner-radius-full: calc(20 * var(--dp, 1px));
 
-        --outer-corner-shape: var(--md-sys-shape-corner-radius-full);
-        --inner-corner-shape-normal: var(
+        --_md-split-button-outer-corner-shape: var(
+            --md-sys-shape-corner-radius-full
+        );
+        --_md-split-button-inner-corner-shape: var(
             --md-sys-shape-corner-radius-extra-small
         );
-        --inner-corner-shape-interaction: var(
+        --_md-split-button-interaction-inner-corner-shape: var(
             --md-sys-shape-corner-radius-small
         );
 
-        --icon-label-gap: var(--md-sys-layout-space-8);
-        --outline-width: var(--md-sys-shape-border-width-thin);
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-8);
+        --_md-button-outline-width: var(--md-sys-shape-border-width-thin);
 
         /* primary button */
-        --primary-padding-inline-start: var(--md-sys-layout-space-16);
-        --primary-padding-inline-end: var(--md-sys-layout-space-12);
+        --_md-split-button-primary-padding-inline-start: var(
+            --md-sys-layout-space-16
+        );
+        --_md-split-button-primary-padding-inline-end: var(
+            --md-sys-layout-space-12
+        );
 
-        --primary-padding-block: calc(10 * var(--dp, 1px));
+        --_md-split-button-primary-padding-block: calc(10 * var(--dp, 1px));
 
         /* trigger button */
-        --trigger-padding-inline-start-normal: var(--md-sys-layout-space-12);
-        --trigger-padding-inline-end-normal: calc(14 * var(--dp, 1px));
+        --_md-split-button-trigger-padding-inline-start: var(
+            --md-sys-layout-space-12
+        );
+        --_md-split-button-trigger-padding-inline-end: calc(
+            14 *
+            var(--dp, 1px)
+        );
 
-        --trigger-padding-inline-start-pressed: calc(13 * var(--dp, 1px));
-        --trigger-padding-inline-end-pressed: calc(13 * var(--dp, 1px));
+        --_md-split-button-trigger-pressed-padding-inline-start: calc(
+            13 *
+            var(--dp, 1px)
+        );
+        --_md-split-button-trigger-pressed-padding-inline-end: calc(
+            13 *
+            var(--dp, 1px)
+        );
 
-        --trigger-padding-block: calc(9 * var(--dp, 1px));
-        --trigger-pressed-shape: var(--md-sys-shape-corner-radius-full);
+        --_md-split-button-trigger-padding-block: calc(9 * var(--dp, 1px));
+        --_md-split-button-trigger-pressed-shape: var(
+            --md-sys-shape-corner-radius-full
+        );
     }
 
     .medium {
         /* height for button is 56 */
         --md-sys-shape-corner-radius-full: calc(28 * var(--dp, 1px));
 
-        --outer-corner-shape: var(--md-sys-shape-corner-radius-full);
-        --inner-corner-shape-normal: var(
+        --_md-split-button-outer-corner-shape: var(
+            --md-sys-shape-corner-radius-full
+        );
+        --_md-split-button-inner-corner-shape: var(
             --md-sys-shape-corner-radius-extra-small
         );
-        --inner-corner-shape-interaction: var(
+        --_md-split-button-interaction-inner-corner-shape: var(
             --md-sys-shape-corner-radius-medium
         );
 
-        --icon-label-gap: var(--md-sys-layout-space-8);
-        --outline-width: var(--md-sys-shape-border-width-thin);
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-8);
+        --_md-button-outline-width: var(--md-sys-shape-border-width-thin);
 
         /* primary button */
-        --primary-padding-inline-start: var(--md-sys-layout-space-24);
-        --primary-padding-inline-end: var(--md-sys-layout-space-24);
+        --_md-split-button-primary-padding-inline-start: var(
+            --md-sys-layout-space-24
+        );
+        --_md-split-button-primary-padding-inline-end: var(
+            --md-sys-layout-space-24
+        );
 
-        --primary-padding-block: var(--md-sys-layout-space-16);
+        --_md-split-button-primary-padding-block: var(--md-sys-layout-space-16);
 
         /* trigger button */
-        --trigger-padding-inline-start-normal: calc(13 * var(--dp, 1px));
-        --trigger-padding-inline-end-normal: calc(17 * var(--dp, 1px));
+        --_md-split-button-trigger-padding-inline-start: calc(
+            13 *
+            var(--dp, 1px)
+        );
+        --_md-split-button-trigger-padding-inline-end: calc(
+            17 *
+            var(--dp, 1px)
+        );
 
-        --trigger-padding-inline-start-pressed: calc(15 * var(--dp, 1px));
-        --trigger-padding-inline-end-pressed: calc(15 * var(--dp, 1px));
+        --_md-split-button-trigger-pressed-padding-inline-start: calc(
+            15 *
+            var(--dp, 1px)
+        );
+        --_md-split-button-trigger-pressed-padding-inline-end: calc(
+            15 *
+            var(--dp, 1px)
+        );
 
-        --trigger-padding-block: calc(15 * var(--dp, 1px));
-        --trigger-pressed-shape: var(--md-sys-shape-corner-radius-full);
+        --_md-split-button-trigger-padding-block: calc(15 * var(--dp, 1px));
+        --_md-split-button-trigger-pressed-shape: var(
+            --md-sys-shape-corner-radius-full
+        );
     }
 
     .large {
         /* height for button is 96 */
         --md-sys-shape-corner-radius-full: calc(48 * var(--dp, 1px));
 
-        --outer-corner-shape: var(--md-sys-shape-corner-radius-full);
-        --inner-corner-shape-normal: var(--md-sys-shape-corner-radius-small);
-        --inner-corner-shape-interaction: var(
+        --_md-split-button-outer-corner-shape: var(
+            --md-sys-shape-corner-radius-full
+        );
+        --_md-split-button-inner-corner-shape: var(
+            --md-sys-shape-corner-radius-small
+        );
+        --_md-split-button-interaction-inner-corner-shape: var(
             --md-sys-shape-corner-radius-large
         );
 
-        --icon-label-gap: var(--md-sys-layout-space-12);
-        --outline-width: var(--md-sys-shape-border-width-thick);
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-12);
+        --_md-button-outline-width: var(--md-sys-shape-border-width-thick);
 
         /* primary button */
-        --primary-padding-inline-start: var(--md-sys-layout-space-48);
-        --primary-padding-inline-end: var(--md-sys-layout-space-48);
+        --_md-split-button-primary-padding-inline-start: var(
+            --md-sys-layout-space-48
+        );
+        --_md-split-button-primary-padding-inline-end: var(
+            --md-sys-layout-space-48
+        );
 
-        --primary-padding-block: var(--md-sys-layout-space-32);
+        --_md-split-button-primary-padding-block: var(--md-sys-layout-space-32);
 
         /* trigger button */
-        --trigger-padding-inline-start-normal: calc(26 * var(--dp, 1px));
-        --trigger-padding-inline-end-normal: var(--md-sys-layout-space-32);
+        --_md-split-button-trigger-padding-inline-start: calc(
+            26 *
+            var(--dp, 1px)
+        );
+        --_md-split-button-trigger-padding-inline-end: var(
+            --md-sys-layout-space-32
+        );
 
-        --trigger-padding-inline-start-pressed: calc(29 * var(--dp, 1px));
-        --trigger-padding-inline-end-pressed: calc(29 * var(--dp, 1px));
+        --_md-split-button-trigger-pressed-padding-inline-start: calc(
+            29 *
+            var(--dp, 1px)
+        );
+        --_md-split-button-trigger-pressed-padding-inline-end: calc(
+            29 *
+            var(--dp, 1px)
+        );
 
-        --trigger-padding-block: calc(29 * var(--dp, 1px));
-        --trigger-pressed-shape: var(--md-sys-shape-corner-radius-full);
+        --_md-split-button-trigger-padding-block: calc(29 * var(--dp, 1px));
+        --_md-split-button-trigger-pressed-shape: var(
+            --md-sys-shape-corner-radius-full
+        );
     }
 
     .extra-large {
         /* height for button is 136 */
         --md-sys-shape-corner-radius-full: calc(68 * var(--dp, 1px));
 
-        --outer-corner-shape: var(--md-sys-shape-corner-radius-full);
-        --inner-corner-shape-normal: var(--md-sys-shape-corner-radius-medium);
-        --inner-corner-shape-interaction: var(
+        --_md-split-button-outer-corner-shape: var(
+            --md-sys-shape-corner-radius-full
+        );
+        --_md-split-button-inner-corner-shape: var(
+            --md-sys-shape-corner-radius-medium
+        );
+        --_md-split-button-interaction-inner-corner-shape: var(
             --md-sys-shape-corner-radius-large
         );
 
-        --icon-label-gap: var(--md-sys-layout-space-16);
-        --outline-width: calc(3 * var(--dp, 1px));
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-16);
+        --_md-button-outline-width: calc(3 * var(--dp, 1px));
 
         /* primary button */
-        --primary-padding-inline-start: var(--md-sys-layout-space-64);
-        --primary-padding-inline-end: var(--md-sys-layout-space-64);
+        --_md-split-button-primary-padding-inline-start: var(
+            --md-sys-layout-space-64
+        );
+        --_md-split-button-primary-padding-inline-end: var(
+            --md-sys-layout-space-64
+        );
 
-        --primary-padding-block: var(--md-sys-layout-space-48);
+        --_md-split-button-primary-padding-block: var(--md-sys-layout-space-48);
 
         /* trigger button */
-        --trigger-padding-inline-start-normal: calc(37 * var(--dp, 1px));
-        --trigger-padding-inline-end-normal: calc(49 * var(--dp, 1px));
+        --_md-split-button-trigger-padding-inline-start: calc(
+            37 *
+            var(--dp, 1px)
+        );
+        --_md-split-button-trigger-padding-inline-end: calc(
+            49 *
+            var(--dp, 1px)
+        );
 
-        --trigger-padding-inline-start-pressed: calc(43 * var(--dp, 1px));
-        --trigger-padding-inline-end-pressed: calc(43 * var(--dp, 1px));
+        --_md-split-button-trigger-pressed-padding-inline-start: calc(
+            43 *
+            var(--dp, 1px)
+        );
+        --_md-split-button-trigger-pressed-padding-inline-end: calc(
+            43 *
+            var(--dp, 1px)
+        );
 
-        --trigger-padding-block: calc(43 * var(--dp, 1px));
-        --trigger-pressed-shape: var(--md-sys-shape-corner-radius-full);
+        --_md-split-button-trigger-padding-block: calc(43 * var(--dp, 1px));
+        --_md-split-button-trigger-pressed-shape: var(
+            --md-sys-shape-corner-radius-full
+        );
     }
 }

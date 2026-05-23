@@ -1,6 +1,6 @@
 @layer adgytec.overrides {
     .split-button [data-visual-button] {
-        --_md-button-shape: var(--md-sys-motion-standard-fast-spatial);
+        --_md-button-shape-motion: var(--md-sys-motion-standard-fast-spatial);
         --_md-button-shape-motion-duration: var(
             --md-sys-motion-standard-fast-spatial-duration
         );

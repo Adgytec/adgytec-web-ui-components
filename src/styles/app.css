@@ -768,3 +768,117 @@
 .input-tertiary {
     --md-textfield-focused-outline-color: var(--md-sys-color-tertiary);
 }
+
+.menu-theme-ocean {
+    --md-menu-background: var(--md-sys-color-primary-container);
+    --md-menu-section-label-color: var(--md-sys-color-on-primary-container);
+
+    --md-menu-item-background: var(--md-sys-color-primary-container);
+    --md-menu-item-selected-background: var(--md-sys-color-primary);
+
+    --md-menu-item-color: var(--md-sys-color-on-primary-container);
+    --md-menu-item-selected-color: var(--md-sys-color-on-primary);
+
+    --md-menu-item-label-color: var(--md-sys-color-on-primary-container);
+    --menu-item-selected-label-color: var(--md-sys-color-on-primary);
+}
+
+.menu-theme-success {
+    --md-menu-background: var(--md-sys-color-secondary-container);
+    --md-menu-section-label-color: var(--md-sys-color-on-secondary-container);
+
+    --md-menu-item-background: var(--md-sys-color-secondary-container);
+    --md-menu-item-selected-background: var(--md-sys-color-secondary);
+
+    --md-menu-item-color: var(--md-sys-color-on-secondary-container);
+    --md-menu-item-selected-color: var(--md-sys-color-on-secondary);
+
+    --md-menu-item-label-color: var(--md-sys-color-on-secondary-container);
+    --menu-item-selected-label-color: var(--md-sys-color-on-secondary);
+}
+
+.menu-theme-warning {
+    --md-menu-background: var(--md-sys-color-tertiary-container);
+    --md-menu-section-label-color: var(--md-sys-color-on-tertiary-container);
+
+    --md-menu-item-background: var(--md-sys-color-tertiary-container);
+    --md-menu-item-selected-background: var(--md-sys-color-tertiary);
+
+    --md-menu-item-color: var(--md-sys-color-on-tertiary-container);
+    --md-menu-item-selected-color: var(--md-sys-color-on-tertiary);
+
+    --md-menu-item-label-color: var(--md-sys-color-on-tertiary-container);
+    --menu-item-selected-label-color: var(--md-sys-color-on-tertiary);
+}
+
+.menu-theme-error {
+    --md-menu-background: var(--md-sys-color-error-container);
+    --md-menu-section-label-color: var(--md-sys-color-on-error-container);
+
+    --md-menu-item-background: var(--md-sys-color-error-container);
+    --md-menu-item-selected-background: var(--md-sys-color-error);
+
+    --md-menu-item-color: var(--md-sys-color-on-error-container);
+    --md-menu-item-selected-color: var(--md-sys-color-on-error);
+
+    --md-menu-item-label-color: var(--md-sys-color-on-error-container);
+    --menu-item-selected-label-color: var(--md-sys-color-on-error);
+}
+
+.menu-theme-neutral {
+    --md-menu-background: var(--md-sys-color-surface-container);
+    --md-menu-section-label-color: var(--md-sys-color-on-surface-variant);
+
+    --md-menu-item-background: var(--md-sys-color-surface-container);
+    --md-menu-item-selected-background: var(
+        --md-sys-color-surface-container-high
+    );
+
+    --md-menu-item-color: var(--md-sys-color-on-surface-variant);
+    --md-menu-item-selected-color: var(--md-sys-color-on-surface);
+
+    --md-menu-item-label-color: var(--md-sys-color-on-surface);
+    --menu-item-selected-label-color: var(--md-sys-color-on-surface);
+}
+
+.menu-theme-inverse {
+    --md-menu-background: var(--md-sys-color-inverse-surface);
+    --md-menu-section-label-color: var(--md-sys-color-inverse-on-surface);
+
+    --md-menu-item-background: var(--md-sys-color-inverse-surface);
+    --md-menu-item-selected-background: var(--md-sys-color-inverse-primary);
+
+    --md-menu-item-color: var(--md-sys-color-inverse-on-surface);
+    --md-menu-item-selected-color: var(--md-sys-color-on-primary);
+
+    --md-menu-item-label-color: var(--md-sys-color-inverse-on-surface);
+    --menu-item-selected-label-color: var(--md-sys-color-on-primary);
+}
+
+.menu-theme-alt {
+    --md-menu-background: var(--md-extended-color-primary-alt-color-container);
+    --md-menu-section-label-color: var(
+        --md-extended-color-primary-alt-on-color-container
+    );
+
+    --md-menu-item-background: var(
+        --md-extended-color-primary-alt-color-container
+    );
+    --md-menu-item-selected-background: var(
+        --md-extended-color-primary-alt-color
+    );
+
+    --md-menu-item-color: var(
+        --md-extended-color-primary-alt-on-color-container
+    );
+    --md-menu-item-selected-color: var(
+        --md-extended-color-primary-alt-on-color
+    );
+
+    --md-menu-item-label-color: var(
+        --md-extended-color-primary-alt-on-color-container
+    );
+    --menu-item-selected-label-color: var(
+        --md-extended-color-primary-alt-on-color
+    );
+}
