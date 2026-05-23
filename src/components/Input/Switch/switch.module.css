@@ -195,6 +195,10 @@
 
         background-color: var(--_handle-color);
 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         transition:
             translate var(--md-sys-motion-expressive-fast-spatial)
             var(--md-sys-motion-expressive-fast-spatial-duration),
@@ -290,12 +294,6 @@
         @media (prefers-reduced-motion) {
             transition: none;
         }
-    }
-
-    .handle[data-icon] {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
     }
 
     .track {
