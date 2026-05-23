@@ -1,10 +1,10 @@
 @layer adgytec.comps {
     .group {
         /* shape */
-        --shape-start-start: var(--inner-shape);
-        --shape-end-start: var(--inner-shape);
-        --shape-start-end: var(--inner-shape);
-        --shape-end-end: var(--inner-shape);
+        --_shape-start-start: var(--_inner-shape);
+        --_shape-end-start: var(--_inner-shape);
+        --_shape-start-end: var(--_inner-shape);
+        --_shape-end-end: var(--_inner-shape);
 
         display: inline-flex;
         align-items: center;
@@ -12,39 +12,40 @@
     }
 
     .group > [data-pressed] {
-        --shape-start-start: var(--pressed-shape);
-        --shape-end-start: var(--pressed-shape);
-        --shape-start-end: var(--pressed-shape);
-        --shape-end-end: var(--pressed-shape);
+        --_shape-start-start: var(--_pressed-shape);
+        --_shape-end-start: var(--_pressed-shape);
+        --_shape-start-end: var(--_pressed-shape);
+        --_shape-end-end: var(--_pressed-shape);
     }
 
     .group > [data-connected-button]:first-child {
-        --shape-start-start: var(--outer-shape);
-        --shape-end-start: var(--outer-shape);
+        --_shape-start-start: var(--_outer-shape);
+        --_shape-end-start: var(--_outer-shape);
     }
 
     .group > [data-connected-button]:last-child {
-        --shape-start-end: var(--outer-shape);
-        --shape-end-end: var(--outer-shape);
+        --_shape-start-end: var(--_outer-shape);
+        --_shape-end-end: var(--_outer-shape);
     }
 
     .extra-small {
         /* height for button is 32 */
         --md-sys-shape-corner-radius-full: calc(16 * var(--dp, 1px));
 
-        --padding-block-base: calc(6 * var(--dp, 1px));
-        --padding-inline: var(--md-sys-layout-space-12);
+        --_md-button-padding-block-base: calc(6 * var(--dp, 1px));
+        --_md-button-padding-block: var(--_md-button-padding-block-base);
+        --_md-button-padding-inline: var(--md-sys-layout-space-12);
 
-        --icon-label-gap: var(--md-sys-layout-space-4);
-        --outline-width: var(--md-sys-shape-border-width-thin);
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-4);
+        --_md-button-outline-width: var(--md-sys-shape-border-width-thin);
 
-        --outer-shape: var(--md-sys-shape-corner-radius-full);
-        --inner-shape: var(--md-sys-shape-corner-radius-small);
-        --pressed-shape: var(--md-sys-shape-corner-radius-extra-small);
-        --selected-shape: var(--md-sys-shape-corner-radius-full);
+        --_outer-shape: var(--md-sys-shape-corner-radius-full);
+        --_inner-shape: var(--md-sys-shape-corner-radius-small);
+        --_pressed-shape: var(--md-sys-shape-corner-radius-extra-small);
+        --_selected-shape: var(--md-sys-shape-corner-radius-full);
 
         &[data-shape="square"] {
-            --outer-shape: var(--md-sys-shape-corner-radius-small);
+            --_outer-shape: var(--md-sys-shape-corner-radius-small);
         }
     }
 
@@ -52,19 +53,20 @@
         /* height for button is 40 */
         --md-sys-shape-corner-radius-full: calc(20 * var(--dp, 1px));
 
-        --padding-block-base: calc(10 * var(--dp, 1px));
-        --padding-inline: var(--md-sys-layout-space-16);
+        --_md-button-padding-block-base: calc(10 * var(--dp, 1px));
+        --_md-button-padding-block: var(--_md-button-padding-block-base);
+        --_md-button-padding-inline: var(--md-sys-layout-space-16);
 
-        --icon-label-gap: var(--md-sys-layout-space-8);
-        --outline-width: var(--md-sys-shape-border-width-thin);
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-8);
+        --_md-button-outline-width: var(--md-sys-shape-border-width-thin);
 
-        --outer-shape: var(--md-sys-shape-corner-radius-full);
-        --inner-shape: var(--md-sys-shape-corner-radius-small);
-        --pressed-shape: var(--md-sys-shape-corner-radius-extra-small);
-        --selected-shape: var(--md-sys-shape-corner-radius-full);
+        --_outer-shape: var(--md-sys-shape-corner-radius-full);
+        --_inner-shape: var(--md-sys-shape-corner-radius-small);
+        --_pressed-shape: var(--md-sys-shape-corner-radius-extra-small);
+        --_selected-shape: var(--md-sys-shape-corner-radius-full);
 
         &[data-shape="square"] {
-            --outer-shape: var(--md-sys-shape-corner-radius-small);
+            --_outer-shape: var(--md-sys-shape-corner-radius-small);
         }
     }
 
@@ -72,19 +74,20 @@
         /* height for button is 56 */
         --md-sys-shape-corner-radius-full: calc(28 * var(--dp, 1px));
 
-        --padding-block-base: var(--md-sys-layout-space-16);
-        --padding-inline: var(--md-sys-layout-space-24);
+        --_md-button-padding-block-base: var(--md-sys-layout-space-16);
+        --_md-button-padding-block: var(--_md-button-padding-block-base);
+        --_md-button-padding-inline: var(--md-sys-layout-space-24);
 
-        --icon-label-gap: var(--md-sys-layout-space-8);
-        --outline-width: var(--md-sys-shape-border-width-thin);
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-8);
+        --_md-button-outline-width: var(--md-sys-shape-border-width-thin);
 
-        --outer-shape: var(--md-sys-shape-corner-radius-full);
-        --inner-shape: var(--md-sys-shape-corner-radius-small);
-        --pressed-shape: var(--md-sys-shape-corner-radius-extra-small);
-        --selected-shape: var(--md-sys-shape-corner-radius-full);
+        --_outer-shape: var(--md-sys-shape-corner-radius-full);
+        --_inner-shape: var(--md-sys-shape-corner-radius-small);
+        --_pressed-shape: var(--md-sys-shape-corner-radius-extra-small);
+        --_selected-shape: var(--md-sys-shape-corner-radius-full);
 
         &[data-shape="square"] {
-            --outer-shape: var(--md-sys-shape-corner-radius-small);
+            --_outer-shape: var(--md-sys-shape-corner-radius-small);
         }
     }
 
@@ -92,19 +95,20 @@
         /* height for button is 96 */
         --md-sys-shape-corner-radius-full: calc(48 * var(--dp, 1px));
 
-        --padding-block-base: var(--md-sys-layout-space-32);
-        --padding-inline: var(--md-sys-layout-space-48);
+        --_md-button-padding-block-base: var(--md-sys-layout-space-32);
+        --_md-button-padding-block: var(--_md-button-padding-block-base);
+        --_md-button-padding-inline: var(--md-sys-layout-space-48);
 
-        --icon-label-gap: var(--md-sys-layout-space-12);
-        --outline-width: var(--md-sys-shape-border-width-thick);
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-12);
+        --_md-button-outline-width: var(--md-sys-shape-border-width-thick);
 
-        --outer-shape: var(--md-sys-shape-corner-radius-full);
-        --inner-shape: var(--md-sys-shape-corner-radius-large);
-        --pressed-shape: var(--md-sys-shape-corner-radius-medium);
-        --selected-shape: var(--md-sys-shape-corner-radius-full);
+        --_outer-shape: var(--md-sys-shape-corner-radius-full);
+        --_inner-shape: var(--md-sys-shape-corner-radius-large);
+        --_pressed-shape: var(--md-sys-shape-corner-radius-medium);
+        --_selected-shape: var(--md-sys-shape-corner-radius-full);
 
         &[data-shape="square"] {
-            --outer-shape: var(--md-sys-shape-corner-radius-large);
+            --_outer-shape: var(--md-sys-shape-corner-radius-large);
         }
     }
 
@@ -112,19 +116,20 @@
         /* height for button is 136 */
         --md-sys-shape-corner-radius-full: calc(68 * var(--dp, 1px));
 
-        --padding-block-base: var(--md-sys-layout-space-48);
-        --padding-inline: var(--md-sys-layout-space-64);
+        --_md-button-padding-block-base: var(--md-sys-layout-space-48);
+        --_md-button-padding-block: var(--_md-button-padding-block-base);
+        --_md-button-padding-inline: var(--md-sys-layout-space-64);
 
-        --icon-label-gap: var(--md-sys-layout-space-16);
-        --outline-width: calc(3 * var(--dp, 1px));
+        --_md-button-icon-label-gap: var(--md-sys-layout-space-16);
+        --_md-button-outline-width: calc(3 * var(--dp, 1px));
 
-        --outer-shape: var(--md-sys-shape-corner-radius-full);
-        --inner-shape: var(--md-sys-shape-corner-radius-large-increased);
-        --pressed-shape: var(--md-sys-shape-corner-radius-large);
-        --selected-shape: var(--md-sys-shape-corner-radius-full);
+        --_outer-shape: var(--md-sys-shape-corner-radius-full);
+        --_inner-shape: var(--md-sys-shape-corner-radius-large-increased);
+        --_pressed-shape: var(--md-sys-shape-corner-radius-large);
+        --_selected-shape: var(--md-sys-shape-corner-radius-full);
 
         &[data-shape="square"] {
-            --outer-shape: var(--md-sys-shape-corner-radius-large-increased);
+            --_outer-shape: var(--md-sys-shape-corner-radius-large-increased);
         }
     }
 }

@@ -4,57 +4,57 @@
         inset: 0;
         z-index: 0;
 
-        border-radius: var(--track-shape);
+        border-radius: var(--_md-slider-track-shape);
 
         display: flex;
-        gap: var(--track-gap);
+        gap: var(--_track-gap);
 
         &[data-orientation="horizontal"] {
-            inset-inline: var(--orientation-inset);
+            inset-inline: var(--_orientation-inset);
         }
 
         &[data-orientation="vertical"] {
             flex-direction: column-reverse;
-            inset-block: var(--orientation-inset);
+            inset-block: var(--_orientation-inset);
         }
     }
 
     .active-track {
-        background-color: var(--track-active-color);
-        border-radius: var(--track-shape);
+        background-color: var(--_active-track-color);
+        border-radius: var(--_md-slider-track-shape);
 
         &[data-orientation="horizontal"] {
-            border-start-end-radius: var(--track-inner-shape);
-            border-end-end-radius: var(--track-inner-shape);
+            border-start-end-radius: var(--_md-slider-track-inner-shape);
+            border-end-end-radius: var(--_md-slider-track-inner-shape);
         }
 
         &[data-orientation="vertical"] {
-            border-start-end-radius: var(--track-inner-shape);
-            border-start-start-radius: var(--track-inner-shape);
+            border-start-end-radius: var(--_md-slider-track-inner-shape);
+            border-start-start-radius: var(--_md-slider-track-inner-shape);
         }
     }
 
     .inactive-track {
-        background-color: var(--track-inactive-color);
-        border-radius: var(--track-shape);
+        background-color: var(--_inactive-track-color);
+        border-radius: var(--_md-slider-track-shape);
 
         &[data-orientation="horizontal"] {
-            border-start-start-radius: var(--track-inner-shape);
-            border-end-start-radius: var(--track-inner-shape);
+            border-start-start-radius: var(--_md-slider-track-inner-shape);
+            border-end-start-radius: var(--_md-slider-track-inner-shape);
         }
 
         &[data-orientation="vertical"] {
-            border-end-end-radius: var(--track-inner-shape);
-            border-end-start-radius: var(--track-inner-shape);
+            border-end-end-radius: var(--_md-slider-track-inner-shape);
+            border-end-start-radius: var(--_md-slider-track-inner-shape);
         }
     }
 
     .icon {
-        --min-icon-gap: calc(var(--track-gap) / 1.5);
+        --_min-icon-gap: calc(var(--_track-gap) / 1.5);
 
         position: absolute;
 
-        color: var(--md-sys-color-on-primary);
+        color: var(--_md-slider-icon-color);
         transition: color var(--md-sys-motion-standard-fast-spatial)
             var(--md-sys-motion-standard-fast-spatial-duration);
 
@@ -63,7 +63,7 @@
         }
 
         &[data-minimum-value] {
-            color: var(--md-sys-color-on-secondary-container);
+            color: var(--_md-slider-minimum-value-icon-color);
         }
 
         &[data-disabled] {
@@ -85,7 +85,7 @@
             translate: 0 -50%;
 
             &[data-minimum-value] {
-                inset-inline-start: var(--min-icon-gap);
+                inset-inline-start: var(--_min-icon-gap);
             }
         }
 
@@ -95,7 +95,7 @@
             translate: -50% 0;
 
             &[data-minimum-value] {
-                inset-block-end: var(--min-icon-gap);
+                inset-block-end: var(--_min-icon-gap);
             }
         }
     }

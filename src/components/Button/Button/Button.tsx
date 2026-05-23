@@ -28,15 +28,17 @@ export const Button: React.FC<ButtonProps> = ({
     icon,
     children,
     onPress,
-    iconPlacement = "start",
+    iconPlacement,
     className,
     ...props
 }) => {
-    const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
-        size,
-        shape,
-        color,
-    });
+    const { buttonColor, buttonShape, buttonSize, buttonIconPlacement } =
+        useButtonConfig({
+            size,
+            shape,
+            color,
+            iconPlacement,
+        });
 
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
@@ -54,6 +56,8 @@ export const Button: React.FC<ButtonProps> = ({
                 clsx(
                     ButtonReset,
                     TapTarget,
+                    buttonSizeConfig(buttonSize),
+                    buttonColorConfig(buttonColor),
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -61,6 +65,7 @@ export const Button: React.FC<ButtonProps> = ({
             }
             {...props}
             {...baseButtonDataAttrs}
+            data-button
         >
             {(renderProps) => {
                 const {
@@ -94,19 +99,17 @@ export const Button: React.FC<ButtonProps> = ({
                             ButtonCore,
                             buttonColorBase,
                             ButtonSizeBase,
-                            buttonColorConfig(buttonColor),
-                            buttonSizeConfig(buttonSize),
                             ButtonLabelTextMapping[buttonSize]
                         )}
                         {...dataAttrs}
                     >
                         {splashInfo && <Splash {...splashInfo} />}
 
-                        {iconPlacement === "start" && iconComp}
+                        {buttonIconPlacement === "start" && iconComp}
 
                         {isChildFunc ? children(renderProps) : children}
 
-                        {iconPlacement === "end" && iconComp}
+                        {buttonIconPlacement === "end" && iconComp}
                     </span>
                 );
             }}

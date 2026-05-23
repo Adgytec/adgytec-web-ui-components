@@ -22,7 +22,7 @@
         aspect-ratio: 1 / 1;
 
         border-radius: var(--md-sys-shape-corner-radius-full);
-        background-color: var(--md-sys-color-on-secondary-container);
+        background-color: var(--_md-slider-inactive-stop-color);
 
         transition: background-color var(--md-sys-motion-standard-fast-spatial)
             var(--md-sys-motion-standard-fast-spatial-duration);
@@ -32,7 +32,7 @@
         }
 
         &[data-in-active] {
-            background-color: var(--md-sys-color-on-primary);
+            background-color: var(--_md-slider-active-stop-color);
         }
 
         &[data-hide] {

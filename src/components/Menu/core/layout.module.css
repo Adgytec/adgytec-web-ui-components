@@ -2,67 +2,71 @@
     /* core menu tokens */
     .layout {
         /* tokens used either by menu or menu section based on layout value */
-        --elevation: var(--md-sys-elevation-shadow-3);
-        --gap: calc(2 * var(--dp, 1px));
-        --padding: var(--md-sys-layout-space-4);
+        --_md-menu-elevation: var(--md-sys-elevation-shadow-3);
+        --_md-menu-gap: calc(2 * var(--dp, 1px));
+        --_md-menu-padding: var(--md-sys-layout-space-4);
 
         /* shape */
-        --shape: var(--md-sys-shape-corner-radius-small);
-        --section-shape: var(--md-sys-shape-corner-radius-small);
+        --_md-menu-shape: var(--md-sys-shape-corner-radius-small);
+        --_md-menu-section-shape: var(--md-sys-shape-corner-radius-small);
 
         /* menu item */
 
-        --menu-item-shape: var(--md-sys-shape-corner-radius-extra-small);
-        --menu-item-outer-shape: var(--md-sys-shape-corner-radius-medium);
-        --menu-item-selected-shape: var(--md-sys-shape-corner-radius-medium);
+        --_md-menu-item-shape: var(--md-sys-shape-corner-radius-extra-small);
+        --_md-menu-item-outer-shape: var(--md-sys-shape-corner-radius-medium);
+        --_md-menu-item-selected-shape: var(
+            --md-sys-shape-corner-radius-medium
+        );
 
         /* Vertical padding when item contains only a single-line label */
         /* Centers 20px label within 44px container */
-        --menu-item-padding-block-single-line: var(--md-sys-layout-space-12);
+        --_md-menu-item-padding-block-single-line: var(
+            --md-sys-layout-space-12
+        );
 
         /* Vertical padding when item contains label + supporting text */
         /* Reduced padding to fit two text lines (20px + 16px) with 2px gap inside 44px container */
-        --menu-item-padding-block-multi-line: calc(3 * var(--dp, 1px));
+        --_md-menu-item-padding-block-multi-line: calc(3 * var(--dp, 1px));
 
         /* Horizontal padding inside each menu item (excluding outer menu padding) */
         /* Total visual inset = menu container padding (4) + this value (12) */
-        --menu-item-padding-inline-content: var(--md-sys-layout-space-12);
+        --_md-menu-item-padding-inline-content: var(--md-sys-layout-space-12);
 
         /* Spacing between elements inside a menu item (icon, text, trailing, etc.) */
-        --menu-item-content-gap: var(--md-sys-layout-space-8);
+        --_md-menu-item-content-gap: var(--md-sys-layout-space-8);
 
         &:focus-within {
-            --shape: var(--md-sys-shape-corner-radius-large);
+            --_md-menu-shape: var(--md-sys-shape-corner-radius-large);
         }
     }
 
     .standard {
-        --menu-elevation: var(--elevation);
-        --menu-padding: var(--padding);
-        --menu-shape: var(--shape);
-        --menu-background: var(--background);
+        --_menu-elevation: var(--_md-menu-elevation);
+        --_menu-padding: var(--_md-menu-padding);
+        --_menu-shape: var(--_md-menu-shape);
+        --_menu-background: var(--_md-menu-background);
 
-        --menu-section-elevation: none;
-        --menu-section-padding: 0;
-        --menu-section-shape: 0;
-        --menu-section-outer-shape: 0;
-        --menu-section-background: transparent;
+        --_menu-section-elevation: none;
+        --_menu-section-padding: 0;
+        --_menu-section-shape: 0;
+        --_menu-section-outer-shape: 0;
+        --_menu-section-background: transparent;
 
-        --menu-item-elevation: none;
+        --_menu-item-elevation: none;
     }
 
     .grouped {
-        --menu-elevation: none;
-        --menu-padding: 0;
-        --menu-shape: var(--shape);
-        --menu-background: transparent;
+        --_menu-elevation: none;
+        --_menu-padding: 0;
+        --_menu-shape: var(--_md-menu-shape);
+        --_menu-background: transparent;
 
-        --menu-section-elevation: var(--elevation);
-        --menu-section-padding: var(--padding);
-        --menu-section-outer-shape: var(--shape);
-        --menu-section-shape: var(--section-shape);
-        --menu-section-background: var(--background);
+        --_menu-section-elevation: var(--_md-menu-elevation);
+        --_menu-section-padding: var(--_md-menu-padding);
+        --_menu-section-outer-shape: var(--_md-menu-shape);
+        --_menu-section-shape: var(--_md-menu-section-shape);
+        --_menu-section-background: var(--_md-menu-background);
 
-        --menu-item-elevation: var(--elevation);
+        --_menu-item-elevation: var(--_md-menu-elevation);
     }
 }

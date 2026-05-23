@@ -11,7 +11,6 @@ import {
     ButtonLabelTextMapping,
     ButtonReset,
     buttonColorBase,
-    buttonColorConfig,
     withTooltip,
 } from "../../core";
 import { SplitButtonPrimaryBase, SplitButtonVariantBase } from "../core";
@@ -52,6 +51,8 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
                         : className
                 )
             }
+            data-button
+            data-split-button-primary
         >
             {(renderProps) => {
                 const {
@@ -83,7 +84,6 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
-                            buttonColorConfig(splitButtonState.color),
                             ButtonLabelTextMapping[splitButtonState.size],
                             SplitButtonPrimaryBase,
                             SplitButtonVariantBase

@@ -58,6 +58,8 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                 clsx(
                     ButtonReset,
                     TapTarget,
+                    buttonSizeConfig(buttonSize),
+                    buttonColorConfig(buttonColor),
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -65,6 +67,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
             }
             {...props}
             {...iconButtonDataAttrs}
+            data-button
         >
             {({
                 isSelected,
@@ -94,9 +97,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
-                            ButtonSizeBase,
-                            buttonColorConfig(buttonColor),
-                            buttonSizeConfig(buttonSize)
+                            ButtonSizeBase
                         )}
                         {...dataAttrs}
                     >

@@ -21,9 +21,17 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
     selectedIcon,
     children,
     onPress,
+    iconPlacement,
     ...props
 }) => {
-    const { shape, size, color } = useConnectedButtonGroupContext();
+    const {
+        shape,
+        size,
+        color,
+        iconPlacement: groupIconPlacement,
+    } = useConnectedButtonGroupContext();
+
+    const buttonIconPlacement = iconPlacement ?? groupIconPlacement ?? "start";
 
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
@@ -31,9 +39,10 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
     return (
         <AriaToggleButton
             onPress={handlePress}
-            className={clsx(ButtonReset, TapTarget)}
+            className={clsx(ButtonReset, TapTarget, buttonColorConfig(color))}
             {...props}
             data-connected-button={true}
+            data-button
         >
             {(renderProps) => {
                 const {
@@ -61,24 +70,27 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
                 if (isSelected && selectedIcon) iconToRender = selectedIcon;
 
                 const iconSize = ButtonIconSizeMapping[size];
+                const iconComp = iconToRender && (
+                    <Icon icon={iconToRender} size={iconSize} />
+                );
+
                 return (
                     <span
                         {...dataAttrs}
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
-                            buttonColorConfig(color),
                             ButtonLabelTextMapping[size],
                             styles["button"]
                         )}
                     >
                         {splashInfo && <Splash {...splashInfo} />}
 
-                        {iconToRender && (
-                            <Icon icon={iconToRender} size={iconSize} />
-                        )}
+                        {buttonIconPlacement === "start" && iconComp}
 
                         {isChildFunc ? children(renderProps) : children}
+
+                        {buttonIconPlacement === "end" && iconComp}
                     </span>
                 );
             }}

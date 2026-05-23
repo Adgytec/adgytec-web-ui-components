@@ -1,0 +1,62 @@
+/* configurable tokens
+*
+* --md-slider-active-track-color
+* --md-slider-inactive-track-color
+*
+* --md-slider-thumb-color
+*
+* --md-slider-active-stop-color
+* --md-slider-inactive-stop-color
+*
+* --md-slider-output-background
+* --md-slider-output-color
+*
+* --md-slider-icon-color
+* --md-slider-minimum-value-icon-color
+*
+* configurable tokens end */
+
+@layer adgytec.comps {
+    .colors {
+        --_md-slider-active-track-color: var(
+            --md-slider-active-track-color,
+            var(--md-sys-color-primary)
+        );
+        --_md-slider-inactive-track-color: var(
+            --md-slider-inactive-track-color,
+            var(--md-sys-color-secondary-container)
+        );
+
+        --_md-slider-thumb-color: var(
+            --md-slider-thumb-color,
+            var(--_md-slider-active-track-color)
+        );
+
+        --_md-slider-active-stop-color: var(
+            --md-slider-active-stop-color,
+            var(--md-sys-color-on-primary)
+        );
+        --_md-slider-inactive-stop-color: var(
+            --md-slider-inactive-stop-color,
+            var(--md-sys-color-on-secondary-container)
+        );
+
+        --_md-slider-output-background: var(
+            --md-slider-output-background,
+            var(--md-sys-color-inverse-surface)
+        );
+        --_md-slider-output-color: var(
+            --md-slider-output-color,
+            var(--md-sys-color-inverse-on-surface)
+        );
+
+        --_md-slider-icon-color: var(
+            --md-slider-icon-color,
+            var(--md-sys-color-on-primary)
+        );
+        --_md-slider-minimum-value-icon-color: var(
+            --md-slider-minimum-value-icon-color,
+            var(--md-sys-color-on-secondary-container)
+        );
+    }
+}

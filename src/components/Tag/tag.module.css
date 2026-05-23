@@ -1,3 +1,16 @@
+/* configurable tokens
+*
+* --md-chip-background-color
+* --md-chip-selected-background-color
+*
+* --md-chip-icon-color
+* --md-chip-selected-icon-color
+*
+* --md-chip-label-color
+* --md-chip-selected-label-color
+*
+* configurable tokens end */
+
 @layer adgytec.overrides {
     .tag {
         [data-visual-button] {
@@ -8,27 +21,41 @@
 
 @layer adgytec.comps {
     .tag {
-        --background-color-unselected: var(
-            --md-sys-color-surface-container-low
+        --_md-chip-background-color: var(
+            --md-chip-background-color,
+            var(--md-sys-color-surface-container-low)
         );
-        --background-color-selected: var(--md-sys-color-secondary-container);
-
-        --icon-color-unselected: var(--md-sys-color-primary);
-        --icon-color-selected: var(--md-sys-color-on-secondary-container);
-
-        --label-color-unselected: var(--md-sys-color-on-surface-variant);
-        --label-color-selected: var(--md-sys-color-on-secondary-container);
+        --_md-chip-selected-background-color: var(
+            --md-chip-selected-background-color,
+            var(--md-sys-color-secondary-container)
+        );
+        --_md-chip-icon-color: var(
+            --md-chip-icon-color,
+            var(--md-sys-color-primary)
+        );
+        --_md-chip-selected-icon-color: var(
+            --md-chip-selected-icon-color,
+            var(--md-sys-color-on-secondary-container)
+        );
+        --_md-chip-label-color: var(
+            --md-chip-label-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+        --_md-chip-selected-label-color: var(
+            --md-chip-selected-label-color,
+            var(--md-sys-color-on-secondary-container)
+        );
 
         /* derived */
-        --background: var(--background-color-unselected);
-        --label-color: var(--label-color-unselected);
-        --icon-color: var(--icon-color-unselected);
+        --_background: var(--_md-chip-background-color);
+        --_label-color: var(--_md-chip-label-color);
+        --_icon-color: var(--_md-chip-icon-color);
 
-        --state-layer-opacity: 0;
+        --_state-layer-opacity: 0;
 
-        --state-layer-color: rgb(
-            from var(--label-color) r g b /
-            var(--state-layer-opacity)
+        --_state-layer-color: rgb(
+            from var(--_label-color) r g b /
+            var(--_state-layer-opacity)
         );
 
         /* styles  */
@@ -40,8 +67,8 @@
         position: relative;
         overflow: clip;
 
-        background-color: var(--background);
-        color: var(--icon-color);
+        background-color: var(--_background);
+        color: var(--_icon-color);
 
         padding-inline: var(--md-sys-layout-space-12);
         padding-block: calc(5 * var(--dp, 1px));
@@ -84,38 +111,38 @@
         }
 
         &[data-selected] {
-            --background: var(--background-color-selected);
-            --label-color: var(--label-color-selected);
-            --icon-color: var(--icon-color-selected);
+            --_background: var(--_md-chip-selected-background-color);
+            --_label-color: var(--_md-chip-selected-label-color);
+            --_icon-color: var(--_md-chip-selected-icon-color);
 
             border-color: transparent;
         }
 
         &[data-hovered] {
-            --state-layer-opacity: var(--md-sys-state-hover);
+            --_state-layer-opacity: var(--md-sys-state-hover);
         }
 
         &[data-focus-visible] {
-            --state-layer-opacity: var(--md-sys-state-focus);
+            --_state-layer-opacity: var(--md-sys-state-focus);
         }
 
         &[data-pressed] {
-            --state-layer-opacity: var(--md-sys-state-pressed);
+            --_state-layer-opacity: var(--md-sys-state-pressed);
         }
 
         &[data-disabled] {
             cursor: default;
             border-color: transparent;
 
-            --background: rgb(
+            --_background: rgb(
                 from var(--md-sys-color-on-surface) r g b /
                 var(--md-sys-state-disabled-container)
             );
-            --label-color: rgb(
+            --_label-color: rgb(
                 from var(--md-sys-color-on-surface) r g b /
                 var(--md-sys-state-disabled-content)
             );
-            --icon-color: rgb(
+            --_icon-color: rgb(
                 from var(--md-sys-color-on-surface) r g b /
                 var(--md-sys-state-disabled-content)
             );
@@ -130,7 +157,7 @@
         inset: 0;
         border-radius: inherit;
 
-        background-color: var(--state-layer-color);
+        background-color: var(--_state-layer-color);
 
         transition: background-color var(--md-sys-motion-standard-fast-spatial)
             var(--md-sys-motion-standard-fast-spatial-duration);
@@ -155,7 +182,7 @@
     }
 
     .label {
-        color: var(--label-color);
+        color: var(--_label-color);
 
         transition: color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration);

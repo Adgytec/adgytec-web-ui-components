@@ -66,4 +66,13 @@
     --md-sys-color-surface-container: rgb(238 238 238);
     --md-sys-color-surface-container-high: rgb(232 232 232);
     --md-sys-color-surface-container-highest: rgb(226 226 226);
+
+    --md-extended-color-primary-alt-color: var(--md-sys-color-primary);
+    --md-extended-color-primary-alt-on-color: var(--md-sys-color-on-primary);
+    --md-extended-color-primary-alt-color-container: var(
+        --md-sys-color-primary-container
+    );
+    --md-extended-color-primary-alt-on-color-container: var(
+        --md-sys-color-on-primary-container
+    );
 }

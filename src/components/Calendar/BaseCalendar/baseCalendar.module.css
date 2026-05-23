@@ -1,4 +1,18 @@
 @layer adgytec.comps {
+    .header {
+        padding-inline: var(--md-sys-layout-space-12);
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        [data-visual-button] {
+            &[data-disabled] {
+                background-color: transparent;
+            }
+        }
+    }
+
     .selection {
         --rotate: 0;
 
@@ -11,12 +25,6 @@
             }
         }
 
-        &[data-disabled] {
-            [data-visual-button] {
-                background-color: transparent;
-            }
-        }
-
         svg {
             rotate: var(--rotate);
             transition: rotate var(--md-sys-motion-expressive-fast-spatial)
@@ -26,14 +34,6 @@
                 transition: none;
             }
         }
-    }
-
-    .header {
-        padding-inline: var(--md-sys-layout-space-12);
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 
     .options {
@@ -73,7 +73,7 @@
             padding-block-end: var(--md-sys-layout-space-4);
 
             border-block-start: calc(1 * var(--dp, 1px)) solid
-                var(--md-calendar-menu-divider-color);
+                var(--_md-calendar-menu-divider-color);
         }
     }
 }

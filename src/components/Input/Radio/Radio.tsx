@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
 import { useContext } from "react";
 import { Radio as AriaRadio } from "react-aria-components";
+import { typography } from "@/utils";
 import { TapTarget } from "@/utils/tapTarget";
 import { RadioGroupContext } from "./context";
 import styles from "./radio.module.css";
@@ -26,12 +27,14 @@ export const Radio: React.FC<RadioProps> = ({
                 clsx(
                     styles["radio"],
                     stateLayer && styles["state-layer"],
+                    typography.labelLarge,
                     typeof className === "function"
                         ? className(renderProps)
                         : className
                 )
             }
             {...props}
+            data-radio
         >
             {(renderProps) => {
                 const {
@@ -41,6 +44,7 @@ export const Radio: React.FC<RadioProps> = ({
                     isFocused,
                     isFocusVisible,
                     isPressed,
+                    isInvalid,
                 } = renderProps;
 
                 const dataAttrs = {
@@ -50,6 +54,8 @@ export const Radio: React.FC<RadioProps> = ({
                     "data-focused": isFocused || undefined,
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
+                    "data-show-state-layer": !stateLayer || undefined,
+                    "data-invalid": isInvalid || undefined,
                 };
 
                 const label =

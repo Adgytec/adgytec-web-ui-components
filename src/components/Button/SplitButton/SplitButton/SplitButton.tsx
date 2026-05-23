@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
 import { useMemo } from "react";
 import { Toolbar } from "react-aria-components";
+import { buttonColorConfig } from "../../core";
 import { splitButtonSizeConfig } from "../core";
 import { SplitButtonContext } from "../SplitButtonContext";
 import styles from "./splitButton.module.css";
@@ -33,11 +34,12 @@ export const SplitButton: React.FC<SplitButtonProps> = ({
             <Toolbar
                 className={clsx(
                     styles["split-button"],
-                    styles[size],
                     splitButtonSizeConfig(size),
+                    buttonColorConfig(color),
                     className
                 )}
                 {...props}
+                data-split-button
             >
                 {children}
             </Toolbar>

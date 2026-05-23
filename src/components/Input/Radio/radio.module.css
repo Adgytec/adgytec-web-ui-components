@@ -1,5 +1,48 @@
+/* configurable tokens
+*
+* --md-radio-icon-color
+* --md-radio-selected-icon-color
+*
+* --md-radio-interaction-icon-color
+* --md-radio-selected-interaction-icon-color
+*
+* --md-radio-state-layer-color
+* --md-radio-selected-state-layer-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .radio-group {
+        /* configurable tokens */
+        --_md-radio-icon-color: var(
+            --md-radio-icon-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+        --_md-radio-selected-icon-color: var(
+            --md-radio-selected-icon-color,
+            var(--md-sys-color-primary)
+        );
+
+        --_md-radio-interaction-icon-color: var(
+            --md-radio-interaction-icon-color,
+            var(--md-sys-color-on-surface)
+        );
+        --_md-radio-selected-interaction-icon-color: var(
+            --md-radio-selected-interaction-icon-color,
+            var(--_md-radio-selected-icon-color)
+        );
+
+        --_md-radio-state-layer-color: var(
+            --md-radio-state-layer-color,
+            var(--md-sys-color-on-surface)
+        );
+        --_md-radio-selected-state-layer-color: var(
+            --md-radio-selected-state-layer-color,
+            var(--_md-radio-selected-icon-color)
+        );
+
+        /* configurable tokens end */
+
         display: grid;
         gap: var(--md-sys-layout-space-16);
 
@@ -13,49 +56,48 @@
     }
 
     .radio-items {
-        --radio-display: inline-flex;
-
-        display: inline-grid;
+        display: grid;
 
         &[data-orientation="horizontal"] {
-            --radio-display: inline-flex;
-
-            display: inline-flex;
+            display: flex;
         }
     }
 
     .radio {
-        /* colors */
-        --base-color: var(--md-sys-color-on-surface);
-
-        --selected-color: var(--md-sys-color-primary);
-        --unselected-color: var(--base-color);
-
-        /* enabled */
-        --enabled-unselected-color: var(--md-sys-color-on-surface-variant);
-
-        /* disabled */
-        --disabled-color: rgb(
-            from var(--base-color) r g b /
-            var(--md-sys-state-disabled-content)
+        /* invalid tokens */
+        --_md-radio-invalid-icon-color: var(--md-sys-color-error);
+        --_md-radio-invalid-state-layer-color: var(
+            --_md-radio-invalid-icon-color
         );
 
-        /* derived variables */
-        --color: var(--enabled-unselected-color);
-        --_state-color: var(--color);
-        --icon-center-scale: 0;
+        /* indicator tokens */
+        --_md-radio-size: calc(20 * var(--dp, 1px));
+        --_md-radio-icon-size: calc(
+            var(--_md-radio-size) -
+            calc(10 * var(--dp, 1px))
+        );
+        --_md-radio-state-layer-size: calc(40 * var(--dp, 1px));
 
-        /* state layer */
-        --_state-opacity: 0;
-        --state-color: rgb(
+        /* state layer tokens */
+        --_md-radio-pressed-state-layer-color: var(
+            --_md-radio-selected-state-layer-color
+        );
+        --_md-radio-pressed-selected-state-layer-color: var(
+            --_md-radio-state-layer-color
+        );
+
+        --_state-layer-opacity: 0;
+        --_state-color: var(--_md-radio-state-layer-color);
+
+        --_state-layer-color: rgb(
             from var(--_state-color) r g b /
-            var(--_state-opacity)
+            var(--_state-layer-opacity)
         );
 
         /* styles */
         position: relative;
 
-        display: var(--radio-display, inline-flex);
+        display: flex;
         align-items: center;
         gap: var(--md-sys-layout-space-16);
 
@@ -66,57 +108,41 @@
             cursor: inherit;
         }
 
+        &[data-disabled] {
+            cursor: default;
+        }
+
         &[data-selected] {
-            --color: var(--selected-color);
-        }
-
-        &[data-hovered] {
-            --_state-opacity: var(--md-sys-state-hover);
-            z-index: 1;
-        }
-
-        &[data-focus-visible] {
-            --_state-opacity: var(--md-sys-state-focus);
-            z-index: 1;
+            --_state-color: var(--_md-radio-selected-state-layer-color);
         }
 
         &[data-pressed] {
-            --_state-opacity: var(--md-sys-state-pressed);
-            --_state-color: var(--md-sys-color-primary);
+            --_state-layer-opacity: var(--md-sys-state-pressed);
+            --_state-color: var(--_md-radio-pressed-state-layer-color);
 
-            &:not([data-invalid]) {
-                &[data-selected] {
-                    --_state-color: var(--md-sys-color-on-surface);
-                }
+            &[data-selected] {
+                --_state-color: var(
+                    --_md-radio-pressed-selected-state-layer-color
+                );
             }
         }
 
         &[data-invalid] {
-            --color: var(--md-sys-color-error);
-            --_state-color: var(--md-sys-color-error);
-        }
+            --_state-color: var(--_md-radio-invalid-state-layer-color);
 
-        &[data-disabled] {
-            --color: var(--disabled-color);
-
-            color: rgb(
-                from currentColor r g b /
-                var(--md-sys-state-disabled-content)
-            );
-
-            cursor: default;
-        }
-
-        &[data-focus-visible],
-        &[data-hovered],
-        &[data-pressed] {
-            &:not([data-invalid]) {
-                --color: var(--unselected-color);
-
-                &[data-selected] {
-                    --color: var(--selected-color);
-                }
+            &[data-selected] {
+                --_state-color: var(--_md-radio-invalid-state-layer-color);
             }
+        }
+
+        &[data-hovered] {
+            --_state-layer-opacity: var(--md-sys-state-hover);
+            z-index: 1;
+        }
+
+        &[data-focus-visible] {
+            --_state-layer-opacity: var(--md-sys-state-focus);
+            z-index: 1;
         }
     }
 
@@ -126,7 +152,7 @@
         position: absolute;
         inset: calc(-1 * var(--md-sys-layout-space-12));
 
-        background-color: var(--state-color);
+        background-color: var(--_state-layer-color);
         border-radius: var(--md-sys-shape-corner-radius-extra-small);
 
         pointer-events: none;
@@ -141,19 +167,16 @@
     }
 
     .indicator {
-        /* material guideline */
-        --size: calc(20 * var(--dp, 1px));
-        --indicator-icon-size: calc(var(--size) - calc(10 * var(--dp, 1px)));
-        --state-size: calc(40 * var(--dp, 1px));
+        --_indicator-color: var(--_md-radio-icon-color);
 
-        /* indicator styles */
         position: relative;
 
-        inline-size: var(--size);
+        inline-size: var(--_md-radio-size);
         aspect-ratio: 1 / 1;
         border-radius: var(--md-sys-shape-corner-radius-full);
 
-        border: var(--md-sys-shape-border-width-thick) solid var(--color);
+        border: var(--md-sys-shape-border-width-thick) solid
+            var(--_indicator-color);
 
         transition: border-color var(--md-sys-motion-expressive-default-effects)
             var(--md-sys-motion-expressive-default-effects-duration);
@@ -161,10 +184,48 @@
         @media (prefers-reduced-motion) {
             transition: none;
         }
+
+        &[data-selected] {
+            --_indicator-color: var(--_md-radio-selected-icon-color);
+        }
+
+        &[data-invalid] {
+            --_indicator-color: var(--_md-radio-invalid-icon-color);
+        }
+
+        &[data-pressed],
+        &[data-hovered],
+        &[data-focus-visible] {
+            --_indicator-color: var(--_md-radio-interaction-icon-color);
+
+            &[data-selected] {
+                --_indicator-color: var(
+                    --_md-radio-selected-interaction-icon-color
+                );
+            }
+
+            &[data-invalid] {
+                --_indicator-color: var(--_md-radio-invalid-icon-color);
+            }
+        }
+
+        &[data-disabled] {
+            --_indicator-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+
+            &[data-selected] {
+                --_indicator-color: rgb(
+                    from var(--md-sys-color-on-surface) r g b /
+                    var(--md-sys-state-disabled-content)
+                );
+            }
+        }
     }
 
     /* state layer */
-    .indicator::before {
+    .indicator[data-show-state-layer]::before {
         content: "";
 
         position: absolute;
@@ -172,11 +233,11 @@
         inset-inline-start: 50%;
         transform: translate(-50%, -50%);
 
-        inline-size: var(--state-size);
+        inline-size: var(--_md-radio-state-layer-size);
         aspect-ratio: 1 / 1;
         border-radius: var(--md-sys-shape-corner-radius-full);
 
-        background-color: var(--state-color);
+        background-color: var(--_state-layer-color);
 
         transition: background-color
             var(--md-sys-motion-expressive-default-effects)
@@ -192,14 +253,14 @@
         content: "";
 
         position: absolute;
-        inline-size: var(--indicator-icon-size);
+        inline-size: var(--_md-radio-icon-size);
         aspect-ratio: 1 / 1;
 
         inset-inline-start: 50%;
         inset-block-start: 50%;
         translate: -50% -50%;
 
-        background-color: var(--color);
+        background-color: var(--_indicator-color);
         border-radius: var(--md-sys-shape-corner-radius-full);
 
         scale: 0;
@@ -220,9 +281,9 @@
     }
 
     .indicator[data-focus-visible] {
+        --focus-indicator-color: var(--md-sys-color-secondary);
         --focus-indicator-thickness: calc(3 * var(--dp, 1px));
         --focus-indicator-offset: calc(2 * var(--dp, 1px));
-        --focus-indicator-color: var(--md-sys-color-secondary);
 
         outline-width: var(--focus-indicator-thickness);
         outline-style: solid;

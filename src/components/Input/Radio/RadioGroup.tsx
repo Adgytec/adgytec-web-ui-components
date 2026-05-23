@@ -31,6 +31,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
                     )
                 }
                 {...props}
+                data-radio-group
             >
                 {({ orientation, isInvalid }) => {
                     const showDescription =

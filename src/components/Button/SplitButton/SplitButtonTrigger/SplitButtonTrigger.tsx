@@ -9,7 +9,6 @@ import {
     ButtonCore,
     ButtonReset,
     buttonColorBase,
-    buttonColorConfig,
     withTooltip,
 } from "../../core";
 import {
@@ -26,6 +25,7 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
     onPress,
     isDisabled,
     isPending,
+    className,
     ...props
 }) => {
     const splitButtonState = useSplitButtonContext();
@@ -40,8 +40,18 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
             onPress={handlePress}
             isDisabled={disabled}
             isPending={pending}
-            className={clsx(ButtonReset, TapTarget)}
+            className={(renderProps) =>
+                clsx(
+                    ButtonReset,
+                    TapTarget,
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
             {...props}
+            data-button
+            data-split-button-trigger
         >
             {({
                 isDisabled,
@@ -64,7 +74,6 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
-                            buttonColorConfig(splitButtonState.color),
                             styles["trigger"],
                             SplitButtonVariantBase,
                             SplitButtonTriggerBase

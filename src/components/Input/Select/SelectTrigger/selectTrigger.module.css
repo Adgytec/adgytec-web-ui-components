@@ -20,25 +20,12 @@
             }
         }
 
-        &:not([data-disabled]) {
-            &[data-pressed] {
-                --outline-color: var(--outline-color-focused-normal);
-                --outline-color-focused: var(--outline-color);
-            }
+        &[data-pressed] {
+            --outline-color: var(--outline-color-focused-normal);
+            --outline-color-focused: var(--outline-color);
 
             &[data-invalid] {
-                --outline-color: var(--outline-color-focused-invalid);
-            }
-
-            &:not([data-focus-visible]) {
-                &[data-focused] {
-                    --outline-color: var(--outline-color-normal);
-                    --outline-color-focused: transparent;
-
-                    &[data-invalid] {
-                        --outline-color: var(--outline-color-invalid);
-                    }
-                }
+                --outline-color: var(--outline-color-invalid);
             }
         }
 

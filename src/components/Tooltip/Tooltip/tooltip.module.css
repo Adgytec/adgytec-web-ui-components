@@ -1,9 +1,25 @@
+/* configurable tokens
+*
+* --md-tooltip-background
+* --md-tooltip-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .tooltip {
-        --offset: calc(4 * var(--dp, 1px));
+        --_md-tooltip-background: var(
+            --md-tooltip-background,
+            var(--md-sys-color-inverse-surface)
+        );
+        --_md-tooltip-color: var(
+            --md-tooltip-color,
+            var(--md-sys-color-inverse-on-surface)
+        );
 
-        background-color: var(--md-sys-color-inverse-surface);
-        color: var(--md-sys-color-inverse-on-surface);
+        --_offset: calc(4 * var(--dp, 1px));
+
+        background-color: var(--_md-tooltip-background);
+        color: var(--_md-tooltip-color);
 
         padding-inline: var(--md-sys-layout-space-8);
         padding-block: var(--md-sys-layout-space-4);
@@ -19,24 +35,24 @@
             var(--md-sys-motion-expressive-fast-effects-duration);
 
         &[data-placement="bottom"] {
-            --origin: translateY(calc(-1 * var(--offset)));
+            --_origin: translateY(calc(-1 * var(--_offset)));
         }
 
         &[data-placement="top"] {
-            --origin: translateY(var(--offset));
+            --_origin: translateY(var(--_offset));
         }
 
         &[data-placement="right"] {
-            --origin: translateX(calc(-1 * var(--offset)));
+            --_origin: translateX(calc(-1 * var(--_offset)));
         }
 
         &[data-placement="left"] {
-            --origin: translateX(var(--offset));
+            --_origin: translateX(var(--_offset));
         }
 
         &[data-entering],
         &[data-exiting] {
-            transform: var(--origin);
+            transform: var(--_origin);
             opacity: 0;
         }
     }

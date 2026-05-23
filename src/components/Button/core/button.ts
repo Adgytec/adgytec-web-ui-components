@@ -5,13 +5,15 @@ import type { ButtonShape } from "./shape";
 import type { ButtonSize } from "./sizes";
 import type { IconButtonWidth } from "./width";
 
+export type ButtonIconPlacement = "start" | "end";
+
 export interface ButtonBaseProps {
     color?: ButtonColor;
     size?: ButtonSize;
     shape?: ButtonShape;
     tooltip?: string;
     icon?: LucideIcon;
-    iconPlacement?: "start" | "end";
+    iconPlacement?: ButtonIconPlacement;
 }
 
 export interface IconButtonBaseProps {

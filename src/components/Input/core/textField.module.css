@@ -1,3 +1,9 @@
+/* configurable tokens
+*
+* --md-textfield-focused-outline-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .unset {
         all: unset;
@@ -19,7 +25,10 @@
         --outline-color-hovered-normal: var(--md-sys-color-on-surface);
         --outline-color-hovered-invalid: var(--md-sys-color-on-error-container);
 
-        --outline-color-focused-normal: var(--md-sys-color-primary);
+        --outline-color-focused-normal: var(
+            --md-textfield-focused-outline-color,
+            var(--md-sys-color-primary)
+        );
         --outline-color-focused-invalid: var(--md-sys-color-error);
 
         /* group color */
@@ -145,6 +154,10 @@
         &:not([data-disabled]) {
             &[data-hovered] {
                 --outline-color: var(--outline-color-hovered-normal);
+
+                &[data-invalid] {
+                    --outline-color: var(--outline-color-hovered-invalid);
+                }
             }
 
             &[data-focus-visible],
@@ -153,17 +166,8 @@
             &[data-open] {
                 --outline-color: var(--outline-color-focused-normal);
                 --outline-color-focused: var(--outline-color);
-            }
 
-            &[data-invalid] {
-                &[data-hovered] {
-                    --outline-color: var(--outline-color-hovered-invalid);
-                }
-
-                &[data-focus-visible],
-                &[data-focus-within],
-                &[data-focused],
-                &[data-open] {
+                &[data-invalid] {
                     --outline-color: var(--outline-color-focused-invalid);
                 }
             }

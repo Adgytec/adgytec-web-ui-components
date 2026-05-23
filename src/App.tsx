@@ -35,7 +35,15 @@ import {
 } from "lucide-react";
 import { type CSSProperties, Fragment, type ReactNode, useState } from "react";
 import { useListData } from "react-aria-components/useListData";
-import { Tooltip, TooltipTrigger } from "./components/Tooltip";
+import {
+    RichTooltip,
+    RichTooltipActions,
+    RichTooltipInfo,
+    RichTooltipSubhead,
+    RichTooltipText,
+    Tooltip,
+    TooltipTrigger,
+} from "./components/Tooltip";
 import "./styles/app.css";
 import { CalendarDate } from "@internationalized/date";
 import { clsx } from "clsx";
@@ -49,7 +57,6 @@ import {
     TagList,
 } from "react-aria-components";
 import { useLocalStorage } from "usehooks-ts";
-import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@/components/Tabs";
 import {
     Button,
     type ButtonColor,
@@ -87,9 +94,12 @@ import {
     DisclosureHeader,
     DisclosurePanel,
 } from "./components/Disclosure";
+import { Divider } from "./components/Divider";
 import { Icon } from "./components/Icon";
 import {
     CenteredSlider,
+    Checkbox,
+    CheckboxGroup,
     ComboBox,
     ComboBoxPopover,
     ComboBoxTrigger,
@@ -99,6 +109,8 @@ import {
     Input,
     InputButton,
     Label,
+    Radio,
+    RadioGroup,
     RangeSlider,
     Select,
     SelectItem,
@@ -114,11 +126,10 @@ import {
     TextArea,
     TimeField,
 } from "./components/Input";
-import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
-import { Radio, RadioGroup } from "./components/Input/Radio";
 import {
     Menu,
     MenuItem,
+    type MenuLayout,
     MenuPopover,
     MenuSection,
     MenuSectionHeader,
@@ -127,22 +138,15 @@ import {
     SubmenuPopover,
 } from "./components/Menu";
 import { Popover } from "./components/Popover";
-import { Separator } from "./components/Separator";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "./components/Tabs";
 import { Tag } from "./components/Tag";
 import { ThemeSelector } from "./components/ThemeSelector";
 import {
     Toolbar,
     type ToolbarColor,
+    ToolbarToggleButtonGroup,
     type ToolbarVariant,
 } from "./components/Toolbar";
-import { ToolbarToggleButtonGroup } from "./components/Toolbar/ToolbarToggleButtonGroup";
-import {
-    RichTooltip,
-    RichTooltipActions,
-    RichTooltipInfo,
-    RichTooltipSubhead,
-    RichTooltipText,
-} from "./components/Tooltip/RichTooltip";
 import { typography } from "./utils/typography";
 
 // preview container
@@ -162,62 +166,46 @@ const SwitchPreview = () => {
         <>
             <div className="items">
                 <Switch isDisabled icon="none">
-                    <Label>Disabled no icon</Label>
+                    Disabled no icon
                 </Switch>
 
                 <Switch isDisabled icon="both">
-                    <Label>Disabled with icon</Label>
+                    Disabled with icon
                 </Switch>
 
                 <Switch isDisabled isSelected>
-                    <Label>Disabled selected</Label>
+                    Disabled selected
                 </Switch>
 
-                <Switch>
-                    <Label>Selected icon</Label>
-                </Switch>
-
-                <Switch className="switch-config">
-                    <Label>Selected icon config</Label>
-                </Switch>
+                <Switch>Selected icon</Switch>
 
                 <Switch containerStateLayer icon="both">
-                    <Label>Both icon</Label>
+                    Both icon
                 </Switch>
 
-                <Switch icon="none">
-                    <Label>Icon none</Label>
-                </Switch>
+                <Switch icon="none">Icon none</Switch>
             </div>
 
             <div className="items-grid">
                 <Switch isDisabled icon="none">
-                    <Label>Disabled no icon</Label>
+                    Disabled no icon
                 </Switch>
 
                 <Switch isDisabled icon="both">
-                    <Label>Disabled with icon</Label>
+                    Disabled with icon
                 </Switch>
 
                 <Switch isDisabled isSelected>
-                    <Label>Disabled selected</Label>
+                    Disabled selected
                 </Switch>
 
-                <Switch>
-                    <Label>Selected icon</Label>
-                </Switch>
-
-                <Switch className="switch-config" containerStateLayer>
-                    <Label>Selected icon config</Label>
-                </Switch>
+                <Switch>Selected icon</Switch>
 
                 <Switch icon="both" containerStateLayer>
-                    <Label>Both icon</Label>
+                    Both icon
                 </Switch>
 
-                <Switch icon="none">
-                    <Label>Icon none</Label>
-                </Switch>
+                <Switch icon="none">Icon none</Switch>
             </div>
         </>
     );
@@ -632,10 +620,10 @@ const MenuPreview = () => {
         menu: MenuNode[];
     };
 
-    type MenuNode = MenuItemNode | MenuSectionNode | MenuSeparatorNode;
+    type MenuNode = MenuItemNode | MenuSectionNode | MenuDividerNode;
 
-    type MenuSeparatorNode = {
-        type: "separator";
+    type MenuDividerNode = {
+        type: "divider";
         id: string;
     };
 
@@ -657,7 +645,7 @@ const MenuPreview = () => {
 
         id: string;
 
-        items: (MenuItemNode | MenuSeparatorNode)[];
+        items: (MenuItemNode | MenuDividerNode)[];
     };
 
     type MenuComboList = MenuCombo[];
@@ -974,7 +962,7 @@ const MenuPreview = () => {
             );
         }
 
-        if (item.type === "separator") return <Separator />;
+        if (item.type === "divider") return <Divider />;
 
         if (item.submenu) {
             return (
@@ -1085,7 +1073,7 @@ const SplitButtonPreview = () => {
                                 <MenuItem trailingIcon={Share2} label="Share" />
                             </MenuSection>
 
-                            {!label && <Separator />}
+                            {!label && <Divider />}
 
                             <MenuSection>
                                 <MenuSectionHeader>Security</MenuSectionHeader>
@@ -1238,10 +1226,10 @@ const ButtonGroupPreview = () => {
                                 </Fragment>
                             ))}
 
-                            <Separator
+                            <Divider
                                 style={
                                     {
-                                        "--separator-color":
+                                        "--md-divider-color":
                                             "var(--md-sys-color-primary)",
                                     } as CSSProperties
                                 }
@@ -1348,7 +1336,7 @@ const DialogPreview = () => {
                                     Simple Dialog
                                 </h2>
 
-                                <Separator />
+                                <Divider />
                             </div>
 
                             <div className={clsx(DialogBodyTypography)}>
@@ -1364,7 +1352,7 @@ const DialogPreview = () => {
                             </div>
 
                             <div>
-                                <Separator />
+                                <Divider />
 
                                 <div
                                     style={{
@@ -1653,7 +1641,7 @@ export const SelectPreview = () => {
 
                         <SelectItem label="Mango" />
 
-                        <Separator />
+                        <Divider />
 
                         <SelectItem label="Chocalate" />
 
@@ -1682,7 +1670,7 @@ export const SelectPreview = () => {
                             <SelectItem label="Mango" />
                         </SelectListSection>
 
-                        <Separator />
+                        <Divider />
 
                         <SelectItem label="Chocalate" />
 
@@ -1712,7 +1700,7 @@ export const SelectPreview = () => {
                             <SelectItem label="Mango" />
                         </SelectListSection>
 
-                        <Separator />
+                        <Divider />
 
                         <SelectItem label="Chocalate" />
 
@@ -1975,7 +1963,7 @@ const ToolbarPreview = () => {
                             />
                         </ToolbarToggleButtonGroup>
 
-                        <Separator
+                        <Divider
                             orientation={
                                 orientation === "vertical"
                                     ? "horizontal"
@@ -2106,7 +2094,7 @@ const ToolbarPreview = () => {
                     )}
                 </div>
 
-                <Separator />
+                <Divider />
             </>
         );
     };
@@ -2827,6 +2815,436 @@ const DateRangePickerPreview = () => {
     );
 };
 
+const ConfigPreview = () => {
+    const SplitButtonConfig = ({
+        className,
+        layout,
+        menuClassName,
+    }: {
+        className?: string;
+        layout?: MenuLayout;
+        menuClassName?: string;
+    }) => {
+        return (
+            <SplitButton className={className}>
+                <SplitButtonPrimary tooltip="download" icon={Download}>
+                    Download
+                </SplitButtonPrimary>
+
+                <MenuTrigger layout={layout}>
+                    <SplitButtonTrigger tooltip="more actions" />
+                    <Popover>
+                        <Menu className={menuClassName}>
+                            <MenuSection>
+                                <MenuSectionHeader>
+                                    Quick Actions
+                                </MenuSectionHeader>
+
+                                <MenuItem trailingIcon={Eye} label="Preview" />
+
+                                <MenuItem trailingIcon={Share2} label="Share" />
+                            </MenuSection>
+
+                            <MenuSection>
+                                <MenuSectionHeader>Security</MenuSectionHeader>
+
+                                <MenuItem
+                                    trailingIcon={GlobeLock}
+                                    supportingText="Make item private"
+                                    label="Private"
+                                />
+
+                                <SubmenuTrigger>
+                                    <MenuItem
+                                        trailingIcon={GlobeLock}
+                                        supportingText="Make item private"
+                                        label="More"
+                                    />
+
+                                    <SubmenuPopover>
+                                        <Menu className={menuClassName}>
+                                            <MenuSection>
+                                                <MenuItem label="Lock" />
+
+                                                <MenuItem label="Archive" />
+                                            </MenuSection>
+                                        </Menu>
+                                    </SubmenuPopover>
+                                </SubmenuTrigger>
+                            </MenuSection>
+                        </Menu>
+                    </Popover>
+                </MenuTrigger>
+            </SplitButton>
+        );
+    };
+
+    return (
+        <div className="items-grid">
+            <div className="items">
+                <Button className="primary">primary</Button>
+                <Button className="primary-container">primary container</Button>
+
+                <Button className="primary-alt">primary alt</Button>
+                <Button className="primary-alt-container">
+                    primary alt container
+                </Button>
+
+                <Button className="error">error</Button>
+                <Button className="error-container">error container</Button>
+
+                <Button className="secondary">secondary</Button>
+                <Button className="secondary-container">
+                    secondary container
+                </Button>
+
+                <Button className="tertiary">tertiary</Button>
+                <Button className="tertiary-container">
+                    tertiary container
+                </Button>
+
+                <Button className="inverse">inverse</Button>
+                <Button className="inverse-primary">inverse primary</Button>
+
+                <Button className="primary-fixed">primary fixed</Button>
+                <Button className="primary-fixed-dim">primary fixed dim</Button>
+
+                <Button className="secondary-fixed">secondary fixed</Button>
+                <Button className="secondary-fixed-dim">
+                    secondary fixed dim
+                </Button>
+
+                <Button className="tertiary-fixed">tertiary fixed</Button>
+                <Button className="tertiary-fixed-dim">
+                    tertiary fixed dim
+                </Button>
+            </div>
+
+            <div className="items" data-slider-orientation="horizontal">
+                <div>
+                    <RangeSlider className="slider-alt" label="slider alt" />
+                </div>
+
+                <div>
+                    <Slider
+                        className="slider-secondary"
+                        label="slider secondary"
+                    />
+                </div>
+
+                <div>
+                    <Slider
+                        className="slider-tertiary"
+                        label="slider tertiary"
+                    />
+                </div>
+
+                <div>
+                    <RangeSlider
+                        className="slider-primary-fixed"
+                        label="slider primary fixed"
+                    />
+                </div>
+
+                <div>
+                    <CenteredSlider
+                        className="slider-secondary-fixed"
+                        label="slider secondary fixed"
+                    />
+                </div>
+
+                <div>
+                    <Slider
+                        className="slider-tertiary-fixed"
+                        label="slider tertiary fixed"
+                    />
+                </div>
+
+                <div>
+                    <RangeSlider
+                        className="slider-inverse"
+                        label="slider inverse"
+                    />
+                </div>
+            </div>
+
+            <div className="items">
+                <Switch className="switch-primary" containerStateLayer>
+                    switch-primary
+                </Switch>
+
+                <Switch className="switch-primary-alt" containerStateLayer>
+                    switch-primary-alt
+                </Switch>
+
+                <Switch className="switch-secondary" containerStateLayer>
+                    switch-secondary
+                </Switch>
+
+                <Switch className="switch-tertiary" containerStateLayer>
+                    switch-tertiary
+                </Switch>
+
+                <Switch className="switch-primary-fixed" containerStateLayer>
+                    switch-primary-fixed
+                </Switch>
+
+                <Switch className="switch-secondary-fixed" containerStateLayer>
+                    switch-secondary-fixed
+                </Switch>
+
+                <Switch className="switch-inverse" containerStateLayer>
+                    switch-inverse
+                </Switch>
+            </div>
+
+            <div className="items">
+                <RadioGroup
+                    className="radio-primary"
+                    label="Primary"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-primary-alt"
+                    label="Primary alt"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-tertiary"
+                    label="Tertiary"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-primary-fixed"
+                    containerStateLayer
+                    label="Primary Fixed"
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-secondary-fixed"
+                    label="Secondary Fixed"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-inverse"
+                    label="Inverse"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+            </div>
+
+            <div className="items">
+                <Checkbox className="checkbox-primary" containerStateLayer>
+                    Primary checkbox
+                </Checkbox>
+
+                <Checkbox className="checkbox-primary-alt" containerStateLayer>
+                    Primary alt checkbox
+                </Checkbox>
+
+                <Checkbox className="checkbox-tertiary" containerStateLayer>
+                    Tertiary checkbox
+                </Checkbox>
+
+                <Checkbox
+                    className="checkbox-primary-fixed"
+                    containerStateLayer
+                >
+                    Primary fixed checkbox
+                </Checkbox>
+
+                <Checkbox
+                    className="checkbox-secondary-fixed"
+                    containerStateLayer
+                >
+                    Secondary fixed checkbox
+                </Checkbox>
+
+                <Checkbox className="checkbox-inverse" containerStateLayer>
+                    Inverse checkbox
+                </Checkbox>
+            </div>
+
+            <div className="items">
+                <Input
+                    label="Email"
+                    type="text"
+                    description="Enter your Adgytec work email"
+                    placeholder="username"
+                    suffix={"@adgytec.in"}
+                    // editorDir="rtl"
+                    leadingIcon={Mail}
+                    showCharacterCount
+                    maxLength={64}
+                />
+
+                <Input
+                    className="input-primary-alt"
+                    label="Email"
+                    type="text"
+                    description="Enter your Adgytec work email"
+                    placeholder="username"
+                    suffix={"@adgytec.in"}
+                    // editorDir="rtl"
+                    leadingIcon={Mail}
+                    showCharacterCount
+                    maxLength={64}
+                />
+
+                <Input
+                    className="input-tertiary"
+                    label="Email"
+                    type="text"
+                    description="Enter your Adgytec work email"
+                    placeholder="username"
+                    suffix={"@adgytec.in"}
+                    // editorDir="rtl"
+                    leadingIcon={Mail}
+                    showCharacterCount
+                    maxLength={64}
+                />
+            </div>
+
+            <div className="items">
+                <SplitButtonConfig
+                    className="primary"
+                    layout="standard"
+                    menuClassName="menu-theme-ocean"
+                />
+
+                <SplitButtonConfig
+                    className="primary-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-success"
+                />
+
+                <SplitButtonConfig
+                    className="primary-alt"
+                    layout="standard"
+                    menuClassName="menu-theme-alt"
+                />
+
+                <SplitButtonConfig
+                    className="primary-alt-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-neutral"
+                />
+
+                <SplitButtonConfig
+                    className="error"
+                    layout="standard"
+                    menuClassName="menu-theme-error"
+                />
+
+                <SplitButtonConfig
+                    className="error-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-inverse"
+                />
+
+                <SplitButtonConfig
+                    className="secondary"
+                    layout="standard"
+                    menuClassName="menu-theme-success"
+                />
+
+                <SplitButtonConfig
+                    className="secondary-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-ocean"
+                />
+
+                <SplitButtonConfig
+                    className="tertiary"
+                    layout="standard"
+                    menuClassName="menu-theme-warning"
+                />
+
+                <SplitButtonConfig
+                    className="tertiary-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-neutral"
+                />
+
+                <SplitButtonConfig
+                    className="inverse"
+                    layout="standard"
+                    menuClassName="menu-theme-inverse"
+                />
+
+                <SplitButtonConfig
+                    className="inverse-primary"
+                    layout="grouped"
+                    menuClassName="menu-theme-ocean"
+                />
+
+                <SplitButtonConfig
+                    className="primary-fixed"
+                    layout="standard"
+                    menuClassName="menu-theme-ocean"
+                />
+
+                <SplitButtonConfig
+                    className="primary-fixed-dim"
+                    layout="grouped"
+                    menuClassName="menu-theme-success"
+                />
+
+                <SplitButtonConfig
+                    className="secondary-fixed"
+                    layout="standard"
+                    menuClassName="menu-theme-success"
+                />
+
+                <SplitButtonConfig
+                    className="secondary-fixed-dim"
+                    layout="grouped"
+                    menuClassName="menu-theme-warning"
+                />
+
+                <SplitButtonConfig
+                    className="tertiary-fixed"
+                    layout="standard"
+                    menuClassName="menu-theme-warning"
+                />
+
+                <SplitButtonConfig
+                    className="tertiary-fixed-dim"
+                    layout="grouped"
+                    menuClassName="menu-theme-error"
+                />
+            </div>
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -2844,6 +3262,12 @@ const App = () => {
             id: "theme-selector",
             label: "Theme Selector",
             Component: ThemeSelectorPreview,
+        },
+
+        {
+            id: "config-preview",
+            label: "Config",
+            Component: ConfigPreview,
         },
 
         {

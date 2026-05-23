@@ -8,7 +8,7 @@
 
         overflow: clip;
 
-        background-color: var(--state-layer-color);
+        background-color: var(--_state-layer-color);
 
         transition: background-color var(--md-sys-motion-standard-fast-spatial)
             var(--md-sys-motion-standard-fast-spatial-duration);

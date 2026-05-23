@@ -27,6 +27,7 @@ export const SliderThumb: React.FC<
             }
             data-orientation={orientation}
             {...props}
+            data-slider-thumb
         >
             {(renderProp) => (
                 <SliderThumbStateContext value={renderProp}>

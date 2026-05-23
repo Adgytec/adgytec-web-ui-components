@@ -29,14 +29,16 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
     children,
     onPress,
     className,
-    iconPlacement = "start",
+    iconPlacement,
     ...props
 }) => {
-    const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
-        size,
-        shape,
-        color,
-    });
+    const { buttonColor, buttonShape, buttonSize, buttonIconPlacement } =
+        useButtonConfig({
+            size,
+            shape,
+            color,
+            iconPlacement,
+        });
 
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
@@ -59,6 +61,8 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
                 clsx(
                     ButtonReset,
                     TapTarget,
+                    buttonSizeConfig(buttonSize),
+                    buttonColorConfig(buttonColor),
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -66,6 +70,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
             }
             {...props}
             {...toggleButtonDataAttrs}
+            data-button
         >
             {(renderProps) => {
                 const {
@@ -103,19 +108,17 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({
                             ButtonCore,
                             buttonColorBase,
                             ButtonSizeBase,
-                            buttonColorConfig(buttonColor),
-                            buttonSizeConfig(buttonSize),
                             ButtonLabelTextMapping[buttonSize]
                         )}
                         {...dataAttrs}
                     >
                         {splashInfo && <Splash {...splashInfo} />}
 
-                        {iconPlacement === "start" && iconComp}
+                        {buttonIconPlacement === "start" && iconComp}
 
                         {isChildFunc ? children(renderProps) : children}
 
-                        {iconPlacement === "end" && iconComp}
+                        {buttonIconPlacement === "end" && iconComp}
                     </span>
                 );
             }}

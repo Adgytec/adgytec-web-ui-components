@@ -3,6 +3,7 @@ import { Check, type LucideIcon, X } from "lucide-react";
 import type { ReactNode } from "react";
 import { Switch as AriaSwitch } from "react-aria-components";
 import { Icon } from "@/components/Icon";
+import { typography } from "@/utils";
 import { TapTarget } from "@/utils/tapTarget";
 import styles from "./switch.module.css";
 import type { SwitchProps } from "./types";
@@ -21,6 +22,7 @@ export const Switch: React.FC<SwitchProps> = ({
                 clsx(
                     styles["switch"],
                     containerStateLayer && styles["state-layer"],
+                    typography.labelLarge,
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -58,6 +60,7 @@ export const Switch: React.FC<SwitchProps> = ({
                     "data-pressed": isPressed || undefined,
                     "data-readonly": isReadOnly || undefined,
                     "data-icon": iconValue ? true : undefined,
+                    "data-show-state-layer": !containerStateLayer || undefined,
                 };
 
                 let iconElement: ReactNode;

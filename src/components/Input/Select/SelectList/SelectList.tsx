@@ -5,6 +5,7 @@ import {
     type MenuColor,
     type MenuLayout,
     MenuStyles,
+    menuBaseColor,
     menuColorConfig,
     menuLayoutConfig,
 } from "@/components/Menu";
@@ -23,6 +24,7 @@ export const SelectList = <T extends object>({
             className={(renderProps) =>
                 clsx(
                     menuColorConfig(color),
+                    menuBaseColor,
                     MenuBaseLayout,
                     menuLayoutConfig(menuLayout),
                     MenuStyles,

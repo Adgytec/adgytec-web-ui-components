@@ -1,5 +1,6 @@
 import type { ToggleButtonGroup } from "react-aria-components";
 import type {
+    ButtonIconPlacement,
     ButtonShape,
     ButtonSize,
     ConnectedButtonGroupColor,
@@ -13,4 +14,5 @@ export interface ConnectedButtonGroupProps
     size?: ButtonSize;
     shape?: ButtonShape;
     color?: ConnectedButtonGroupColor;
+    iconPlacement?: ButtonIconPlacement;
 }

@@ -1,21 +1,43 @@
+/* configurable tokens
+*
+* --md-tab-list-divider-color
+* --md-tabs-active-indicator-color
+*
+* --md-tabs-color
+* --md-tabs-active-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .tab-list {
-        --tab-list-background: var(--md-sys-color-surface);
-        --tab-list-divider-width: calc(1 * var(--dp, 1px));
-        --tab-list-divider-color: var(--md-sys-color-surface-variant);
+        --_md-tabs-color: var(
+            --md-tabs-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+        --_md-tabs-active-color: var(
+            --md-tabs-active-color,
+            var(--md-sys-color-on-surface)
+        );
 
-        --indicator-size: calc(2 * var(--dp, 1px));
-        --indicator-color: var(--md-sys-color-primary);
+        --_md-tab-list-divider-width: calc(1 * var(--dp, 1px));
+        --_md-tab-list-divider-color: var(
+            --md-tab-list-divider-color,
+            var(--md-sys-color-surface-variant)
+        );
 
-        background-color: var(--tab-list-background);
+        --_md-tabs-active-indicator-size: calc(2 * var(--dp, 1px));
+        --_md-tabs-active-indicator-color: var(
+            --md-tabs-active-indicator-color,
+            var(--md-sys-color-primary)
+        );
 
         [data-selection-indicator] {
-            background-color: var(--indicator-color);
+            background-color: var(--_md-tabs-active-indicator-color);
         }
 
         &[data-orientation="horizontal"] {
-            --focus-inset-block-end-active: var(--md-sys-layout-space-8);
-            --focus-inset-inline-end-active: var(--md-sys-layout-space-4);
+            --_focus-inset-block-end-active: var(--md-sys-layout-space-8);
+            --_focus-inset-inline-end-active: var(--md-sys-layout-space-4);
 
             display: flex;
             align-items: center;
@@ -23,8 +45,8 @@
 
             overflow-x: auto;
 
-            border-block-end: var(--tab-list-divider-width) solid
-                var(--tab-list-divider-color);
+            border-block-end: var(--_md-tab-list-divider-width) solid
+                var(--_md-tab-list-divider-color);
 
             [data-tab] {
                 flex: 1;
@@ -36,25 +58,25 @@
                 inset-block-end: 0px;
 
                 inline-size: 100%;
-                block-size: var(--indicator-size);
+                block-size: var(--_md-tabs-active-indicator-size);
 
                 transition-property: translate, inline-size;
             }
         }
 
         &[data-orientation="vertical"] {
-            --focus-inset-block-end-active: var(--md-sys-layout-space-4);
-            --focus-inset-inline-end-active: var(--md-sys-layout-space-8);
+            --_focus-inset-block-end-active: var(--md-sys-layout-space-4);
+            --_focus-inset-inline-end-active: var(--md-sys-layout-space-8);
 
-            border-inline-end: var(--tab-list-divider-width) solid
-                var(--tab-list-divider-color);
+            border-inline-end: var(--_md-tab-list-divider-width) solid
+                var(--_md-tab-list-divider-color);
 
             [data-selection-indicator] {
                 inset-block-start: 0;
                 inset-inline-end: 0px;
 
                 block-size: 100%;
-                inline-size: var(--indicator-size);
+                inline-size: var(--_md-tabs-active-indicator-size);
 
                 transition-property: translate, block-size;
             }

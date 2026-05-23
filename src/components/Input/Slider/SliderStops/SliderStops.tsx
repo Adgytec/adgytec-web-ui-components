@@ -44,7 +44,11 @@ export const SliderStops: React.FC<SliderStopsProps> = ({
     const shouldHideActive = stops.length === 2;
 
     return (
-        <div className={clsx(styles["stops"])} data-orientation={orientation}>
+        <div
+            className={clsx(styles["stops"])}
+            data-orientation={orientation}
+            data-slider-stops
+        >
             {stops.map(({ stopValue, percent }) => {
                 const inActiveRange = checkInActiveRange({
                     slider,
@@ -82,6 +86,7 @@ export const SliderStops: React.FC<SliderStopsProps> = ({
                             (shouldHideActive && inActiveRange) ||
                             undefined
                         }
+                        data-slider-stop
                     />
                 );
             })}

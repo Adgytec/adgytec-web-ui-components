@@ -1,3 +1,9 @@
+/* configurable tokens
+*
+* --splash-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .splash {
         --_splash-color: var(--splash-color, currentColor);
