@@ -463,7 +463,7 @@
 
     --md-slider-thumb-color: var(--md-slider-active-track-color);
 
-    --md-slider-active-stop-color: var(--md-sys-color-on-seconadary);
+    --md-slider-active-stop-color: var(--md-sys-color-on-secondary);
     --md-slider-inactive-stop-color: var(--md-sys-color-on-secondary-container);
 
     --md-slider-output-background: var(--md-sys-color-secondary-container);

@@ -57,7 +57,6 @@ import {
     TagList,
 } from "react-aria-components";
 import { useLocalStorage } from "usehooks-ts";
-import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@/components/Tabs";
 import {
     Button,
     type ButtonColor,
@@ -99,6 +98,8 @@ import { Divider } from "./components/Divider";
 import { Icon } from "./components/Icon";
 import {
     CenteredSlider,
+    Checkbox,
+    CheckboxGroup,
     ComboBox,
     ComboBoxPopover,
     ComboBoxTrigger,
@@ -108,6 +109,8 @@ import {
     Input,
     InputButton,
     Label,
+    Radio,
+    RadioGroup,
     RangeSlider,
     Select,
     SelectItem,
@@ -123,8 +126,6 @@ import {
     TextArea,
     TimeField,
 } from "./components/Input";
-import { Checkbox, CheckboxGroup } from "./components/Input/Checkbox";
-import { Radio, RadioGroup } from "./components/Input/Radio";
 import {
     Menu,
     MenuItem,
@@ -137,14 +138,15 @@ import {
     SubmenuPopover,
 } from "./components/Menu";
 import { Popover } from "./components/Popover";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "./components/Tabs";
 import { Tag } from "./components/Tag";
 import { ThemeSelector } from "./components/ThemeSelector";
 import {
     Toolbar,
     type ToolbarColor,
+    ToolbarToggleButtonGroup,
     type ToolbarVariant,
 } from "./components/Toolbar";
-import { ToolbarToggleButtonGroup } from "./components/Toolbar/ToolbarToggleButtonGroup";
 import { typography } from "./utils/typography";
 
 // preview container
