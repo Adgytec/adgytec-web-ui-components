@@ -2,6 +2,13 @@
     .modal {
         padding-inline: var(--md-sys-layout-window-size-compact-margin);
 
+        position: fixed;
+        inset: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         &[data-entering] {
             animation: modal-zoom var(--md-sys-motion-expressive-fast-spatial)
                 var(--md-sys-motion-expressive-fast-spatial-duration);
