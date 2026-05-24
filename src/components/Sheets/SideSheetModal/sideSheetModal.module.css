@@ -1,0 +1,37 @@
+@layer adgytec.comps {
+    .modal {
+        position: fixed;
+
+        &[data-alignment="start"] {
+            --_from: -100%;
+        }
+
+        &[data-alignment="end"] {
+            --_from: 100%;
+
+            inset-inline-end: 0;
+        }
+
+        &[data-entering] {
+            animation: side-sheet-slide
+                var(--md-sys-motion-expressive-default-effects)
+                var(--md-sys-motion-expressive-default-effects-duration);
+        }
+
+        &[data-exiting] {
+            animation: side-sheet-slide
+                var(--md-sys-motion-expressive-fast-effects)
+                var(--md-sys-motion-expressive-fast-effects-duration) reverse;
+        }
+    }
+
+    @keyframes side-sheet-slide {
+        from {
+            transform: translateX(var(--_from));
+        }
+
+        to {
+            transform: translateX(0);
+        }
+    }
+}

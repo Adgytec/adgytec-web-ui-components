@@ -17,6 +17,16 @@
                 animation: none;
             }
         }
+
+        &[data-exiting] {
+            animation: modal-zoom
+                var(--md-sys-motion-expressive-default-effects)
+                var(--md-sys-motion-expressive-default-effects-duration) reverse;
+
+            @media (prefers-reduced-motion) {
+                animation: none;
+            }
+        }
     }
 
     @keyframes modal-zoom {

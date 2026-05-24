@@ -3292,7 +3292,7 @@ const SideSheetPreview = () => {
                         >
                             <SearchFieldPreview />
 
-                            <ConfigPreview />
+                            {/* <ConfigPreview /> */}
                         </SideSheet>
                     </SideSheetModal>
                 </ModalOverlay>
