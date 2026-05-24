@@ -16,8 +16,7 @@
     .selection {
         --rotate: 0;
 
-        &[data-pressed],
-        &[data-current] {
+        &[data-pressed] {
             --rotate: 180deg;
 
             [data-visual-button] {
@@ -41,6 +40,11 @@
         align-items: center;
     }
 
+    .transition-group {
+        position: relative;
+        overflow: clip;
+    }
+
     .view {
         transition: opacity var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration);
@@ -49,17 +53,20 @@
             transition: none;
         }
 
+        opacity: 0;
+
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
 
-        &[data-entering],
         &[data-exiting] {
+            position: absolute;
+            inset: 0;
             opacity: 0;
         }
 
-        &[data-exiting] {
-            position: absolute;
+        &[data-entered] {
+            opacity: 1;
         }
 
         [data-menu] {

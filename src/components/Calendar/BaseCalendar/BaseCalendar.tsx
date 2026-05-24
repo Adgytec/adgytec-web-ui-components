@@ -178,6 +178,7 @@ export const BaseCalendar: React.FC<{
                             setView("month");
                         },
                         isDisabled: calendarState.isDisabled || view === "year",
+                        isPressed: view === "month",
                     },
 
                     "previous-year": {
@@ -215,6 +216,7 @@ export const BaseCalendar: React.FC<{
                         },
                         isDisabled:
                             calendarState.isDisabled || view === "month",
+                        isPressed: view === "year",
                     },
                 },
             }}
@@ -234,7 +236,6 @@ export const BaseCalendar: React.FC<{
                         shape="square"
                         size="extra-small"
                         className={clsx(styles["selection"])}
-                        data-current={view === "month" || undefined}
                     >
                         {focusedMonth}
                         <Icon icon={ChevronDown} size={18} />
@@ -262,7 +263,6 @@ export const BaseCalendar: React.FC<{
                         shape="square"
                         size="extra-small"
                         className={clsx(styles["selection"])}
-                        data-current={view === "year" || undefined}
                     >
                         {focusedYear}
                         <Icon icon={ChevronDown} size={18} />
@@ -277,8 +277,13 @@ export const BaseCalendar: React.FC<{
                 </div>
             </header>
 
-            <TransitionGroup>
-                <Transition key={view} nodeRef={currentRef} timeout={150}>
+            <TransitionGroup className={clsx(styles["transition-group"])}>
+                <Transition
+                    key={view}
+                    nodeRef={currentRef}
+                    timeout={150}
+                    unmountOnExit
+                >
                     {(transitionState) => (
                         <div
                             ref={currentRef}
