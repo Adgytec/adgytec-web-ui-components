@@ -20,7 +20,7 @@ A robust, accessible, and highly customizable React component library implementi
 - **Groups**: Button Group (with morphing animation), Connected Button Group.
 
 ### Data Entry
-- **Inputs**: Input (TextField), TextArea, Checkbox, Radio, RadioGroup, Select, ComboBox.
+- **Inputs**: Input (TextField), SearchField, TextArea, Checkbox, Radio, RadioGroup, Select, ComboBox.
 - **Pickers**: DatePicker, DateRangePicker, TimeField, DateField, Calendar, RangeCalendar.
 - **Sliders**: Slider, RangeSlider.
 - **Selection**: Switch.
