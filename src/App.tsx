@@ -139,7 +139,11 @@ import {
     SubmenuPopover,
 } from "./components/Menu";
 import { Popover } from "./components/Popover";
-import type { SheetLayout, SideSheetAlignment } from "./components/Sheets";
+import {
+    type SheetLayout,
+    type SideSheetAlignment,
+    SideSheetModal,
+} from "./components/Sheets";
 import { SideSheet } from "./components/Sheets/SideSheet/SideSheet";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "./components/Tabs";
 import { Tag } from "./components/Tag";
@@ -3276,21 +3280,21 @@ const SideSheetPreview = () => {
                 <Button>{`${alignment}-${layout}`}</Button>
 
                 <ModalOverlay>
-                    <SideSheet
-                        alignment={alignment}
-                        layout={layout}
-                        actions={[
-                            <Button key="save">Save</Button>,
-                            <Button color="text" key="close" slot="close">
-                                Close
-                            </Button>,
-                        ]}
-                        headline={`${alignment}-${layout}`}
-                    >
-                        <SearchFieldPreview />
+                    <SideSheetModal alignment={alignment} layout={layout}>
+                        <SideSheet
+                            actions={[
+                                <Button key="save">Save</Button>,
+                                <Button color="text" key="close" slot="close">
+                                    Close
+                                </Button>,
+                            ]}
+                            headline={`${alignment}-${layout}`}
+                        >
+                            <SearchFieldPreview />
 
-                        <ConfigPreview />
-                    </SideSheet>
+                            <ConfigPreview />
+                        </SideSheet>
+                    </SideSheetModal>
                 </ModalOverlay>
             </DialogTrigger>
         );
