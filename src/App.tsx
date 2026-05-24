@@ -3250,6 +3250,10 @@ const SearchFieldPreview = () => {
     return (
         <div className="items">
             <SearchField />
+
+            <SearchField isReadOnly />
+
+            <SearchField isDisabled />
         </div>
     );
 };

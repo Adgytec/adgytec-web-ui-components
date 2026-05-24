@@ -1,2 +1,76 @@
 @layer adgytec.comps {
+    .search-field {
+        display: flex;
+        align-items: center;
+
+        background-color: var(--md-sys-color-surface-container-high);
+        color: var(--md-sys-color-on-surface);
+
+        box-shadow: var(--md-sys-elevation-shadow-3);
+
+        padding-block: var(--md-sys-layout-space-8);
+        padding-inline-start: var(--md-sys-layout-space-16);
+        padding-inline-end: var(--md-sys-layout-space-8);
+
+        border-radius: var(--md-sys-shape-corner-radius-full);
+
+        &[data-empty] {
+            padding-block: var(--md-sys-layout-space-16);
+        }
+
+        &:has([data-focused]) {
+            --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+            --focus-indicator-offset: calc(2 * var(--dp, 1px));
+            --focus-indicator-color: var(--md-sys-color-secondary);
+
+            outline-width: var(--focus-indicator-thickness);
+            outline-style: solid;
+            outline-offset: var(--focus-indicator-offset);
+            outline-color: var(--focus-indicator-color);
+        }
+
+        &[data-disabled] {
+            background-color: rgb(
+                from var(--md-sys-color-surface-container-high) r g b /
+                var(--md-sys-state-disabled-container)
+            );
+            color: rgb(
+                from currentColor r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            box-shadow: none;
+        }
+    }
+
+    .search-field [data-button] {
+        --md-button-color: var(--md-sys-color-on-surface-variant);
+
+        &[data-disabled] [data-visual-button] {
+            background-color: transparent;
+        }
+    }
+
+    .input {
+        all: unset;
+
+        width: 100%;
+
+        padding-inline-start: var(--md-sys-layout-space-16);
+        padding-inline-end: var(--md-sys-layout-space-8);
+
+        &[data-disabled] {
+            cursor: default;
+        }
+    }
+
+    .input::placeholder {
+        color: var(--md-sys-color-on-surface-variant);
+    }
+
+    .input[data-disabled]::placeholder {
+        color: rgb(
+            from currentColor r g b /
+            var(--md-sys-state-disabled-content)
+        );
+    }
 }

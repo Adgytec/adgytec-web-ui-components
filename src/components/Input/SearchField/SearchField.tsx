@@ -3,6 +3,7 @@ import { Search, X } from "lucide-react";
 import { SearchField as AriaSearchField, Input } from "react-aria-components";
 import { IconButton } from "@/components/Button";
 import { Icon } from "@/components/Icon";
+import { typography } from "@/utils";
 import styles from "./searchField.module.css";
 import type { SearchFieldProps } from "./types";
 
@@ -25,10 +26,10 @@ export const SearchField: React.FC<SearchFieldProps> = ({
         >
             {({ isEmpty }) => (
                 <>
-                    <Icon icon={Search} size={24} />
+                    <Icon icon={Search} size={24} data-search-icon />
 
                     <Input
-                        className={clsx(styles["input"])}
+                        className={clsx(styles["input"], typography.bodyLarge)}
                         placeholder={placeholder}
                     />
 
