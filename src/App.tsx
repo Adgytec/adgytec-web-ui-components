@@ -139,6 +139,8 @@ import {
     SubmenuPopover,
 } from "./components/Menu";
 import { Popover } from "./components/Popover";
+import type { SheetLayout, SideSheetAlignment } from "./components/Sheets";
+import { SideSheet } from "./components/Sheets/SideSheet/SideSheet";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "./components/Tabs";
 import { Tag } from "./components/Tag";
 import { ThemeSelector } from "./components/ThemeSelector";
@@ -3258,6 +3260,58 @@ const SearchFieldPreview = () => {
     );
 };
 
+const SideSheetPreview = () => {
+    const alignments: SideSheetAlignment[] = ["start", "end"];
+    const layouts: SheetLayout[] = ["standard", "detached"];
+
+    const RenderSideSheet = ({
+        alignment,
+        layout,
+    }: {
+        alignment: SideSheetAlignment;
+        layout: SheetLayout;
+    }) => {
+        return (
+            <DialogTrigger>
+                <Button>{`${alignment}-${layout}`}</Button>
+
+                <ModalOverlay>
+                    <SideSheet
+                        alignment={alignment}
+                        layout={layout}
+                        actions={[
+                            <Button key="save">Save</Button>,
+                            <Button color="text" key="close" slot="close">
+                                Close
+                            </Button>,
+                        ]}
+                        headline={`${alignment}-${layout}`}
+                    >
+                        <SearchFieldPreview />
+
+                        <ConfigPreview />
+                    </SideSheet>
+                </ModalOverlay>
+            </DialogTrigger>
+        );
+    };
+    return (
+        <div className="items">
+            {alignments.map((alignment) => (
+                <Fragment key={alignment}>
+                    {layouts.map((layout) => (
+                        <RenderSideSheet
+                            key={layout}
+                            layout={layout}
+                            alignment={alignment}
+                        />
+                    ))}
+                </Fragment>
+            ))}
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -3275,6 +3329,12 @@ const App = () => {
             id: "theme-selector",
             label: "Theme Selector",
             Component: ThemeSelectorPreview,
+        },
+
+        {
+            id: "side-sheet-preview",
+            label: "Side Sheet",
+            Component: SideSheetPreview,
         },
 
         {
