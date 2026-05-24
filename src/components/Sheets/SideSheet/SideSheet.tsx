@@ -37,7 +37,7 @@ export const SideSheet: React.FC<SideSheetProps> = ({
                             </Heading>
                         )}
 
-                        <IconButton icon={X} />
+                        <IconButton slot="close" icon={X} />
                     </Header>
 
                     <div className={clsx(styles["main"])}>
@@ -47,7 +47,10 @@ export const SideSheet: React.FC<SideSheetProps> = ({
                     </div>
 
                     {hasActions && (
-                        <div className={clsx(styles["actions"])}>
+                        <div
+                            className={clsx(styles["actions"])}
+                            data-alignment={alignment}
+                        >
                             {typeof actions === "function"
                                 ? actions(renderProps)
                                 : actions}
