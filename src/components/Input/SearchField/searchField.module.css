@@ -1,0 +1,97 @@
+/* configurable tokens
+*
+* --md-search-field-background
+* --md-search-field-color
+* --md-search-field-supporting-color
+*
+* configurable tokens end */
+
+@layer adgytec.comps {
+    .search-field {
+        --_md-search-field-background: var(
+            --md-search-field-background,
+            var(--md-sys-color-surface-container-high)
+        );
+        --_md-search-field-color: var(
+            --md-search-field-color,
+            var(--md-sys-color-on-surface)
+        );
+        --_md-search-field-supporting-color: var(
+            --md-search-field-supporting-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+
+        display: flex;
+        align-items: center;
+
+        background-color: var(--_md-search-field-background);
+        color: var(--_md-search-field-color);
+
+        box-shadow: var(--md-sys-elevation-shadow-3);
+
+        padding-block: var(--md-sys-layout-space-8);
+        padding-inline-start: var(--md-sys-layout-space-16);
+        padding-inline-end: var(--md-sys-layout-space-8);
+
+        border-radius: var(--md-sys-shape-corner-radius-full);
+
+        &[data-empty] {
+            padding-block: var(--md-sys-layout-space-16);
+        }
+
+        &:has([data-focused]) {
+            --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+            --focus-indicator-offset: calc(2 * var(--dp, 1px));
+            --focus-indicator-color: var(--md-sys-color-secondary);
+
+            outline-width: var(--focus-indicator-thickness);
+            outline-style: solid;
+            outline-offset: var(--focus-indicator-offset);
+            outline-color: var(--focus-indicator-color);
+        }
+
+        &[data-disabled] {
+            --_md-search-field-background: rgb(
+                from var(--md-sys-color-surface-container-high) r g b /
+                var(--md-sys-state-disabled-container)
+            );
+            --_md-search-field-color: rgb(
+                from currentColor r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            box-shadow: none;
+        }
+    }
+
+    .search-field [data-button] {
+        --md-button-color: var(--_md-search-field-supporting-color);
+
+        &[data-disabled] [data-visual-button] {
+            background-color: transparent;
+        }
+    }
+
+    .input {
+        all: unset;
+
+        width: 100%;
+
+        padding-inline-start: var(--md-sys-layout-space-16);
+        padding-inline-end: var(--md-sys-layout-space-8);
+
+        &[data-disabled] {
+            cursor: default;
+        }
+    }
+
+    .input::placeholder {
+        color: var(--_md-search-field-supporting-color);
+    }
+
+    .input[data-disabled]::placeholder {
+        color: rgb(
+            from currentColor r g b /
+            var(--md-sys-state-disabled-content)
+        );
+    }
+}
