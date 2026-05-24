@@ -3345,6 +3345,7 @@ const App = () => {
         <div className="tab-container">
             <Tabs orientation={tabOrientation} className="tabs">
                 <TabList
+                    className="tab-list"
                     style={({ orientation }) => {
                         let pos = {};
                         if (orientation === "horizontal") {

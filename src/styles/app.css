@@ -91,6 +91,10 @@
     }
 }
 
+.tab-list {
+    background-color: var(--md-sys-color-surface);
+}
+
 .avatar {
     display: flex;
     align-items: center;
