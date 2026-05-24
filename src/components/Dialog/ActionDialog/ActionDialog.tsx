@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { Heading } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import {
     DialogBodyTypography,
@@ -25,21 +26,21 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
         <Dialog
             className={clsx(styles["action-dialog"])}
             {...props}
-            data-dialog-head={heading || icon ? true : undefined}
-            data-actions={hasActions ? true : undefined}
+            data-dialog-head={!!heading || !!icon || undefined}
+            data-actions={hasActions || undefined}
         >
             {(renderProps) => (
                 <>
                     {(heading || icon) && (
                         <div
                             className={clsx(styles["heading-container"])}
-                            data-icon={icon ? true : undefined}
-                            data-divider={headingDivider ? true : undefined}
+                            data-icon={!!icon || undefined}
+                            data-divider={headingDivider || undefined}
                         >
                             {icon && <Icon icon={icon} size={DialogIconSize} />}
 
                             {heading && (
-                                <h2
+                                <Heading
                                     slot="title"
                                     className={clsx(
                                         DialogHeadlineTypography,
@@ -47,7 +48,7 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
                                     )}
                                 >
                                     {heading}
-                                </h2>
+                                </Heading>
                             )}
                         </div>
                     )}
@@ -61,7 +62,7 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
                     {hasActions && (
                         <div
                             className={clsx(styles["action-container"])}
-                            data-divider={actionDivider ? true : undefined}
+                            data-divider={actionDivider || undefined}
                         >
                             <div className={clsx(styles["actions"])}>
                                 {typeof actions === "function"
