@@ -7,6 +7,7 @@ export * from "./hooks";
 export * from "./Input";
 export * from "./Label";
 export * from "./Radio";
+export * from "./SearchField";
 export * from "./Select";
 export * from "./Slider";
 export * from "./Switch";

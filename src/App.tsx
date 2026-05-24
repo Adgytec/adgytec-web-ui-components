@@ -112,6 +112,7 @@ import {
     Radio,
     RadioGroup,
     RangeSlider,
+    SearchField,
     Select,
     SelectItem,
     SelectList,
@@ -3245,6 +3246,14 @@ const ConfigPreview = () => {
     );
 };
 
+const SearchFieldPreview = () => {
+    return (
+        <div className="items">
+            <SearchField />
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -3264,6 +3273,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "search-field",
+            label: "Search Field",
+            Component: SearchFieldPreview,
+        },
         {
             id: "config-preview",
             label: "Config",
