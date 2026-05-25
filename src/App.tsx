@@ -140,13 +140,13 @@ import {
 } from "./components/Menu";
 import { Popover } from "./components/Popover";
 import {
+    BottomSheet,
     BottomSheetModal,
     type SheetLayout,
+    SideSheet,
     type SideSheetAlignment,
     SideSheetModal,
 } from "./components/Sheets";
-import { BottomSheet } from "./components/Sheets/BottomSheet/BottomSheet";
-import { SideSheet } from "./components/Sheets/SideSheet/SideSheet";
 import { useSnackbarQueue } from "./components/Snackbar";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "./components/Tabs";
 import { Tag } from "./components/Tag";
