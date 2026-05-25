@@ -1,3 +1,11 @@
+/* configurable tokens
+*
+* --md-snackbar-background
+* --md-snackbar-color
+* --md-snackbar-action-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .snackbar-region {
         position: fixed;
