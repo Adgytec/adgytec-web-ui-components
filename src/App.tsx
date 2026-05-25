@@ -3340,9 +3340,32 @@ const BottomSheetPreview = () => {
                 <ModalOverlay isDismissable>
                     <BottomSheetModal layout={layout}>
                         <BottomSheet>
-                            <SearchFieldPreview />
+                            <h3
+                                className={clsx(
+                                    typography.titleMediumEmphasized
+                                )}
+                            >
+                                Some Action
+                            </h3>
 
-                            <ConfigPreview />
+                            <p className={clsx(typography.bodyLarge)}>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit. Duis eros nulla, commodo a
+                                finibus malesuada, cursus non metus.
+                            </p>
+
+                            <div
+                                className="items"
+                                style={{
+                                    marginBlockStart: "16px",
+                                    justifyContent: "end",
+                                }}
+                            >
+                                <Button color="text" slot="close">
+                                    Cancel
+                                </Button>
+                                <Button>Save</Button>
+                            </div>
                         </BottomSheet>
                     </BottomSheetModal>
                 </ModalOverlay>

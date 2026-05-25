@@ -1,6 +1,7 @@
 @layer adgytec.comps {
     .modal {
         --_detached-margin: var(--md-sys-layout-space-16);
+        --_top-padding: var(--md-sys-layout-space-64);
 
         position: fixed;
         inset-block-end: 0;
@@ -8,8 +9,10 @@
         inset-inline-start: 50%;
         translate: -50%;
 
+        margin-block-start: var(--_top-padding);
+
         &[data-layout="detached"] {
-            margin: var(--_detached-margin);
+            margin-block-end: var(--_detached-margin);
         }
 
         transition: translate var(--_modal-motion) var(--_modal-motion-duration);

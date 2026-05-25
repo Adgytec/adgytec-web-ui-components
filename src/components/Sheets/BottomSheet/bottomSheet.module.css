@@ -1,0 +1,49 @@
+/* configurable tokens
+*
+* --md-bottom-sheet-background
+* --md-bottom-sheet-color
+*
+* configurable tokens end */
+
+@layer adgytec.comps {
+    .bottom-sheet {
+        --_md-bottom-sheet-background: var(
+            --md-bottom-sheet-background,
+            var(--md-sys-color-surface-container-low)
+        );
+        --_md-bottom-sheet-color: var(
+            --md-bottom-sheet-color,
+            var(--md-sys-color-on-surface)
+        );
+        --_max-inline-size: calc(640 * var(--dp, 1px));
+
+        background-color: var(--_md-bottom-sheet-background);
+        color: var(--_md-bottom-sheet-color);
+
+        box-shadow: var(--md-sys-elevation-shadow-1);
+        border-radius: var(--md-sys-shape-corner-radius-large);
+
+        inline-size: min(100svi, var(--_max-inline-size));
+        max-block-size: calc(100svb - var(--_top-padding));
+
+        padding: var(--md-sys-layout-space-20);
+
+        overflow-y: auto;
+
+        &[data-layout="detached"] {
+            max-block-size: calc(
+                100svb -
+                calc(var(--_top-padding) + var(--_detached-margin))
+            );
+            inline-size: min(
+                calc(100svi - calc(2 * var(--_detached-margin))),
+                var(--_max-inline-size)
+            );
+        }
+
+        &[data-layout="standard"] {
+            border-end-start-radius: 0;
+            border-end-end-radius: 0;
+        }
+    }
+}
