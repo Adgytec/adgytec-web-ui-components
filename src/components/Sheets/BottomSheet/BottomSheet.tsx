@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useContext } from "react";
 import { Dialog } from "react-aria-components";
-import { BottomSheetContext } from "../BottomSheetModal/context";
+import { BottomSheetContext } from "../BottomSheetModal";
 import styles from "./bottomSheet.module.css";
 
 export const BottomSheet: React.FC<

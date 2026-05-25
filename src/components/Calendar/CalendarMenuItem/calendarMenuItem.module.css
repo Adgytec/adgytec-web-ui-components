@@ -1,8 +1,6 @@
 @layer adgytec.comps {
     .item {
-        --_state-color: var(
-            --_md-calendar-cell-state-layer-color,
-        );
+        --_state-color: var(--_md-calendar-cell-state-layer-color,);
         --_state-layer-opacity: 0;
 
         --_state-layer-color: rgb(
