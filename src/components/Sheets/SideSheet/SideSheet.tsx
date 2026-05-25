@@ -33,12 +33,17 @@ export const SideSheet: React.FC<SideSheetProps> = ({
                         data-headline={!!headline || undefined}
                     >
                         {headline && (
-                            <Heading className={clsx(typography.titleLarge)}>
+                            <Heading
+                                className={clsx(
+                                    styles["headline"],
+                                    typography.titleLarge
+                                )}
+                            >
                                 {headline}
                             </Heading>
                         )}
 
-                        <IconButton slot="close" icon={X} />
+                        <IconButton slot="close" icon={X} color="standard" />
                     </Header>
 
                     <div className={clsx(styles["main"])}>

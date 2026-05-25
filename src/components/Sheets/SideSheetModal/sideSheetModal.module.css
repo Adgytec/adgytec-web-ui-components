@@ -1,6 +1,12 @@
 @layer adgytec.comps {
     .modal {
+        --_detached-margin: var(--md-sys-layout-space-16);
+
         position: fixed;
+
+        &[data-layout="detached"] {
+            margin: var(--_detached-margin);
+        }
 
         &[data-alignment="start"] {
             --_from: -100%;

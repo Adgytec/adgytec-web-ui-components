@@ -14,6 +14,7 @@ export const SideSheetModal: React.FC<SideSheetModalProps> = ({
         <SlideSheetContext value={{ alignment, layout }}>
             <Modal
                 data-alignment={alignment}
+                data-layout={layout}
                 className={(renderProps) =>
                     clsx(
                         styles["modal"],

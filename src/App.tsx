@@ -3268,6 +3268,20 @@ const SideSheetPreview = () => {
     const alignments: SideSheetAlignment[] = ["start", "end"];
     const layouts: SheetLayout[] = ["standard", "detached"];
 
+    const sideSheetActions = [
+        <Button key="save">Save</Button>,
+        <Button color="text" key="close" slot="close">
+            Close
+        </Button>,
+    ];
+
+    const sideSheetActionsStart = [
+        <Button color="text" key="close" slot="close">
+            Close
+        </Button>,
+        <Button key="save">Save</Button>,
+    ];
+
     const RenderSideSheet = ({
         alignment,
         layout,
@@ -3277,22 +3291,21 @@ const SideSheetPreview = () => {
     }) => {
         return (
             <DialogTrigger>
-                <Button>{`${alignment}-${layout}`}</Button>
+                <Button color="outlined">{`${alignment}-${layout}`}</Button>
 
-                <ModalOverlay>
+                <ModalOverlay isDismissable>
                     <SideSheetModal alignment={alignment} layout={layout}>
                         <SideSheet
-                            actions={[
-                                <Button key="save">Save</Button>,
-                                <Button color="text" key="close" slot="close">
-                                    Close
-                                </Button>,
-                            ]}
+                            actions={
+                                alignment === "start"
+                                    ? sideSheetActionsStart
+                                    : sideSheetActions
+                            }
                             headline={`${alignment}-${layout}`}
                         >
                             <SearchFieldPreview />
 
-                            {/* <ConfigPreview /> */}
+                            <CalendarPreview />
                         </SideSheet>
                     </SideSheetModal>
                 </ModalOverlay>
