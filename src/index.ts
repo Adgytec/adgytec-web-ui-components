@@ -11,6 +11,8 @@ export * from "./components/Input";
 export * from "./components/Loader";
 export * from "./components/Menu";
 export * from "./components/Popover";
+export * from "./components/Sheets";
+export * from "./components/Snackbar";
 export * from "./components/Splash";
 export * from "./components/Tabs";
 export * from "./components/Tag";

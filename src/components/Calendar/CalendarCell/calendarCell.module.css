@@ -1,8 +1,6 @@
 @layer adgytec.comps {
     .cell {
-        --_state-color: var(
-            --_md-calendar-cell-state-layer-color,
-        );
+        --_state-color: var(--_md-calendar-cell-state-layer-color,);
         --_state-layer-opacity: 0;
 
         --_state-layer-color: rgb(
@@ -107,9 +105,7 @@
             &[data-range-calendar]:not([data-selection-start]):not(
                     [data-selection-end]
                 ) {
-                color: var(
-                    --md-sys-color-on-error-container,
-                );
+                color: var(--md-sys-color-on-error-container,);
 
                 &::before {
                     background-color: transparent;
