@@ -1,0 +1,72 @@
+@layer adgytec.overrides {
+    .state-layer {
+        --inset: calc(-1 * var(--spacing));
+
+        position: absolute;
+        inset: var(--inset);
+        border-radius: inherit;
+
+        overflow: clip;
+
+        background-color: var(--_state-layer-color);
+
+        transition: background-color var(--md-sys-motion-standard-fast-spatial)
+            var(--md-sys-motion-standard-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    .trigger::before {
+        background-color: transparent;
+    }
+
+    .trigger[data-focus-visible] {
+        outline: none;
+
+        &::before {
+            outline: none;
+            z-index: 1;
+        }
+
+        .state-layer {
+            outline-width: var(--focus-indicator-thickness);
+            outline-style: solid;
+            outline-offset: var(--focus-indicator-offset);
+            outline-color: var(--focus-indicator-color);
+        }
+    }
+}
+
+@layer adgytec.comps {
+    .trigger {
+        --rotate: 0;
+
+        display: flex;
+        gap: var(--md-sys-layout-space-4);
+        align-items: start;
+
+        border-radius: var(--md-sys-shape-corner-radius-medium);
+        text-align: start;
+
+        &[data-pressed] {
+            border-radius: var(--md-sys-shape-corner-radius-small);
+        }
+
+        &[data-expanded] {
+            --rotate: 90deg;
+        }
+
+        > svg {
+            margin-block-start: calc(2.5 * var(--dp, 1px));
+            rotate: var(--rotate);
+            transition: rotate var(--md-sys-motion-expressive-fast-spatial)
+                var(--md-sys-motion-expressive-fast-spatial-duration);
+
+            @media (prefers-reduced-motion) {
+                transition: none;
+            }
+        }
+    }
+}

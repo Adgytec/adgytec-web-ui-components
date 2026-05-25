@@ -1,0 +1,86 @@
+@layer adgytec.comps {
+    .header {
+        padding-inline: var(--md-sys-layout-space-12);
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        [data-visual-button] {
+            &[data-disabled] {
+                background-color: transparent;
+            }
+        }
+    }
+
+    .selection {
+        --rotate: 0;
+
+        &[data-pressed] {
+            --rotate: 180deg;
+
+            [data-visual-button] {
+                --state-layer-opacity: var(--md-sys-state-pressed);
+            }
+        }
+
+        svg {
+            rotate: var(--rotate);
+            transition: rotate var(--md-sys-motion-expressive-fast-spatial)
+                var(--md-sys-motion-expressive-fast-spatial-duration);
+
+            @media (prefers-reduced-motion) {
+                transition: none;
+            }
+        }
+    }
+
+    .options {
+        display: flex;
+        align-items: center;
+    }
+
+    .transition-group {
+        position: relative;
+        overflow: clip;
+    }
+
+    .view {
+        transition: opacity var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        opacity: 0;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+
+        &[data-exiting] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+        }
+
+        &[data-entered] {
+            opacity: 1;
+        }
+
+        [data-menu] {
+            max-block-size: calc(6 * var(--_md-calendar-cell-size));
+            block-size: calc(6 * var(--_md-calendar-cell-size));
+
+            min-inline-size: calc(7 * var(--_md-calendar-cell-size));
+
+            overflow-y: auto;
+            padding-block-start: var(--md-sys-layout-space-12);
+            padding-block-end: var(--md-sys-layout-space-4);
+
+            border-block-start: calc(1 * var(--dp, 1px)) solid
+                var(--_md-calendar-menu-divider-color);
+        }
+    }
+}

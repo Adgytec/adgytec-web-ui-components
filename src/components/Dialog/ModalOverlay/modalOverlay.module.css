@@ -1,0 +1,42 @@
+/* configurable tokens
+*
+* --md-dialog-overlay
+*
+* configurable tokens end */
+
+@layer adgytec.comps {
+    .overlay {
+        /* configurable tokens */
+        --_md-dialog-overlay: var(
+            --md-dialog-overlay,
+            var(--md-sys-color-scrim)
+        );
+
+        /* configurable tokens end */
+
+        --_modal-motion: var(--md-sys-motion-expressive-default-effects);
+        --_modal-motion-duration: var(
+            --md-sys-motion-expressive-default-effects-duration
+        );
+
+        background-color: rgb(
+            from var(--_md-dialog-overlay) r g b /
+            var(--md-sys-state-backdrop)
+        );
+
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+
+        transition: opacity var(--_modal-motion) var(--_modal-motion-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-entering],
+        &[data-exiting] {
+            opacity: 0;
+        }
+    }
+}

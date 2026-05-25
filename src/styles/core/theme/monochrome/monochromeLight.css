@@ -1,0 +1,78 @@
+/* https://www.figma.com/community/plugin/1034969338659738588/material-theme-builder */
+/* variables scheme -> monochrome lt */
+[data-theme="monochrome-light"] {
+    color-scheme: light;
+
+    --md-sys-color-primary: rgb(0 0 0);
+    --md-sys-color-on-primary: rgb(226 226 226);
+    --md-sys-color-primary-container: rgb(59 59 59);
+    --md-sys-color-on-primary-container: rgb(255 255 255);
+
+    --md-sys-color-secondary: rgb(95 95 95);
+    --md-sys-color-on-secondary: rgb(255 255 255);
+    --md-sys-color-secondary-container: rgb(212 212 212);
+    --md-sys-color-on-secondary-container: rgb(27 27 27);
+
+    --md-sys-color-tertiary: rgb(58 58 58);
+    --md-sys-color-on-tertiary: rgb(226 226 226);
+    --md-sys-color-tertiary-container: rgb(116 116 116);
+    --md-sys-color-on-tertiary-container: rgb(255 255 255);
+
+    --md-sys-color-error: rgb(179 38 30);
+    --md-sys-color-on-error: rgb(255 255 255);
+    --md-sys-color-error-container: rgb(249 222 220);
+    --md-sys-color-on-error-container: rgb(65 14 11);
+
+    --md-sys-color-background: rgb(253 247 255);
+    --md-sys-color-on-background: rgb(29 27 32);
+
+    --md-sys-color-surface: rgb(249 249 249);
+    --md-sys-color-surface-tint: rgb(159 159 159);
+    --md-sys-color-on-surface: rgb(27 27 27);
+
+    --md-sys-color-surface-variant: rgb(226 226 226);
+    --md-sys-color-on-surface-variant: rgb(71 71 71);
+
+    --md-sys-color-outline: rgb(119 119 119);
+    --md-sys-color-outline-variant: rgb(198 198 198);
+
+    --md-sys-color-shadow: rgb(0 0 0);
+    --md-sys-color-scrim: rgb(0 0 0);
+
+    --md-sys-color-inverse-surface: rgb(48 48 48);
+    --md-sys-color-inverse-on-surface: rgb(241 241 241);
+    --md-sys-color-inverse-primary: rgb(71 71 71);
+
+    --md-sys-color-primary-fixed: rgb(94 94 94);
+    --md-sys-color-on-primary-fixed: rgb(255 255 255);
+    --md-sys-color-primary-fixed-dim: rgb(71 71 71);
+    --md-sys-color-on-primary-fixed-variant: rgb(227 226 226);
+
+    --md-sys-color-secondary-fixed: rgb(198 198 198);
+    --md-sys-color-on-secondary-fixed: rgb(27 28 28);
+    --md-sys-color-secondary-fixed-dim: rgb(171 171 171);
+    --md-sys-color-on-secondary-fixed-variant: rgb(59 59 60);
+
+    --md-sys-color-tertiary-fixed: rgb(94 94 94);
+    --md-sys-color-on-tertiary-fixed: rgb(255 255 255);
+    --md-sys-color-tertiary-fixed-dim: rgb(71 71 71);
+    --md-sys-color-on-tertiary-fixed-variant: rgb(227 226 226);
+
+    --md-sys-color-surface-dim: rgb(218 218 218);
+    --md-sys-color-surface-bright: rgb(249 249 249);
+
+    --md-sys-color-surface-container-lowest: rgb(255 255 255);
+    --md-sys-color-surface-container-low: rgb(243 243 243);
+    --md-sys-color-surface-container: rgb(238 238 238);
+    --md-sys-color-surface-container-high: rgb(232 232 232);
+    --md-sys-color-surface-container-highest: rgb(226 226 226);
+
+    --md-extended-color-primary-alt-color: var(--md-sys-color-primary);
+    --md-extended-color-primary-alt-on-color: var(--md-sys-color-on-primary);
+    --md-extended-color-primary-alt-color-container: var(
+        --md-sys-color-primary-container
+    );
+    --md-extended-color-primary-alt-on-color-container: var(
+        --md-sys-color-on-primary-container
+    );
+}

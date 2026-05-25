@@ -1,0 +1,33 @@
+@layer adgytec.overrides {
+    .trigger[data-invalid] > [data-button] {
+        --md-button-color: var(--group-color);
+    }
+}
+
+@layer adgytec.comps {
+    .trigger {
+        --rotate: 0;
+
+        &[data-pressed] {
+            --rotate: 180deg;
+        }
+
+        & svg {
+            rotate: var(--rotate);
+            transition: rotate var(--md-sys-motion-expressive-fast-spatial)
+                var(--md-sys-motion-expressive-fast-spatial-duration);
+
+            @media (prefers-reduced-motion) {
+                transition: none;
+            }
+        }
+    }
+
+    .input {
+        flex: 1;
+        text-align: start;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

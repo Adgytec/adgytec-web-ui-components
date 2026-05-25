@@ -1,0 +1,34 @@
+@layer adgytec.comps {
+    .popover {
+        --_offset: calc(4 * var(--dp, 1px));
+
+        transform: translate3d(0, 0, 0);
+        transition:
+            transform var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            opacity var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        &[data-placement="bottom"] {
+            --_origin: translateY(calc(-1 * var(--_offset)));
+        }
+
+        &[data-placement="top"] {
+            --_origin: translateY(var(--_offset));
+        }
+
+        &[data-placement="right"] {
+            --_origin: translateX(calc(-1 * var(--_offset)));
+        }
+
+        &[data-placement="left"] {
+            --_origin: translateX(var(--_offset));
+        }
+
+        &[data-entering],
+        &[data-exiting] {
+            transform: var(--_origin);
+            opacity: 0;
+        }
+    }
+}

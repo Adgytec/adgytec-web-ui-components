@@ -1,12 +1,14 @@
-.loader {
-    animation: loader 1s infinite linear;
-}
-
-@keyframes loader {
-    from {
-        rotate: 0deg;
+@layer adgytec.comps {
+    .loader {
+        animation: loader 1s infinite linear;
     }
-    to {
-        rotate: 360deg;
+
+    @keyframes loader {
+        from {
+            rotate: 0deg;
+        }
+        to {
+            rotate: 360deg;
+        }
     }
 }

@@ -1,0 +1,80 @@
+@layer adgytec.comps {
+    .button-group {
+        display: inline-flex;
+        align-items: center;
+
+        gap: var(--_md-button-group-gap);
+    }
+
+    .button-group [data-visual-button] {
+        padding-inline: calc(
+            var(--_md-button-padding-inline) +
+            var(--_morph, 0px)
+        );
+    }
+
+    /* pressed item */
+    .button-group > [data-pressed] {
+        --_morph: var(--_morph-pressed, 0px);
+    }
+
+    /* next sibling */
+    .button-group > [data-pressed] + * {
+        --_morph: var(--_morph-pressed-sibling, 0px);
+    }
+
+    /* previous sibling */
+    .button-group > *:has(+ [data-pressed]) {
+        --_morph: var(--_morph-pressed-sibling, 0px);
+    }
+
+    /* next sibling ONLY if pressed is first */
+    .button-group > [data-pressed]:first-child + * {
+        --_morph: var(--_morph-edge-pressed-sibling, 0px);
+    }
+
+    /* previous sibling ONLY if pressed is last */
+    .button-group > *:has(+ [data-pressed]:last-child) {
+        --_morph: var(--_morph-edge-pressed-sibling, 0px);
+    }
+
+    .extra-small {
+        --_md-button-group-gap: calc(18 * var(--dp, 1px));
+
+        --_morph-pressed: var(--md-sys-layout-space-4);
+        --_morph-pressed-sibling: calc(-1 * calc(var(--_morph-pressed) / 2));
+        --_morph-edge-pressed-sibling: calc(-1 * var(--_morph-pressed));
+    }
+
+    .small {
+        --_md-button-group-gap: var(--md-sys-layout-space-12);
+
+        --_morph-pressed: calc(6 * var(--dp, 1px));
+        --_morph-pressed-sibling: calc(-1 * calc(var(--_morph-pressed) / 2));
+        --_morph-edge-pressed-sibling: calc(-1 * var(--_morph-pressed));
+    }
+
+    .medium {
+        --_md-button-group-gap: var(--md-sys-layout-space-8);
+
+        --_morph-pressed: var(--md-sys-layout-space-12);
+        --_morph-pressed-sibling: calc(-1 * calc(var(--_morph-pressed) / 2));
+        --_morph-edge-pressed-sibling: calc(-1 * var(--_morph-pressed));
+    }
+
+    .large {
+        --_md-button-group-gap: var(--md-sys-layout-space-8);
+
+        --_morph-pressed: var(--md-sys-layout-space-16);
+        --_morph-pressed-sibling: calc(-1 * calc(var(--_morph-pressed) / 2));
+        --_morph-edge-pressed-sibling: calc(-1 * var(--_morph-pressed));
+    }
+
+    .extra-large {
+        --_md-button-group-gap: var(--md-sys-layout-space-8);
+
+        --_morph-pressed: var(--md-sys-layout-space-20);
+        --_morph-pressed-sibling: calc(-1 * calc(var(--_morph-pressed) / 2));
+        --_morph-edge-pressed-sibling: calc(-1 * var(--_morph-pressed));
+    }
+}

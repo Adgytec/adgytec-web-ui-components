@@ -1,0 +1,10 @@
+:root {
+    /* =========================================
+     ICON TOKENS
+     ========================================= */
+    --md-sys-icon-dense: calc(20 * var(--dp, 1px));
+    --md-sys-icon-standard: calc(24 * var(--dp, 1px));
+    --md-sys-icon-medium: calc(32 * var(--dp, 1px));
+    --md-sys-icon-large: calc(40 * var(--dp, 1px));
+    --md-sys-icon-extra-large: calc(48 * var(--dp, 1px));
+}

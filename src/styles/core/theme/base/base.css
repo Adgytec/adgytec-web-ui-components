@@ -1,0 +1,7 @@
+@import "dark.css" layer(adgytec.tokens);
+@import "darkMediumContrast.css" layer(adgytec.tokens);
+@import "darkHighContrast.css" layer(adgytec.tokens);
+
+@import "light.css" layer(adgytec.tokens);
+@import "lightMediumContrast.css" layer(adgytec.tokens);
+@import "lightHighContrast.css" layer(adgytec.tokens);

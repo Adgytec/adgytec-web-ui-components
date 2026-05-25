@@ -1,0 +1,135 @@
+@layer adgytec.comps {
+    .tab {
+        --_state-color: var(--md-sys-color-on-surface);
+        --_state-layer-opacity: 0;
+
+        --_state-layer-color: rgb(
+            from var(--_state-color) r g b /
+            var(--_state-layer-opacity)
+        );
+
+        --_color: var(--_md-tabs-color);
+
+        --_focus-inset-inline-start: var(--md-sys-layout-space-4);
+        --_focus-inset-inline-end: var(--md-sys-layout-space-4);
+        --_focus-inset-block-start: var(--md-sys-layout-space-4);
+        --_focus-inset-block-end: var(--md-sys-layout-space-4);
+
+        position: relative;
+        outline: none;
+
+        padding-block: calc(14 * var(--dp, 1px));
+        padding-inline: var(--md-sys-layout-space-16);
+
+        white-space: nowrap;
+
+        display: flex;
+        align-items: center;
+        gap: var(--md-sys-layout-space-8);
+
+        color: var(--_color);
+
+        cursor: pointer;
+
+        transition: color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-icon] {
+            padding-block: var(--md-sys-layout-space-12);
+        }
+
+        &[data-selected] {
+            --_color: var(--_md-tabs-active-color);
+
+            --_focus-inset-inline-end: var(--_focus-inset-inline-end-active);
+            --_focus-inset-block-end: var(--_focus-inset-block-end-active);
+        }
+
+        &[data-hovered] {
+            --_color: var(--_md-tabs-active-color);
+            --_state-layer-opacity: var(--md-sys-state-hover);
+        }
+
+        &[data-focus-visible] {
+            --_state-layer-opacity: var(--md-sys-state-focus);
+        }
+
+        &[data-pressed] {
+            --_state-layer-opacity: var(--md-sys-state-pressed);
+        }
+
+        &[data-disabled] {
+            cursor: default;
+
+            --_color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+
+            --_md-tabs-active-indicator-color: var(--_color);
+        }
+    }
+
+    /* state layer */
+    .tab::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+
+        background-color: var(--_state-layer-color);
+
+        transition: background-color var(--md-sys-motion-standard-fast-spatial)
+            var(--md-sys-motion-standard-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    /* focus indicator */
+    .tab[data-focus-visible]::after {
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
+
+        content: "";
+        position: absolute;
+
+        inset-inline-start: var(--_focus-inset-inline-start);
+        inset-inline-end: var(--_focus-inset-inline-end);
+        inset-block-start: var(--_focus-inset-block-start);
+        inset-block-end: var(--_focus-inset-block-end);
+
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-color: var(--focus-indicator-color);
+
+        border-radius: var(--md-sys-shape-corner-radius-small);
+
+        z-index: 1;
+    }
+
+    .selection-indicator {
+        position: absolute;
+
+        transition-timing-function: var(--md-sys-motion-standard-fast-spatial);
+        transition-duration: var(
+            --md-sys-motion-standard-fast-spatial-duration
+        );
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    .splash {
+        position: absolute;
+        inset: 0;
+        overflow: clip;
+    }
+}

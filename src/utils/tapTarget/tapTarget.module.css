@@ -1,0 +1,28 @@
+.after,
+.before {
+    --min-tap-target-size: calc(48 * var(--dp, 1px));
+    --tap-target-default-size: 100%;
+
+    position: var(--position, relative);
+
+    &[data-disabled] {
+        --min-tap-target-size: 0;
+        --tap-target-default-size: 0px;
+    }
+}
+
+.after::after,
+.before::before {
+    content: "";
+    position: absolute;
+
+    min-inline-size: var(--min-tap-target-size);
+    min-block-size: var(--min-tap-target-size);
+
+    inline-size: var(--tap-target-default-size);
+    block-size: var(--tap-target-default-size);
+
+    inset-inline-start: 50%;
+    inset-block-start: 50%;
+    translate: -50% -50%;
+}

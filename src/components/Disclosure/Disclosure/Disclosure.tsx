@@ -1,33 +1,21 @@
-import { clsx } from "clsx";
-import { ChevronRight } from "lucide-react";
-import {
-    DisclosurePanel,
-    Disclosure as UnstyledDisclosure,
-} from "react-aria-components";
-import { TextButton } from "@/components/Button/TextButton";
+import clsx from "clsx";
+import { Disclosure as AriaDisclosure } from "react-aria-components";
 import styles from "./disclosure.module.css";
-import type { DisclosureProps } from "./types";
 
-export const Disclosure = ({
-    heading,
-    children,
-    id,
-    triggerTheme = "inverse-surface",
-}: DisclosureProps) => {
+export const Disclosure: React.FC<
+    React.ComponentPropsWithRef<typeof AriaDisclosure>
+> = ({ className, ...props }) => {
     return (
-        <UnstyledDisclosure className={clsx(styles["disclosure"])} id={id}>
-            <h2 className={clsx(styles["trigger"])}>
-                <TextButton slot="trigger" theme={triggerTheme}>
-                    <ChevronRight />
-                    {heading}
-                </TextButton>
-            </h2>
-
-            <DisclosurePanel className={clsx(styles["panel"])}>
-                <div className={clsx(styles["panel-container"])}>
-                    {children}
-                </div>
-            </DisclosurePanel>
-        </UnstyledDisclosure>
+        <AriaDisclosure
+            className={(renderProps) =>
+                clsx(
+                    styles["disclosure"],
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
+            {...props}
+        />
     );
 };

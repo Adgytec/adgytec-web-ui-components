@@ -1,0 +1,17 @@
+@layer adgytec.comps {
+    .group {
+        white-space: nowrap;
+    }
+
+    .range-group {
+        white-space: nowrap;
+    }
+
+    .popover {
+        box-shadow: var(--md-sys-elevation-shadow-3);
+        border-radius: var(--md-sys-shape-corner-radius-large);
+
+        overflow: auto;
+        scrollbar-width: thin;
+    }
+}

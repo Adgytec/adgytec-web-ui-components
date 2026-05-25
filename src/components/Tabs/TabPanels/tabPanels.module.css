@@ -1,0 +1,13 @@
+@layer adgytec.comps {
+    .tab-panels {
+        position: relative;
+
+        height: var(--tab-panel-height);
+        transition: height var(--md-sys-motion-standard-fast-spatial)
+            var(--md-sys-motion-standard-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+}

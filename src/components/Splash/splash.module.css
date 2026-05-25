@@ -1,20 +1,40 @@
-.splash {
-    position: absolute;
-    inline-size: 25%;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    background-color: hsl(from var(--color-surface-variant) h s l / 0.5);
-    animation: ripple 500ms linear;
-    opacity: 0;
-}
+/* configurable tokens
+*
+* --splash-color
+*
+* configurable tokens end */
 
-@keyframes ripple {
-    from {
-        scale: 0;
-        opacity: 1;
-    }
-    to {
-        scale: 8;
+@layer adgytec.comps {
+    .splash {
+        --_splash-color: var(--splash-color, currentColor);
+        position: absolute;
+
+        inline-size: 25%;
+        aspect-ratio: 1 / 1;
+        border-radius: var(--md-sys-shape-corner-radius-full);
+
+        background-color: rgb(
+            from var(--_splash-color) r g b /
+            var(--md-sys-state-pressed)
+        );
         opacity: 0;
+
+        animation: ripple var(--md-sys-motion-expressive-slow-spatial)
+            var(--md-sys-motion-expressive-slow-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            animation: none;
+        }
+    }
+
+    @keyframes ripple {
+        from {
+            scale: 0;
+            opacity: 1;
+        }
+        to {
+            scale: 8;
+            opacity: 0;
+        }
     }
 }

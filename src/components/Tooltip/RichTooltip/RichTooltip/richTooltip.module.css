@@ -1,0 +1,33 @@
+/* configurable tokens
+*
+* --md-rich-tooltip-background
+* --md-rich-tooltip-color
+*
+* configurable tokens end */
+
+@layer adgytec.comps {
+    .tooltip {
+        --_md-rich-tooltip-background: var(
+            --md-rich-tooltip-background,
+            var(--md-sys-color-surface-container)
+        );
+        --_md-rich-tooltip-color: var(
+            --md-rich-tooltip-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+
+        display: grid;
+        gap: var(--md-sys-layout-space-12);
+
+        padding-block-start: var(--md-sys-layout-space-12);
+        padding-block-end: var(--md-sys-layout-space-8);
+
+        background-color: var(--_md-rich-tooltip-background);
+        color: var(--_md-rich-tooltip-color);
+
+        border-radius: var(--md-sys-shape-corner-radius-medium);
+        box-shadow: var(--md-sys-elevation-shadow-2);
+
+        max-inline-size: calc(300 * var(--dp, 1px));
+    }
+}

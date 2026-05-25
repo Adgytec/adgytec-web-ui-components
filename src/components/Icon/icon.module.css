@@ -1,0 +1,32 @@
+@layer adgytec.comps {
+    .icon {
+        width: var(--_icon-size);
+        height: var(--_icon-size);
+    }
+
+    .with-text {
+        width: 1em;
+        height: 1em;
+    }
+
+    /* size */
+    .dense {
+        --_icon-size: var(--md-sys-icon-dense);
+    }
+
+    .standard {
+        --_icon-size: var(--md-sys-icon-standard);
+    }
+
+    .medium {
+        --_icon-size: var(--md-sys-icon-medium);
+    }
+
+    .large {
+        --_icon-size: var(--md-sys-icon-large);
+    }
+
+    .extra-large {
+        --_icon-size: var(--md-sys-icon-extra-large);
+    }
+}

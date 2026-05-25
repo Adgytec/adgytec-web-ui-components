@@ -1,1419 +1,3599 @@
-import { Copy } from "lucide-react";
-import { Fragment, type ReactNode, useState } from "react";
-import type { Key } from "react-aria-components";
-import type { ButtonVariant } from "@/components/Button/ButtonBase/types";
-import { Link } from "@/components/Link/LinkBase";
-import { Avatar } from "./components/Avatar/Avatar";
-import type { AvatarSize } from "./components/Avatar/types";
-import { FilledButton } from "./components/Button/FilledButton";
-import { OutlinedButton } from "./components/Button/OutlinedButton";
-import { TextButton } from "./components/Button/TextButton";
-import { Disclosure } from "./components/Disclosure/Disclosure/Disclosure";
-import type { DisclosureProps } from "./components/Disclosure/Disclosure/types";
-import { DisclosureGroup } from "./components/Disclosure/DisclousureGroup/DisclousreGroup";
-import { Input } from "./components/Form/Input/Input";
-import { TextArea } from "./components/Form/TextArea/TextArea";
-import { FilledButtonLink } from "./components/Link/FilledButtonLink";
-import { OutlinedButtonLink } from "./components/Link/OutlinedButtonLink";
-import { MenuButton } from "./components/Menu/MenuButton";
-import { MenuLabel } from "./components/Menu/MenuLabel";
-import { ModalAction } from "./components/Modal/ModalAction/ModalAction";
-import { ModalBase } from "./components/Modal/ModalBase/ModalBase";
-import { NavigationMenu } from "./components/Navigation/NavigationMenu/NavigationMenu";
-import { NavigationResponsive } from "./components/Navigation/NavigationResponsive/NavigationResponsive";
-import { NavigationSidebar } from "./components/Navigation/NavigationSidebar/NavigationSidebar";
-import { Select } from "./components/Select/Select";
-import type { SelectOptions } from "./components/Select/types";
-import { Sidebar } from "./components/Sidebar/Sidebar";
-import type { SidebarPosition, SidebarSize } from "./components/Sidebar/types";
 import {
-    ToggleButtonGroup,
-    type ToggleButtonGroupItem,
-} from "./components/ToggleButtonGroup";
-import { Tooltip } from "./components/Tooltip/Tooltip";
-import { Tree } from "./components/Tree/Tree";
-import type {
-    ColorTheme,
-    HierarchyItemType,
-    TreeHierarchyItemType,
-} from "./utils/types";
+    Armchair,
+    Bell,
+    Clipboard,
+    CloudSnow,
+    CloudSun,
+    DollarSign,
+    Download,
+    ExternalLinkIcon,
+    Eye,
+    FileBraces,
+    Gamepad,
+    Globe,
+    GlobeLock,
+    GlobeOff,
+    HandCoins,
+    LogOut,
+    type LucideIcon,
+    Mail,
+    Mouse,
+    MouseOff,
+    Newspaper,
+    PlaneTakeoff,
+    Settings,
+    Share2,
+    ShoppingCart,
+    Sofa,
+    Squirrel,
+    Sun,
+    SunMoon,
+    SunSnow,
+    SwatchBook,
+    User,
+    UserRound,
+} from "lucide-react";
+import { type CSSProperties, Fragment, type ReactNode, useState } from "react";
+import { useListData } from "react-aria-components/useListData";
+import {
+    RichTooltip,
+    RichTooltipActions,
+    RichTooltipInfo,
+    RichTooltipSubhead,
+    RichTooltipText,
+    Tooltip,
+    TooltipTrigger,
+} from "./components/Tooltip";
 import "./styles/app.css";
-import type { SolidCardBackground } from "./components/Card/BaseCard";
-import { GradientCard } from "./components/Card/GradientCard";
-import { SolidCard } from "./components/Card/SolidCard";
-import { toast } from "./components/Toast";
-import { Viewport } from "./components/Viewport";
-import { ComponentShapeSwitcher } from "./components/VisualSettings/ComponentShapeSwitcher";
-import { ThemeSwitcher } from "./components/VisualSettings/ThemeSwitcher";
+import { CalendarDate } from "@internationalized/date";
+import { clsx } from "clsx";
+import type { Orientation } from "react-aria";
+import {
+    Collection,
+    DialogTrigger,
+    Form,
+    SubmenuTrigger,
+    TagGroup,
+    TagList,
+} from "react-aria-components";
+import { useLocalStorage } from "usehooks-ts";
+import {
+    Button,
+    type ButtonColor,
+    ButtonGroup,
+    type ButtonShape,
+    type ButtonSize,
+    ConnectedButton,
+    ConnectedButtonGroup,
+    type ConnectedButtonGroupColor,
+    type CoreButtonColor,
+    IconButton,
+    type IconButtonColor,
+    type IconButtonWidth,
+    LinkButton,
+    LinkIconButton,
+    SplitButton,
+    type SplitButtonColor,
+    SplitButtonPrimary,
+    SplitButtonTrigger,
+    ToggleButton,
+    ToggleIconButton,
+} from "./components/Button";
+import { Calendar, RangeCalendar } from "./components/Calendar";
+import {
+    ActionDialog,
+    Dialog,
+    DialogBodyTypography,
+    DialogHeadlineTypography,
+    Modal,
+    ModalOverlay,
+} from "./components/Dialog";
+import {
+    Disclosure,
+    DisclosureGroup,
+    DisclosureHeader,
+    DisclosurePanel,
+} from "./components/Disclosure";
+import { Divider } from "./components/Divider";
+import { Icon } from "./components/Icon";
+import {
+    CenteredSlider,
+    Checkbox,
+    CheckboxGroup,
+    ComboBox,
+    ComboBoxPopover,
+    ComboBoxTrigger,
+    DateField,
+    DatePicker,
+    DateRangePicker,
+    Input,
+    InputButton,
+    Label,
+    Radio,
+    RadioGroup,
+    RangeSlider,
+    SearchField,
+    Select,
+    SelectItem,
+    SelectList,
+    SelectListSection,
+    SelectListSectionHeader,
+    SelectPopover,
+    SelectTrigger,
+    Slider,
+    SliderOutput,
+    type SliderSize,
+    Switch,
+    TextArea,
+    TimeField,
+} from "./components/Input";
+import {
+    Menu,
+    MenuItem,
+    type MenuLayout,
+    MenuPopover,
+    MenuSection,
+    MenuSectionHeader,
+    MenuShortcut,
+    MenuTrigger,
+    SubmenuPopover,
+} from "./components/Menu";
+import { Popover } from "./components/Popover";
+import {
+    BottomSheet,
+    BottomSheetModal,
+    type SheetLayout,
+    SideSheet,
+    type SideSheetAlignment,
+    SideSheetModal,
+} from "./components/Sheets";
+import { useSnackbarQueue } from "./components/Snackbar";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from "./components/Tabs";
+import { Tag } from "./components/Tag";
+import { ThemeSelector } from "./components/ThemeSelector";
+import {
+    Toolbar,
+    type ToolbarColor,
+    ToolbarToggleButtonGroup,
+    type ToolbarVariant,
+} from "./components/Toolbar";
+import { typography } from "./utils/typography";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
     return (
         <div className="preview-container">
-            <Tooltip description="hello label">
-                <h2>{props.label}</h2>
-            </Tooltip>
+            <h2 className={typography.headlineLargeEmphasized}>
+                {props.label}
+            </h2>
             <div className="preview-container__items">{props.children}</div>
         </div>
     );
 };
 
-// button component preview
+const SwitchPreview = () => {
+    return (
+        <>
+            <div className="items">
+                <Switch isDisabled icon="none">
+                    Disabled no icon
+                </Switch>
+
+                <Switch isDisabled icon="both">
+                    Disabled with icon
+                </Switch>
+
+                <Switch isDisabled isSelected>
+                    Disabled selected
+                </Switch>
+
+                <Switch>Selected icon</Switch>
+
+                <Switch containerStateLayer icon="both">
+                    Both icon
+                </Switch>
+
+                <Switch icon="none">Icon none</Switch>
+            </div>
+
+            <div className="items-grid">
+                <Switch isDisabled icon="none">
+                    Disabled no icon
+                </Switch>
+
+                <Switch isDisabled icon="both">
+                    Disabled with icon
+                </Switch>
+
+                <Switch isDisabled isSelected>
+                    Disabled selected
+                </Switch>
+
+                <Switch>Selected icon</Switch>
+
+                <Switch icon="both" containerStateLayer>
+                    Both icon
+                </Switch>
+
+                <Switch icon="none">Icon none</Switch>
+            </div>
+        </>
+    );
+};
+
+const RadioPreview = () => {
+    return (
+        <>
+            <RadioGroup
+                label="Disabled"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                isDisabled
+                defaultValue={"dog"}
+            >
+                <Radio value="cat">Cat</Radio>
+                <Radio value="dog">Dog</Radio>
+                <Radio value="dragon">Dragon</Radio>
+            </RadioGroup>
+
+            <RadioGroup
+                label="Disabled"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                isDisabled
+                orientation="horizontal"
+            >
+                <Radio value="cat">Cat</Radio>
+                <Radio value="dog">Dog</Radio>
+                <Radio value="dragon">Dragon</Radio>
+            </RadioGroup>
+
+            <RadioGroup
+                label="Enabled"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                isInvalid
+                containerStateLayer
+                showDescriptionOnInvalid
+            >
+                <Radio value="cat">Cat</Radio>
+                <Radio value="dog">Dog</Radio>
+                <Radio value="dragon">Dragon</Radio>
+            </RadioGroup>
+
+            <RadioGroup
+                label="Enabled"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                orientation="horizontal"
+                labelPlacement="start"
+                containerStateLayer
+            >
+                <Radio value="cat">Cat</Radio>
+                <Radio value="dog">
+                    <Label>Dog</Label>
+                </Radio>
+                <Radio value="dragon">Dragon</Radio>
+            </RadioGroup>
+        </>
+    );
+};
+
+const CheckboxPreview = () => {
+    return (
+        <>
+            <div className="items">
+                <Checkbox isDisabled>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox isDisabled isSelected>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox containerStateLayer>
+                    <Label>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </Label>
+                </Checkbox>
+
+                <Checkbox isIndeterminate isDisabled>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox isIndeterminate>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox isIndeterminate isInvalid>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox isIndeterminate isInvalid isDisabled>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+            </div>
+
+            <CheckboxGroup
+                label="lorem ipsum"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                isDisabled
+            >
+                <Checkbox>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox isInvalid>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
+                </Checkbox>
+
+                <Checkbox>Lorem ipsum dolor sit amet, consectetur.</Checkbox>
+            </CheckboxGroup>
+
+            <CheckboxGroup
+                label="lorem ipsum"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                containerStateLayer
+            >
+                <Checkbox value="one">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox value="two">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
+                </Checkbox>
+
+                <Checkbox value="three">
+                    Lorem ipsum dolor sit amet, consectetur.
+                </Checkbox>
+            </CheckboxGroup>
+
+            <CheckboxGroup
+                isInvalid
+                label="lorem ipsum"
+                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                showDescriptionOnInvalid
+                containerStateLayer
+            >
+                <Checkbox value="one">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Checkbox>
+
+                <Checkbox value="two">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
+                </Checkbox>
+
+                <Checkbox value="three">
+                    Lorem ipsum dolor sit amet, consectetur.
+                </Checkbox>
+            </CheckboxGroup>
+        </>
+    );
+};
+
+const ThemeSelectorPreview = () => {
+    return <ThemeSelector />;
+};
+
+const IconPreview = () => {
+    return (
+        <>
+            <Icon icon={FileBraces} size={400} withText />
+
+            <p
+                style={{
+                    fontSize: "5rem",
+                    fontWeight: "400",
+                }}
+            >
+                <Icon icon={FileBraces} withText strokeWidth={1.375} /> with
+                text
+            </p>
+        </>
+    );
+};
+
+const TooltipPreview = () => {
+    return (
+        <div className="items">
+            <TooltipTrigger>
+                <Button>Tooltip</Button>
+
+                <Tooltip>Lorem ipsum dolor sit amet.</Tooltip>
+            </TooltipTrigger>
+
+            <DialogTrigger>
+                <Button>Rich Tooltip</Button>
+
+                <Popover>
+                    <RichTooltip>
+                        <RichTooltipInfo>
+                            <RichTooltipSubhead>Lorem Ipsum</RichTooltipSubhead>
+
+                            <RichTooltipText>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit. Mauris porttitor laoreet purus
+                                eu elementum. Vestibulum vitae vulputate justo,
+                                ac feugiat dolor.
+                            </RichTooltipText>
+                        </RichTooltipInfo>
+
+                        <RichTooltipActions>
+                            <LinkButton
+                                color="text"
+                                href="https://m3.material.io/components/tooltips/guidelines"
+                                target="_blank"
+                            >
+                                Lorem Ipsum
+                            </LinkButton>
+
+                            <Button color="text">Lorem</Button>
+                        </RichTooltipActions>
+                    </RichTooltip>
+                </Popover>
+            </DialogTrigger>
+        </div>
+    );
+};
+
 const ButtonPreview = () => {
-    const buttonTheme: ColorTheme[] = [
-        "primary",
-        "primary-variant",
-        "secondary",
-        "tertiary",
-        "error",
-        "inverse-surface",
-        "success",
+    const sizes: ButtonSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
     ];
+    const shapes: ButtonShape[] = ["round", "square"];
 
-    const buttonElements = [
-        {
-            element: FilledButton,
-            label: "Filled Button",
-            description: "This is filled button",
-        },
-        {
-            element: OutlinedButton,
-            label: "Outlined Button",
-            description: "This is outlined button",
-        },
-        {
-            element: TextButton,
-            label: "Text Button",
-            description: "This is text button",
-        },
+    const buttonColor: ButtonColor[] = [
+        "filled",
+        "tonal",
+        "outlined",
+        "text",
+        "elevated",
     ];
-
-    const avatarSrc =
-        "https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-
-    const onPress = () => {
-        toast({
-            dismissable: true,
-            heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            prefixIcon: <Copy />,
-            description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vulputate sollicitudin vulputate.",
-        });
-    };
-
-    const descriptionAvatar = "This is a avatar button";
 
     return (
-        <PreviewContainer label="Buttons">
-            {buttonTheme.map((theme) => {
-                return (
-                    <div className="item-container" key={theme}>
-                        {buttonElements.map((ButtonElement) => {
-                            return (
-                                <Fragment key={theme + ButtonElement.label}>
-                                    <ButtonElement.element
-                                        onPress={onPress}
-                                        theme={theme}
-                                        description={ButtonElement.description}
-                                    >
-                                        {ButtonElement.label}
-                                    </ButtonElement.element>
+        <>
+            {buttonColor.map((color) => (
+                <div className="button-color" key={`button-${color}`}>
+                    <h3 className={typography.headlineMediumEmphasized}>
+                        {color}
+                    </h3>
 
-                                    <ButtonElement.element
-                                        onPress={onPress}
-                                        theme={theme}
+                    {sizes.map((size) => (
+                        <div className="button-size" key={size}>
+                            <h4 className={typography.headlineSmall}>{size}</h4>
+
+                            {shapes.map((shape) => (
+                                <div className="items" key={shape}>
+                                    <Button
+                                        size={size}
+                                        shape={shape}
+                                        color={color}
+                                    >
+                                        click me
+                                    </Button>
+
+                                    <Button
+                                        size={size}
+                                        shape={shape}
+                                        color={color}
+                                        icon={Mouse}
+                                    >
+                                        click me
+                                    </Button>
+
+                                    <Button
+                                        size={size}
+                                        shape={shape}
+                                        color={color}
+                                        isPending
+                                    >
+                                        click me
+                                    </Button>
+
+                                    <Button
+                                        size={size}
+                                        shape={shape}
+                                        color={color}
                                         isDisabled
-                                        description={ButtonElement.description}
                                     >
-                                        {ButtonElement.label}
-                                    </ButtonElement.element>
+                                        click me
+                                    </Button>
 
-                                    {ButtonElement.label === "Text Button" && (
-                                        <ButtonElement.element
-                                            onPress={onPress}
-                                            theme={theme}
-                                            description={
-                                                "This button is shrinked"
-                                            }
-                                            shape="shrink"
+                                    {color !== "text" && (
+                                        <ToggleButton
+                                            size={size}
+                                            shape={shape}
+                                            color={color}
                                         >
-                                            {ButtonElement.label}
-                                        </ButtonElement.element>
+                                            click me
+                                        </ToggleButton>
                                     )}
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+            ))}
+        </>
+    );
+};
 
-                                    <ButtonElement.element
-                                        theme={theme}
-                                        onPress={onPress}
-                                        shape="square"
-                                        description="This is square button"
-                                    >
-                                        <Copy />
-                                    </ButtonElement.element>
+const IconButtonPreview = () => {
+    const sizes: ButtonSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+    const shapes: ButtonShape[] = ["round", "square"];
 
-                                    <ButtonElement.element
-                                        theme={theme}
-                                        onPress={onPress}
-                                        shape="avatar"
-                                        description={descriptionAvatar}
-                                    >
-                                        <Avatar
-                                            type="image"
-                                            image={{
-                                                type: "source",
-                                                src: avatarSrc,
-                                            }}
-                                        />
-                                    </ButtonElement.element>
+    const iconButtonWidth: IconButtonWidth[] = ["narrow", "default", "wide"];
+    const iconButtonColor: IconButtonColor[] = [
+        "filled",
+        "tonal",
+        "outlined",
+        "standard",
+    ];
 
-                                    <ButtonElement.element
-                                        theme={theme}
-                                        onPress={onPress}
-                                        shape="avatar"
-                                        description={descriptionAvatar}
+    return (
+        <>
+            {iconButtonColor.map((color) => (
+                <div key={`icon-button-${color}`} className="button-color">
+                    <h3 className={typography.headlineMedium}>{color}</h3>
+
+                    {sizes.map((size) => (
+                        <div className="button-size" key={size}>
+                            <h4 className={typography.headlineSmall}>{size}</h4>
+
+                            {iconButtonWidth.map((width) => (
+                                <Fragment key={width}>
+                                    <h5
+                                        className={
+                                            typography.titleMediumEmphasized
+                                        }
                                     >
-                                        <Avatar type="children" theme={theme}>
-                                            RV
-                                        </Avatar>
-                                    </ButtonElement.element>
+                                        {width}
+                                    </h5>
+                                    {shapes.map((shape) => (
+                                        <div key={shape} className="items">
+                                            <IconButton
+                                                size={size}
+                                                shape={shape}
+                                                color={color}
+                                                icon={Mouse}
+                                                width={width}
+                                            />
+
+                                            <IconButton
+                                                size={size}
+                                                shape={shape}
+                                                color={color}
+                                                icon={Mouse}
+                                                width={width}
+                                                isPending
+                                            />
+
+                                            <IconButton
+                                                size={size}
+                                                shape={shape}
+                                                color={color}
+                                                icon={Mouse}
+                                                width={width}
+                                                isDisabled
+                                            />
+
+                                            <ToggleIconButton
+                                                size={size}
+                                                shape={shape}
+                                                color={color}
+                                                icon={Mouse}
+                                                width={width}
+                                                selectedIcon={MouseOff}
+                                            />
+                                        </div>
+                                    ))}
                                 </Fragment>
-                            );
-                        })}
-                    </div>
-                );
-            })}
-        </PreviewContainer>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+            ))}
+        </>
     );
 };
 
 const LinkPreview = () => {
-    const linkTheme: ColorTheme[] = [
-        "primary",
-        "primary-variant",
-        "secondary",
-        "tertiary",
-        "error",
-        "inverse-surface",
-        "success",
-    ];
-
-    const linkElements = [
-        {
-            element: Link,
-            label: "Normal Link",
-            description: "This is regular link",
-        },
-        {
-            element: FilledButtonLink,
-            label: "Filled Button Link",
-            description: "This is filled button link",
-        },
-        {
-            element: OutlinedButtonLink,
-            label: "Outlined Button Link",
-            description: "This is outlined button link",
-        },
-    ];
-
     return (
-        <PreviewContainer label="Links">
-            {linkTheme.map((theme) => {
-                return (
-                    <div className="item-container" key={theme}>
-                        {linkElements.map((LinkElement) => {
-                            return (
-                                <Fragment key={theme + LinkElement.label}>
-                                    <LinkElement.element
-                                        href="/"
-                                        theme={theme}
-                                        description={LinkElement.description}
-                                    >
-                                        {LinkElement.label}
-                                    </LinkElement.element>
+        <div className="items">
+            <LinkButton
+                href="https://m3.material.io"
+                target="_blank"
+                color="elevated"
+            >
+                Material 3
+            </LinkButton>
 
-                                    <LinkElement.element
-                                        href="/"
-                                        theme={theme}
-                                        isDisabled
-                                        description={LinkElement.description}
-                                    >
-                                        {LinkElement.label}
-                                    </LinkElement.element>
-                                </Fragment>
-                            );
-                        })}
-                    </div>
-                );
-            })}
-        </PreviewContainer>
-    );
-};
-
-const SelectPreview = () => {
-    const buttonVariants: ButtonVariant[] = ["filled", "outlined", "text"];
-
-    const colorThemes: ColorTheme[] = [
-        "primary",
-        "primary-variant",
-        "secondary",
-        "tertiary",
-        "error",
-        "inverse-surface",
-        "success",
-    ];
-
-    const options: SelectOptions[] = [
-        {
-            key: "cakes",
-            displayValue: "Cakes 🎂",
-            description:
-                "A cake is a baked sweet food, traditionally made with flour, sugar, and eggs, often with added fats and leavening agents.",
-        },
-        {
-            key: "cookies",
-            displayValue: "Cookies 🍪",
-            description:
-                "Cookies are small, sweet baked goods made with flour, sugar, and fat, often featuring additions like chocolate chips, nuts, or fruit. ",
-            disabled: true,
-        },
-        {
-            key: "donuts",
-            displayValue: "Donuts 🍩",
-            description:
-                "Donuts are a type of fried or baked pastry, typically made from flour, sugar, and eggs, and often shaped like a ring with a hole in the center. ",
-        },
-        {
-            key: "pastries",
-            displayValue: "Pastries 🍰",
-            description:
-                "Pastries are baked goods made from dough, often with a flaky or crumbly texture, and can be sweet or savory.",
-        },
-        {
-            key: "ice-cream",
-            displayValue: "Icecream 🍨",
-            description:
-                "A frozen dairy dessert made mainly of sweetened cream or a mixture of milk and cream and frozen in a churn to whip in air and keep the ice crystals small.",
-        },
-    ];
-
-    const description = "Who doesn't like desserts?";
-
-    const [dessert, setDessert] = useState<Key>("cookies");
-
-    return (
-        <PreviewContainer label="Select">
-            {colorThemes.map((theme) => {
-                return (
-                    <div className="item-container" key={theme}>
-                        {buttonVariants.map((variant) => {
-                            return (
-                                <Fragment key={`select:${variant}:${theme}`}>
-                                    <Select
-                                        label="Desserts"
-                                        name="dessert"
-                                        options={options}
-                                        triggerVariant={variant}
-                                        placeholder="Select your favorite dessert"
-                                        description={description}
-                                        triggerTheme={theme}
-                                    />
-
-                                    <Select
-                                        label="Desserts"
-                                        options={options}
-                                        triggerVariant={variant}
-                                        placeholder="Select your favorite dessert"
-                                        description={description}
-                                        selectedKey={dessert}
-                                        triggerTheme={theme}
-                                        onSelectionChange={(key) => {
-                                            if (key === null) return;
-                                            setDessert(key);
-                                        }}
-                                    />
-
-                                    <Select
-                                        label="Desserts"
-                                        options={options}
-                                        triggerVariant={variant}
-                                        placeholder="Select your favorite dessert"
-                                        disabled
-                                        description={description}
-                                        triggerTheme={theme}
-                                    />
-                                </Fragment>
-                            );
-                        })}
-                    </div>
-                );
-            })}
-        </PreviewContainer>
-    );
-};
-
-const AvatarPreview = () => {
-    const avatarSrc =
-        "https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-
-    const avatarChildren = "RV";
-
-    const avatarSizes: AvatarSize[] = ["small", "normal", "large"];
-
-    const avatarTheme: ColorTheme[] = [
-        "primary",
-        "primary-variant",
-        "secondary",
-        "tertiary",
-        "error",
-        "inverse-surface",
-        "success",
-    ];
-
-    return (
-        <PreviewContainer label="Avatar">
-            {avatarSizes.map((size) => {
-                return (
-                    <div className="item-container" key={`avatar:${size}`}>
-                        <Avatar
-                            type="image"
-                            size={size}
-                            image={{
-                                type: "source",
-                                src: avatarSrc,
-                                alt: "dog-smile",
-                            }}
-                        />
-
-                        {avatarTheme.map((theme) => {
-                            return (
-                                <Avatar
-                                    type="children"
-                                    size={size}
-                                    theme={theme}
-                                    key={`avatar:${size}:${theme}`}
-                                >
-                                    {avatarChildren}
-                                </Avatar>
-                            );
-                        })}
-                    </div>
-                );
-            })}
-        </PreviewContainer>
-    );
-};
-
-const ModalPreview = () => {
-    return (
-        <PreviewContainer label="Modal Base">
-            <div className="item-container">
-                <ModalBase
-                    trigger={
-                        <FilledButton
-                            theme="primary"
-                            description="Open modal base"
-                        >
-                            Open modal
-                        </FilledButton>
-                    }
-                    modalOverlayProps={{
-                        isDismissable: true,
-                    }}
-                >
-                    <AvatarPreview />
-                </ModalBase>
-            </div>
-        </PreviewContainer>
-    );
-};
-
-const ModalActionPreview = () => {
-    const modalTheme: ColorTheme[] = [
-        "primary",
-        "primary-variant",
-        "secondary",
-        "tertiary",
-        "error",
-        "inverse-surface",
-        "success",
-    ];
-
-    const trigger = (theme: ColorTheme) => (
-        <OutlinedButton theme={theme} description="Open modal action">
-            Open modal
-        </OutlinedButton>
-    );
-
-    return (
-        <PreviewContainer label="Modal Action">
-            <div className="item-container">
-                {modalTheme.map((theme) => {
-                    return (
-                        <ModalAction
-                            closeText="Close"
-                            trigger={trigger(theme)}
-                            key={theme}
-                            header="Simple Modal"
-                            actionPlacement="end"
-                            modalAction={({ close }) => (
-                                <FilledButton onPress={close} theme={theme}>
-                                    Okay
-                                </FilledButton>
-                            )}
-                        >
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Vivamus fermentum felis felis,
-                                non euismod ipsum convallis at. Curabitur
-                                efficitur, lectus et molestie feugiat, ipsum
-                                justo euismod dolor, at dictum mi diam eget sem.
-                                Donec at dui suscipit magna rhoncus lobortis at
-                                quis ipsum. Curabitur mattis posuere libero, a
-                                vehicula arcu sagittis in. Duis mollis quam in
-                                turpis porta porta. Mauris quam orci, interdum
-                                sit amet purus ac, laoreet accumsan mi. Aliquam
-                                nec vulputate quam. Donec neque mi, bibendum eu
-                                est eu, aliquam condimentum diam.
-                            </p>
-
-                            <p>
-                                Cras tristique lorem vel magna porttitor
-                                molestie. Ut pretium ullamcorper tellus.
-                                Phasellus euismod neque non finibus pharetra.
-                            </p>
-                        </ModalAction>
-                    );
-                })}
-            </div>
-        </PreviewContainer>
+            <LinkIconButton
+                href="https://m3.material.io"
+                target="_blank"
+                icon={ExternalLinkIcon}
+                color="standard"
+            />
+        </div>
     );
 };
 
 const MenuPreview = () => {
-    const menuItems: HierarchyItemType[] = [
+    type MenuCombo = {
+        title: string;
+        menu: MenuNode[];
+    };
+
+    type MenuNode = MenuItemNode | MenuSectionNode | MenuDividerNode;
+
+    type MenuDividerNode = {
+        type: "divider";
+        id: string;
+    };
+
+    type MenuItemNode = {
+        type: "item";
+
+        id: string;
+        label: string;
+        leadingIcon?: LucideIcon;
+        trailingIcon?: LucideIcon;
+        supportingText?: string;
+        trailingText?: React.ReactNode;
+
+        submenu?: MenuNode[]; // recursion
+    };
+
+    type MenuSectionNode = {
+        type: "section";
+
+        id: string;
+
+        items: (MenuItemNode | MenuDividerNode)[];
+    };
+
+    type MenuComboList = MenuCombo[];
+
+    const menuCombo: MenuComboList = [
         {
-            id: "1",
-            type: "link",
-            href: "https://google.com",
-            target: "_blank",
-            node: "Google",
-        },
-        {
-            id: "2",
-            type: "link",
-            href: "https://adgytec.in",
-            target: "_blank",
-            node: "Adgytec",
-        },
-        {
-            id: "3",
-            type: "separator",
-        },
-        {
-            id: "4",
-            type: "button",
-            onPress: () => alert("hmm i am pressed"),
-            node: "Press me",
-        },
-        {
-            id: "5",
-            type: "button",
-            onPress: () => {},
-            node: "It will not do anything",
-        },
-        {
-            id: "6",
-            type: "separator",
-        },
-        {
-            id: "7",
-            type: "sub-items",
-            subItems: [
+            title: "Only items",
+            menu: [
                 {
-                    id: "1",
-                    type: "link",
-                    href: "https://google.com",
-                    target: "_blank",
-                    node: "Google",
+                    type: "item",
+                    id: "0-0",
+                    label: "Profile",
+                    trailingIcon: User,
                 },
                 {
-                    id: "2",
-                    type: "link",
-                    href: "https://adgytec.in",
-                    target: "_blank",
-                    node: "Adgytec",
+                    type: "item",
+                    id: "0-1",
+                    label: "Settings",
+                    trailingIcon: Settings,
                 },
                 {
-                    id: "3",
-                    type: "separator",
-                },
-                {
-                    id: "4",
-                    type: "button",
-                    onPress: () => alert("hmm i am pressed"),
-                    node: "Press me",
-                },
-                {
-                    id: "5",
-                    type: "button",
-                    onPress: () => {},
-                    node: "It will not do anything",
-                },
-                {
-                    id: "6",
-                    type: "separator",
-                },
-                {
-                    id: "7",
-                    type: "sub-items",
-                    subItems: [
-                        {
-                            id: "1",
-                            type: "link",
-                            href: "https://google.com",
-                            target: "_blank",
-                            node: "Google",
-                        },
-                        {
-                            id: "2",
-                            type: "link",
-                            href: "https://adgytec.in",
-                            target: "_blank",
-                            node: "Adgytec",
-                        },
-                        {
-                            id: "3",
-                            type: "separator",
-                        },
-                        {
-                            id: "4",
-                            type: "button",
-                            onPress: () => alert("hmm i am pressed"),
-                            node: "Press me",
-                        },
-                        {
-                            id: "5",
-                            type: "button",
-                            onPress: () => {},
-                            node: "It will not do anything",
-                        },
-                        {
-                            id: "6",
-                            type: "separator",
-                        },
-                        {
-                            id: "7",
-                            type: "sub-items",
-                            subItems: [
-                                {
-                                    id: "1",
-                                    type: "link",
-                                    href: "https://google.com",
-                                    target: "_blank",
-                                    node: "Google",
-                                },
-                                {
-                                    id: "2",
-                                    type: "link",
-                                    href: "https://adgytec.in",
-                                    target: "_blank",
-                                    node: "Adgytec",
-                                },
-                                {
-                                    id: "3",
-                                    type: "separator",
-                                },
-                                {
-                                    id: "4",
-                                    type: "button",
-                                    onPress: () => alert("hmm i am pressed"),
-                                    node: "Press me",
-                                },
-                                {
-                                    id: "5",
-                                    type: "button",
-                                    onPress: () => {},
-                                    node: "It will not do anything",
-                                },
-                                {
-                                    id: "6",
-                                    type: "separator",
-                                },
-                                {
-                                    id: "7",
-                                    type: "sub-items",
-                                    subItems: [
-                                        {
-                                            id: "1",
-                                            type: "link",
-                                            href: "https://google.com",
-                                            target: "_blank",
-                                            node: "Google",
-                                        },
-                                        {
-                                            id: "2",
-                                            type: "link",
-                                            href: "https://adgytec.in",
-                                            target: "_blank",
-                                            node: "Adgytec",
-                                        },
-                                        {
-                                            id: "3",
-                                            type: "separator",
-                                        },
-                                        {
-                                            id: "4",
-                                            type: "button",
-                                            onPress: () =>
-                                                alert("hmm i am pressed"),
-                                            node: "Press me",
-                                        },
-                                        {
-                                            id: "5",
-                                            type: "button",
-                                            onPress: () => {},
-                                            node: "It will not do anything",
-                                        },
-                                        {
-                                            id: "6",
-                                            type: "separator",
-                                        },
-                                        {
-                                            id: "7",
-                                            type: "sub-items",
-                                            subItems: [],
-                                            node: "Sub Items",
-                                        },
-                                        {
-                                            id: "8",
-                                            type: "item-node",
-                                            node: (
-                                                <OutlinedButton
-                                                    onPress={() =>
-                                                        alert(
-                                                            "sign out pressed"
-                                                        )
-                                                    }
-                                                    theme="error"
-                                                >
-                                                    Sign Out
-                                                </OutlinedButton>
-                                            ),
-                                        },
-                                    ],
-                                    node: "Sub Items",
-                                },
-                                {
-                                    id: "8",
-                                    type: "item-node",
-                                    node: (
-                                        <OutlinedButton
-                                            onPress={() =>
-                                                alert("sign out pressed")
-                                            }
-                                            theme="error"
-                                        >
-                                            Sign Out
-                                        </OutlinedButton>
-                                    ),
-                                },
-                            ],
-                            node: "Sub Items",
-                        },
-                        {
-                            id: "8",
-                            type: "item-node",
-                            node: (
-                                <OutlinedButton
-                                    onPress={() => alert("sign out pressed")}
-                                    theme="error"
-                                >
-                                    Sign Out
-                                </OutlinedButton>
-                            ),
-                        },
-                    ],
-                    node: "Sub Items",
-                },
-                {
-                    id: "8",
-                    type: "item-node",
-                    node: (
-                        <OutlinedButton
-                            onPress={() => alert("sign out pressed")}
-                            theme="error"
-                        >
-                            Sign Out
-                        </OutlinedButton>
-                    ),
+                    type: "item",
+                    id: "0-2",
+                    label: "Logout",
+                    trailingIcon: LogOut,
                 },
             ],
-            node: "Sub Items",
         },
+
         {
-            id: "8",
-            type: "item-node",
-            node: (
-                <OutlinedButton
-                    onPress={() => alert("sign out pressed")}
-                    theme="error"
-                >
-                    Sign Out
-                </OutlinedButton>
-            ),
+            title: "Only sections",
+            menu: [
+                {
+                    type: "section",
+                    id: "1-0",
+                    items: [
+                        { type: "item", id: "1-0-0", label: "Profile" },
+                        { type: "item", id: "1-0-2", label: "Security" },
+                    ],
+                },
+                {
+                    type: "section",
+                    id: "1-1",
+                    items: [
+                        { type: "item", id: "1-1-0", label: "Theme" },
+                        { type: "item", id: "1-1-1", label: "Language" },
+                    ],
+                },
+            ],
+        },
+
+        {
+            title: "Items + section",
+            menu: [
+                { type: "item", id: "2-0", label: "Home" },
+                {
+                    type: "section",
+                    id: "2-1",
+                    items: [
+                        { type: "item", id: "2-1-0", label: "Profile" },
+                        { type: "item", id: "2-1-1", label: "Settings" },
+                    ],
+                },
+            ],
+        },
+
+        {
+            title: "Section + item",
+            menu: [
+                {
+                    type: "section",
+                    id: "3-0",
+                    items: [
+                        { type: "item", id: "3-0-0", label: "Profile" },
+                        { type: "item", id: "3-0-1", label: "Settings" },
+                    ],
+                },
+                { type: "item", id: "3-1", label: "Logout" },
+            ],
+        },
+
+        {
+            title: "Mixed",
+            menu: [
+                { type: "item", id: "4-0", label: "Home" },
+                {
+                    type: "section",
+                    id: "4-1",
+                    items: [{ type: "item", id: "4-1-0", label: "Profile" }],
+                },
+                { type: "item", id: "4-2", label: "Notifications" },
+                {
+                    type: "section",
+                    id: "4-3",
+                    items: [{ type: "item", id: "4-3-0", label: "Privacy" }],
+                },
+            ],
+        },
+
+        {
+            title: "Section (no header)",
+            menu: [
+                {
+                    type: "section",
+                    id: "5-0",
+                    items: [
+                        { type: "item", id: "5-0-0", label: "Option 1" },
+                        { type: "item", id: "5-0-1", label: "Option 2" },
+                    ],
+                },
+            ],
+        },
+
+        {
+            title: "Item variants",
+            menu: [
+                { type: "item", id: "6-0", label: "Basic" },
+                {
+                    type: "item",
+                    id: "6-1",
+                    label: "With leading icon",
+                    leadingIcon: Clipboard,
+                },
+                {
+                    type: "item",
+                    id: "6-2",
+                    label: "With supporting text",
+                    supportingText: "Extra info",
+                },
+                {
+                    type: "item",
+                    id: "6-3",
+                    label: "With trailing text",
+                    trailingText: "⌘K",
+                },
+                {
+                    type: "item",
+                    id: "6-4",
+                    label: "Full",
+                    leadingIcon: Clipboard,
+                    supportingText: "Details",
+                    trailingText: "Ctrl+S",
+                },
+            ],
+        },
+
+        {
+            title: "Submenu (items)",
+            menu: [
+                {
+                    type: "item",
+                    id: "7-0",
+                    label: "File",
+                    submenu: [
+                        { type: "item", id: "7-0-0", label: "New" },
+                        { type: "item", id: "7-0-1", label: "Open" },
+                    ],
+                },
+            ],
+        },
+
+        {
+            title: "Submenu (sections)",
+            menu: [
+                {
+                    type: "item",
+                    id: "8-0",
+                    label: "Edit",
+                    submenu: [
+                        {
+                            type: "section",
+                            id: "8-0-0",
+                            items: [
+                                { type: "item", id: "8-0-0-0", label: "Copy" },
+                                { type: "item", id: "8-0-0-1", label: "Paste" },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
+
+        {
+            title: "Nested submenu",
+            menu: [
+                {
+                    type: "item",
+                    id: "9-0",
+                    label: "More",
+                    submenu: [
+                        {
+                            type: "item",
+                            id: "9-0-0",
+                            label: "Advanced",
+                            submenu: [
+                                {
+                                    type: "section",
+                                    id: "9-0-0-0",
+                                    items: [
+                                        {
+                                            type: "item",
+                                            id: "9-0-0-0-0",
+                                            label: "Logs",
+                                        },
+                                        {
+                                            type: "item",
+                                            id: "9-0-0-0-1",
+                                            label: "Debug",
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
+
+        {
+            title: "Mixed + nested",
+            menu: [
+                { type: "item", id: "10-0", label: "Home" },
+                {
+                    type: "item",
+                    id: "10-1",
+                    label: "File",
+                    submenu: [
+                        { type: "item", id: "10-1-0", label: "New" },
+                        {
+                            type: "section",
+                            id: "10-1-1",
+                            items: [
+                                {
+                                    type: "item",
+                                    id: "10-1-1-0",
+                                    label: "file1.txt",
+                                },
+                                {
+                                    type: "item",
+                                    id: "10-1-1-1",
+                                    label: "file2.txt",
+                                },
+                            ],
+                        },
+                    ],
+                },
+                {
+                    type: "section",
+                    id: "10-2",
+                    items: [
+                        { type: "item", id: "10-2-0", label: "Profile" },
+                        {
+                            type: "item",
+                            id: "10-2-1",
+                            label: "Settings",
+                            submenu: [
+                                {
+                                    type: "item",
+                                    id: "10-2-1-0",
+                                    label: "Theme",
+                                },
+                                {
+                                    type: "item",
+                                    id: "10-2-1-1",
+                                    label: "Privacy",
+                                },
+                            ],
+                        },
+                    ],
+                },
+                { type: "item", id: "10-3", label: "Logout" },
+            ],
         },
     ];
 
-    return (
-        <PreviewContainer label="Menu">
-            <div className="item-container">
-                <MenuButton menuItems={menuItems} cardBackground="gradient">
-                    <FilledButton>Open Menu</FilledButton>
-                </MenuButton>
+    const prob = (p = 0.5) => Math.random() < p;
 
-                <MenuLabel menuItems={menuItems} description="avatar menu">
-                    <Avatar type="children" theme="inverse-surface">
-                        RV
-                    </Avatar>
-                </MenuLabel>
-            </div>
-        </PreviewContainer>
-    );
-};
+    const layout = () => (prob() ? "standard" : "grouped");
+    const color = () => (prob() ? "standard" : "vibrant");
 
-const SidebarPreview = () => {
-    const sidebarPositions: SidebarPosition[] = [
-        "inline-start",
-        "inline-end",
-        "block-start",
-        "block-end",
-    ];
+    const randomButtonColor = (): ButtonColor => {
+        const colors: ButtonColor[] = [
+            "filled",
+            "tonal",
+            "outlined",
+            "elevated",
+            "text",
+        ];
+        return colors[Math.floor(Math.random() * colors.length)];
+    };
 
-    const sidebarSizes: SidebarSize[] = [
-        "full",
-        "three-quarters",
-        "half",
-        "quarter",
-    ];
+    const renderMenuItem = (item: MenuItemNode) => {
+        return (
+            <MenuItem
+                leadingIcon={item.leadingIcon}
+                supportingText={item.supportingText}
+                trailingText={
+                    item.trailingText && (
+                        <MenuShortcut>{item.trailingText}</MenuShortcut>
+                    )
+                }
+                trailingIcon={item.trailingIcon}
+                label={item.label}
+            />
+        );
+    };
 
-    const getTrigger = (size: SidebarSize) => {
-        let colorTheme: ColorTheme;
-        switch (size) {
-            case "full":
-                colorTheme = "primary";
-                break;
-            case "three-quarters":
-                colorTheme = "primary-variant";
-                break;
-            case "half":
-                colorTheme = "secondary";
-                break;
-            case "quarter":
-                colorTheme = "tertiary";
-                break;
+    const renderMenu = (item: MenuNode) => {
+        if (item.type === "section") {
+            return (
+                <MenuSection items={item.items} selectionMode="multiple">
+                    {(item) => renderMenu(item)}
+                </MenuSection>
+            );
         }
 
-        return <OutlinedButton theme={colorTheme}>Open sidebar</OutlinedButton>;
+        if (item.type === "divider") return <Divider />;
+
+        if (item.submenu) {
+            return (
+                <SubmenuTrigger>
+                    {renderMenuItem(item)}
+
+                    <SubmenuPopover>
+                        <Menu items={item.submenu} selectionMode="multiple">
+                            {(item) => renderMenu(item)}
+                        </Menu>
+                    </SubmenuPopover>
+                </SubmenuTrigger>
+            );
+        }
+
+        return renderMenuItem(item);
     };
 
     return (
-        <PreviewContainer label="Sidebar">
-            {sidebarPositions.map((position) => {
-                return (
-                    <div className="item-container" key={position}>
-                        {sidebarSizes.map((size) => {
-                            return (
-                                <Sidebar
-                                    key={size + position}
-                                    sidebarSize={size}
-                                    sidebarPosition={position}
-                                    isDismissable
-                                    trigger={getTrigger(size)}
-                                >
-                                    {({ close }) => {
-                                        return (
-                                            <div>
-                                                <p>Sidebar content</p>
+        <div className="items">
+            {menuCombo.map((combo) => {
+                const menuLayout = layout();
+                const menuColor = color();
 
-                                                <TextButton onPress={close}>
-                                                    Close
-                                                </TextButton>
-                                            </div>
-                                        );
-                                    }}
-                                </Sidebar>
-                            );
-                        })}
-                    </div>
+                const triggerColor = randomButtonColor();
+
+                return (
+                    <MenuTrigger
+                        key={combo.title}
+                        layout={menuLayout}
+                        color={menuColor}
+                    >
+                        <Button
+                            color={triggerColor}
+                            tooltip={`layout: ${menuLayout}, color: ${menuColor}`}
+                        >
+                            {combo.title}
+                        </Button>
+
+                        <MenuPopover>
+                            <Menu items={combo.menu} selectionMode="multiple">
+                                {(item) => {
+                                    return renderMenu(item);
+                                }}
+                            </Menu>
+                        </MenuPopover>
+                    </MenuTrigger>
                 );
             })}
-        </PreviewContainer>
+        </div>
     );
 };
 
-const TreePreview = () => {
-    const tree: TreeHierarchyItemType[] = [
-        {
-            id: "1",
-            type: "link",
-            node: "Dashboard",
-            href: "https://www.google.com",
-            target: "_blank",
-            active: true,
-        },
-        {
-            id: "2",
-            type: "button",
-            node: "Actions",
-            onPress: () => alert("Main action triggered"),
-        },
-        {
-            id: "3",
-            type: "sub-items",
-            node: "Settings",
-            subItems: [
-                {
-                    id: "3.1",
-                    type: "link",
-                    node: "Account",
-                    href: "/settings/account",
-                },
-                {
-                    id: "3.2",
-                    type: "button",
-                    node: "Logout",
-                    onPress: () => alert("Logging out"),
-                },
-            ],
-        },
-        {
-            id: "4",
-            type: "sub-items",
-            node: "Support",
-            subItems: [
-                {
-                    id: "4.1",
-                    type: "link",
-                    node: "FAQ",
-                    href: "/support/faq",
-                },
-                {
-                    id: "4.2",
-                    type: "link",
-                    node: "Contact Us",
-                    href: "/support/contact",
-                    target: "_blank",
-                },
-            ],
-        },
-        {
-            id: "5",
-            type: "item-node",
-            node: (
-                <OutlinedButton
-                    theme="error"
-                    onPress={() => {
-                        alert("Signing out user");
-                    }}
-                >
-                    Sign out
-                </OutlinedButton>
-            ),
-        },
+const SplitButtonPreview = () => {
+    const sizes: ButtonSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
     ];
 
+    const colors: SplitButtonColor[] = [
+        "filled",
+        "tonal",
+        "outlined",
+        "elevated",
+    ];
+
+    const RenderSplitButton = ({
+        size,
+        color,
+        isDisabled,
+        isPending,
+        label = true,
+    }: {
+        size: ButtonSize;
+        color: SplitButtonColor;
+        isPending?: boolean;
+        isDisabled?: boolean;
+        label?: boolean;
+    }) => {
+        return (
+            <SplitButton
+                color={color}
+                size={size}
+                isDisabled={isDisabled}
+                isPending={isPending}
+            >
+                <SplitButtonPrimary tooltip="download" icon={Download}>
+                    {label && "Download"}
+                </SplitButtonPrimary>
+
+                <MenuTrigger
+                    color={!label ? "standard" : "vibrant"}
+                    layout={!label ? "standard" : "grouped"}
+                >
+                    <SplitButtonTrigger tooltip="more actions" />
+                    <Popover>
+                        <Menu>
+                            <MenuSection>
+                                <MenuSectionHeader>
+                                    Quick Actions
+                                </MenuSectionHeader>
+
+                                <MenuItem trailingIcon={Eye} label="Preview" />
+
+                                <MenuItem trailingIcon={Share2} label="Share" />
+                            </MenuSection>
+
+                            {!label && <Divider />}
+
+                            <MenuSection>
+                                <MenuSectionHeader>Security</MenuSectionHeader>
+
+                                <MenuItem
+                                    trailingIcon={GlobeLock}
+                                    supportingText="Make item private"
+                                    label="Private"
+                                />
+
+                                <SubmenuTrigger>
+                                    <MenuItem
+                                        trailingIcon={GlobeLock}
+                                        supportingText="Make item private"
+                                        label="More"
+                                    />
+
+                                    <SubmenuPopover>
+                                        <Menu>
+                                            <MenuSection>
+                                                <MenuItem label="Lock" />
+
+                                                <MenuItem label="Archive" />
+                                            </MenuSection>
+                                        </Menu>
+                                    </SubmenuPopover>
+                                </SubmenuTrigger>
+                            </MenuSection>
+                        </Menu>
+                    </Popover>
+                </MenuTrigger>
+            </SplitButton>
+        );
+    };
+
     return (
-        <PreviewContainer label="Tree">
-            <Tree items={tree} />
-        </PreviewContainer>
+        <>
+            {colors.map((color) => (
+                <div className="button-color" key={`button-${color}`}>
+                    <h3 className={typography.headlineMediumEmphasized}>
+                        {color}
+                    </h3>
+
+                    {sizes.map((size) => (
+                        <div className="button-size" key={size}>
+                            <h4 className={typography.headlineSmall}>{size}</h4>
+
+                            <div className="items">
+                                <RenderSplitButton size={size} color={color} />
+
+                                <RenderSplitButton
+                                    size={size}
+                                    color={color}
+                                    isPending
+                                />
+
+                                <RenderSplitButton
+                                    size={size}
+                                    color={color}
+                                    isDisabled
+                                />
+
+                                <RenderSplitButton
+                                    size={size}
+                                    color={color}
+                                    label={false}
+                                />
+
+                                <RenderSplitButton
+                                    size={size}
+                                    color={color}
+                                    label={false}
+                                    isPending
+                                />
+
+                                <RenderSplitButton
+                                    size={size}
+                                    color={color}
+                                    label={false}
+                                    isDisabled
+                                />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            ))}
+        </>
     );
 };
 
-const NavSidebarPreview = () => {
-    const tree: TreeHierarchyItemType[] = [
-        {
-            id: "1",
-            type: "link",
-            node: "Dashboard",
-            href: "https://www.google.com",
-            target: "_blank",
-            active: true,
-        },
-        {
-            id: "2",
-            type: "button",
-            node: "Actions",
-            onPress: () => alert("Main action triggered"),
-        },
-        {
-            id: "3",
-            type: "sub-items",
-            node: "Settings",
-            subItems: [
-                {
-                    id: "3.1",
-                    type: "link",
-                    node: "Account",
-                    href: "/settings/account",
-                },
-                {
-                    id: "3.2",
-                    type: "button",
-                    node: "Logout",
-                    onPress: () => alert("Logging out"),
-                },
-            ],
-        },
-        {
-            id: "4",
-            type: "sub-items",
-            node: "Support",
-            subItems: [
-                {
-                    id: "4.1",
-                    type: "link",
-                    node: "FAQ",
-                    href: "/support/faq",
-                },
-                {
-                    id: "4.2",
-                    type: "link",
-                    node: "Contact Us",
-                    href: "/support/contact",
-                    target: "_blank",
-                },
-            ],
-        },
-        {
-            id: "5",
-            type: "item-node",
-            node: (
-                <OutlinedButton
-                    theme="error"
-                    onPress={() => {
-                        alert("Signing out user");
-                    }}
-                >
-                    Sign out
-                </OutlinedButton>
-            ),
-        },
+const ButtonGroupPreview = () => {
+    const sizes: ButtonSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
     ];
 
+    const shapes: ButtonShape[] = ["round", "square"];
+
+    const colors: CoreButtonColor[] = ["outlined", "tonal", "filled"];
+
     return (
-        <PreviewContainer label="Nav Sidebar">
-            <div className="items-container">
-                <NavigationSidebar items={tree} />
-            </div>
-        </PreviewContainer>
+        <>
+            {colors.map((color) => (
+                <Fragment key={color}>
+                    {shapes.map((shape) => (
+                        <Fragment key={shape}>
+                            <h3
+                                className={typography.titleLargeEmphasized}
+                                style={{
+                                    textAlign: "center",
+                                }}
+                            >{`${color}-${shape}`}</h3>
+
+                            {sizes.map((size) => (
+                                <Fragment key={size}>
+                                    <div className="items">
+                                        <ButtonGroup
+                                            size={size}
+                                            color={color}
+                                            shape={shape}
+                                        >
+                                            <ToggleButton id={"one"}>
+                                                One
+                                            </ToggleButton>
+
+                                            <ToggleButton id={"two"}>
+                                                Two
+                                            </ToggleButton>
+
+                                            <ToggleButton
+                                                id={"three"}
+                                                icon={Armchair}
+                                            >
+                                                Three
+                                            </ToggleButton>
+
+                                            <ToggleIconButton
+                                                id={"four"}
+                                                icon={Sofa}
+                                            />
+
+                                            <ToggleButton id={"five"}>
+                                                Five
+                                            </ToggleButton>
+                                        </ButtonGroup>
+                                    </div>
+                                </Fragment>
+                            ))}
+
+                            <Divider
+                                style={
+                                    {
+                                        "--md-divider-color":
+                                            "var(--md-sys-color-primary)",
+                                    } as CSSProperties
+                                }
+                            />
+                        </Fragment>
+                    ))}
+                </Fragment>
+            ))}
+        </>
     );
 };
 
-const NavMenuPreview = () => {
-    const tree: HierarchyItemType[] = [
-        {
-            id: "1",
-            type: "link",
-            node: "Dashboard",
-            href: "https://www.google.com",
-            target: "_blank",
-            active: true,
-        },
-        {
-            id: "2",
-            type: "button",
-            node: "Actions",
-            onPress: () => alert("Main action triggered"),
-        },
-        {
-            id: "3",
-            type: "sub-items",
-            node: "Settings",
-            subItems: [
-                {
-                    id: "3.1",
-                    type: "link",
-                    node: "Account",
-                    href: "/settings/account",
-                },
-                {
-                    id: "3.2",
-                    type: "button",
-                    node: "Logout",
-                    onPress: () => alert("Logging out"),
-                },
-            ],
-        },
-        {
-            id: "4",
-            type: "sub-items",
-            node: "Support",
-            subItems: [
-                {
-                    id: "4.1",
-                    type: "link",
-                    node: "FAQ",
-                    href: "/support/faq",
-                },
-                {
-                    id: "4.2",
-                    type: "link",
-                    node: "Contact Us",
-                    href: "/support/contact",
-                    target: "_blank",
-                },
-            ],
-        },
-        {
-            id: "5",
-            type: "item-node",
-            node: (
-                <OutlinedButton
-                    theme="error"
-                    onPress={() => {
-                        alert("Signing out user");
-                    }}
-                >
-                    Sign out
-                </OutlinedButton>
-            ),
-        },
+const ConnectedButtonGroupPreview = () => {
+    const sizes: ButtonSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
+
+    const shapes: ButtonShape[] = ["round", "square"];
+
+    const buttonColor: ConnectedButtonGroupColor[] = [
+        "filled",
+        "tonal",
+        "outlined",
+        "elevated",
     ];
 
     return (
-        <PreviewContainer label="Nav Menu">
-            <NavigationMenu items={tree} />
-        </PreviewContainer>
+        <>
+            {buttonColor.map((color) => (
+                <div className="button-color" key={`button-${color}`}>
+                    <h3 className={typography.headlineMediumEmphasized}>
+                        {color}
+                    </h3>
+
+                    {sizes.map((size) => (
+                        <div className="button-size" key={size}>
+                            <h4 className={typography.headlineSmall}>{size}</h4>
+
+                            {shapes.map((shape) => (
+                                <div className="items" key={shape}>
+                                    <ConnectedButtonGroup
+                                        size={size}
+                                        shape={shape}
+                                        color={color}
+                                    >
+                                        <ConnectedButton id="1" icon={Sun}>
+                                            Sun
+                                        </ConnectedButton>
+
+                                        <ConnectedButton id="2" icon={SunMoon}>
+                                            Sun Moon
+                                        </ConnectedButton>
+
+                                        <ConnectedButton
+                                            id="3"
+                                            icon={SunSnow}
+                                            isDisabled
+                                        >
+                                            Sun Snow
+                                        </ConnectedButton>
+
+                                        <ConnectedButton id="4" icon={CloudSun}>
+                                            Cloud Sun
+                                        </ConnectedButton>
+
+                                        <ConnectedButton
+                                            id="5"
+                                            icon={CloudSnow}
+                                        />
+                                    </ConnectedButtonGroup>
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+            ))}
+        </>
     );
 };
 
-const NavResponsivePreview = () => {
-    const tree: TreeHierarchyItemType[] = [
-        {
-            id: "1",
-            type: "link",
-            node: "Dashboard",
-            href: "https://www.google.com",
-            target: "_blank",
-            active: true,
-        },
-        {
-            id: "2",
-            type: "button",
-            node: "Actions",
-            onPress: () => alert("Main action triggered"),
-        },
-        {
-            id: "3",
-            type: "sub-items",
-            node: "Settings",
-            subItems: [
-                {
-                    id: "3.1",
-                    type: "link",
-                    node: "Account",
-                    href: "/settings/account",
-                },
-                {
-                    id: "3.2",
-                    type: "button",
-                    node: "Logout",
-                    onPress: () => alert("Logging out"),
-                },
-            ],
-        },
-        {
-            id: "4",
-            type: "sub-items",
-            node: "Support",
-            subItems: [
-                {
-                    id: "4.1",
-                    type: "link",
-                    node: "FAQ",
-                    href: "/support/faq",
-                },
-                {
-                    id: "4.2",
-                    type: "link",
-                    node: "Contact Us",
-                    href: "/support/contact",
-                    target: "_blank",
-                },
-            ],
-        },
-        {
-            id: "5",
-            type: "item-node",
-            node: (
-                <OutlinedButton
-                    theme="error"
-                    onPress={() => {
-                        alert("Signing out user");
-                    }}
-                >
-                    Sign out
-                </OutlinedButton>
-            ),
-        },
-    ];
+const DialogPreview = () => {
+    return (
+        <div className="items">
+            <DialogTrigger>
+                <Button>Simple Dialog</Button>
+
+                <ModalOverlay isDismissable>
+                    <Modal>
+                        <Dialog
+                            style={{
+                                display: "grid",
+                                gap: "1rem",
+                            }}
+                        >
+                            <div>
+                                <h2
+                                    slot="title"
+                                    className={clsx(DialogHeadlineTypography)}
+                                >
+                                    Simple Dialog
+                                </h2>
+
+                                <Divider />
+                            </div>
+
+                            <div className={clsx(DialogBodyTypography)}>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit. Phasellus vehicula enim eu
+                                    tortor semper faucibus. Nullam vitae
+                                    pulvinar ligula. Nulla consequat, tortor
+                                    quis volutpat luctus, ipsum sem venenatis
+                                    augue, gravida feugiat ligula nulla vitae
+                                    tortor.
+                                </p>
+                            </div>
+
+                            <div>
+                                <Divider />
+
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "flex-end",
+                                    }}
+                                >
+                                    <Button color="text" slot="close">
+                                        Close
+                                    </Button>
+                                </div>
+                            </div>
+                        </Dialog>
+                    </Modal>
+                </ModalOverlay>
+            </DialogTrigger>
+
+            <DialogTrigger>
+                <Button color="elevated">Action Dialog</Button>
+
+                <ModalOverlay>
+                    <Modal>
+                        <ActionDialog
+                            divider="all"
+                            heading="Squirrel?"
+                            icon={Squirrel}
+                            actions={[
+                                <Button color="text" slot="close" key="close">
+                                    Close
+                                </Button>,
+                                <Button
+                                    color="text"
+                                    slot="close"
+                                    key="Squirrel"
+                                >
+                                    Squirrel
+                                </Button>,
+                            ]}
+                        >
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit. Phasellus vehicula enim eu
+                                tortor semper faucibus. Nullam vitae pulvinar
+                                ligula. Nulla consequat, tortor quis volutpat
+                                luctus, ipsum sem venenatis augue, gravida
+                                feugiat ligula nulla vitae tortor. Praesent
+                                commodo ac metus eu lobortis. Ut aliquam
+                                dignissim lacus vulputate imperdiet. Donec lorem
+                                dolor, semper commodo sollicitudin ut, pharetra
+                                eget ipsum. Cras ac aliquet felis. Sed non arcu
+                                luctus, pulvinar nulla nec, ornare velit.
+                                Suspendisse eget metus vel ligula sollicitudin
+                                pulvinar sit amet vel metus. Pellentesque auctor
+                                gravida varius. Integer mollis arcu enim, eu
+                                malesuada sem mollis ut. Praesent vel mollis
+                                risus. Ut molestie eleifend neque, eget
+                                scelerisque eros. Aenean et metus eleifend justo
+                                pulvinar vestibulum. Aenean facilisis odio ut
+                                pharetra pretium. Aenean semper tortor sit amet
+                                magna malesuada congue.
+                            </p>
+                            <br />
+                            <p>
+                                Quisque tellus tellus, pharetra nec ex et,
+                                malesuada cursus ante. Nulla tincidunt placerat
+                                sapien, a aliquet velit placerat quis. Maecenas
+                                pharetra et nulla a pharetra. Praesent tincidunt
+                                ullamcorper lacus vitae imperdiet. Sed fringilla
+                                sem vel magna dignissim pretium. In vehicula
+                                fringilla lacinia. In fringilla nunc a lorem
+                                pulvinar, ac lacinia ante semper. Cras faucibus,
+                                odio eget dignissim blandit, risus tortor
+                                aliquam massa, ut varius diam est at orci.
+                                Vivamus non turpis eu nisl fringilla
+                                pellentesque non in mauris. Sed feugiat eros et
+                                est dignissim, non condimentum risus
+                                ullamcorper. Vivamus in purus neque. Phasellus
+                                sed libero et nisl luctus tincidunt vitae in
+                                nibh.
+                            </p>
+                            <br />
+                            <p>
+                                Sed rhoncus erat eget vehicula aliquam. Aenean
+                                luctus auctor metus eu elementum. Duis hendrerit
+                                metus non erat porttitor, nec dignissim mauris
+                                pretium. Quisque porttitor, lacus eu condimentum
+                                interdum, diam tortor consectetur augue, in
+                                pellentesque est nibh et ipsum. Sed vel
+                                consectetur magna. Ut id tincidunt risus.
+                                Integer interdum augue eu ex tincidunt, et
+                                faucibus nunc blandit. Praesent suscipit
+                                placerat luctus. Ut odio turpis, varius cursus
+                                erat at, lacinia suscipit libero.
+                            </p>
+                            <br />
+                            <p>
+                                Praesent sed neque porttitor, gravida massa
+                                eget, aliquet nulla. Nam tristique, sapien nec
+                                posuere feugiat, enim purus ullamcorper nibh, at
+                                vehicula nibh diam id metus. Duis purus libero,
+                                scelerisque et volutpat sit amet, dapibus non
+                                ante. Ut sagittis scelerisque efficitur. Nulla
+                                ut pretium erat. Suspendisse potenti. Donec
+                                vulputate nibh quis arcu placerat laoreet.
+                                Aenean enim est, rutrum blandit semper ut,
+                                mollis a elit. Suspendisse at varius tortor.
+                                Etiam molestie in urna sit amet pellentesque.
+                                Fusce justo augue, porta at consequat sit amet,
+                                blandit in dolor. Aliquam erat volutpat. Donec
+                                ultricies eleifend arcu quis fringilla. Etiam
+                                sit amet scelerisque sapien.
+                            </p>
+                        </ActionDialog>
+                    </Modal>
+                </ModalOverlay>
+            </DialogTrigger>
+        </div>
+    );
+};
+
+const InputPreview = () => {
+    const RenderInput = ({
+        isInvalid,
+        isDisabled,
+    }: {
+        isInvalid?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        const [val, setVal] = useState("");
+        return (
+            <Input
+                label="Email"
+                type="text"
+                description="Enter your Adgytec work email"
+                placeholder="username"
+                suffix={"@adgytec.in"}
+                // editorDir="rtl"
+                leadingIcon={Mail}
+                trailing={
+                    <InputButton
+                        icon={Armchair}
+                        onPress={() => setVal("hello")}
+                    />
+                }
+                showCharacterCount
+                value={val}
+                onChange={setVal}
+                maxLength={64}
+                isInvalid={isInvalid}
+                isDisabled={isDisabled}
+                showDescriptionOnInvalid={isInvalid}
+            />
+        );
+    };
 
     return (
-        <PreviewContainer label="Nav Responsive">
-            <div className="items-container">
-                <NavigationResponsive
-                    items={tree}
-                    mediaQuery="min-width:48em"
-                />
-            </div>
-        </PreviewContainer>
+        <div className="items">
+            <RenderInput />
+
+            <RenderInput isInvalid />
+
+            <RenderInput isDisabled />
+
+            <RenderInput isInvalid isDisabled />
+        </div>
+    );
+};
+
+const TextAreaPreview = () => {
+    const RenderTextArea = ({
+        isInvalid,
+        isDisabled,
+    }: {
+        isInvalid?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        return (
+            <TextArea
+                label="Issue"
+                maxLength={1024}
+                rows={4}
+                description="Describe your issue"
+                showCharacterCount
+                isInvalid={isInvalid}
+                showDescriptionOnInvalid={isInvalid}
+                isDisabled={isDisabled}
+                placeholder="Define you issue..."
+            />
+        );
+    };
+
+    return (
+        <div className="items-grid">
+            <RenderTextArea />
+
+            <RenderTextArea isInvalid />
+
+            <RenderTextArea isDisabled />
+
+            <RenderTextArea isInvalid isDisabled />
+        </div>
+    );
+};
+
+const TimeFieldPreview = () => {
+    const RenderTimeField = ({
+        isInvalid,
+        isDisabled,
+    }: {
+        isInvalid?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        return (
+            <TimeField
+                label="Appointment Time"
+                description="Add your appointment time"
+                isDisabled={isDisabled}
+                isInvalid={isInvalid}
+                showDescriptionOnInvalid={isInvalid}
+                granularity="second"
+            />
+        );
+    };
+
+    return (
+        <div className="items">
+            <RenderTimeField />
+
+            <RenderTimeField isInvalid />
+
+            <RenderTimeField isDisabled />
+
+            <RenderTimeField isInvalid isDisabled />
+        </div>
+    );
+};
+
+const DateFieldPreview = () => {
+    const RenderDateField = ({
+        isInvalid,
+        isDisabled,
+    }: {
+        isInvalid?: boolean;
+        isDisabled?: boolean;
+    }) => {
+        return (
+            <DateField
+                label="Appointment Date"
+                description="Add your appointment date"
+                isDisabled={isDisabled}
+                isInvalid={isInvalid}
+                showDescriptionOnInvalid={isInvalid}
+                granularity="second"
+            />
+        );
+    };
+
+    return (
+        <div className="items">
+            <RenderDateField />
+
+            <RenderDateField isInvalid />
+
+            <RenderDateField isDisabled />
+
+            <RenderDateField isInvalid isDisabled />
+        </div>
+    );
+};
+
+export const SelectPreview = () => {
+    return (
+        <div className="items">
+            <Select
+                label="Icecream"
+                description="Flavors of icecream"
+                placeholder="Select Icecream"
+                isInvalid
+                showDescriptionOnInvalid
+            >
+                <SelectTrigger />
+
+                <SelectPopover>
+                    <SelectList>
+                        <SelectItem label="Strawberry" />
+
+                        <SelectItem label="Mango" />
+
+                        <Divider />
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </SelectPopover>
+            </Select>
+
+            <Select
+                label="Icecream"
+                description="Flavors of icecream"
+                placeholder="Select Icecream"
+                selectionMode="multiple"
+            >
+                <SelectTrigger />
+
+                <SelectPopover>
+                    <SelectList>
+                        <SelectListSection>
+                            <SelectListSectionHeader>
+                                Specials 😋
+                            </SelectListSectionHeader>
+
+                            <SelectItem label="Strawberry" />
+
+                            <SelectItem label="Mango" />
+                        </SelectListSection>
+
+                        <Divider />
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </SelectPopover>
+            </Select>
+
+            <Select
+                label="Icecream"
+                description="Flavors of icecream"
+                placeholder="Select Icecream"
+                selectionMode="multiple"
+                isDisabled
+            >
+                <SelectTrigger />
+
+                <SelectPopover>
+                    <SelectList>
+                        <SelectListSection>
+                            <SelectListSectionHeader>
+                                Specials 😋
+                            </SelectListSectionHeader>
+
+                            <SelectItem label="Strawberry" />
+
+                            <SelectItem label="Mango" />
+                        </SelectListSection>
+
+                        <Divider />
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </SelectPopover>
+            </Select>
+
+            <ComboBox label="Icecream" description="Flavors of icecream">
+                <ComboBoxTrigger placeholder="Select Icecream" />
+
+                <ComboBoxPopover>
+                    <SelectList>
+                        <SelectListSection>
+                            <SelectListSectionHeader>
+                                Specials 😋
+                            </SelectListSectionHeader>
+
+                            <SelectItem label="Strawberry" />
+
+                            <SelectItem label="Mango" />
+                        </SelectListSection>
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </ComboBoxPopover>
+            </ComboBox>
+
+            <ComboBox
+                label="Icecream"
+                description="Flavors of icecream"
+                selectionMode="multiple"
+                isInvalid
+                showDescriptionOnInvalid
+            >
+                <ComboBoxTrigger placeholder="Select Icecream" />
+
+                <ComboBoxPopover>
+                    <SelectList>
+                        <SelectListSection>
+                            <SelectListSectionHeader>
+                                Specials 😋
+                            </SelectListSectionHeader>
+
+                            <SelectItem label="Strawberry" />
+
+                            <SelectItem label="Mango" />
+                        </SelectListSection>
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </ComboBoxPopover>
+            </ComboBox>
+
+            <ComboBox
+                label="Icecream"
+                description="Flavors of icecream"
+                isDisabled
+            >
+                <ComboBoxTrigger placeholder="Select Icecream" />
+
+                <ComboBoxPopover>
+                    <SelectList>
+                        <SelectListSection>
+                            <SelectListSectionHeader>
+                                Specials 😋
+                            </SelectListSectionHeader>
+
+                            <SelectItem label="Strawberry" />
+
+                            <SelectItem label="Mango" />
+                        </SelectListSection>
+
+                        <SelectItem label="Chocalate" />
+
+                        <SelectItem label="Cherry" />
+                    </SelectList>
+                </ComboBoxPopover>
+            </ComboBox>
+        </div>
     );
 };
 
 const DisclosurePreview = () => {
-    const buttonTheme: ColorTheme[] = [
-        "primary",
-        "primary-variant",
-        "secondary",
-        "tertiary",
-        "error",
-        "inverse-surface",
-        "success",
-    ];
-
     return (
-        <PreviewContainer label="Disclosure">
-            {buttonTheme.map((theme) => (
-                <div className="item-container" key={theme}>
-                    <Disclosure
-                        heading="Hello click this to open"
-                        triggerTheme={theme}
+        <>
+            <Disclosure>
+                <DisclosureHeader>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </DisclosureHeader>
+
+                <DisclosurePanel>
+                    Morbi eget arcu non sapien semper imperdiet. Pellentesque
+                    tristique, quam et ullamcorper sagittis, mi massa ultricies
+                    ligula, quis malesuada sem nunc sit amet orci. Nulla
+                    interdum lacus sit amet tortor pretium vulputate. Sed a
+                    tellus lacus. Nullam tempus consequat ex ultricies
+                    fringilla. Sed nunc lectus, scelerisque sit amet tristique
+                    eu, consequat sed quam. Aliquam et odio placerat,
+                    pellentesque purus et, maximus dui. Cras id accumsan est, ac
+                    euismod tellus. Proin non mattis justo. Donec ornare dui a
+                    turpis placerat ullamcorper. Phasellus aliquet, mauris eget
+                    sagittis cursus, orci justo ullamcorper ante, a viverra
+                    risus leo ac neque. Integer tincidunt sapien vitae elit
+                    rutrum cursus. In eleifend ultricies nisl, ut pretium ipsum
+                    vulputate sit amet. Nulla viverra nulla nisi, tincidunt
+                    varius leo interdum quis.
+                </DisclosurePanel>
+            </Disclosure>
+
+            <Disclosure isDisabled>
+                <DisclosureHeader>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </DisclosureHeader>
+
+                <DisclosurePanel>
+                    Nulla viverra nulla nisi, tincidunt varius leo interdum
+                    quis.
+                </DisclosurePanel>
+            </Disclosure>
+
+            <h3 className={typography.headlineSmallEmphasized}>
+                Disclosure Group
+            </h3>
+
+            <DisclosureGroup>
+                <Disclosure>
+                    <DisclosureHeader>Personal Information</DisclosureHeader>
+                    <DisclosurePanel>
+                        Personal information form here.
+                    </DisclosurePanel>
+                </Disclosure>
+
+                <Disclosure>
+                    <DisclosureHeader>Billing Address</DisclosureHeader>
+                    <DisclosurePanel>
+                        Billing address form here.
+                    </DisclosurePanel>
+                </Disclosure>
+            </DisclosureGroup>
+        </>
+    );
+};
+
+const ToolbarPreview = () => {
+    type Orientation = "horizontal" | "vertical";
+
+    const RenderToolbar = ({
+        color,
+        variant,
+        orientation = "horizontal",
+        isDisabled,
+    }: {
+        color?: ToolbarColor;
+        variant?: ToolbarVariant;
+        orientation?: Orientation;
+        isDisabled?: boolean;
+    }) => {
+        return (
+            <>
+                <div className={"items"} data-toolbar={true}>
+                    <Toolbar
+                        color={color}
+                        variant={variant}
+                        orientation={orientation}
                     >
-                        A cake is a baked sweet food, traditionally made with
-                        flour, sugar, and eggs, often with added fats and
-                        leavening agents.
-                    </Disclosure>
+                        <IconButton
+                            icon={Armchair}
+                            isDisabled={isDisabled}
+                            color="outlined"
+                        />
+
+                        <IconButton icon={Armchair} isDisabled={isDisabled} />
+
+                        <IconButton
+                            icon={Armchair}
+                            color="standard"
+                            isDisabled={isDisabled}
+                        />
+
+                        <IconButton
+                            icon={Armchair}
+                            color="tonal"
+                            isDisabled={isDisabled}
+                        />
+                    </Toolbar>
+
+                    <Toolbar
+                        color={color}
+                        variant={variant}
+                        orientation={orientation}
+                    >
+                        <ToggleIconButton
+                            icon={Globe}
+                            isDisabled={isDisabled}
+                            selectedIcon={GlobeOff}
+                        />
+
+                        <ToggleIconButton
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
+                            color="outlined"
+                            isDisabled={isDisabled}
+                        />
+
+                        <ToggleIconButton
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
+                            color="standard"
+                            isDisabled={isDisabled}
+                        />
+
+                        <ToggleIconButton
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
+                            color="tonal"
+                            isDisabled={isDisabled}
+                        />
+                    </Toolbar>
+
+                    <Toolbar
+                        color={color}
+                        variant={variant}
+                        orientation={orientation}
+                    >
+                        <ToolbarToggleButtonGroup>
+                            <ToggleIconButton
+                                id={1}
+                                icon={Globe}
+                                isDisabled={isDisabled}
+                                selectedIcon={GlobeOff}
+                            />
+
+                            <ToggleIconButton
+                                id={2}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="outlined"
+                                isDisabled={isDisabled}
+                            />
+
+                            <ToggleIconButton
+                                id={3}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="standard"
+                                isDisabled={isDisabled}
+                            />
+
+                            <ToggleIconButton
+                                id={4}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="tonal"
+                                isDisabled={isDisabled}
+                            />
+                        </ToolbarToggleButtonGroup>
+
+                        <Divider
+                            orientation={
+                                orientation === "vertical"
+                                    ? "horizontal"
+                                    : "vertical"
+                            }
+                        />
+
+                        <ToolbarToggleButtonGroup>
+                            <ToggleIconButton
+                                id={1}
+                                icon={Globe}
+                                isDisabled={isDisabled}
+                                selectedIcon={GlobeOff}
+                            />
+
+                            <ToggleIconButton
+                                id={2}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="outlined"
+                                isDisabled={isDisabled}
+                            />
+
+                            <ToggleIconButton
+                                id={3}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="standard"
+                                isDisabled={isDisabled}
+                            />
+
+                            <ToggleIconButton
+                                id={4}
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="tonal"
+                                isDisabled={isDisabled}
+                            />
+                        </ToolbarToggleButtonGroup>
+                    </Toolbar>
+
+                    {orientation === "horizontal" && (
+                        <>
+                            <Toolbar
+                                color={color}
+                                variant={variant}
+                                orientation={orientation}
+                                className="toolbar-overflow"
+                            >
+                                <Button
+                                    icon={Armchair}
+                                    color="outlined"
+                                    isDisabled={isDisabled}
+                                >
+                                    Chair
+                                </Button>
+                                <Button
+                                    icon={Armchair}
+                                    color="text"
+                                    isDisabled={isDisabled}
+                                >
+                                    Chair
+                                </Button>
+
+                                <Button icon={Armchair} isDisabled={isDisabled}>
+                                    Chair
+                                </Button>
+
+                                <Button
+                                    icon={Armchair}
+                                    color="tonal"
+                                    isDisabled={isDisabled}
+                                >
+                                    Chair
+                                </Button>
+
+                                <Button
+                                    icon={Armchair}
+                                    color="elevated"
+                                    isDisabled={isDisabled}
+                                >
+                                    Chair
+                                </Button>
+                            </Toolbar>
+
+                            <Toolbar
+                                color={color}
+                                variant={variant}
+                                orientation={orientation}
+                                className="toolbar-overflow"
+                            >
+                                <ToggleButton
+                                    icon={Globe}
+                                    selectedIcon={GlobeOff}
+                                    isDisabled={isDisabled}
+                                >
+                                    Globe
+                                </ToggleButton>
+
+                                <ToggleButton
+                                    icon={Globe}
+                                    selectedIcon={GlobeOff}
+                                    color="outlined"
+                                    isDisabled={isDisabled}
+                                >
+                                    Globe
+                                </ToggleButton>
+
+                                <ToggleButton
+                                    icon={Globe}
+                                    selectedIcon={GlobeOff}
+                                    color="tonal"
+                                    isDisabled={isDisabled}
+                                >
+                                    Globe
+                                </ToggleButton>
+
+                                <ToggleButton
+                                    icon={Globe}
+                                    selectedIcon={GlobeOff}
+                                    color="elevated"
+                                    isDisabled={isDisabled}
+                                >
+                                    Globe
+                                </ToggleButton>
+                            </Toolbar>
+                        </>
+                    )}
                 </div>
+
+                <Divider />
+            </>
+        );
+    };
+
+    const orientation: Orientation[] = ["horizontal", "vertical"];
+
+    return (
+        <div className="items-grid">
+            {orientation.map((o) => (
+                <Fragment key={o}>
+                    <RenderToolbar orientation={o} />
+                    <RenderToolbar orientation={o} isDisabled />
+
+                    <RenderToolbar variant="floating" orientation={o} />
+                    <RenderToolbar
+                        variant="floating"
+                        orientation={o}
+                        isDisabled
+                    />
+
+                    <RenderToolbar color="vibrant" orientation={o} />
+                    <RenderToolbar color="vibrant" orientation={o} isDisabled />
+
+                    <RenderToolbar
+                        color="vibrant"
+                        variant="floating"
+                        orientation={o}
+                    />
+                    <RenderToolbar
+                        color="vibrant"
+                        variant="floating"
+                        orientation={o}
+                        isDisabled
+                    />
+                </Fragment>
             ))}
-        </PreviewContainer>
+        </div>
     );
 };
 
-const DisclosureGroupPreview = () => {
-    const items: DisclosureProps[] = [
-        {
-            id: "1",
-            heading: "hello click this to open",
-            children:
-                "A cake is a baked sweet food, traditionally made with flour, sugar, and eggs, often with added fats and leavening agents.",
-        },
-        {
-            id: "2",
-            heading: "hello click this to open",
-            children:
-                "A cake is a baked sweet food, traditionally made with flour, sugar, and eggs, often with added fats and leavening agents.",
-        },
-        {
-            id: "3",
-            heading: "hello click this to open",
-            children:
-                "A cake is a baked sweet food, traditionally made with flour, sugar, and eggs, often with added fats and leavening agents.",
-        },
-    ];
-
-    return (
-        <PreviewContainer label="Disclosure Group">
-            <DisclosureGroup items={items} />
-        </PreviewContainer>
-    );
-};
-
-const FormInputPreview = () => {
-    return (
-        <PreviewContainer label="Form Input">
-            <Input
-                label="Email"
-                textFieldProps={{
-                    isRequired: true,
-                    type: "email",
+const TabsPreview = () => {
+    const RenderTabs = ({
+        isDisabled,
+        orientation,
+    }: {
+        isDisabled?: boolean;
+        orientation?: Orientation;
+    }) => {
+        return (
+            <Tabs
+                keyboardActivation="manual"
+                orientation={orientation}
+                style={{
+                    padding: "var(--md-sys-layout-space-28)",
+                    borderRadius: "var(--md-sys-shape-corner-radius-large)",
+                    outline:
+                        "var(--md-sys-shape-border-width-thin) solid var(--md-sys-color-outline)",
                 }}
-            />
+            >
+                <TabList
+                    aria-label="Settings"
+                    style={{
+                        scrollbarWidth: "none",
+                    }}
+                >
+                    <Tab
+                        id="general"
+                        label="General"
+                        icon={SwatchBook}
+                        isDisabled={isDisabled}
+                    />
+                    <Tab
+                        id="appearance"
+                        label="Appearance"
+                        isDisabled={isDisabled}
+                    />
+                    <Tab
+                        id="notifications"
+                        label="Notifications"
+                        icon={Bell}
+                        isDisabled={isDisabled}
+                    />
+                    <Tab
+                        id="profile"
+                        label="Profile"
+                        icon={UserRound}
+                        isDisabled={isDisabled}
+                    />
+                </TabList>
+                <TabPanels>
+                    <TabPanel id="general">
+                        <Form
+                            style={{
+                                display: "grid",
+                                gap: "1.5rem",
+                            }}
+                        >
+                            <Input
+                                label="Homepage"
+                                defaultValue="react-aria.adobe.com"
+                            />
+                            <Checkbox containerStateLayer defaultSelected>
+                                Show sidebar
+                            </Checkbox>
+                            <Checkbox containerStateLayer>
+                                Show status bar
+                            </Checkbox>
+                        </Form>
+                    </TabPanel>
+                    <TabPanel id="appearance">
+                        <Form
+                            style={{
+                                display: "grid",
+                                gap: "1.5rem",
+                            }}
+                        >
+                            <RadioGroup
+                                containerStateLayer
+                                label="Theme"
+                                defaultValue="auto"
+                            >
+                                <Radio value="auto">Auto</Radio>
+                                <Radio value="light">Light</Radio>
+                                <Radio value="dark">Dark</Radio>
+                            </RadioGroup>
+                            <RadioGroup
+                                containerStateLayer
+                                label="Font size"
+                                defaultValue="medium"
+                            >
+                                <Radio value="small">Small</Radio>
+                                <Radio value="medium">Medium</Radio>
+                                <Radio value="large">Large</Radio>
+                            </RadioGroup>
+                        </Form>
+                    </TabPanel>
+                    <TabPanel id="notifications">
+                        <CheckboxGroup
+                            containerStateLayer
+                            label="Notifications settings"
+                            defaultValue={["account", "dms"]}
+                        >
+                            <Checkbox value="account">
+                                Account activity
+                            </Checkbox>
+                            <Checkbox value="mentions">Mentions</Checkbox>
+                            <Checkbox value="dms">Direct message</Checkbox>
+                            <Checkbox value="marketing">
+                                Marketing emails
+                            </Checkbox>
+                        </CheckboxGroup>
+                    </TabPanel>
+                    <TabPanel id="profile">
+                        <Form
+                            style={{
+                                display: "grid",
+                                gap: "1.5rem",
+                            }}
+                        >
+                            <Input label="Name" defaultValue="Devon Govett" />
+                            <Input
+                                label="Username"
+                                defaultValue="@devongovett"
+                            />
+                            <Button>Update profile</Button>
+                        </Form>
+                    </TabPanel>
+                </TabPanels>
+            </Tabs>
+        );
+    };
+    return (
+        <div className="items">
+            <RenderTabs />
 
-            <TextArea label="More info" />
-        </PreviewContainer>
+            <RenderTabs orientation="vertical" />
+
+            <RenderTabs isDisabled />
+
+            <RenderTabs isDisabled orientation="vertical" />
+        </div>
+    );
+};
+const TagsPreview = () => {
+    const items = [
+        { id: 1, label: "News", icon: Newspaper },
+        { id: 2, label: "Travel", icon: PlaneTakeoff },
+        { id: 3, label: "Gaming", icon: Gamepad },
+        { id: 4, label: "Shopping", icon: ShoppingCart },
+    ];
+
+    const itemKeys = items.map((item) => item.id);
+
+    const list1 = useListData({
+        initialItems: items,
+    });
+
+    const list2 = useListData({
+        initialItems: items,
+    });
+
+    return (
+        <div
+            className="items-grid"
+            style={{
+                justifyItems: "center",
+            }}
+        >
+            <Button
+                color="tonal"
+                onPress={() => {
+                    list1.remove(...itemKeys);
+                    list2.remove(...itemKeys);
+
+                    list1.append(...items);
+                    list2.append(...items);
+                }}
+            >
+                reset lists
+            </Button>
+
+            <TagGroup
+                aria-label="Demo"
+                selectionMode="multiple"
+                disabledKeys={["Travel"]}
+                shouldSelectOnPressUp
+            >
+                <TagList items={items} className="tag-list">
+                    {(item) => (
+                        <Tag
+                            id={item.label}
+                            label={item.label}
+                            icon={item.icon}
+                        />
+                    )}
+                </TagList>
+            </TagGroup>
+
+            <TagGroup onAction={(key) => alert(key)} aria-label="Demo">
+                <TagList items={items} className="tag-list">
+                    {(item) => (
+                        <Tag
+                            id={item.label}
+                            label={item.label}
+                            icon={item.icon}
+                        />
+                    )}
+                </TagList>
+            </TagGroup>
+
+            <TagGroup
+                onRemove={(keys) => list1.remove(...keys)}
+                aria-label="Demo"
+            >
+                <TagList
+                    className="tag-list"
+                    items={list1.items}
+                    renderEmptyState={() => <div>No categories</div>}
+                >
+                    {(item) => <Tag label={item.label} icon={item.icon} />}
+                </TagList>
+            </TagGroup>
+
+            <TagGroup
+                aria-label="Demo"
+                selectionMode="multiple"
+                onRemove={(keys) => list2.remove(...keys)}
+            >
+                <TagList
+                    className="tag-list"
+                    items={list2.items}
+                    renderEmptyState={() => <div>No categories</div>}
+                >
+                    {(item) => <Tag label={item.label} icon={item.icon} />}
+                </TagList>
+            </TagGroup>
+
+            <TagGroup aria-label="Demo">
+                <TagList className="tag-list">
+                    <Tag
+                        label="avatar"
+                        avatar={<div className="avatar">R</div>}
+                    />
+
+                    <Tag
+                        label="avatar overflow"
+                        avatar={<div className="avatar">RRRRRRRRRRRR</div>}
+                    />
+                </TagList>
+            </TagGroup>
+
+            <TagGroup disabledKeys={["avatar"]} aria-label="Demo">
+                <TagList className="tag-list">
+                    <Tag
+                        id="avatar"
+                        label="avatar"
+                        avatar={<div className="avatar">R</div>}
+                    />
+
+                    <Tag
+                        label="avatar overflow"
+                        avatar={<div className="avatar">RRRRRRRRRRRR</div>}
+                    />
+                </TagList>
+            </TagGroup>
+        </div>
     );
 };
 
-const ToggleButtonPreview = () => {
-    const items: ToggleButtonGroupItem[] = [
-        {
-            id: "light",
-            value: "Light",
-        },
-        {
-            id: "dark",
-            value: "Dark",
-        },
-        {
-            id: "system",
-            value: "System",
-        },
+const RangeSliderPreview = () => {
+    const sizes: SliderSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
     ];
 
-    const buttonTheme: ColorTheme[] = [
-        "primary",
-        "primary-variant",
-        "secondary",
-        "tertiary",
-        "error",
-        "inverse-surface",
-        "success",
-    ];
+    const orientation: Orientation[] = ["horizontal", "vertical"];
 
     return (
-        <PreviewContainer label="Toggle Button Group">
-            {buttonTheme.map((theme) => {
+        <div className="items-grid">
+            {orientation.map((o) => {
                 return (
-                    <div className="item-container" key={theme}>
-                        <ToggleButtonGroup
-                            selectionMode="single"
-                            items={items}
-                            disallowEmptySelection
-                            theme={theme}
-                            orientation="horizontal"
-                        />
+                    <div
+                        key={o}
+                        className={clsx("items")}
+                        style={{
+                            justifyContent: "center",
+                        }}
+                        data-slider-orientation={o}
+                    >
+                        {sizes.map((size) => (
+                            <Fragment key={size}>
+                                <div>
+                                    <RangeSlider
+                                        label={`${o}--${size}`}
+                                        orientation={o}
+                                        size={size}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
+                                </div>
 
-                        <ToggleButtonGroup
-                            selectionMode="single"
-                            items={items}
-                            disallowEmptySelection
-                            theme={theme}
-                            orientation="horizontal"
-                            isDisabled
-                        />
+                                <div>
+                                    <RangeSlider
+                                        label={`${o}--${size}--steps`}
+                                        orientation={o}
+                                        size={size}
+                                        step={10}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
 
-                        <ToggleButtonGroup
-                            selectionMode="single"
-                            items={items}
-                            disallowEmptySelection
-                            theme={theme}
-                            orientation="vertical"
-                        />
-
-                        <ToggleButtonGroup
-                            selectionMode="single"
-                            items={items}
-                            disallowEmptySelection
-                            theme={theme}
-                            orientation="vertical"
-                            isDisabled
-                        />
+                                <div>
+                                    <RangeSlider
+                                        label={`${o}--${size}--disabled`}
+                                        isDisabled
+                                        orientation={o}
+                                        step={5}
+                                        size={size}
+                                        defaultValue={[30, 50]}
+                                    />
+                                </div>
+                            </Fragment>
+                        ))}
                     </div>
                 );
             })}
-        </PreviewContainer>
+        </div>
     );
 };
 
-const CardPreview = () => {
-    const backgrounds: SolidCardBackground[] = [
-        "solid",
-        "solid-high",
-        "solid-highest",
-        "solid-low",
-        "solid-lowest",
+const SliderPreview = () => {
+    const sizes: SliderSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
     ];
 
-    const imgsrc =
-        "https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-
-    const cardChild = (
-        <>
-            <img
-                src={imgsrc}
-                style={{
-                    borderRadius: "inherit",
-                }}
-                alt="sample"
-            />
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                sit amet egestas justo. Integer lobortis vulputate finibus.
-                Morbi eget feugiat odio. Sed lectus massa, malesuada at laoreet
-                non, porttitor non elit. Maecenas imperdiet varius nisi, non
-                gravida velit egestas quis. Fusce tincidunt ac nulla ac
-                condimentum. Integer auctor, libero vel maximus laoreet, nisl
-                erat rhoncus nunc, a facilisis risus libero a felis.{" "}
-            </p>
-        </>
-    );
+    const orientation: Orientation[] = ["horizontal", "vertical"];
 
     return (
-        <PreviewContainer label="Card Preview">
-            <div className="item-container">
-                {backgrounds.map((background) => {
-                    return (
-                        <SolidCard
-                            key={`solid:${background}`}
-                            background={background}
-                        >
-                            {cardChild}
-                        </SolidCard>
-                    );
-                })}
+        <div className="items-grid">
+            {orientation.map((o) => {
+                return (
+                    <div
+                        key={o}
+                        className={clsx("items")}
+                        style={{
+                            justifyContent: "center",
+                        }}
+                        data-slider-orientation={o}
+                    >
+                        {sizes.map((size) => (
+                            <Fragment key={size}>
+                                <div>
+                                    <Slider
+                                        label={`${o}--${size}`}
+                                        orientation={o}
+                                        size={size}
+                                        insetIcon={DollarSign}
+                                        minInsetIcon={HandCoins}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
+                                </div>
 
-                <GradientCard>{cardChild}</GradientCard>
-            </div>
-        </PreviewContainer>
+                                <div>
+                                    <Slider
+                                        label={`${o}--${size}--custom-output`}
+                                        orientation={o}
+                                        size={size}
+                                        insetIcon={DollarSign}
+                                        minInsetIcon={HandCoins}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                        outputRenderer={({ thumbIndex }) => (
+                                            <SliderOutput>
+                                                {({ state }) => {
+                                                    const value =
+                                                        state.getThumbPercent(
+                                                            thumbIndex
+                                                        );
+
+                                                    if (value < 0.5) {
+                                                        return "less";
+                                                    }
+
+                                                    if (value > 0.5) {
+                                                        return "more";
+                                                    }
+
+                                                    return "half";
+                                                }}
+                                            </SliderOutput>
+                                        )}
+                                    />
+                                </div>
+
+                                <div>
+                                    <Slider
+                                        label={`${o}--${size}`}
+                                        orientation={o}
+                                        size={size}
+                                        insetIcon={DollarSign}
+                                        minInsetIcon={HandCoins}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <Slider
+                                        label={`${o}--${size}--steps`}
+                                        orientation={o}
+                                        size={size}
+                                        minValue={0}
+                                        maxValue={1}
+                                        step={0.04}
+                                        maxStops={25}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <Slider
+                                        label={`${o}--${size}--steps--not-aligned`}
+                                        orientation={o}
+                                        size={size}
+                                        minValue={0}
+                                        maxValue={10}
+                                        step={3}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <Slider
+                                        label={`${o}--${size}--disabled`}
+                                        step={5}
+                                        defaultValue={33}
+                                        isDisabled
+                                        orientation={o}
+                                        size={size}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
+                                </div>
+                            </Fragment>
+                        ))}
+                    </div>
+                );
+            })}
+        </div>
     );
 };
 
-const VisualSettingsPreview = () => {
-    return (
-        <>
-            <PreviewContainer label="Theme Switcher">
-                <ThemeSwitcher ui={false} />
-                <ThemeSwitcher />
-            </PreviewContainer>
+const CenteredSliderPreview = () => {
+    const sizes: SliderSize[] = [
+        "extra-small",
+        "small",
+        "medium",
+        "large",
+        "extra-large",
+    ];
 
-            <PreviewContainer label="Component Shape Switcher">
-                <ComponentShapeSwitcher ui={false} />
-                <ComponentShapeSwitcher />
-            </PreviewContainer>
-        </>
+    const orientation: Orientation[] = ["horizontal", "vertical"];
+
+    return (
+        <div className="items-grid">
+            {orientation.map((o) => {
+                return (
+                    <div
+                        key={o}
+                        className={clsx("items")}
+                        style={{
+                            justifyContent: "center",
+                        }}
+                        data-slider-orientation={o}
+                    >
+                        {sizes.map((size) => (
+                            <Fragment key={size}>
+                                <div>
+                                    <CenteredSlider
+                                        label={`${o}--${size}`}
+                                        orientation={o}
+                                        size={size}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "USD",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <CenteredSlider
+                                        label={`${o}--${size}--steps-odd`}
+                                        orientation={o}
+                                        size={size}
+                                        step={10}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <CenteredSlider
+                                        label={`${o}--${size}--steps-even`}
+                                        orientation={o}
+                                        size={size}
+                                        step={11}
+                                        maxValue={33}
+                                        formatOptions={{
+                                            style: "currency",
+                                            currency: "INR",
+                                        }}
+                                    />
+                                </div>
+
+                                <div>
+                                    <CenteredSlider
+                                        label={`${o}--${size}--disabled`}
+                                        isDisabled
+                                        orientation={o}
+                                        step={5}
+                                        size={size}
+                                        defaultValue={35}
+                                    />
+                                </div>
+                            </Fragment>
+                        ))}
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
+
+const CalendarPreview = () => {
+    return (
+        <div className="items-grid" data-calendar>
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>Standard</h3>
+
+                <div className="items">
+                    <Calendar />
+
+                    <Calendar className="calendar-vibrant" />
+                </div>
+            </div>
+
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>States</h3>
+
+                <div className="items">
+                    <Calendar isDisabled />
+
+                    <Calendar isInvalid />
+
+                    <Calendar
+                        isDateUnavailable={({ day }) => {
+                            return day % 2 === 0;
+                        }}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const RangeCalendarPreview = () => {
+    return (
+        <div className="items-grid" data-calendar>
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>Standard</h3>
+
+                <div className="items">
+                    select
+                    <RangeCalendar commitBehavior="select" />
+                    reset
+                    <RangeCalendar commitBehavior="reset" />
+                    clear
+                    <RangeCalendar commitBehavior="clear" />
+                    <RangeCalendar className="calendar-vibrant" />
+                </div>
+            </div>
+
+            <div>
+                <h3 className={typography.titleLargeEmphasized}>States</h3>
+
+                <div className="items">
+                    <RangeCalendar isDisabled />
+
+                    <RangeCalendar isInvalid />
+
+                    <RangeCalendar
+                        isDateUnavailable={({ day }) => {
+                            return day % 2 === 0;
+                        }}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+const DatePickerPreview = () => {
+    const minValue = new CalendarDate(1998, 12, 31);
+    const maxValue = new CalendarDate(1999, 2, 1);
+    return (
+        <div className="items">
+            <DatePicker
+                label="Birthday"
+                description="Add your birthday"
+                minValue={minValue}
+                maxValue={maxValue}
+                weekdayStyle="short"
+            />
+
+            <DatePicker
+                label="Birthday"
+                description="Add your birthday"
+                showDescriptionOnInvalid
+                isInvalid
+            />
+
+            <DatePicker
+                label="Birthday"
+                description="Add your birthday"
+                isDisabled
+            />
+        </div>
+    );
+};
+
+const DateRangePickerPreview = () => {
+    return (
+        <div className="items">
+            <DateRangePicker label="Dates" description="Select date range" />
+
+            <DateRangePicker
+                label="Dates"
+                description="Select date range"
+                showDescriptionOnInvalid
+                isInvalid
+            />
+
+            <DateRangePicker
+                label="Dates"
+                description="Select date range"
+                isDisabled
+            />
+        </div>
+    );
+};
+
+const ConfigPreview = () => {
+    const SplitButtonConfig = ({
+        className,
+        layout,
+        menuClassName,
+    }: {
+        className?: string;
+        layout?: MenuLayout;
+        menuClassName?: string;
+    }) => {
+        return (
+            <SplitButton className={className}>
+                <SplitButtonPrimary tooltip="download" icon={Download}>
+                    Download
+                </SplitButtonPrimary>
+
+                <MenuTrigger layout={layout}>
+                    <SplitButtonTrigger tooltip="more actions" />
+                    <Popover>
+                        <Menu className={menuClassName}>
+                            <MenuSection>
+                                <MenuSectionHeader>
+                                    Quick Actions
+                                </MenuSectionHeader>
+
+                                <MenuItem trailingIcon={Eye} label="Preview" />
+
+                                <MenuItem trailingIcon={Share2} label="Share" />
+                            </MenuSection>
+
+                            <MenuSection>
+                                <MenuSectionHeader>Security</MenuSectionHeader>
+
+                                <MenuItem
+                                    trailingIcon={GlobeLock}
+                                    supportingText="Make item private"
+                                    label="Private"
+                                />
+
+                                <SubmenuTrigger>
+                                    <MenuItem
+                                        trailingIcon={GlobeLock}
+                                        supportingText="Make item private"
+                                        label="More"
+                                    />
+
+                                    <SubmenuPopover>
+                                        <Menu className={menuClassName}>
+                                            <MenuSection>
+                                                <MenuItem label="Lock" />
+
+                                                <MenuItem label="Archive" />
+                                            </MenuSection>
+                                        </Menu>
+                                    </SubmenuPopover>
+                                </SubmenuTrigger>
+                            </MenuSection>
+                        </Menu>
+                    </Popover>
+                </MenuTrigger>
+            </SplitButton>
+        );
+    };
+
+    return (
+        <div className="items-grid">
+            <div className="items">
+                <Button className="primary">primary</Button>
+                <Button className="primary-container">primary container</Button>
+
+                <Button className="primary-alt">primary alt</Button>
+                <Button className="primary-alt-container">
+                    primary alt container
+                </Button>
+
+                <Button className="error">error</Button>
+                <Button className="error-container">error container</Button>
+
+                <Button className="secondary">secondary</Button>
+                <Button className="secondary-container">
+                    secondary container
+                </Button>
+
+                <Button className="tertiary">tertiary</Button>
+                <Button className="tertiary-container">
+                    tertiary container
+                </Button>
+
+                <Button className="inverse">inverse</Button>
+                <Button className="inverse-primary">inverse primary</Button>
+
+                <Button className="primary-fixed">primary fixed</Button>
+                <Button className="primary-fixed-dim">primary fixed dim</Button>
+
+                <Button className="secondary-fixed">secondary fixed</Button>
+                <Button className="secondary-fixed-dim">
+                    secondary fixed dim
+                </Button>
+
+                <Button className="tertiary-fixed">tertiary fixed</Button>
+                <Button className="tertiary-fixed-dim">
+                    tertiary fixed dim
+                </Button>
+            </div>
+
+            <div className="items" data-slider-orientation="horizontal">
+                <div>
+                    <RangeSlider className="slider-alt" label="slider alt" />
+                </div>
+
+                <div>
+                    <Slider
+                        className="slider-secondary"
+                        label="slider secondary"
+                    />
+                </div>
+
+                <div>
+                    <Slider
+                        className="slider-tertiary"
+                        label="slider tertiary"
+                    />
+                </div>
+
+                <div>
+                    <RangeSlider
+                        className="slider-primary-fixed"
+                        label="slider primary fixed"
+                    />
+                </div>
+
+                <div>
+                    <CenteredSlider
+                        className="slider-secondary-fixed"
+                        label="slider secondary fixed"
+                    />
+                </div>
+
+                <div>
+                    <Slider
+                        className="slider-tertiary-fixed"
+                        label="slider tertiary fixed"
+                    />
+                </div>
+
+                <div>
+                    <RangeSlider
+                        className="slider-inverse"
+                        label="slider inverse"
+                    />
+                </div>
+            </div>
+
+            <div className="items">
+                <Switch className="switch-primary" containerStateLayer>
+                    switch-primary
+                </Switch>
+
+                <Switch className="switch-primary-alt" containerStateLayer>
+                    switch-primary-alt
+                </Switch>
+
+                <Switch className="switch-secondary" containerStateLayer>
+                    switch-secondary
+                </Switch>
+
+                <Switch className="switch-tertiary" containerStateLayer>
+                    switch-tertiary
+                </Switch>
+
+                <Switch className="switch-primary-fixed" containerStateLayer>
+                    switch-primary-fixed
+                </Switch>
+
+                <Switch className="switch-secondary-fixed" containerStateLayer>
+                    switch-secondary-fixed
+                </Switch>
+
+                <Switch className="switch-inverse" containerStateLayer>
+                    switch-inverse
+                </Switch>
+            </div>
+
+            <div className="items">
+                <RadioGroup
+                    className="radio-primary"
+                    label="Primary"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-primary-alt"
+                    label="Primary alt"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-tertiary"
+                    label="Tertiary"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-primary-fixed"
+                    containerStateLayer
+                    label="Primary Fixed"
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-secondary-fixed"
+                    label="Secondary Fixed"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+
+                <RadioGroup
+                    className="radio-inverse"
+                    label="Inverse"
+                    containerStateLayer
+                >
+                    <Radio value="cat">Cat</Radio>
+                    <Radio value="dog">Dog</Radio>
+                    <Radio value="dragon">Dragon</Radio>
+                </RadioGroup>
+            </div>
+
+            <div className="items">
+                <Checkbox className="checkbox-primary" containerStateLayer>
+                    Primary checkbox
+                </Checkbox>
+
+                <Checkbox className="checkbox-primary-alt" containerStateLayer>
+                    Primary alt checkbox
+                </Checkbox>
+
+                <Checkbox className="checkbox-tertiary" containerStateLayer>
+                    Tertiary checkbox
+                </Checkbox>
+
+                <Checkbox
+                    className="checkbox-primary-fixed"
+                    containerStateLayer
+                >
+                    Primary fixed checkbox
+                </Checkbox>
+
+                <Checkbox
+                    className="checkbox-secondary-fixed"
+                    containerStateLayer
+                >
+                    Secondary fixed checkbox
+                </Checkbox>
+
+                <Checkbox className="checkbox-inverse" containerStateLayer>
+                    Inverse checkbox
+                </Checkbox>
+            </div>
+
+            <div className="items">
+                <Input
+                    label="Email"
+                    type="text"
+                    description="Enter your Adgytec work email"
+                    placeholder="username"
+                    suffix={"@adgytec.in"}
+                    // editorDir="rtl"
+                    leadingIcon={Mail}
+                    showCharacterCount
+                    maxLength={64}
+                />
+
+                <Input
+                    className="input-primary-alt"
+                    label="Email"
+                    type="text"
+                    description="Enter your Adgytec work email"
+                    placeholder="username"
+                    suffix={"@adgytec.in"}
+                    // editorDir="rtl"
+                    leadingIcon={Mail}
+                    showCharacterCount
+                    maxLength={64}
+                />
+
+                <Input
+                    className="input-tertiary"
+                    label="Email"
+                    type="text"
+                    description="Enter your Adgytec work email"
+                    placeholder="username"
+                    suffix={"@adgytec.in"}
+                    // editorDir="rtl"
+                    leadingIcon={Mail}
+                    showCharacterCount
+                    maxLength={64}
+                />
+            </div>
+
+            <div className="items">
+                <SplitButtonConfig
+                    className="primary"
+                    layout="standard"
+                    menuClassName="menu-theme-ocean"
+                />
+
+                <SplitButtonConfig
+                    className="primary-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-success"
+                />
+
+                <SplitButtonConfig
+                    className="primary-alt"
+                    layout="standard"
+                    menuClassName="menu-theme-alt"
+                />
+
+                <SplitButtonConfig
+                    className="primary-alt-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-neutral"
+                />
+
+                <SplitButtonConfig
+                    className="error"
+                    layout="standard"
+                    menuClassName="menu-theme-error"
+                />
+
+                <SplitButtonConfig
+                    className="error-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-inverse"
+                />
+
+                <SplitButtonConfig
+                    className="secondary"
+                    layout="standard"
+                    menuClassName="menu-theme-success"
+                />
+
+                <SplitButtonConfig
+                    className="secondary-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-ocean"
+                />
+
+                <SplitButtonConfig
+                    className="tertiary"
+                    layout="standard"
+                    menuClassName="menu-theme-warning"
+                />
+
+                <SplitButtonConfig
+                    className="tertiary-container"
+                    layout="grouped"
+                    menuClassName="menu-theme-neutral"
+                />
+
+                <SplitButtonConfig
+                    className="inverse"
+                    layout="standard"
+                    menuClassName="menu-theme-inverse"
+                />
+
+                <SplitButtonConfig
+                    className="inverse-primary"
+                    layout="grouped"
+                    menuClassName="menu-theme-ocean"
+                />
+
+                <SplitButtonConfig
+                    className="primary-fixed"
+                    layout="standard"
+                    menuClassName="menu-theme-ocean"
+                />
+
+                <SplitButtonConfig
+                    className="primary-fixed-dim"
+                    layout="grouped"
+                    menuClassName="menu-theme-success"
+                />
+
+                <SplitButtonConfig
+                    className="secondary-fixed"
+                    layout="standard"
+                    menuClassName="menu-theme-success"
+                />
+
+                <SplitButtonConfig
+                    className="secondary-fixed-dim"
+                    layout="grouped"
+                    menuClassName="menu-theme-warning"
+                />
+
+                <SplitButtonConfig
+                    className="tertiary-fixed"
+                    layout="standard"
+                    menuClassName="menu-theme-warning"
+                />
+
+                <SplitButtonConfig
+                    className="tertiary-fixed-dim"
+                    layout="grouped"
+                    menuClassName="menu-theme-error"
+                />
+            </div>
+        </div>
+    );
+};
+
+const SearchFieldPreview = () => {
+    return (
+        <div className="items">
+            <SearchField />
+
+            <SearchField isReadOnly />
+
+            <SearchField isDisabled />
+        </div>
+    );
+};
+
+const SideSheetPreview = () => {
+    const alignments: SideSheetAlignment[] = ["start", "end"];
+    const layouts: SheetLayout[] = ["standard", "detached"];
+
+    const sideSheetActions = [
+        <Button key="save">Save</Button>,
+        <Button color="text" key="close" slot="close">
+            Close
+        </Button>,
+    ];
+
+    const sideSheetActionsStart = [
+        <Button color="text" key="close" slot="close">
+            Close
+        </Button>,
+        <Button key="save">Save</Button>,
+    ];
+
+    const RenderSideSheet = ({
+        alignment,
+        layout,
+    }: {
+        alignment: SideSheetAlignment;
+        layout: SheetLayout;
+    }) => {
+        return (
+            <DialogTrigger>
+                <Button color="outlined">{`${alignment}-${layout}`}</Button>
+
+                <ModalOverlay isDismissable>
+                    <SideSheetModal alignment={alignment} layout={layout}>
+                        <SideSheet
+                            actions={
+                                alignment === "start"
+                                    ? sideSheetActionsStart
+                                    : sideSheetActions
+                            }
+                            headline={`${alignment}-${layout}`}
+                        >
+                            <SearchFieldPreview />
+                        </SideSheet>
+                    </SideSheetModal>
+                </ModalOverlay>
+            </DialogTrigger>
+        );
+    };
+    return (
+        <div className="items">
+            {alignments.map((alignment) => (
+                <Fragment key={alignment}>
+                    {layouts.map((layout) => (
+                        <RenderSideSheet
+                            key={layout}
+                            layout={layout}
+                            alignment={alignment}
+                        />
+                    ))}
+                </Fragment>
+            ))}
+        </div>
+    );
+};
+
+const BottomSheetPreview = () => {
+    const layouts: SheetLayout[] = ["standard", "detached"];
+
+    const RenderBottomSheet = ({ layout }: { layout: SheetLayout }) => {
+        return (
+            <DialogTrigger>
+                <Button color="outlined">{layout}</Button>
+
+                <ModalOverlay isDismissable>
+                    <BottomSheetModal layout={layout}>
+                        <BottomSheet>
+                            <h3
+                                className={clsx(
+                                    typography.titleMediumEmphasized
+                                )}
+                            >
+                                Some Action
+                            </h3>
+
+                            <p className={clsx(typography.bodyLarge)}>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit. Duis eros nulla, commodo a
+                                finibus malesuada, cursus non metus.
+                            </p>
+
+                            <div
+                                className="items"
+                                style={{
+                                    marginBlockStart: "16px",
+                                    justifyContent: "end",
+                                }}
+                            >
+                                <Button color="text" slot="close">
+                                    Cancel
+                                </Button>
+                                <Button>Save</Button>
+                            </div>
+                        </BottomSheet>
+                    </BottomSheetModal>
+                </ModalOverlay>
+            </DialogTrigger>
+        );
+    };
+    return (
+        <div className="items">
+            {layouts.map((layout) => (
+                <RenderBottomSheet key={layout} layout={layout} />
+            ))}
+        </div>
+    );
+};
+
+const SnackbarPreview = () => {
+    const queue = useSnackbarQueue();
+
+    return (
+        <div className="items">
+            <Button
+                color="elevated"
+                onPress={() =>
+                    queue.add({
+                        supportingText:
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec ligula a dui faucibus mollis. ",
+                        action: <Button color="text">action</Button>,
+                    })
+                }
+            >
+                Show snackbar
+            </Button>
+
+            <Button
+                color="elevated"
+                onPress={() =>
+                    queue.add(
+                        {
+                            supportingText: "Sample snackbar",
+                            action: <Button color="text">action</Button>,
+                        },
+                        { timeout: 5000 }
+                    )
+                }
+            >
+                Auto Dismiss
+            </Button>
+        </div>
     );
 };
 
 const App = () => {
-    const previewElements = [
-        VisualSettingsPreview,
-        ButtonPreview,
-        LinkPreview,
-        CardPreview,
-        SelectPreview,
-        AvatarPreview,
-        ModalPreview,
-        ModalActionPreview,
-        MenuPreview,
-        SidebarPreview,
-        TreePreview,
-        NavSidebarPreview,
-        NavMenuPreview,
-        NavResponsivePreview,
-        DisclosurePreview,
-        DisclosureGroupPreview,
-        FormInputPreview,
-        ToggleButtonPreview,
+    const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
+        "tab-orientation",
+        "horizontal"
+    );
+
+    type PreviewItem = {
+        id: string;
+        label: string;
+        Component: React.ComponentType;
+    };
+
+    const previewItems: PreviewItem[] = [
+        {
+            id: "theme-selector",
+            label: "Theme Selector",
+            Component: ThemeSelectorPreview,
+        },
+
+        {
+            id: "snackbar-preview",
+            label: "Snackbar",
+            Component: SnackbarPreview,
+        },
+        {
+            id: "bottom-sheet-preview",
+            label: "Bottom Sheet",
+            Component: BottomSheetPreview,
+        },
+        {
+            id: "side-sheet-preview",
+            label: "Side Sheet",
+            Component: SideSheetPreview,
+        },
+        {
+            id: "search-field",
+            label: "Search Field",
+            Component: SearchFieldPreview,
+        },
+        {
+            id: "config-preview",
+            label: "Config",
+            Component: ConfigPreview,
+        },
+
+        {
+            id: "range-date-picker",
+            label: "Date Range Picker",
+            Component: DateRangePickerPreview,
+        },
+        {
+            id: "date-picker",
+            label: "Date Picker",
+            Component: DatePickerPreview,
+        },
+        {
+            id: "range-calendar",
+            label: "Range Calendar",
+            Component: RangeCalendarPreview,
+        },
+        {
+            id: "calendar",
+            label: "Calendar",
+            Component: CalendarPreview,
+        },
+        {
+            id: "centered-slider",
+            label: "Centered Slider",
+            Component: CenteredSliderPreview,
+        },
+        {
+            id: "range-slider",
+            label: "Range Slider",
+            Component: RangeSliderPreview,
+        },
+        { id: "slider", label: "Slider", Component: SliderPreview },
+        { id: "tags", label: "Tags", Component: TagsPreview },
+        { id: "tabs", label: "Tabs", Component: TabsPreview },
+        { id: "toolbar", label: "Toolbar", Component: ToolbarPreview },
+        { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },
+        { id: "select", label: "Select", Component: SelectPreview },
+        { id: "date-field", label: "Date Field", Component: DateFieldPreview },
+        { id: "time-field", label: "Time Field", Component: TimeFieldPreview },
+        { id: "text-area", label: "Text Area", Component: TextAreaPreview },
+        { id: "input", label: "Input", Component: InputPreview },
+        { id: "dialog", label: "Dialog", Component: DialogPreview },
+        {
+            id: "connected-button-group",
+            label: "Connected Button Group",
+            Component: ConnectedButtonGroupPreview,
+        },
+        {
+            id: "button-group",
+            label: "Button Group",
+            Component: ButtonGroupPreview,
+        },
+        {
+            id: "split-button",
+            label: "Split Button",
+            Component: SplitButtonPreview,
+        },
+        { id: "menu", label: "Menu", Component: MenuPreview },
+        { id: "link", label: "Link", Component: LinkPreview },
+        { id: "button", label: "Button", Component: ButtonPreview },
+        {
+            id: "icon-button",
+            label: "Icon Button",
+            Component: IconButtonPreview,
+        },
+        { id: "tooltip", label: "Tooltip", Component: TooltipPreview },
+        { id: "checkbox", label: "Checkbox", Component: CheckboxPreview },
+        { id: "radio", label: "Radio", Component: RadioPreview },
+        { id: "icon", label: "Icon", Component: IconPreview },
+        { id: "switch", label: "Switch", Component: SwitchPreview },
     ];
 
     return (
-        <>
-            <Viewport />
-            <div className="preview-parent">
-                {previewElements.map((Element) => {
-                    return <Element key={Element.name} />;
-                })}
-            </div>
-        </>
+        <div className="tab-container">
+            <Tabs orientation={tabOrientation} className="tabs">
+                <TabList
+                    className="tab-list"
+                    style={({ orientation }) => {
+                        let pos = {};
+                        if (orientation === "horizontal") {
+                            pos = {
+                                position: "sticky",
+                                insetBlockStart: "0",
+                                zIndex: "10",
+                            };
+                        }
+                        return { scrollbarWidth: "none", ...pos };
+                    }}
+                >
+                    <Tab id="orientation" label="Tab Orientation" />
+
+                    <Collection items={previewItems}>
+                        {(item) => <Tab id={item.id} label={item.label} />}
+                    </Collection>
+                </TabList>
+
+                <TabPanels>
+                    <TabPanel id="orientation">
+                        <PreviewContainer label="Tab Orientation">
+                            <div className="items">
+                                <Button
+                                    onPress={() =>
+                                        setOrientation((prev) => {
+                                            return prev === "horizontal"
+                                                ? "vertical"
+                                                : "horizontal";
+                                        })
+                                    }
+                                    color="outlined"
+                                >
+                                    Change Orientation
+                                </Button>
+                            </div>
+                        </PreviewContainer>
+                    </TabPanel>
+
+                    <Collection items={previewItems}>
+                        {(item) => {
+                            const Component = item.Component;
+
+                            return (
+                                <TabPanel id={item.id}>
+                                    <PreviewContainer label={item.label}>
+                                        <Component />
+                                    </PreviewContainer>
+                                </TabPanel>
+                            );
+                        }}
+                    </Collection>
+                </TabPanels>
+            </Tabs>
+        </div>
     );
 };
 

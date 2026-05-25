@@ -1,0 +1,44 @@
+@layer adgytec.comps {
+    .button-reset {
+        all: unset;
+        cursor: pointer;
+        position: relative;
+        text-align: center;
+
+        &[data-disabled] {
+            cursor: default;
+        }
+
+        &[data-pending] {
+            cursor: default;
+        }
+    }
+
+    .button-core {
+        position: relative;
+        overflow: clip;
+
+        --_md-button-shape-motion: var(--md-sys-motion-expressive-fast-spatial);
+        --_md-button-shape-motion-duration: var(
+            --md-sys-motion-expressive-fast-spatial-duration
+        );
+
+        transition:
+            border-radius var(--_md-button-shape-motion)
+            var(--_md-button-shape-motion-duration),
+            background-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            border-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            box-shadow var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            padding var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+}

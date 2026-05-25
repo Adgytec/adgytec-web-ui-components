@@ -1,0 +1,14 @@
+@layer adgytec.comps {
+    .tabs {
+        display: grid;
+        gap: var(--md-sys-layout-space-16);
+
+        &[data-orientation="vertical"] {
+            grid-template-columns: auto 1fr;
+        }
+
+        &[data-orientation="horizontal"] {
+            grid-template-rows: auto 1fr;
+        }
+    }
+}

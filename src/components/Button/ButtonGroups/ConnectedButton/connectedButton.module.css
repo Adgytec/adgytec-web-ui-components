@@ -1,0 +1,27 @@
+@layer adgytec.comps {
+    .button {
+        /* styles */
+        min-inline-size: var(--min-tap-target-size);
+
+        padding-inline: var(--_md-button-padding-inline);
+        padding-block: var(--_md-button-padding-block);
+
+        display: inline-flex;
+        gap: var(--_md-button-icon-label-gap);
+        align-items: center;
+        justify-content: center;
+
+        /* shape styles */
+        border-start-start-radius: var(--_shape-start-start);
+        border-end-start-radius: var(--_shape-end-start);
+        border-start-end-radius: var(--_shape-start-end);
+        border-end-end-radius: var(--_shape-end-end);
+
+        &[data-selected] {
+            --_shape-start-start: var(--_selected-shape);
+            --_shape-end-start: var(--_selected-shape);
+            --_shape-start-end: var(--_selected-shape);
+            --_shape-end-end: var(--_selected-shape);
+        }
+    }
+}

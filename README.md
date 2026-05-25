@@ -1,23 +1,88 @@
 # Adgytec Web UI Components
 
-So, this React component library? It's been put together super carefully to give you a really flexible and easy-to-use base for your web apps!
+A robust, accessible, and highly customizable React component library implementing the **Material 3 Expressive** design system, built on the solid foundation of **React Aria Components**.
 
-### Key Features & Technologies
+## Key Features
 
-- **Dynamic Color Theming**: The entire color palette for this library is generated using the official [Material Color Tool](https://material-foundation.github.io/material-theme-builder/). This ensures a cohesive, aesthetically pleasing, and easily manageable color system that aligns with modern design principles.
+- **Material 3 Expressive Implementation**: Follows the latest Material Design guidelines with a focus on motion, layout, and expressive styling.
+- **Accessible by Default**: Leverages [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html) to provide industry-standard accessibility, including full keyboard navigation and screen reader support.
+- **Dynamic Theming**: Integrated theme management supporting Light/Dark modes, multiple contrast levels (Standard, Medium, High), and Monochrome options.
+- **Configurable Styling**: Built with CSS Modules and extensive CSS tokens, allowing for deep customization without breaking the core design system.
+- **Icon Integration**: Seamlessly integrates with [Lucide React](https://lucide.dev/) for a consistent and modern icon set.
+- **Utility First**: Includes powerful utilities for form validation (Zod integration), fluid typography, and responsive image management.
 
-- **Unstyled & Accessible Components**: We leverage [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html) to provide a set of robust, unstyled components. This approach gives you complete control over the visual styling while benefiting from built-in accessibility features, ensuring your applications are inclusive and user-friendly.
+## Component Library
 
-- **Comprehensive Icon Set**: All icons integrated into the components are sourced from [Lucide React](https://lucide.dev/guide/packages/lucide-react). This provides a consistent, high-quality, and easily scalable icon solution for your UI.
+### Buttons
+- **Standard Buttons**: Button, Icon Button, Link Button, Link Icon Button.
+- **Toggle Buttons**: Toggle Button, Toggle Icon Button.
+- **Complex Buttons**: Split Button.
+- **Groups**: Button Group (with morphing animation), Connected Button Group.
 
-### Customization and Styling Details
+### Data Entry
+- **Inputs**: Input (TextField), SearchField, TextArea, Checkbox, Radio, RadioGroup, Select, ComboBox.
+- **Pickers**: DatePicker, DateRangePicker, TimeField, DateField, Calendar, RangeCalendar.
+- **Sliders**: Slider, RangeSlider.
+- **Selection**: Switch.
 
-- **Global Styles**: For a complete overview of all defined color variables and elevation styles used across the library, please refer to the `main.css` file.
+### Navigation & Layout
+- **Tabs**: Horizontal and Vertical tab systems.
+- **Toolbar**: Contextual action containers (Docked and Floating variants).
+- **Dividers**: Material 3 separators.
+- **Disclosure**: Expandable sections and Accordions.
 
-- **Edge Radii Configuration**: The visual appearance of component edges (rounded or sharp) can be easily configured. These styles are controlled via dedicated CSS variables related to `radius`. You can find more detailed information and configuration options within the `main.css` file.
+### Feedback & Overlays
+- **Dialogs**: Modal, ModalOverlay, ActionDialog (pre-configured patterns).
+- **Tooltips**: Plain Tooltip and Rich Tooltip (for complex content).
+- **Status**: Loader, Splash (Ripple effect).
 
-### Components Usage
+### Data Display
+- **Tags**: Expressive chips for attributes and selection.
+- **Images**: Responsive image component with resolution-based presets.
+- **Icons**: Unified wrapper for Lucide icons with design system sizing.
 
-- Check App.tsx for all the components example usage and you can further check implementation of each component for its usage.
+## Getting Started
 
-Note: This readme is generated using gemini
+### 1. Wrap your application
+To enable theme management and global styles, wrap your root component with the `ThemeProvider`:
+
+```tsx
+import { ThemeProvider } from '@adgytec/web-ui-components';
+
+function App() {
+  return (
+    <ThemeProvider>
+      <MyContent />
+    </ThemeProvider>
+  );
+}
+```
+
+### 2. Use Components
+Import and use components directly in your application:
+
+```tsx
+import { Button, Input } from '@adgytec/web-ui-components';
+import { Mail } from 'lucide-react';
+
+function MyForm() {
+  return (
+    <div className="form-container">
+      <Input label="Email" leadingIcon={Mail} placeholder="Enter your email" />
+      <Button color="filled" onPress={() => console.log('Submitted!')}>
+        Submit
+      </Button>
+    </div>
+  );
+}
+```
+
+## Documentation
+
+Each component and utility has its own detailed documentation file (`*.md`) located within its respective folder in `src/components/` and `src/utils/`. These documents include:
+- Available CSS tokens and their default values.
+- Comprehensive prop descriptions.
+- Extension details for React Aria Components.
+- Practical usage examples.
+
+Generated by Gemini

@@ -1,0 +1,111 @@
+import { clsx } from "clsx";
+import { Button as AriaButton } from "react-aria-components";
+import { Icon } from "@/components/Icon";
+import { Loader } from "@/components/Loader";
+import { Splash } from "@/components/Splash/Splash";
+import { useSplash } from "@/components/Splash/useSplash";
+import { TapTarget } from "@/utils/tapTarget";
+import {
+    ButtonCore,
+    ButtonReset,
+    ButtonSizeBase,
+    buttonColorBase,
+    buttonColorConfig,
+    buttonSizeConfig,
+    IconButtonIconSizeMapping,
+    newButtonBaseDataAttrs,
+    useButtonConfig,
+    withTooltip,
+} from "../core";
+import type { IconButtonProps } from "./types";
+
+export const IconButton: React.FC<IconButtonProps> = ({
+    size,
+    shape,
+    color,
+    width = "default",
+    tooltip,
+    icon,
+    onPress,
+    className,
+    ...props
+}) => {
+    const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
+        size,
+        shape,
+        color,
+    });
+
+    const { splashInfo, handlePress } = useSplash(onPress);
+
+    const baseButtonDataAttrs = newButtonBaseDataAttrs({
+        shape: buttonShape,
+        size: buttonSize,
+        color: buttonColor,
+    });
+
+    const iconButtonDataAttrs = {
+        ...baseButtonDataAttrs,
+        "data-width": width,
+        "data-icon-button": true,
+    };
+
+    return withTooltip(
+        <AriaButton
+            onPress={handlePress}
+            className={(renderProps) =>
+                clsx(
+                    ButtonReset,
+                    TapTarget,
+                    buttonSizeConfig(buttonSize),
+                    buttonColorConfig(buttonColor),
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
+            {...props}
+            {...iconButtonDataAttrs}
+            data-button
+        >
+            {({
+                isPending,
+                isDisabled,
+                isFocusVisible,
+                isFocused,
+                isPressed,
+                isHovered,
+            }) => {
+                const dataAttrs = {
+                    ...iconButtonDataAttrs,
+                    "data-hovered": isHovered || undefined,
+                    "data-disabled": isDisabled || undefined,
+                    "data-focused": isFocused || undefined,
+                    "data-focus-visible": isFocusVisible || undefined,
+                    "data-pressed": isPressed || undefined,
+                    "data-visual-button": true,
+                };
+
+                const iconSize = IconButtonIconSizeMapping[buttonSize];
+                return (
+                    <span
+                        className={clsx(
+                            ButtonCore,
+                            buttonColorBase,
+                            ButtonSizeBase
+                        )}
+                        {...dataAttrs}
+                    >
+                        {splashInfo && <Splash {...splashInfo} />}
+                        {isPending ? (
+                            <Loader size={iconSize} />
+                        ) : (
+                            icon && <Icon icon={icon} size={iconSize} />
+                        )}
+                    </span>
+                );
+            }}
+        </AriaButton>,
+        tooltip
+    );
+};

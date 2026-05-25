@@ -1,0 +1,19 @@
+import type { LucideIcon } from "lucide-react";
+import type { ReactElement } from "react";
+import type { Dialog, DialogRenderProps } from "react-aria-components";
+
+export type ActionDialogDividerPlacement =
+    | "none"
+    | "all"
+    | "after-heading"
+    | "before-actions";
+
+export interface ActionDialogProps
+    extends Omit<React.ComponentPropsWithRef<typeof Dialog>, "className"> {
+    heading?: string;
+    icon?: LucideIcon;
+    actions?:
+        | ReactElement[]
+        | ((renderProps: DialogRenderProps) => ReactElement[]);
+    divider?: ActionDialogDividerPlacement;
+}

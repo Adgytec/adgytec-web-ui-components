@@ -1,0 +1,15 @@
+@layer adgytec.comps {
+    .selector {
+        display: grid;
+        gap: var(--md-sys-layout-space-24);
+    }
+
+    .theme-item {
+        display: grid;
+        gap: var(--md-sys-layout-space-16);
+    }
+
+    .theme-item-info {
+        display: grid;
+    }
+}

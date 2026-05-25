@@ -1,0 +1,59 @@
+/* configurable tokens
+*
+* --md-tooltip-background
+* --md-tooltip-color
+*
+* configurable tokens end */
+
+@layer adgytec.comps {
+    .tooltip {
+        --_md-tooltip-background: var(
+            --md-tooltip-background,
+            var(--md-sys-color-inverse-surface)
+        );
+        --_md-tooltip-color: var(
+            --md-tooltip-color,
+            var(--md-sys-color-inverse-on-surface)
+        );
+
+        --_offset: calc(4 * var(--dp, 1px));
+
+        background-color: var(--_md-tooltip-background);
+        color: var(--_md-tooltip-color);
+
+        padding-inline: var(--md-sys-layout-space-8);
+        padding-block: var(--md-sys-layout-space-4);
+
+        max-inline-size: calc(300 * var(--dp, 1px));
+        border-radius: var(--md-sys-shape-corner-radius-extra-small);
+
+        transform: translate3d(0, 0, 0);
+        transition:
+            transform var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            opacity var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        &[data-placement="bottom"] {
+            --_origin: translateY(calc(-1 * var(--_offset)));
+        }
+
+        &[data-placement="top"] {
+            --_origin: translateY(var(--_offset));
+        }
+
+        &[data-placement="right"] {
+            --_origin: translateX(calc(-1 * var(--_offset)));
+        }
+
+        &[data-placement="left"] {
+            --_origin: translateX(var(--_offset));
+        }
+
+        &[data-entering],
+        &[data-exiting] {
+            transform: var(--_origin);
+            opacity: 0;
+        }
+    }
+}

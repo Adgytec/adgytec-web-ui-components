@@ -1,0 +1,99 @@
+/* ==================== */
+/* Box sizing */
+/* ==================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ==================== */
+/* Prevent font size inflation */
+/* ==================== */
+
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+/* ==================== */
+/* Remove default margins */
+/* ==================== */
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+/* ==================== */
+/* Lists (only when role=list is used) */
+/* ==================== */
+
+ul[role="list"],
+ol[role="list"] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==================== */
+/* Core body defaults */
+/* ==================== */
+
+body {
+    min-block-size: 100dvb;
+    line-height: 1.5; /* fallback only */
+}
+
+/* ==================== */
+/* Links */
+/* ==================== */
+
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+}
+
+/* ==================== */
+/* Media elements */
+/* ==================== */
+
+img,
+picture {
+    max-inline-size: 100%;
+    display: block;
+}
+
+/* ==================== */
+/* Form elements */
+/* ==================== */
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Ensure textareas are usable */
+textarea:not([rows]) {
+    min-block-size: 10em;
+}
+
+/* ==================== */
+/* Scroll behavior */
+/* ==================== */
+
+:target {
+    scroll-margin-block: 5ex;
+}

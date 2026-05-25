@@ -1,0 +1,26 @@
+:root {
+    /* Shape corner radius scale */
+    /* https://m3.material.io/styles/shape/corner-radius-scale */
+    --md-sys-shape-corner-radius-none: 0;
+    --md-sys-shape-corner-radius-extra-small: calc(4 * var(--dp, 1px));
+    --md-sys-shape-corner-radius-small: calc(8 * var(--dp, 1px));
+    --md-sys-shape-corner-radius-medium: calc(12 * var(--dp, 1px));
+    --md-sys-shape-corner-radius-large: calc(16 * var(--dp, 1px));
+    --md-sys-shape-corner-radius-large-increased: calc(20 * var(--dp, 1px));
+    --md-sys-shape-corner-radius-extra-large: calc(28 * var(--dp, 1px));
+    --md-sys-shape-corner-radius-extra-large-increased: calc(
+        32 *
+        var(--dp, 1px)
+    );
+    --md-sys-shape-corner-radius-extra-extra-large: calc(48 * var(--dp, 1px));
+
+    /* Use only for static layouts. Avoid in animated contexts (breaks border-radius transitions). */
+    --md-sys-shape-corner-radius-full: calc(9999 * var(--dp, 1px));
+
+    /* border width */
+    /* https://pub.dev/documentation/material_design/latest/material_design/M3BorderWidthToken.html */
+    --md-sys-shape-border-width-none: 0;
+    --md-sys-shape-border-width-thin: calc(1 * var(--dp, 1px));
+    --md-sys-shape-border-width-thick: calc(2 * var(--dp, 1px));
+    --md-sys-shape-border-width-extra-thick: calc(4 * var(--dp, 1px));
+}

@@ -1,0 +1,20 @@
+@layer adgytec.comps {
+    .selected-value {
+        color: var(--editor-color);
+
+        padding-inline-start: var(--md-sys-layout-space-16);
+        padding-inline-end: var(--md-sys-layout-space-12);
+
+        &[data-placeholder] {
+            color: var(--placeholder-color);
+            display: none;
+        }
+    }
+
+    .tag-list {
+        display: flex;
+        gap: var(--md-sys-layout-space-8);
+
+        flex-wrap: wrap;
+    }
+}

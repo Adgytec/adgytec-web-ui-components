@@ -1,0 +1,74 @@
+@layer adgytec.comps {
+    .slider {
+        --_track-gap: var(--md-sys-layout-space-16);
+        --_orientation-inset: calc(-1 * calc(var(--_track-gap) / 2));
+
+        display: flex;
+        flex-direction: column;
+        gap: var(--md-sys-layout-space-4);
+
+        block-size: 100%;
+    }
+
+    .track-container {
+        flex: 1;
+        padding: calc(-1 * var(--_orientation-inset));
+
+        &[data-orientation="vertical"] {
+            align-self: center;
+        }
+    }
+
+    .track {
+        --_md-slider-track-inner-shape: calc(2 * var(--dp, 1px));
+
+        --_active-track-color: var(--_md-slider-active-track-color);
+        --_inactive-track-color: var(--_md-slider-inactive-track-color);
+
+        &[data-orientation="horizontal"] {
+            inline-size: 100%;
+            block-size: var(--_md-slider-track-size);
+        }
+
+        &[data-orientation="vertical"] {
+            block-size: 100%;
+            inline-size: var(--_md-slider-track-size);
+        }
+
+        &[data-disabled] {
+            --_active-track-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            --_inactive-track-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-container)
+            );
+        }
+    }
+
+    .extra-small {
+        --_md-slider-track-shape: var(--md-sys-shape-corner-radius-small);
+        --_md-slider-track-size: var(--md-sys-layout-space-16);
+    }
+
+    .small {
+        --_md-slider-track-shape: var(--md-sys-shape-corner-radius-small);
+        --_md-slider-track-size: var(--md-sys-layout-space-24);
+    }
+
+    .medium {
+        --_md-slider-track-shape: var(--md-sys-shape-corner-radius-medium);
+        --_md-slider-track-size: var(--md-sys-layout-space-40);
+    }
+
+    .large {
+        --_md-slider-track-shape: var(--md-sys-shape-corner-radius-large);
+        --_md-slider-track-size: var(--md-sys-layout-space-56);
+    }
+
+    .extra-large {
+        --_md-slider-track-shape: var(--md-sys-shape-corner-radius-extra-large);
+        --_md-slider-track-size: var(--md-sys-layout-space-96);
+    }
+}

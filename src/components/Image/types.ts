@@ -1,29 +1,17 @@
-export type ImageVariant =
+export type Preset =
+    | "default"
     | "thumbnail"
-    | "small"
-    | "medium"
-    | "large"
-    | "extraLarge";
+    | "normal"
+    | "wide"
+    | "full"
+    | "grid3Col";
 
-export type ImageVariants = Record<ImageVariant, string>;
-
-type NativeImageProps = Omit<
-    React.ImgHTMLAttributes<HTMLImageElement>,
-    "src" | "srcSet"
->;
-
-export type ImageSourceProps = NativeImageProps & {
-    type: "source";
-    src: string;
-    original?: never;
-    variants?: never;
-};
-
-export type ImageVariantProps = NativeImageProps & {
-    type: "variants";
-    src?: never;
-    original: string;
-    variants: ImageVariants;
-};
-
-export type ImageProps = ImageSourceProps | ImageVariantProps;
+export interface ImageProps
+    extends Omit<React.ComponentPropsWithRef<"img">, "src" | "srcSet"> {
+    preset?: Preset;
+    thumbnail: string;
+    small: string;
+    medium: string;
+    large: string;
+    extraLarge: string;
+}

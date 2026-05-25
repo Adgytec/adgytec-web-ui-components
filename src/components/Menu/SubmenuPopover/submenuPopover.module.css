@@ -1,0 +1,6 @@
+@layer adgytec.comps {
+    .popover {
+        display: grid;
+        grid-template-rows: 1fr;
+    }
+}

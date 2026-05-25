@@ -1,0 +1,15 @@
+:root {
+    /* State opacities for Hover, Focus, Pressed, and Dragged states */
+    /* https://m3.material.io/foundations/interaction/states/state-layers */
+    --md-sys-state-hover: 0.08;
+    --md-sys-state-focus: 0.1;
+    --md-sys-state-pressed: 0.1;
+    --md-sys-state-dragged: 0.16;
+
+    /* https://pub.dev/documentation/material_design/latest/material_design/M3OpacityToken.html */
+    /* Disabled states */
+    --md-sys-state-disabled-container: 0.12;
+    --md-sys-state-disabled-content: 0.38;
+    --md-sys-state-divider: 0.12;
+    --md-sys-state-backdrop: 0.5;
+}

@@ -1,26 +1,24 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import type { PressEvent } from "react-aria-components";
-import type { SetTimeoutReturnType, SplashState } from "./types";
+import type { SplashState } from "./types";
 
 export const useSplash = (onPress?: (e: PressEvent) => void) => {
-    const [coords, setCoords] = useState<SplashState | null>(null);
+    const [splashInfo, setSplashInfo] = useState<SplashState | null>(null);
     const idRef = useRef(0);
-    const timeout = useRef<SetTimeoutReturnType | undefined>(undefined);
 
     const handlePress = (e: PressEvent) => {
-        setCoords({ id: idRef.current++, x: e.x, y: e.y });
-        if (e.x !== -1 && e.y !== -1) {
-            clearTimeout(timeout.current);
-            timeout.current = setTimeout(() => setCoords(null), 500);
-        }
+        setSplashInfo({
+            id: idRef.current++,
+            x: e.x,
+            y: e.y,
+            onAnimationEnd: handleAnimationEnd,
+        });
         onPress?.(e);
     };
 
-    useEffect(() => {
-        return () => {
-            clearTimeout(timeout.current);
-        };
-    }, []);
+    const handleAnimationEnd = () => {
+        setSplashInfo(null);
+    };
 
-    return { coords, handlePress };
+    return { splashInfo, handlePress };
 };

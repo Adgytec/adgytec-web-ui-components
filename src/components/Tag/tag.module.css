@@ -1,0 +1,217 @@
+/* configurable tokens
+*
+* --md-chip-background-color
+* --md-chip-selected-background-color
+*
+* --md-chip-icon-color
+* --md-chip-selected-icon-color
+*
+* --md-chip-label-color
+* --md-chip-selected-label-color
+*
+* configurable tokens end */
+
+@layer adgytec.overrides {
+    .tag {
+        [data-visual-button] {
+            --focus-indicator-offset: calc(-4 * var(--dp, 1px));
+        }
+    }
+}
+
+@layer adgytec.comps {
+    .tag {
+        --_md-chip-background-color: var(
+            --md-chip-background-color,
+            var(--md-sys-color-surface-container-low)
+        );
+        --_md-chip-selected-background-color: var(
+            --md-chip-selected-background-color,
+            var(--md-sys-color-secondary-container)
+        );
+        --_md-chip-icon-color: var(
+            --md-chip-icon-color,
+            var(--md-sys-color-primary)
+        );
+        --_md-chip-selected-icon-color: var(
+            --md-chip-selected-icon-color,
+            var(--md-sys-color-on-secondary-container)
+        );
+        --_md-chip-label-color: var(
+            --md-chip-label-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+        --_md-chip-selected-label-color: var(
+            --md-chip-selected-label-color,
+            var(--md-sys-color-on-secondary-container)
+        );
+
+        /* derived */
+        --_background: var(--_md-chip-background-color);
+        --_label-color: var(--_md-chip-label-color);
+        --_icon-color: var(--_md-chip-icon-color);
+
+        --_state-layer-opacity: 0;
+
+        --_state-layer-color: rgb(
+            from var(--_label-color) r g b /
+            var(--_state-layer-opacity)
+        );
+
+        /* styles  */
+
+        display: flex;
+        align-items: center;
+        gap: var(--md-sys-layout-space-8);
+
+        position: relative;
+        overflow: clip;
+
+        background-color: var(--_background);
+        color: var(--_icon-color);
+
+        padding-inline: var(--md-sys-layout-space-12);
+        padding-block: calc(5 * var(--dp, 1px));
+        border-radius: var(--md-sys-shape-corner-radius-small);
+
+        border: calc(1 * var(--dp, 1px)) solid
+            var(--md-sys-color-outline-variant);
+        outline: none;
+
+        transition:
+            background-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            border-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            padding var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-icon] {
+            padding-inline-start: var(--md-sys-layout-space-8);
+        }
+
+        &[data-avatar] {
+            padding-block: calc(3 * var(--dp, 1px));
+            padding-inline-start: var(--md-sys-layout-space-4);
+        }
+
+        &[data-allows-removing] {
+            padding-block: 0;
+            padding-inline-end: calc(2 * var(--dp, 1px));
+        }
+
+        &[data-selection-mode] {
+            cursor: pointer;
+        }
+
+        &[data-selected] {
+            --_background: var(--_md-chip-selected-background-color);
+            --_label-color: var(--_md-chip-selected-label-color);
+            --_icon-color: var(--_md-chip-selected-icon-color);
+
+            border-color: transparent;
+        }
+
+        &[data-hovered] {
+            --_state-layer-opacity: var(--md-sys-state-hover);
+        }
+
+        &[data-focus-visible] {
+            --_state-layer-opacity: var(--md-sys-state-focus);
+        }
+
+        &[data-pressed] {
+            --_state-layer-opacity: var(--md-sys-state-pressed);
+        }
+
+        &[data-disabled] {
+            cursor: default;
+            border-color: transparent;
+
+            --_background: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-container)
+            );
+            --_label-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            --_icon-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+        }
+    }
+
+    /* state layer */
+    .tag::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+
+        background-color: var(--_state-layer-color);
+
+        transition: background-color var(--md-sys-motion-standard-fast-spatial)
+            var(--md-sys-motion-standard-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    /* focus indicator */
+    .tag[data-focus-visible] {
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
+
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
+
+        z-index: 1;
+    }
+
+    .label {
+        color: var(--_label-color);
+
+        transition: color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    .avatar-constraint {
+        inline-size: var(--md-sys-layout-space-24);
+        aspect-ratio: 1 / 1;
+
+        overflow: clip;
+
+        &[data-disabled] {
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: 50%;
+
+                background: rgb(
+                    from var(--md-sys-color-on-surface) r g b /
+                    var(--md-sys-state-disabled-content)
+                );
+            }
+        }
+    }
+}

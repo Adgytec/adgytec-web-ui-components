@@ -1,0 +1,19 @@
+@layer adgytec.comps {
+    .trigger {
+        --rotate: 0;
+
+        &[data-pressed] {
+            --rotate: 180deg;
+        }
+
+        > svg {
+            rotate: var(--rotate);
+            transition: rotate var(--md-sys-motion-standard-fast-spatial)
+                var(--md-sys-motion-standard-fast-spatial-duration);
+
+            @media (prefers-reduced-motion) {
+                transition: none;
+            }
+        }
+    }
+}

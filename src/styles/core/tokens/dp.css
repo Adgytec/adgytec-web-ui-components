@@ -1,0 +1,4 @@
+:root {
+    /* 16 is used as base */
+    --dp: calc(1rem / 16);
+}
