@@ -1,0 +1,26 @@
+@layer adgytec.comps {
+    .modal {
+        --_detached-margin: var(--md-sys-layout-space-16);
+
+        position: fixed;
+        inset-block-end: 0;
+
+        inset-inline-start: 50%;
+        translate: -50%;
+
+        &[data-layout="detached"] {
+            margin: var(--_detached-margin);
+        }
+
+        transition: translate var(--_modal-motion) var(--_modal-motion-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-entering],
+        &[data-exiting] {
+            translate: -50% 100%;
+        }
+    }
+}

@@ -14,6 +14,11 @@
 
         /* configurable tokens end */
 
+        --_modal-motion: var(--md-sys-motion-expressive-default-effects);
+        --_modal-motion-duration: var(
+            --md-sys-motion-expressive-default-effects-duration
+        );
+
         background-color: rgb(
             from var(--_md-dialog-overlay) r g b /
             var(--md-sys-state-backdrop)
@@ -23,33 +28,15 @@
         inset: 0;
         z-index: 1000;
 
-        &[data-entering] {
-            animation: modal-fade
-                var(--md-sys-motion-expressive-default-effects)
-                var(--md-sys-motion-expressive-default-effects-duration);
+        transition: opacity var(--_modal-motion) var(--_modal-motion-duration);
 
-            @media (prefers-reduced-motion) {
-                animation: none;
-            }
+        @media (prefers-reduced-motion) {
+            transition: none;
         }
 
+        &[data-entering],
         &[data-exiting] {
-            animation: modal-fade var(--md-sys-motion-expressive-fast-effects)
-                var(--md-sys-motion-expressive-fast-effects-duration) reverse;
-
-            @media (prefers-reduced-motion) {
-                animation: none;
-            }
-        }
-    }
-
-    @keyframes modal-fade {
-        from {
             opacity: 0;
-        }
-
-        to {
-            opacity: 1;
         }
     }
 }

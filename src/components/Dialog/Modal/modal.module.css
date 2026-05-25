@@ -9,33 +9,15 @@
         align-items: center;
         justify-content: center;
 
+        transition: scale var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
         &[data-entering] {
-            animation: modal-zoom var(--md-sys-motion-expressive-fast-spatial)
-                var(--md-sys-motion-expressive-fast-spatial-duration);
-
-            @media (prefers-reduced-motion) {
-                animation: none;
-            }
-        }
-
-        &[data-exiting] {
-            animation: modal-zoom
-                var(--md-sys-motion-expressive-default-effects)
-                var(--md-sys-motion-expressive-default-effects-duration) reverse;
-
-            @media (prefers-reduced-motion) {
-                animation: none;
-            }
-        }
-    }
-
-    @keyframes modal-zoom {
-        from {
-            transform: scale(0.75);
-        }
-
-        to {
-            transform: scale(1);
+            scale: 0.75;
         }
     }
 }
