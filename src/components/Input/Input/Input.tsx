@@ -117,7 +117,12 @@ export const Input: React.FC<InputProps> = ({
                                     size={TextFieldIconSize}
                                 />
                             )}
-                            <span className={clsx(EditorInputGroupStyles)}>
+                            <span
+                                className={clsx(
+                                    EditorInputGroupStyles,
+                                    typography.bodyLarge
+                                )}
+                            >
                                 {prefix && typeof prefix === "function"
                                     ? prefix({ isDisabled, isInvalid })
                                     : prefix}
