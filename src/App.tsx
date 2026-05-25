@@ -140,10 +140,12 @@ import {
 } from "./components/Menu";
 import { Popover } from "./components/Popover";
 import {
+    BottomSheetModal,
     type SheetLayout,
     type SideSheetAlignment,
     SideSheetModal,
 } from "./components/Sheets";
+import { BottomSheet } from "./components/Sheets/BottomSheet/BottomSheet";
 import { SideSheet } from "./components/Sheets/SideSheet/SideSheet";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "./components/Tabs";
 import { Tag } from "./components/Tag";
@@ -3304,8 +3306,6 @@ const SideSheetPreview = () => {
                             headline={`${alignment}-${layout}`}
                         >
                             <SearchFieldPreview />
-
-                            <CalendarPreview />
                         </SideSheet>
                     </SideSheetModal>
                 </ModalOverlay>
@@ -3324,6 +3324,35 @@ const SideSheetPreview = () => {
                         />
                     ))}
                 </Fragment>
+            ))}
+        </div>
+    );
+};
+
+const BottomSheetPreview = () => {
+    const layouts: SheetLayout[] = ["standard", "detached"];
+
+    const RenderBottomSheet = ({ layout }: { layout: SheetLayout }) => {
+        return (
+            <DialogTrigger>
+                <Button color="outlined">{layout}</Button>
+
+                <ModalOverlay isDismissable>
+                    <BottomSheetModal layout={layout}>
+                        <BottomSheet>
+                            <SearchFieldPreview />
+
+                            <ConfigPreview />
+                        </BottomSheet>
+                    </BottomSheetModal>
+                </ModalOverlay>
+            </DialogTrigger>
+        );
+    };
+    return (
+        <div className="items">
+            {layouts.map((layout) => (
+                <RenderBottomSheet key={layout} layout={layout} />
             ))}
         </div>
     );
@@ -3349,11 +3378,15 @@ const App = () => {
         },
 
         {
+            id: "bottom-sheet-preview",
+            label: "Bottom Sheet",
+            Component: BottomSheetPreview,
+        },
+        {
             id: "side-sheet-preview",
             label: "Side Sheet",
             Component: SideSheetPreview,
         },
-
         {
             id: "search-field",
             label: "Search Field",
