@@ -1,0 +1,73 @@
+@layer adgytec.comps {
+    .snackbar-region {
+        position: fixed;
+
+        display: flex;
+        flex-direction: column-reverse;
+        gap: calc(2 * var(--dp, 1px));
+
+        inset-block-end: var(--md-sys-layout-space-24);
+
+        inset-inline-start: 50%;
+        translate: -50%;
+    }
+
+    .snackbar {
+        --_md-snackbar-background: var(
+            --md-snackbar-background,
+            var(--md-sys-color-inverse-surface)
+        );
+        --_md-snackbar-color: var(
+            --md-snackbar-color,
+            var(--md-sys-color-inverse-on-surface)
+        );
+        --_md-snackbar-action-color: var(
+            --md-snackbar-action-color,
+            var(--md-sys-color-inverse-primary)
+        );
+
+        inline-size: min(90svi, calc(568 * var(--dp, 1px)));
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--md-sys-layout-space-4);
+
+        padding-block: var(--md-sys-layout-space-4);
+        padding-inline: var(--md-sys-layout-space-16);
+
+        box-shadow: var(--md-sys-elevation-shadow-3);
+        border-radius: var(--md-sys-shape-corner-radius-extra-small);
+
+        background-color: var(--_md-snackbar-background);
+        color: var(--_md-snackbar-color);
+
+        &[data-close] {
+            padding-inline-end: var(--md-sys-layout-space-4);
+        }
+
+        &[data-action] {
+            padding-inline-end: var(--md-sys-layout-space-8);
+        }
+
+        [data-close-button] {
+            --md-button-color: var(--_md-snackbar-color);
+        }
+    }
+
+    .snackbar-content {
+        inline-size: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--md-sys-layout-space-8);
+
+        [data-button] {
+            --md-button-color: var(--_md-snackbar-action-color);
+        }
+    }
+
+    .text {
+        padding-block: calc(10 * var(--dp, 1px));
+    }
+}

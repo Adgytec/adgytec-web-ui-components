@@ -3391,7 +3391,8 @@ const SnackbarPreview = () => {
                 color="elevated"
                 onPress={() =>
                     queue.add({
-                        supportingText: "Sample snackbar",
+                        supportingText:
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec ligula a dui faucibus mollis. ",
                         action: <Button color="text">action</Button>,
                     })
                 }

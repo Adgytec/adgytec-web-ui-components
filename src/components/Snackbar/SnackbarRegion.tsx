@@ -9,6 +9,7 @@ import {
     UNSTABLE_ToastRegion as ToastRegion,
 } from "react-aria-components";
 import { flushSync } from "react-dom";
+import { typography } from "@/utils";
 import { IconButton } from "../Button";
 import { SnackbarQueueContext } from "./context";
 import styles from "./snackbar.module.css";
@@ -37,15 +38,30 @@ export const SnackbarRegion: React.FC<SnackbarRegionProps> = ({
     return (
         <SnackbarQueueContext value={queue}>
             {children}
-            <ToastRegion queue={queue} className={clsx(styles["toast-region"])}>
+            <ToastRegion
+                queue={queue}
+                className={clsx(styles["snackbar-region"])}
+            >
                 {({ toast }) => (
                     <Toast
                         toast={toast}
-                        className={clsx(styles["toast"])}
+                        className={clsx(styles["snackbar"])}
                         style={{ viewTransitionName: toast.key }}
+                        data-close={!toast.content.hideCloseAction || undefined}
+                        data-action={
+                            (toast.content.hideCloseAction &&
+                                !!toast.content.action) ||
+                            undefined
+                        }
                     >
-                        <ToastContent className={styles["toast-region"]}>
-                            <Text slot="description">
+                        <ToastContent className={styles["snackbar-content"]}>
+                            <Text
+                                slot="description"
+                                className={clsx(
+                                    styles["text"],
+                                    typography.bodyMedium
+                                )}
+                            >
                                 {toast.content.supportingText}
                             </Text>
 
@@ -57,6 +73,7 @@ export const SnackbarRegion: React.FC<SnackbarRegionProps> = ({
                                 slot="close"
                                 icon={X}
                                 color="standard"
+                                data-close-button
                             />
                         )}
                     </Toast>
