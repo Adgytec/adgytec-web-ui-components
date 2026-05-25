@@ -34,6 +34,7 @@ export const SideSheet: React.FC<SideSheetProps> = ({
                     >
                         {headline && (
                             <Heading
+                                slot="title"
                                 className={clsx(
                                     styles["headline"],
                                     typography.titleLarge
