@@ -139,6 +139,14 @@ import {
     SubmenuPopover,
 } from "./components/Menu";
 import { Popover } from "./components/Popover";
+import {
+    BottomSheetModal,
+    type SheetLayout,
+    type SideSheetAlignment,
+    SideSheetModal,
+} from "./components/Sheets";
+import { BottomSheet } from "./components/Sheets/BottomSheet/BottomSheet";
+import { SideSheet } from "./components/Sheets/SideSheet/SideSheet";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "./components/Tabs";
 import { Tag } from "./components/Tag";
 import { ThemeSelector } from "./components/ThemeSelector";
@@ -3258,6 +3266,121 @@ const SearchFieldPreview = () => {
     );
 };
 
+const SideSheetPreview = () => {
+    const alignments: SideSheetAlignment[] = ["start", "end"];
+    const layouts: SheetLayout[] = ["standard", "detached"];
+
+    const sideSheetActions = [
+        <Button key="save">Save</Button>,
+        <Button color="text" key="close" slot="close">
+            Close
+        </Button>,
+    ];
+
+    const sideSheetActionsStart = [
+        <Button color="text" key="close" slot="close">
+            Close
+        </Button>,
+        <Button key="save">Save</Button>,
+    ];
+
+    const RenderSideSheet = ({
+        alignment,
+        layout,
+    }: {
+        alignment: SideSheetAlignment;
+        layout: SheetLayout;
+    }) => {
+        return (
+            <DialogTrigger>
+                <Button color="outlined">{`${alignment}-${layout}`}</Button>
+
+                <ModalOverlay isDismissable>
+                    <SideSheetModal alignment={alignment} layout={layout}>
+                        <SideSheet
+                            actions={
+                                alignment === "start"
+                                    ? sideSheetActionsStart
+                                    : sideSheetActions
+                            }
+                            headline={`${alignment}-${layout}`}
+                        >
+                            <SearchFieldPreview />
+                        </SideSheet>
+                    </SideSheetModal>
+                </ModalOverlay>
+            </DialogTrigger>
+        );
+    };
+    return (
+        <div className="items">
+            {alignments.map((alignment) => (
+                <Fragment key={alignment}>
+                    {layouts.map((layout) => (
+                        <RenderSideSheet
+                            key={layout}
+                            layout={layout}
+                            alignment={alignment}
+                        />
+                    ))}
+                </Fragment>
+            ))}
+        </div>
+    );
+};
+
+const BottomSheetPreview = () => {
+    const layouts: SheetLayout[] = ["standard", "detached"];
+
+    const RenderBottomSheet = ({ layout }: { layout: SheetLayout }) => {
+        return (
+            <DialogTrigger>
+                <Button color="outlined">{layout}</Button>
+
+                <ModalOverlay isDismissable>
+                    <BottomSheetModal layout={layout}>
+                        <BottomSheet>
+                            <h3
+                                className={clsx(
+                                    typography.titleMediumEmphasized
+                                )}
+                            >
+                                Some Action
+                            </h3>
+
+                            <p className={clsx(typography.bodyLarge)}>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit. Duis eros nulla, commodo a
+                                finibus malesuada, cursus non metus.
+                            </p>
+
+                            <div
+                                className="items"
+                                style={{
+                                    marginBlockStart: "16px",
+                                    justifyContent: "end",
+                                }}
+                            >
+                                <Button color="text" slot="close">
+                                    Cancel
+                                </Button>
+                                <Button>Save</Button>
+                            </div>
+                        </BottomSheet>
+                    </BottomSheetModal>
+                </ModalOverlay>
+            </DialogTrigger>
+        );
+    };
+    return (
+        <div className="items">
+            {layouts.map((layout) => (
+                <RenderBottomSheet key={layout} layout={layout} />
+            ))}
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -3277,6 +3400,16 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "bottom-sheet-preview",
+            label: "Bottom Sheet",
+            Component: BottomSheetPreview,
+        },
+        {
+            id: "side-sheet-preview",
+            label: "Side Sheet",
+            Component: SideSheetPreview,
+        },
         {
             id: "search-field",
             label: "Search Field",

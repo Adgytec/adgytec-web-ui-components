@@ -133,10 +133,10 @@
         scrollbar-width: none;
 
         transition:
-            border-color var(--md-sys-motion-standard-fast-effects)
-            var(--md-sys-motion-standard-fast-effects-duration),
-            outline-color var(--md-sys-motion-standard-fast-effects)
-            var(--md-sys-motion-standard-fast-effects-duration);
+            border-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            outline-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
         &[data-input] {
             cursor: text;
@@ -225,8 +225,8 @@
         justify-content: space-between;
         gap: var(--md-sys-layout-space-16);
 
-        transition: color var(--md-sys-motion-standard-fast-effects)
-            var(--md-sys-motion-standard-fast-effects-duration);
+        transition: color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
         @media (prefers-reduced-motion) {
             transition: none;

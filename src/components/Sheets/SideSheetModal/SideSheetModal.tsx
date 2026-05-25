@@ -1,0 +1,30 @@
+import clsx from "clsx";
+import { Modal } from "react-aria-components";
+import { SideSheetContext } from "./context";
+import styles from "./sideSheetModal.module.css";
+import type { SideSheetModalProps } from "./types";
+
+export const SideSheetModal: React.FC<SideSheetModalProps> = ({
+    className,
+    alignment = "end",
+    layout = "standard",
+    ...props
+}) => {
+    return (
+        <SideSheetContext value={{ alignment, layout }}>
+            <Modal
+                data-alignment={alignment}
+                data-layout={layout}
+                className={(renderProps) =>
+                    clsx(
+                        styles["modal"],
+                        typeof className === "function"
+                            ? className(renderProps)
+                            : className
+                    )
+                }
+                {...props}
+            />
+        </SideSheetContext>
+    );
+};
