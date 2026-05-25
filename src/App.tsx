@@ -147,6 +147,7 @@ import {
 } from "./components/Sheets";
 import { BottomSheet } from "./components/Sheets/BottomSheet/BottomSheet";
 import { SideSheet } from "./components/Sheets/SideSheet/SideSheet";
+import { useSnackbarQueue } from "./components/Snackbar";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "./components/Tabs";
 import { Tag } from "./components/Tag";
 import { ThemeSelector } from "./components/ThemeSelector";
@@ -3381,6 +3382,41 @@ const BottomSheetPreview = () => {
     );
 };
 
+const SnackbarPreview = () => {
+    const queue = useSnackbarQueue();
+
+    return (
+        <div className="items">
+            <Button
+                color="elevated"
+                onPress={() =>
+                    queue.add({
+                        supportingText: "Sample snackbar",
+                        action: <Button color="text">action</Button>,
+                    })
+                }
+            >
+                Show snackbar
+            </Button>
+
+            <Button
+                color="elevated"
+                onPress={() =>
+                    queue.add(
+                        {
+                            supportingText: "Sample snackbar",
+                            action: <Button color="text">action</Button>,
+                        },
+                        { timeout: 5000 }
+                    )
+                }
+            >
+                Auto Dismiss
+            </Button>
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -3400,6 +3436,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "snackbar-preview",
+            label: "Snackbar",
+            Component: SnackbarPreview,
+        },
         {
             id: "bottom-sheet-preview",
             label: "Bottom Sheet",

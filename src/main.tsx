@@ -7,7 +7,7 @@ import App from "./App.tsx";
 import "./styles/main.css";
 import "./styles/core";
 import "./styles/defaultTheme";
-import { Toaster } from "sonner";
+import { SnackbarRegion } from "./components/Snackbar/SnackbarRegion.tsx";
 import { ThemeProvider } from "./components/ThemeSelector/ThemeProvider.tsx";
 
 const rootEl = document.getElementById("root");
@@ -15,9 +15,10 @@ if (!rootEl) throw new Error("missing root element");
 
 createRoot(rootEl).render(
     <StrictMode>
-        <ThemeProvider>
-            <Toaster duration={7500} visibleToasts={5} />
-            <App />
-        </ThemeProvider>
+        <SnackbarRegion>
+            <ThemeProvider>
+                <App />
+            </ThemeProvider>
+        </SnackbarRegion>
     </StrictMode>
 );
