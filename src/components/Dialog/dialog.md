@@ -34,13 +34,12 @@ Extends [React Aria Components ModalOverlay](https://react-spectrum.adobe.com/re
 ## Usage
 
 ```tsx
+import { DialogTrigger, Heading } from 'react-aria-components';
 import { 
   Dialog, 
   Modal, 
   ModalOverlay, 
-  DialogTrigger, 
-  Button, 
-  Heading 
+  Button 
 } from '@adgytec/web-ui-components';
 
 <DialogTrigger>
