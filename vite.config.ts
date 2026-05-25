@@ -71,7 +71,6 @@ export default defineConfig({
                 "lucide-react",
                 "usehooks-ts",
                 "zod",
-                "sonner",
                 "clsx",
                 "@internationalized/date",
                 "react-transition-group",
