@@ -73,11 +73,6 @@
     }
 
     .headline {
-        max-inline-size: min(70svi, 20ch);
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: clip;
-
         color: var(--_md-side-sheet-headline-color);
     }
 

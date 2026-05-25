@@ -7,7 +7,7 @@ export type SideSheetContextValue = {
     alignment: SideSheetAlignment;
 };
 
-export const SlideSheetContext = createContext<SideSheetContextValue>({
+export const SideSheetContext = createContext<SideSheetContextValue>({
     layout: "standard",
     alignment: "end",
 });

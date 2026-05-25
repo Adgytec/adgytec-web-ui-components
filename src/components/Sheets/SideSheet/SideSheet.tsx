@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { Dialog, Header, Heading } from "react-aria-components";
 import { IconButton } from "@/components/Button";
 import { typography } from "@/utils";
-import { SlideSheetContext } from "../SideSheetModal";
+import { SideSheetContext } from "../SideSheetModal";
 import styles from "./sideSheet.module.css";
 import type { SideSheetProps } from "./types";
 
@@ -15,7 +15,7 @@ export const SideSheet: React.FC<SideSheetProps> = ({
     children,
     ...props
 }) => {
-    const { layout, alignment } = useContext(SlideSheetContext);
+    const { layout, alignment } = useContext(SideSheetContext);
     const hasActions = Array.isArray(actions) ? actions.length > 0 : !!actions;
 
     return (
