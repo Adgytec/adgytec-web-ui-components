@@ -2386,7 +2386,9 @@ const TagsPreview = () => {
                 <TagList className="tag-list">
                     <Tag
                         label="avatar"
-                        avatar={<div className="avatar">R</div>}
+                        avatar={
+                            <img src="https://picsum.photos/24" alt="random" />
+                        }
                     />
 
                     <Tag
@@ -2396,17 +2398,22 @@ const TagsPreview = () => {
                 </TagList>
             </TagGroup>
 
-            <TagGroup disabledKeys={["avatar"]} aria-label="Demo">
+            <TagGroup disabledKeys={["avatar", "avatar-2"]} aria-label="Demo">
                 <TagList className="tag-list">
                     <Tag
                         id="avatar"
                         label="avatar"
-                        avatar={<div className="avatar">R</div>}
+                        avatar={
+                            <img src="https://picsum.photos/24" alt="random" />
+                        }
                     />
 
                     <Tag
-                        label="avatar overflow"
-                        avatar={<div className="avatar">RRRRRRRRRRRR</div>}
+                        id="avatar-2"
+                        label="avatar"
+                        avatar={
+                            <img src="https://picsum.photos/24" alt="random" />
+                        }
                     />
                 </TagList>
             </TagGroup>
