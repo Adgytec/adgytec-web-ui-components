@@ -38,10 +38,25 @@
         display: flex;
         gap: var(--md-sys-layout-space-8);
         align-items: center;
+
+        &[data-alignment="centered"][data-size="small"] {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+        }
     }
 
     .leading-action {
         --md-button-color: var(--_md-app-bar-title-color);
+
+        &[data-alignment="centered"] {
+            grid-column: 1;
+            justify-self: start;
+        }
+    }
+
+    .headline[data-alignment="centered"] {
+        grid-column: 2;
+        justify-self: center;
     }
 
     .trailing-actions {
@@ -50,10 +65,12 @@
         display: flex;
         gap: var(--md-sys-layout-space-16);
         align-items: center;
-    }
 
-    .headline {
-        flex: 1;
+        &[data-alignment="centered"] {
+            grid-column: 3;
+            justify-self: end;
+            margin-inline-start: 0;
+        }
     }
 
     .secondary {

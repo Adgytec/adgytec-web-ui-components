@@ -39,9 +39,15 @@ export const AppBar: React.FC<AppBarProps> = ({
                 data-alignment={alignment}
                 data-has-secondary={(hasSecondary && !!headline) || undefined}
             >
-                <div data-primary className={clsx(styles["primary"])}>
+                <div
+                    data-primary
+                    className={clsx(styles["primary"])}
+                    data-alignment={alignment}
+                    data-size={size}
+                >
                     {leadingAction && (
                         <div
+                            data-alignment={alignment}
                             data-primary-leading
                             className={clsx(styles["leading-action"])}
                         >
@@ -52,7 +58,6 @@ export const AppBar: React.FC<AppBarProps> = ({
                     {!hasSecondary && headline && (
                         <div
                             data-alignment={alignment}
-                            data-size={size}
                             className={clsx(styles["headline"])}
                         >
                             {headline}
@@ -61,6 +66,7 @@ export const AppBar: React.FC<AppBarProps> = ({
 
                     {hasTrailingActions && (
                         <div
+                            data-alignment={alignment}
                             data-primary-trailing
                             className={clsx(styles["trailing-actions"])}
                         >
