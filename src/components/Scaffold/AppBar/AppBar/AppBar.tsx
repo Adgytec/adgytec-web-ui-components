@@ -10,7 +10,6 @@ import type { AppBarProps } from "./types";
 export const AppBar: React.FC<AppBarProps> = ({
     className,
     size = "small",
-    layout = "standard",
     alignment = "default",
     leadingAction,
     trailingActions,
@@ -24,7 +23,6 @@ export const AppBar: React.FC<AppBarProps> = ({
         <AppBarContext
             value={{
                 size,
-                layout,
                 alignment,
                 getHeadlineBlockSize: () => {
                     return AppBarHeadlineBlockSize[size];
@@ -37,7 +35,6 @@ export const AppBar: React.FC<AppBarProps> = ({
             <header
                 className={clsx(styles["app-bar"], className)}
                 {...props}
-                data-layout={layout}
                 data-size={size}
                 data-alignment={alignment}
                 data-has-secondary={hasSecondary || undefined}

@@ -1,11 +1,9 @@
 import { createContext, useContext } from "react";
 import type { AppBarAlignment } from "./alignment";
-import type { AppBarLayout } from "./layout";
 import type { AppBarSize } from "./size";
 
 export type AppBarContextType = {
     size: AppBarSize;
-    layout: AppBarLayout;
     alignment: AppBarAlignment;
     getHeadlineBlockSize: () => number;
     getHeadlineTypography: () => string;
