@@ -20,6 +20,21 @@
             var(--_md-button-padding-block-base) -
             var(--_md-button-outline-width, 0)
         );
+
+        --_md-button-padding-inline: calc(
+            var(--_md-button-padding-inline-base) -
+            var(--_md-button-outline-width, 0)
+        );
+
+        --_md-split-button-padding-inline-start: calc(
+            var(--_md-split-button-padding-inline-start-base) -
+            var(--_md-button-outline-width, 0)
+        );
+
+        --_md-split-button-padding-inline-end: calc(
+            var(--_md-split-button-padding-inline-end-base) -
+            var(--_md-button-outline-width, 0)
+        );
     }
 }
 

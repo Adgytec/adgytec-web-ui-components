@@ -194,7 +194,13 @@
 
     .avatar-constraint {
         inline-size: var(--md-sys-layout-space-24);
+        max-inline-size: var(--md-sys-layout-space-24);
+
+        block-size: var(--md-sys-layout-space-24);
+        max-block-size: var(--md-sys-layout-space-24);
+
         aspect-ratio: 1 / 1;
+        border-radius: 50%;
 
         overflow: clip;
 

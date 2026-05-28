@@ -11,6 +11,7 @@ import {
     ButtonLabelTextMapping,
     ButtonReset,
     buttonColorBase,
+    buttonColorConfig,
     withTooltip,
 } from "../../core";
 import { SplitButtonPrimaryBase, SplitButtonVariantBase } from "../core";
@@ -46,6 +47,8 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
                 clsx(
                     ButtonReset,
                     TapTarget,
+                    SplitButtonPrimaryBase,
+                    buttonColorConfig(splitButtonState.color),
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -84,9 +87,8 @@ export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
                         className={clsx(
                             ButtonCore,
                             buttonColorBase,
-                            ButtonLabelTextMapping[splitButtonState.size],
-                            SplitButtonPrimaryBase,
-                            SplitButtonVariantBase
+                            SplitButtonVariantBase,
+                            ButtonLabelTextMapping[splitButtonState.size]
                         )}
                         {...dataAttrs}
                     >
