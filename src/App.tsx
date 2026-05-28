@@ -140,6 +140,12 @@ import {
 } from "./components/Menu";
 import { Popover } from "./components/Popover";
 import {
+    AppBar,
+    AppBarAction,
+    AppBarAvatar,
+    AppBarHeadline,
+} from "./components/Scaffold";
+import {
     BottomSheet,
     BottomSheetModal,
     type SheetLayout,
@@ -3425,6 +3431,114 @@ const SnackbarPreview = () => {
     );
 };
 
+const AppBarPreview = () => {
+    return (
+        <div className="items-grid">
+            <div>
+                <h3 className={clsx(typography.titleLargeEmphasized)}>
+                    App Bar comps
+                </h3>
+
+                <div className="items">
+                    <AppBarAction icon={Bell} />
+
+                    <AppBarAvatar>R</AppBarAvatar>
+
+                    <AppBarAvatar>RRRR</AppBarAvatar>
+
+                    <AppBarAvatar>
+                        <img src="https://picsum.photos/32" alt="random" />
+                    </AppBarAvatar>
+                </div>
+            </div>
+
+            <div>
+                <h3 className={clsx(typography.titleLargeEmphasized)}>
+                    App Bar
+                </h3>
+
+                <div className="items-grid">
+                    <AppBar
+                        leadingAction={<AppBarAction icon={CloudSnow} />}
+                        trailingActions={[
+                            <AppBarAction key="settings" icon={Settings} />,
+                            <AppBarAvatar key="avatar">RRRR</AppBarAvatar>,
+                        ]}
+                        headline={<AppBarHeadline>Material 3</AppBarHeadline>}
+                    />
+
+                    <AppBar
+                        alignment="centered"
+                        leadingAction={<AppBarAction icon={CloudSnow} />}
+                        trailingActions={[
+                            <AppBarAction key="settings" icon={Settings} />,
+                            <AppBarAvatar key="avatar">
+                                <img
+                                    src="https://picsum.photos/32"
+                                    alt="random"
+                                />
+                            </AppBarAvatar>,
+                        ]}
+                        headline={<AppBarHeadline>Material 3</AppBarHeadline>}
+                    />
+
+                    <AppBar
+                        size="medium"
+                        leadingAction={<AppBarAction icon={CloudSnow} />}
+                        trailingActions={[
+                            <AppBarAction key="settings" icon={Settings} />,
+                            <AppBarAvatar key="avatar">RRRR</AppBarAvatar>,
+                        ]}
+                        headline={<AppBarHeadline>Material 3</AppBarHeadline>}
+                    />
+
+                    <AppBar
+                        size="medium"
+                        alignment="centered"
+                        leadingAction={<AppBarAction icon={CloudSnow} />}
+                        trailingActions={[
+                            <AppBarAction key="settings" icon={Settings} />,
+                            <AppBarAvatar key="avatar">
+                                <img
+                                    src="https://picsum.photos/32"
+                                    alt="random"
+                                />
+                            </AppBarAvatar>,
+                        ]}
+                        headline={<AppBarHeadline>Material 3</AppBarHeadline>}
+                    />
+
+                    <AppBar
+                        size="large"
+                        leadingAction={<AppBarAction icon={CloudSnow} />}
+                        trailingActions={[
+                            <AppBarAction key="settings" icon={Settings} />,
+                            <AppBarAvatar key="avatar">RRRR</AppBarAvatar>,
+                        ]}
+                        headline={<AppBarHeadline>Material 3</AppBarHeadline>}
+                    />
+
+                    <AppBar
+                        size="large"
+                        alignment="centered"
+                        leadingAction={<AppBarAction icon={CloudSnow} />}
+                        trailingActions={[
+                            <AppBarAction key="settings" icon={Settings} />,
+                            <AppBarAvatar key="avatar">
+                                <img
+                                    src="https://picsum.photos/32"
+                                    alt="random"
+                                />
+                            </AppBarAvatar>,
+                        ]}
+                        headline={<AppBarHeadline>Material 3</AppBarHeadline>}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -3444,6 +3558,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "app-bar-preview",
+            label: "App Bar",
+            Component: AppBarPreview,
+        },
         {
             id: "snackbar-preview",
             label: "Snackbar",
