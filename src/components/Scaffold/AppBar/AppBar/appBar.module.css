@@ -39,7 +39,7 @@
         gap: var(--md-sys-layout-space-8);
         align-items: center;
 
-        &[data-alignment="centered"][data-size="small"] {
+        &[data-alignment="centered"] {
             display: grid;
             grid-template-columns: 1fr auto 1fr;
         }
