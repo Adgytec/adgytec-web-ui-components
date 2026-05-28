@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { useMemo } from "react";
 import {
     AppBarContext,
     AppBarHeadlineBlockSize,
@@ -19,19 +20,22 @@ export const AppBar: React.FC<AppBarProps> = ({
     const hasSecondary = size !== "small";
     const hasTrailingActions = trailingActions && trailingActions.length > 0;
 
+    const contextValue = useMemo(
+        () => ({
+            size,
+            alignment,
+            getHeadlineBlockSize: () => {
+                return AppBarHeadlineBlockSize[size];
+            },
+            getHeadlineTypography: () => {
+                return AppBarHeadlingTypography[size];
+            },
+        }),
+        [size, alignment]
+    );
+
     return (
-        <AppBarContext
-            value={{
-                size,
-                alignment,
-                getHeadlineBlockSize: () => {
-                    return AppBarHeadlineBlockSize[size];
-                },
-                getHeadlineTypography: () => {
-                    return AppBarHeadlingTypography[size];
-                },
-            }}
-        >
+        <AppBarContext value={contextValue}>
             <header
                 className={clsx(styles["app-bar"], className)}
                 {...props}

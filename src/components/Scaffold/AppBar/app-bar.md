@@ -56,7 +56,7 @@ Based on the parent `AppBar`'s size, `AppBarHeadline` automatically adjusts its 
 
 ## AppBarAction Props
 
-Extends the custom [IconButton](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Button/IconButton/icon-button.md) component, omitting the `size` prop.
+Extends the custom `IconButton` component, omitting the `size` prop.
 
 - Defaults to `color="standard"`.
 - Hardcodes `size="small"` to align with the Material 3 specifications for app bar actions.
