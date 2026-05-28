@@ -1,15 +1,14 @@
 @layer adgytec.comps {
     .size {
-        --_padding-block: var(--_padding-block-base);
-
         border-start-start-radius: var(--_shape-start-start);
         border-start-end-radius: var(--_shape-start-end);
         border-end-start-radius: var(--_shape-end-start);
         border-end-end-radius: var(--_shape-end-end);
 
-        padding-inline-start: var(--_padding-inline-start);
-        padding-inline-end: var(--_padding-inline-end);
-        padding-block: var(--_padding-block);
+        padding-inline-start: var(--_md-split-button-padding-inline-start);
+        padding-inline-end: var(--_md-split-button-padding-inline-end);
+
+        padding-block: var(--_md-button-padding-block);
 
         display: flex;
         gap: var(--_md-button-icon-label-gap);
@@ -31,14 +30,24 @@
         --_shape-end-start: var(--_md-split-button-outer-corner-shape);
 
         /* padding */
-        --_padding-inline-start: var(
+        --_md-split-button-padding-inline-start-base: var(
             --_md-split-button-primary-padding-inline-start
         );
-        --_padding-inline-end: var(
-            --_md-split-button-primary-padding-inline-end
+        --_md-split-button-padding-inline-start: var(
+            --_md-split-button-padding-inline-start-base
         );
 
-        --_padding-block-base: var(--_md-split-button-primary-padding-block);
+        --_md-split-button-padding-inline-end-base: var(
+            --_md-split-button-primary-padding-inline-end
+        );
+        --_md-split-button-padding-inline-end: var(
+            --_md-split-button-padding-inline-end-base
+        );
+
+        --_md-button-padding-block-base: var(
+            --_md-split-button-primary-padding-block
+        );
+        --_md-button-padding-block: var(--_md-button-padding-block-base);
 
         &[data-hovered] {
             --_inner-shape: var(
@@ -64,14 +73,24 @@
         --_shape-end-start: var(--_inner-shape);
 
         /* padding */
-        --_padding-inline-start: var(
+        --_md-split-button-padding-inline-start-base: var(
             --_md-split-button-trigger-padding-inline-start
         );
-        --_padding-inline-end: var(
-            --_md-split-button-trigger-padding-inline-end
+        --_md-split-button-padding-inline-start: var(
+            --_md-split-button-padding-inline-start-base
         );
 
-        --_padding-block-base: var(--_md-split-button-trigger-padding-block);
+        --_md-split-button-padding-inline-end-base: var(
+            --_md-split-button-trigger-padding-inline-end
+        );
+        --_md-split-button-padding-inline-end: var(
+            --_md-split-button-padding-inline-end-base
+        );
+
+        --_md-button-padding-block-base: var(
+            --_md-split-button-trigger-padding-block
+        );
+        --_md-button-padding-block: var(--_md-button-padding-block-base);
 
         &[data-hovered] {
             --_inner-shape: var(
@@ -82,10 +101,10 @@
         &[data-pressed] {
             --_inner-shape: var(--_md-split-button-trigger-pressed-shape);
 
-            --_padding-inline-start: var(
+            --_md-split-button-padding-inline-start-base: var(
                 --_md-split-button-trigger-pressed-padding-inline-start
             );
-            --_padding-inline-end: var(
+            --_md-split-button-padding-inline-end-base: var(
                 --_md-split-button-trigger-pressed-padding-inline-end
             );
         }

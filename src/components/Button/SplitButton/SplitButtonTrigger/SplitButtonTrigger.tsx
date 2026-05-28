@@ -9,6 +9,7 @@ import {
     ButtonCore,
     ButtonReset,
     buttonColorBase,
+    buttonColorConfig,
     withTooltip,
 } from "../../core";
 import {
@@ -44,6 +45,8 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
                 clsx(
                     ButtonReset,
                     TapTarget,
+                    SplitButtonTriggerBase,
+                    buttonColorConfig(splitButtonState.color),
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -75,8 +78,7 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
                             ButtonCore,
                             buttonColorBase,
                             styles["trigger"],
-                            SplitButtonVariantBase,
-                            SplitButtonTriggerBase
+                            SplitButtonVariantBase
                         )}
                         {...dataAttrs}
                     >
