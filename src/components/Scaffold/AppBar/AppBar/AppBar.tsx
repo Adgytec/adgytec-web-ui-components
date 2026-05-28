@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import {
     AppBarContext,
     AppBarHeadlineBlockSize,
-    AppBarHeadlingTypography,
+    AppBarHeadlineTypography,
 } from "../core";
 import styles from "./appBar.module.css";
 import type { AppBarProps } from "./types";
@@ -24,12 +24,8 @@ export const AppBar: React.FC<AppBarProps> = ({
         () => ({
             size,
             alignment,
-            getHeadlineBlockSize: () => {
-                return AppBarHeadlineBlockSize[size];
-            },
-            getHeadlineTypography: () => {
-                return AppBarHeadlingTypography[size];
-            },
+            headlineBlockSize: AppBarHeadlineBlockSize[size],
+            headlineTypography: AppBarHeadlineTypography[size],
         }),
         [size, alignment]
     );
@@ -41,7 +37,7 @@ export const AppBar: React.FC<AppBarProps> = ({
                 {...props}
                 data-size={size}
                 data-alignment={alignment}
-                data-has-secondary={hasSecondary || undefined}
+                data-has-secondary={(hasSecondary && !!headline) || undefined}
             >
                 <div data-primary className={clsx(styles["primary"])}>
                     {leadingAction && (
@@ -53,7 +49,7 @@ export const AppBar: React.FC<AppBarProps> = ({
                         </div>
                     )}
 
-                    {!hasSecondary && (
+                    {!hasSecondary && headline && (
                         <div
                             data-alignment={alignment}
                             data-size={size}

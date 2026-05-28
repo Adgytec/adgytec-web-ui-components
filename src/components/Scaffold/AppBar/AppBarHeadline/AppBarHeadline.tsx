@@ -11,7 +11,7 @@ export const AppBarHeadline: React.FC<
     return (
         <Heading
             className={clsx(
-                appBarContext.getHeadlineTypography(),
+                appBarContext.headlineTypography,
                 styles["headline"],
                 styles[appBarContext.alignment],
                 className

@@ -5,8 +5,8 @@ import type { AppBarSize } from "./size";
 export type AppBarContextType = {
     size: AppBarSize;
     alignment: AppBarAlignment;
-    getHeadlineBlockSize: () => number;
-    getHeadlineTypography: () => string;
+    headlineBlockSize: number;
+    headlineTypography: string;
 };
 
 export const AppBarContext = createContext<AppBarContextType | null>(null);

@@ -2,7 +2,7 @@ import { typography } from "@/utils";
 
 export type AppBarSize = "small" | "medium" | "large";
 
-export const AppBarHeadlingTypography: Record<AppBarSize, string> = {
+export const AppBarHeadlineTypography: Record<AppBarSize, string> = {
     small: typography.titleLarge,
     medium: typography.headlineMedium,
     large: typography.displaySmall,
