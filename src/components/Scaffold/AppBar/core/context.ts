@@ -8,6 +8,7 @@ export type AppBarContextType = {
     layout: AppBarLayout;
     alignment: AppBarAlignment;
     getHeadlineBlockSize: () => number;
+    getHeadlineTypography: () => string;
 };
 
 export const AppBarContext = createContext<AppBarContextType | null>(null);
