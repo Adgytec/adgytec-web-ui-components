@@ -73,7 +73,7 @@ export const AppBar: React.FC<AppBarProps> = ({
                     <div
                         data-secondary
                         data-alignment={alignment}
-                        className={clsx("secondary")}
+                        className={clsx(styles["secondary"])}
                     >
                         {headline}
                     </div>

@@ -3457,12 +3457,18 @@ const AppBarPreview = () => {
                     App Bar
                 </h3>
 
-                <div className="items-grid">
+                <div className="items-grid app-bar">
                     <AppBar
                         leadingAction={<AppBarAction icon={CloudSnow} />}
                         trailingActions={[
-                            <AppBarAction key="settings" icon={Settings} />,
-                            <AppBarAvatar key="avatar">RRRR</AppBarAvatar>,
+                            <AppBarAction
+                                key="settings"
+                                icon={Settings}
+                                data-app-bar-trailing-action
+                            />,
+                            <AppBarAvatar key="avatar" data-app-bar-avatar>
+                                R
+                            </AppBarAvatar>,
                         ]}
                         headline={<AppBarHeadline>Material 3</AppBarHeadline>}
                     />
@@ -3486,8 +3492,14 @@ const AppBarPreview = () => {
                         size="medium"
                         leadingAction={<AppBarAction icon={CloudSnow} />}
                         trailingActions={[
-                            <AppBarAction key="settings" icon={Settings} />,
-                            <AppBarAvatar key="avatar">RRRR</AppBarAvatar>,
+                            <AppBarAction
+                                key="settings"
+                                icon={Settings}
+                                data-app-bar-trailing-action
+                            />,
+                            <AppBarAvatar key="avatar" data-app-bar-avatar>
+                                R
+                            </AppBarAvatar>,
                         ]}
                         headline={<AppBarHeadline>Material 3</AppBarHeadline>}
                     />
@@ -3513,7 +3525,7 @@ const AppBarPreview = () => {
                         leadingAction={<AppBarAction icon={CloudSnow} />}
                         trailingActions={[
                             <AppBarAction key="settings" icon={Settings} />,
-                            <AppBarAvatar key="avatar">RRRR</AppBarAvatar>,
+                            <AppBarAvatar key="avatar">R</AppBarAvatar>,
                         ]}
                         headline={<AppBarHeadline>Material 3</AppBarHeadline>}
                     />

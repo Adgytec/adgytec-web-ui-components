@@ -885,3 +885,33 @@
         --md-extended-color-primary-alt-on-color
     );
 }
+
+.app-bar {
+    [data-app-bar-trailing-action] {
+        --md-button-color: var(--md-sys-color-surface-bright);
+    }
+}
+
+.app-bar > :nth-child(1) {
+    --md-app-bar-background: var(--md-sys-color-primary);
+    --md-app-bar-title-color: var(--md-sys-color-on-primary);
+
+    [data-app-bar-avatar] {
+        --md-button-background: var(
+            --md-extended-color-primary-alt-color-container
+        );
+        --md-button-color: var(
+            --md-extended-color-primary-alt-on-color-container
+        );
+    }
+}
+
+.app-bar > :nth-child(3) {
+    --md-app-bar-background: var(--md-extended-color-primary-alt-color);
+    --md-app-bar-title-color: var(--md-extended-color-primary-alt-on-color);
+
+    [data-app-bar-avatar] {
+        --md-button-background: var(--md-sys-color-primary-container);
+        --md-button-color: var(--md-sys-color-on-primary-container);
+    }
+}
