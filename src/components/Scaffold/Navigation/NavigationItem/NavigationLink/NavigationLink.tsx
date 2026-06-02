@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { Link } from "react-aria-components";
+import { useNavigationContext } from "../../Navigation/navContext";
 import { NavigationItemLabelTypography, NavigationItemStyles } from "../core";
 import { NavigationItemIconRenderer } from "../NavigationItemIconRenderer";
 import type { NavigationLinkProps } from "./types";
@@ -13,6 +14,9 @@ export const NavigationItemLink: React.FC<NavigationLinkProps> = ({
     isActive,
     ...props
 }) => {
+    const { isLinkActive } = useNavigationContext();
+    const linkActive = isActive ?? isLinkActive?.(href);
+
     return (
         <Link
             className={(renderProps) =>
@@ -26,12 +30,12 @@ export const NavigationItemLink: React.FC<NavigationLinkProps> = ({
             }
             href={href}
             {...props}
-            data-active={isActive || undefined}
+            data-active={linkActive || undefined}
         >
             <NavigationItemIconRenderer
                 icon={icon}
                 activeIcon={activeIcon}
-                isActive={isActive}
+                isActive={linkActive}
             />
             {label}
         </Link>

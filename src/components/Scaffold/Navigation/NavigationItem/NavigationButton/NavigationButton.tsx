@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import { Button } from "react-aria-components";
+import { useNavigationContext } from "../../Navigation/navContext";
 import { NavigationItemLabelTypography, NavigationItemStyles } from "../core";
 import { NavigationItemIconRenderer } from "../NavigationItemIconRenderer";
 import type { NavigationButtonProps } from "./types";
@@ -14,6 +15,9 @@ export const NavigationButton: React.FC<NavigationButtonProps> = ({
     slot = "open",
     ...props
 }) => {
+    const { isButtonActive } = useNavigationContext();
+    const buttonActive = isActive ?? isButtonActive?.(prefix);
+
     return (
         <Button
             className={(renderProps) =>
@@ -27,12 +31,12 @@ export const NavigationButton: React.FC<NavigationButtonProps> = ({
             }
             {...props}
             slot={slot}
-            data-active={isActive || undefined}
+            data-active={buttonActive || undefined}
         >
             <NavigationItemIconRenderer
                 icon={icon}
                 activeIcon={activeIcon}
-                isActive={isActive}
+                isActive={buttonActive}
             />
             {label}
         </Button>
