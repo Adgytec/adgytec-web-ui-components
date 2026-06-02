@@ -1,0 +1,135 @@
+/* configurable tokens
+*
+* --md-navigation-item-active-background
+*
+* --md-navigation-item-label-color
+* --md-navigation-item-icon-color
+*
+* --md-navigation-item-active-label-color
+* --md-navigation-item-active-icon-color
+*
+* --md-navigation-item-state-layer-color
+*
+* configurable tokens end */
+
+@layer adgytec.comps {
+    .item {
+        --_md-navigation-item-active-background: var(
+            --md-navigation-item-active-background,
+            var(--md-sys-color-secondary-container)
+        );
+
+        --_md-navigation-item-label-color: var(
+            --md-navigation-item-label-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+        --_md-navigation-item-icon-color: var(
+            --md-navigation-item-icon-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+
+        --_md-navigation-item-active-label-color: var(
+            --md-navigation-item-active-label-color,
+            var(--md-sys-color-secondary)
+        );
+        --_md-navigation-item-active-icon-color: var(
+            --md-navigation-item-active-icon-color,
+            var(--md-sys-color-on-secondary-container)
+        );
+
+        --_md-navigation-item-state-layer-color: var(
+            --md-navigation-item-state-layer-color,
+            var(--md-sys-color-on-secondary-container)
+        );
+
+        --_md-navigation-item-padding-block: var(--md-sys-layout-space-16);
+        --_md-navigation-item-padding-inline: var(--md-sys-layout-space-16);
+        --_md-navigation-item-gap: var(--md-sys-layout-space-8);
+
+        --_background: transparent;
+        --_icon-color: var(--_md-navigation-item-icon-color);
+        --_label-color: var(--_md-navigation-item-label-color);
+
+        --_state-color: var(--_md-navigation-item-state-layer-color);
+        --_state-layer-opacity: 0;
+
+        --_state-layer-color: rgb(
+            from var(--_state-color) r g b /
+            var(--_state-layer-opacity)
+        );
+
+        all: unset;
+
+        position: relative;
+
+        background-color: var(--_background);
+        color: var(--_label-color);
+
+        padding-inline: var(--_md-navigation-item-padding-inline);
+        padding-block: var(--_md-navigation-item-padding-block);
+
+        display: flex;
+        align-items: center;
+        gap: var(--_md-navigation-item-gap);
+
+        cursor: pointer;
+        border-radius: var(--md-sys-shape-corner-radius-full);
+
+        &[data-active] {
+            --_background: var(--_md-navigation-item-active-background);
+            --_icon-color: var(--_md-navigation-item-active-icon-color);
+            --_label-color: var(--_md-navigation-item-active-label-color);
+        }
+
+        [data-nav-icon] {
+            color: var(--_icon-color);
+        }
+
+        &[data-disabled] {
+            cursor: default;
+        }
+
+        &[data-hovered] {
+            --_state-layer-opacity: var(--md-sys-state-hover);
+        }
+
+        &[data-focus-visible] {
+            --_state-layer-opacity: var(--md-sys-state-focus);
+        }
+
+        &[data-pressed] {
+            --_state-layer-opacity: var(--md-sys-state-pressed);
+        }
+    }
+
+    /* state layer */
+    .item::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+
+        background-color: var(--_state-layer-color);
+
+        transition: background-color var(--md-sys-motion-standard-fast-spatial)
+            var(--md-sys-motion-standard-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    .item[data-focus-visible] {
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
+
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
+
+        z-index: 1;
+    }
+}
