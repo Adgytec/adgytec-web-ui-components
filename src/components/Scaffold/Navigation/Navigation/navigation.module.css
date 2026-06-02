@@ -1,0 +1,6 @@
+@layer adgytec.comps {
+    .container {
+        position: relative;
+        outline: 2px solid red;
+    }
+}

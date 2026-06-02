@@ -15,9 +15,9 @@ export const NavigationStateContext =
 
 export function useNavigationState() {
     const ctx = useContext(NavigationStateContext);
-    if (ctx == null) {
+    if (ctx === null) {
         throw new Error(
-            "Missing navigation state. Ensure this component is rendered withi Navigation component."
+            "Missing navigation state. Ensure this component is rendered within Navigation component."
         );
     }
 

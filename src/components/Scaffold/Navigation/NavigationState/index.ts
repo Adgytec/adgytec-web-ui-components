@@ -1,2 +1,2 @@
-export * from "./contex";
+export * from "./context";
 export * from "./NavigationState";

@@ -1,5 +1,5 @@
 import { type ReactNode, useCallback, useRef, useState } from "react";
-import { NavigationStateContext } from "./contex";
+import { NavigationStateContext } from "./context";
 import type { NavScrollInfo, SubNavItem } from "./types";
 
 export const NavigationState: React.FC<{ children?: ReactNode }> = ({
