@@ -186,6 +186,7 @@ import {
     type SheetLayout,
     SideSheet,
     type SideSheetAlignment,
+    SideSheetDialog,
     SideSheetModal,
 } from "./components/Sheets";
 import { useSnackbarQueue } from "./components/Snackbar";
@@ -3596,9 +3597,10 @@ const NavPreview = () => {
 
                         <ModalOverlay>
                             <SideSheetModal>
-                                <SideSheet>
+                                <SideSheetDialog>
                                     <div className="nav">
                                         <Navigation
+                                            isInModal
                                             label="Adgytec Workspace"
                                             style={{
                                                 blockSize: "50svb",
@@ -3848,7 +3850,7 @@ const NavPreview = () => {
                                             />
                                         </Navigation>
                                     </div>
-                                </SideSheet>
+                                </SideSheetDialog>
                             </SideSheetModal>
                         </ModalOverlay>
                     </DialogTrigger>
