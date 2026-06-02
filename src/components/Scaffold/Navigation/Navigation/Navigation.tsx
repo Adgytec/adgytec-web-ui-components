@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { X } from "lucide-react";
 import { useContext, useState } from "react";
-import { useId } from "react-aria";
 import { Header, Heading, Provider } from "react-aria-components";
 import { IconButton } from "@/components/Button";
 import { typography } from "@/utils";
@@ -24,11 +23,11 @@ const Nav: React.FC<NavigationProps> = ({
     isLinkActive,
     isButtonActive,
     isInModal,
-    id,
+    id = "__root__",
     inert,
+    style,
     ...props
 }) => {
-    const navID = useId(id);
     const depth = 0;
 
     const [container, setContainer] = useState<HTMLDivElement | null>(null);
@@ -41,7 +40,7 @@ const Nav: React.FC<NavigationProps> = ({
             values={[
                 [NavigationRenderingContext, { container }],
                 [NavigationContext, { isLinkActive, isButtonActive }],
-                [NavigationInfoContext, { id: navID, depth: depth }],
+                [NavigationInfoContext, { id, depth }],
             ]}
         >
             <div ref={setContainer} className={clsx(styles["container"])}>
@@ -50,6 +49,7 @@ const Nav: React.FC<NavigationProps> = ({
                     {...props}
                     data-header={renderHeader || undefined}
                     style={{
+                        ...style,
                         zIndex: depth + 1,
                         position: "absolute",
                         inset: 0,

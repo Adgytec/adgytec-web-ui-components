@@ -14,7 +14,7 @@ import { useNavigationState } from "../../NavigationState";
 
 export const SubNavigation: React.FC<
     React.ComponentPropsWithRef<"nav"> & { label?: ReactNode }
-> = ({ className, label, children, inert, ref, ...props }) => {
+> = ({ className, label, children, inert, ref, style, ...props }) => {
     const subNavRef = useObjectRef(ref);
 
     const { id, depth } = useNavigationInfo();
@@ -43,9 +43,11 @@ export const SubNavigation: React.FC<
                     className={clsx(className)}
                     {...props}
                     style={{
+                        ...style,
                         zIndex: depth + 1,
                         position: "absolute",
                         inset: 0,
+                        backgroundColor: "darkseagreen",
                     }}
                     inert={inert ?? isInert(depth)}
                     data-header={true}
