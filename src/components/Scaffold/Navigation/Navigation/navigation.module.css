@@ -1,6 +1,9 @@
 @layer adgytec.comps {
     .container {
         position: relative;
+        border-radius: inherit;
+        overflow: clip;
+
         outline: 2px solid red;
     }
 }
