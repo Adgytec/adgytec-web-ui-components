@@ -5,7 +5,7 @@ import { NavigationItemLabelTypography, NavigationItemStyles } from "../core";
 import { NavigationItemIconRenderer } from "../NavigationItemIconRenderer";
 import type { NavigationLinkProps } from "./types";
 
-export const NavigationItemLink: React.FC<NavigationLinkProps> = ({
+export const NavigationLink: React.FC<NavigationLinkProps> = ({
     className,
     icon,
     activeIcon,

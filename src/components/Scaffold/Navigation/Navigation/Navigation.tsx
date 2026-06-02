@@ -32,14 +32,14 @@ const Nav: React.FC<NavigationProps> = ({
     const depth = 0;
 
     const [container, setContainer] = useState<HTMLDivElement | null>(null);
-    const navStateCtx = useNavigationState();
+    const { isInert } = useNavigationState();
 
     const renderHeader = isInModal || !!label || false;
 
     return (
         <Provider
             values={[
-                [NavigationRenderingContext, container],
+                [NavigationRenderingContext, { container }],
                 [NavigationContext, { isLinkActive, isButtonActive }],
                 [NavigationInfoContext, { id: navID, depth: depth }],
             ]}
@@ -51,8 +51,10 @@ const Nav: React.FC<NavigationProps> = ({
                     data-header={renderHeader || undefined}
                     style={{
                         zIndex: depth + 1,
+                        position: "absolute",
+                        inset: 0,
                     }}
-                    inert={inert ?? navStateCtx.isInert(depth)}
+                    inert={inert ?? isInert(depth)}
                 >
                     {renderHeader && (
                         <Header>

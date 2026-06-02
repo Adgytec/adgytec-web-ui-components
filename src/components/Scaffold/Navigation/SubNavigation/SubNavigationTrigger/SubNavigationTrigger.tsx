@@ -1,12 +1,17 @@
 import type { ReactNode } from "react";
 import { ButtonContext, DEFAULT_SLOT, Provider } from "react-aria-components";
-import { NavigationInfoContext, useNavigationInfo } from "../../core";
+import {
+    NavigationInfoContext,
+    NavLabelContext,
+    useNavigationInfo,
+} from "../../core";
 import { useNavigationState } from "../../NavigationState";
 
 export const SubNavigationTrigger: React.FC<{
     id: string;
     children?: ReactNode;
-}> = ({ id, children }) => {
+    label: ReactNode;
+}> = ({ id, children, label }) => {
     const parentInfo = useNavigationInfo();
     const { openSubNavigation, closeSubNavigation, isSubNavigationOpen } =
         useNavigationState();
@@ -17,6 +22,7 @@ export const SubNavigationTrigger: React.FC<{
     return (
         <Provider
             values={[
+                [NavLabelContext, label],
                 [NavigationInfoContext, { id: subNavID, depth }],
                 [
                     ButtonContext,

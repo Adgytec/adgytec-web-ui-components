@@ -1,6 +1,8 @@
 import { createContext, useContext } from "react";
 
-export type NavigationRenderingContextType = HTMLDivElement;
+export type NavigationRenderingContextType = {
+    container: HTMLDivElement | null;
+};
 
 export const NavigationRenderingContext =
     createContext<NavigationRenderingContextType | null>(null);
