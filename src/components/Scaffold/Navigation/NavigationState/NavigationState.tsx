@@ -1,4 +1,5 @@
 import { type ReactNode, useCallback, useRef, useState } from "react";
+import { calculateScrollTop } from "@/utils";
 import { NavigationStateContext } from "./context";
 import type { NavScrollInfo, SubNavItem } from "./types";
 
@@ -7,6 +8,31 @@ export const NavigationState: React.FC<{ children?: ReactNode }> = ({
 }) => {
     const [openSubNavs, setOpenSubNavs] = useState<SubNavItem[]>([]);
     const navScrollRef = useRef<NavScrollInfo>({});
+    const navContainersRef = useRef<Record<string, Set<HTMLDivElement>>>({});
+
+    const registerNavigationContainer = useCallback(
+        (id: string, container: HTMLDivElement) => {
+            const progress = navScrollRef.current[id] ?? 0;
+
+            container.scrollTop = calculateScrollTop({
+                scrollHeight: container.scrollHeight,
+                clientHeight: container.clientHeight,
+                scrollTop: progress,
+            }).targetScrollTop;
+
+            navContainersRef.current[id] ??= new Set();
+            navContainersRef.current[id].add(container);
+
+            return () => {
+                navContainersRef.current[id]?.delete(container);
+
+                if (navContainersRef.current[id]?.size === 0) {
+                    delete navContainersRef.current[id];
+                }
+            };
+        },
+        []
+    );
 
     const openSubNavigation = useCallback((id: string, depth: number) => {
         setOpenSubNavs((prev) => [
@@ -36,6 +62,24 @@ export const NavigationState: React.FC<{ children?: ReactNode }> = ({
     const saveNavigationScrollTop = useCallback(
         (id: string, scrollTop: number) => {
             navScrollRef.current[id] = scrollTop;
+
+            const containers = navContainersRef.current[id];
+
+            if (!containers) {
+                return;
+            }
+
+            for (const container of containers) {
+                const targetScrollTop = calculateScrollTop({
+                    scrollHeight: container.scrollHeight,
+                    clientHeight: container.clientHeight,
+                    scrollTop,
+                }).targetScrollTop;
+
+                if (Math.abs(container.scrollTop - targetScrollTop) > 1) {
+                    container.scrollTop = targetScrollTop;
+                }
+            }
         },
         []
     );
@@ -46,10 +90,6 @@ export const NavigationState: React.FC<{ children?: ReactNode }> = ({
         },
         [openSubNavs]
     );
-
-    const getNavigationScrollTop = useCallback((id: string) => {
-        return navScrollRef.current[id] ?? 0;
-    }, []);
 
     const isInert = useCallback(
         (depth: number) => {
@@ -66,8 +106,8 @@ export const NavigationState: React.FC<{ children?: ReactNode }> = ({
                 openSubNavigation,
                 closeSubNavigation,
                 saveNavigationScrollTop,
+                registerNavigationContainer,
                 isSubNavigationOpen,
-                getNavigationScrollTop,
                 isInert,
             }}
         >

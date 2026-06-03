@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useLayoutEffect } from "react";
 import { useObjectRef } from "react-aria";
+import { calculateScrollTop } from "@/utils";
 import { useNavigationInfo } from "../core";
 import { useNavigationState } from "../NavigationState";
 import styles from "./navigationScrollContainer.module.css";
@@ -10,23 +11,31 @@ export const NavigationScrollContainer: React.FC<
 > = ({ ref, className, ...props }) => {
     const scrollContainerRef = useObjectRef(ref);
 
-    const { saveNavigationScrollTop, getNavigationScrollTop } =
+    const { registerNavigationContainer, saveNavigationScrollTop } =
         useNavigationState();
     const { id } = useNavigationInfo();
 
     useLayoutEffect(() => {
-        const scrollTop = getNavigationScrollTop(id);
-
-        if (scrollContainerRef.current) {
-            scrollContainerRef.current.scrollTop = scrollTop;
+        const container = scrollContainerRef.current;
+        if (!container) {
+            return;
         }
-    }, [scrollContainerRef, id, getNavigationScrollTop]);
+
+        return registerNavigationContainer(id, container);
+    }, [scrollContainerRef, id, registerNavigationContainer]);
 
     return (
         <div
             ref={scrollContainerRef}
             onScroll={(e) => {
-                saveNavigationScrollTop(id, e.currentTarget.scrollTop);
+                saveNavigationScrollTop(
+                    id,
+                    calculateScrollTop({
+                        scrollHeight: e.currentTarget.scrollHeight,
+                        clientHeight: e.currentTarget.clientHeight,
+                        scrollTop: e.currentTarget.scrollTop,
+                    }).progress
+                );
             }}
             className={clsx(styles["container"], className)}
             {...props}

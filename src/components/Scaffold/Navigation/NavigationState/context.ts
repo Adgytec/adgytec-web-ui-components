@@ -4,9 +4,12 @@ export type NavigationStateContextType = {
     openSubNavigation: (id: string, depth: number) => void;
     closeSubNavigation: (id: string) => void;
     saveNavigationScrollTop: (id: string, scrollTop: number) => void;
+    registerNavigationContainer: (
+        id: string,
+        container: HTMLDivElement
+    ) => () => void;
 
     isSubNavigationOpen: (id: string) => boolean;
-    getNavigationScrollTop: (id: string) => number;
     isInert: (depth: number) => boolean;
 };
 
