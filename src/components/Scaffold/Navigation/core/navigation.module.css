@@ -22,12 +22,13 @@
 
         position: absolute;
         inset: 0;
+        border-radius: inherit;
 
         display: grid;
         grid-template-rows: 1fr;
         gap: var(--md-sys-layout-space-16);
 
-        padding: var(--md-sys-layout-space-16);
+        padding-block: var(--md-sys-layout-space-16);
 
         &[data-modal] {
             --_background: var(--_md-navigation-drawer-background);
@@ -64,8 +65,8 @@
 
         gap: var(--md-sys-layout-space-8);
 
-        padding-inline-start: var(--md-sys-layout-space-16);
-        padding-inline-end: var(--md-sys-layout-space-8);
+        padding-inline-start: var(--md-sys-layout-space-32);
+        padding-inline-end: var(--md-sys-layout-space-24);
 
         > [data-close-button] {
             margin-inline-start: auto;
@@ -78,7 +79,7 @@
 
         gap: var(--md-sys-layout-space-8);
 
-        padding-inline-start: var(--md-sys-layout-space-8);
-        padding-inline-end: var(--md-sys-layout-space-16);
+        padding-inline-start: var(--md-sys-layout-space-24);
+        padding-inline-end: var(--md-sys-layout-space-32);
     }
 }

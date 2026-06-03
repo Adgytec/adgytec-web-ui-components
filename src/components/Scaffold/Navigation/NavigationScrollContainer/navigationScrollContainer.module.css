@@ -1,7 +1,10 @@
 @layer adgytec.comps {
     .container {
+        padding-inline: var(--md-sys-layout-space-16);
+        overflow-y: auto;
+
         display: grid;
         gap: var(--_md-navigation-items-gap);
-        align-self: start;
+        align-content: start;
     }
 }
