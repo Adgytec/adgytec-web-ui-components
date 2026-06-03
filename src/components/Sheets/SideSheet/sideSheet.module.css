@@ -7,7 +7,7 @@
 * configurable tokens end */
 
 @layer adgytec.comps {
-    .side-sheet {
+    .side-sheet-dialog {
         --_md-side-sheet-background: var(
             --md-side-sheet-background,
             var(--md-sys-color-surface-container-low)
@@ -27,7 +27,7 @@
         block-size: 100svb;
 
         display: grid;
-        grid-template-rows: auto 1fr;
+        grid-template-rows: 1fr;
 
         background-color: var(--_md-side-sheet-background);
         color: var(--_md-side-sheet-color);
@@ -35,11 +35,7 @@
         box-shadow: var(--md-sys-elevation-shadow-1);
         border-radius: var(--md-sys-shape-corner-radius-large);
 
-        padding-block: var(--md-sys-layout-space-16);
-
-        &[data-actions] {
-            grid-template-rows: auto 1fr auto;
-        }
+        outline: none;
 
         &[data-layout="detached"] {
             block-size: calc(100svb - calc(2 * var(--_detached-margin)));
@@ -62,6 +58,15 @@
         }
     }
 
+    .side-sheet {
+        grid-template-rows: auto 1fr;
+        padding-block: var(--md-sys-layout-space-16);
+
+        &[data-actions] {
+            grid-template-rows: auto 1fr auto;
+        }
+    }
+
     .header {
         display: flex;
         align-items: center;
@@ -70,6 +75,10 @@
 
         padding-inline: var(--_md-side-sheet-padding-inline);
         padding-block-end: var(--md-sys-layout-space-12);
+    }
+
+    .close {
+        margin-inline-start: auto;
     }
 
     .headline {

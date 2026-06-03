@@ -1,0 +1,13 @@
+@layer adgytec.comps {
+    .label {
+        --_md-navigation-section-label-color: var(
+            --md-navigation-section-label-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+
+        padding-inline: var(--md-sys-layout-space-16);
+        padding-block-end: var(--md-sys-layout-space-4);
+
+        color: var(--_md-navigation-section-label-color);
+    }
+}

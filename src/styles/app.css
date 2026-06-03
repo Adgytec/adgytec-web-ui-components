@@ -915,3 +915,19 @@
         --md-button-color: var(--md-sys-color-on-primary-container);
     }
 }
+
+.nav {
+    inline-size: calc(360 * var(--dp, 1px));
+    min-inline-size: calc(220 * var(--dp, 1px));
+
+    block-size: 75svb;
+    display: grid;
+    grid-template-rows: 1fr;
+
+    border-radius: var(--md-sys-shape-corner-radius-large);
+}
+
+.nav-preview > .items {
+    padding-block: var(--md-sys-layout-space-16);
+    background-color: var(--md-sys-color-surface-container-high);
+}
