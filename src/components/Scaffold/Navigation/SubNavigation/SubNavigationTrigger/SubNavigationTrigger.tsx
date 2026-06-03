@@ -8,15 +8,15 @@ import {
 import { useNavigationState } from "../../NavigationState";
 
 export const SubNavigationTrigger: React.FC<{
-    id: string;
+    stateID: string;
     children?: ReactNode;
     label: ReactNode;
-}> = ({ id, children, label }) => {
+}> = ({ stateID, children, label }) => {
     const parentInfo = useNavigationInfo();
     const { openSubNavigation, closeSubNavigation, isSubNavigationOpen } =
         useNavigationState();
 
-    const subNavID = `${parentInfo.id}--${id}`;
+    const subNavID = `${parentInfo.id}--${stateID}`;
     const depth = parentInfo.depth + 1;
 
     return (

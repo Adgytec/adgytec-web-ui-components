@@ -3606,7 +3606,7 @@ const NavPreview = () => {
                                         />
 
                                         <SubNavigationTrigger
-                                            id="Identity & Access"
+                                            stateID="Identity & Access"
                                             label="Identity & Access"
                                         >
                                             <NavigationButton
@@ -3634,7 +3634,7 @@ const NavPreview = () => {
                                                 />
 
                                                 <SubNavigationTrigger
-                                                    id="Policies"
+                                                    stateID="Policies"
                                                     label="Policies"
                                                 >
                                                     <NavigationButton
@@ -3672,7 +3672,7 @@ const NavPreview = () => {
                                         </SubNavigationTrigger>
 
                                         <SubNavigationTrigger
-                                            id="Content Management"
+                                            stateID="Content Management"
                                             label="Content Management"
                                         >
                                             <NavigationButton
@@ -3701,7 +3701,7 @@ const NavPreview = () => {
                                                 />
 
                                                 <SubNavigationTrigger
-                                                    id="Publishing"
+                                                    stateID="Publishing"
                                                     label="Publishing"
                                                 >
                                                     <NavigationButton
@@ -3741,7 +3741,7 @@ const NavPreview = () => {
                                         </SubNavigationTrigger>
 
                                         <SubNavigationTrigger
-                                            id="Analytics"
+                                            stateID="Analytics"
                                             label="Analytics"
                                         >
                                             <NavigationButton
@@ -3769,7 +3769,7 @@ const NavPreview = () => {
                                                 />
 
                                                 <SubNavigationTrigger
-                                                    id="Reports"
+                                                    stateID="Reports"
                                                     label="Reports"
                                                 >
                                                     <NavigationButton
@@ -3869,7 +3869,7 @@ const NavPreview = () => {
 
                             <SubNavigationTrigger
                                 label="Identity & Access"
-                                id="Identity & Access"
+                                stateID="Identity & Access"
                             >
                                 <NavigationButton
                                     icon={Shield}
@@ -3899,7 +3899,7 @@ const NavPreview = () => {
 
                             <SubNavigationTrigger
                                 label="Settings"
-                                id="Settings"
+                                stateID="Settings"
                             >
                                 <NavigationButton
                                     icon={Settings}

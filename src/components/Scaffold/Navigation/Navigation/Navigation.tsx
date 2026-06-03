@@ -27,7 +27,7 @@ const Nav: React.FC<NavigationProps> = ({
     className,
     isLinkActive,
     isButtonActive,
-    id = "__root__",
+    stateID = "__root__",
     inert,
     style,
     ...props
@@ -45,7 +45,7 @@ const Nav: React.FC<NavigationProps> = ({
             values={[
                 [NavigationRenderingContext, { container }],
                 [NavigationContext, { isLinkActive, isButtonActive }],
-                [NavigationInfoContext, { id, depth }],
+                [NavigationInfoContext, { id: stateID, depth }],
             ]}
         >
             <div ref={setContainer} className={clsx(styles["container"])}>
