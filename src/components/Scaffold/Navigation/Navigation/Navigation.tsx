@@ -3,8 +3,13 @@ import { X } from "lucide-react";
 import { useContext, useState } from "react";
 import { Header, Heading, Provider } from "react-aria-components";
 import { IconButton } from "@/components/Button";
+import { useInDialog } from "@/components/Dialog";
 import { typography } from "@/utils";
-import { NavigationInfoContext } from "../core";
+import {
+    NavigationHeaderStyles,
+    NavigationInfoContext,
+    NavigationStyles,
+} from "../core";
 import { NavigationScrollContainer } from "../NavigationScrollContainer";
 import {
     NavigationState,
@@ -22,7 +27,6 @@ const Nav: React.FC<NavigationProps> = ({
     className,
     isLinkActive,
     isButtonActive,
-    isInModal,
     id = "__root__",
     inert,
     style,
@@ -33,6 +37,7 @@ const Nav: React.FC<NavigationProps> = ({
     const [container, setContainer] = useState<HTMLDivElement | null>(null);
     const { isInert } = useNavigationState();
 
+    const isInModal = useInDialog();
     const renderHeader = isInModal || !!label || false;
 
     return (
@@ -45,22 +50,22 @@ const Nav: React.FC<NavigationProps> = ({
         >
             <div ref={setContainer} className={clsx(styles["container"])}>
                 <nav
-                    className={clsx(className)}
+                    className={clsx(NavigationStyles, className)}
                     {...props}
                     data-header={renderHeader || undefined}
                     style={{
                         ...style,
                         zIndex: depth + 1,
-                        position: "absolute",
-                        inset: 0,
                     }}
                     inert={inert ?? isInert(depth)}
+                    data-modal={isInModal || undefined}
                 >
                     {renderHeader && (
-                        <Header>
+                        <Header className={clsx(NavigationHeaderStyles)}>
                             {label && (
                                 <Heading
                                     className={clsx(typography.titleLarge)}
+                                    data-heading
                                 >
                                     {label}
                                 </Heading>
@@ -71,6 +76,7 @@ const Nav: React.FC<NavigationProps> = ({
                                     icon={X}
                                     color="standard"
                                     slot="close"
+                                    data-close-button
                                 />
                             )}
                         </Header>

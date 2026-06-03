@@ -1,11 +1,13 @@
+import clsx from "clsx";
 import { useLayoutEffect } from "react";
 import { useObjectRef } from "react-aria";
 import { useNavigationInfo } from "../core";
 import { useNavigationState } from "../NavigationState";
+import styles from "./navigationScrollContainer.module.css";
 
 export const NavigationScrollContainer: React.FC<
     React.ComponentPropsWithRef<"div">
-> = ({ ref, ...props }) => {
+> = ({ ref, className, ...props }) => {
     const scrollContainerRef = useObjectRef(ref);
 
     const { saveNavigationScrollTop, getNavigationScrollTop } =
@@ -26,6 +28,7 @@ export const NavigationScrollContainer: React.FC<
             onScroll={(e) => {
                 saveNavigationScrollTop(id, e.currentTarget.scrollTop);
             }}
+            className={clsx(styles["container"], className)}
             {...props}
         />
     );

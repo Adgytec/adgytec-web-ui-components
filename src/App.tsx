@@ -3596,260 +3596,238 @@ const NavPreview = () => {
                         <Button>open</Button>
 
                         <ModalOverlay>
-                            <SideSheetModal>
+                            <SideSheetModal layout="detached" alignment="start">
                                 <SideSheetDialog>
-                                    <div className="nav">
-                                        <Navigation
-                                            isInModal
-                                            label="Adgytec Workspace"
-                                            style={{
-                                                blockSize: "50svb",
-                                            }}
+                                    <Navigation label="Adgytec Workspace">
+                                        <NavigationLink
+                                            label="Dashboard"
+                                            icon={LayoutDashboard}
+                                            activeIcon={LayoutDashboard}
+                                        />
+
+                                        <SubNavigationTrigger
+                                            id="Identity & Access"
+                                            label="Identity & Access"
                                         >
-                                            <NavigationLink
-                                                label="Dashboard"
-                                                icon={LayoutDashboard}
-                                                activeIcon={LayoutDashboard}
+                                            <NavigationButton
+                                                icon={Shield}
+                                                activeIcon={ShieldCheck}
                                             />
 
-                                            <SubNavigationTrigger
-                                                id="Identity & Access"
-                                                label="Identity & Access"
-                                            >
-                                                <NavigationButton
-                                                    icon={Shield}
-                                                    activeIcon={ShieldCheck}
+                                            <SubNavigation>
+                                                <NavigationLink
+                                                    label="Users"
+                                                    icon={Users}
+                                                    activeIcon={Users}
                                                 />
 
-                                                <SubNavigation>
-                                                    <NavigationLink
-                                                        label="Users"
-                                                        icon={Users}
-                                                        activeIcon={Users}
+                                                <NavigationLink
+                                                    label="Groups"
+                                                    icon={UsersRound}
+                                                    activeIcon={UsersRound}
+                                                />
+
+                                                <NavigationLink
+                                                    label="Roles"
+                                                    icon={BadgeCheck}
+                                                    activeIcon={BadgeCheck}
+                                                />
+
+                                                <SubNavigationTrigger
+                                                    id="Policies"
+                                                    label="Policies"
+                                                >
+                                                    <NavigationButton
+                                                        icon={ScrollText}
+                                                        activeIcon={ScrollText}
                                                     />
 
-                                                    <NavigationLink
-                                                        label="Groups"
-                                                        icon={UsersRound}
-                                                        activeIcon={UsersRound}
-                                                    />
-
-                                                    <NavigationLink
-                                                        label="Roles"
-                                                        icon={BadgeCheck}
-                                                        activeIcon={BadgeCheck}
-                                                    />
-
-                                                    <SubNavigationTrigger
-                                                        id="Policies"
-                                                        label="Policies"
-                                                    >
-                                                        <NavigationButton
-                                                            icon={ScrollText}
+                                                    <SubNavigation>
+                                                        <NavigationLink
+                                                            label="Access Policies"
+                                                            icon={LockKeyhole}
                                                             activeIcon={
-                                                                ScrollText
+                                                                LockKeyhole
                                                             }
                                                         />
 
-                                                        <SubNavigation>
-                                                            <NavigationLink
-                                                                label="Access Policies"
-                                                                icon={
-                                                                    LockKeyhole
-                                                                }
-                                                                activeIcon={
-                                                                    LockKeyhole
-                                                                }
-                                                            />
+                                                        <NavigationLink
+                                                            label="Permission Sets"
+                                                            icon={KeyRound}
+                                                            activeIcon={
+                                                                KeyRound
+                                                            }
+                                                        />
 
-                                                            <NavigationLink
-                                                                label="Permission Sets"
-                                                                icon={KeyRound}
-                                                                activeIcon={
-                                                                    KeyRound
-                                                                }
-                                                            />
+                                                        <NavigationLink
+                                                            label="Conditional Access"
+                                                            icon={GitBranch}
+                                                            activeIcon={
+                                                                GitBranch
+                                                            }
+                                                        />
+                                                    </SubNavigation>
+                                                </SubNavigationTrigger>
+                                            </SubNavigation>
+                                        </SubNavigationTrigger>
 
-                                                            <NavigationLink
-                                                                label="Conditional Access"
-                                                                icon={GitBranch}
-                                                                activeIcon={
-                                                                    GitBranch
-                                                                }
-                                                            />
-                                                        </SubNavigation>
-                                                    </SubNavigationTrigger>
-                                                </SubNavigation>
-                                            </SubNavigationTrigger>
+                                        <SubNavigationTrigger
+                                            id="Content Management"
+                                            label="Content Management"
+                                        >
+                                            <NavigationButton
+                                                isActive
+                                                icon={Files}
+                                                activeIcon={Files}
+                                            />
 
-                                            <SubNavigationTrigger
-                                                id="Content Management"
-                                                label="Content Management"
-                                            >
-                                                <NavigationButton
-                                                    isActive
-                                                    icon={Files}
-                                                    activeIcon={Files}
+                                            <SubNavigation>
+                                                <NavigationLink
+                                                    label="Pages"
+                                                    icon={FileText}
+                                                    activeIcon={FileText}
                                                 />
 
-                                                <SubNavigation>
-                                                    <NavigationLink
-                                                        label="Pages"
-                                                        icon={FileText}
-                                                        activeIcon={FileText}
+                                                <NavigationLink
+                                                    label="Media Library"
+                                                    icon={Images}
+                                                    activeIcon={Images}
+                                                />
+
+                                                <NavigationLink
+                                                    label="Templates"
+                                                    icon={LayoutTemplate}
+                                                    activeIcon={LayoutTemplate}
+                                                />
+
+                                                <SubNavigationTrigger
+                                                    id="Publishing"
+                                                    label="Publishing"
+                                                >
+                                                    <NavigationButton
+                                                        isActive
+                                                        icon={Send}
+                                                        activeIcon={Send}
                                                     />
 
-                                                    <NavigationLink
-                                                        label="Media Library"
-                                                        icon={Images}
-                                                        activeIcon={Images}
-                                                    />
+                                                    <SubNavigation>
+                                                        <NavigationLink
+                                                            label="Workflows"
+                                                            icon={Workflow}
+                                                            activeIcon={
+                                                                Workflow
+                                                            }
+                                                        />
 
-                                                    <NavigationLink
-                                                        label="Templates"
-                                                        icon={LayoutTemplate}
+                                                        <NavigationLink
+                                                            label="Approvals"
+                                                            icon={BadgeCheck}
+                                                            activeIcon={
+                                                                BadgeCheck
+                                                            }
+                                                        />
+
+                                                        <NavigationLink
+                                                            isActive
+                                                            label="Schedules"
+                                                            icon={CalendarClock}
+                                                            activeIcon={
+                                                                CalendarClock
+                                                            }
+                                                        />
+                                                    </SubNavigation>
+                                                </SubNavigationTrigger>
+                                            </SubNavigation>
+                                        </SubNavigationTrigger>
+
+                                        <SubNavigationTrigger
+                                            id="Analytics"
+                                            label="Analytics"
+                                        >
+                                            <NavigationButton
+                                                icon={ChartColumn}
+                                                activeIcon={ChartColumn}
+                                            />
+
+                                            <SubNavigation>
+                                                <NavigationLink
+                                                    label="Overview"
+                                                    icon={ChartPie}
+                                                    activeIcon={ChartPie}
+                                                />
+
+                                                <NavigationLink
+                                                    label="Traffic"
+                                                    icon={Activity}
+                                                    activeIcon={Activity}
+                                                />
+
+                                                <NavigationLink
+                                                    label="Conversions"
+                                                    icon={Target}
+                                                    activeIcon={Target}
+                                                />
+
+                                                <SubNavigationTrigger
+                                                    id="Reports"
+                                                    label="Reports"
+                                                >
+                                                    <NavigationButton
+                                                        icon={FileBarChart}
                                                         activeIcon={
-                                                            LayoutTemplate
+                                                            FileBarChart
                                                         }
                                                     />
 
-                                                    <SubNavigationTrigger
-                                                        id="Publishing"
-                                                        label="Publishing"
-                                                    >
-                                                        <NavigationButton
-                                                            isActive
-                                                            icon={Send}
-                                                            activeIcon={Send}
-                                                        />
-
-                                                        <SubNavigation>
-                                                            <NavigationLink
-                                                                label="Workflows"
-                                                                icon={Workflow}
-                                                                activeIcon={
-                                                                    Workflow
-                                                                }
-                                                            />
-
-                                                            <NavigationLink
-                                                                label="Approvals"
-                                                                icon={
-                                                                    BadgeCheck
-                                                                }
-                                                                activeIcon={
-                                                                    BadgeCheck
-                                                                }
-                                                            />
-
-                                                            <NavigationLink
-                                                                isActive
-                                                                label="Schedules"
-                                                                icon={
-                                                                    CalendarClock
-                                                                }
-                                                                activeIcon={
-                                                                    CalendarClock
-                                                                }
-                                                            />
-                                                        </SubNavigation>
-                                                    </SubNavigationTrigger>
-                                                </SubNavigation>
-                                            </SubNavigationTrigger>
-
-                                            <SubNavigationTrigger
-                                                id="Analytics"
-                                                label="Analytics"
-                                            >
-                                                <NavigationButton
-                                                    icon={ChartColumn}
-                                                    activeIcon={ChartColumn}
-                                                />
-
-                                                <SubNavigation>
-                                                    <NavigationLink
-                                                        label="Overview"
-                                                        icon={ChartPie}
-                                                        activeIcon={ChartPie}
-                                                    />
-
-                                                    <NavigationLink
-                                                        label="Traffic"
-                                                        icon={Activity}
-                                                        activeIcon={Activity}
-                                                    />
-
-                                                    <NavigationLink
-                                                        label="Conversions"
-                                                        icon={Target}
-                                                        activeIcon={Target}
-                                                    />
-
-                                                    <SubNavigationTrigger
-                                                        id="Reports"
-                                                        label="Reports"
-                                                    >
-                                                        <NavigationButton
-                                                            icon={FileBarChart}
+                                                    <SubNavigation>
+                                                        <NavigationLink
+                                                            label="Daily Reports"
+                                                            icon={CalendarDays}
                                                             activeIcon={
-                                                                FileBarChart
+                                                                CalendarDays
                                                             }
                                                         />
 
-                                                        <SubNavigation>
-                                                            <NavigationLink
-                                                                label="Daily Reports"
-                                                                icon={
-                                                                    CalendarDays
-                                                                }
-                                                                activeIcon={
-                                                                    CalendarDays
-                                                                }
-                                                            />
+                                                        <NavigationLink
+                                                            label="Monthly Reports"
+                                                            icon={CalendarRange}
+                                                            activeIcon={
+                                                                CalendarRange
+                                                            }
+                                                        />
 
-                                                            <NavigationLink
-                                                                label="Monthly Reports"
-                                                                icon={
-                                                                    CalendarRange
-                                                                }
-                                                                activeIcon={
-                                                                    CalendarRange
-                                                                }
-                                                            />
+                                                        <NavigationLink
+                                                            label="Custom Reports"
+                                                            icon={
+                                                                SlidersHorizontal
+                                                            }
+                                                            activeIcon={
+                                                                SlidersHorizontal
+                                                            }
+                                                        />
+                                                    </SubNavigation>
+                                                </SubNavigationTrigger>
+                                            </SubNavigation>
+                                        </SubNavigationTrigger>
 
-                                                            <NavigationLink
-                                                                label="Custom Reports"
-                                                                icon={
-                                                                    SlidersHorizontal
-                                                                }
-                                                                activeIcon={
-                                                                    SlidersHorizontal
-                                                                }
-                                                            />
-                                                        </SubNavigation>
-                                                    </SubNavigationTrigger>
-                                                </SubNavigation>
-                                            </SubNavigationTrigger>
+                                        <NavigationLink
+                                            label="Billing"
+                                            icon={CreditCard}
+                                            activeIcon={CreditCard}
+                                        />
 
-                                            <NavigationLink
-                                                label="Billing"
-                                                icon={CreditCard}
-                                                activeIcon={CreditCard}
-                                            />
+                                        <NavigationLink
+                                            label="Audit Logs"
+                                            icon={History}
+                                            activeIcon={History}
+                                        />
 
-                                            <NavigationLink
-                                                label="Audit Logs"
-                                                icon={History}
-                                                activeIcon={History}
-                                            />
-
-                                            <NavigationLink
-                                                label="Settings"
-                                                icon={Settings}
-                                                activeIcon={Settings}
-                                            />
-                                        </Navigation>
-                                    </div>
+                                        <NavigationLink
+                                            label="Settings"
+                                            icon={Settings}
+                                            activeIcon={Settings}
+                                        />
+                                    </Navigation>
                                 </SideSheetDialog>
                             </SideSheetModal>
                         </ModalOverlay>

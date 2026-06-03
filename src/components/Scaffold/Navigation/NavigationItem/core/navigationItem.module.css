@@ -70,6 +70,7 @@
 
         display: flex;
         align-items: center;
+        inline-size: 100%;
         gap: var(--_md-navigation-item-gap);
 
         cursor: pointer;
@@ -99,6 +100,10 @@
 
         &[data-pressed] {
             --_state-layer-opacity: var(--md-sys-state-pressed);
+
+            --_background: var(--_md-navigation-item-active-background);
+            --_icon-color: var(--_md-navigation-item-active-icon-color);
+            --_label-color: var(--_md-navigation-item-active-label-color);
         }
     }
 
