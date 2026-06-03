@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { ArrowLeft } from "lucide-react";
 import { type ReactNode, useContext } from "react";
-import { useObjectRef } from "react-aria";
+import { FocusScope, useObjectRef } from "react-aria";
 import { Header, Heading } from "react-aria-components";
 import { createPortal } from "react-dom";
 import { Transition } from "react-transition-group";
@@ -46,42 +46,44 @@ export const SubNavigation: React.FC<
             unmountOnExit
         >
             {(status) => (
-                <nav
-                    ref={subNavRef}
-                    className={clsx(NavigationStyles, className)}
-                    {...props}
-                    style={{
-                        ...style,
-                        zIndex: depth + 1,
-                    }}
-                    inert={inert ?? isInert(depth)}
-                    data-header={true}
-                    data-status={status}
-                    data-sub-nav={true}
-                    data-modal={isInModal || undefined}
-                >
-                    <Header className={clsx(SubNavigationHeaderStyles)}>
-                        <IconButton
-                            icon={ArrowLeft}
-                            color="standard"
-                            slot="close"
-                            data-close-button
-                        />
+                <FocusScope restoreFocus>
+                    <nav
+                        ref={subNavRef}
+                        className={clsx(NavigationStyles, className)}
+                        {...props}
+                        style={{
+                            ...style,
+                            zIndex: depth + 1,
+                        }}
+                        inert={inert ?? isInert(depth)}
+                        data-header={true}
+                        data-status={status}
+                        data-sub-nav={true}
+                        data-modal={isInModal || undefined}
+                    >
+                        <Header className={clsx(SubNavigationHeaderStyles)}>
+                            <IconButton
+                                icon={ArrowLeft}
+                                color="standard"
+                                slot="close"
+                                data-close-button
+                            />
 
-                        {headerLabel && (
-                            <Heading
-                                className={clsx(typography.titleLarge)}
-                                data-heading
-                            >
-                                {headerLabel}
-                            </Heading>
-                        )}
-                    </Header>
+                            {headerLabel && (
+                                <Heading
+                                    className={clsx(typography.titleLarge)}
+                                    data-heading
+                                >
+                                    {headerLabel}
+                                </Heading>
+                            )}
+                        </Header>
 
-                    <NavigationScrollContainer>
-                        {children}
-                    </NavigationScrollContainer>
-                </nav>
+                        <NavigationScrollContainer>
+                            {children}
+                        </NavigationScrollContainer>
+                    </nav>
+                </FocusScope>
             )}
         </Transition>,
         container

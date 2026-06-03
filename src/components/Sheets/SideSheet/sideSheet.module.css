@@ -35,6 +35,8 @@
         box-shadow: var(--md-sys-elevation-shadow-1);
         border-radius: var(--md-sys-shape-corner-radius-large);
 
+        outline: none;
+
         &[data-layout="detached"] {
             block-size: calc(100svb - calc(2 * var(--_detached-margin)));
             inline-size: min(
