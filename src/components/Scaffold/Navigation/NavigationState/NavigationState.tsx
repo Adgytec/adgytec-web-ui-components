@@ -1,5 +1,5 @@
 import { type ReactNode, useCallback, useRef, useState } from "react";
-import { calculateScrollTop } from "@/utils";
+import { getScrollTopFromProgress } from "@/utils";
 import { NavigationStateContext } from "./context";
 import type { NavScrollInfo, SubNavItem } from "./types";
 
@@ -14,11 +14,11 @@ export const NavigationState: React.FC<{ children?: ReactNode }> = ({
         (id: string, container: HTMLDivElement) => {
             const progress = navScrollRef.current[id] ?? 0;
 
-            container.scrollTop = calculateScrollTop({
+            container.scrollTop = getScrollTopFromProgress({
                 scrollHeight: container.scrollHeight,
                 clientHeight: container.clientHeight,
-                scrollTop: progress,
-            }).targetScrollTop;
+                progress,
+            });
 
             navContainersRef.current[id] ??= new Set();
             navContainersRef.current[id].add(container);
@@ -59,9 +59,9 @@ export const NavigationState: React.FC<{ children?: ReactNode }> = ({
         });
     }, []);
 
-    const saveNavigationScrollTop = useCallback(
-        (id: string, scrollTop: number) => {
-            navScrollRef.current[id] = scrollTop;
+    const saveNavigationScrollTopProgress = useCallback(
+        (id: string, progress: number) => {
+            navScrollRef.current[id] = progress;
 
             const containers = navContainersRef.current[id];
 
@@ -70,11 +70,11 @@ export const NavigationState: React.FC<{ children?: ReactNode }> = ({
             }
 
             for (const container of containers) {
-                const targetScrollTop = calculateScrollTop({
+                const targetScrollTop = getScrollTopFromProgress({
                     scrollHeight: container.scrollHeight,
                     clientHeight: container.clientHeight,
-                    scrollTop,
-                }).targetScrollTop;
+                    progress,
+                });
 
                 if (Math.abs(container.scrollTop - targetScrollTop) > 1) {
                     container.scrollTop = targetScrollTop;
@@ -105,7 +105,7 @@ export const NavigationState: React.FC<{ children?: ReactNode }> = ({
             value={{
                 openSubNavigation,
                 closeSubNavigation,
-                saveNavigationScrollTop,
+                saveNavigationScrollTopProgress,
                 registerNavigationContainer,
                 isSubNavigationOpen,
                 isInert,

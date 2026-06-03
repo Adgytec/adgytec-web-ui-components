@@ -3,7 +3,7 @@ import { createContext, useContext } from "react";
 export type NavigationStateContextType = {
     openSubNavigation: (id: string, depth: number) => void;
     closeSubNavigation: (id: string) => void;
-    saveNavigationScrollTop: (id: string, scrollTop: number) => void;
+    saveNavigationScrollTopProgress: (id: string, progress: number) => void;
     registerNavigationContainer: (
         id: string,
         container: HTMLDivElement

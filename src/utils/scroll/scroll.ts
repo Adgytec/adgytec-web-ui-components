@@ -1,13 +1,24 @@
-import type { CalculateScrollTop } from "./types";
-
-export const calculateScrollTop: CalculateScrollTop = ({
+export function getScrollProgress({
     scrollHeight,
-    clientHeight,
     scrollTop,
-}) => {
+    clientHeight,
+}: {
+    scrollTop: number;
+    scrollHeight: number;
+    clientHeight: number;
+}): number {
     const maxScrollTop = scrollHeight - clientHeight;
-    const progress = maxScrollTop <= 0 ? 0 : scrollTop / maxScrollTop;
-    const targetScrollTop = scrollTop * maxScrollTop;
-
-    return { progress, targetScrollTop };
-};
+    return maxScrollTop <= 0 ? 0 : scrollTop / maxScrollTop;
+}
+export function getScrollTopFromProgress({
+    scrollHeight,
+    progress,
+    clientHeight,
+}: {
+    progress: number;
+    scrollHeight: number;
+    clientHeight: number;
+}): number {
+    const maxScrollTop = scrollHeight - clientHeight;
+    return progress * maxScrollTop;
+}
