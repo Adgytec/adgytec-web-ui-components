@@ -14,6 +14,8 @@ export const Switch: React.FC<SwitchProps> = ({
     icon = "selected",
     labelPlacement = "start",
     containerStateLayer = false,
+    unselectedIcon = X,
+    selectedIcon = Check,
     ...props
 }) => {
     return (
@@ -44,11 +46,11 @@ export const Switch: React.FC<SwitchProps> = ({
 
                 let iconValue: LucideIcon | undefined;
                 if (icon !== "none" && isSelected) {
-                    iconValue = Check;
+                    iconValue = selectedIcon;
                 }
 
                 if (icon === "both" && !isSelected) {
-                    iconValue = X;
+                    iconValue = unselectedIcon;
                 }
 
                 const dataAttrs = {
