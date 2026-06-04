@@ -22,11 +22,14 @@ Extends [React Aria Components Switch](https://react-spectrum.adobe.com/react-ar
 | `icon` | `"none" \| "selected" \| "both"` | `"selected"` | Which states should show an icon in the handle. |
 | `labelPlacement` | `"start" \| "end"` | `"start"` | Placement of the label relative to the switch. |
 | `containerStateLayer` | `boolean` | `false` | If true, the state layer (ripple) covers the entire component container. |
+| `selectedIcon` | `LucideIcon` | `Check` | The icon to display in the handle when the switch is selected. |
+| `unselectedIcon` | `LucideIcon` | `X` | The icon to display in the handle when the switch is unselected (only visible when `icon="both"`). |
 
 ## Usage
 
 ```tsx
 import { Switch } from '@adgytec/web-ui-components';
+import { Sun, Moon } from 'lucide-react';
 
 // Basic usage
 <Switch>Notifications</Switch>
@@ -36,6 +39,11 @@ import { Switch } from '@adgytec/web-ui-components';
 
 // Label on the right
 <Switch labelPlacement="end">Dark Mode</Switch>
+
+// Custom icons for selected and unselected states
+<Switch icon="both" selectedIcon={Moon} unselectedIcon={Sun}>
+  Theme
+</Switch>
 ```
 
 ## Internal Structure

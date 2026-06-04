@@ -13,9 +13,9 @@ Extends [React Aria Components ToggleButtonGroup](https://react-spectrum.adobe.c
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The size of the buttons within the group. |
-| `shape` | `"square" \| "rounded" \| "full"` | — | The shape of the buttons within the group. |
-| `color` | `"filled" \| "tonal" \| "outlined"` | — | The color variant for the buttons. |
-| `iconPlacement` | `"start" \| "end"` | — | The default icon placement for buttons in the group. |
+| `shape` | `"square" \| "rounded"` | `"rounded"` | The shape of the buttons within the group. |
+| `color` | `"filled" \| "tonal" \| "outlined"` | `"filled"` | The color variant for the buttons. |
+| `iconPlacement` | `"start" \| "end"` | `"start"` | The default icon placement for buttons in the group. |
 
 ### Usage
 

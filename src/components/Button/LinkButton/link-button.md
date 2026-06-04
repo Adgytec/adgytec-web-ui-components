@@ -18,8 +18,8 @@ The `LinkButton` component extends [React Aria Components Link](https://react-sp
 |------|------|---------|-------------|
 | `href` | `string` | — | The URL the link points to. |
 | `color` | `"filled" \| "tonal" \| "outlined" \| "elevated" \| "text"` | `"filled"` | The visual style and color scheme. |
-| `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"medium"` | The size of the button. |
-| `shape` | `"square" \| "rounded" \| "full"` | `"full"` | The corner radius of the button. |
+| `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The size of the button. |
+| `shape` | `"square" \| "rounded"` | `"rounded"` | The corner radius of the button. |
 | `icon` | `LucideIcon` | — | An optional icon to display within the button. |
 | `iconPlacement` | `"start" \| "end"` | `"start"` | The position of the icon relative to the text. |
 | `tooltip` | `string` | — | Optional tooltip text displayed on hover. |

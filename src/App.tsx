@@ -237,6 +237,14 @@ const SwitchPreview = () => {
 
                 <Switch>Selected icon</Switch>
 
+                <Switch
+                    unselectedIcon={GlobeOff}
+                    selectedIcon={Globe}
+                    icon="both"
+                >
+                    Custom icon
+                </Switch>
+
                 <Switch containerStateLayer icon="both">
                     Both icon
                 </Switch>
