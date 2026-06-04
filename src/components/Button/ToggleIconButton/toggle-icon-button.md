@@ -21,9 +21,9 @@ The `ToggleIconButton` component extends [React Aria Components ToggleButton](ht
 |------|------|---------|-------------|
 | `icon` | `LucideIcon` | **Required** | The icon to display in the unselected state. |
 | `selectedIcon` | `LucideIcon` | — | The icon to display in the selected state. If not provided, `icon` is used for both states. |
-| `color` | `"filled" \| "tonal" \| "outlined" \| "standard"` | `"standard"` | The visual style and color scheme. |
-| `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"medium"` | The size of the button and icon. |
-| `shape` | `"square" \| "rounded" \| "full"` | `"full"` | The corner radius of the button. |
+| `color` | `"filled" \| "tonal" \| "outlined" \| "standard"` | `"filled"` | The visual style and color scheme. |
+| `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The size of the button and icon. |
+| `shape` | `"square" \| "rounded"` | `"rounded"` | The corner radius of the button. |
 | `width` | `"default" \| "wide"` | `"default"` | Controls whether the button has a standard circular/square aspect or a wider layout. |
 | `tooltip` | `string` | — | Optional tooltip text displayed on hover. |
 
