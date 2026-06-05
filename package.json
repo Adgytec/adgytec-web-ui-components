@@ -55,7 +55,6 @@
         "@biomejs/biome": "^2.4.15",
         "@csstools/postcss-global-data": "^4.0.0",
         "@internationalized/date": "^3.12.1",
-        "@react-aria/optimize-locales-plugin": "^1.2.0",
         "@types/node": "^25.9.1",
         "@types/react": "^19.2.15",
         "@types/react-dom": "^19.2.3",

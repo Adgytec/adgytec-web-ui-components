@@ -1,6 +1,5 @@
 import path, { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import optimizeLocales from "@react-aria/optimize-locales-plugin";
 import react from "@vitejs/plugin-react-swc";
 import { globSync } from "glob";
 import Sonda from "sonda/vite";
@@ -16,12 +15,6 @@ export default defineConfig({
             tsconfigPath: "tsconfig.app.json",
             insertTypesEntry: true,
         }),
-        {
-            ...optimizeLocales.vite({
-                locales: ["en-US", "fr-FR"],
-            }),
-            enforce: "pre",
-        },
         Sonda(),
     ],
     resolve: {
