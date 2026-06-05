@@ -1,20 +1,20 @@
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useMemo, useState } from "react";
 import { AppBarStateContext } from "./context";
 
 export const AppBarState: React.FC<{
     children?: ReactNode;
-    initalScrolling?: boolean;
-}> = ({ children, initalScrolling = false }) => {
-    const [scrolling, setScrolling] = useState(initalScrolling);
+    initialScrolling?: boolean;
+}> = ({ children, initialScrolling = false }) => {
+    const [scrolling, setScrolling] = useState(initialScrolling);
+    const contextValue = useMemo(
+        () => ({
+            isScrolling: scrolling,
+            updateScrolling: setScrolling,
+        }),
+        [scrolling]
+    );
 
     return (
-        <AppBarStateContext
-            value={{
-                isScrolling: scrolling,
-                updateScrolling: setScrolling,
-            }}
-        >
-            {children}
-        </AppBarStateContext>
+        <AppBarStateContext value={contextValue}>{children}</AppBarStateContext>
     );
 };

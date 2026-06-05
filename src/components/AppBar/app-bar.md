@@ -80,7 +80,7 @@ Extends the [React Aria Button](https://react-spectrum.adobe.com/react-aria/Butt
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `initalScrolling` | `boolean` | `false` | Sets the initial scrolling state of the AppBar. |
+| `initialScrolling` | `boolean` | `false` | Sets the initial scrolling state of the AppBar. |
 | `children` | `ReactNode` | — | The child components to render within the state provider context. |
 
 ---

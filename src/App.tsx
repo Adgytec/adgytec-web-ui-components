@@ -3583,7 +3583,7 @@ const AppBarPreview = () => {
                         headline={<AppBarHeadline>Material 3</AppBarHeadline>}
                     />
 
-                    <AppBarState initalScrolling>
+                    <AppBarState initialScrolling>
                         <AppBar
                             size="large"
                             alignment="centered"
