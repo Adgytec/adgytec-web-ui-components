@@ -91,6 +91,13 @@ import {
 } from "react-aria-components";
 import { useLocalStorage } from "usehooks-ts";
 import {
+    AppBar,
+    AppBarAction,
+    AppBarAvatar,
+    AppBarHeadline,
+    AppBarState,
+} from "./components/AppBar";
+import {
     Button,
     type ButtonColor,
     ButtonGroup,
@@ -171,13 +178,7 @@ import {
     MenuTrigger,
     SubmenuPopover,
 } from "./components/Menu";
-import { Popover } from "./components/Popover";
 import {
-    AppBar,
-    AppBarAction,
-    AppBarAvatar,
-    AppBarHeadline,
-    AppBarState,
     Navigation,
     NavigationButton,
     NavigationLink,
@@ -186,7 +187,8 @@ import {
     NavigationState,
     SubNavigation,
     SubNavigationTrigger,
-} from "./components/Scaffold";
+} from "./components/Navigation";
+import { Popover } from "./components/Popover";
 import {
     BottomSheet,
     BottomSheetModal,
