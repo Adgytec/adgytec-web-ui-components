@@ -177,6 +177,7 @@ import {
     AppBarAction,
     AppBarAvatar,
     AppBarHeadline,
+    AppBarState,
     Navigation,
     NavigationButton,
     NavigationLink,
@@ -3580,21 +3581,25 @@ const AppBarPreview = () => {
                         headline={<AppBarHeadline>Material 3</AppBarHeadline>}
                     />
 
-                    <AppBar
-                        size="large"
-                        alignment="centered"
-                        leadingAction={<AppBarAction icon={CloudSnow} />}
-                        trailingActions={[
-                            <AppBarAction key="settings" icon={Settings} />,
-                            <AppBarAvatar key="avatar">
-                                <img
-                                    src="https://picsum.photos/32"
-                                    alt="random"
-                                />
-                            </AppBarAvatar>,
-                        ]}
-                        headline={<AppBarHeadline>Material 3</AppBarHeadline>}
-                    />
+                    <AppBarState initalScrolling>
+                        <AppBar
+                            size="large"
+                            alignment="centered"
+                            leadingAction={<AppBarAction icon={CloudSnow} />}
+                            trailingActions={[
+                                <AppBarAction key="settings" icon={Settings} />,
+                                <AppBarAvatar key="avatar">
+                                    <img
+                                        src="https://picsum.photos/32"
+                                        alt="random"
+                                    />
+                                </AppBarAvatar>,
+                            ]}
+                            headline={
+                                <AppBarHeadline>Material 3</AppBarHeadline>
+                            }
+                        />
+                    </AppBarState>
                 </div>
             </div>
         </div>
