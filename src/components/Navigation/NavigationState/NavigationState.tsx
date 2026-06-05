@@ -41,23 +41,24 @@ export const NavigationState: React.FC<{ children?: ReactNode }> = ({
         ]);
     }, []);
 
-    const closeSubNavigation = useCallback((id: string) => {
-        setOpenSubNavs((prev) => {
-            const item = prev.find((x) => x.id === id);
-
+    const closeSubNavigation = useCallback(
+        (id: string) => {
+            const item = openSubNavs.find((x) => x.id === id);
             if (!item) {
-                return prev;
+                return;
             }
 
-            const removedItems = prev.filter((x) => x.depth >= item.depth);
-
+            const removedItems = openSubNavs.filter(
+                (x) => x.depth >= item.depth
+            );
             for (const removedItem of removedItems) {
                 delete navScrollRef.current[removedItem.id];
             }
 
-            return prev.filter((x) => x.depth < item.depth);
-        });
-    }, []);
+            setOpenSubNavs((prev) => prev.filter((x) => x.depth < item.depth));
+        },
+        [openSubNavs]
+    );
 
     const saveNavigationScrollTopProgress = useCallback(
         (id: string, progress: number) => {
