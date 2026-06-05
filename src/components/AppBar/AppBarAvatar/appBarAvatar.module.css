@@ -1,0 +1,29 @@
+@layer adgytec.comps {
+    .avatar {
+        --_md-app-bar-avatar-size: var(--md-sys-layout-space-32);
+
+        & > [data-visual-button] {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            inline-size: var(--_md-app-bar-avatar-size);
+            max-inline-size: var(--_md-app-bar-avatar-size);
+
+            block-size: var(--_md-app-bar-avatar-size);
+            max-block-size: var(--_md-app-bar-avatar-size);
+
+            border-radius: 50%;
+            overflow: clip;
+            position: relative;
+
+            text-align: center;
+
+            & img {
+                inline-size: 100%;
+                block-size: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}

@@ -6,6 +6,9 @@
 |-------|---------------|-------------|
 | `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the select field is focused or open. |
 
+> [!NOTE]
+> To configure the colors of the select options popover, use the `Menu` configurable CSS tokens (such as `--md-menu-background`).
+
 The `Select` component displays a list of options and allows a user to select one or more of them. It implements Material 3 text field patterns for the collapsed state.
 
 ## Components

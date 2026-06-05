@@ -1,0 +1,9 @@
+@layer adgytec.comps {
+    .container {
+        --_md-navigation-items-gap: var(--md-sys-layout-space-4);
+
+        position: relative;
+        border-radius: inherit;
+        overflow: clip;
+    }
+}

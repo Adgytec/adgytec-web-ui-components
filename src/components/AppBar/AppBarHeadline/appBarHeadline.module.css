@@ -1,0 +1,12 @@
+@layer adgytec.comps {
+    .headline {
+        color: var(--_md-app-bar-title-color);
+
+        max-block-size: var(--_md-app-bar-headline-block-size);
+        block-size: var(--_md-app-bar-headline-block-size);
+    }
+
+    .centered {
+        text-align: center;
+    }
+}

@@ -22,7 +22,8 @@ Sheets are implementations of [Material 3 Side Sheets](https://m3.material.io/co
 The Sheets system consists of:
 
 - `SideSheet`: The content container for side sheets, including header and optional actions.
-- `SideSheetModal`: A modal container for a `SideSheet`.
+- `SideSheetDialog`: A low-level dialog container for side sheets, useful for custom layout structures.
+- `SideSheetModal`: A modal container for a `SideSheet` or `SideSheetDialog`.
 - `BottomSheet`: The content container for bottom sheets.
 - `BottomSheetModal`: A modal container for a `BottomSheet`.
 - `ModalOverlay`: The backdrop that appears behind the modal (shared with Dialog).
@@ -35,6 +36,9 @@ The Sheets system consists of:
 | `headline` | `ReactNode` | Optional headline text/element. |
 | `actions` | `ReactElement[] \| ((renderProps: DialogRenderProps) => ReactElement[])` | Optional action buttons. |
 
+Extends [React Aria Components Dialog](https://react-spectrum.adobe.com/react-aria/Dialog.html).
+
+### `SideSheetDialog`
 Extends [React Aria Components Dialog](https://react-spectrum.adobe.com/react-aria/Dialog.html).
 
 ### `SideSheetModal`
@@ -81,6 +85,43 @@ import {
       >
         <p>This is the side sheet content.</p>
       </SideSheet>
+    </SideSheetModal>
+  </ModalOverlay>
+</DialogTrigger>
+```
+
+### Side Sheet with Custom Dialog
+
+For cases where you need a custom layout (e.g. customized headers, scrollable areas, or footers), you can use `SideSheetDialog` directly instead of `SideSheet`.
+
+```tsx
+import { DialogTrigger, Heading, Header } from 'react-aria-components';
+import { 
+  SideSheetDialog, 
+  SideSheetModal, 
+  ModalOverlay, 
+  Button,
+  IconButton
+} from '@adgytec/web-ui-components';
+import { X } from 'lucide-react';
+
+<DialogTrigger>
+  <Button label="Open Custom Side Sheet" />
+  <ModalOverlay>
+    <SideSheetModal alignment="end" layout="standard">
+      <SideSheetDialog>
+        {({ close }) => (
+          <>
+            <Header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px' }}>
+              <Heading slot="title">Custom Title</Heading>
+              <IconButton icon={X} onPress={close} aria-label="Close" />
+            </Header>
+            <div style={{ padding: '16px', flex: 1, overflowY: 'auto' }}>
+              <p>Custom content goes here.</p>
+            </div>
+          </>
+        )}
+      </SideSheetDialog>
     </SideSheetModal>
   </ModalOverlay>
 </DialogTrigger>

@@ -1,0 +1,8 @@
+@layer adgytec.comps {
+    .section {
+        display: grid;
+        gap: var(--_md-navigation-items-gap);
+
+        margin-block-end: var(--md-sys-layout-space-16);
+    }
+}

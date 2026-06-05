@@ -1,0 +1,85 @@
+/* configurable tokens
+*
+* --md-navigation-background
+* --md-navigation-drawer-background
+*
+* configurable tokens end */
+
+@layer adgytec.comps {
+    .navigation {
+        --_md-navigation-background: var(
+            --md-navigation-background,
+            var(--md-sys-color-surface)
+        );
+        --_md-navigation-drawer-background: var(
+            --md-navigation-drawer-background,
+            var(--md-sys-color-surface-container)
+        );
+
+        --_background: var(--_md-navigation-background);
+
+        background-color: var(--_background);
+
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+
+        display: grid;
+        grid-template-rows: 1fr;
+        gap: var(--md-sys-layout-space-16);
+
+        padding-block: var(--md-sys-layout-space-16);
+
+        &[data-modal] {
+            --_background: var(--_md-navigation-drawer-background);
+        }
+
+        &[data-header] {
+            grid-template-rows: auto 1fr;
+        }
+    }
+
+    .navigation[data-sub-nav] {
+        opacity: 0;
+        translate: -100%;
+
+        transition:
+            opacity var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            translate var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-status="entered"] {
+            opacity: 1;
+            translate: 0;
+        }
+    }
+
+    .nav-header {
+        display: flex;
+        align-items: center;
+
+        gap: var(--md-sys-layout-space-8);
+
+        padding-inline-start: var(--md-sys-layout-space-32);
+        padding-inline-end: var(--md-sys-layout-space-24);
+
+        > [data-close-button] {
+            margin-inline-start: auto;
+        }
+    }
+
+    .sub-nav-header {
+        display: flex;
+        align-items: center;
+
+        gap: var(--md-sys-layout-space-8);
+
+        padding-inline-start: var(--md-sys-layout-space-24);
+        padding-inline-end: var(--md-sys-layout-space-32);
+    }
+}

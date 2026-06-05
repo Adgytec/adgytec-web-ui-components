@@ -12,16 +12,17 @@
 | `--md-slider-output-background` | `var(--md-sys-color-inverse-surface)` | Background color of the value tooltip/output. |
 | `--md-slider-output-color` | `var(--md-sys-color-inverse-on-surface)` | Text color of the value tooltip/output. |
 
-The `Slider` component allows users to make selections from a range of values. It implements [Material 3 Sliders](https://m3.material.io/components/sliders/overview) and supports single and range selection, custom steps, and icons.
+The `Slider` component allows users to make selections from a range of values. It implements [Material 3 Sliders](https://m3.material.io/components/sliders/overview) and supports single, range, and centered selection, custom steps, and icons.
 
 ## Components
 
 - `Slider`: For selecting a single value.
 - `RangeSlider`: For selecting a range of values (start and end).
+- `CenteredSlider`: For selecting a single value relative to an anchor/center point.
 
 ## Props
 
-Both components extend [React Aria Components Slider](https://react-spectrum.adobe.com/react-aria/Slider.html).
+All components extend [React Aria Components Slider](https://react-spectrum.adobe.com/react-aria/Slider.html).
 
 ### Common Props
 
@@ -29,8 +30,8 @@ Both components extend [React Aria Components Slider](https://react-spectrum.ado
 |------|------|---------|-------------|
 | `label` | `ReactNode` | — | The label for the slider. |
 | `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The thickness of the track and size of the thumb. |
-| `showInBetweenSteps` | `boolean` | `false` | Whether to display indicators for each step. |
-| `maxStops` | `number` | — | Maximum number of step indicators to show (prevents overcrowding). |
+| `showInBetweenSteps` | `boolean` | `true` | Whether to display indicators for each step. |
+| `maxStops` | `number` | 20 | Maximum number of step indicators to show (prevents overcrowding). |
 | `outputRenderer` | `(value: number) => ReactNode` | — | Custom function to format the displayed value. |
 
 ### `Slider` Specific Props
@@ -46,6 +47,12 @@ Both components extend [React Aria Components Slider](https://react-spectrum.ado
 | Prop | Type | Description |
 |------|------|-------------|
 | `thumbLabels` | `[string, string]` | Accessibility labels for the start and end thumbs. |
+
+### `CenteredSlider` Specific Props
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `thumbLabel` | `string` | Accessibility label for the thumb. |
 
 ## Usage
 
@@ -79,6 +86,21 @@ import { RangeSlider } from '@adgytec/web-ui-components';
   step={10}
   showInBetweenSteps
   maxStops={20}
+/>
+```
+
+### Centered Slider
+
+```tsx
+import { CenteredSlider } from '@adgytec/web-ui-components';
+
+<CenteredSlider 
+  label="Balance" 
+  minValue={-50} 
+  maxValue={50} 
+  defaultValue={0}
+  step={5}
+  showInBetweenSteps
 />
 ```
 
