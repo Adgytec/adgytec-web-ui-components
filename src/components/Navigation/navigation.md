@@ -51,6 +51,7 @@ Extends standard HTML `<nav>` attribute types.
 | `isLinkActive` | `(href: string) => boolean` | — | Callback function to determine if a given URL matching `href` is currently active. |
 | `isButtonActive` | `(prefix: string) => boolean` | — | Callback function to determine if an action button matching `prefix` is active. |
 | `stateID` | `string` | `"__root__"` | State identifier for syncing transitions. |
+| `containerClassName` | `string` | — | CSS class for the navigation container. |
 
 ### `NavigationLink`
 

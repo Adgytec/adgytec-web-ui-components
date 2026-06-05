@@ -91,6 +91,13 @@ import {
 } from "react-aria-components";
 import { useLocalStorage } from "usehooks-ts";
 import {
+    AppBar,
+    AppBarAction,
+    AppBarAvatar,
+    AppBarHeadline,
+    AppBarState,
+} from "./components/AppBar";
+import {
     Button,
     type ButtonColor,
     ButtonGroup,
@@ -171,12 +178,7 @@ import {
     MenuTrigger,
     SubmenuPopover,
 } from "./components/Menu";
-import { Popover } from "./components/Popover";
 import {
-    AppBar,
-    AppBarAction,
-    AppBarAvatar,
-    AppBarHeadline,
     Navigation,
     NavigationButton,
     NavigationLink,
@@ -185,7 +187,8 @@ import {
     NavigationState,
     SubNavigation,
     SubNavigationTrigger,
-} from "./components/Scaffold";
+} from "./components/Navigation";
+import { Popover } from "./components/Popover";
 import {
     BottomSheet,
     BottomSheetModal,
@@ -3580,21 +3583,25 @@ const AppBarPreview = () => {
                         headline={<AppBarHeadline>Material 3</AppBarHeadline>}
                     />
 
-                    <AppBar
-                        size="large"
-                        alignment="centered"
-                        leadingAction={<AppBarAction icon={CloudSnow} />}
-                        trailingActions={[
-                            <AppBarAction key="settings" icon={Settings} />,
-                            <AppBarAvatar key="avatar">
-                                <img
-                                    src="https://picsum.photos/32"
-                                    alt="random"
-                                />
-                            </AppBarAvatar>,
-                        ]}
-                        headline={<AppBarHeadline>Material 3</AppBarHeadline>}
-                    />
+                    <AppBarState initialScrolling>
+                        <AppBar
+                            size="large"
+                            alignment="centered"
+                            leadingAction={<AppBarAction icon={CloudSnow} />}
+                            trailingActions={[
+                                <AppBarAction key="settings" icon={Settings} />,
+                                <AppBarAvatar key="avatar">
+                                    <img
+                                        src="https://picsum.photos/32"
+                                        alt="random"
+                                    />
+                                </AppBarAvatar>,
+                            ]}
+                            headline={
+                                <AppBarHeadline>Material 3</AppBarHeadline>
+                            }
+                        />
+                    </AppBarState>
                 </div>
             </div>
         </div>

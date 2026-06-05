@@ -1,5 +1,6 @@
 import clsx from "clsx";
-import { useMemo } from "react";
+import { useContext, useMemo } from "react";
+import { AppBarStateContext } from "../AppBarState";
 import {
     AppBarContext,
     AppBarHeadlineBlockSize,
@@ -17,6 +18,7 @@ export const AppBar: React.FC<AppBarProps> = ({
     headline,
     ...props
 }) => {
+    const appBarState = useContext(AppBarStateContext);
     const hasSecondary = size !== "small";
     const hasTrailingActions = trailingActions && trailingActions.length > 0;
 
@@ -38,6 +40,7 @@ export const AppBar: React.FC<AppBarProps> = ({
                 data-size={size}
                 data-alignment={alignment}
                 data-has-secondary={(hasSecondary && !!headline) || undefined}
+                data-scroll={appBarState?.isScrolling || undefined}
             >
                 <div
                     data-primary

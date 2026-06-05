@@ -30,6 +30,7 @@ const Nav: React.FC<NavigationProps> = ({
     stateID = "__root__",
     inert,
     style,
+    containerClassName,
     ...props
 }) => {
     const depth = 0;
@@ -48,7 +49,10 @@ const Nav: React.FC<NavigationProps> = ({
                 [NavigationInfoContext, { id: stateID, depth }],
             ]}
         >
-            <div ref={setContainer} className={clsx(styles["container"])}>
+            <div
+                ref={setContainer}
+                className={clsx(styles["container"], containerClassName)}
+            >
                 <nav
                     className={clsx(NavigationStyles, className)}
                     {...props}

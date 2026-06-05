@@ -1,6 +1,7 @@
 /* configurable tokens
 *
 * --md-app-bar-background
+* --md-app-bar-on-scroll-background
 * --md-app-bar-title-color
 *
 * configurable tokens end */
@@ -10,6 +11,10 @@
         --_md-app-bar-background: var(
             --md-app-bar-background,
             var(--md-sys-color-surface)
+        );
+        --_md-app-bar-on-scroll-background: var(
+            --md-app-bar-on-scroll-background,
+            var(--md-sys-color-surface-container)
         );
         --_md-app-bar-title-color: var(
             --md-app-bar-title-color,
@@ -25,12 +30,25 @@
 
         background-color: var(--_md-app-bar-background);
 
+        transition: background-color
+            var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
         &[data-size="medium"] {
             --_md-app-bar-headline-block-size: var(--md-sys-layout-space-36);
         }
 
         &[data-size="large"] {
             --_md-app-bar-headline-block-size: calc(44 * var(--dp, 1px));
+        }
+
+        &[data-scroll] {
+            background-color: var(--_md-app-bar-on-scroll-background);
+            box-shadow: var(--md-sys-elevation-shadow-2);
         }
     }
 
