@@ -8,4 +8,5 @@ export interface NavigationProps extends React.ComponentPropsWithRef<"nav"> {
     isLinkActive?: IsLinkActive;
     isButtonActive?: IsButtonActive;
     stateID?: string;
+    containerClassName?: string;
 }

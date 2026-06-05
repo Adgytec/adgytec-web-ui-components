@@ -50,7 +50,8 @@ Extends standard HTML `<nav>` attribute types.
 | `label` | `ReactNode` | — | Title text or element for the navigation header. |
 | `isLinkActive` | `(href: string) => boolean` | — | Callback function to determine if a given URL matching `href` is currently active. |
 | `isButtonActive` | `(prefix: string) => boolean` | — | Callback function to determine if an action button matching `prefix` is active. |
-| `stateID` | `string` | `"__root__"` | State identifier for syncing transitions. |
+| `stateid` | `string` | `"__root__"` | state identifier for syncing transitions. |
+| `containerClassName` | `string` | — | css class for navigation container. |
 
 ### `NavigationLink`
 
