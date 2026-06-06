@@ -62,6 +62,7 @@ export const AppBar: React.FC<AppBarProps> = ({
                         <div
                             data-alignment={alignment}
                             className={clsx(styles["headline"])}
+                            data-initial-padding={!leadingAction || undefined}
                         >
                             {headline}
                         </div>
