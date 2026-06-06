@@ -221,7 +221,7 @@
         padding-inline: var(--md-sys-layout-space-16);
 
         display: inline-flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         gap: var(--md-sys-layout-space-16);
 
