@@ -72,6 +72,10 @@
         }
     }
 
+    .headline[data-initial-padding] {
+        padding-inline-start: var(--md-sys-layout-space-12);
+    }
+
     .headline[data-alignment="centered"] {
         grid-column: 2;
         justify-self: center;
