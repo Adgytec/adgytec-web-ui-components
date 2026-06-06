@@ -42,6 +42,7 @@ import {
     MouseOff,
     Newspaper,
     Package,
+    Palette,
     PlaneTakeoff,
     Plug,
     Receipt,
@@ -3596,6 +3597,19 @@ const AppBarPreview = () => {
                                         alt="random"
                                     />
                                 </AppBarAvatar>,
+                            ]}
+                            headline={
+                                <AppBarHeadline>Material 3</AppBarHeadline>
+                            }
+                        />
+
+                        <AppBar
+                            size="large"
+                            alignment="centered"
+                            leadingAction={<AppBarAction icon={CloudSnow} />}
+                            trailingActions={[
+                                <AppBarAction key="settings" icon={Settings} />,
+                                <AppBarAction key="theme" icon={Palette} />,
                             ]}
                             headline={
                                 <AppBarHeadline>Material 3</AppBarHeadline>

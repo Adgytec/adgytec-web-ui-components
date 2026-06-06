@@ -1,6 +1,14 @@
 @layer adgytec.comps {
     .avatar {
         --_md-app-bar-avatar-size: var(--md-sys-layout-space-32);
+        background-color: red;
+
+        inline-size: var(--md-sys-layout-space-48);
+        block-size: var(--md-sys-layout-space-48);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         & > [data-visual-button] {
             display: flex;
