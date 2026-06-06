@@ -24,7 +24,7 @@
         --_max-inline-size: calc(400 * var(--dp, 1px));
 
         inline-size: min(100svi, var(--_max-inline-size));
-        block-size: 100svb;
+        block-size: 100dvb;
 
         display: grid;
         grid-template-rows: 1fr;
@@ -38,7 +38,7 @@
         outline: none;
 
         &[data-layout="detached"] {
-            block-size: calc(100svb - calc(2 * var(--_detached-margin)));
+            block-size: calc(100dvb - calc(2 * var(--_detached-margin)));
             inline-size: min(
                 calc(100svi - calc(2 * var(--_detached-margin))),
                 var(--_max-inline-size)
