@@ -1,0 +1,10 @@
+@layer adgytec.comps {
+    .action {
+        inline-size: var(--md-sys-layout-space-48);
+        block-size: var(--md-sys-layout-space-48);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
