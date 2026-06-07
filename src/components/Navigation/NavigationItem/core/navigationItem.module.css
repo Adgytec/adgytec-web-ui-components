@@ -70,7 +70,6 @@
 
         display: flex;
         align-items: center;
-        inline-size: 100%;
         gap: var(--_md-navigation-item-gap);
 
         cursor: pointer;
