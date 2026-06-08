@@ -80,7 +80,7 @@ export const Input: React.FC<InputProps> = ({
                 )
             }
             maxLength={maxLength}
-            value={value}
+            value={currentValue}
             defaultValue={defaultValue}
             onChange={setValue}
             {...props}

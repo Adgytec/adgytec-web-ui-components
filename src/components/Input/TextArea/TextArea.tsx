@@ -53,7 +53,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
                 )
             }
             maxLength={maxLength}
-            value={value}
+            value={currentValue}
             defaultValue={defaultValue}
             onChange={setValue}
             {...props}
