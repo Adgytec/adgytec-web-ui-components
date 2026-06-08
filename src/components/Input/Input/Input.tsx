@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { useFocusRing } from "react-aria/useFocusRing";
 import { useHover } from "react-aria/useHover";
 import { useObjectRef } from "react-aria/useObjectRef";
-import { usePress } from "react-aria/usePress";
 import {
     Input as AriaInput,
     TextField as AriaTextField,
@@ -57,11 +56,6 @@ export const Input: React.FC<InputProps> = ({
 
     const { isFocused, isFocusVisible, focusProps } = useFocusRing();
     const { isHovered, hoverProps } = useHover({});
-    const { pressProps } = usePress({
-        onPress: () => {
-            inputRef.current?.focus();
-        },
-    });
 
     const layoutDataAttrs = {
         "data-trailing": trailing ? true : undefined,
@@ -80,7 +74,7 @@ export const Input: React.FC<InputProps> = ({
                 )
             }
             maxLength={maxLength}
-            value={value}
+            value={currentValue}
             defaultValue={defaultValue}
             onChange={setValue}
             {...props}
@@ -105,7 +99,19 @@ export const Input: React.FC<InputProps> = ({
                         {label && <Label>{label}</Label>}
 
                         <span
-                            {...pressProps}
+                            onPointerDown={(e) => {
+                                const target = e.target as HTMLElement;
+
+                                if (
+                                    inputRef.current?.contains(target) ||
+                                    target.closest("button, a, [role='button']")
+                                ) {
+                                    return;
+                                }
+
+                                e.preventDefault();
+                                inputRef.current?.focus();
+                            }}
                             {...hoverProps}
                             {...dataAttrs}
                             className={clsx(EditorStyles)}
