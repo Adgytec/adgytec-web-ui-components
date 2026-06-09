@@ -6,5 +6,8 @@
         display: grid;
         gap: var(--_md-navigation-items-gap);
         align-content: start;
+
+        /* 2dp for focus outline offset and 3dp for focus outline width + 1dp to prevent clipping */
+        padding-block: calc(6 * var(--dp, 1px));
     }
 }
