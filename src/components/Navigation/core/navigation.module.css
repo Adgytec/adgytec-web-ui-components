@@ -26,7 +26,7 @@
 
         display: grid;
         grid-template-rows: 1fr;
-        gap: var(--md-sys-layout-space-16);
+        gap: calc(10 * var(--dp, 1px));
 
         padding-block: var(--md-sys-layout-space-16);
 
