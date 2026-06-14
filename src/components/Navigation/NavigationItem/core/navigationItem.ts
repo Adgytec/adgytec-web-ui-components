@@ -7,7 +7,7 @@ export interface NavigationItemProps {
     label: ReactNode;
     icon?: LucideIcon;
     activeIcon?: LucideIcon;
-    isActive?: boolean;
+    isActive?: boolean | ((value?: string) => boolean);
 }
 
 export const NavigationItemLabelTypography = typography.titleSmall;

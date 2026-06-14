@@ -17,7 +17,10 @@ export const NavigationButton: React.FC<NavigationButtonProps> = ({
     ...props
 }) => {
     const { isButtonActive } = useNavigationContext();
-    const buttonActive = isActive ?? isButtonActive?.(prefix);
+    const buttonActive =
+        typeof isActive === "function"
+            ? isActive(prefix)
+            : (isActive ?? isButtonActive?.(prefix));
 
     const triggerLabel = useContext(NavLabelContext);
     const buttonLabel = label ?? triggerLabel;

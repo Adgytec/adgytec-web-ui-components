@@ -48,8 +48,8 @@ Extends standard HTML `<nav>` attribute types.
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `label` | `ReactNode` | — | Title text or element for the navigation header. |
-| `isLinkActive` | `(href: string) => boolean` | — | Callback function to determine if a given URL matching `href` is currently active. |
-| `isButtonActive` | `(prefix: string) => boolean` | — | Callback function to determine if an action button matching `prefix` is active. |
+| `isLinkActive` | `(href?: string) => boolean` | — | Callback function to determine if a given URL matching `href` is currently active. |
+| `isButtonActive` | `(prefix?: string) => boolean` | — | Callback function to determine if an action button matching `prefix` is active. |
 | `stateID` | `string` | `"__root__"` | State identifier for syncing transitions. |
 | `containerClassName` | `string` | — | CSS class for the navigation container. |
 
@@ -62,8 +62,8 @@ Extends the [React Aria Link](https://react-spectrum.adobe.com/react-aria/Link.h
 | `label` | `ReactNode` | — | The text or node label of the item. |
 | `icon` | `LucideIcon` | — | Optional icon display when the item is inactive. |
 | `activeIcon` | `LucideIcon` | — | Optional icon display when the item is active. |
-| `isActive` | `boolean` | — | Force override active state. |
-| `href` | `string` | — | URL link location. |
+| `isActive` | `boolean \| (href?: string) => boolean` | — | Force override active state. |
+| `href` | `string` | — | Optional URL link location. |
 
 ### `NavigationButton`
 
@@ -74,8 +74,8 @@ Extends the [React Aria Button](https://react-spectrum.adobe.com/react-aria/Butt
 | `label` | `ReactNode` | — | The button label content. |
 | `icon` | `LucideIcon` | — | Optional icon display when the item is inactive. |
 | `activeIcon` | `LucideIcon` | — | Optional icon display when the item is active. |
-| `isActive` | `boolean` | — | Force override active state. |
-| `prefix` | `string` | — | Prefix string compared in active checks. |
+| `isActive` | `boolean \| (prefix?: string) => boolean` | — | Force override active state. |
+| `prefix` | `string` | — | Optional prefix string compared in active checks. |
 
 ### `SubNavigation`
 
