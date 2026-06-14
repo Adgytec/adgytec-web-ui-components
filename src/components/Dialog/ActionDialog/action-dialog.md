@@ -33,8 +33,8 @@ import { AlertTriangle } from 'lucide-react';
         icon={AlertTriangle}
         heading="Confirm Deletion"
         actions={[
-          <Button key="cancel" label="Cancel" color="standard" />,
-          <Button key="confirm" label="Delete" color="error" />
+          <Button key="cancel" label="Cancel" color="text" />,
+          <Button key="confirm" label="Delete" />
         ]}
         divider="before-actions"
       >
