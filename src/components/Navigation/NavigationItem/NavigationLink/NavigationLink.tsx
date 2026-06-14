@@ -15,7 +15,10 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
     ...props
 }) => {
     const { isLinkActive } = useNavigationContext();
-    const linkActive = isActive ?? isLinkActive?.(href);
+    const linkActive =
+        typeof isActive === "function"
+            ? isActive(href)
+            : (isActive ?? isLinkActive?.(href));
 
     return (
         <Link
