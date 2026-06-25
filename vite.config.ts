@@ -1,6 +1,7 @@
 import path, { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import react from "@vitejs/plugin-react-swc";
+import babel from "@rolldown/plugin-babel";
+import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import { globSync } from "glob";
 import Sonda from "sonda/vite";
 import { defineConfig } from "vite";
@@ -16,6 +17,7 @@ export default defineConfig({
             insertTypesEntry: true,
         }),
         Sonda(),
+        babel({ presets: [reactCompilerPreset()] }),
     ],
     resolve: {
         alias: {
