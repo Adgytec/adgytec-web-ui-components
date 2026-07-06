@@ -1,10 +1,10 @@
 import { type CalendarDate, today } from "@internationalized/date";
 import clsx from "clsx";
 import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
-import { createRef, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useDateFormatter } from "react-aria";
 import { ButtonContext } from "react-aria-components";
-import { Transition, TransitionGroup } from "react-transition-group";
+import { Transition } from "react-transition-group";
 import { Button, IconButton } from "@/components/Button";
 import { Icon } from "@/components/Icon";
 import { CalendarGrid } from "../CalendarGrid";
@@ -28,12 +28,17 @@ export const BaseCalendar: React.FC<{
     weekdayStyle?: WeekdayStyle;
 }> = ({ isRangeCalendar, weekdayStyle }) => {
     const [view, setView] = useState<View>("calendar");
-    const nodeRefs = useRef({
-        calendar: createRef<HTMLDivElement>(),
-        month: createRef<HTMLDivElement>(),
-        year: createRef<HTMLDivElement>(),
-    }).current;
-    const currentRef = nodeRefs[view];
+    // const nodeRefs = useRef({
+    //     calendar: createRef<HTMLDivElement>(),
+    //     month: createRef<HTMLDivElement>(),
+    //     year: createRef<HTMLDivElement>(),
+    // }).current;
+    // const currentRef = nodeRefs[view];
+
+    const calendarRef = useRef<HTMLDivElement>(null);
+    const monthRef = useRef<HTMLDivElement>(null);
+    const yearRef = useRef<HTMLDivElement>(null);
+
     // fixes menu selection issue in range calendar
     const anchorDate = useRef<CalendarDate | null>(null);
 
@@ -277,51 +282,79 @@ export const BaseCalendar: React.FC<{
                 </div>
             </header>
 
-            <TransitionGroup className={clsx(styles["transition-group"])}>
+            <div className={clsx(styles["view"])}>
                 <Transition
-                    key={view}
-                    nodeRef={currentRef}
-                    timeout={150}
+                    nodeRef={calendarRef}
+                    timeout={{
+                        enter: 0,
+                        exit: 150,
+                    }}
+                    mountOnEnter
                     unmountOnExit
+                    in={view === "calendar"}
                 >
-                    {(transitionState) => (
+                    {(state) => (
                         <div
-                            ref={currentRef}
-                            className={clsx(styles["view"])}
-                            data-entering={
-                                transitionState === "entering" || undefined
-                            }
-                            data-exiting={
-                                transitionState === "exiting" || undefined
-                            }
-                            data-entered={
-                                transitionState === "entered" || undefined
-                            }
+                            ref={calendarRef}
+                            className={clsx(styles["menu"])}
+                            data-state={state}
                         >
-                            {view === "calendar" && (
-                                <CalendarGrid
-                                    weekdayStyle={weekdayStyle}
-                                    isRangeCalendar={isRangeCalendar}
-                                />
-                            )}
-
-                            {view === "month" && (
-                                <CalendarMonthMenu
-                                    onSelection={menuItemOnSelection}
-                                    months={months}
-                                />
-                            )}
-
-                            {view === "year" && (
-                                <CalendarYearMenu
-                                    onSelection={menuItemOnSelection}
-                                    years={years}
-                                />
-                            )}
+                            <CalendarGrid
+                                weekdayStyle={weekdayStyle}
+                                isRangeCalendar={isRangeCalendar}
+                            />
                         </div>
                     )}
                 </Transition>
-            </TransitionGroup>
+
+                <Transition
+                    nodeRef={monthRef}
+                    timeout={{
+                        enter: 0,
+                        exit: 150,
+                    }}
+                    mountOnEnter
+                    unmountOnExit
+                    in={view === "month"}
+                >
+                    {(state) => (
+                        <div
+                            ref={monthRef}
+                            className={clsx(styles["menu"])}
+                            data-state={state}
+                        >
+                            <CalendarMonthMenu
+                                onSelection={menuItemOnSelection}
+                                months={months}
+                            />
+                        </div>
+                    )}
+                </Transition>
+
+                <Transition
+                    nodeRef={yearRef}
+                    timeout={{
+                        enter: 0,
+                        exit: 150,
+                    }}
+                    mountOnEnter
+                    unmountOnExit
+                    in={view === "year"}
+                >
+                    {(state) => (
+                        <div
+                            ref={yearRef}
+                            className={clsx(styles["menu"])}
+                            data-state={state}
+                        >
+                            <CalendarYearMenu
+                                onSelection={menuItemOnSelection}
+                                years={years}
+                            />
+                        </div>
+                    )}
+                </Transition>
+            </div>
         </ButtonContext>
     );
 };
