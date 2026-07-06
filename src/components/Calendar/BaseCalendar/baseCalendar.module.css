@@ -40,12 +40,12 @@
         align-items: center;
     }
 
-    .transition-group {
+    .view {
         position: relative;
         overflow: clip;
     }
 
-    .view {
+    .menu {
         transition: opacity var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration);
 
@@ -59,13 +59,12 @@
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
 
-        &[data-exiting] {
+        &[data-state="exiting"] {
             position: absolute;
             inset: 0;
-            opacity: 0;
         }
 
-        &[data-entered] {
+        &[data-state="entered"] {
             opacity: 1;
         }
 

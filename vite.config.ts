@@ -4,7 +4,7 @@ import babel from "@rolldown/plugin-babel";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import { globSync } from "glob";
 import Sonda from "sonda/vite";
-import { defineConfig } from "vite";
+import { defineConfig, esmExternalRequirePlugin } from "vite";
 import dts from "vite-plugin-dts";
 import { libInjectCss } from "vite-plugin-lib-inject-css";
 
@@ -34,7 +34,7 @@ export default defineConfig({
             fileName: "index",
         },
         cssCodeSplit: true,
-        rollupOptions: {
+        rolldownOptions: {
             input: Object.fromEntries(
                 // 1️⃣ Auto-discovered entries (components + root index + optional styles)
                 globSync([
@@ -57,10 +57,12 @@ export default defineConfig({
                 entryFileNames: "[name].js",
                 assetFileNames: "assets/[name].[ext]",
             },
+            plugins: [
+                esmExternalRequirePlugin({
+                    external: ["react", "react-dom", "react/jsx-runtime"],
+                }),
+            ],
             external: [
-                "react",
-                "react-dom",
-                "react/jsx-runtime",
                 "react-aria",
                 "react-aria-components",
                 "lucide-react",
