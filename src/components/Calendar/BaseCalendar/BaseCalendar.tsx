@@ -28,12 +28,6 @@ export const BaseCalendar: React.FC<{
     weekdayStyle?: WeekdayStyle;
 }> = ({ isRangeCalendar, weekdayStyle }) => {
     const [view, setView] = useState<View>("calendar");
-    // const nodeRefs = useRef({
-    //     calendar: createRef<HTMLDivElement>(),
-    //     month: createRef<HTMLDivElement>(),
-    //     year: createRef<HTMLDivElement>(),
-    // }).current;
-    // const currentRef = nodeRefs[view];
 
     const calendarRef = useRef<HTMLDivElement>(null);
     const monthRef = useRef<HTMLDivElement>(null);
