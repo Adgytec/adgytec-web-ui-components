@@ -2781,7 +2781,7 @@ const CalendarPreview = () => {
                 <h3 className={typography.titleLargeEmphasized}>Standard</h3>
 
                 <div className="items">
-                    <Calendar />
+                    <Calendar selectionMode="multiple" />
 
                     <Calendar className="calendar-vibrant" />
                 </div>

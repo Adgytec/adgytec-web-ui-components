@@ -5,6 +5,7 @@ import {
     type RangeCalendarState,
     RangeCalendarStateContext,
 } from "react-aria-components";
+import type { CalendarSelectionMode } from "react-aria-components/Calendar";
 
 export function useCalendarState() {
     const calendarState = useContext(CalendarStateContext);
@@ -21,7 +22,7 @@ export function useCalendarState() {
 }
 
 export function isRangeCalendarState(
-    state: CalendarState | RangeCalendarState
+    state: CalendarState<CalendarSelectionMode> | RangeCalendarState
 ): state is RangeCalendarState {
     return "anchorDate" in state;
 }
