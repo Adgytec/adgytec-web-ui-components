@@ -1,0 +1,305 @@
+@layer adgytec.comps {
+    /* ==========================================================================
+       1. Ambient Diagonal Gradients (Soft Color Wash)
+       ========================================================================== */
+
+    .gradient-ambient-primary {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image: linear-gradient(
+            135deg,
+            color-mix(
+                    in srgb,
+                    var(--md-sys-color-primary) 10%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                0%,
+            color-mix(
+                    in srgb,
+                    var(--md-sys-color-secondary) 7%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                100%
+        );
+    }
+
+    .gradient-ambient-secondary {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image: linear-gradient(
+            135deg,
+            color-mix(
+                    in srgb,
+                    var(--md-sys-color-secondary) 10%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                0%,
+            color-mix(
+                    in srgb,
+                    var(--md-sys-color-tertiary) 7%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                100%
+        );
+    }
+
+    .gradient-ambient-tertiary {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image: linear-gradient(
+            135deg,
+            color-mix(
+                    in srgb,
+                    var(--md-sys-color-tertiary) 10%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                0%,
+            color-mix(
+                    in srgb,
+                    var(--md-extended-color-primary-alt-color) 7%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                100%
+        );
+    }
+
+    .gradient-ambient-alt {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image: linear-gradient(
+            135deg,
+            color-mix(
+                    in srgb,
+                    var(--md-extended-color-primary-alt-color) 10%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                0%,
+            color-mix(
+                    in srgb,
+                    var(--md-sys-color-primary) 7%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                100%
+        );
+    }
+
+    /* ==========================================================================
+       2. Split Tint Top-Glow (Vertical Accent)
+       ========================================================================== */
+
+    .gradient-glow-primary {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image: linear-gradient(
+            180deg,
+            color-mix(
+                    in srgb,
+                    var(--md-sys-color-primary) 12%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                0%,
+            color-mix(
+                    in srgb,
+                    var(--md-sys-color-primary) 3%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                45%,
+            var(--md-sys-color-surface-container-low) 100%
+        );
+    }
+
+    .gradient-glow-secondary {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image: linear-gradient(
+            180deg,
+            color-mix(
+                    in srgb,
+                    var(--md-sys-color-secondary) 12%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                0%,
+            color-mix(
+                    in srgb,
+                    var(--md-sys-color-secondary) 3%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                45%,
+            var(--md-sys-color-surface-container-low) 100%
+        );
+    }
+
+    .gradient-glow-tertiary {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image: linear-gradient(
+            180deg,
+            color-mix(
+                    in srgb,
+                    var(--md-sys-color-tertiary) 12%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                0%,
+            color-mix(
+                    in srgb,
+                    var(--md-sys-color-tertiary) 3%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                45%,
+            var(--md-sys-color-surface-container-low) 100%
+        );
+    }
+
+    .gradient-glow-alt {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image: linear-gradient(
+            180deg,
+            color-mix(
+                    in srgb,
+                    var(--md-extended-color-primary-alt-color) 12%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                0%,
+            color-mix(
+                    in srgb,
+                    var(--md-extended-color-primary-alt-color) 3%,
+                    var(--md-sys-color-surface-container-low)
+                )
+                45%,
+            var(--md-sys-color-surface-container-low) 100%
+        );
+    }
+
+    /* ==========================================================================
+       3. Corner Radial Glows (Soft Blend)
+       ========================================================================== */
+
+    .gradient-corner-primary {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image:
+            radial-gradient(
+                circle at 0% 0%,
+                color-mix(in srgb, var(--md-sys-color-primary) 11%, transparent)
+                    0%,
+                transparent 70%
+            ),
+            radial-gradient(
+                circle at 100% 100%,
+                color-mix(
+                        in srgb,
+                        var(--md-sys-color-secondary) 8%,
+                        transparent
+                    )
+                    0%,
+                transparent 70%
+            );
+    }
+
+    .gradient-corner-secondary {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image:
+            radial-gradient(
+                circle at 0% 0%,
+                color-mix(
+                        in srgb,
+                        var(--md-sys-color-secondary) 11%,
+                        transparent
+                    )
+                    0%,
+                transparent 70%
+            ),
+            radial-gradient(
+                circle at 100% 100%,
+                color-mix(in srgb, var(--md-sys-color-tertiary) 8%, transparent)
+                    0%,
+                transparent 70%
+            );
+    }
+
+    .gradient-corner-tertiary {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image:
+            radial-gradient(
+                circle at 0% 0%,
+                color-mix(
+                        in srgb,
+                        var(--md-sys-color-tertiary) 11%,
+                        transparent
+                    )
+                    0%,
+                transparent 70%
+            ),
+            radial-gradient(
+                circle at 100% 100%,
+                color-mix(
+                        in srgb,
+                        var(--md-extended-color-primary-alt-color) 8%,
+                        transparent
+                    )
+                    0%,
+                transparent 70%
+            );
+    }
+
+    .gradient-corner-alt {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image:
+            radial-gradient(
+                circle at 0% 0%,
+                color-mix(
+                        in srgb,
+                        var(--md-extended-color-primary-alt-color) 11%,
+                        transparent
+                    )
+                    0%,
+                transparent 70%
+            ),
+            radial-gradient(
+                circle at 100% 100%,
+                color-mix(in srgb, var(--md-sys-color-primary) 8%, transparent)
+                    0%,
+                transparent 70%
+            );
+    }
+
+    /* ==========================================================================
+       4. Monochromatic Surface Lusters (Colorless)
+       ========================================================================== */
+
+    .gradient-luster-soft {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image: linear-gradient(
+            135deg,
+            var(--md-sys-color-surface-container) 0%,
+            var(--md-sys-color-surface-container-low) 100%
+        );
+    }
+
+    .gradient-luster-metallic {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image: linear-gradient(
+            135deg,
+            var(--md-sys-color-surface-bright) 0%,
+            var(--md-sys-color-surface-container) 50%,
+            var(--md-sys-color-surface-container-low) 100%
+        );
+    }
+
+    .gradient-luster-deep {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+        background-image: linear-gradient(
+            145deg,
+            var(--md-sys-color-surface-container-high) 0%,
+            var(--md-sys-color-surface-container) 60%,
+            var(--md-sys-color-surface-container-lowest) 100%
+        );
+    }
+}

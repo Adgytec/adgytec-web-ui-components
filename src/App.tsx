@@ -209,6 +209,7 @@ import {
     ToolbarToggleButtonGroup,
     type ToolbarVariant,
 } from "./components/Toolbar";
+import { gradientStyles } from "./utils";
 import { typography } from "./utils/typography";
 
 // preview container
@@ -4028,6 +4029,43 @@ const NavPreview = () => {
     );
 };
 
+const GradientsPreview = () => {
+    const GradientRender = ({
+        className,
+        heading,
+    }: {
+        heading: string;
+        className: string;
+    }) => {
+        return (
+            <div
+                className={className}
+                style={{
+                    inlineSize: "min(80vi, 30rem)",
+                    blockSize: "30rem",
+                    borderRadius: "1rem",
+                    textAlign: "center",
+                    boxShadow: "var(--md-sys-elevation-shadow-2)",
+                    padding: "1rem",
+                }}
+            >
+                <h3 className={clsx(typography.titleMediumEmphasized)}>
+                    {heading}
+                </h3>
+            </div>
+        );
+    };
+
+    const gradients = Object.entries(gradientStyles);
+    return (
+        <div className="items">
+            {gradients.map(([key, value]) => (
+                <GradientRender key={key} className={value} heading={key} />
+            ))}
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -4047,6 +4085,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "gradient-preview",
+            label: "Gradients",
+            Component: GradientsPreview,
+        },
         {
             id: "navigation-preview",
             label: "Navigation",
