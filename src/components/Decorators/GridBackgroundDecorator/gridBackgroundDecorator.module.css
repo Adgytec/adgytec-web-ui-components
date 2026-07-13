@@ -1,0 +1,54 @@
+@layer adgytec.comps {
+    .container {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-size: var(--grid-size, 40px) var(--grid-size, 40px);
+        mask-image: radial-gradient(
+            circle at center,
+            black 40%,
+            transparent 85%
+        );
+        -webkit-mask-image: radial-gradient(
+            circle at center,
+            black 40%,
+            transparent 85%
+        );
+
+        &[data-variant="lines"] {
+            background-image:
+                linear-gradient(
+                    to right,
+                    color-mix(
+                            in srgb,
+                            var(--md-sys-color-on-surface) 4%,
+                            transparent
+                        )
+                        1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    to bottom,
+                    color-mix(
+                            in srgb,
+                            var(--md-sys-color-on-surface) 4%,
+                            transparent
+                        )
+                        1px,
+                    transparent 1px
+                );
+        }
+
+        &[data-variant="dots"] {
+            background-image: radial-gradient(
+                color-mix(
+                        in srgb,
+                        var(--md-sys-color-on-surface) 10%,
+                        transparent
+                    )
+                    1.5px,
+                transparent 1.5px
+            );
+        }
+    }
+}
