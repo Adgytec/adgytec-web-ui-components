@@ -34,7 +34,9 @@
 
         --_md-button-padding-block-base: calc(6 * var(--dp, 1px));
         --_md-button-padding-block: var(--_md-button-padding-block-base);
-        --_md-button-padding-inline: var(--md-sys-layout-space-12);
+
+        --_md-button-padding-inline-base: var(--md-sys-layout-space-12);
+        --_md-button-padding-inline: var(--_md-button-padding-inline-base);
 
         --_md-button-icon-label-gap: var(--md-sys-layout-space-4);
         --_md-button-outline-width: var(--md-sys-shape-border-width-thin);
@@ -55,7 +57,9 @@
 
         --_md-button-padding-block-base: calc(10 * var(--dp, 1px));
         --_md-button-padding-block: var(--_md-button-padding-block-base);
-        --_md-button-padding-inline: var(--md-sys-layout-space-16);
+
+        --_md-button-padding-inline-base: var(--md-sys-layout-space-16);
+        --_md-button-padding-inline: var(--_md-button-padding-inline-base);
 
         --_md-button-icon-label-gap: var(--md-sys-layout-space-8);
         --_md-button-outline-width: var(--md-sys-shape-border-width-thin);
@@ -76,7 +80,9 @@
 
         --_md-button-padding-block-base: var(--md-sys-layout-space-16);
         --_md-button-padding-block: var(--_md-button-padding-block-base);
-        --_md-button-padding-inline: var(--md-sys-layout-space-24);
+
+        --_md-button-padding-inline-base: var(--md-sys-layout-space-24);
+        --_md-button-padding-inline: var(--_md-button-padding-inline-base);
 
         --_md-button-icon-label-gap: var(--md-sys-layout-space-8);
         --_md-button-outline-width: var(--md-sys-shape-border-width-thin);
@@ -97,7 +103,9 @@
 
         --_md-button-padding-block-base: var(--md-sys-layout-space-32);
         --_md-button-padding-block: var(--_md-button-padding-block-base);
-        --_md-button-padding-inline: var(--md-sys-layout-space-48);
+
+        --_md-button-padding-inline-base: var(--md-sys-layout-space-48);
+        --_md-button-padding-inline: var(--_md-button-padding-inline-base);
 
         --_md-button-icon-label-gap: var(--md-sys-layout-space-12);
         --_md-button-outline-width: var(--md-sys-shape-border-width-thick);
@@ -118,7 +126,9 @@
 
         --_md-button-padding-block-base: var(--md-sys-layout-space-48);
         --_md-button-padding-block: var(--_md-button-padding-block-base);
-        --_md-button-padding-inline: var(--md-sys-layout-space-64);
+
+        --_md-button-padding-inline-base: var(--md-sys-layout-space-64);
+        --_md-button-padding-inline: var(--_md-button-padding-inline-base);
 
         --_md-button-icon-label-gap: var(--md-sys-layout-space-16);
         --_md-button-outline-width: calc(3 * var(--dp, 1px));
