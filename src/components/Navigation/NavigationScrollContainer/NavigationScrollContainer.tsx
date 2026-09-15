@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useLayoutEffect } from "react";
 import { useObjectRef } from "react-aria";
-import { getScrollProgress } from "@/utils";
+import { getScrollProgress, getScrollTopFromProgress } from "@/utils";
 import { useNavigationInfo } from "../core";
 import { useNavigationState } from "../NavigationState";
 import styles from "./navigationScrollContainer.module.css";
@@ -11,7 +11,7 @@ export const NavigationScrollContainer: React.FC<
 > = ({ ref, className, ...props }) => {
     const scrollContainerRef = useObjectRef(ref);
 
-    const { registerNavigationContainer, saveNavigationScrollTopProgress } =
+    const { saveNavigationScrollTopProgress, getNavigationScrollProgress } =
         useNavigationState();
     const { id } = useNavigationInfo();
 
@@ -21,8 +21,12 @@ export const NavigationScrollContainer: React.FC<
             return;
         }
 
-        return registerNavigationContainer(id, container);
-    }, [scrollContainerRef, id, registerNavigationContainer]);
+        container.scrollTop = getScrollTopFromProgress({
+            scrollHeight: container.scrollHeight,
+            clientHeight: container.clientHeight,
+            progress: getNavigationScrollProgress(id),
+        });
+    }, [scrollContainerRef, id, getNavigationScrollProgress]);
 
     return (
         <div
