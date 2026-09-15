@@ -10,6 +10,7 @@ export function getScrollProgress({
     const maxScrollTop = scrollHeight - clientHeight;
     return maxScrollTop <= 0 ? 0 : scrollTop / maxScrollTop;
 }
+
 export function getScrollTopFromProgress({
     scrollHeight,
     progress,
