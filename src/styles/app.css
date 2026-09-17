@@ -933,14 +933,26 @@
 }
 
 .cards {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(
+            auto-fill,
+            minmax(calc(300 * var(--dp, 1px)), 1fr)
+        );
+}
+
+.card-preview {
+    background-color: rgb(
+        from var(--md-sys-color-primary) r g b /
+        var(--md-sys-state-dragged)
+    );
+
+    border-radius: var(--md-sys-shape-corner-radius-medium);
+    min-block-size: calc(120 * var(--dp, 1px));
 }
 
 .card {
-    max-inline-size: calc(400 * var(--dp));
-
     img {
+        inline-size: 100%;
         border-radius: var(--md-card-shape);
         object-fit: cover;
     }
@@ -951,4 +963,8 @@
         display: grid;
         gap: var(--md-sys-layout-space-4);
     }
+}
+
+.card-drag {
+    text-align: right;
 }

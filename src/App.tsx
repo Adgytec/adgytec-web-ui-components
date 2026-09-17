@@ -66,6 +66,7 @@ import {
     Users,
     UsersRound,
     Workflow,
+    Grip,
 } from "lucide-react";
 import { type CSSProperties, Fragment, type ReactNode, useState } from "react";
 import { useListData } from "react-aria-components/useListData";
@@ -85,6 +86,7 @@ import type { Orientation } from "react-aria";
 import {
     Collection,
     DialogTrigger,
+    DropIndicator,
     Form,
     GridList,
     Heading,
@@ -92,6 +94,7 @@ import {
     TagGroup,
     TagList,
     Text,
+    useDragAndDrop,
 } from "react-aria-components";
 import { useLocalStorage } from "usehooks-ts";
 import {
@@ -124,7 +127,12 @@ import {
     ToggleIconButton,
 } from "./components/Button";
 import { Calendar, RangeCalendar } from "./components/Calendar";
-import { Card, type CardVariant, PaddingBetweenCards } from "./components/Card";
+import {
+    Card,
+    type CardVariant,
+    PaddingBetweenCards,
+    CardIcon,
+} from "./components/Card";
 import {
     GridBackgroundDecorator,
     RadialGlowDecorator,
@@ -1394,6 +1402,7 @@ const ConnectedButtonGroupPreview = () => {
 };
 
 const DialogPreview = () => {
+    const queue = useSnackbarQueue();
     return (
         <div className="items">
             <DialogTrigger>
@@ -1464,8 +1473,16 @@ const DialogPreview = () => {
                                 </Button>,
                                 <Button
                                     color="text"
-                                    slot="close"
                                     key="Squirrel"
+                                    onPress={() => {
+                                        queue.add(
+                                            {
+                                                supportingText:
+                                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                                            },
+                                            { timeout: 2000 }
+                                        );
+                                    }}
                                 >
                                     Squirrel
                                 </Button>,
@@ -4299,54 +4316,44 @@ const DecoratorsPreview = () => {
     );
 };
 
-const CardItem = ({
-    isDisabled = false,
-    variant,
-    id,
-}: {
-    isDisabled?: boolean;
-    variant: CardVariant;
-    id: string;
-}) => {
-    const queue = useSnackbarQueue();
-    const seed = `${id}-${variant}-${isDisabled ? "disabled" : "active"}`;
-
-    return (
-        <Card
-            className="card"
-            variant={variant}
-            isDisabled={isDisabled}
-            onAction={() => {
-                queue.add(
-                    {
-                        supportingText: `Card ${variant}-${isDisabled ? "disabled" : "active"}`,
-                    },
-                    { timeout: 1000 }
-                );
-            }}
-        >
-            <img
-                src={`https://picsum.photos/seed/${seed}/400/250`}
-                alt="random"
-            />
-
-            <div className="card-content">
-                <Heading className={typography.titleMediumEmphasized}>
-                    {seed}
-                </Heading>
-
-                <Text className={typography.bodyMedium}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Vivamus non vehicula arcu, sed suscipit magna. Donec et
-                    mauris nisl. Sed a dui eget enim facilisis volutpat.
-                </Text>
-            </div>
-        </Card>
-    );
-};
-
 const CardPreview = () => {
+    const queue = useSnackbarQueue();
+
     const variants: CardVariant[] = ["elevated", "filled", "outlined"];
+    const items: {
+        variant: CardVariant;
+        isDisabled?: boolean;
+        id: string;
+    }[] = variants.flatMap((variant) => [
+        { variant, id: `one-${variant}-active` },
+        {
+            variant,
+            isDisabled: true,
+            id: `two-${variant}-disabled`,
+        },
+        { variant, id: `three-${variant}-active` },
+    ]);
+
+    const list = useListData({
+        initialItems: items,
+    });
+    const { dragAndDropHooks } = useDragAndDrop({
+        getItems: (_, items: typeof list.items) =>
+            items.map((item) => ({
+                "text/plain": item.id,
+            })),
+        onReorder(e) {
+            console.log(e);
+            if (e.target.dropPosition === "before") {
+                list.moveBefore(e.target.key, e.keys);
+            } else if (e.target.dropPosition === "after") {
+                list.moveAfter(e.target.key, e.keys);
+            }
+        },
+        renderDropIndicator: (target) => {
+            return <DropIndicator className="card-preview" target={target} />;
+        },
+    });
 
     return (
         <GridList
@@ -4355,18 +4362,69 @@ const CardPreview = () => {
             style={{
                 gap: `calc(${PaddingBetweenCards} * var(--dp, 1px))`,
             }}
-        >
-            {variants.map((variant) => {
-                return (
-                    <Fragment key={variant}>
-                        <CardItem variant={variant} id="one" />
+            items={list.items}
+            dragAndDropHooks={dragAndDropHooks}
+            onAction={(key) => {
+                const item = list.getItem(key);
+                if (!item) return;
 
-                        <CardItem variant={variant} isDisabled id="two" />
-
-                        <CardItem variant={variant} id="three" />
-                    </Fragment>
+                queue.add(
+                    {
+                        supportingText: item.id,
+                    },
+                    { timeout: 1000 }
                 );
-            })}
+            }}
+        >
+            {(item) => (
+                <Card
+                    className="card"
+                    variant={item.variant}
+                    isDisabled={item.isDisabled}
+                    textValue={item.id}
+                >
+                    {({ allowsDragging }) => {
+                        return (
+                            <>
+                                <img
+                                    src={`https://picsum.photos/seed/${item.id}/400/250`}
+                                    alt="random"
+                                    width={400}
+                                    height={250}
+                                />
+
+                                <div className="card-content">
+                                    <Heading
+                                        className={
+                                            typography.titleMediumEmphasized
+                                        }
+                                    >
+                                        {item.id}
+                                    </Heading>
+
+                                    <Text className={typography.bodyMedium}>
+                                        Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Vivamus non vehicula
+                                        arcu, sed suscipit magna. Donec et
+                                        mauris nisl. Sed a dui eget enim
+                                        facilisis volutpat.
+                                    </Text>
+
+                                    {allowsDragging && (
+                                        <div className="card-drag">
+                                            <IconButton
+                                                slot="drag"
+                                                icon={Grip}
+                                                color="standard"
+                                            />
+                                        </div>
+                                    )}
+                                </div>
+                            </>
+                        );
+                    }}
+                </Card>
+            )}
         </GridList>
     );
 };
