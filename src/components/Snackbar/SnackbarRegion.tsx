@@ -8,7 +8,6 @@ import {
     UNSTABLE_ToastQueue as ToastQueue,
     UNSTABLE_ToastRegion as ToastRegion,
 } from "react-aria-components";
-import { flushSync } from "react-dom";
 import { typography } from "@/utils";
 import { IconButton } from "../Button";
 import { SnackbarQueueContext } from "./context";
@@ -22,16 +21,6 @@ export const SnackbarRegion: React.FC<SnackbarRegionProps> = ({
     const queue = useMemo(() => {
         return new ToastQueue<SnackbarContent>({
             maxVisibleToasts: maxVisibleSnackbars,
-
-            wrapUpdate(fn) {
-                if ("startViewTransition" in document) {
-                    document.startViewTransition(() => {
-                        flushSync(fn);
-                    });
-                } else {
-                    fn();
-                }
-            },
         });
     }, [maxVisibleSnackbars]);
 
@@ -46,7 +35,6 @@ export const SnackbarRegion: React.FC<SnackbarRegionProps> = ({
                     <Toast
                         toast={toast}
                         className={clsx(styles["snackbar"])}
-                        style={{ viewTransitionName: toast.key }}
                         data-close={!toast.content.hideCloseAction || undefined}
                         data-action={
                             (toast.content.hideCloseAction &&
