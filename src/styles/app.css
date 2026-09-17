@@ -931,3 +931,24 @@
     padding-block: var(--md-sys-layout-space-16);
     background-color: var(--md-sys-color-surface-container-high);
 }
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    max-inline-size: calc(400 * var(--dp));
+
+    img {
+        border-radius: var(--md-card-shape);
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: var(--md-card-padding);
+
+        display: grid;
+        gap: var(--md-sys-layout-space-4);
+    }
+}

@@ -86,9 +86,12 @@ import {
     Collection,
     DialogTrigger,
     Form,
+    GridList,
+    Heading,
     SubmenuTrigger,
     TagGroup,
     TagList,
+    Text,
 } from "react-aria-components";
 import { useLocalStorage } from "usehooks-ts";
 import {
@@ -121,6 +124,7 @@ import {
     ToggleIconButton,
 } from "./components/Button";
 import { Calendar, RangeCalendar } from "./components/Calendar";
+import { Card, type CardVariant, PaddingBetweenCards } from "./components/Card";
 import {
     GridBackgroundDecorator,
     RadialGlowDecorator,
@@ -2452,7 +2456,10 @@ const TagsPreview = () => {
                     <Tag
                         label="avatar"
                         avatar={
-                            <img src="https://picsum.photos/24" alt="random" />
+                            <img
+                                src="https://picsum.photos/seed/avatar/24"
+                                alt="random"
+                            />
                         }
                     />
 
@@ -2469,7 +2476,10 @@ const TagsPreview = () => {
                         id="avatar"
                         label="avatar"
                         avatar={
-                            <img src="https://picsum.photos/24" alt="random" />
+                            <img
+                                src="https://picsum.photos/seed/disabled/24"
+                                alt="random"
+                            />
                         }
                     />
 
@@ -2477,7 +2487,10 @@ const TagsPreview = () => {
                         id="avatar-2"
                         label="avatar"
                         avatar={
-                            <img src="https://picsum.photos/24" alt="random" />
+                            <img
+                                src="https://picsum.photos/seed/disabled-2/24"
+                                alt="random"
+                            />
                         }
                     />
                 </TagList>
@@ -3506,7 +3519,10 @@ const AppBarPreview = () => {
                     <AppBarAvatar>RRRR</AppBarAvatar>
 
                     <AppBarAvatar>
-                        <img src="https://picsum.photos/32" alt="random" />
+                        <img
+                            src="https://picsum.photos/seed/appbar-avatar/32"
+                            alt="random"
+                        />
                     </AppBarAvatar>
                 </div>
             </div>
@@ -3539,7 +3555,7 @@ const AppBarPreview = () => {
                             <AppBarAction key="settings" icon={Settings} />,
                             <AppBarAvatar key="avatar">
                                 <img
-                                    src="https://picsum.photos/32"
+                                    src="https://picsum.photos/seed/appbar-eg/32"
                                     alt="random"
                                 />
                             </AppBarAvatar>,
@@ -3571,7 +3587,7 @@ const AppBarPreview = () => {
                             <AppBarAction key="settings" icon={Settings} />,
                             <AppBarAvatar key="avatar">
                                 <img
-                                    src="https://picsum.photos/32"
+                                    src="https://picsum.photos/seed/appbar-medium-eg/32"
                                     alt="random"
                                 />
                             </AppBarAvatar>,
@@ -3598,7 +3614,7 @@ const AppBarPreview = () => {
                                 <AppBarAction key="settings" icon={Settings} />,
                                 <AppBarAvatar key="avatar">
                                     <img
-                                        src="https://picsum.photos/32"
+                                        src="https://picsum.photos/seed/appbar-initial/32"
                                         alt="random"
                                     />
                                 </AppBarAvatar>,
@@ -4283,6 +4299,78 @@ const DecoratorsPreview = () => {
     );
 };
 
+const CardItem = ({
+    isDisabled = false,
+    variant,
+    id,
+}: {
+    isDisabled?: boolean;
+    variant: CardVariant;
+    id: string;
+}) => {
+    const queue = useSnackbarQueue();
+    const seed = `${id}-${variant}-${isDisabled ? "disabled" : "active"}`;
+
+    return (
+        <Card
+            className="card"
+            variant={variant}
+            isDisabled={isDisabled}
+            onAction={() => {
+                queue.add(
+                    {
+                        supportingText: `Card ${variant}-${isDisabled ? "disabled" : "active"}`,
+                    },
+                    { timeout: 1000 }
+                );
+            }}
+        >
+            <img
+                src={`https://picsum.photos/seed/${seed}/400/250`}
+                alt="random"
+            />
+
+            <div className="card-content">
+                <Heading className={typography.titleMediumEmphasized}>
+                    {seed}
+                </Heading>
+
+                <Text className={typography.bodyMedium}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Vivamus non vehicula arcu, sed suscipit magna. Donec et
+                    mauris nisl. Sed a dui eget enim facilisis volutpat.
+                </Text>
+            </div>
+        </Card>
+    );
+};
+
+const CardPreview = () => {
+    const variants: CardVariant[] = ["elevated", "filled", "outlined"];
+
+    return (
+        <GridList
+            className="cards"
+            layout="grid"
+            style={{
+                gap: `calc(${PaddingBetweenCards} * var(--dp, 1px))`,
+            }}
+        >
+            {variants.map((variant) => {
+                return (
+                    <Fragment key={variant}>
+                        <CardItem variant={variant} id="one" />
+
+                        <CardItem variant={variant} isDisabled id="two" />
+
+                        <CardItem variant={variant} id="three" />
+                    </Fragment>
+                );
+            })}
+        </GridList>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -4302,6 +4390,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "card-preview",
+            label: "Card",
+            Component: CardPreview,
+        },
         {
             id: "decorators-preview",
             label: "Decorators",

@@ -3,6 +3,7 @@
 export * from "./components/AppBar";
 export * from "./components/Button";
 export * from "./components/Calendar";
+export * from "./components/Card";
 export * from "./components/Decorators";
 export * from "./components/Dialog";
 export * from "./components/Disclosure";
