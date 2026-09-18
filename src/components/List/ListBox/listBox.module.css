@@ -1,3 +1,15 @@
+@layer adgytec.overrides {
+    .list-box > [data-list-item]:first-child {
+        border-start-start-radius: var(--_md-list-shape);
+        border-start-end-radius: var(--_md-list-shape);
+    }
+
+    .list-box > [data-list-item]:last-child {
+        border-end-start-radius: var(--_md-list-shape);
+        border-end-end-radius: var(--_md-list-shape);
+    }
+}
+
 @layer adgytec.comps {
     .list-box {
         --_md-list-shape: var(--md-sys-shape-corner-radius-large);
@@ -10,14 +22,14 @@
     }
 
     .start {
-        --md-list-align-y: "start";
+        --md-list-align-y: start;
     }
 
     .center {
-        --md-list-align-y: "center";
+        --md-list-align-y: center;
     }
 
     .end {
-        --md-list-align-y: "end";
+        --md-list-align-y: end;
     }
 }

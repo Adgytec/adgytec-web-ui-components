@@ -3,8 +3,8 @@
 export const ListMediaImageWidth = 56;
 export const ListMediaImageHeight = 56;
 
-export const ListMediaSmallVideoWidth = 100;
-export const ListMediaSmallVideoHeight = 56;
+export const ListMediaVideoWidth = 100;
+export const ListMediaVideoHeight = 56;
 
 export const ListMediaLargeVideoWidth = 114;
 export const ListMediaLargeVideoHeight = 64;

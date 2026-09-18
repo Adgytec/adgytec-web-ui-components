@@ -6,6 +6,6 @@ export interface ListItemProps
     leading?: ReactNode;
     overline?: ReactNode;
     label: ReactNode;
-    supporting: ReactNode;
-    trailing: ReactNode[];
+    supporting?: ReactNode;
+    trailing?: ReactNode[];
 }

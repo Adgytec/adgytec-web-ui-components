@@ -19,6 +19,8 @@
             var(--md-sys-color-on-primary-container)
         );
 
+        --_md-list-color: var(--_md-list-avatar-color);
+
         inline-size: var(--_md-list-avatar-size);
         max-inline-size: var(--_md-list-avatar-size);
 
@@ -32,6 +34,9 @@
         border-radius: 50%;
         overflow: clip;
         text-align: center;
+
+        background-color: var(--_md-list-avatar-background);
+        color: var(--_md-list-avatar-color);
 
         & img {
             inline-size: 100%;
