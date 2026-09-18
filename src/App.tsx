@@ -27,6 +27,7 @@ import {
     Globe,
     GlobeLock,
     GlobeOff,
+    Grip,
     HandCoins,
     History,
     Images,
@@ -66,7 +67,6 @@ import {
     Users,
     UsersRound,
     Workflow,
-    Grip,
 } from "lucide-react";
 import { type CSSProperties, Fragment, type ReactNode, useState } from "react";
 import { useListData } from "react-aria-components/useListData";
@@ -127,12 +127,7 @@ import {
     ToggleIconButton,
 } from "./components/Button";
 import { Calendar, RangeCalendar } from "./components/Calendar";
-import {
-    Card,
-    type CardVariant,
-    PaddingBetweenCards,
-    CardIcon,
-} from "./components/Card";
+import { Card, type CardVariant, PaddingBetweenCards } from "./components/Card";
 import {
     GridBackgroundDecorator,
     RadialGlowDecorator,
