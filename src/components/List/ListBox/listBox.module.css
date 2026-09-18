@@ -1,0 +1,23 @@
+@layer adgytec.comps {
+    .list-box {
+        --_md-list-shape: var(--md-sys-shape-corner-radius-large);
+        --_md-list-spacing: calc(2 * var(--dp, 1px));
+
+        display: grid;
+        gap: var(--_md-list-spacing);
+
+        border-radius: var(--_md-list-shape);
+    }
+
+    .start {
+        --md-list-align-y: "start";
+    }
+
+    .center {
+        --md-list-align-y: "center";
+    }
+
+    .end {
+        --md-list-align-y: "end";
+    }
+}
