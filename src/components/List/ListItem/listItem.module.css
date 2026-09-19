@@ -1,0 +1,213 @@
+/* configurable tokens
+*
+* --md-list-color
+* --md-list-label-color
+* --md-list-selected-color
+*
+* --md-list-item-background
+* --md-list-item-selected-background
+*
+* configurable tokens end */
+
+@layer adgytec.comps {
+    .list-item {
+        /* color */
+        --_md-list-color: var(
+            --md-list-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+        --_md-list-label-color: var(
+            --md-list-label-color,
+            var(--md-sys-color-on-surface)
+        );
+        --_md-list-selected-color: var(
+            --md-list-selected-color,
+            var(--md-sys-color-on-secondary-container)
+        );
+
+        --_md-list-disabled-color: rgb(
+            from var(--md-sys-color-on-surface) r g b /
+            var(--md-sys-state-disabled-content)
+        );
+
+        /* spacing */
+        --_md-list-item-padding-inline: var(--md-sys-layout-space-16);
+        --_md-list-item-padding-block: calc(10 * var(--dp, 1px));
+
+        --_md-list-item-spacing: var(--md-sys-layout-space-12);
+
+        /* shapes */
+        --_md-list-item-shape: var(--md-sys-shape-corner-radius-extra-small);
+        --_md-list-item-selected-shape: var(--md-sys-shape-corner-radius-large);
+
+        --_md-list-item-hovered-shape: var(--md-sys-shape-corner-radius-medium);
+        --_md-list-item-hovered-selected-shape: var(
+            --md-sys-shape-corner-radius-large
+        );
+        --_md-list-item-interaction-shape: var(
+            --md-sys-shape-corner-radius-large
+        );
+
+        --_shape: var(--_md-list-item-shape);
+
+        /* background */
+        --_md-list-item-background: var(
+            --md-list-item-background,
+            var(--md-sys-color-surface)
+        );
+        --_md-list-item-selected-background: var(
+            --md-list-item-selected-background,
+            var(--md-sys-color-secondary-container)
+        );
+        --_md-list-item-selected-disabled-background: rgb(
+            from var(--md-sys-color-on-surface) r g b /
+            var(--md-sys-state-disabled-content)
+        );
+
+        --_background: var(--_md-list-item-background);
+
+        /* state layer */
+        --_state-color: var(--md-sys-color-on-surface);
+        --_state-layer-opacity: 0;
+
+        --_state-layer-color: rgb(
+            from var(--_state-color) r g b /
+            var(--_state-layer-opacity)
+        );
+
+        border-radius: var(--_shape);
+        background: var(--_background);
+        color: var(--_md-list-color);
+
+        position: relative;
+        overflow: clip;
+
+        display: flex;
+        align-items: var(--md-list-align-y, "center");
+        gap: var(--_md-list-item-spacing);
+
+        padding-inline: var(--_md-list-item-padding-inline);
+        padding-block: var(--_md-list-item-padding-block);
+
+        transition:
+            border-radius var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            background-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            box-shadow var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-hovered] {
+            --_shape: var(--_md-list-item-hovered-shape);
+            --_state-layer-opacity: var(--md-sys-state-hover);
+        }
+
+        &[data-focus-visible] {
+            --_shape: var(--_md-list-item-interaction-shape);
+            --_state-layer-opacity: var(--md-sys-state-focus);
+        }
+
+        &[data-pressed] {
+            --_shape: var(--_md-list-item-interaction-shape);
+            --_state-layer-opacity: var(--md-sys-state-pressed);
+        }
+
+        &[data-dragging] {
+            --_shape: var(--_md-list-item-interaction-shape);
+            --_state-layer-opacity: var(--md-sys-state-dragged);
+
+            box-shadow: var(--md-sys-elevation-shadow-4);
+        }
+
+        &[data-disabled] {
+            --_md-list-color: var(--_md-list-disabled-color);
+            --_md-list-label-color: var(--_md-list-disabled-color);
+
+            --_state-layer-opacity: var(--md-sys-state-disabled-container);
+            --_background: var(--_md-list-item-selected-disabled-background);
+        }
+    }
+
+    .list-item[data-selected] {
+        --_md-list-color: var(--_md-list-selected-color);
+        --_md-list-label-color: var(--_md-list-selected-color);
+
+        --_shape: var(--_md-list-item-selected-shape);
+
+        --_background: var(--_md-list-item-selected-background);
+
+        &[data-hovered] {
+            --_shape: var(--_md-list-item-hovered-selected-shape);
+        }
+
+        &[data-focus-visible] {
+            --_shape: var(--_md-list-item-interaction-shape);
+        }
+
+        &[data-pressed] {
+            --_shape: var(--_md-list-item-interaction-shape);
+        }
+
+        &[data-dragging] {
+            --_shape: var(--_md-list-item-interaction-shape);
+        }
+
+        &[data-disabled] {
+            --_background: var(--_md-list-item-selected-disabled-background);
+        }
+    }
+
+    /* state layer */
+    .list-item::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+
+        background-color: var(--_state-layer-color);
+
+        transition: background-color var(--md-sys-motion-standard-fast-spatial)
+            var(--md-sys-motion-standard-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    /* focus indicator */
+    .list-item[data-focus-visible] {
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
+
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
+
+        z-index: 1;
+    }
+
+    .leading {
+        display: flex;
+        align-items: var(--md-list-align-y, "center");
+    }
+
+    .trailing {
+        margin-inline-start: auto;
+
+        display: flex;
+        align-items: var(--md-list-align-y, "center");
+    }
+
+    .content {
+        display: grid;
+    }
+}
