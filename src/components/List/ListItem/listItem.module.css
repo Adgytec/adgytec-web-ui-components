@@ -52,7 +52,7 @@
 
         /* background */
         --_md-list-item-background: var(
-            --md-list-item-backround,
+            --md-list-item-background,
             var(--md-sys-color-surface)
         );
         --_md-list-item-selected-background: var(

@@ -156,7 +156,7 @@
         --_md-card-background-default: var(--md-sys-color-surface);
 
         /* variables to use */
-        --_outline-color: var(--md-sys-color-outline-variant);
+        --_outline-color: var(--_md-card-outline);
         --_outline-width: var(--md-sys-shape-border-width-thin);
 
         border: var(--_outline-width) solid var(--_outline-color);

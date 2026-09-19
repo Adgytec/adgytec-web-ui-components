@@ -5,12 +5,13 @@ import styles from "./cardIcon.module.css";
 
 export const CardIcon: React.FC<
     Omit<React.ComponentPropsWithRef<typeof Icon>, "size" | "withText">
-> = ({ icon }) => {
+> = ({ icon, ...props }) => {
     return (
         <Icon
             icon={icon}
             size={CardIconSize}
             className={clsx(styles["icon"])}
+            {...props}
         />
     );
 };
