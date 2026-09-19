@@ -1,0 +1,48 @@
+@layer adgytec.comps {
+    .media {
+        inline-size: var(--_md-list-media-inline-size);
+        max-inline-size: var(--_md-list-media-inline-size);
+
+        block-size: var(--_md-list-media-block-size);
+        max-block-size: var(--_md-list-media-block-size);
+
+        border-radius: var(--md-sys-shape-corner-radius-small);
+        overflow: clip;
+
+        background-color: var(--md-sys-color-primary-container);
+
+        & img {
+            inline-size: 100%;
+            block-size: 100%;
+            object-fit: cover;
+
+            border-radius: inherit;
+        }
+
+        & video {
+            inline-size: 100%;
+            block-size: 100%;
+            object-fit: cover;
+
+            border-radius: inherit;
+        }
+    }
+
+    .image {
+        /* 56, 56 */
+        --_md-list-media-inline-size: var(--md-sys-layout-space-56);
+        --_md-list-media-block-size: var(--md-sys-layout-space-56);
+    }
+
+    .video {
+        /* 100, 56 */
+        --_md-list-media-inline-size: calc(100 * var(--dp, 1px));
+        --_md-list-media-block-size: var(--md-sys-layout-space-56);
+    }
+
+    .large-video {
+        /* 114, 64 */
+        --_md-list-media-inline-size: calc(114 * var(--dp, 1px));
+        --_md-list-media-block-size: var(--md-sys-layout-space-64);
+    }
+}

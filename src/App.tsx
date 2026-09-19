@@ -16,6 +16,7 @@ import {
     CreditCard,
     DollarSign,
     Download,
+    EllipsisVertical,
     ExternalLinkIcon,
     Eye,
     FileBarChart,
@@ -27,6 +28,7 @@ import {
     Globe,
     GlobeLock,
     GlobeOff,
+    Grip,
     HandCoins,
     History,
     Images,
@@ -85,10 +87,15 @@ import type { Orientation } from "react-aria";
 import {
     Collection,
     DialogTrigger,
+    DropIndicator,
     Form,
+    GridList,
+    Heading,
     SubmenuTrigger,
     TagGroup,
     TagList,
+    Text,
+    useDragAndDrop,
 } from "react-aria-components";
 import { useLocalStorage } from "usehooks-ts";
 import {
@@ -121,6 +128,7 @@ import {
     ToggleIconButton,
 } from "./components/Button";
 import { Calendar, RangeCalendar } from "./components/Calendar";
+import { Card, type CardVariant, PaddingBetweenCards } from "./components/Card";
 import {
     GridBackgroundDecorator,
     RadialGlowDecorator,
@@ -172,6 +180,23 @@ import {
     TextArea,
     TimeField,
 } from "./components/Input";
+import {
+    ListAvatar,
+    ListBox,
+    ListIcon,
+    ListItem,
+    ListLabelText,
+    ListMedia,
+    ListMediaImageHeight,
+    ListMediaImageWidth,
+    ListMediaLargeVideoHeight,
+    ListMediaLargeVideoWidth,
+    ListMediaVideoHeight,
+    ListMediaVideoWidth,
+    ListOverlineText,
+    ListSupportingText,
+} from "./components/List";
+import { ListAction } from "./components/List/ListAction/ListAction";
 import {
     Menu,
     MenuItem,
@@ -1390,6 +1415,7 @@ const ConnectedButtonGroupPreview = () => {
 };
 
 const DialogPreview = () => {
+    const queue = useSnackbarQueue();
     return (
         <div className="items">
             <DialogTrigger>
@@ -1460,8 +1486,16 @@ const DialogPreview = () => {
                                 </Button>,
                                 <Button
                                     color="text"
-                                    slot="close"
                                     key="Squirrel"
+                                    onPress={() => {
+                                        queue.add(
+                                            {
+                                                supportingText:
+                                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                                            },
+                                            { timeout: 2000 }
+                                        );
+                                    }}
                                 >
                                     Squirrel
                                 </Button>,
@@ -2452,7 +2486,10 @@ const TagsPreview = () => {
                     <Tag
                         label="avatar"
                         avatar={
-                            <img src="https://picsum.photos/24" alt="random" />
+                            <img
+                                src="https://picsum.photos/seed/avatar/24"
+                                alt="random"
+                            />
                         }
                     />
 
@@ -2469,7 +2506,10 @@ const TagsPreview = () => {
                         id="avatar"
                         label="avatar"
                         avatar={
-                            <img src="https://picsum.photos/24" alt="random" />
+                            <img
+                                src="https://picsum.photos/seed/disabled/24"
+                                alt="random"
+                            />
                         }
                     />
 
@@ -2477,7 +2517,10 @@ const TagsPreview = () => {
                         id="avatar-2"
                         label="avatar"
                         avatar={
-                            <img src="https://picsum.photos/24" alt="random" />
+                            <img
+                                src="https://picsum.photos/seed/disabled-2/24"
+                                alt="random"
+                            />
                         }
                     />
                 </TagList>
@@ -3506,7 +3549,10 @@ const AppBarPreview = () => {
                     <AppBarAvatar>RRRR</AppBarAvatar>
 
                     <AppBarAvatar>
-                        <img src="https://picsum.photos/32" alt="random" />
+                        <img
+                            src="https://picsum.photos/seed/appbar-avatar/32"
+                            alt="random"
+                        />
                     </AppBarAvatar>
                 </div>
             </div>
@@ -3539,7 +3585,7 @@ const AppBarPreview = () => {
                             <AppBarAction key="settings" icon={Settings} />,
                             <AppBarAvatar key="avatar">
                                 <img
-                                    src="https://picsum.photos/32"
+                                    src="https://picsum.photos/seed/appbar-eg/32"
                                     alt="random"
                                 />
                             </AppBarAvatar>,
@@ -3571,7 +3617,7 @@ const AppBarPreview = () => {
                             <AppBarAction key="settings" icon={Settings} />,
                             <AppBarAvatar key="avatar">
                                 <img
-                                    src="https://picsum.photos/32"
+                                    src="https://picsum.photos/seed/appbar-medium-eg/32"
                                     alt="random"
                                 />
                             </AppBarAvatar>,
@@ -3598,7 +3644,7 @@ const AppBarPreview = () => {
                                 <AppBarAction key="settings" icon={Settings} />,
                                 <AppBarAvatar key="avatar">
                                     <img
-                                        src="https://picsum.photos/32"
+                                        src="https://picsum.photos/seed/appbar-initial/32"
                                         alt="random"
                                     />
                                 </AppBarAvatar>,
@@ -4283,6 +4329,235 @@ const DecoratorsPreview = () => {
     );
 };
 
+const CardPreview = () => {
+    const queue = useSnackbarQueue();
+
+    const variants: CardVariant[] = ["elevated", "filled", "outlined"];
+    const items: {
+        variant: CardVariant;
+        isDisabled?: boolean;
+        id: string;
+    }[] = variants.flatMap((variant) => [
+        { variant, id: `one-${variant}-active` },
+        {
+            variant,
+            isDisabled: true,
+            id: `two-${variant}-disabled`,
+        },
+        { variant, id: `three-${variant}-active` },
+    ]);
+
+    const list = useListData({
+        initialItems: items,
+    });
+    const { dragAndDropHooks } = useDragAndDrop({
+        getItems: (_, items: typeof list.items) =>
+            items.map((item) => ({
+                "text/plain": item.id,
+            })),
+        onReorder(e) {
+            console.log(e);
+            if (e.target.dropPosition === "before") {
+                list.moveBefore(e.target.key, e.keys);
+            } else if (e.target.dropPosition === "after") {
+                list.moveAfter(e.target.key, e.keys);
+            }
+        },
+        renderDropIndicator: (target) => {
+            return <DropIndicator className="card-preview" target={target} />;
+        },
+    });
+
+    return (
+        <GridList
+            className="cards"
+            layout="grid"
+            style={{
+                gap: `calc(${PaddingBetweenCards} * var(--dp, 1px))`,
+            }}
+            items={list.items}
+            dragAndDropHooks={dragAndDropHooks}
+            onAction={(key) => {
+                const item = list.getItem(key);
+                if (!item) return;
+
+                queue.add(
+                    {
+                        supportingText: item.id,
+                    },
+                    { timeout: 1000 }
+                );
+            }}
+        >
+            {(item) => (
+                <Card
+                    className="card"
+                    variant={item.variant}
+                    isDisabled={item.isDisabled}
+                    textValue={item.id}
+                >
+                    {({ allowsDragging }) => {
+                        return (
+                            <>
+                                <img
+                                    src={`https://picsum.photos/seed/${item.id}/400/250`}
+                                    alt="random"
+                                    width={400}
+                                    height={250}
+                                />
+
+                                <div className="card-content">
+                                    <Heading
+                                        className={
+                                            typography.titleMediumEmphasized
+                                        }
+                                    >
+                                        {item.id}
+                                    </Heading>
+
+                                    <Text className={typography.bodyMedium}>
+                                        Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Vivamus non vehicula
+                                        arcu, sed suscipit magna. Donec et
+                                        mauris nisl. Sed a dui eget enim
+                                        facilisis volutpat.
+                                    </Text>
+
+                                    {allowsDragging && (
+                                        <div className="card-drag">
+                                            <IconButton
+                                                slot="drag"
+                                                icon={Grip}
+                                                color="standard"
+                                            />
+                                        </div>
+                                    )}
+                                </div>
+                            </>
+                        );
+                    }}
+                </Card>
+            )}
+        </GridList>
+    );
+};
+
+const ListPreview = () => {
+    return (
+        <div className="items list-preview">
+            <ListBox selectionMode="single" alignY="center">
+                <ListItem
+                    leading={<Checkbox slot="selection" />}
+                    label={<ListLabelText>List item</ListLabelText>}
+                    supporting={
+                        <ListSupportingText>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit.
+                        </ListSupportingText>
+                    }
+                    trailing={[<Switch key="selection" slot="selection" />]}
+                />
+
+                <ListItem
+                    leading={
+                        <ListMedia variant="image">
+                            <img
+                                src="https://picsum.photos/56/56"
+                                alt=""
+                                width={ListMediaImageWidth}
+                                height={ListMediaImageHeight}
+                            />
+                        </ListMedia>
+                    }
+                    label={<ListLabelText>List item</ListLabelText>}
+                    supporting={
+                        <ListSupportingText>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit.
+                        </ListSupportingText>
+                    }
+                />
+
+                <ListItem
+                    leading={
+                        <ListMedia variant="video">
+                            <img
+                                src="https://picsum.photos/100/56"
+                                alt=""
+                                width={ListMediaVideoWidth}
+                                height={ListMediaVideoHeight}
+                            />
+                        </ListMedia>
+                    }
+                    label={<ListLabelText>List item</ListLabelText>}
+                    supporting={
+                        <ListSupportingText>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit.
+                        </ListSupportingText>
+                    }
+                />
+                <ListItem
+                    leading={
+                        <ListMedia variant="large-video">
+                            <img
+                                src="https://picsum.photos/114/64"
+                                alt=""
+                                width={ListMediaLargeVideoWidth}
+                                height={ListMediaLargeVideoHeight}
+                            />
+                        </ListMedia>
+                    }
+                    label={<ListLabelText>List item</ListLabelText>}
+                    supporting={
+                        <ListSupportingText>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit.
+                        </ListSupportingText>
+                    }
+                />
+                <ListItem
+                    leading={<ListIcon icon={Activity} />}
+                    id="two"
+                    label={<ListLabelText>Lorem ipsum</ListLabelText>}
+                    overline={<ListOverlineText>Sample</ListOverlineText>}
+                    trailing={[
+                        <ListAction
+                            key="ellipsis"
+                            color="tonal"
+                            width="narrow"
+                            icon={EllipsisVertical}
+                        />,
+                    ]}
+                />
+                <ListItem
+                    id="five"
+                    isDisabled
+                    label={<ListLabelText>Lorem ipsum</ListLabelText>}
+                    overline={<ListOverlineText>Sample</ListOverlineText>}
+                />
+                <ListItem
+                    leading={<ListAvatar>R</ListAvatar>}
+                    id="three"
+                    label={<ListLabelText>Lorem ipsum</ListLabelText>}
+                    overline={<ListOverlineText>Sample</ListOverlineText>}
+                />
+                <ListItem
+                    id="four"
+                    overline={<ListOverlineText>Sample</ListOverlineText>}
+                    label={<ListLabelText>Lorem ipsum</ListLabelText>}
+                    supporting={
+                        <ListSupportingText>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Proin id velit quis est gravida aliquam.
+                        </ListSupportingText>
+                    }
+                />
+            </ListBox>
+        </div>
+    );
+};
+
 const App = () => {
     const [tabOrientation, setOrientation] = useLocalStorage<Orientation>(
         "tab-orientation",
@@ -4302,6 +4577,16 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "list-preview",
+            label: "List",
+            Component: ListPreview,
+        },
+        {
+            id: "card-preview",
+            label: "Card",
+            Component: CardPreview,
+        },
         {
             id: "decorators-preview",
             label: "Decorators",

@@ -931,3 +931,50 @@
     padding-block: var(--md-sys-layout-space-16);
     background-color: var(--md-sys-color-surface-container-high);
 }
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(
+            auto-fill,
+            minmax(calc(300 * var(--dp, 1px)), 1fr)
+        );
+}
+
+.card-preview {
+    background-color: rgb(
+        from var(--md-sys-color-primary) r g b /
+        var(--md-sys-state-dragged)
+    );
+
+    border-radius: var(--md-sys-shape-corner-radius-medium);
+    min-block-size: calc(120 * var(--dp, 1px));
+    display: none;
+
+    &[data-drop-target] {
+        display: block;
+    }
+}
+
+.card {
+    img {
+        inline-size: 100%;
+        border-radius: var(--md-card-shape);
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: var(--md-card-padding);
+
+        display: grid;
+        gap: var(--md-sys-layout-space-4);
+    }
+}
+
+.card-drag {
+    text-align: right;
+}
+
+.list-preview {
+    padding: 1rem;
+    background-color: var(--md-sys-color-tertiary-container);
+}
