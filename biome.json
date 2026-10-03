@@ -1,5 +1,5 @@
 {
-    "$schema": "https://biomejs.dev/schemas/2.5.2/schema.json",
+    "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
     "vcs": {
         "enabled": true,
         "clientKind": "git",
@@ -21,6 +21,9 @@
             "preset": "recommended",
             "complexity": {
                 "useLiteralKeys": "off"
+            },
+            "style": {
+                "noDescendingSpecificity": "off"
             }
         },
         "includes": ["**", "!dist"]

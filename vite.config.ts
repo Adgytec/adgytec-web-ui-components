@@ -4,8 +4,8 @@ import babel from "@rolldown/plugin-babel";
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import { globSync } from "glob";
 import Sonda from "sonda/vite";
+import dts from "unplugin-dts/vite";
 import { defineConfig, esmExternalRequirePlugin } from "vite";
-import dts from "vite-plugin-dts";
 import { libInjectCss } from "vite-plugin-lib-inject-css";
 
 export default defineConfig({
@@ -21,7 +21,7 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            "@": resolve(__dirname, "./src"),
+            "@": resolve(import.meta.dirname, "./src"),
         },
     },
     build: {
@@ -29,7 +29,7 @@ export default defineConfig({
         outDir: "dist",
         copyPublicDir: false,
         lib: {
-            entry: resolve(__dirname, "src/index.ts"),
+            entry: resolve(import.meta.dirname, "src/index.ts"),
             formats: ["es"],
             fileName: "index",
         },

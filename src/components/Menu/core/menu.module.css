@@ -119,7 +119,8 @@
     }
 
     /* menu section -> menu item shape (only if NOT selected) */
-    .menu > .menu-section:first-child
+    .menu
+        > .menu-section:first-child
         > .menu-item:not([data-selected]):first-child {
         border-start-start-radius: var(--_md-menu-shape);
         border-start-end-radius: var(--_md-menu-shape);

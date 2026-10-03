@@ -107,12 +107,10 @@
         border-block-start: var(--_divider-thickness) solid
             var(--_divider-color);
 
-        /* biome-ignore lint: different elements */
         &[data-alignment="start"] {
             justify-content: end;
         }
 
-        /* biome-ignore lint: different elements */
         &[data-alignment="end"] {
             justify-content: start;
         }
