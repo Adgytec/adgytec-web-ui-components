@@ -67,7 +67,6 @@ export default defineConfig({
                 "react-aria-components",
                 "lucide-react",
                 "usehooks-ts",
-                "zod",
                 "clsx",
                 "@internationalized/date",
                 "react-transition-group",
