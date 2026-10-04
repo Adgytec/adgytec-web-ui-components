@@ -9,12 +9,27 @@ import { typography } from "@/utils";
 import { CalendarCell } from "../CalendarCell";
 import styles from "./calendarGrid.module.css";
 
-export const CalendarGrid: React.FC<
-    Omit<
+/**
+ * Props for the {@link CalendarGrid} component.
+ * Extends React Aria's `CalendarGrid` props (excluding `children` and `className`).
+ */
+export interface CalendarGridProps
+    extends Omit<
         React.ComponentPropsWithRef<typeof AriaCalendarGrid>,
         "children" | "className"
-    > & { isRangeCalendar?: boolean }
-> = ({ isRangeCalendar, ...props }) => {
+    > {
+    /** Whether the calendar is operating in range selection mode. */
+    isRangeCalendar?: boolean;
+}
+
+/**
+ * Renders the 7-column calendar date grid, including weekday column headers
+ * and day date cells.
+ */
+export const CalendarGrid: React.FC<CalendarGridProps> = ({
+    isRangeCalendar,
+    ...props
+}) => {
     return (
         <AriaCalendarGrid {...props} className={clsx(styles["grid"])}>
             <CalendarGridHeader className={clsx(styles["header"])}>

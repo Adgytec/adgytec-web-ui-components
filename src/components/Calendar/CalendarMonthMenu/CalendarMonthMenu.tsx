@@ -9,10 +9,26 @@ import { Icon } from "@/components/Icon";
 import { CalendarMenuItem } from "../CalendarMenuItem";
 import { type MonthItem, useCalendarState } from "../core";
 
-export const CalendarMonthMenu: React.FC<{
+/**
+ * Props for the {@link CalendarMonthMenu} component.
+ */
+export interface CalendarMonthMenuProps {
+    /** Callback invoked after a month item is selected to return to the calendar view. */
     onSelection: () => void;
+    /** Array of selectable month objects to render in the virtualized list. */
     months: MonthItem[];
-}> = ({ onSelection, months }) => {
+}
+
+/**
+ * A virtualized list menu allowing users to quickly pick a month in the calendar.
+ *
+ * Automatically highlights the currently focused month with a checkmark, disables months
+ * that fall outside the allowable `minValue` / `maxValue` range, and shifts focused date on click.
+ */
+export const CalendarMonthMenu: React.FC<CalendarMonthMenuProps> = ({
+    onSelection,
+    months,
+}) => {
     const state = useCalendarState();
 
     return (

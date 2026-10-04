@@ -21,12 +21,53 @@ import {
 } from "../core";
 import styles from "./baseCalendar.module.css";
 
+/**
+ * Internal view mode for the calendar component.
+ *
+ * - `"calendar"`: The standard 7-column date grid.
+ * - `"month"`: Month selector menu.
+ * - `"year"`: Year selector menu.
+ */
 type View = "calendar" | "month" | "year";
 
-export const BaseCalendar: React.FC<{
+/**
+ * Props for the {@link BaseCalendar} component.
+ */
+export interface BaseCalendarProps {
+    /** Whether the calendar is operating in range selection mode. */
     isRangeCalendar?: boolean;
+
+    /** Formatting style for weekday column headers. */
     weekdayStyle?: WeekdayStyle;
-}> = ({ isRangeCalendar, weekdayStyle }) => {
+
+    /** Accessible label for the previous month button. */
+    previousMonthAriaLabel?: string;
+
+    /** Accessible label for the next month button. */
+    nextMonthAriaLabel?: string;
+
+    /** Accessible label for the previous year button. */
+    previousYearAriaLabel?: string;
+
+    /** Accessible label for the next year button. */
+    nextYearAriaLabel?: string;
+}
+
+/**
+ * Core calendar layout and view orchestrator.
+ *
+ * Manages the calendar header with navigation controls (prev/next month, prev/next year,
+ * month/year dropdown buttons), animated transitions between grid, month, and year views,
+ * and maintains anchor date state during view changes in range selection mode.
+ */
+export const BaseCalendar: React.FC<BaseCalendarProps> = ({
+    isRangeCalendar,
+    weekdayStyle,
+    previousMonthAriaLabel,
+    nextMonthAriaLabel,
+    previousYearAriaLabel,
+    nextYearAriaLabel,
+}) => {
     const [view, setView] = useState<View>("calendar");
 
     const calendarRef = useRef<HTMLDivElement>(null);
@@ -103,6 +144,13 @@ export const BaseCalendar: React.FC<{
         return items;
     }, [calendarState.focusedDate.calendar, timeZone, monthLongFormatter]);
 
+    /**
+     * Determines whether an entire year falls completely outside the allowable
+     * date range bounded by `minValue` and `maxValue`.
+     *
+     * @param date - A calendar date representing the year to evaluate.
+     * @returns `true` if every date in the year is invalid, otherwise `false`.
+     */
     const isYearInvalid = (date: CalendarDate) => {
         const startOfYear = date.set({ month: 1, day: 1 });
 
@@ -120,14 +168,20 @@ export const BaseCalendar: React.FC<{
         );
     };
 
+    /** Checks whether navigating to the next year would land on a completely invalid year. */
     const nextYearIsInvalid = () => {
         return isYearInvalid(calendarState.focusedDate.cycle("year", 1));
     };
 
+    /** Checks whether navigating to the previous year would land on a completely invalid year. */
     const prevYearIsInvalid = () => {
         return isYearInvalid(calendarState.focusedDate.cycle("year", -1));
     };
 
+    /**
+     * Preserves the active selection anchor date when navigating to month or year views
+     * in a range calendar, clearing it temporarily to avoid unintended range expansions.
+     */
     const saveAnchorDateForRangeCalendar = () => {
         if (!isRangeCalendarState(calendarState)) return;
 
@@ -135,6 +189,10 @@ export const BaseCalendar: React.FC<{
         calendarState.setAnchorDate(null);
     };
 
+    /**
+     * Restores the saved selection anchor date upon returning from month or year views
+     * in a range calendar.
+     */
     const restoreAnchorDateForRangeCalendar = () => {
         if (!isRangeCalendarState(calendarState)) return;
 
@@ -142,6 +200,7 @@ export const BaseCalendar: React.FC<{
         anchorDate.current = null;
     };
 
+    /** Handles closing the month/year selection menu and returning to the calendar grid. */
     const menuItemOnSelection = () => {
         setView("calendar");
         restoreAnchorDateForRangeCalendar();
@@ -152,6 +211,7 @@ export const BaseCalendar: React.FC<{
             value={{
                 slots: {
                     "previous-month": {
+                        "aria-label": previousMonthAriaLabel,
                         onPress: () => calendarState.focusPreviousPage(),
                         isDisabled:
                             calendarState.isDisabled ||
@@ -159,6 +219,7 @@ export const BaseCalendar: React.FC<{
                             calendarState.isPreviousVisibleRangeInvalid(),
                     },
                     "next-month": {
+                        "aria-label": nextMonthAriaLabel,
                         onPress: () => calendarState.focusNextPage(),
                         isDisabled:
                             calendarState.isDisabled ||
@@ -166,6 +227,7 @@ export const BaseCalendar: React.FC<{
                             calendarState.isNextVisibleRangeInvalid(),
                     },
                     "month-view": {
+                        "aria-expanded": view === "month",
                         onPress: () => {
                             if (view === "month") {
                                 restoreAnchorDateForRangeCalendar();
@@ -181,6 +243,7 @@ export const BaseCalendar: React.FC<{
                     },
 
                     "previous-year": {
+                        "aria-label": previousYearAriaLabel,
                         onPress: () => {
                             calendarState.setFocusedDate(
                                 calendarState.focusedDate.cycle("year", -1)
@@ -192,6 +255,7 @@ export const BaseCalendar: React.FC<{
                             prevYearIsInvalid(),
                     },
                     "next-year": {
+                        "aria-label": nextYearAriaLabel,
                         onPress: () => {
                             calendarState.setFocusedDate(
                                 calendarState.focusedDate.cycle("year", 1)
@@ -203,6 +267,7 @@ export const BaseCalendar: React.FC<{
                             nextYearIsInvalid(),
                     },
                     "year-view": {
+                        "aria-expanded": view === "year",
                         onPress: () => {
                             if (view === "year") {
                                 restoreAnchorDateForRangeCalendar();

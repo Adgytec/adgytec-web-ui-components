@@ -1,19 +1,32 @@
 import clsx from "clsx";
-import { usePress } from "react-aria/usePress";
 import { CalendarCell as AriaCalendarCell } from "react-aria-components";
-import { Splash } from "@/components/Splash/Splash";
-import { useSplash } from "@/components/Splash/useSplash";
 import { typography } from "@/utils";
 import styles from "./calendarCell.module.css";
 
-export const CalendarCell: React.FC<
-    Omit<React.ComponentPropsWithRef<typeof AriaCalendarCell>, "children"> & {
-        isRangeCalendar?: boolean;
-    }
-> = ({ className, isRangeCalendar = false, ...props }) => {
-    const { splashInfo, handlePress } = useSplash();
-    const { pressProps } = usePress({ onPress: handlePress });
+/**
+ * Props for the {@link CalendarCell} component.
+ * Extends React Aria's `CalendarCell` props (excluding `children`).
+ */
+export interface CalendarCellProps
+    extends Omit<
+        React.ComponentPropsWithRef<typeof AriaCalendarCell>,
+        "children"
+    > {
+    /** Whether the cell is being rendered within a range calendar. */
+    isRangeCalendar?: boolean;
+}
 
+/**
+ * An individual date cell within the calendar grid.
+ *
+ * Handles day number rendering, selection indicators, range highlight backgrounds
+ * (selection start, in-between range, selection end), and disabled and outside-month styling.
+ */
+export const CalendarCell: React.FC<CalendarCellProps> = ({
+    className,
+    isRangeCalendar = false,
+    ...props
+}) => {
     return (
         <AriaCalendarCell
             className={(renderProps) =>
@@ -25,7 +38,6 @@ export const CalendarCell: React.FC<
                         : className
                 )
             }
-            {...pressProps}
             {...props}
             data-range-calendar={isRangeCalendar || undefined}
         >
@@ -45,17 +57,8 @@ export const CalendarCell: React.FC<
                     !isSelectionStart &&
                     !isSelectionEnd;
 
-                const disableSplash =
-                    isDisabled || isOutsideMonth || isOutsideVisibleRange;
-
                 return (
                     <>
-                        {!disableSplash && splashInfo && (
-                            <span className={clsx(styles["splash-container"])}>
-                                <Splash {...splashInfo} />
-                            </span>
-                        )}
-
                         {isRangeCalendar && (
                             <span
                                 className={clsx(styles["range-indicator"])}

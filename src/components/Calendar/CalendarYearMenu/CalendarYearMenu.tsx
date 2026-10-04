@@ -10,10 +10,26 @@ import { Icon } from "@/components/Icon";
 import { CalendarMenuItem } from "../CalendarMenuItem";
 import { useCalendarState, type YearItem } from "../core";
 
-export const CalendarYearMenu: React.FC<{
+/**
+ * Props for the {@link CalendarYearMenu} component.
+ */
+export interface CalendarYearMenuProps {
+    /** Callback invoked after a year item is selected to return to the calendar view. */
     onSelection: () => void;
+    /** Array of selectable year objects to render in the virtualized list. */
     years: YearItem[];
-}> = ({ onSelection, years }) => {
+}
+
+/**
+ * A virtualized list menu allowing users to quickly pick a year in the calendar.
+ *
+ * Automatically highlights the currently focused year with a checkmark and shifts the focused date
+ * on selection.
+ */
+export const CalendarYearMenu: React.FC<CalendarYearMenuProps> = ({
+    onSelection,
+    years,
+}) => {
     const state = useCalendarState();
 
     return (

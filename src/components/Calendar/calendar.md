@@ -33,6 +33,10 @@ Both `Calendar` and `RangeCalendar` extend their respective [React Aria Componen
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `weekdayStyle` | `"narrow" \| "short"` | — | The formatting style for weekday headers. |
+| `previousMonthAriaLabel` | `string` | — | Accessible label for the previous month navigation button. |
+| `nextMonthAriaLabel` | `string` | — | Accessible label for the next month navigation button. |
+| `previousYearAriaLabel` | `string` | — | Accessible label for the previous year navigation button. |
+| `nextYearAriaLabel` | `string` | — | Accessible label for the next year navigation button. |
 
 ## Usage
 

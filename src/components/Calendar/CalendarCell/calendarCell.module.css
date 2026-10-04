@@ -1,6 +1,6 @@
 @layer adgytec.comps {
     .cell {
-        --_state-color: var(--_md-calendar-cell-state-layer-color,);
+        --_state-color: var(--_md-calendar-cell-state-layer-color);
         --_state-layer-opacity: 0;
 
         --_state-layer-color: rgb(
@@ -105,7 +105,7 @@
             &[data-range-calendar]:not([data-selection-start]):not(
                     [data-selection-end]
                 ) {
-                color: var(--md-sys-color-on-error-container,);
+                color: var(--md-sys-color-on-error-container);
 
                 &::before {
                     background-color: transparent;
@@ -115,8 +115,7 @@
     }
 
     .cell::before,
-    .cell::after,
-    .splash-container {
+    .cell::after {
         z-index: -1;
         content: "";
 
@@ -131,10 +130,6 @@
         @media (prefers-reduced-motion) {
             transition: none;
         }
-    }
-
-    .splash-container {
-        overflow: hidden;
     }
 
     .cell::after {
