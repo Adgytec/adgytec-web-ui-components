@@ -23,7 +23,7 @@ The `Tag` component extends the [React Aria Components Tag](https://react-spectr
 |------|------|-------------|
 | `label` | `string` | **Required.** The text content to be displayed within the tag. |
 | `icon` | `LucideIcon` | An optional icon to be displayed at the start of the tag. If both `icon` and `avatar` are provided, `avatar` takes priority. |
-| `avatar` | `ReactElement` | An optional avatar element to be displayed at the start of the tag. |
+| `avatar` | `ReactNode` | An optional avatar element to be displayed at the start of the tag. |
 
 ## Usage
 

@@ -9,9 +9,32 @@ import { Splash, useSplash } from "@/components/Splash";
 import { TapTarget, typography } from "@/utils";
 import styles from "./appBarAvatar.module.css";
 
-export const AppBarAvatar: React.FC<
-    React.ComponentPropsWithRef<typeof Button>
-> = ({ className, children, onPress, ...props }) => {
+/**
+ * Props for the {@link AppBarAvatar} component.
+ */
+export type AppBarAvatarProps = React.ComponentPropsWithRef<typeof Button>;
+
+/**
+ * Interactive circular avatar button container designed for profile navigation in the {@link AppBar}.
+ *
+ * Features a circular 32px container, Material ripple feedback (via {@link Splash}),
+ * accessible touch target padding (via {@link TapTarget}), and automatic hover/focus/pressed visual states.
+ *
+ * @example
+ * ```tsx
+ * import { AppBarAvatar } from '@adgytec/web-ui-components';
+ *
+ * <AppBarAvatar aria-label="View user profile" onPress={() => navigate('/profile')}>
+ *     <img src="/avatar.png" alt="Profile" />
+ * </AppBarAvatar>
+ * ```
+ */
+export const AppBarAvatar: React.FC<AppBarAvatarProps> = ({
+    className,
+    children,
+    onPress,
+    ...props
+}) => {
     const { splashInfo, handlePress } = useSplash(onPress);
 
     return (

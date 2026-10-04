@@ -34,7 +34,7 @@ The Sheets system consists of:
 | Prop | Type | Description |
 |------|------|-------------|
 | `headline` | `ReactNode` | Optional headline text/element. |
-| `actions` | `ReactElement[] \| ((renderProps: DialogRenderProps) => ReactElement[])` | Optional action buttons. |
+| `actions` | `ReactNode[] \| ((renderProps: DialogRenderProps) => ReactNode[])` | Optional action buttons. |
 
 Extends [React Aria Components Dialog](https://react-spectrum.adobe.com/react-aria/Dialog.html).
 

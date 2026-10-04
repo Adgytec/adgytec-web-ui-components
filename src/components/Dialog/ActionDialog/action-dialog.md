@@ -10,7 +10,7 @@ The `ActionDialog` component extends the `Dialog` component (excluding `classNam
 |------|------|---------|-------------|
 | `heading` | `string` | — | The title text displayed in the dialog header. |
 | `icon` | `LucideIcon` | — | An optional icon displayed above the heading (centered) or beside it. |
-| `actions` | `ReactElement[] \| ((renderProps) => ReactElement[])` | — | An array of action buttons (usually `Button` components) to be displayed at the bottom of the dialog. |
+| `actions` | `ReactNode[] \| ((renderProps) => ReactNode[])` | — | An array of action buttons (usually `Button` components) to be displayed at the bottom of the dialog. |
 | `divider` | `ActionDialogDividerPlacement` | `"none"` | Placement of dividers within the dialog (`"none"`, `"all"`, `"after-heading"`, `"before-actions"`). |
 
 ## Usage

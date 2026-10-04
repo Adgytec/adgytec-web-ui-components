@@ -31,9 +31,9 @@ The `AppBar` component acts as a `<header>` element and accepts standard header 
 |------|------|---------|-------------|
 | `size` | `"small" \| "medium" \| "large"` | `"small"` | The layout height and typography size variant of the AppBar. |
 | `alignment` | `"default" \| "centered"` | `"default"` | The text alignment of the headline. |
-| `leadingAction` | `ReactElement` | — | The action element rendered at the start (left) of the AppBar, typically a navigation `AppBarAction`. |
-| `trailingActions` | `ReactElement[]` | — | A list of actions rendered at the end (right) of the AppBar, such as `AppBarAction` or `AppBarAvatar` items. |
-| `headline` | `ReactElement` | — | The headline element of the AppBar, typically an `AppBarHeadline`. |
+| `leadingAction` | `ReactNode` | — | The action element rendered at the start (left) of the AppBar, typically a navigation `AppBarAction`. |
+| `trailingActions` | `ReactNode[]` | — | A list of actions rendered at the end (right) of the AppBar, such as `AppBarAction` or `AppBarAvatar` items. |
+| `headline` | `ReactNode` | — | The headline element of the AppBar, typically an `AppBarHeadline`. |
 
 ### Responsive Design / Layout Behavior
 
@@ -173,21 +173,21 @@ function ArticleHeader() {
 
 ### 4. AppBar with Scroll States
 
-Wrap the layout in an `AppBarState` to automatically toggle styling (background color change and shadow elevation) when scrolling. Use `AppBarStateContext` inside scroll containers to update the scrolling state.
+Wrap the layout in an `AppBarState` to automatically toggle styling (background color change and shadow elevation) when scrolling. Use the `useAppBarState` hook inside scroll containers to update the scrolling state.
 
 ```tsx
-import { AppBar, AppBarAction, AppBarHeadline, AppBarState, AppBarStateContext } from '@adgytec/web-ui-components';
+import { AppBar, AppBarAction, AppBarHeadline, AppBarState, useAppBarState } from '@adgytec/web-ui-components';
 import { Menu, Search } from 'lucide-react';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 
 function ScrollHandler() {
-  const appBarState = useContext(AppBarStateContext);
+  const appBarState = useAppBarState();
 
   useEffect(() => {
     const handleScroll = () => {
       appBarState?.updateScrolling(window.scrollY > 0);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [appBarState]);
 

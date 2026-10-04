@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import type { ReactElement } from "react";
+import type { ReactNode } from "react";
 import type { Tag } from "react-aria-components";
 
 // icon or avatar only one is required
@@ -8,5 +8,5 @@ export interface TagProps
     extends Omit<React.ComponentPropsWithRef<typeof Tag>, "children"> {
     label: string;
     icon?: LucideIcon;
-    avatar?: ReactElement;
+    avatar?: ReactNode;
 }

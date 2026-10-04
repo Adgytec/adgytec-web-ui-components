@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import { useContext, useMemo } from "react";
-import { AppBarStateContext } from "../AppBarState";
+import { useMemo } from "react";
+import { useAppBarState } from "../AppBarState";
 import {
     AppBarContext,
     AppBarHeadlineBlockSize,
@@ -9,6 +9,35 @@ import {
 import styles from "./appBar.module.css";
 import type { AppBarProps } from "./types";
 
+/**
+ * Material 3 Top App Bar container component.
+ *
+ * Coordinates screen-level branding, titles, and actions. Supports single-row
+ * `"small"` layouts as well as expressive two-row `"medium"` and `"large"` layouts
+ * with automatic typography scaling and responsive title placement.
+ *
+ * Connects with {@link AppBarStateContext} (via {@link useAppBarState}) to adapt background color and elevation when scrolled.
+ *
+ * @example
+ * ```tsx
+ * import { AppBar, AppBarAction, AppBarHeadline } from '@adgytec/web-ui-components';
+ * import { Menu, Search, MoreVertical } from 'lucide-react';
+ *
+ * function Header() {
+ *     return (
+ *         <AppBar
+ *             size="small"
+ *             leadingAction={<AppBarAction icon={Menu} aria-label="Open navigation menu" />}
+ *             headline={<AppBarHeadline>Dashboard</AppBarHeadline>}
+ *             trailingActions={[
+ *                 <AppBarAction key="search" icon={Search} aria-label="Search" />,
+ *                 <AppBarAction key="more" icon={MoreVertical} aria-label="More options" />
+ *             ]}
+ *         />
+ *     );
+ * }
+ * ```
+ */
 export const AppBar: React.FC<AppBarProps> = ({
     className,
     size = "small",
@@ -18,7 +47,7 @@ export const AppBar: React.FC<AppBarProps> = ({
     headline,
     ...props
 }) => {
-    const appBarState = useContext(AppBarStateContext);
+    const appBarState = useAppBarState();
     const hasSecondary = size !== "small";
     const hasTrailingActions = trailingActions && trailingActions.length > 0;
 
