@@ -19,6 +19,21 @@ import {
 } from "../core";
 import type { LinkButtonProps } from "./types";
 
+/**
+ * A link component styled to look and behave like a Material Design 3 button.
+ *
+ * Used for navigation actions that should visually appear as standard buttons.
+ * Renders an accessible anchor element underneath via React Aria's `Link`,
+ * supporting native link behaviors (`href`, `target`, `rel`), keyboard activation,
+ * ripple splash animations, icons, and tooltips.
+ *
+ * @example
+ * ```tsx
+ * <LinkButton href="https://example.com" target="_blank" icon={ExternalLink} iconPlacement="end">
+ *     Visit Website
+ * </LinkButton>
+ * ```
+ */
 export const LinkButton: React.FC<LinkButtonProps> = ({
     size,
     shape,

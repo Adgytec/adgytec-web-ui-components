@@ -17,9 +17,9 @@ The `IconButton` component extends [React Aria Components Button](https://react-
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `icon` | `LucideIcon` | **Required** | The icon to display. |
-| `color` | `"filled" \| "tonal" \| "outlined" \| "standard"` | `"standard"` | The visual style and color scheme. |
+| `color` | `"filled" \| "tonal" \| "outlined" \| "standard"` | `"filled"` | The visual style and color scheme. |
 | `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The size of the button and icon. |
-| `shape` | `"square" \| "rounded"` | `"rounded"` | The corner radius of the button. |
+| `shape` | `"round" \| "square"` | `"round"` | The corner radius of the button. |
 | `width` | `"default" \| "wide"` | `"default"` | Controls whether the button has a standard circular/square aspect or a wider layout. |
 | `tooltip` | `string` | — | Optional tooltip text displayed on hover. |
 
@@ -29,13 +29,13 @@ The `IconButton` component extends [React Aria Components Button](https://react-
 import { IconButton } from '@adgytec/web-ui-components';
 import { Settings, MoreVertical } from 'lucide-react';
 
-// Basic standard variant
+// Basic filled variant
 <IconButton icon={MoreVertical} aria-label="More options" />
 
-// Filled variant with tooltip
+// standard variant with tooltip
 <IconButton 
   icon={Settings} 
-  color="filled" 
+  color="standard" 
   tooltip="Settings" 
   aria-label="Settings"
 />

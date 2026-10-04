@@ -19,6 +19,27 @@ import {
 } from "../core";
 import type { IconButtonProps } from "./types";
 
+/**
+ * A compact, icon-only button implementing Material Design 3 Icon Buttons.
+ *
+ * Designed for space-constrained UI elements, actions, toolbars, and controls that can
+ * be clearly represented by an icon alone. Automatically swaps the icon with a `Loader`
+ * spinner when `isPending` is active.
+ *
+ * Extends React Aria's `Button`. Always provide an accessible `aria-label` or `aria-labelledby`
+ * attribute for screen reader accessibility.
+ *
+ * @example
+ * ```tsx
+ * <IconButton
+ *     icon={Settings}
+ *     color="tonal"
+ *     tooltip="Settings"
+ *     aria-label="Settings"
+ *     onPress={() => openSettings()}
+ * />
+ * ```
+ */
 export const IconButton: React.FC<IconButtonProps> = ({
     size,
     shape,

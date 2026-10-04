@@ -18,6 +18,25 @@ import {
 } from "../core";
 import type { LinkIconButtonProps } from "./types";
 
+/**
+ * A link component styled as a compact Material Design 3 icon button.
+ *
+ * Used for icon-only navigation actions (such as external social links, repository links,
+ * or compact icon navigation). Built on top of React Aria's `Link`.
+ *
+ * Always provide an accessible `aria-label` or `aria-labelledby` attribute for screen reader accessibility.
+ *
+ * @example
+ * ```tsx
+ * <LinkIconButton
+ *     href="https://github.com"
+ *     target="_blank"
+ *     icon={Github}
+ *     tooltip="GitHub Profile"
+ *     aria-label="GitHub Profile"
+ * />
+ * ```
+ */
 export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
     size,
     shape,

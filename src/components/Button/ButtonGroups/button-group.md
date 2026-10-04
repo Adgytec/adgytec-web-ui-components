@@ -13,7 +13,7 @@ Extends [React Aria Components ToggleButtonGroup](https://react-spectrum.adobe.c
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The size of the buttons within the group. |
-| `shape` | `"square" \| "rounded"` | `"rounded"` | The shape of the buttons within the group. |
+| `shape` | `"round" \| "square"` | `"round"` | The shape of the buttons within the group. |
 | `color` | `"filled" \| "tonal" \| "outlined"` | `"filled"` | The color variant for the buttons. |
 | `iconPlacement` | `"start" \| "end"` | `"start"` | The default icon placement for buttons in the group. |
 
@@ -51,7 +51,7 @@ Extends [React Aria Components ToggleButtonGroup](https://react-spectrum.adobe.c
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The size of the group. |
-| `shape` | `"square" \| "rounded" \| "full"` | `"full"` | The overall shape of the connected unit. |
+| `shape` | `"round" \| "square"` | `"round"` | The overall shape of the connected unit. |
 | `color` | `"filled" \| "tonal" \| "outlined" \| "elevated"` | `"filled"` | The color variant for the buttons. |
 
 #### `ConnectedButton`
@@ -62,6 +62,7 @@ Extends [React Aria Components ToggleButton](https://react-spectrum.adobe.com/re
 | `icon` | `LucideIcon` | An optional icon to display. |
 | `selectedIcon` | `LucideIcon` | An optional icon to display when selected. |
 | `iconPlacement` | `"start" \| "end"` | Overrides the group's icon placement. |
+| `tooltip` | `string` | Optional tooltip text displayed on hover/focus. |
 
 ### Usage
 

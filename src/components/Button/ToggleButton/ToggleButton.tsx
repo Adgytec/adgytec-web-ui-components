@@ -19,6 +19,27 @@ import {
 } from "../core";
 import type { ToggleButtonProps } from "./types";
 
+/**
+ * A two-state toggle button implementing Material Design 3 Toggle Button guidelines.
+ *
+ * Allows users to toggle between active/selected and inactive/unselected states.
+ * Supports swapping between `icon` and `selectedIcon` based on current selection state,
+ * flexible sizing, shapes, and Material 3 toggle button color variants.
+ *
+ * Built on top of React Aria's `ToggleButton`.
+ *
+ * @example
+ * ```tsx
+ * <ToggleButton
+ *     icon={Bookmark}
+ *     selectedIcon={BookmarkCheck}
+ *     isSelected={isBookmarked}
+ *     onChange={setIsBookmarked}
+ * >
+ *     Bookmark
+ * </ToggleButton>
+ * ```
+ */
 export const ToggleButton: React.FC<ToggleButtonProps> = ({
     size,
     shape,

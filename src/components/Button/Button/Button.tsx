@@ -20,6 +20,23 @@ import {
 } from "../core";
 import type { ButtonProps } from "./types";
 
+/**
+ * A standard action button component implementing Material Design 3 guidelines.
+ *
+ * Supports filled, tonal, outlined, elevated, and text visual color schemes,
+ * flexible sizing presets from extra-small to extra-large, leading or trailing icons,
+ * loading spinner substitution when pending, ripple splash effects, and integrated tooltips.
+ *
+ * Built on top of React Aria's `Button` for accessible keyboard, screen reader,
+ * and touch interaction.
+ *
+ * @example
+ * ```tsx
+ * <Button color="tonal" icon={Save} onPress={() => handleSave()}>
+ *     Save
+ * </Button>
+ * ```
+ */
 export const Button: React.FC<ButtonProps> = ({
     size,
     shape,

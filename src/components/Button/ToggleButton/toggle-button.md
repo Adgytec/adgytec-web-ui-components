@@ -21,7 +21,7 @@ The `ToggleButton` component extends [React Aria Components ToggleButton](https:
 |------|------|---------|-------------|
 | `color` | `"filled" \| "tonal" \| "outlined" \| "elevated"` | `"filled"` | The visual style and color scheme. |
 | `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The size of the button. |
-| `shape` | `"square" \| "rounded"` | `"rounded"` | The corner radius of the button. |
+| `shape` | `"round" \| "square"` | `"round"` | The corner radius of the button. |
 | `icon` | `LucideIcon` | — | An optional icon displayed within the button. |
 | `selectedIcon` | `LucideIcon` | — | An optional icon to display when the button is selected. If not provided, `icon` is used for both states. |
 | `iconPlacement` | `"start" \| "end"` | `"start"` | The position of the icon relative to the text. |

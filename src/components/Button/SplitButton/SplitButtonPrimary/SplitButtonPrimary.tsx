@@ -18,6 +18,21 @@ import { SplitButtonPrimaryBase, SplitButtonVariantBase } from "../core";
 import { useSplitButtonContext } from "../SplitButtonContext";
 import type { SplitButtonPrimaryProps } from "./types";
 
+/**
+ * The primary action button within a {@link SplitButton}.
+ *
+ * Inherits visual styling (size and color) and states (disabled, pending)
+ * from the parent `SplitButtonContext`.
+ * Extends React Aria's `Button` and supports ripple splash animations, icons,
+ * loading spinner substitution when pending, and tooltips.
+ *
+ * @example
+ * ```tsx
+ * <SplitButtonPrimary icon={Save} onPress={() => handleSave()}>
+ *     Save
+ * </SplitButtonPrimary>
+ * ```
+ */
 export const SplitButtonPrimary: React.FC<SplitButtonPrimaryProps> = ({
     tooltip,
     icon,

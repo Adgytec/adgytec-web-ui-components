@@ -21,6 +21,25 @@ import { useSplitButtonContext } from "../SplitButtonContext";
 import styles from "./splitButtonTrigger.module.css";
 import type { SplitButtonTriggerProps } from "./types";
 
+/**
+ * The dropdown menu trigger button within a {@link SplitButton}.
+ *
+ * Renders a chevron icon indicating that more actions are available in an adjacent menu.
+ * Inherits visual styling (size and color) and states (disabled, pending) from the parent `SplitButtonContext`.
+ * Typically wrapped inside a `MenuTrigger` component alongside a `MenuPopover`.
+ *
+ * @example
+ * ```tsx
+ * <MenuTrigger>
+ *     <SplitButtonTrigger aria-label="More options" />
+ *     <MenuPopover>
+ *         <Menu>
+ *             <MenuItem label="Export" />
+ *         </Menu>
+ *     </MenuPopover>
+ * </MenuTrigger>
+ * ```
+ */
 export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
     tooltip,
     onPress,
@@ -70,6 +89,7 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
                     "data-focus-visible": isFocusVisible || undefined,
                     "data-pressed": isPressed || undefined,
                     "data-visual-button": true,
+                    "data-pending": pending || undefined,
                 };
 
                 return (

@@ -11,17 +11,33 @@ import {
     ButtonReset,
     buttonColorBase,
     buttonColorConfig,
+    withTooltip,
 } from "../../core";
 import { useConnectedButtonGroupContext } from "../ButtonGroupContext";
 import styles from "./connectedButton.module.css";
 import type { ConnectedButtonProps } from "./types";
 
+/**
+ * An individual toggle button designed for use inside a {@link ConnectedButtonGroup}.
+ *
+ * Inherits size, shape, and color styling from the parent `ConnectedButtonGroupContext`,
+ * rendering border lines and corner radii coordinated with its neighboring buttons in the segment.
+ *
+ * Built on top of React Aria's `ToggleButton`.
+ *
+ * @example
+ * ```tsx
+ * <ConnectedButton id="bold" icon={Bold} aria-label="Bold text" />
+ * ```
+ */
 export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
     icon,
     selectedIcon,
     children,
     onPress,
     iconPlacement,
+    tooltip,
+    className,
     ...props
 }) => {
     const {
@@ -36,10 +52,19 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
     const { splashInfo, handlePress } = useSplash(onPress);
     const isChildFunc = typeof children === "function";
 
-    return (
+    return withTooltip(
         <AriaToggleButton
             onPress={handlePress}
-            className={clsx(ButtonReset, TapTarget, buttonColorConfig(color))}
+            className={(renderProps) =>
+                clsx(
+                    ButtonReset,
+                    TapTarget,
+                    buttonColorConfig(color),
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
             {...props}
             data-connected-button={true}
             data-button
@@ -94,6 +119,7 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
                     </span>
                 );
             }}
-        </AriaToggleButton>
+        </AriaToggleButton>,
+        tooltip
     );
 };

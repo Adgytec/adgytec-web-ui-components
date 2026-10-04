@@ -18,6 +18,27 @@ import {
 } from "../core";
 import type { ToggleIconButtonProps } from "./types";
 
+/**
+ * A compact, icon-only toggle button implementing Material Design 3 Toggle Icon Buttons.
+ *
+ * Allows users to toggle between two states using a single icon button (e.g. mute/unmute, bookmark/unbookmark).
+ * Switches between `icon` and `selectedIcon` based on the current selection state.
+ *
+ * Built on top of React Aria's `ToggleButton`. Always provide an accessible `aria-label`
+ * or `aria-labelledby` attribute for screen reader accessibility.
+ *
+ * @example
+ * ```tsx
+ * <ToggleIconButton
+ *     icon={Volume2}
+ *     selectedIcon={VolumeX}
+ *     isSelected={isMuted}
+ *     onChange={setIsMuted}
+ *     tooltip={isMuted ? "Unmute" : "Mute"}
+ *     aria-label={isMuted ? "Unmute" : "Mute"}
+ * />
+ * ```
+ */
 export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     size,
     shape,
