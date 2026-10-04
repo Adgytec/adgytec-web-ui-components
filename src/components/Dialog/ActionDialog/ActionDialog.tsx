@@ -10,6 +10,39 @@ import { Dialog } from "../Dialog";
 import styles from "./actionDialog.module.css";
 import type { ActionDialogProps } from "./types";
 
+/**
+ * A specialized dialog component pre-configured for standard alert, confirmation, and prompt patterns.
+ *
+ * Features an optional icon, title heading, scrollable body content area, and customizable action buttons.
+ * Implements Material Design 3 guidelines for dialog layout alignment (such as centering the header when
+ * an icon is provided) and configurable divider placements.
+ *
+ * @example
+ * ```tsx
+ * import { ActionDialog, Modal, ModalOverlay, Button } from '@adgytec/web-ui-components';
+ * import { DialogTrigger } from 'react-aria-components';
+ * import { AlertTriangle } from 'lucide-react';
+ *
+ * <DialogTrigger>
+ *     <Button color="outlined">Delete Account</Button>
+ *     <ModalOverlay isDismissable>
+ *         <Modal>
+ *             <ActionDialog
+ *                 icon={AlertTriangle}
+ *                 heading="Delete Account"
+ *                 divider="before-actions"
+ *                 actions={[
+ *                     <Button key="cancel" color="text">Cancel</Button>,
+ *                     <Button key="delete">Delete</Button>,
+ *                 ]}
+ *             >
+ *                 Are you sure you want to delete your account? This action cannot be undone.
+ *             </ActionDialog>
+ *         </Modal>
+ *     </ModalOverlay>
+ * </DialogTrigger>
+ * ```
+ */
 export const ActionDialog: React.FC<ActionDialogProps> = ({
     heading,
     icon,

@@ -6,13 +6,53 @@ import { SliderOutput } from "../SliderOutput";
 import { SliderThumbStateContext } from "./context";
 import styles from "./sliderThumb.module.css";
 
-export const SliderThumb: React.FC<
-    Omit<React.ComponentPropsWithRef<typeof AriaSliderThumb>, "children"> & {
-        orientation: Orientation;
-        size: SliderSize;
-        outputRenderer?: OutputRenderer;
-    }
-> = ({ index = 0, orientation, className, size, outputRenderer, ...props }) => {
+/**
+ * Props for the [`SliderThumb`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/SliderThumb/SliderThumb.tsx) component.
+ */
+export interface SliderThumbProps
+    extends Omit<
+        React.ComponentPropsWithRef<typeof AriaSliderThumb>,
+        "children"
+    > {
+    /**
+     * Layout orientation of the slider track.
+     */
+    orientation: Orientation;
+    /**
+     * Size variant determining the dimensions of the thumb handle.
+     */
+    size: SliderSize;
+    /**
+     * Custom renderer or static node for the thumb value tooltip output.
+     */
+    outputRenderer?: OutputRenderer;
+}
+
+/**
+ * Draggable handle component within a slider track.
+ *
+ * Wraps React Aria's `SliderThumb`, managing state transitions (drag, hover, focus)
+ * and hosting the [`SliderOutput`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/SliderOutput/SliderOutput.tsx)
+ * value bubble.
+ *
+ * @example
+ * ```tsx
+ * <SliderThumb
+ *     index={0}
+ *     size="medium"
+ *     orientation="horizontal"
+ *     aria-label="Volume level"
+ * />
+ * ```
+ */
+export const SliderThumb: React.FC<SliderThumbProps> = ({
+    index = 0,
+    orientation,
+    className,
+    size,
+    outputRenderer,
+    ...props
+}) => {
     return (
         <AriaSliderThumb
             index={index}

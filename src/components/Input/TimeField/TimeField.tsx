@@ -21,6 +21,22 @@ import { FieldError } from "../FieldError";
 import { Label } from "../Label";
 import type { TimeFieldProps } from "./types";
 
+/**
+ * An accessible segmented time input field allowing users to enter time values by editing hour, minute, and AM/PM segments.
+ *
+ * Automatically formats time per locale and handles keyboard arrow adjustments,
+ * helper descriptions, and validation errors.
+ *
+ * @example
+ * ```tsx
+ * import { TimeField } from '@adgytec/web-ui-components';
+ *
+ * <TimeField
+ *     label="Meeting Time"
+ *     description="Select an hour and minute."
+ * />
+ * ```
+ */
 export const TimeField = <T extends TimeValue>({
     label,
     description,

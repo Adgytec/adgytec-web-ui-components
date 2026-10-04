@@ -15,6 +15,34 @@ import styles from "./comboBox.module.css";
 import { ComboboxContext } from "./context";
 import type { ComboBoxProps } from "./types";
 
+/**
+ * An autocomplete combobox component combining a text input field with a searchable options list popover.
+ *
+ * Implements Material Design 3 guidelines for auto-complete search inputs, supporting single or multi-selection,
+ * removable selection tag chips, keyboard navigation, and custom filter matching.
+ *
+ * @example
+ * ```tsx
+ * import {
+ *     ComboBox,
+ *     ComboBoxTrigger,
+ *     ComboBoxPopover,
+ *     SelectList,
+ *     SelectItem
+ * } from '@adgytec/web-ui-components';
+ *
+ * <ComboBox label="Favorite Framework">
+ *     <ComboBoxTrigger placeholder="Type to search..." />
+ *     <ComboBoxPopover>
+ *         <SelectList>
+ *             <SelectItem id="react" label="React" />
+ *             <SelectItem id="vue" label="Vue" />
+ *             <SelectItem id="svelte" label="Svelte" />
+ *         </SelectList>
+ *     </ComboBoxPopover>
+ * </ComboBox>
+ * ```
+ */
 export const ComboBox = <
     T extends object,
     M extends "single" | "multiple" = "single",

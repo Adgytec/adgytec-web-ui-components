@@ -31,6 +31,22 @@ import {
 } from "../core";
 import type { DateRangePickerProps } from "./types";
 
+/**
+ * A date range picker component allowing users to select a start and end date using dual segmented date inputs or a dropdown {@link RangeCalendar} popover.
+ *
+ * Implements Material Design 3 Date Range Picker guidelines, providing accessible keyboard navigation,
+ * custom range highlighting, and validation feedback.
+ *
+ * @example
+ * ```tsx
+ * import { DateRangePicker } from '@adgytec/web-ui-components';
+ *
+ * <DateRangePicker
+ *     label="Travel Dates"
+ *     description="Select departure and return dates."
+ * />
+ * ```
+ */
 export const DateRangePicker = <T extends DateValue>({
     label,
     description,

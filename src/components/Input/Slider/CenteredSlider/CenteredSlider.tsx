@@ -16,6 +16,28 @@ import { SliderThumb } from "../SliderThumb";
 import styles from "./centerdSlider.module.css";
 import type { CenteredSliderProps } from "./types";
 
+/**
+ * Material Design 3 centered slider component.
+ *
+ * Visualizes deviation from a central neutral point (the midpoint between `minValue` and `maxValue`).
+ * The active track fills outward from the center towards the thumb in either direction,
+ * making it ideal for balance, pan, exposure, or plus/minus adjustments.
+ *
+ * @example
+ * ```tsx
+ * import { CenteredSlider } from "@adgytec/web-ui-components";
+ *
+ * <CenteredSlider
+ *     label="Stereo Balance"
+ *     minValue={-50}
+ *     maxValue={50}
+ *     defaultValue={0}
+ *     step={5}
+ *     showInBetweenSteps
+ *     thumbLabel="Balance"
+ * />
+ * ```
+ */
 export const CenteredSlider = <T extends number>({
     label,
     thumbLabel,

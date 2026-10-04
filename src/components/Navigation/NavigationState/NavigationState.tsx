@@ -2,7 +2,35 @@ import { type ReactNode, useCallback, useRef, useState } from "react";
 import { NavigationStateContext } from "./context";
 import type { NavScrollInfo, SubNavItem } from "./types";
 
-export const NavigationState: React.FC<{ children?: ReactNode }> = ({
+/**
+ * Props for the [`NavigationState`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationState/NavigationState.tsx) component.
+ */
+export interface NavigationStateProps {
+    /**
+     * Child elements, typically one or more [`Navigation`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/Navigation/Navigation.tsx) instances.
+     */
+    children?: ReactNode;
+}
+
+/**
+ * Global navigation state coordinator component.
+ *
+ * Coordinates active sub-navigation panel stacks, tracks inert states for covered panels,
+ * and maintains scroll position synchronization across multiple navigation instances
+ * (such as a persistent desktop sidebar and a mobile drawer).
+ *
+ * @example
+ * ```tsx
+ * import { NavigationState, Navigation } from "@adgytec/web-ui-components";
+ *
+ * <NavigationState>
+ *     <Navigation label="Main Navigation">
+ *         {...}
+ *     </Navigation>
+ * </NavigationState>
+ * ```
+ */
+export const NavigationState: React.FC<NavigationStateProps> = ({
     children,
 }) => {
     const [openSubNavs, setOpenSubNavs] = useState<SubNavItem[]>([]);

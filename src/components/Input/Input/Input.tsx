@@ -26,6 +26,33 @@ import { Label } from "../Label";
 import { addStateAttrsToInputButton } from "./handleInputButton";
 import type { InputProps } from "./types";
 
+/**
+ * A single-line text input field implementing Material Design 3 Text Field guidelines.
+ *
+ * Supports accessible labels, helper descriptions, error messages, prefix/suffix text,
+ * leading icons, trailing actions via {@link InputButton}, and character counter indicators.
+ *
+ * @example
+ * ```tsx
+ * import { Input, InputButton } from '@adgytec/web-ui-components';
+ * import { Eye, Mail } from 'lucide-react';
+ *
+ * // Basic text input with label and helper text
+ * <Input
+ *     label="Email Address"
+ *     placeholder="user@example.com"
+ *     leadingIcon={Mail}
+ *     description="We'll never share your email."
+ * />
+ *
+ * // Password field with trailing visibility button
+ * <Input
+ *     label="Password"
+ *     type="password"
+ *     trailing={<InputButton icon={Eye} onPress={() => {}} />}
+ * />
+ * ```
+ */
 export const Input: React.FC<InputProps> = ({
     label,
     description,

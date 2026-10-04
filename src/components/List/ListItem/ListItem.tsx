@@ -9,6 +9,40 @@ import { Splash, useSplash } from "@/components/Splash";
 import styles from "./listItem.module.css";
 import type { ListItemProps } from "./types";
 
+/**
+ * Material Design 3 interactive list item component.
+ *
+ * Supports structured slot composition (`leading`, `overline`, `label`, `supporting`, `trailing`),
+ * dynamic corner radius morphing on hover/focus/selection, touch ripple splash feedback,
+ * and automatic synchronization with nested selection controls (`Checkbox` or `Switch` with `slot="selection"`).
+ *
+ * @example
+ * ```tsx
+ * import {
+ *     ListItem,
+ *     ListIcon,
+ *     ListLabelText,
+ *     ListSupportingText,
+ *     ListAction,
+ * } from "@adgytec/web-ui-components";
+ * import { Star, Trash2 } from "lucide-react";
+ *
+ * <ListItem
+ *     id="starred-email"
+ *     leading={<ListIcon icon={Star} />}
+ *     label={<ListLabelText>Project Roadmap</ListLabelText>}
+ *     supporting={<ListSupportingText>Updated yesterday by Alex</ListSupportingText>}
+ *     trailing={[
+ *         <ListAction
+ *             key="delete"
+ *             icon={Trash2}
+ *             aria-label="Delete item"
+ *             onPress={() => handleDelete()}
+ *         />,
+ *     ]}
+ * />
+ * ```
+ */
 export const ListItem: React.FC<ListItemProps> = ({
     leading,
     overline,

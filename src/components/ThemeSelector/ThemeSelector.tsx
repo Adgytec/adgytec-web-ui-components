@@ -39,6 +39,30 @@ const defaultMonochrome: ThemeMonochromeTranslations = {
         "Use a monochrome appearance with neutral tones instead of the default colorful theme. This can provide a cleaner and more focused visual experience.",
 };
 
+/**
+ * Settings UI component for managing application theme appearance.
+ *
+ * Provides user controls for:
+ * - **Theme Mode**: Connected button group with `"System"`, `"Light"`, and `"Dark"` options.
+ * - **Theme Contrast**: Connected button group with `"Standard"`, `"Medium"`, and `"High"` options (disabled when monochrome is active).
+ * - **Monochrome Mode**: An interactive {@link Switch} to toggle neutral grayscale styling.
+ *
+ * Directly connects to {@link useTheme} to read and update theme settings, which are
+ * persisted to local storage and applied to `document.documentElement` by {@link ThemeProvider}.
+ *
+ * @example
+ * ```tsx
+ * import { ThemeProvider, ThemeSelector } from "@adgytec/web-ui-components";
+ *
+ * export function SettingsMenu() {
+ *     return (
+ *         <ThemeProvider>
+ *             <ThemeSelector />
+ *         </ThemeProvider>
+ *     );
+ * }
+ * ```
+ */
 export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
     modeDetails = defaultMode,
     contrastDetails = defaultContrast,

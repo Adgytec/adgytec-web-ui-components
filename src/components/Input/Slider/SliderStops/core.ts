@@ -4,7 +4,12 @@ import type { CalculateStops, Stop } from "./types";
 const DEFAULT_MAX_STOPS = 20;
 
 /**
- * React Aria style clamp.
+ * Clamps a numeric value between minimum and maximum bounds.
+ *
+ * @param value - The input value to clamp.
+ * @param min - The lower bound. Defaults to `-Infinity`.
+ * @param max - The upper bound. Defaults to `Infinity`.
+ * @returns The clamped value within `[min, max]`.
  */
 export const clamp = (
     value: number,
@@ -15,12 +20,12 @@ export const clamp = (
 };
 
 /**
- * React Aria precision extraction.
+ * Calculates the decimal precision (number of decimal places) of a step value.
  *
- * Handles:
- * - 0.1
- * - 0.01
- * - 1e-7
+ * Supports standard fractional numbers (e.g. `0.01` -> 2) and scientific notation (e.g. `1e-7` -> 7).
+ *
+ * @param step - The step increment.
+ * @returns The number of decimal places represented by the step.
  */
 export const getStepPrecision = (step: number): number => {
     let precision = 0;
@@ -44,7 +49,12 @@ export const getStepPrecision = (step: number): number => {
 };
 
 /**
- * React Aria style precision correction.
+ * Rounds a numeric value to the precision determined by the step value
+ * to eliminate floating-point calculation inaccuracies.
+ *
+ * @param value - The value to round.
+ * @param step - The step determining precision.
+ * @returns The rounded numeric value.
  */
 export const roundToStepPrecision = (value: number, step: number): number => {
     const precision = getStepPrecision(step);
@@ -59,7 +69,10 @@ export const roundToStepPrecision = (value: number, step: number): number => {
 };
 
 /**
- * React Aria snap implementation.
+ * Snaps a given number to the nearest valid step increment between min and max bounds.
+ *
+ * @param options - Configuration object containing value, minValue, maxValue, and step.
+ * @returns The snapped value aligned to the step grid.
  */
 export const snapValueToStep = ({
     value,
@@ -98,8 +111,14 @@ export const snapValueToStep = ({
 };
 
 /**
- * Generates all valid slider stops using
- * the same stepping logic as React Aria.
+ * Generates all valid slider tick stops along the track using stepping logic
+ * compatible with React Aria.
+ *
+ * If the number of generated stops exceeds `maxStops` or `showInBetweenSteps` is false,
+ * only the minimum and maximum boundaries are returned to prevent excessive DOM nodes.
+ *
+ * @param options - Stop calculation configuration.
+ * @returns Array of calculated {@link Stop} objects with `stopValue` and `percent`.
  */
 export const calcStops: CalculateStops = ({
     minValue,
@@ -220,6 +239,17 @@ const checkInActiveRangeCenteredSlider = ({
     );
 };
 
+/**
+ * Determines whether a given tick stop falls within the active (highlighted) track range
+ * for the specified slider variant.
+ *
+ * - Standard slider: stops strictly below the thumb.
+ * - Range slider: stops strictly between the start and end thumbs.
+ * - Centered slider: stops between the mid-value and the thumb position.
+ *
+ * @param options - Configuration containing the slider variant, thumb values, mid-value, and stopValue.
+ * @returns `true` if the stop is within the active highlighted track segment.
+ */
 export const checkInActiveRange = ({
     slider,
     midValue,
@@ -256,6 +286,12 @@ export const checkInActiveRange = ({
     }
 };
 
+/**
+ * Checks whether a given stop coincides directly with any active thumb position.
+ *
+ * @param options - First and second thumb values, plus the candidate stopValue.
+ * @returns `true` if the stop is located directly underneath a thumb.
+ */
 export const checkIsBelowThumb = ({
     firstThumbValue,
     secondThumbValue,
@@ -268,6 +304,14 @@ export const checkIsBelowThumb = ({
     return stopValue === firstThumbValue || stopValue === secondThumbValue;
 };
 
+/**
+ * Checks whether a stop indicator should be visually hidden.
+ *
+ * For centered sliders, the center anchor point is hidden to avoid overlapping track visuals.
+ *
+ * @param options - Slider variant, midValue, and stopValue.
+ * @returns `true` if the stop indicator should be hidden.
+ */
 export const shouldHide = ({
     slider,
     midValue,

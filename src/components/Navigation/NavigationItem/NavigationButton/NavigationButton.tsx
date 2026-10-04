@@ -7,6 +7,21 @@ import { NavigationItemLabelTypography, NavigationItemStyles } from "../core";
 import { NavigationItemIconRenderer } from "../NavigationItemIconRenderer";
 import type { NavigationButtonProps } from "./types";
 
+/**
+ * Button navigation item component.
+ *
+ * Typically used as an action trigger within a [`SubNavigationTrigger`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/SubNavigation/SubNavigationTrigger/SubNavigationTrigger.tsx)
+ * to open a nested sub-navigation panel. Automatically evaluates active state matching based on its `prefix`,
+ * switches between resting and active icons, and inherits labels from parent triggers.
+ *
+ * @example
+ * ```tsx
+ * import { NavigationButton } from "@adgytec/web-ui-components";
+ * import { Briefcase } from "lucide-react";
+ *
+ * <NavigationButton icon={Briefcase} prefix="/projects" label="Projects" />
+ * ```
+ */
 export const NavigationButton: React.FC<NavigationButtonProps> = ({
     className,
     icon,

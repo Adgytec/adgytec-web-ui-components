@@ -7,6 +7,21 @@ import styles from "./checkbox.module.css";
 import { CheckboxGroupContext } from "./context";
 import type { CheckboxProps } from "./types";
 
+/**
+ * A checkbox control implementing Material Design 3 Checkbox guidelines.
+ *
+ * Supports unchecked, checked, and indeterminate states with smooth animated SVG paths,
+ * accessible keyboard activation, and flexible label positioning.
+ *
+ * @example
+ * ```tsx
+ * import { Checkbox } from '@adgytec/web-ui-components';
+ *
+ * <Checkbox isSelected={agree} onChange={setAgree}>
+ *     I accept the terms and conditions
+ * </Checkbox>
+ * ```
+ */
 export const Checkbox: React.FC<CheckboxProps> = ({
     children,
     className,

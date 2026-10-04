@@ -12,12 +12,26 @@ import { EditorInputStyles, EditorStyles, UnsetStyles } from "../../core";
 import { ComboboxContext } from "../ComboBox/context";
 import styles from "./comboBoxTrigger.module.css";
 
-export const ComboBoxTrigger: React.FC<
-    Omit<React.ComponentPropsWithoutRef<"span">, "children"> &
-        RefProp<typeof Input> & {
-            placeholder?: string;
-        }
-> = ({ className, placeholder, dir, ref, ...props }) => {
+/**
+ * Props for the {@link ComboBoxTrigger} component.
+ */
+export interface ComboBoxTriggerProps
+    extends Omit<React.ComponentPropsWithoutRef<"span">, "children">,
+        RefProp<typeof Input> {
+    /** Placeholder text displayed when the combobox input is empty. */
+    placeholder?: string;
+}
+
+/**
+ * The composite editable text input and chevron dropdown trigger button for a {@link ComboBox}.
+ */
+export const ComboBoxTrigger: React.FC<ComboBoxTriggerProps> = ({
+    className,
+    placeholder,
+    dir,
+    ref,
+    ...props
+}) => {
     const inputRef = useObjectRef(ref);
 
     const { isInvalid, isDisabled, isOpen } = useContext(ComboboxContext);

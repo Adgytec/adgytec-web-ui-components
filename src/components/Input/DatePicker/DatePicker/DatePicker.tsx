@@ -27,6 +27,22 @@ import { Label } from "../../Label";
 import { DatePickerGroupStyles, DatePickerPopoverStyles } from "../core";
 import type { DatePickerProps } from "./types";
 
+/**
+ * A date picker component combining a segmented date input field with a dropdown {@link Calendar} popover.
+ *
+ * Implements Material Design 3 Date Picker guidelines, providing both typed manual input and interactive
+ * calendar date selection, with locale-sensitive formatting and validation.
+ *
+ * @example
+ * ```tsx
+ * import { DatePicker } from '@adgytec/web-ui-components';
+ *
+ * <DatePicker
+ *     label="Appointment Date"
+ *     description="Choose a date for your visit."
+ * />
+ * ```
+ */
 export const DatePicker = <T extends DateValue>({
     label,
     description,

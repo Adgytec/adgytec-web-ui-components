@@ -21,6 +21,22 @@ import { FieldError } from "../FieldError";
 import { Label } from "../Label";
 import type { DateFieldProps } from "./types";
 
+/**
+ * An accessible segmented date input field allowing users to enter dates by editing day, month, and year segments.
+ *
+ * Automatically handles locale-specific date formatting, keyboard increment/decrement,
+ * validation constraints, helper descriptions, and error feedback.
+ *
+ * @example
+ * ```tsx
+ * import { DateField } from '@adgytec/web-ui-components';
+ *
+ * <DateField
+ *     label="Birth date"
+ *     description="Enter in your local date format."
+ * />
+ * ```
+ */
 export const DateField = <T extends DateValue>({
     label,
     description,

@@ -15,6 +15,28 @@ import {
 } from "../core";
 import type { MenuItemProps } from "./types";
 
+/**
+ * Material Design 3 interactive menu item component.
+ *
+ * Supports leading icons, selection checkmarks, multi-line supporting descriptions,
+ * trailing shortcuts ([`MenuShortcut`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/MenuShortcut/MenuShortcut.tsx)),
+ * trailing metadata ([`MenuTrailingText`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/MenuTrailingText/MenuTrailingText.tsx)),
+ * submenu disclosure chevrons, and touch ripple splash animations.
+ *
+ * @example
+ * ```tsx
+ * import { MenuItem, MenuShortcut } from "@adgytec/web-ui-components";
+ * import { Copy } from "lucide-react";
+ *
+ * <MenuItem
+ *     id="copy"
+ *     label="Copy"
+ *     leadingIcon={Copy}
+ *     trailingText={<MenuShortcut>⌘C</MenuShortcut>}
+ *     onAction={() => handleCopy()}
+ * />
+ * ```
+ */
 export const MenuItem: React.FC<MenuItemProps> = ({
     leadingIcon,
     label,

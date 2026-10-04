@@ -6,8 +6,30 @@ import { useNavigationInfo } from "../core";
 import { useNavigationState } from "../NavigationState";
 import styles from "./navigationScrollContainer.module.css";
 
+/**
+ * Props for the [`NavigationScrollContainer`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationScrollContainer/NavigationScrollContainer.tsx) component.
+ */
+export interface NavigationScrollContainerProps
+    extends React.ComponentPropsWithRef<"div"> {}
+
+/**
+ * Scrollable viewport container for navigation items and sections.
+ *
+ * Automatically records and restores scroll progress on mount and scroll events,
+ * coordinating with [`NavigationState`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationState/NavigationState.tsx)
+ * to keep scroll positions synchronized when navigating into and out of sub-menus.
+ *
+ * @example
+ * ```tsx
+ * <NavigationScrollContainer>
+ *     <NavigationSection>
+ *         <NavigationLink href="/" label="Home" />
+ *     </NavigationSection>
+ * </NavigationScrollContainer>
+ * ```
+ */
 export const NavigationScrollContainer: React.FC<
-    React.ComponentPropsWithRef<"div">
+    NavigationScrollContainerProps
 > = ({ ref, className, ...props }) => {
     const scrollContainerRef = useObjectRef(ref);
 

@@ -7,6 +7,23 @@ import styles from "./checkbox.module.css";
 import { CheckboxGroupContext } from "./context";
 import type { CheckboxGroupProps } from "./types";
 
+/**
+ * A container managing a set of related {@link Checkbox} controls.
+ *
+ * Coordinates group selection values, accessible group labels, helper descriptions,
+ * error validation messages, and consistent item spacing.
+ *
+ * @example
+ * ```tsx
+ * import { CheckboxGroup, Checkbox } from '@adgytec/web-ui-components';
+ *
+ * <CheckboxGroup label="Notification Preferences">
+ *     <Checkbox value="email">Email</Checkbox>
+ *     <Checkbox value="sms">SMS</Checkbox>
+ *     <Checkbox value="push">Push notifications</Checkbox>
+ * </CheckboxGroup>
+ * ```
+ */
 export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     label,
     description,

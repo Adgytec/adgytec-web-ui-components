@@ -5,6 +5,21 @@ import { NavigationItemLabelTypography, NavigationItemStyles } from "../core";
 import { NavigationItemIconRenderer } from "../NavigationItemIconRenderer";
 import type { NavigationLinkProps } from "./types";
 
+/**
+ * Anchor-based navigation item component.
+ *
+ * Renders an accessible navigation link that evaluates active URL state matching (using `href`),
+ * automatically toggles between resting and active icons, and applies Material Design 3
+ * active state pill backgrounds.
+ *
+ * @example
+ * ```tsx
+ * import { NavigationLink } from "@adgytec/web-ui-components";
+ * import { Home } from "lucide-react";
+ *
+ * <NavigationLink href="/dashboard" label="Dashboard" icon={Home} />
+ * ```
+ */
 export const NavigationLink: React.FC<NavigationLinkProps> = ({
     className,
     icon,

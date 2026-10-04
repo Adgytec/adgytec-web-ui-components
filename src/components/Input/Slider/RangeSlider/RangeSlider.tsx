@@ -15,6 +15,29 @@ import { SliderStops } from "../SliderStops";
 import { SliderThumb } from "../SliderThumb";
 import type { RangeSliderProps, RangeSliderType } from "./types";
 
+/**
+ * Material Design 3 dual-thumb range slider component.
+ *
+ * Allows users to choose a numeric range `[start, end]` using two independently draggable
+ * thumbs. Displays an active filled track between the thumbs, supports step indicators
+ * via [`SliderStops`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/SliderStops/SliderStops.tsx),
+ * and handles thumb overlap transitions.
+ *
+ * @example
+ * ```tsx
+ * import { RangeSlider } from "@adgytec/web-ui-components";
+ *
+ * <RangeSlider
+ *     label="Price Range"
+ *     minValue={0}
+ *     maxValue={1000}
+ *     defaultValue={[100, 500]}
+ *     step={25}
+ *     showInBetweenSteps
+ *     thumbLabels={["Minimum Price", "Maximum Price"]}
+ * />
+ * ```
+ */
 export const RangeSlider = <T extends RangeSliderType>({
     label,
     thumbLabels,

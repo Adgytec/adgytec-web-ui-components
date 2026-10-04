@@ -9,6 +9,52 @@ import { SideSheetDialog } from "./SideSheetDialog";
 import styles from "./sideSheet.module.css";
 import type { SideSheetProps } from "./types";
 
+/**
+ * High-level content container for side sheets, conforming to
+ * [Material 3 Side Sheets](https://m3.material.io/components/side-sheets/overview).
+ *
+ * Provides a standard structured side sheet layout containing:
+ * - A top header with an optional `headline` (`typography.titleLarge`) and a built-in close `IconButton` (`X`).
+ * - A scrollable `main` content area.
+ * - An optional bottom `actions` footer, automatically aligned with the sheet's alignment setting.
+ *
+ * Configurable CSS tokens:
+ * - `--md-side-sheet-background`: Background color of the side sheet (`var(--md-sys-color-surface-container-low)`).
+ * - `--md-side-sheet-color`: Text color of the side sheet (`var(--md-sys-color-on-surface)`).
+ * - `--md-side-sheet-headline-color`: Color of the side sheet headline (`var(--md-sys-color-on-surface-variant)`).
+ *
+ * @example
+ * ```tsx
+ * import { DialogTrigger } from "react-aria-components";
+ * import {
+ *     Button,
+ *     ModalOverlay,
+ *     SideSheet,
+ *     SideSheetModal,
+ * } from "@adgytec/web-ui-components";
+ *
+ * export function Example() {
+ *     return (
+ *         <DialogTrigger>
+ *             <Button label="Open Side Sheet" />
+ *             <ModalOverlay>
+ *                 <SideSheetModal alignment="end" layout="standard">
+ *                     <SideSheet
+ *                         headline="Side Sheet Title"
+ *                         actions={[
+ *                             <Button key="save" label="Save" onPress={() => {}} />,
+ *                             <Button key="cancel" label="Cancel" variant="outline" onPress={() => {}} />,
+ *                         ]}
+ *                     >
+ *                         <p>This is the side sheet content.</p>
+ *                     </SideSheet>
+ *                 </SideSheetModal>
+ *             </ModalOverlay>
+ *         </DialogTrigger>
+ *     );
+ * }
+ * ```
+ */
 export const SideSheet: React.FC<SideSheetProps> = ({
     headline,
     actions,

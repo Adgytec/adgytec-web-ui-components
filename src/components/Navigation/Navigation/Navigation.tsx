@@ -95,6 +95,34 @@ const Nav: React.FC<NavigationProps> = ({
     );
 };
 
+/**
+ * Main layout container for application navigation following Material Design 3 guidelines.
+ *
+ * Coordinates navigation header titles, dialog/drawer modal close buttons, scroll position synchronization,
+ * and context providers for link/button active states and portal-rendered sub-navigation panels.
+ * Automatically provides a [`NavigationState`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationState/NavigationState.tsx)
+ * if not already nested within one.
+ *
+ * @example
+ * ```tsx
+ * import {
+ *     Navigation,
+ *     NavigationSection,
+ *     NavigationLink,
+ * } from "@adgytec/web-ui-components";
+ * import { Home, Settings } from "lucide-react";
+ *
+ * <Navigation
+ *     label="Dashboard"
+ *     isLinkActive={(href) => window.location.pathname === href}
+ * >
+ *     <NavigationSection>
+ *         <NavigationLink href="/" label="Home" icon={Home} />
+ *         <NavigationLink href="/settings" label="Settings" icon={Settings} />
+ *     </NavigationSection>
+ * </Navigation>
+ * ```
+ */
 export const Navigation: React.FC<NavigationProps> = (props) => {
     const navStateCtx = useContext(NavigationStateContext);
 

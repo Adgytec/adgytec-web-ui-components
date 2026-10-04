@@ -12,9 +12,17 @@ import {
 } from "../../core";
 import styles from "./selectTrigger.module.css";
 
-export const SelectTrigger: React.FC<
-    Omit<React.ComponentPropsWithRef<typeof Button>, "children">
-> = (props) => {
+/**
+ * Props for the {@link SelectTrigger} component.
+ * Extends React Aria's `Button` props (excluding `children`).
+ */
+export interface SelectTriggerProps
+    extends Omit<React.ComponentPropsWithRef<typeof Button>, "children"> {}
+
+/**
+ * The clickable input trigger button that displays the selected value and toggles the select dropdown menu.
+ */
+export const SelectTrigger: React.FC<SelectTriggerProps> = (props) => {
     const selectContextVal = useContext(SelectStateContext);
     const invalid = selectContextVal?.displayValidation.isInvalid;
 

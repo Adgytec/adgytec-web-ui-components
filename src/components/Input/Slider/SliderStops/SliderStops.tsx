@@ -10,6 +10,24 @@ import {
 import styles from "./sliderStops.module.css";
 import type { SliderStopsProps } from "./types";
 
+/**
+ * Component that renders step tick mark indicators along a slider track.
+ *
+ * Positions tick indicators using percentage offsets computed from `minValue`, `maxValue`,
+ * and `step`. Distinguishes between active and inactive track sections and hides stops
+ * directly beneath active thumbs.
+ *
+ * @example
+ * ```tsx
+ * <SliderStops
+ *     minValue={0}
+ *     maxValue={100}
+ *     step={10}
+ *     orientation="horizontal"
+ *     showInBetweenSteps
+ * />
+ * ```
+ */
 export const SliderStops: React.FC<SliderStopsProps> = ({
     orientation,
     slider = "standard",

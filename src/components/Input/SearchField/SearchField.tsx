@@ -7,6 +7,22 @@ import { typography } from "@/utils";
 import styles from "./searchField.module.css";
 import type { SearchFieldProps } from "./types";
 
+/**
+ * A search input field providing a leading search icon and automatic clear button.
+ *
+ * Implements accessible search interactions based on React Aria's `SearchField`,
+ * clearing text via keyboard (`Escape`) or the integrated clear button.
+ *
+ * @example
+ * ```tsx
+ * import { SearchField } from '@adgytec/web-ui-components';
+ *
+ * <SearchField
+ *     placeholder="Search documents..."
+ *     onSubmit={(query) => console.log('Searching for:', query)}
+ * />
+ * ```
+ */
 export const SearchField: React.FC<SearchFieldProps> = ({
     placeholder = "Search",
     className,

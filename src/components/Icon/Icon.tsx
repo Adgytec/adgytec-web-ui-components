@@ -5,6 +5,35 @@ import clsx from "clsx";
 import styles from "./icon.module.css";
 import type { IconProps } from "./types";
 
+/**
+ * A standardized icon wrapper component implementing Material Design 3 icon sizing guidelines.
+ *
+ * Wraps `lucide-react` icons to enforce consistent sizing via predefined size tokens
+ * (`"dense"`, `"standard"`, `"medium"`, `"large"`, `"extra-large"`), custom numeric pixel values,
+ * or proportional `1em` inline text scaling via `withText`.
+ *
+ * @see https://m3.material.io/styles/icons/applying-icons
+ *
+ * @example
+ * ```tsx
+ * import { Icon } from '@adgytec/web-ui-components';
+ * import { Settings, AlertTriangle } from 'lucide-react';
+ *
+ * // Standard 24px icon (default)
+ * <Icon icon={Settings} />
+ *
+ * // Large preset icon
+ * <Icon icon={Settings} size="large" />
+ *
+ * // Explicit numeric pixel dimension
+ * <Icon icon={AlertTriangle} size={36} />
+ *
+ * // Inline with typography (scales to 1em)
+ * <h2>
+ *     <Icon icon={Settings} withText /> Account Settings
+ * </h2>
+ * ```
+ */
 export const Icon: React.FC<IconProps> = ({
     size,
     withText,

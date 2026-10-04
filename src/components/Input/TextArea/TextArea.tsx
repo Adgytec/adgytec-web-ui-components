@@ -19,6 +19,25 @@ import { useControllableState } from "../hooks";
 import { Label } from "../Label";
 import type { TextAreaProps } from "./types";
 
+/**
+ * A multiline text input component implementing Material Design 3 Text Area specifications.
+ *
+ * Supports accessible labels, helper descriptions, error messages, character counters,
+ * and customizable row heights.
+ *
+ * @example
+ * ```tsx
+ * import { TextArea } from '@adgytec/web-ui-components';
+ *
+ * <TextArea
+ *     label="Feedback"
+ *     placeholder="Describe your thoughts..."
+ *     rows={4}
+ *     maxLength={200}
+ *     showCharacterCount
+ * />
+ * ```
+ */
 export const TextArea: React.FC<TextAreaProps> = ({
     label,
     description,

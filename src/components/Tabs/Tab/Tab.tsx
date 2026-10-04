@@ -8,12 +8,50 @@ import { useSplash } from "@/components/Splash/useSplash";
 import { typography } from "@/utils";
 import styles from "./tab.module.css";
 
-export const Tab: React.FC<
-    Omit<React.ComponentPropsWithRef<typeof AriaTab>, "children"> & {
-        label?: ReactNode;
-        icon?: LucideIcon;
-    }
-> = ({ className, label, icon, onPress, ...props }) => {
+/**
+ * Props for the {@link Tab} component.
+ * Extends React Aria Components `Tab` props (omitting raw `children` in favor of `label` and `icon`).
+ */
+export interface TabProps
+    extends Omit<React.ComponentPropsWithRef<typeof AriaTab>, "children"> {
+    /**
+     * Text label to display inside the tab.
+     */
+    label?: ReactNode;
+
+    /**
+     * Optional icon displayed alongside the tab label.
+     */
+    icon?: LucideIcon;
+}
+
+/**
+ * An individual interactive tab button within a {@link TabList}, conforming to
+ * [Material 3 Tabs](https://m3.material.io/components/tabs/overview).
+ *
+ * Extends React Aria Components `Tab` with Material 3 styling, supporting:
+ * - A text `label` and an optional `icon` (rendered via {@link Icon}).
+ * - Interactive ripple feedback via {@link Splash}.
+ * - An animated {@link SelectionIndicator} that underlines or highlights the active tab.
+ * - State layer feedback on hover, focus-visible, and pressed states.
+ *
+ * @example
+ * ```tsx
+ * import { Tab } from "@adgytec/web-ui-components";
+ * import { Home } from "lucide-react";
+ *
+ * export function Example() {
+ *     return <Tab id="home" label="Home" icon={Home} />;
+ * }
+ * ```
+ */
+export const Tab: React.FC<TabProps> = ({
+    className,
+    label,
+    icon,
+    onPress,
+    ...props
+}) => {
     const { splashInfo, handlePress } = useSplash(onPress);
 
     return (

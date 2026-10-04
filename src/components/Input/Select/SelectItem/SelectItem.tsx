@@ -15,6 +15,25 @@ import { useSplash } from "@/components/Splash/useSplash";
 import { typography } from "@/utils";
 import type { SelectItemProps } from "./types";
 
+/**
+ * An individual option item within a {@link SelectList}.
+ *
+ * Implements Material Design 3 selection list item styling, featuring automatic checkmark
+ * display upon selection, optional leading and trailing icons, and multi-line supporting text.
+ *
+ * @example
+ * ```tsx
+ * import { SelectItem } from '@adgytec/web-ui-components';
+ * import { User } from 'lucide-react';
+ *
+ * <SelectItem
+ *     id="user-1"
+ *     label="Alex Smith"
+ *     supportingText="Administrator"
+ *     leadingIcon={User}
+ * />
+ * ```
+ */
 export const SelectItem: React.FC<SelectItemProps> = ({
     leadingIcon,
     label,

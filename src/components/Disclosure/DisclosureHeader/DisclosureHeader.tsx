@@ -14,11 +14,44 @@ import { TapTarget, type Typography } from "@/utils";
 import { useDisclosureTypographyContext } from "../context";
 import styles from "./disclosureHeader.module.css";
 
-export const DisclosureHeader: React.FC<
-    React.ComponentPropsWithRef<typeof Heading> & {
-        labelTypography?: Typography;
-    }
-> = ({ children, labelTypography, ...props }) => {
+/**
+ * Props for the {@link DisclosureHeader} component.
+ * Extends React Aria's {@link Heading} props.
+ */
+export interface DisclosureHeaderProps
+    extends React.ComponentPropsWithRef<typeof Heading> {
+    /**
+     * Custom typography style for the disclosure header label.
+     * Overrides the default or group-level typography.
+     *
+     * @default typography.titleMediumEmphasized
+     */
+    labelTypography?: Typography;
+}
+
+/**
+ * The interactive header that toggles expansion of a {@link Disclosure} component.
+ *
+ * Renders a semantic heading enclosing an accessible button trigger equipped with an expanding
+ * chevron indicator icon and Material Design touch ripple feedback.
+ *
+ * @example
+ * ```tsx
+ * import { Disclosure, DisclosureHeader, DisclosurePanel, typography } from '@adgytec/web-ui-components';
+ *
+ * <Disclosure>
+ *     <DisclosureHeader labelTypography={typography.titleLarge}>
+ *         Section Title
+ *     </DisclosureHeader>
+ *     <DisclosurePanel>Section Content</DisclosurePanel>
+ * </Disclosure>
+ * ```
+ */
+export const DisclosureHeader: React.FC<DisclosureHeaderProps> = ({
+    children,
+    labelTypography,
+    ...props
+}) => {
     const { splashInfo, handlePress } = useSplash();
 
     const disclosureContext = useContext(DisclosureStateContext);

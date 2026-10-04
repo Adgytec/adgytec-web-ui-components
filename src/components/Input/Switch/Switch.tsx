@@ -8,6 +8,21 @@ import { TapTarget } from "@/utils/tapTarget";
 import styles from "./switch.module.css";
 import type { SwitchProps } from "./types";
 
+/**
+ * A toggle switch control implementing Material Design 3 Switch specifications.
+ *
+ * Toggles a binary on/off setting with animated sliding thumb indicator, support for optional
+ * handle icons (such as checkmark and cross), and configurable label placement.
+ *
+ * @example
+ * ```tsx
+ * import { Switch } from '@adgytec/web-ui-components';
+ *
+ * <Switch isSelected={airplaneMode} onChange={setAirplaneMode}>
+ *     Airplane Mode
+ * </Switch>
+ * ```
+ */
 export const Switch: React.FC<SwitchProps> = ({
     className,
     children,
