@@ -18,7 +18,7 @@ export interface RichTooltipProps extends React.ComponentPropsWithRef<"div"> {}
  * Container component implementing [Material 3 Rich Tooltips](https://m3.material.io/components/tooltips/overview#89f33800-4f51-4043-9884-219159f427f7).
  *
  * Rich tooltips provide contextual information, descriptive subheads, body copy, and optional actions.
- * Typically rendered inside a `Popover` component triggered by a `DialogTrigger`.
+ * Typically rendered inside a `Popover` component triggered by a {@link RichTooltipTrigger}.
  *
  * Configurable CSS tokens:
  * - `--md-rich-tooltip-background`: Background color of the rich tooltip (`var(--md-sys-color-surface-container)`).
@@ -34,12 +34,12 @@ export interface RichTooltipProps extends React.ComponentPropsWithRef<"div"> {}
  *     RichTooltipInfo,
  *     RichTooltipSubhead,
  *     RichTooltipText,
+ *     RichTooltipTrigger,
  * } from "@adgytec/web-ui-components";
- * import { DialogTrigger } from "react-aria-components";
  *
  * export function Example() {
  *     return (
- *         <DialogTrigger>
+ *         <RichTooltipTrigger>
  *             <Button label="More Info" />
  *             <Popover>
  *                 <RichTooltip>
@@ -54,7 +54,7 @@ export interface RichTooltipProps extends React.ComponentPropsWithRef<"div"> {}
  *                     </RichTooltipActions>
  *                 </RichTooltip>
  *             </Popover>
- *         </DialogTrigger>
+ *         </RichTooltipTrigger>
  *     );
  * }
  * ```

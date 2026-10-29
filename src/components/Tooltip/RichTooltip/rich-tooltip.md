@@ -13,6 +13,7 @@ The `RichTooltip` component is an implementation of the [Material 3 rich tooltip
 
 Rich tooltips are composed of several sub-components:
 
+- `RichTooltipTrigger`: Trigger wrapper managing hover, focus, and long-press display states.
 - `RichTooltip`: The main container.
 - `RichTooltipInfo`: Container for the text content (subhead and text).
 - `RichTooltipSubhead`: The title/header of the tooltip.
@@ -20,6 +21,10 @@ Rich tooltips are composed of several sub-components:
 - `RichTooltipActions`: Container for action buttons at the bottom.
 
 ## Props
+
+### RichTooltipTrigger
+
+Extends [React Aria Components PreviewTrigger](https://react-spectrum.adobe.com/react-aria/PreviewTrigger.html).
 
 ### RichTooltip
 
@@ -39,33 +44,37 @@ Extends `React.ComponentPropsWithRef<"div">`. Recommended to use `Button` with `
 
 ## Usage
 
-Rich tooltips should be used within a `Popover` component.
+Rich tooltips should be used with a `RichTooltipTrigger` and a `Popover` component.
 
 ```tsx
 import {
+    Button,
+    Popover,
     RichTooltip,
+    RichTooltipActions,
     RichTooltipInfo,
     RichTooltipSubhead,
     RichTooltipText,
-    RichTooltipActions,
-    Popover,
-    Button,
+    RichTooltipTrigger,
 } from "@adgytec/web-ui-components";
 
-<Popover>
-    <RichTooltip>
-        <RichTooltipInfo>
-            <RichTooltipSubhead>Rich Tooltip Title</RichTooltipSubhead>
-            <RichTooltipText>
-                Rich tooltips provide more information than plain tooltips. They
-                can include interactive elements like buttons.
-            </RichTooltipText>
-        </RichTooltipInfo>
-        <RichTooltipActions>
-            <Button label="Learn More" size="small" color="text" />
-        </RichTooltipActions>
-    </RichTooltip>
-</Popover>;
+<RichTooltipTrigger>
+    <Button label="More Info" />
+    <Popover>
+        <RichTooltip>
+            <RichTooltipInfo>
+                <RichTooltipSubhead>Rich Tooltip Title</RichTooltipSubhead>
+                <RichTooltipText>
+                    Rich tooltips provide more information than plain tooltips.
+                    They can include interactive elements like buttons.
+                </RichTooltipText>
+            </RichTooltipInfo>
+            <RichTooltipActions>
+                <Button label="Learn More" size="small" color="text" />
+            </RichTooltipActions>
+        </RichTooltip>
+    </Popover>
+</RichTooltipTrigger>;
 ```
 
 
