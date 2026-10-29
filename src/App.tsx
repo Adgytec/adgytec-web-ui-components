@@ -77,6 +77,7 @@ import {
     RichTooltipInfo,
     RichTooltipSubhead,
     RichTooltipText,
+    RichTooltipTrigger,
     Tooltip,
     TooltipTrigger,
 } from "./components/Tooltip";
@@ -488,7 +489,7 @@ const TooltipPreview = () => {
                 <Tooltip>Lorem ipsum dolor sit amet.</Tooltip>
             </TooltipTrigger>
 
-            <DialogTrigger>
+            <RichTooltipTrigger>
                 <Button>Rich Tooltip</Button>
 
                 <Popover>
@@ -517,7 +518,7 @@ const TooltipPreview = () => {
                         </RichTooltipActions>
                     </RichTooltip>
                 </Popover>
-            </DialogTrigger>
+            </RichTooltipTrigger>
         </div>
     );
 };
