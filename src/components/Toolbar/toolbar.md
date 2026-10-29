@@ -2,15 +2,15 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default (Standard) | Default (Vibrant) | Description |
-|-------|-------------------|------------------|-------------|
-| `--md-toolbar-background` | `var(--md-sys-color-surface-container)` | `var(--md-sys-color-primary-container)` | Background color of the toolbar. |
-| `--md-toolbar-button-background` | `var(--md-sys-color-surface-container)` | `var(--md-sys-color-primary-container)` | Background color for buttons within the toolbar. |
-| `--md-toolbar-toggle-button-background` | `var(--md-sys-color-surface-container)` | `var(--md-sys-color-primary-container)` | Background color for toggle buttons within the toolbar. |
-| `--md-toolbar-toggle-button-selected-background` | `var(--md-sys-color-secondary-container)` | `var(--md-sys-color-surface-container)` | Background color for selected toggle buttons. |
-| `--md-toolbar-button-color` | `var(--md-sys-color-on-surface-variant)` | `var(--md-sys-color-on-primary-container)` | Text/icon color for buttons within the toolbar. |
-| `--md-toolbar-toggle-button-color` | `var(--md-sys-color-on-surface-variant)` | `var(--md-sys-color-on-primary-container)` | Text/icon color for toggle buttons within the toolbar. |
-| `--md-toolbar-toggle-button-selected-color` | `var(--md-sys-color-on-secondary-container)` | `var(--md-sys-color-on-surface)` | Text/icon color for selected toggle buttons. |
+| Token                                            | Default (Standard)                           | Default (Vibrant)                          | Description                                             |
+| ------------------------------------------------ | -------------------------------------------- | ------------------------------------------ | ------------------------------------------------------- |
+| `--md-toolbar-background`                        | `var(--md-sys-color-surface-container)`      | `var(--md-sys-color-primary-container)`    | Background color of the toolbar.                        |
+| `--md-toolbar-button-background`                 | `var(--md-sys-color-surface-container)`      | `var(--md-sys-color-primary-container)`    | Background color for buttons within the toolbar.        |
+| `--md-toolbar-toggle-button-background`          | `var(--md-sys-color-surface-container)`      | `var(--md-sys-color-primary-container)`    | Background color for toggle buttons within the toolbar. |
+| `--md-toolbar-toggle-button-selected-background` | `var(--md-sys-color-secondary-container)`    | `var(--md-sys-color-surface-container)`    | Background color for selected toggle buttons.           |
+| `--md-toolbar-button-color`                      | `var(--md-sys-color-on-surface-variant)`     | `var(--md-sys-color-on-primary-container)` | Text/icon color for buttons within the toolbar.         |
+| `--md-toolbar-toggle-button-color`               | `var(--md-sys-color-on-surface-variant)`     | `var(--md-sys-color-on-primary-container)` | Text/icon color for toggle buttons within the toolbar.  |
+| `--md-toolbar-toggle-button-selected-color`      | `var(--md-sys-color-on-secondary-container)` | `var(--md-sys-color-on-surface)`           | Text/icon color for selected toggle buttons.            |
 
 The `Toolbar` component is a container for a set of related actions, such as buttons, toggle buttons, and dividers. It follows Material 3 design patterns for layout and styling.
 
@@ -20,10 +20,10 @@ The `Toolbar` component extends the [React Aria Components Toolbar](https://reac
 
 ### Additional Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `"docked" \| "floating"` | `"docked"` | The visual variant of the toolbar. `"floating"` adds a shadow. |
-| `color` | `"standard" \| "vibrant"` | `"standard"` | The color scheme of the toolbar. |
+| Prop      | Type                      | Default      | Description                                                    |
+| --------- | ------------------------- | ------------ | -------------------------------------------------------------- |
+| `variant` | `"docked" \| "floating"`  | `"docked"`   | The visual variant of the toolbar. `"floating"` adds a shadow. |
+| `color`   | `"standard" \| "vibrant"` | `"standard"` | The color scheme of the toolbar.                               |
 
 ## Usage
 

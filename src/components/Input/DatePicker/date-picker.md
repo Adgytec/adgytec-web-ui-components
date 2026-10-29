@@ -2,8 +2,8 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
+| Token                                  | Default Value                 | Description                                                   |
+| -------------------------------------- | ----------------------------- | ------------------------------------------------------------- |
 | `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the date picker's input is focused. |
 
 The `DatePicker` component combines a `DateField` with a `Calendar` popover, allowing users to select a date either by typing or by using a visual calendar.
@@ -17,36 +17,33 @@ The `DatePicker` component combines a `DateField` with a `Calendar` popover, all
 
 Both `DatePicker` and `DateRangePicker` extend their respective [React Aria Components](https://react-spectrum.adobe.com/react-aria/DatePicker.html) (excluding `children`).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `ReactNode` | — | The label for the date picker. |
-| `description` | `ReactNode` | — | Help text displayed below the input. |
-| `errorMessage` | `ReactNode \| ((v: ValidationResult) => ReactNode)` | — | Error message displayed when validation fails. |
-| `showDescriptionOnInvalid` | `boolean` | `false` | Whether to keep showing the description when the input is invalid. |
-| `weekdayStyle` | `"narrow" \| "short"` | — | The formatting style for weekday headers in the calendar popover. |
+| Prop                       | Type                                                | Default | Description                                                        |
+| -------------------------- | --------------------------------------------------- | ------- | ------------------------------------------------------------------ |
+| `label`                    | `ReactNode`                                         | —       | The label for the date picker.                                     |
+| `description`              | `ReactNode`                                         | —       | Help text displayed below the input.                               |
+| `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —       | Error message displayed when validation fails.                     |
+| `showDescriptionOnInvalid` | `boolean`                                           | `false` | Whether to keep showing the description when the input is invalid. |
+| `weekdayStyle`             | `"narrow" \| "short"`                               | —       | The formatting style for weekday headers in the calendar popover.  |
 
 ## Usage
 
 ### Single Date Picker
 
 ```tsx
-import { DatePicker } from '@adgytec/web-ui-components';
+import { DatePicker } from "@adgytec/web-ui-components";
 
-<DatePicker 
-  label="Event Date" 
-  description="Select the date for the event"
-/>
+<DatePicker label="Event Date" description="Select the date for the event" />;
 ```
 
 ### Date Range Picker
 
 ```tsx
-import { DateRangePicker } from '@adgytec/web-ui-components';
+import { DateRangePicker } from "@adgytec/web-ui-components";
 
-<DateRangePicker 
-  label="Stay Period" 
-  description="Select your check-in and check-out dates"
-/>
+<DateRangePicker
+    label="Stay Period"
+    description="Select your check-in and check-out dates"
+/>;
 ```
 
 ## Internal Structure

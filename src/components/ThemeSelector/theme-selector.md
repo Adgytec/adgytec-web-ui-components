@@ -5,9 +5,11 @@ The `ThemeSelector` component provides a user interface for managing application
 ## Components
 
 ### `ThemeSelector`
+
 The UI component that renders the settings controls. It uses the `useTheme` hook internally to manage state.
 
 ### `ThemeProvider`
+
 A component that should wrap your application. It listens to theme changes from the `useTheme` hook and applies the corresponding `data-theme` attribute to the `document.documentElement`.
 
 ## Props
@@ -16,11 +18,11 @@ A component that should wrap your application. It listens to theme changes from 
 
 The `ThemeSelector` accepts optional translation objects to customize the labels and descriptions.
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `modeDetails` | `ThemeModeTranslations` | Customizes text for the Theme Mode section. |
-| `contrastDetails` | `ThemeContrastTranslations` | Customizes text for the Theme Contrast section. |
-| `monochromeDetails` | `ThemeMonochromeTranslations` | Customizes text for the Monochrome section. |
+| Prop                | Type                          | Description                                     |
+| ------------------- | ----------------------------- | ----------------------------------------------- |
+| `modeDetails`       | `ThemeModeTranslations`       | Customizes text for the Theme Mode section.     |
+| `contrastDetails`   | `ThemeContrastTranslations`   | Customizes text for the Theme Contrast section. |
+| `monochromeDetails` | `ThemeMonochromeTranslations` | Customizes text for the Monochrome section.     |
 
 #### Translation Interfaces
 
@@ -50,34 +52,34 @@ export interface ThemeMonochromeTranslations extends ThemeBaseTranslations {}
 To use the theme selection system, wrap your app in `ThemeProvider` and then render the `ThemeSelector` where needed (e.g., in a settings menu).
 
 ```tsx
-import { ThemeProvider, ThemeSelector } from '@adgytec/web-ui-components';
+import { ThemeProvider, ThemeSelector } from "@adgytec/web-ui-components";
 
 function App() {
-  return (
-    <ThemeProvider>
-      <MainLayout>
-        {/* ... app content ... */}
-        <SettingsDialog>
-          <ThemeSelector />
-        </SettingsDialog>
-      </MainLayout>
-    </ThemeProvider>
-  );
+    return (
+        <ThemeProvider>
+            <MainLayout>
+                {/* ... app content ... */}
+                <SettingsDialog>
+                    <ThemeSelector />
+                </SettingsDialog>
+            </MainLayout>
+        </ThemeProvider>
+    );
 }
 ```
 
 ### Custom Translations
 
 ```tsx
-<ThemeSelector 
-  modeDetails={{
-    heading: "Appearance",
-    description: "Customize how the app looks.",
-    system: "Auto",
-    light: "Day",
-    dark: "Night"
-  }}
-/>
+<ThemeSelector
+    modeDetails={{
+        heading: "Appearance",
+        description: "Customize how the app looks.",
+        system: "Auto",
+        light: "Day",
+        dark: "Night",
+    }}
+/>;
 ```
 
 

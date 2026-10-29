@@ -2,10 +2,10 @@
 
 ## Configurable CSS Tokens
 
-| Token | Description |
-|-------|-------------|
-| `--md-button-background` | Background color of the link button. |
-| `--md-button-color` | Text and icon color of the link button. |
+| Token                       | Description                                                    |
+| --------------------------- | -------------------------------------------------------------- |
+| `--md-button-background`    | Background color of the link button.                           |
+| `--md-button-color`         | Text and icon color of the link button.                        |
 | `--md-button-outline-color` | Outline color (specifically for the `outlined` color variant). |
 
 The `LinkButton` component combines the visual appearance of a Material 3 button with the functionality of a hyperlink. It is used for navigation actions that should look like buttons.
@@ -14,15 +14,15 @@ The `LinkButton` component combines the visual appearance of a Material 3 button
 
 The `LinkButton` component extends [React Aria Components Link](https://react-spectrum.adobe.com/react-aria/Link.html).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `href` | `string` | — | The URL the link points to. |
-| `color` | `"filled" \| "tonal" \| "outlined" \| "elevated" \| "text"` | `"filled"` | The visual style and color scheme. |
-| `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The size of the button. |
-| `shape` | `"round" \| "square"` | `"round"` | The corner radius of the button. |
-| `icon` | `LucideIcon` | — | An optional icon to display within the button. |
-| `iconPlacement` | `"start" \| "end"` | `"start"` | The position of the icon relative to the text. |
-| `tooltip` | `string` | — | Optional tooltip text displayed on hover. |
+| Prop            | Type                                                               | Default    | Description                                    |
+| --------------- | ------------------------------------------------------------------ | ---------- | ---------------------------------------------- |
+| `href`          | `string`                                                           | —          | The URL the link points to.                    |
+| `color`         | `"filled" \| "tonal" \| "outlined" \| "elevated" \| "text"`        | `"filled"` | The visual style and color scheme.             |
+| `size`          | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"`  | The size of the button.                        |
+| `shape`         | `"round" \| "square"`                                              | `"round"`  | The corner radius of the button.               |
+| `icon`          | `LucideIcon`                                                       | —          | An optional icon to display within the button. |
+| `iconPlacement` | `"start" \| "end"`                                                 | `"start"`  | The position of the icon relative to the text. |
+| `tooltip`       | `string`                                                           | —          | Optional tooltip text displayed on hover.      |
 
 ## Usage
 

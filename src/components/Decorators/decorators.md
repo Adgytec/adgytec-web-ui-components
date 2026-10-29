@@ -14,13 +14,13 @@ The `GridBackgroundDecorator` component displays a structured grid overlay, help
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `zIndex` | `number` | `0` | Z-index layer depth for the decorator container. |
-| `className` | `string` | — | Additional CSS class names. |
-| `style` | `React.CSSProperties` | — | Custom inline styles. |
-| `gridSize` | `number` | `40` | Grid spacing size in pixels. |
-| `variant` | `"lines" \| "dots"` | `"lines"` | Visual grid style. |
+| Prop        | Type                  | Default   | Description                                      |
+| ----------- | --------------------- | --------- | ------------------------------------------------ |
+| `zIndex`    | `number`              | `0`       | Z-index layer depth for the decorator container. |
+| `className` | `string`              | —         | Additional CSS class names.                      |
+| `style`     | `React.CSSProperties` | —         | Custom inline styles.                            |
+| `gridSize`  | `number`              | `40`      | Grid spacing size in pixels.                     |
+| `variant`   | `"lines" \| "dots"`   | `"lines"` | Visual grid style.                               |
 
 ### Usage
 
@@ -42,26 +42,26 @@ The `RadialGlowDecorator` component layers multiple blurred radial blobs to crea
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `zIndex` | `number` | `-10` | Z-index layer depth for the decorator container. |
-| `className` | `string` | — | Additional CSS class names. |
-| `style` | `React.CSSProperties` | — | Custom inline styles. |
-| `variant` | `"default" \| "split" \| "top-bar" \| "corners" \| "aurora" \| "spotlight" \| "nebula" \| "horizon" \| "spiral"` | `"default"` | Predefined layout and motion variant. |
+| Prop        | Type                                                                                                             | Default     | Description                                      |
+| ----------- | ---------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------ |
+| `zIndex`    | `number`                                                                                                         | `-10`       | Z-index layer depth for the decorator container. |
+| `className` | `string`                                                                                                         | —           | Additional CSS class names.                      |
+| `style`     | `React.CSSProperties`                                                                                            | —           | Custom inline styles.                            |
+| `variant`   | `"default" \| "split" \| "top-bar" \| "corners" \| "aurora" \| "spotlight" \| "nebula" \| "horizon" \| "spiral"` | `"default"` | Predefined layout and motion variant.            |
 
 ### Layout Variants
 
-| Variant | Blobs | Animation | Best For |
-|---------|-------|-----------|----------|
-| `"default"` | 3 Blobs (Primary, Tertiary, Secondary) | Static placement | General page backgrounds |
-| `"split"` | 2 Blobs (Left primary, Right tertiary) | Static placement | Two-column layouts |
-| `"top-bar"` | 3 Blobs aligned horizontally at top | Static placement | Headers and landing page top folds |
-| `"corners"` | 4 Blobs positioned in all corners | Static placement | Framing content containers |
-| `"aurora"` | 4 Blobs (Organic floating) | Continuous floating drift | Dreamy, atmospheric visual aesthetics |
-| `"spotlight"`| 3 Centered layered blobs | Organic pulsating scale | Hero sections and centered elements |
-| `"nebula"` | 4 Blobs drifting organically | Rotational & orbital drifting | Immersive, fluid cosmic background looks |
-| `"horizon"` | 3 Oval bottom-anchored blobs | Rising/pulsating scale | Grounding footers or landing page ends |
-| `"spiral"`  | 3 Blobs orbiting the center | Circular orbit & scale path | High-motion, interactive centerpiece feel |
+| Variant       | Blobs                                  | Animation                     | Best For                                  |
+| ------------- | -------------------------------------- | ----------------------------- | ----------------------------------------- |
+| `"default"`   | 3 Blobs (Primary, Tertiary, Secondary) | Static placement              | General page backgrounds                  |
+| `"split"`     | 2 Blobs (Left primary, Right tertiary) | Static placement              | Two-column layouts                        |
+| `"top-bar"`   | 3 Blobs aligned horizontally at top    | Static placement              | Headers and landing page top folds        |
+| `"corners"`   | 4 Blobs positioned in all corners      | Static placement              | Framing content containers                |
+| `"aurora"`    | 4 Blobs (Organic floating)             | Continuous floating drift     | Dreamy, atmospheric visual aesthetics     |
+| `"spotlight"` | 3 Centered layered blobs               | Organic pulsating scale       | Hero sections and centered elements       |
+| `"nebula"`    | 4 Blobs drifting organically           | Rotational & orbital drifting | Immersive, fluid cosmic background looks  |
+| `"horizon"`   | 3 Oval bottom-anchored blobs           | Rising/pulsating scale        | Grounding footers or landing page ends    |
+| `"spiral"`    | 3 Blobs orbiting the center            | Circular orbit & scale path   | High-motion, interactive centerpiece feel |
 ### Usage
 
 ```tsx

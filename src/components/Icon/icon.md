@@ -6,22 +6,22 @@ The `Icon` component is a wrapper around `lucide-react` icons that enforces cons
 
 Extends the standard `lucide-react` icon properties, overriding the `size` prop to accept design system sizes.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `icon` | `LucideIcon` | **Required** | The Lucide icon component to render. |
-| `size` | `IconSize \| number` | `"standard"` | The size of the icon. Can be a predefined string or a specific pixel number. |
-| `withText` | `boolean` | `false` | If true, the icon's width and height are set to `1em` to scale proportionally with surrounding text typography. *Note: When `withText` is true, the `size` prop is ignored.* |
+| Prop       | Type                 | Default      | Description                                                                                                                                                                  |
+| ---------- | -------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `icon`     | `LucideIcon`         | **Required** | The Lucide icon component to render.                                                                                                                                         |
+| `size`     | `IconSize \| number` | `"standard"` | The size of the icon. Can be a predefined string or a specific pixel number.                                                                                                 |
+| `withText` | `boolean`            | `false`      | If true, the icon's width and height are set to `1em` to scale proportionally with surrounding text typography. _Note: When `withText` is true, the `size` prop is ignored._ |
 
 ### Predefined Sizes
 
 When using predefined string sizes, the component applies standard Material 3 dimensions via CSS variables:
 
-| `size` variant | CSS Variable Used |
-|----------------|-------------------|
-| `"dense"` | `var(--md-sys-icon-dense)` |
-| `"standard"` | `var(--md-sys-icon-standard)` |
-| `"medium"` | `var(--md-sys-icon-medium)` |
-| `"large"` | `var(--md-sys-icon-large)` |
+| `size` variant  | CSS Variable Used                |
+| --------------- | -------------------------------- |
+| `"dense"`       | `var(--md-sys-icon-dense)`       |
+| `"standard"`    | `var(--md-sys-icon-standard)`    |
+| `"medium"`      | `var(--md-sys-icon-medium)`      |
+| `"large"`       | `var(--md-sys-icon-large)`       |
 | `"extra-large"` | `var(--md-sys-icon-extra-large)` |
 
 ## Usage

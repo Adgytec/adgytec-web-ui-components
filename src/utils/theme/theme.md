@@ -8,24 +8,24 @@ A hook that manages the theme state, persisting it to `localStorage` and syncing
 
 ### Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `defaultThemeMode` | `ThemeMode` | `"system"` | Initial theme mode (`"system"`, `"dark"`, `"light"`). |
-| `defaultContrast` | `ThemeContrast` | `"standard"` | Initial contrast level (`"standard"`, `"medium"`, `"high"`). |
-| `isMonochrome` | `boolean` | `false` | Whether monochrome mode is enabled. |
-| `localStorageKey` | `string` | `"application-theme"` | Key used for `localStorage` persistence. |
+| Option             | Type            | Default               | Description                                                  |
+| ------------------ | --------------- | --------------------- | ------------------------------------------------------------ |
+| `defaultThemeMode` | `ThemeMode`     | `"system"`            | Initial theme mode (`"system"`, `"dark"`, `"light"`).        |
+| `defaultContrast`  | `ThemeContrast` | `"standard"`          | Initial contrast level (`"standard"`, `"medium"`, `"high"`). |
+| `isMonochrome`     | `boolean`       | `false`               | Whether monochrome mode is enabled.                          |
+| `localStorageKey`  | `string`        | `"application-theme"` | Key used for `localStorage` persistence.                     |
 
 ### Return Value
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `mode` | `ThemeMode` | Current theme mode. |
-| `contrast` | `ThemeContrast` | Current contrast level. |
-| `isMonochrome` | `boolean` | Current monochrome status. |
-| `isDarkMode` | `boolean` | Calculated boolean indicating if dark mode is active (considers OS preference if mode is `"system"`). |
-| `setMode` | `(mode: ThemeMode) => void` | Updates the theme mode. |
-| `setContrast` | `(contrast: ThemeContrast) => void` | Updates the contrast level. |
-| `setMonochrome` | `(isMonochrome: boolean) => void` | Toggles monochrome mode. |
+| Property        | Type                                | Description                                                                                           |
+| --------------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `mode`          | `ThemeMode`                         | Current theme mode.                                                                                   |
+| `contrast`      | `ThemeContrast`                     | Current contrast level.                                                                               |
+| `isMonochrome`  | `boolean`                           | Current monochrome status.                                                                            |
+| `isDarkMode`    | `boolean`                           | Calculated boolean indicating if dark mode is active (considers OS preference if mode is `"system"`). |
+| `setMode`       | `(mode: ThemeMode) => void`         | Updates the theme mode.                                                                               |
+| `setContrast`   | `(contrast: ThemeContrast) => void` | Updates the contrast level.                                                                           |
+| `setMonochrome` | `(isMonochrome: boolean) => void`   | Toggles monochrome mode.                                                                              |
 
 ## `buildThemeString` Function
 
@@ -45,28 +45,30 @@ A string like `"dark-high-contrast"`, `"light"`, or `"monochrome-dark"`.
 ## Usage
 
 ```tsx
-import { useTheme, buildThemeString } from '@adgytec/web-ui-components';
-import { useEffect } from 'react';
+import { useTheme, buildThemeString } from "@adgytec/web-ui-components";
+import { useEffect } from "react";
 
 function App() {
-  const theme = useTheme();
+    const theme = useTheme();
 
-  useEffect(() => {
-    const themeString = buildThemeString({
-      isDarkMode: theme.isDarkMode,
-      isMonochrome: theme.isMonochrome,
-      contrast: theme.contrast
-    });
-    
-    document.documentElement.setAttribute('data-theme', themeString);
-  }, [theme]);
+    useEffect(() => {
+        const themeString = buildThemeString({
+            isDarkMode: theme.isDarkMode,
+            isMonochrome: theme.isMonochrome,
+            contrast: theme.contrast,
+        });
 
-  return (
-    <div>
-      <button onClick={() => theme.setMode('dark')}>Dark Mode</button>
-      <button onClick={() => theme.setContrast('high')}>High Contrast</button>
-    </div>
-  );
+        document.documentElement.setAttribute("data-theme", themeString);
+    }, [theme]);
+
+    return (
+        <div>
+            <button onClick={() => theme.setMode("dark")}>Dark Mode</button>
+            <button onClick={() => theme.setContrast("high")}>
+                High Contrast
+            </button>
+        </div>
+    );
 }
 ```
 

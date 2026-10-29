@@ -2,8 +2,8 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
+| Token                                  | Default Value                 | Description                                          |
+| -------------------------------------- | ----------------------------- | ---------------------------------------------------- |
 | `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the time field is focused. |
 
 The `TimeField` component allows users to enter and edit a time value using a keyboard, with validation and segment-based input. It implements Material 3 text field patterns for its layout.
@@ -12,24 +12,24 @@ The `TimeField` component allows users to enter and edit a time value using a ke
 
 The `TimeField` component extends [React Aria Components TimeField](https://react-spectrum.adobe.com/react-aria/TimeField.html) (excluding `children`).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `ReactNode` | — | The label for the time field. |
-| `description` | `ReactNode` | — | Help text displayed below the input. |
-| `errorMessage` | `ReactNode \| ((v: ValidationResult) => ReactNode)` | — | Error message displayed when validation fails. |
-| `showDescriptionOnInvalid` | `boolean` | `false` | Whether to keep showing the description when the input is invalid. |
+| Prop                       | Type                                                | Default | Description                                                        |
+| -------------------------- | --------------------------------------------------- | ------- | ------------------------------------------------------------------ |
+| `label`                    | `ReactNode`                                         | —       | The label for the time field.                                      |
+| `description`              | `ReactNode`                                         | —       | Help text displayed below the input.                               |
+| `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —       | Error message displayed when validation fails.                     |
+| `showDescriptionOnInvalid` | `boolean`                                           | `false` | Whether to keep showing the description when the input is invalid. |
 
 ## Usage
 
 ```tsx
-import { TimeField } from '@adgytec/web-ui-components';
-import { Time } from '@internationalized/date';
+import { TimeField } from "@adgytec/web-ui-components";
+import { Time } from "@internationalized/date";
 
-<TimeField 
-  label="Appointment Time" 
-  description="Please enter the desired time"
-  defaultValue={new Time(9, 0)}
-/>
+<TimeField
+    label="Appointment Time"
+    description="Please enter the desired time"
+    defaultValue={new Time(9, 0)}
+/>;
 ```
 
 ## Internal Structure

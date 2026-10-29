@@ -11,18 +11,23 @@ The `Popover` component extends the [React Aria Components Popover](https://reac
 Popovers are typically used within a trigger component like `DialogTrigger`, `MenuTrigger`, or `TooltipTrigger`.
 
 ```tsx
-import { Popover, Button, DialogTrigger, Dialog } from '@adgytec/web-ui-components';
+import {
+    Popover,
+    Button,
+    DialogTrigger,
+    Dialog,
+} from "@adgytec/web-ui-components";
 
 <DialogTrigger>
-  <Button label="Open Popover" />
-  <Popover>
-    <Dialog>
-      <div style={{ padding: '16px' }}>
-        This is the content inside the popover.
-      </div>
-    </Dialog>
-  </Popover>
-</DialogTrigger>
+    <Button label="Open Popover" />
+    <Popover>
+        <Dialog>
+            <div style={{ padding: "16px" }}>
+                This is the content inside the popover.
+            </div>
+        </Dialog>
+    </Popover>
+</DialogTrigger>;
 ```
 
 

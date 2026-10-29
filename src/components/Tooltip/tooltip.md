@@ -2,10 +2,10 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
-| `--md-tooltip-background` | `var(--md-sys-color-inverse-surface)` | Background color of the tooltip. |
-| `--md-tooltip-color` | `var(--md-sys-color-inverse-on-surface)` | Text color of the tooltip. |
+| Token                     | Default Value                            | Description                      |
+| ------------------------- | ---------------------------------------- | -------------------------------- |
+| `--md-tooltip-background` | `var(--md-sys-color-inverse-surface)`    | Background color of the tooltip. |
+| `--md-tooltip-color`      | `var(--md-sys-color-inverse-on-surface)` | Text color of the tooltip.       |
 
 The `Tooltip` component is an implementation of the [Material 3 tooltip](https://m3.material.io/components/tooltips/overview) and provides brief, informative messages when a user hovers over, focuses on, or long-presses an element.
 
@@ -15,20 +15,20 @@ The `Tooltip` component extends the [React Aria Components Tooltip](https://reac
 
 ### Additional Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `offset` | `number` | `4` | The distance between the tooltip and the trigger element. |
+| Prop     | Type     | Default | Description                                               |
+| -------- | -------- | ------- | --------------------------------------------------------- |
+| `offset` | `number` | `4`     | The distance between the tooltip and the trigger element. |
 
 ## Usage
 
 ```tsx
-import { Tooltip, TooltipTrigger } from '@adgytec/web-ui-components';
-import { Button } from '@adgytec/web-ui-components';
+import { Tooltip, TooltipTrigger } from "@adgytec/web-ui-components";
+import { Button } from "@adgytec/web-ui-components";
 
 <TooltipTrigger>
-  <Button label="Hover me" />
-  <Tooltip>This is a helpful tooltip</Tooltip>
-</TooltipTrigger>
+    <Button label="Hover me" />
+    <Tooltip>This is a helpful tooltip</Tooltip>
+</TooltipTrigger>;
 ```
 
 

@@ -2,14 +2,14 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
-| `--md-chip-background-color` | `var(--md-sys-color-surface-container-low)` | Background color of the tag in its default state. |
-| `--md-chip-selected-background-color` | `var(--md-sys-color-secondary-container)` | Background color of the tag when it is selected. |
-| `--md-chip-icon-color` | `var(--md-sys-color-primary)` | Color of the icon in the tag in its default state. |
-| `--md-chip-selected-icon-color` | `var(--md-sys-color-on-secondary-container)` | Color of the icon in the tag when it is selected. |
-| `--md-chip-label-color` | `var(--md-sys-color-on-surface-variant)` | Color of the label text in the tag in its default state. |
-| `--md-chip-selected-label-color` | `var(--md-sys-color-on-secondary-container)` | Color of the label text in the tag when it is selected. |
+| Token                                 | Default Value                                | Description                                              |
+| ------------------------------------- | -------------------------------------------- | -------------------------------------------------------- |
+| `--md-chip-background-color`          | `var(--md-sys-color-surface-container-low)`  | Background color of the tag in its default state.        |
+| `--md-chip-selected-background-color` | `var(--md-sys-color-secondary-container)`    | Background color of the tag when it is selected.         |
+| `--md-chip-icon-color`                | `var(--md-sys-color-primary)`                | Color of the icon in the tag in its default state.       |
+| `--md-chip-selected-icon-color`       | `var(--md-sys-color-on-secondary-container)` | Color of the icon in the tag when it is selected.        |
+| `--md-chip-label-color`               | `var(--md-sys-color-on-surface-variant)`     | Color of the label text in the tag in its default state. |
+| `--md-chip-selected-label-color`      | `var(--md-sys-color-on-secondary-container)` | Color of the label text in the tag when it is selected.  |
 
 The `Tag` component is an implementation of the [Material 3 expressive chip](https://m3.material.io/components/chips/overview) and is used to represent a small piece of information or an attribute. It can include an icon or an avatar and supports selection and removal states.
 
@@ -19,11 +19,11 @@ The `Tag` component extends the [React Aria Components Tag](https://react-spectr
 
 ### Additional Props
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `label` | `string` | **Required.** The text content to be displayed within the tag. |
-| `icon` | `LucideIcon` | An optional icon to be displayed at the start of the tag. If both `icon` and `avatar` are provided, `avatar` takes priority. |
-| `avatar` | `ReactNode` | An optional avatar element to be displayed at the start of the tag. |
+| Prop     | Type         | Description                                                                                                                  |
+| -------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| `label`  | `string`     | **Required.** The text content to be displayed within the tag.                                                               |
+| `icon`   | `LucideIcon` | An optional icon to be displayed at the start of the tag. If both `icon` and `avatar` are provided, `avatar` takes priority. |
+| `avatar` | `ReactNode`  | An optional avatar element to be displayed at the start of the tag.                                                          |
 
 ## Usage
 

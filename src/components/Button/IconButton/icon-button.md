@@ -2,10 +2,10 @@
 
 ## Configurable CSS Tokens
 
-| Token | Description |
-|-------|-------------|
-| `--md-button-background` | Background color of the button. |
-| `--md-button-color` | Color of the icon. |
+| Token                       | Description                                                    |
+| --------------------------- | -------------------------------------------------------------- |
+| `--md-button-background`    | Background color of the button.                                |
+| `--md-button-color`         | Color of the icon.                                             |
 | `--md-button-outline-color` | Outline color (specifically for the `outlined` color variant). |
 
 The `IconButton` component is an implementation of [Material 3 Icon Buttons](https://m3.material.io/components/icon-buttons/overview). It is used for compact actions that can be represented by a single icon.
@@ -14,14 +14,14 @@ The `IconButton` component is an implementation of [Material 3 Icon Buttons](htt
 
 The `IconButton` component extends [React Aria Components Button](https://react-spectrum.adobe.com/react-aria/Button.html) (excluding `children`).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `icon` | `LucideIcon` | **Required** | The icon to display. |
-| `color` | `"filled" \| "tonal" \| "outlined" \| "standard"` | `"filled"` | The visual style and color scheme. |
-| `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The size of the button and icon. |
-| `shape` | `"round" \| "square"` | `"round"` | The corner radius of the button. |
-| `width` | `"default" \| "wide"` | `"default"` | Controls whether the button has a standard circular/square aspect or a wider layout. |
-| `tooltip` | `string` | — | Optional tooltip text displayed on hover. |
+| Prop      | Type                                                               | Default      | Description                                                                          |
+| --------- | ------------------------------------------------------------------ | ------------ | ------------------------------------------------------------------------------------ |
+| `icon`    | `LucideIcon`                                                       | **Required** | The icon to display.                                                                 |
+| `color`   | `"filled" \| "tonal" \| "outlined" \| "standard"`                  | `"filled"`   | The visual style and color scheme.                                                   |
+| `size`    | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"`    | The size of the button and icon.                                                     |
+| `shape`   | `"round" \| "square"`                                              | `"round"`    | The corner radius of the button.                                                     |
+| `width`   | `"default" \| "wide"`                                              | `"default"`  | Controls whether the button has a standard circular/square aspect or a wider layout. |
+| `tooltip` | `string`                                                           | —            | Optional tooltip text displayed on hover.                                            |
 
 ## Usage
 

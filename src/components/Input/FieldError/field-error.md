@@ -9,9 +9,9 @@ Extends [React Aria Components FieldError](https://react-spectrum.adobe.com/reac
 ## Usage
 
 ```tsx
-import { FieldError } from '@adgytec/web-ui-components';
+import { FieldError } from "@adgytec/web-ui-components";
 
-<FieldError>This field is required.</FieldError>
+<FieldError>This field is required.</FieldError>;
 ```
 
 

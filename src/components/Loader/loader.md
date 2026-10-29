@@ -6,10 +6,10 @@ The `Loader` component is a simple spinning circular indicator used to signal th
 
 The `Loader` component extends the `Icon` component, but hides the `icon` and `className` props.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `number \| string` | — | The size of the loader icon. |
-| `color` | `string` | — | The color of the loader icon. |
+| Prop    | Type               | Default | Description                   |
+| ------- | ------------------ | ------- | ----------------------------- |
+| `size`  | `number \| string` | —       | The size of the loader icon.  |
+| `color` | `string`           | —       | The color of the loader icon. |
 
 ## Usage
 

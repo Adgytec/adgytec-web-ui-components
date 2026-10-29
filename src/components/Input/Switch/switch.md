@@ -2,14 +2,14 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
-| `--md-switch-track-color` | `var(--md-sys-color-surface-container-highest)` | Background color of the track when unselected. |
-| `--md-switch-selected-track-color` | `var(--md-sys-color-primary)` | Background color of the track when selected. |
-| `--md-switch-handle-color` | `var(--md-sys-color-outline)` | Color of the handle when unselected. |
-| `--md-switch-selected-handle-color` | `var(--md-sys-color-on-primary)` | Color of the handle when selected. |
-| `--md-switch-handle-icon-color` | `var(--md-sys-color-surface-container-highest)` | Color of the icon inside the handle when unselected. |
-| `--md-switch-selected-handle-icon-color` | `var(--md-sys-color-primary)` | Color of the icon inside the handle when selected. |
+| Token                                    | Default Value                                   | Description                                          |
+| ---------------------------------------- | ----------------------------------------------- | ---------------------------------------------------- |
+| `--md-switch-track-color`                | `var(--md-sys-color-surface-container-highest)` | Background color of the track when unselected.       |
+| `--md-switch-selected-track-color`       | `var(--md-sys-color-primary)`                   | Background color of the track when selected.         |
+| `--md-switch-handle-color`               | `var(--md-sys-color-outline)`                   | Color of the handle when unselected.                 |
+| `--md-switch-selected-handle-color`      | `var(--md-sys-color-on-primary)`                | Color of the handle when selected.                   |
+| `--md-switch-handle-icon-color`          | `var(--md-sys-color-surface-container-highest)` | Color of the icon inside the handle when unselected. |
+| `--md-switch-selected-handle-icon-color` | `var(--md-sys-color-primary)`                   | Color of the icon inside the handle when selected.   |
 
 The `Switch` component allows users to toggle between two states, such as On/Off. It implements [Material 3 Switches](https://m3.material.io/components/switch/overview) and supports optional icons within the handle.
 
@@ -17,13 +17,13 @@ The `Switch` component allows users to toggle between two states, such as On/Off
 
 Extends [React Aria Components Switch](https://react-spectrum.adobe.com/react-aria/Switch.html).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `icon` | `"none" \| "selected" \| "both"` | `"selected"` | Which states should show an icon in the handle. |
-| `labelPlacement` | `"start" \| "end"` | `"start"` | Placement of the label relative to the switch. |
-| `containerStateLayer` | `boolean` | `false` | If true, the state layer (ripple) covers the entire component container. |
-| `selectedIcon` | `LucideIcon` | `Check` | The icon to display in the handle when the switch is selected. |
-| `unselectedIcon` | `LucideIcon` | `X` | The icon to display in the handle when the switch is unselected (only visible when `icon="both"`). |
+| Prop                  | Type                             | Default      | Description                                                                                        |
+| --------------------- | -------------------------------- | ------------ | -------------------------------------------------------------------------------------------------- |
+| `icon`                | `"none" \| "selected" \| "both"` | `"selected"` | Which states should show an icon in the handle.                                                    |
+| `labelPlacement`      | `"start" \| "end"`               | `"start"`    | Placement of the label relative to the switch.                                                     |
+| `containerStateLayer` | `boolean`                        | `false`      | If true, the state layer (ripple) covers the entire component container.                           |
+| `selectedIcon`        | `LucideIcon`                     | `Check`      | The icon to display in the handle when the switch is selected.                                     |
+| `unselectedIcon`      | `LucideIcon`                     | `X`          | The icon to display in the handle when the switch is unselected (only visible when `icon="both"`). |
 
 ## Usage
 

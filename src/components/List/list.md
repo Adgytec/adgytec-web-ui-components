@@ -2,15 +2,15 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default | Description |
-|-------|---------|-------------|
-| `--md-list-color` | `var(--md-sys-color-on-surface-variant)` | Default color for icons, overline, supporting, and trailing text. |
-| `--md-list-label-color` | `var(--md-sys-color-on-surface)` | Text color for the primary item label. |
-| `--md-list-selected-color` | `var(--md-sys-color-on-secondary-container)` | Text and icon color when the list item is selected. |
-| `--md-list-item-background` | `var(--md-sys-color-surface)` | Default background color of a list item container. |
-| `--md-list-item-selected-background` | `var(--md-sys-color-secondary-container)` | Background color of a selected list item container. |
-| `--md-list-avatar-background` | `var(--md-sys-color-primary-container)` | Background color of the `ListAvatar` container. |
-| `--md-list-avatar-color` | `var(--md-sys-color-on-primary-container)` | Text and icon color inside `ListAvatar`. |
+| Token                                | Default                                      | Description                                                       |
+| ------------------------------------ | -------------------------------------------- | ----------------------------------------------------------------- |
+| `--md-list-color`                    | `var(--md-sys-color-on-surface-variant)`     | Default color for icons, overline, supporting, and trailing text. |
+| `--md-list-label-color`              | `var(--md-sys-color-on-surface)`             | Text color for the primary item label.                            |
+| `--md-list-selected-color`           | `var(--md-sys-color-on-secondary-container)` | Text and icon color when the list item is selected.               |
+| `--md-list-item-background`          | `var(--md-sys-color-surface)`                | Default background color of a list item container.                |
+| `--md-list-item-selected-background` | `var(--md-sys-color-secondary-container)`    | Background color of a selected list item container.               |
+| `--md-list-avatar-background`        | `var(--md-sys-color-primary-container)`      | Background color of the `ListAvatar` container.                   |
+| `--md-list-avatar-color`             | `var(--md-sys-color-on-primary-container)`   | Text and icon color inside `ListAvatar`.                          |
 
 The `ListBox` and `ListItem` components are an implementation of [Material 3 Lists](https://m3.material.io/components/lists/overview). Lists are continuous, vertical indexes of text and images. They display related items and make actions easy to find and perform. The module supports single and multiple selection, interactive state layers, touch ripple effects, rich media formats, and flexible slot-based composition.
 
@@ -36,8 +36,8 @@ The List module consists of ten components:
 
 Extends the [React Aria ListBox](https://react-spectrum.adobe.com/react-aria/ListBox.html) component and accepts all of its props (e.g., `selectionMode`, `selectedKeys`, `onSelectionChange`, `items`, `disabledKeys`).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
+| Prop     | Type                           | Default    | Description                                                                            |
+| -------- | ------------------------------ | ---------- | -------------------------------------------------------------------------------------- |
 | `alignY` | `"start" \| "center" \| "end"` | `"center"` | Vertical alignment of elements (`leading`, `trailing`, and content) across list items. |
 
 ### Layout & Shape Behavior
@@ -52,13 +52,13 @@ Extends the [React Aria ListBox](https://react-spectrum.adobe.com/react-aria/Lis
 
 Extends the [React Aria ListBoxItem](https://react-spectrum.adobe.com/react-aria/ListBox.html#listboxitem) component, omitting `children`.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `ReactNode` | — | **Required.** The primary label element of the list item, typically `ListLabelText`. |
-| `leading` | `ReactNode` | — | Element rendered at the start of the list item (e.g., `ListIcon`, `ListAvatar`, `ListMedia`, or a `Checkbox`). |
-| `overline` | `ReactNode` | — | Small text rendered above the label, typically `ListOverlineText`. |
-| `supporting` | `ReactNode` | — | Secondary descriptive text rendered beneath the label, typically `ListSupportingText`. |
-| `trailing` | `ReactNode[]` | — | An array of elements rendered at the end of the list item (e.g., `ListTrailingText`, `ListAction`, or a `Switch`). |
+| Prop         | Type          | Default | Description                                                                                                        |
+| ------------ | ------------- | ------- | ------------------------------------------------------------------------------------------------------------------ |
+| `label`      | `ReactNode`   | —       | **Required.** The primary label element of the list item, typically `ListLabelText`.                               |
+| `leading`    | `ReactNode`   | —       | Element rendered at the start of the list item (e.g., `ListIcon`, `ListAvatar`, `ListMedia`, or a `Checkbox`).     |
+| `overline`   | `ReactNode`   | —       | Small text rendered above the label, typically `ListOverlineText`.                                                 |
+| `supporting` | `ReactNode`   | —       | Secondary descriptive text rendered beneath the label, typically `ListSupportingText`.                             |
+| `trailing`   | `ReactNode[]` | —       | An array of elements rendered at the end of the list item (e.g., `ListTrailingText`, `ListAction`, or a `Switch`). |
 
 ### State & Selection Integration
 
@@ -130,16 +130,16 @@ Extends standard `<div>` HTML attributes (`React.ComponentPropsWithRef<"div">`).
 
 Extends standard `<div>` HTML attributes (`React.ComponentPropsWithRef<"div">`).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
+| Prop      | Type                                  | Default   | Description                                   |
+| --------- | ------------------------------------- | --------- | --------------------------------------------- |
 | `variant` | `"image" \| "video" \| "large-video"` | `"image"` | The dimension preset for the media container. |
 
 ### Variant Dimensions & Exported Constants
 
-| Variant | Dimensions | Exported Constants |
-|---------|------------|--------------------|
-| `image` | `56px` × `56px` | `ListMediaImageWidth = 56`, `ListMediaImageHeight = 56` |
-| `video` | `100px` × `56px` | `ListMediaVideoWidth = 100`, `ListMediaVideoHeight = 56` |
+| Variant       | Dimensions       | Exported Constants                                                 |
+| ------------- | ---------------- | ------------------------------------------------------------------ |
+| `image`       | `56px` × `56px`  | `ListMediaImageWidth = 56`, `ListMediaImageHeight = 56`            |
+| `video`       | `100px` × `56px` | `ListMediaVideoWidth = 100`, `ListMediaVideoHeight = 56`           |
 | `large-video` | `114px` × `64px` | `ListMediaLargeVideoWidth = 114`, `ListMediaLargeVideoHeight = 64` |
 
 Embedded `<img>` and `<video>` elements automatically inherit rounded corners (`var(--md-sys-shape-corner-radius-small)`) and apply `object-fit: cover`.
@@ -163,36 +163,40 @@ A standard list displaying items with icons, overlines, labels, supporting descr
 
 ```tsx
 import {
-  ListBox,
-  ListItem,
-  ListIcon,
-  ListLabelText,
-  ListOverlineText,
-  ListSupportingText,
-  ListAction,
-} from '@adgytec/web-ui-components';
-import { Mail, MoreVertical } from 'lucide-react';
+    ListBox,
+    ListItem,
+    ListIcon,
+    ListLabelText,
+    ListOverlineText,
+    ListSupportingText,
+    ListAction,
+} from "@adgytec/web-ui-components";
+import { Mail, MoreVertical } from "lucide-react";
 
 function InboxList() {
-  return (
-    <ListBox selectionMode="none">
-      <ListItem
-        id="item-1"
-        leading={<ListIcon icon={Mail} />}
-        overline={<ListOverlineText>Work</ListOverlineText>}
-        label={<ListLabelText>Quarterly Planning</ListLabelText>}
-        supporting={<ListSupportingText>Discuss roadmap updates with the product team.</ListSupportingText>}
-        trailing={[
-          <ListAction
-            key="more"
-            icon={MoreVertical}
-            aria-label="More options"
-            onPress={() => console.log('Action pressed')}
-          />,
-        ]}
-      />
-    </ListBox>
-  );
+    return (
+        <ListBox selectionMode="none">
+            <ListItem
+                id="item-1"
+                leading={<ListIcon icon={Mail} />}
+                overline={<ListOverlineText>Work</ListOverlineText>}
+                label={<ListLabelText>Quarterly Planning</ListLabelText>}
+                supporting={
+                    <ListSupportingText>
+                        Discuss roadmap updates with the product team.
+                    </ListSupportingText>
+                }
+                trailing={[
+                    <ListAction
+                        key="more"
+                        icon={MoreVertical}
+                        aria-label="More options"
+                        onPress={() => console.log("Action pressed")}
+                    />,
+                ]}
+            />
+        </ListBox>
+    );
 }
 ```
 
@@ -202,31 +206,39 @@ function InboxList() {
 
 ```tsx
 import {
-  ListBox,
-  ListItem,
-  ListLabelText,
-  ListSupportingText,
-  Checkbox,
-  Switch,
-} from '@adgytec/web-ui-components';
+    ListBox,
+    ListItem,
+    ListLabelText,
+    ListSupportingText,
+    Checkbox,
+    Switch,
+} from "@adgytec/web-ui-components";
 
 function SettingsList() {
-  return (
-    <ListBox selectionMode="multiple">
-      <ListItem
-        id="notifications"
-        leading={<Checkbox slot="selection" />}
-        label={<ListLabelText>Enable Push Notifications</ListLabelText>}
-        supporting={<ListSupportingText>Receive real-time alerts on your device.</ListSupportingText>}
-      />
-      <ListItem
-        id="sync"
-        label={<ListLabelText>Background Sync</ListLabelText>}
-        supporting={<ListSupportingText>Keep data updated in the background.</ListSupportingText>}
-        trailing={[<Switch key="switch" slot="selection" />]}
-      />
-    </ListBox>
-  );
+    return (
+        <ListBox selectionMode="multiple">
+            <ListItem
+                id="notifications"
+                leading={<Checkbox slot="selection" />}
+                label={<ListLabelText>Enable Push Notifications</ListLabelText>}
+                supporting={
+                    <ListSupportingText>
+                        Receive real-time alerts on your device.
+                    </ListSupportingText>
+                }
+            />
+            <ListItem
+                id="sync"
+                label={<ListLabelText>Background Sync</ListLabelText>}
+                supporting={
+                    <ListSupportingText>
+                        Keep data updated in the background.
+                    </ListSupportingText>
+                }
+                trailing={[<Switch key="switch" slot="selection" />]}
+            />
+        </ListBox>
+    );
 }
 ```
 
@@ -236,37 +248,49 @@ Displaying user contacts or member lists with initials or profile images and tra
 
 ```tsx
 import {
-  ListBox,
-  ListItem,
-  ListAvatar,
-  ListLabelText,
-  ListSupportingText,
-  ListTrailingText,
-} from '@adgytec/web-ui-components';
+    ListBox,
+    ListItem,
+    ListAvatar,
+    ListLabelText,
+    ListSupportingText,
+    ListTrailingText,
+} from "@adgytec/web-ui-components";
 
 function ContactsList() {
-  return (
-    <ListBox selectionMode="single">
-      <ListItem
-        id="user-1"
-        leading={<ListAvatar>JD</ListAvatar>}
-        label={<ListLabelText>Jane Doe</ListLabelText>}
-        supporting={<ListSupportingText>jane.doe@example.com</ListSupportingText>}
-        trailing={[<ListTrailingText key="time">10:45 AM</ListTrailingText>]}
-      />
-      <ListItem
-        id="user-2"
-        leading={
-          <ListAvatar>
-            <img src="/avatars/alex.jpg" alt="Alex Smith" />
-          </ListAvatar>
-        }
-        label={<ListLabelText>Alex Smith</ListLabelText>}
-        supporting={<ListSupportingText>alex.smith@example.com</ListSupportingText>}
-        trailing={[<ListTrailingText key="time">Yesterday</ListTrailingText>]}
-      />
-    </ListBox>
-  );
+    return (
+        <ListBox selectionMode="single">
+            <ListItem
+                id="user-1"
+                leading={<ListAvatar>JD</ListAvatar>}
+                label={<ListLabelText>Jane Doe</ListLabelText>}
+                supporting={
+                    <ListSupportingText>
+                        jane.doe@example.com
+                    </ListSupportingText>
+                }
+                trailing={[
+                    <ListTrailingText key="time">10:45 AM</ListTrailingText>,
+                ]}
+            />
+            <ListItem
+                id="user-2"
+                leading={
+                    <ListAvatar>
+                        <img src="/avatars/alex.jpg" alt="Alex Smith" />
+                    </ListAvatar>
+                }
+                label={<ListLabelText>Alex Smith</ListLabelText>}
+                supporting={
+                    <ListSupportingText>
+                        alex.smith@example.com
+                    </ListSupportingText>
+                }
+                trailing={[
+                    <ListTrailingText key="time">Yesterday</ListTrailingText>,
+                ]}
+            />
+        </ListBox>
+    );
 }
 ```
 
@@ -276,52 +300,60 @@ Using `ListMedia` with predefined variants (`image`, `video`, `large-video`) and
 
 ```tsx
 import {
-  ListBox,
-  ListItem,
-  ListMedia,
-  ListLabelText,
-  ListSupportingText,
-  ListMediaImageWidth,
-  ListMediaImageHeight,
-  ListMediaVideoWidth,
-  ListMediaVideoHeight,
-} from '@adgytec/web-ui-components';
+    ListBox,
+    ListItem,
+    ListMedia,
+    ListLabelText,
+    ListSupportingText,
+    ListMediaImageWidth,
+    ListMediaImageHeight,
+    ListMediaVideoWidth,
+    ListMediaVideoHeight,
+} from "@adgytec/web-ui-components";
 
 function MediaList() {
-  return (
-    <ListBox selectionMode="single" alignY="start">
-      <ListItem
-        id="photo"
-        leading={
-          <ListMedia variant="image">
-            <img
-              src="https://picsum.photos/56/56"
-              alt="Thumbnail"
-              width={ListMediaImageWidth}
-              height={ListMediaImageHeight}
+    return (
+        <ListBox selectionMode="single" alignY="start">
+            <ListItem
+                id="photo"
+                leading={
+                    <ListMedia variant="image">
+                        <img
+                            src="https://picsum.photos/56/56"
+                            alt="Thumbnail"
+                            width={ListMediaImageWidth}
+                            height={ListMediaImageHeight}
+                        />
+                    </ListMedia>
+                }
+                label={<ListLabelText>Sunset on the Coast</ListLabelText>}
+                supporting={
+                    <ListSupportingText>
+                        High-resolution landscape photo.
+                    </ListSupportingText>
+                }
             />
-          </ListMedia>
-        }
-        label={<ListLabelText>Sunset on the Coast</ListLabelText>}
-        supporting={<ListSupportingText>High-resolution landscape photo.</ListSupportingText>}
-      />
-      <ListItem
-        id="video"
-        leading={
-          <ListMedia variant="video">
-            <img
-              src="https://picsum.photos/100/56"
-              alt="Video Preview"
-              width={ListMediaVideoWidth}
-              height={ListMediaVideoHeight}
+            <ListItem
+                id="video"
+                leading={
+                    <ListMedia variant="video">
+                        <img
+                            src="https://picsum.photos/100/56"
+                            alt="Video Preview"
+                            width={ListMediaVideoWidth}
+                            height={ListMediaVideoHeight}
+                        />
+                    </ListMedia>
+                }
+                label={<ListLabelText>Product Walkthrough</ListLabelText>}
+                supporting={
+                    <ListSupportingText>
+                        4:32 • Video overview of new features.
+                    </ListSupportingText>
+                }
             />
-          </ListMedia>
-        }
-        label={<ListLabelText>Product Walkthrough</ListLabelText>}
-        supporting={<ListSupportingText>4:32 • Video overview of new features.</ListSupportingText>}
-      />
-    </ListBox>
-  );
+        </ListBox>
+    );
 }
 ```
 
@@ -331,31 +363,34 @@ Align content, leading, and trailing elements to `start`, `center` (default), or
 
 ```tsx
 import {
-  ListBox,
-  ListItem,
-  ListAvatar,
-  ListLabelText,
-  ListSupportingText,
-  ListTrailingText,
-} from '@adgytec/web-ui-components';
+    ListBox,
+    ListItem,
+    ListAvatar,
+    ListLabelText,
+    ListSupportingText,
+    ListTrailingText,
+} from "@adgytec/web-ui-components";
 
 function AlignedList() {
-  return (
-    <ListBox alignY="start">
-      <ListItem
-        id="multiline-item"
-        leading={<ListAvatar>RD</ListAvatar>}
-        label={<ListLabelText>Multi-line Review</ListLabelText>}
-        supporting={
-          <ListSupportingText>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </ListSupportingText>
-        }
-        trailing={[<ListTrailingText key="date">Nov 12</ListTrailingText>]}
-      />
-    </ListBox>
-  );
+    return (
+        <ListBox alignY="start">
+            <ListItem
+                id="multiline-item"
+                leading={<ListAvatar>RD</ListAvatar>}
+                label={<ListLabelText>Multi-line Review</ListLabelText>}
+                supporting={
+                    <ListSupportingText>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua.
+                    </ListSupportingText>
+                }
+                trailing={[
+                    <ListTrailingText key="date">Nov 12</ListTrailingText>,
+                ]}
+            />
+        </ListBox>
+    );
 }
 ```
 

@@ -14,28 +14,32 @@ The `Disclosure` system is composed of several components that extend [React Ari
 ## Props
 
 ### `DisclosureGroup`
+
 Extends [React Aria Components DisclosureGroup](https://react-spectrum.adobe.com/react-aria/Disclosure.html#disclosuregroup).
 
-| Prop | Type | Description |
-|------|------|-------------|
+| Prop              | Type         | Description                                              |
+| ----------------- | ------------ | -------------------------------------------------------- |
 | `labelTypography` | `Typography` | Default typography variant for all headers in the group. |
-| `panelTypography` | `Typography` | Default typography variant for all panels in the group. |
+| `panelTypography` | `Typography` | Default typography variant for all panels in the group.  |
 
 ### `Disclosure`
+
 Extends [React Aria Components Disclosure](https://react-spectrum.adobe.com/react-aria/Disclosure.html).
 
 ### `DisclosureHeader`
+
 Extends [React Aria Components Heading](https://react-spectrum.adobe.com/react-aria/Heading.html).
 
-| Prop | Type | Description |
-|------|------|-------------|
+| Prop              | Type         | Description                                                           |
+| ----------------- | ------------ | --------------------------------------------------------------------- |
 | `labelTypography` | `Typography` | Typography variant for the header label. Overrides the group default. |
 
 ### `DisclosurePanel`
+
 Extends [React Aria Components DisclosurePanel](https://react-spectrum.adobe.com/react-aria/Disclosure.html#disclosurepanel).
 
-| Prop | Type | Description |
-|------|------|-------------|
+| Prop              | Type         | Description                                                            |
+| ----------------- | ------------ | ---------------------------------------------------------------------- |
 | `panelTypography` | `Typography` | Typography variant for the panel content. Overrides the group default. |
 
 ## Usage
@@ -43,40 +47,44 @@ Extends [React Aria Components DisclosurePanel](https://react-spectrum.adobe.com
 ### Basic Usage
 
 ```tsx
-import { Disclosure, DisclosureHeader, DisclosurePanel } from '@adgytec/web-ui-components';
+import {
+    Disclosure,
+    DisclosureHeader,
+    DisclosurePanel,
+} from "@adgytec/web-ui-components";
 
 <Disclosure>
-  <DisclosureHeader>Disclosure Header</DisclosureHeader>
-  <DisclosurePanel>
-    This is the content that will be shown when the header is clicked.
-  </DisclosurePanel>
-</Disclosure>
+    <DisclosureHeader>Disclosure Header</DisclosureHeader>
+    <DisclosurePanel>
+        This is the content that will be shown when the header is clicked.
+    </DisclosurePanel>
+</Disclosure>;
 ```
 
 ### Accordion (Disclosure Group)
 
 ```tsx
-import { 
-  DisclosureGroup, 
-  Disclosure, 
-  DisclosureHeader, 
-  DisclosurePanel,
-  typography 
-} from '@adgytec/web-ui-components';
+import {
+    DisclosureGroup,
+    Disclosure,
+    DisclosureHeader,
+    DisclosurePanel,
+    typography,
+} from "@adgytec/web-ui-components";
 
-<DisclosureGroup 
-  labelTypography={typography.titleMedium}
-  panelTypography={typography.bodyMedium}
+<DisclosureGroup
+    labelTypography={typography.titleMedium}
+    panelTypography={typography.bodyMedium}
 >
-  <Disclosure id="d1">
-    <DisclosureHeader>First Section</DisclosureHeader>
-    <DisclosurePanel>Content for the first section.</DisclosurePanel>
-  </Disclosure>
-  <Disclosure id="d2">
-    <DisclosureHeader>Second Section</DisclosureHeader>
-    <DisclosurePanel>Content for the second section.</DisclosurePanel>
-  </Disclosure>
-</DisclosureGroup>
+    <Disclosure id="d1">
+        <DisclosureHeader>First Section</DisclosureHeader>
+        <DisclosurePanel>Content for the first section.</DisclosurePanel>
+    </Disclosure>
+    <Disclosure id="d2">
+        <DisclosureHeader>Second Section</DisclosureHeader>
+        <DisclosurePanel>Content for the second section.</DisclosurePanel>
+    </Disclosure>
+</DisclosureGroup>;
 ```
 
 

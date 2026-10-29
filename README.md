@@ -14,29 +14,34 @@ A robust, accessible, and highly customizable React component library implementi
 ## Component Library
 
 ### Buttons
+
 - **Standard Buttons**: Button, Icon Button, Link Button, Link Icon Button.
 - **Toggle Buttons**: Toggle Button, Toggle Icon Button.
 - **Complex Buttons**: Split Button.
 - **Groups**: Button Group (with morphing animation), Connected Button Group.
 
 ### Data Entry
+
 - **Inputs**: Input (TextField), SearchField, TextArea, Checkbox, Radio, RadioGroup, Select, ComboBox.
 - **Pickers**: DatePicker, DateRangePicker, TimeField, DateField, Calendar, RangeCalendar.
 - **Sliders**: Slider, RangeSlider.
 - **Selection**: Switch.
 
 ### Navigation & Layout
+
 - **Tabs**: Horizontal and Vertical tab systems.
 - **Toolbar**: Contextual action containers (Docked and Floating variants).
 - **Dividers**: Material 3 separators.
 - **Disclosure**: Expandable sections and Accordions.
 
 ### Feedback & Overlays
+
 - **Dialogs**: Modal, ModalOverlay, ActionDialog (pre-configured patterns).
 - **Tooltips**: Plain Tooltip and Rich Tooltip (for complex content).
 - **Status**: Loader, Splash (Ripple effect).
 
 ### Data Display
+
 - **Tags**: Expressive chips for attributes and selection.
 - **Images**: Responsive image component with resolution-based presets.
 - **Icons**: Unified wrapper for Lucide icons with design system sizing.
@@ -44,36 +49,42 @@ A robust, accessible, and highly customizable React component library implementi
 ## Getting Started
 
 ### 1. Wrap your application
+
 To enable theme management and global styles, wrap your root component with the `ThemeProvider`:
 
 ```tsx
-import { ThemeProvider } from '@adgytec/web-ui-components';
+import { ThemeProvider } from "@adgytec/web-ui-components";
 
 function App() {
-  return (
-    <ThemeProvider>
-      <MyContent />
-    </ThemeProvider>
-  );
+    return (
+        <ThemeProvider>
+            <MyContent />
+        </ThemeProvider>
+    );
 }
 ```
 
 ### 2. Use Components
+
 Import and use components directly in your application:
 
 ```tsx
-import { Button, Input } from '@adgytec/web-ui-components';
-import { Mail } from 'lucide-react';
+import { Button, Input } from "@adgytec/web-ui-components";
+import { Mail } from "lucide-react";
 
 function MyForm() {
-  return (
-    <div className="form-container">
-      <Input label="Email" leadingIcon={Mail} placeholder="Enter your email" />
-      <Button color="filled" onPress={() => console.log('Submitted!')}>
-        Submit
-      </Button>
-    </div>
-  );
+    return (
+        <div className="form-container">
+            <Input
+                label="Email"
+                leadingIcon={Mail}
+                placeholder="Enter your email"
+            />
+            <Button color="filled" onPress={() => console.log("Submitted!")}>
+                Submit
+            </Button>
+        </div>
+    );
 }
 ```
 

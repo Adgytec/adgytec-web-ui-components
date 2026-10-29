@@ -2,8 +2,8 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
+| Token                                  | Default Value                 | Description                                          |
+| -------------------------------------- | ----------------------------- | ---------------------------------------------------- |
 | `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the date field is focused. |
 
 The `DateField` component allows users to enter and edit a date using a keyboard, with validation and segment-based input. It implements Material 3 text field patterns for its layout.
@@ -12,24 +12,24 @@ The `DateField` component allows users to enter and edit a date using a keyboard
 
 The `DateField` component extends [React Aria Components DateField](https://react-spectrum.adobe.com/react-aria/DateField.html) (excluding `children`).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `ReactNode` | — | The label for the date field. |
-| `description` | `ReactNode` | — | Help text displayed below the input. |
-| `errorMessage` | `ReactNode \| ((v: ValidationResult) => ReactNode)` | — | Error message displayed when validation fails. |
-| `showDescriptionOnInvalid` | `boolean` | `false` | Whether to keep showing the description when the input is invalid. |
+| Prop                       | Type                                                | Default | Description                                                        |
+| -------------------------- | --------------------------------------------------- | ------- | ------------------------------------------------------------------ |
+| `label`                    | `ReactNode`                                         | —       | The label for the date field.                                      |
+| `description`              | `ReactNode`                                         | —       | Help text displayed below the input.                               |
+| `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —       | Error message displayed when validation fails.                     |
+| `showDescriptionOnInvalid` | `boolean`                                           | `false` | Whether to keep showing the description when the input is invalid. |
 
 ## Usage
 
 ```tsx
-import { DateField } from '@adgytec/web-ui-components';
-import { today, getLocalTimeZone } from '@internationalized/date';
+import { DateField } from "@adgytec/web-ui-components";
+import { today, getLocalTimeZone } from "@internationalized/date";
 
-<DateField 
-  label="Birth Date" 
-  description="Please enter your date of birth"
-  defaultValue={today(getLocalTimeZone())}
-/>
+<DateField
+    label="Birth Date"
+    description="Please enter your date of birth"
+    defaultValue={today(getLocalTimeZone())}
+/>;
 ```
 
 ## Internal Structure

@@ -2,8 +2,8 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
+| Token                | Default Value                         | Description                    |
+| -------------------- | ------------------------------------- | ------------------------------ |
 | `--md-divider-color` | `var(--md-sys-color-outline-variant)` | The color of the divider line. |
 
 The `Divider` component is an implementation of [Material 3 Dividers](https://m3.material.io/components/divider/overview). It is a thin line that groups content in lists and layouts.
@@ -34,7 +34,7 @@ You can customize the divider color using the `--md-divider-color` CSS variable:
 
 ```css
 .my-custom-container {
-  --md-divider-color: var(--md-sys-color-primary);
+    --md-divider-color: var(--md-sys-color-primary);
 }
 ```
 

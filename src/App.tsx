@@ -1117,6 +1117,81 @@ const MenuPreview = () => {
     );
 };
 
+const RenderSplitButton = ({
+    size,
+    color,
+    isDisabled,
+    isPending,
+    label = true,
+}: {
+    size: ButtonSize;
+    color: SplitButtonColor;
+    isPending?: boolean;
+    isDisabled?: boolean;
+    label?: boolean;
+}) => {
+    return (
+        <SplitButton
+            color={color}
+            size={size}
+            isDisabled={isDisabled}
+            isPending={isPending}
+        >
+            <SplitButtonPrimary tooltip="download" icon={Download}>
+                {label && "Download"}
+            </SplitButtonPrimary>
+
+            <MenuTrigger
+                color={!label ? "standard" : "vibrant"}
+                layout={!label ? "standard" : "grouped"}
+            >
+                <SplitButtonTrigger tooltip="more actions" />
+                <Popover>
+                    <Menu>
+                        <MenuSection>
+                            <MenuSectionHeader>Quick Actions</MenuSectionHeader>
+
+                            <MenuItem trailingIcon={Eye} label="Preview" />
+
+                            <MenuItem trailingIcon={Share2} label="Share" />
+                        </MenuSection>
+
+                        {!label && <Divider />}
+
+                        <MenuSection>
+                            <MenuSectionHeader>Security</MenuSectionHeader>
+
+                            <MenuItem
+                                trailingIcon={GlobeLock}
+                                supportingText="Make item private"
+                                label="Private"
+                            />
+
+                            <SubmenuTrigger>
+                                <MenuItem
+                                    trailingIcon={GlobeLock}
+                                    supportingText="Make item private"
+                                    label="More"
+                                />
+
+                                <SubmenuPopover>
+                                    <Menu>
+                                        <MenuSection>
+                                            <MenuItem label="Lock" />
+
+                                            <MenuItem label="Archive" />
+                                        </MenuSection>
+                                    </Menu>
+                                </SubmenuPopover>
+                            </SubmenuTrigger>
+                        </MenuSection>
+                    </Menu>
+                </Popover>
+            </MenuTrigger>
+        </SplitButton>
+    );
+};
+
 const SplitButtonPreview = () => {
     const sizes: ButtonSize[] = [
         "extra-small",
@@ -1132,83 +1207,6 @@ const SplitButtonPreview = () => {
         "outlined",
         "elevated",
     ];
-
-    const RenderSplitButton = ({
-        size,
-        color,
-        isDisabled,
-        isPending,
-        label = true,
-    }: {
-        size: ButtonSize;
-        color: SplitButtonColor;
-        isPending?: boolean;
-        isDisabled?: boolean;
-        label?: boolean;
-    }) => {
-        return (
-            <SplitButton
-                color={color}
-                size={size}
-                isDisabled={isDisabled}
-                isPending={isPending}
-            >
-                <SplitButtonPrimary tooltip="download" icon={Download}>
-                    {label && "Download"}
-                </SplitButtonPrimary>
-
-                <MenuTrigger
-                    color={!label ? "standard" : "vibrant"}
-                    layout={!label ? "standard" : "grouped"}
-                >
-                    <SplitButtonTrigger tooltip="more actions" />
-                    <Popover>
-                        <Menu>
-                            <MenuSection>
-                                <MenuSectionHeader>
-                                    Quick Actions
-                                </MenuSectionHeader>
-
-                                <MenuItem trailingIcon={Eye} label="Preview" />
-
-                                <MenuItem trailingIcon={Share2} label="Share" />
-                            </MenuSection>
-
-                            {!label && <Divider />}
-
-                            <MenuSection>
-                                <MenuSectionHeader>Security</MenuSectionHeader>
-
-                                <MenuItem
-                                    trailingIcon={GlobeLock}
-                                    supportingText="Make item private"
-                                    label="Private"
-                                />
-
-                                <SubmenuTrigger>
-                                    <MenuItem
-                                        trailingIcon={GlobeLock}
-                                        supportingText="Make item private"
-                                        label="More"
-                                    />
-
-                                    <SubmenuPopover>
-                                        <Menu>
-                                            <MenuSection>
-                                                <MenuItem label="Lock" />
-
-                                                <MenuItem label="Archive" />
-                                            </MenuSection>
-                                        </Menu>
-                                    </SubmenuPopover>
-                                </SubmenuTrigger>
-                            </MenuSection>
-                        </Menu>
-                    </Popover>
-                </MenuTrigger>
-            </SplitButton>
-        );
-    };
 
     return (
         <>
@@ -1583,41 +1581,38 @@ const DialogPreview = () => {
     );
 };
 
-const InputPreview = () => {
-    const RenderInput = ({
-        isInvalid,
-        isDisabled,
-    }: {
-        isInvalid?: boolean;
-        isDisabled?: boolean;
-    }) => {
-        const [val, setVal] = useState("");
-        return (
-            <Input
-                label="Email"
-                type="text"
-                description="Enter your Adgytec work email"
-                placeholder="username"
-                suffix={"@adgytec.in"}
-                // editorDir="rtl"
-                leadingIcon={Mail}
-                trailing={
-                    <InputButton
-                        icon={Armchair}
-                        onPress={() => setVal("hello")}
-                    />
-                }
-                showCharacterCount
-                value={val}
-                onChange={setVal}
-                maxLength={64}
-                isInvalid={isInvalid}
-                isDisabled={isDisabled}
-                showDescriptionOnInvalid={isInvalid}
-            />
-        );
-    };
+const RenderInput = ({
+    isInvalid,
+    isDisabled,
+}: {
+    isInvalid?: boolean;
+    isDisabled?: boolean;
+}) => {
+    const [val, setVal] = useState("");
+    return (
+        <Input
+            label="Email"
+            type="text"
+            description="Enter your Adgytec work email"
+            placeholder="username"
+            suffix={"@adgytec.in"}
+            // editorDir="rtl"
+            leadingIcon={Mail}
+            trailing={
+                <InputButton icon={Armchair} onPress={() => setVal("hello")} />
+            }
+            showCharacterCount
+            value={val}
+            onChange={setVal}
+            maxLength={64}
+            isInvalid={isInvalid}
+            isDisabled={isDisabled}
+            showDescriptionOnInvalid={isInvalid}
+        />
+    );
+};
 
+const InputPreview = () => {
     return (
         <div className="items">
             <RenderInput />
@@ -1631,29 +1626,29 @@ const InputPreview = () => {
     );
 };
 
-const TextAreaPreview = () => {
-    const RenderTextArea = ({
-        isInvalid,
-        isDisabled,
-    }: {
-        isInvalid?: boolean;
-        isDisabled?: boolean;
-    }) => {
-        return (
-            <TextArea
-                label="Issue"
-                maxLength={1024}
-                rows={4}
-                description="Describe your issue"
-                showCharacterCount
-                isInvalid={isInvalid}
-                showDescriptionOnInvalid={isInvalid}
-                isDisabled={isDisabled}
-                placeholder="Define you issue..."
-            />
-        );
-    };
+const RenderTextArea = ({
+    isInvalid,
+    isDisabled,
+}: {
+    isInvalid?: boolean;
+    isDisabled?: boolean;
+}) => {
+    return (
+        <TextArea
+            label="Issue"
+            maxLength={1024}
+            rows={4}
+            description="Describe your issue"
+            showCharacterCount
+            isInvalid={isInvalid}
+            showDescriptionOnInvalid={isInvalid}
+            isDisabled={isDisabled}
+            placeholder="Define you issue..."
+        />
+    );
+};
 
+const TextAreaPreview = () => {
     return (
         <div className="items-grid">
             <RenderTextArea />
@@ -1667,26 +1662,26 @@ const TextAreaPreview = () => {
     );
 };
 
-const TimeFieldPreview = () => {
-    const RenderTimeField = ({
-        isInvalid,
-        isDisabled,
-    }: {
-        isInvalid?: boolean;
-        isDisabled?: boolean;
-    }) => {
-        return (
-            <TimeField
-                label="Appointment Time"
-                description="Add your appointment time"
-                isDisabled={isDisabled}
-                isInvalid={isInvalid}
-                showDescriptionOnInvalid={isInvalid}
-                granularity="second"
-            />
-        );
-    };
+const RenderTimeField = ({
+    isInvalid,
+    isDisabled,
+}: {
+    isInvalid?: boolean;
+    isDisabled?: boolean;
+}) => {
+    return (
+        <TimeField
+            label="Appointment Time"
+            description="Add your appointment time"
+            isDisabled={isDisabled}
+            isInvalid={isInvalid}
+            showDescriptionOnInvalid={isInvalid}
+            granularity="second"
+        />
+    );
+};
 
+const TimeFieldPreview = () => {
     return (
         <div className="items">
             <RenderTimeField />
@@ -1700,26 +1695,26 @@ const TimeFieldPreview = () => {
     );
 };
 
-const DateFieldPreview = () => {
-    const RenderDateField = ({
-        isInvalid,
-        isDisabled,
-    }: {
-        isInvalid?: boolean;
-        isDisabled?: boolean;
-    }) => {
-        return (
-            <DateField
-                label="Appointment Date"
-                description="Add your appointment date"
-                isDisabled={isDisabled}
-                isInvalid={isInvalid}
-                showDescriptionOnInvalid={isInvalid}
-                granularity="second"
-            />
-        );
-    };
+const RenderDateField = ({
+    isInvalid,
+    isDisabled,
+}: {
+    isInvalid?: boolean;
+    isDisabled?: boolean;
+}) => {
+    return (
+        <DateField
+            label="Appointment Date"
+            description="Add your appointment date"
+            isDisabled={isDisabled}
+            isInvalid={isInvalid}
+            showDescriptionOnInvalid={isInvalid}
+            granularity="second"
+        />
+    );
+};
 
+const DateFieldPreview = () => {
     return (
         <div className="items">
             <RenderDateField />
@@ -1959,255 +1954,255 @@ const DisclosurePreview = () => {
     );
 };
 
+const RenderToolbar = ({
+    color,
+    variant,
+    orientation = "horizontal",
+    isDisabled,
+}: {
+    color?: ToolbarColor;
+    variant?: ToolbarVariant;
+    orientation?: Orientation;
+    isDisabled?: boolean;
+}) => {
+    return (
+        <>
+            <div className={"items"} data-toolbar={true}>
+                <Toolbar
+                    color={color}
+                    variant={variant}
+                    orientation={orientation}
+                >
+                    <IconButton
+                        icon={Armchair}
+                        isDisabled={isDisabled}
+                        color="outlined"
+                    />
+
+                    <IconButton icon={Armchair} isDisabled={isDisabled} />
+
+                    <IconButton
+                        icon={Armchair}
+                        color="standard"
+                        isDisabled={isDisabled}
+                    />
+
+                    <IconButton
+                        icon={Armchair}
+                        color="tonal"
+                        isDisabled={isDisabled}
+                    />
+                </Toolbar>
+
+                <Toolbar
+                    color={color}
+                    variant={variant}
+                    orientation={orientation}
+                >
+                    <ToggleIconButton
+                        icon={Globe}
+                        isDisabled={isDisabled}
+                        selectedIcon={GlobeOff}
+                    />
+
+                    <ToggleIconButton
+                        icon={Globe}
+                        selectedIcon={GlobeOff}
+                        color="outlined"
+                        isDisabled={isDisabled}
+                    />
+
+                    <ToggleIconButton
+                        icon={Globe}
+                        selectedIcon={GlobeOff}
+                        color="standard"
+                        isDisabled={isDisabled}
+                    />
+
+                    <ToggleIconButton
+                        icon={Globe}
+                        selectedIcon={GlobeOff}
+                        color="tonal"
+                        isDisabled={isDisabled}
+                    />
+                </Toolbar>
+
+                <Toolbar
+                    color={color}
+                    variant={variant}
+                    orientation={orientation}
+                >
+                    <ToolbarToggleButtonGroup>
+                        <ToggleIconButton
+                            id={1}
+                            icon={Globe}
+                            isDisabled={isDisabled}
+                            selectedIcon={GlobeOff}
+                        />
+
+                        <ToggleIconButton
+                            id={2}
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
+                            color="outlined"
+                            isDisabled={isDisabled}
+                        />
+
+                        <ToggleIconButton
+                            id={3}
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
+                            color="standard"
+                            isDisabled={isDisabled}
+                        />
+
+                        <ToggleIconButton
+                            id={4}
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
+                            color="tonal"
+                            isDisabled={isDisabled}
+                        />
+                    </ToolbarToggleButtonGroup>
+
+                    <Divider
+                        orientation={
+                            orientation === "vertical"
+                                ? "horizontal"
+                                : "vertical"
+                        }
+                    />
+
+                    <ToolbarToggleButtonGroup>
+                        <ToggleIconButton
+                            id={1}
+                            icon={Globe}
+                            isDisabled={isDisabled}
+                            selectedIcon={GlobeOff}
+                        />
+
+                        <ToggleIconButton
+                            id={2}
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
+                            color="outlined"
+                            isDisabled={isDisabled}
+                        />
+
+                        <ToggleIconButton
+                            id={3}
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
+                            color="standard"
+                            isDisabled={isDisabled}
+                        />
+
+                        <ToggleIconButton
+                            id={4}
+                            icon={Globe}
+                            selectedIcon={GlobeOff}
+                            color="tonal"
+                            isDisabled={isDisabled}
+                        />
+                    </ToolbarToggleButtonGroup>
+                </Toolbar>
+
+                {orientation === "horizontal" && (
+                    <>
+                        <Toolbar
+                            color={color}
+                            variant={variant}
+                            orientation={orientation}
+                            className="toolbar-overflow"
+                        >
+                            <Button
+                                icon={Armchair}
+                                color="outlined"
+                                isDisabled={isDisabled}
+                            >
+                                Chair
+                            </Button>
+                            <Button
+                                icon={Armchair}
+                                color="text"
+                                isDisabled={isDisabled}
+                            >
+                                Chair
+                            </Button>
+
+                            <Button icon={Armchair} isDisabled={isDisabled}>
+                                Chair
+                            </Button>
+
+                            <Button
+                                icon={Armchair}
+                                color="tonal"
+                                isDisabled={isDisabled}
+                            >
+                                Chair
+                            </Button>
+
+                            <Button
+                                icon={Armchair}
+                                color="elevated"
+                                isDisabled={isDisabled}
+                            >
+                                Chair
+                            </Button>
+                        </Toolbar>
+
+                        <Toolbar
+                            color={color}
+                            variant={variant}
+                            orientation={orientation}
+                            className="toolbar-overflow"
+                        >
+                            <ToggleButton
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                isDisabled={isDisabled}
+                            >
+                                Globe
+                            </ToggleButton>
+
+                            <ToggleButton
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="outlined"
+                                isDisabled={isDisabled}
+                            >
+                                Globe
+                            </ToggleButton>
+
+                            <ToggleButton
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="tonal"
+                                isDisabled={isDisabled}
+                            >
+                                Globe
+                            </ToggleButton>
+
+                            <ToggleButton
+                                icon={Globe}
+                                selectedIcon={GlobeOff}
+                                color="elevated"
+                                isDisabled={isDisabled}
+                            >
+                                Globe
+                            </ToggleButton>
+                        </Toolbar>
+                    </>
+                )}
+            </div>
+
+            <Divider />
+        </>
+    );
+};
+
 const ToolbarPreview = () => {
     type Orientation = "horizontal" | "vertical";
-
-    const RenderToolbar = ({
-        color,
-        variant,
-        orientation = "horizontal",
-        isDisabled,
-    }: {
-        color?: ToolbarColor;
-        variant?: ToolbarVariant;
-        orientation?: Orientation;
-        isDisabled?: boolean;
-    }) => {
-        return (
-            <>
-                <div className={"items"} data-toolbar={true}>
-                    <Toolbar
-                        color={color}
-                        variant={variant}
-                        orientation={orientation}
-                    >
-                        <IconButton
-                            icon={Armchair}
-                            isDisabled={isDisabled}
-                            color="outlined"
-                        />
-
-                        <IconButton icon={Armchair} isDisabled={isDisabled} />
-
-                        <IconButton
-                            icon={Armchair}
-                            color="standard"
-                            isDisabled={isDisabled}
-                        />
-
-                        <IconButton
-                            icon={Armchair}
-                            color="tonal"
-                            isDisabled={isDisabled}
-                        />
-                    </Toolbar>
-
-                    <Toolbar
-                        color={color}
-                        variant={variant}
-                        orientation={orientation}
-                    >
-                        <ToggleIconButton
-                            icon={Globe}
-                            isDisabled={isDisabled}
-                            selectedIcon={GlobeOff}
-                        />
-
-                        <ToggleIconButton
-                            icon={Globe}
-                            selectedIcon={GlobeOff}
-                            color="outlined"
-                            isDisabled={isDisabled}
-                        />
-
-                        <ToggleIconButton
-                            icon={Globe}
-                            selectedIcon={GlobeOff}
-                            color="standard"
-                            isDisabled={isDisabled}
-                        />
-
-                        <ToggleIconButton
-                            icon={Globe}
-                            selectedIcon={GlobeOff}
-                            color="tonal"
-                            isDisabled={isDisabled}
-                        />
-                    </Toolbar>
-
-                    <Toolbar
-                        color={color}
-                        variant={variant}
-                        orientation={orientation}
-                    >
-                        <ToolbarToggleButtonGroup>
-                            <ToggleIconButton
-                                id={1}
-                                icon={Globe}
-                                isDisabled={isDisabled}
-                                selectedIcon={GlobeOff}
-                            />
-
-                            <ToggleIconButton
-                                id={2}
-                                icon={Globe}
-                                selectedIcon={GlobeOff}
-                                color="outlined"
-                                isDisabled={isDisabled}
-                            />
-
-                            <ToggleIconButton
-                                id={3}
-                                icon={Globe}
-                                selectedIcon={GlobeOff}
-                                color="standard"
-                                isDisabled={isDisabled}
-                            />
-
-                            <ToggleIconButton
-                                id={4}
-                                icon={Globe}
-                                selectedIcon={GlobeOff}
-                                color="tonal"
-                                isDisabled={isDisabled}
-                            />
-                        </ToolbarToggleButtonGroup>
-
-                        <Divider
-                            orientation={
-                                orientation === "vertical"
-                                    ? "horizontal"
-                                    : "vertical"
-                            }
-                        />
-
-                        <ToolbarToggleButtonGroup>
-                            <ToggleIconButton
-                                id={1}
-                                icon={Globe}
-                                isDisabled={isDisabled}
-                                selectedIcon={GlobeOff}
-                            />
-
-                            <ToggleIconButton
-                                id={2}
-                                icon={Globe}
-                                selectedIcon={GlobeOff}
-                                color="outlined"
-                                isDisabled={isDisabled}
-                            />
-
-                            <ToggleIconButton
-                                id={3}
-                                icon={Globe}
-                                selectedIcon={GlobeOff}
-                                color="standard"
-                                isDisabled={isDisabled}
-                            />
-
-                            <ToggleIconButton
-                                id={4}
-                                icon={Globe}
-                                selectedIcon={GlobeOff}
-                                color="tonal"
-                                isDisabled={isDisabled}
-                            />
-                        </ToolbarToggleButtonGroup>
-                    </Toolbar>
-
-                    {orientation === "horizontal" && (
-                        <>
-                            <Toolbar
-                                color={color}
-                                variant={variant}
-                                orientation={orientation}
-                                className="toolbar-overflow"
-                            >
-                                <Button
-                                    icon={Armchair}
-                                    color="outlined"
-                                    isDisabled={isDisabled}
-                                >
-                                    Chair
-                                </Button>
-                                <Button
-                                    icon={Armchair}
-                                    color="text"
-                                    isDisabled={isDisabled}
-                                >
-                                    Chair
-                                </Button>
-
-                                <Button icon={Armchair} isDisabled={isDisabled}>
-                                    Chair
-                                </Button>
-
-                                <Button
-                                    icon={Armchair}
-                                    color="tonal"
-                                    isDisabled={isDisabled}
-                                >
-                                    Chair
-                                </Button>
-
-                                <Button
-                                    icon={Armchair}
-                                    color="elevated"
-                                    isDisabled={isDisabled}
-                                >
-                                    Chair
-                                </Button>
-                            </Toolbar>
-
-                            <Toolbar
-                                color={color}
-                                variant={variant}
-                                orientation={orientation}
-                                className="toolbar-overflow"
-                            >
-                                <ToggleButton
-                                    icon={Globe}
-                                    selectedIcon={GlobeOff}
-                                    isDisabled={isDisabled}
-                                >
-                                    Globe
-                                </ToggleButton>
-
-                                <ToggleButton
-                                    icon={Globe}
-                                    selectedIcon={GlobeOff}
-                                    color="outlined"
-                                    isDisabled={isDisabled}
-                                >
-                                    Globe
-                                </ToggleButton>
-
-                                <ToggleButton
-                                    icon={Globe}
-                                    selectedIcon={GlobeOff}
-                                    color="tonal"
-                                    isDisabled={isDisabled}
-                                >
-                                    Globe
-                                </ToggleButton>
-
-                                <ToggleButton
-                                    icon={Globe}
-                                    selectedIcon={GlobeOff}
-                                    color="elevated"
-                                    isDisabled={isDisabled}
-                                >
-                                    Globe
-                                </ToggleButton>
-                            </Toolbar>
-                        </>
-                    )}
-                </div>
-
-                <Divider />
-            </>
-        );
-    };
 
     const orientation: Orientation[] = ["horizontal", "vertical"];
 
@@ -2245,137 +2240,129 @@ const ToolbarPreview = () => {
     );
 };
 
-const TabsPreview = () => {
-    const RenderTabs = ({
-        isDisabled,
-        orientation,
-    }: {
-        isDisabled?: boolean;
-        orientation?: Orientation;
-    }) => {
-        return (
-            <Tabs
-                keyboardActivation="manual"
-                orientation={orientation}
+const RenderTabs = ({
+    isDisabled,
+    orientation,
+}: {
+    isDisabled?: boolean;
+    orientation?: Orientation;
+}) => {
+    return (
+        <Tabs
+            keyboardActivation="manual"
+            orientation={orientation}
+            style={{
+                padding: "var(--md-sys-layout-space-28)",
+                borderRadius: "var(--md-sys-shape-corner-radius-large)",
+                outline:
+                    "var(--md-sys-shape-border-width-thin) solid var(--md-sys-color-outline)",
+            }}
+        >
+            <TabList
+                aria-label="Settings"
                 style={{
-                    padding: "var(--md-sys-layout-space-28)",
-                    borderRadius: "var(--md-sys-shape-corner-radius-large)",
-                    outline:
-                        "var(--md-sys-shape-border-width-thin) solid var(--md-sys-color-outline)",
+                    scrollbarWidth: "none",
                 }}
             >
-                <TabList
-                    aria-label="Settings"
-                    style={{
-                        scrollbarWidth: "none",
-                    }}
-                >
-                    <Tab
-                        id="general"
-                        label="General"
-                        icon={SwatchBook}
-                        isDisabled={isDisabled}
-                    />
-                    <Tab
-                        id="appearance"
-                        label="Appearance"
-                        isDisabled={isDisabled}
-                    />
-                    <Tab
-                        id="notifications"
-                        label="Notifications"
-                        icon={Bell}
-                        isDisabled={isDisabled}
-                    />
-                    <Tab
-                        id="profile"
-                        label="Profile"
-                        icon={UserRound}
-                        isDisabled={isDisabled}
-                    />
-                </TabList>
-                <TabPanels>
-                    <TabPanel id="general">
-                        <Form
-                            style={{
-                                display: "grid",
-                                gap: "1.5rem",
-                            }}
-                        >
-                            <Input
-                                label="Homepage"
-                                defaultValue="react-aria.adobe.com"
-                            />
-                            <Checkbox containerStateLayer defaultSelected>
-                                Show sidebar
-                            </Checkbox>
-                            <Checkbox containerStateLayer>
-                                Show status bar
-                            </Checkbox>
-                        </Form>
-                    </TabPanel>
-                    <TabPanel id="appearance">
-                        <Form
-                            style={{
-                                display: "grid",
-                                gap: "1.5rem",
-                            }}
-                        >
-                            <RadioGroup
-                                containerStateLayer
-                                label="Theme"
-                                defaultValue="auto"
-                            >
-                                <Radio value="auto">Auto</Radio>
-                                <Radio value="light">Light</Radio>
-                                <Radio value="dark">Dark</Radio>
-                            </RadioGroup>
-                            <RadioGroup
-                                containerStateLayer
-                                label="Font size"
-                                defaultValue="medium"
-                            >
-                                <Radio value="small">Small</Radio>
-                                <Radio value="medium">Medium</Radio>
-                                <Radio value="large">Large</Radio>
-                            </RadioGroup>
-                        </Form>
-                    </TabPanel>
-                    <TabPanel id="notifications">
-                        <CheckboxGroup
+                <Tab
+                    id="general"
+                    label="General"
+                    icon={SwatchBook}
+                    isDisabled={isDisabled}
+                />
+                <Tab
+                    id="appearance"
+                    label="Appearance"
+                    isDisabled={isDisabled}
+                />
+                <Tab
+                    id="notifications"
+                    label="Notifications"
+                    icon={Bell}
+                    isDisabled={isDisabled}
+                />
+                <Tab
+                    id="profile"
+                    label="Profile"
+                    icon={UserRound}
+                    isDisabled={isDisabled}
+                />
+            </TabList>
+            <TabPanels>
+                <TabPanel id="general">
+                    <Form
+                        style={{
+                            display: "grid",
+                            gap: "1.5rem",
+                        }}
+                    >
+                        <Input
+                            label="Homepage"
+                            defaultValue="react-aria.adobe.com"
+                        />
+                        <Checkbox containerStateLayer defaultSelected>
+                            Show sidebar
+                        </Checkbox>
+                        <Checkbox containerStateLayer>Show status bar</Checkbox>
+                    </Form>
+                </TabPanel>
+                <TabPanel id="appearance">
+                    <Form
+                        style={{
+                            display: "grid",
+                            gap: "1.5rem",
+                        }}
+                    >
+                        <RadioGroup
                             containerStateLayer
-                            label="Notifications settings"
-                            defaultValue={["account", "dms"]}
+                            label="Theme"
+                            defaultValue="auto"
                         >
-                            <Checkbox value="account">
-                                Account activity
-                            </Checkbox>
-                            <Checkbox value="mentions">Mentions</Checkbox>
-                            <Checkbox value="dms">Direct message</Checkbox>
-                            <Checkbox value="marketing">
-                                Marketing emails
-                            </Checkbox>
-                        </CheckboxGroup>
-                    </TabPanel>
-                    <TabPanel id="profile">
-                        <Form
-                            style={{
-                                display: "grid",
-                                gap: "1.5rem",
-                            }}
+                            <Radio value="auto">Auto</Radio>
+                            <Radio value="light">Light</Radio>
+                            <Radio value="dark">Dark</Radio>
+                        </RadioGroup>
+                        <RadioGroup
+                            containerStateLayer
+                            label="Font size"
+                            defaultValue="medium"
                         >
-                            <Input label="Name" defaultValue="Devon Govett" />
-                            <Input
-                                label="Username"
-                                defaultValue="@devongovett"
-                            />
-                            <Button>Update profile</Button>
-                        </Form>
-                    </TabPanel>
-                </TabPanels>
-            </Tabs>
-        );
-    };
+                            <Radio value="small">Small</Radio>
+                            <Radio value="medium">Medium</Radio>
+                            <Radio value="large">Large</Radio>
+                        </RadioGroup>
+                    </Form>
+                </TabPanel>
+                <TabPanel id="notifications">
+                    <CheckboxGroup
+                        containerStateLayer
+                        label="Notifications settings"
+                        defaultValue={["account", "dms"]}
+                    >
+                        <Checkbox value="account">Account activity</Checkbox>
+                        <Checkbox value="mentions">Mentions</Checkbox>
+                        <Checkbox value="dms">Direct message</Checkbox>
+                        <Checkbox value="marketing">Marketing emails</Checkbox>
+                    </CheckboxGroup>
+                </TabPanel>
+                <TabPanel id="profile">
+                    <Form
+                        style={{
+                            display: "grid",
+                            gap: "1.5rem",
+                        }}
+                    >
+                        <Input label="Name" defaultValue="Devon Govett" />
+                        <Input label="Username" defaultValue="@devongovett" />
+                        <Button>Update profile</Button>
+                    </Form>
+                </TabPanel>
+            </TabPanels>
+        </Tabs>
+    );
+};
+
+const TabsPreview = () => {
     return (
         <div className="items">
             <RenderTabs />
@@ -2941,70 +2928,68 @@ const DateRangePickerPreview = () => {
     );
 };
 
-const ConfigPreview = () => {
-    const SplitButtonConfig = ({
-        className,
-        layout,
-        menuClassName,
-    }: {
-        className?: string;
-        layout?: MenuLayout;
-        menuClassName?: string;
-    }) => {
-        return (
-            <SplitButton className={className}>
-                <SplitButtonPrimary tooltip="download" icon={Download}>
-                    Download
-                </SplitButtonPrimary>
+const SplitButtonConfig = ({
+    className,
+    layout,
+    menuClassName,
+}: {
+    className?: string;
+    layout?: MenuLayout;
+    menuClassName?: string;
+}) => {
+    return (
+        <SplitButton className={className}>
+            <SplitButtonPrimary tooltip="download" icon={Download}>
+                Download
+            </SplitButtonPrimary>
 
-                <MenuTrigger layout={layout}>
-                    <SplitButtonTrigger tooltip="more actions" />
-                    <Popover>
-                        <Menu className={menuClassName}>
-                            <MenuSection>
-                                <MenuSectionHeader>
-                                    Quick Actions
-                                </MenuSectionHeader>
+            <MenuTrigger layout={layout}>
+                <SplitButtonTrigger tooltip="more actions" />
+                <Popover>
+                    <Menu className={menuClassName}>
+                        <MenuSection>
+                            <MenuSectionHeader>Quick Actions</MenuSectionHeader>
 
-                                <MenuItem trailingIcon={Eye} label="Preview" />
+                            <MenuItem trailingIcon={Eye} label="Preview" />
 
-                                <MenuItem trailingIcon={Share2} label="Share" />
-                            </MenuSection>
+                            <MenuItem trailingIcon={Share2} label="Share" />
+                        </MenuSection>
 
-                            <MenuSection>
-                                <MenuSectionHeader>Security</MenuSectionHeader>
+                        <MenuSection>
+                            <MenuSectionHeader>Security</MenuSectionHeader>
 
+                            <MenuItem
+                                trailingIcon={GlobeLock}
+                                supportingText="Make item private"
+                                label="Private"
+                            />
+
+                            <SubmenuTrigger>
                                 <MenuItem
                                     trailingIcon={GlobeLock}
                                     supportingText="Make item private"
-                                    label="Private"
+                                    label="More"
                                 />
 
-                                <SubmenuTrigger>
-                                    <MenuItem
-                                        trailingIcon={GlobeLock}
-                                        supportingText="Make item private"
-                                        label="More"
-                                    />
+                                <SubmenuPopover>
+                                    <Menu className={menuClassName}>
+                                        <MenuSection>
+                                            <MenuItem label="Lock" />
 
-                                    <SubmenuPopover>
-                                        <Menu className={menuClassName}>
-                                            <MenuSection>
-                                                <MenuItem label="Lock" />
+                                            <MenuItem label="Archive" />
+                                        </MenuSection>
+                                    </Menu>
+                                </SubmenuPopover>
+                            </SubmenuTrigger>
+                        </MenuSection>
+                    </Menu>
+                </Popover>
+            </MenuTrigger>
+        </SplitButton>
+    );
+};
 
-                                                <MenuItem label="Archive" />
-                                            </MenuSection>
-                                        </Menu>
-                                    </SubmenuPopover>
-                                </SubmenuTrigger>
-                            </MenuSection>
-                        </Menu>
-                    </Popover>
-                </MenuTrigger>
-            </SplitButton>
-        );
-    };
-
+const ConfigPreview = () => {
     return (
         <div className="items-grid">
             <div className="items">
@@ -3383,10 +3368,13 @@ const SearchFieldPreview = () => {
     );
 };
 
-const SideSheetPreview = () => {
-    const alignments: SideSheetAlignment[] = ["start", "end"];
-    const layouts: SheetLayout[] = ["standard", "detached"];
-
+const RenderSideSheet = ({
+    alignment,
+    layout,
+}: {
+    alignment: SideSheetAlignment;
+    layout: SheetLayout;
+}) => {
     const sideSheetActions = [
         <Button key="save">Save</Button>,
         <Button color="text" key="close" slot="close">
@@ -3401,34 +3389,32 @@ const SideSheetPreview = () => {
         <Button key="save">Save</Button>,
     ];
 
-    const RenderSideSheet = ({
-        alignment,
-        layout,
-    }: {
-        alignment: SideSheetAlignment;
-        layout: SheetLayout;
-    }) => {
-        return (
-            <DialogTrigger>
-                <Button color="outlined">{`${alignment}-${layout}`}</Button>
+    return (
+        <DialogTrigger>
+            <Button color="outlined">{`${alignment}-${layout}`}</Button>
 
-                <ModalOverlay isDismissable>
-                    <SideSheetModal alignment={alignment} layout={layout}>
-                        <SideSheet
-                            actions={
-                                alignment === "start"
-                                    ? sideSheetActionsStart
-                                    : sideSheetActions
-                            }
-                            headline={`${alignment}-${layout}`}
-                        >
-                            <SearchFieldPreview />
-                        </SideSheet>
-                    </SideSheetModal>
-                </ModalOverlay>
-            </DialogTrigger>
-        );
-    };
+            <ModalOverlay isDismissable>
+                <SideSheetModal alignment={alignment} layout={layout}>
+                    <SideSheet
+                        actions={
+                            alignment === "start"
+                                ? sideSheetActionsStart
+                                : sideSheetActions
+                        }
+                        headline={`${alignment}-${layout}`}
+                    >
+                        <SearchFieldPreview />
+                    </SideSheet>
+                </SideSheetModal>
+            </ModalOverlay>
+        </DialogTrigger>
+    );
+};
+
+const SideSheetPreview = () => {
+    const alignments: SideSheetAlignment[] = ["start", "end"];
+    const layouts: SheetLayout[] = ["standard", "detached"];
+
     return (
         <div className="items">
             {alignments.map((alignment) => (
@@ -3446,49 +3432,46 @@ const SideSheetPreview = () => {
     );
 };
 
+const RenderBottomSheet = ({ layout }: { layout: SheetLayout }) => {
+    return (
+        <DialogTrigger>
+            <Button color="outlined">{layout}</Button>
+
+            <ModalOverlay isDismissable>
+                <BottomSheetModal layout={layout}>
+                    <BottomSheet>
+                        <h3 className={clsx(typography.titleMediumEmphasized)}>
+                            Some Action
+                        </h3>
+
+                        <p className={clsx(typography.bodyLarge)}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit. Duis eros nulla, commodo a finibus malesuada,
+                            cursus non metus.
+                        </p>
+
+                        <div
+                            className="items"
+                            style={{
+                                marginBlockStart: "16px",
+                                justifyContent: "end",
+                            }}
+                        >
+                            <Button color="text" slot="close">
+                                Cancel
+                            </Button>
+                            <Button>Save</Button>
+                        </div>
+                    </BottomSheet>
+                </BottomSheetModal>
+            </ModalOverlay>
+        </DialogTrigger>
+    );
+};
+
 const BottomSheetPreview = () => {
     const layouts: SheetLayout[] = ["standard", "detached"];
 
-    const RenderBottomSheet = ({ layout }: { layout: SheetLayout }) => {
-        return (
-            <DialogTrigger>
-                <Button color="outlined">{layout}</Button>
-
-                <ModalOverlay isDismissable>
-                    <BottomSheetModal layout={layout}>
-                        <BottomSheet>
-                            <h3
-                                className={clsx(
-                                    typography.titleMediumEmphasized
-                                )}
-                            >
-                                Some Action
-                            </h3>
-
-                            <p className={clsx(typography.bodyLarge)}>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Duis eros nulla, commodo a
-                                finibus malesuada, cursus non metus.
-                            </p>
-
-                            <div
-                                className="items"
-                                style={{
-                                    marginBlockStart: "16px",
-                                    justifyContent: "end",
-                                }}
-                            >
-                                <Button color="text" slot="close">
-                                    Cancel
-                                </Button>
-                                <Button>Save</Button>
-                            </div>
-                        </BottomSheet>
-                    </BottomSheetModal>
-                </ModalOverlay>
-            </DialogTrigger>
-        );
-    };
     return (
         <div className="items">
             {layouts.map((layout) => (
@@ -4080,39 +4063,39 @@ const NavPreview = () => {
     );
 };
 
-const GradientsPreview = () => {
-    const GradientRender = ({
-        className,
-        heading,
-    }: {
-        heading: string;
-        className: string;
-    }) => {
-        return (
-            <div
-                className={className}
-                style={{
-                    inlineSize: "min(80vi, 30rem)",
-                    blockSize: "30rem",
-                    borderRadius: "1rem",
-                    textAlign: "center",
-                    boxShadow: "var(--md-sys-elevation-shadow-2)",
-                    padding: "2rem",
-                    boxSizing: "border-box",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    border: "1px solid var(--md-sys-color-outline-variant)",
-                }}
-            >
-                <h3 className={clsx(typography.titleMediumEmphasized)}>
-                    {heading}
-                </h3>
-            </div>
-        );
-    };
+const GradientRender = ({
+    className,
+    heading,
+}: {
+    heading: string;
+    className: string;
+}) => {
+    return (
+        <div
+            className={className}
+            style={{
+                inlineSize: "min(80vi, 30rem)",
+                blockSize: "30rem",
+                borderRadius: "1rem",
+                textAlign: "center",
+                boxShadow: "var(--md-sys-elevation-shadow-2)",
+                padding: "2rem",
+                boxSizing: "border-box",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                border: "1px solid var(--md-sys-color-outline-variant)",
+            }}
+        >
+            <h3 className={clsx(typography.titleMediumEmphasized)}>
+                {heading}
+            </h3>
+        </div>
+    );
+};
 
+const GradientsPreview = () => {
     const gradients = Object.entries(gradientStyles);
     return (
         <div className="items">

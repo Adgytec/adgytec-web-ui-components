@@ -2,8 +2,8 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
+| Token                                  | Default Value                 | Description                                           |
+| -------------------------------------- | ----------------------------- | ----------------------------------------------------- |
 | `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the input field is focused. |
 
 The `Input` component (TextField) allows users to enter and edit text. It implements [Material 3 Text Fields](https://m3.material.io/components/text-fields/overview) and supports icons, prefixes, suffixes, and character counts.
@@ -12,23 +12,24 @@ The `Input` component (TextField) allows users to enter and edit text. It implem
 
 The `Input` component extends [React Aria Components TextField](https://react-spectrum.adobe.com/react-aria/TextField.html) (excluding `children`).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `ReactNode` | — | The label for the input field. |
-| `description` | `ReactNode` | — | Help text displayed below the input. |
-| `errorMessage` | `ReactNode \| ((v: ValidationResult) => ReactNode)` | — | Error message displayed when validation fails. |
-| `placeholder` | `string` | — | Placeholder text displayed when the input is empty. |
-| `leadingIcon` | `LucideIcon` | — | An optional icon displayed at the start of the input. |
-| `prefix` | `InputRenderProp` | — | Text or element displayed before the input text. |
-| `suffix` | `InputRenderProp` | — | Text or element displayed after the input text. |
-| `trailing` | `InputRenderProp` | — | Element (usually an `InputButton`) displayed at the very end of the container. |
-| `showCharacterCount` | `boolean` | `false` | Whether to display the current character count (requires `maxLength`). |
-| `showDescriptionOnInvalid` | `boolean` | `false` | Whether to keep showing the description when the input is invalid. |
+| Prop                       | Type                                                | Default | Description                                                                    |
+| -------------------------- | --------------------------------------------------- | ------- | ------------------------------------------------------------------------------ |
+| `label`                    | `ReactNode`                                         | —       | The label for the input field.                                                 |
+| `description`              | `ReactNode`                                         | —       | Help text displayed below the input.                                           |
+| `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —       | Error message displayed when validation fails.                                 |
+| `placeholder`              | `string`                                            | —       | Placeholder text displayed when the input is empty.                            |
+| `leadingIcon`              | `LucideIcon`                                        | —       | An optional icon displayed at the start of the input.                          |
+| `prefix`                   | `InputRenderProp`                                   | —       | Text or element displayed before the input text.                               |
+| `suffix`                   | `InputRenderProp`                                   | —       | Text or element displayed after the input text.                                |
+| `trailing`                 | `InputRenderProp`                                   | —       | Element (usually an `InputButton`) displayed at the very end of the container. |
+| `showCharacterCount`       | `boolean`                                           | `false` | Whether to display the current character count (requires `maxLength`).         |
+| `showDescriptionOnInvalid` | `boolean`                                           | `false` | Whether to keep showing the description when the input is invalid.             |
 
 ### `InputRenderProp`
+
 Can be a `ReactNode` or a function returning a `ReactNode`:
 ```ts
-(props: { isDisabled: boolean; isInvalid: boolean }) => ReactNode
+(props: { isDisabled: boolean; isInvalid: boolean }) => ReactNode;
 ```
 
 ## Usage

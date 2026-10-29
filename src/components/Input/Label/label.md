@@ -9,9 +9,9 @@ Extends [React Aria Components Label](https://react-spectrum.adobe.com/react-ari
 ## Usage
 
 ```tsx
-import { Label } from '@adgytec/web-ui-components';
+import { Label } from "@adgytec/web-ui-components";
 
-<Label>Email Address</Label>
+<Label>Email Address</Label>;
 ```
 
 

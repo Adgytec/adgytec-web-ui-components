@@ -9,9 +9,9 @@ Extends [React Aria Components Text](https://react-spectrum.adobe.com/react-aria
 ## Usage
 
 ```tsx
-import { Description } from '@adgytec/web-ui-components';
+import { Description } from "@adgytec/web-ui-components";
 
-<Description>Helpful text for the user.</Description>
+<Description>Helpful text for the user.</Description>;
 ```
 
 

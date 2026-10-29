@@ -8,23 +8,23 @@ The typography utility provides a set of constants representing the available ty
 
 Standard typography variants based on Material 3 guidelines.
 
-| Category | Variants |
-|----------|----------|
-| **Display** | `displayLarge`, `displayMedium`, `displaySmall` |
+| Category     | Variants                                           |
+| ------------ | -------------------------------------------------- |
+| **Display**  | `displayLarge`, `displayMedium`, `displaySmall`    |
 | **Headline** | `headlineLarge`, `headlineMedium`, `headlineSmall` |
-| **Title** | `titleLarge`, `titleMedium`, `titleSmall` |
-| **Body** | `bodyLarge`, `bodyMedium`, `bodySmall` |
-| **Label** | `labelLarge`, `labelMedium`, `labelSmall` |
+| **Title**    | `titleLarge`, `titleMedium`, `titleSmall`          |
+| **Body**     | `bodyLarge`, `bodyMedium`, `bodySmall`             |
+| **Label**    | `labelLarge`, `labelMedium`, `labelSmall`          |
 
-*Note: All variants also have an `Emphasized` version (e.g., `titleMediumEmphasized`).*
+_Note: All variants also have an `Emphasized` version (e.g., `titleMediumEmphasized`)._
 
 ### `fluidTypography`
 
 Fluid typography variants that scale smoothly based on the viewport size.
 
-| Category | Variants |
-|----------|----------|
-| **Display** | `displayLarge`, `displayMedium`, `displaySmall` |
+| Category     | Variants                                           |
+| ------------ | -------------------------------------------------- |
+| **Display**  | `displayLarge`, `displayMedium`, `displaySmall`    |
 | **Headline** | `headlineLarge`, `headlineMedium`, `headlineSmall` |
 
 ## Usage

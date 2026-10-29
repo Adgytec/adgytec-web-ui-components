@@ -2,20 +2,20 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
-| `--md-calendar-background` | `var(--md-sys-color-surface-container-high)` | Background color of the calendar. |
-| `--md-calendar-header-cell-color` | `var(--md-sys-color-on-surface)` | Color of the header (weekday) cells. |
-| `--md-calendar-cell-color` | `var(--md-sys-color-on-surface)` | Default color for calendar date cells. |
-| `--md-calendar-cell-state-layer-color` | `var(--md-sys-color-on-surface-variant)` | Color of the state layer (hover/focus) for date cells. |
-| `--md-calendar-cell-today-color` | `var(--md-sys-color-primary)` | Color for the current date's indicator. |
-| `--md-calendar-cell-selected-background` | `var(--md-sys-color-primary)` | Background color for selected date cells. |
-| `--md-calendar-selected-color` | `var(--md-sys-color-on-primary)` | Text color for selected date cells. |
-| `--md-calendar-in-active-range-background` | `var(--md-sys-color-secondary-container)` | Background color for date cells within a selected range. |
-| `--md-calendar-in-active-range-color` | `var(--md-sys-color-on-secondary-container)` | Text color for date cells within a selected range. |
-| `--md-calendar-menu-divider-color` | `var(--md-sys-color-outline-variant)` | Color of dividers within calendar menus (month/year selector). |
-| `--md-calendar-menu-selected-background` | `var(--md-sys-color-surface-variant)` | Background color for selected items in calendar menus. |
-| `--md-calendar-menu-selected-color` | `var(--md-sys-color-on-surface)` | Text color for selected items in calendar menus. |
+| Token                                      | Default Value                                | Description                                                    |
+| ------------------------------------------ | -------------------------------------------- | -------------------------------------------------------------- |
+| `--md-calendar-background`                 | `var(--md-sys-color-surface-container-high)` | Background color of the calendar.                              |
+| `--md-calendar-header-cell-color`          | `var(--md-sys-color-on-surface)`             | Color of the header (weekday) cells.                           |
+| `--md-calendar-cell-color`                 | `var(--md-sys-color-on-surface)`             | Default color for calendar date cells.                         |
+| `--md-calendar-cell-state-layer-color`     | `var(--md-sys-color-on-surface-variant)`     | Color of the state layer (hover/focus) for date cells.         |
+| `--md-calendar-cell-today-color`           | `var(--md-sys-color-primary)`                | Color for the current date's indicator.                        |
+| `--md-calendar-cell-selected-background`   | `var(--md-sys-color-primary)`                | Background color for selected date cells.                      |
+| `--md-calendar-selected-color`             | `var(--md-sys-color-on-primary)`             | Text color for selected date cells.                            |
+| `--md-calendar-in-active-range-background` | `var(--md-sys-color-secondary-container)`    | Background color for date cells within a selected range.       |
+| `--md-calendar-in-active-range-color`      | `var(--md-sys-color-on-secondary-container)` | Text color for date cells within a selected range.             |
+| `--md-calendar-menu-divider-color`         | `var(--md-sys-color-outline-variant)`        | Color of dividers within calendar menus (month/year selector). |
+| `--md-calendar-menu-selected-background`   | `var(--md-sys-color-surface-variant)`        | Background color for selected items in calendar menus.         |
+| `--md-calendar-menu-selected-color`        | `var(--md-sys-color-on-surface)`             | Text color for selected items in calendar menus.               |
 
 The `Calendar` component is an implementation of [Material 3 Date Pickers](https://m3.material.io/components/date-pickers/overview). It allows users to view and select dates from a grid.
 
@@ -30,26 +30,23 @@ Both `Calendar` and `RangeCalendar` extend their respective [React Aria Componen
 
 ### Additional Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `weekdayStyle` | `"narrow" \| "short"` | — | The formatting style for weekday headers. |
-| `previousMonthAriaLabel` | `string` | — | Accessible label for the previous month navigation button. |
-| `nextMonthAriaLabel` | `string` | — | Accessible label for the next month navigation button. |
-| `previousYearAriaLabel` | `string` | — | Accessible label for the previous year navigation button. |
-| `nextYearAriaLabel` | `string` | — | Accessible label for the next year navigation button. |
+| Prop                     | Type                  | Default | Description                                                |
+| ------------------------ | --------------------- | ------- | ---------------------------------------------------------- |
+| `weekdayStyle`           | `"narrow" \| "short"` | —       | The formatting style for weekday headers.                  |
+| `previousMonthAriaLabel` | `string`              | —       | Accessible label for the previous month navigation button. |
+| `nextMonthAriaLabel`     | `string`              | —       | Accessible label for the next month navigation button.     |
+| `previousYearAriaLabel`  | `string`              | —       | Accessible label for the previous year navigation button.  |
+| `nextYearAriaLabel`      | `string`              | —       | Accessible label for the next year navigation button.      |
 
 ## Usage
 
 ### Single Calendar
 
 ```tsx
-import { Calendar } from '@adgytec/web-ui-components';
-import { today, getLocalTimeZone } from '@internationalized/date';
+import { Calendar } from "@adgytec/web-ui-components";
+import { today, getLocalTimeZone } from "@internationalized/date";
 
-<Calendar 
-  aria-label="Appointment date" 
-  minValue={today(getLocalTimeZone())} 
-/>
+<Calendar aria-label="Appointment date" minValue={today(getLocalTimeZone())} />;
 ```
 
 ### Range Calendar
@@ -57,13 +54,10 @@ import { today, getLocalTimeZone } from '@internationalized/date';
 The `RangeCalendar` reuses the same internal components and styling, but allows for range selection.
 
 ```tsx
-import { RangeCalendar } from '@adgytec/web-ui-components';
-import { today, getLocalTimeZone } from '@internationalized/date';
+import { RangeCalendar } from "@adgytec/web-ui-components";
+import { today, getLocalTimeZone } from "@internationalized/date";
 
-<RangeCalendar 
-  aria-label="Trip dates" 
-  minValue={today(getLocalTimeZone())} 
-/>
+<RangeCalendar aria-label="Trip dates" minValue={today(getLocalTimeZone())} />;
 ```
 
 

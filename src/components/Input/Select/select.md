@@ -2,8 +2,8 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
+| Token                                  | Default Value                 | Description                                                    |
+| -------------------------------------- | ----------------------------- | -------------------------------------------------------------- |
 | `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the select field is focused or open. |
 
 > [!NOTE]
@@ -24,36 +24,43 @@ The `Select` component displays a list of options and allows a user to select on
 ## Props
 
 ### `Select`
+
 Extends [React Aria Components Select](https://react-spectrum.adobe.com/react-aria/Select.html).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `ReactNode` | — | The label for the select field. |
-| `description` | `ReactNode` | — | Help text displayed below the field. |
-| `errorMessage` | `ReactNode \| ((v: ValidationResult) => ReactNode)` | — | Error message displayed when validation fails. |
-| `showDescriptionOnInvalid` | `boolean` | `false` | Whether to keep showing the description when invalid. |
+| Prop                       | Type                                                | Default | Description                                           |
+| -------------------------- | --------------------------------------------------- | ------- | ----------------------------------------------------- |
+| `label`                    | `ReactNode`                                         | —       | The label for the select field.                       |
+| `description`              | `ReactNode`                                         | —       | Help text displayed below the field.                  |
+| `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —       | Error message displayed when validation fails.        |
+| `showDescriptionOnInvalid` | `boolean`                                           | `false` | Whether to keep showing the description when invalid. |
 
 ## Usage
 
 ```tsx
-import { 
-  Select, 
-  SelectTrigger, 
-  SelectPopover, 
-  SelectList, 
-  SelectItem 
-} from '@adgytec/web-ui-components';
+import {
+    Select,
+    SelectTrigger,
+    SelectPopover,
+    SelectList,
+    SelectItem,
+} from "@adgytec/web-ui-components";
 
 <Select label="Frequency">
-  <SelectTrigger />
-  <SelectPopover>
-    <SelectList>
-      <SelectItem id="daily" textValue="Daily">Daily</SelectItem>
-      <SelectItem id="weekly" textValue="Weekly">Weekly</SelectItem>
-      <SelectItem id="monthly" textValue="Monthly">Monthly</SelectItem>
-    </SelectList>
-  </SelectPopover>
-</Select>
+    <SelectTrigger />
+    <SelectPopover>
+        <SelectList>
+            <SelectItem id="daily" textValue="Daily">
+                Daily
+            </SelectItem>
+            <SelectItem id="weekly" textValue="Weekly">
+                Weekly
+            </SelectItem>
+            <SelectItem id="monthly" textValue="Monthly">
+                Monthly
+            </SelectItem>
+        </SelectList>
+    </SelectPopover>
+</Select>;
 ```
 
 

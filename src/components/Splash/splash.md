@@ -2,8 +2,8 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
+| Token            | Default Value  | Description                              |
+| ---------------- | -------------- | ---------------------------------------- |
 | `--splash-color` | `currentColor` | The color of the splash (ripple) effect. |
 
 The `Splash` component provides the Material 3 ripple effect for interactive elements. It is typically used in conjunction with the `useSplash` hook to handle the animation lifecycle and positioning based on user interaction.
@@ -11,21 +11,24 @@ The `Splash` component provides the Material 3 ripple effect for interactive ele
 ## Components
 
 ### `Splash`
+
 The visual component that renders the ripple animation.
 
 ### `useSplash`
+
 A hook that manages the splash state and provides a `handlePress` callback to trigger the animation.
 
 ## Props
 
 ### `Splash`
+
 The `Splash` component takes the following props (usually provided by the `useSplash` hook):
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `id` | `number` | Unique identifier for the splash instance. |
-| `x` | `number` | The x-coordinate of the press event. |
-| `y` | `number` | The y-coordinate of the press event. |
+| Prop             | Type         | Description                                             |
+| ---------------- | ------------ | ------------------------------------------------------- |
+| `id`             | `number`     | Unique identifier for the splash instance.              |
+| `x`              | `number`     | The x-coordinate of the press event.                    |
+| `y`              | `number`     | The y-coordinate of the press event.                    |
 | `onAnimationEnd` | `() => void` | Callback triggered when the ripple animation completes. |
 
 ## Usage
@@ -33,21 +36,21 @@ The `Splash` component takes the following props (usually provided by the `useSp
 To add a splash effect to a custom interactive component:
 
 ```tsx
-import { Splash, useSplash } from '@adgytec/web-ui-components';
-import { Button } from 'react-aria-components';
+import { Splash, useSplash } from "@adgytec/web-ui-components";
+import { Button } from "react-aria-components";
 
 function MyButton({ onPress, children }) {
-  const { splashInfo, handlePress } = useSplash(onPress);
+    const { splashInfo, handlePress } = useSplash(onPress);
 
-  return (
-    <Button 
-      onPress={handlePress}
-      style={{ position: 'relative', overflow: 'hidden' }}
-    >
-      {splashInfo && <Splash {...splashInfo} />}
-      {children}
-    </Button>
-  );
+    return (
+        <Button
+            onPress={handlePress}
+            style={{ position: "relative", overflow: "hidden" }}
+        >
+            {splashInfo && <Splash {...splashInfo} />}
+            {children}
+        </Button>
+    );
 }
 ```
 
@@ -57,7 +60,7 @@ You can customize the ripple color using the `--splash-color` CSS variable:
 
 ```css
 .my-custom-button {
-  --splash-color: var(--md-sys-color-primary);
+    --splash-color: var(--md-sys-color-primary);
 }
 ```
 

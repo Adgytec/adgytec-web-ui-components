@@ -2,13 +2,13 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
+| Token                              | Default Value                                | Description                               |
+| ---------------------------------- | -------------------------------------------- | ----------------------------------------- |
 | `--md-dialog-container-background` | `var(--md-sys-color-surface-container-high)` | Background color of the dialog container. |
-| `--md-dialog-headline-text-color` | `var(--md-sys-color-on-surface)` | Color of the dialog headline text. |
-| `--md-dialog-icon-color` | `var(--md-sys-color-secondary)` | Color of the icon in the dialog. |
-| `--md-dialog-body-text-color` | `var(--md-sys-color-on-surface-variant)` | Color of the dialog body text. |
-| `--md-dialog-overlay` | `var(--md-sys-color-scrim)` | Color of the modal backdrop overlay. |
+| `--md-dialog-headline-text-color`  | `var(--md-sys-color-on-surface)`             | Color of the dialog headline text.        |
+| `--md-dialog-icon-color`           | `var(--md-sys-color-secondary)`              | Color of the icon in the dialog.          |
+| `--md-dialog-body-text-color`      | `var(--md-sys-color-on-surface-variant)`     | Color of the dialog body text.            |
+| `--md-dialog-overlay`              | `var(--md-sys-color-scrim)`                  | Color of the modal backdrop overlay.      |
 
 The `Dialog` component is an implementation of [Material 3 Dialogs](https://m3.material.io/components/dialogs/overview). It is a type of modal window that appears in front of app content to provide critical information or ask for a decision.
 
@@ -23,37 +23,40 @@ The `Dialog` system consists of:
 ## Props
 
 ### `Dialog`
+
 Extends [React Aria Components Dialog](https://react-spectrum.adobe.com/react-aria/Dialog.html).
 
 ### `Modal`
+
 Extends [React Aria Components Modal](https://react-spectrum.adobe.com/react-aria/Modal.html).
 
 ### `ModalOverlay`
+
 Extends [React Aria Components ModalOverlay](https://react-spectrum.adobe.com/react-aria/ModalOverlay.html).
 
 ## Usage
 
 ```tsx
-import { DialogTrigger, Heading } from 'react-aria-components';
-import { 
-  Dialog, 
-  Modal, 
-  ModalOverlay, 
-  Button 
-} from '@adgytec/web-ui-components';
+import { DialogTrigger, Heading } from "react-aria-components";
+import {
+    Dialog,
+    Modal,
+    ModalOverlay,
+    Button,
+} from "@adgytec/web-ui-components";
 
 <DialogTrigger>
-  <Button label="Open Dialog" />
-  <ModalOverlay>
-    <Modal>
-      <Dialog>
-        <Heading slot="title">Dialog Title</Heading>
-        <p>This is the dialog content.</p>
-        <Button label="Close" onPress={() => {}} />
-      </Dialog>
-    </Modal>
-  </ModalOverlay>
-</DialogTrigger>
+    <Button label="Open Dialog" />
+    <ModalOverlay>
+        <Modal>
+            <Dialog>
+                <Heading slot="title">Dialog Title</Heading>
+                <p>This is the dialog content.</p>
+                <Button label="Close" onPress={() => {}} />
+            </Dialog>
+        </Modal>
+    </ModalOverlay>
+</DialogTrigger>;
 ```
 
 ### Animation

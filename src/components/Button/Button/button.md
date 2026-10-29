@@ -2,10 +2,10 @@
 
 ## Configurable CSS Tokens
 
-| Token | Description |
-|-------|-------------|
-| `--md-button-background` | Background color of the button. |
-| `--md-button-color` | Text and icon color of the button. |
+| Token                       | Description                                                    |
+| --------------------------- | -------------------------------------------------------------- |
+| `--md-button-background`    | Background color of the button.                                |
+| `--md-button-color`         | Text and icon color of the button.                             |
 | `--md-button-outline-color` | Outline color (specifically for the `outlined` color variant). |
 
 The `Button` component is an implementation of [Material 3 Buttons](https://m3.material.io/components/buttons/overview). It allows users to take actions and make choices with a single tap.
@@ -14,14 +14,14 @@ The `Button` component is an implementation of [Material 3 Buttons](https://m3.m
 
 The `Button` component extends [React Aria Components Button](https://react-spectrum.adobe.com/react-aria/Button.html).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `color` | `"filled" \| "tonal" \| "outlined" \| "elevated" \| "text"` | `"filled"` | The visual style and color scheme of the button. |
-| `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The size of the button. |
-| `shape` | `"round" \| "square"` | `"round"` | The corner radius of the button. |
-| `icon` | `LucideIcon` | — | An optional icon to display within the button. |
-| `iconPlacement` | `"start" \| "end"` | `"start"` | The position of the icon relative to the text. |
-| `tooltip` | `string` | — | Optional tooltip text displayed on hover. |
+| Prop            | Type                                                               | Default    | Description                                      |
+| --------------- | ------------------------------------------------------------------ | ---------- | ------------------------------------------------ |
+| `color`         | `"filled" \| "tonal" \| "outlined" \| "elevated" \| "text"`        | `"filled"` | The visual style and color scheme of the button. |
+| `size`          | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"`  | The size of the button.                          |
+| `shape`         | `"round" \| "square"`                                              | `"round"`  | The corner radius of the button.                 |
+| `icon`          | `LucideIcon`                                                       | —          | An optional icon to display within the button.   |
+| `iconPlacement` | `"start" \| "end"`                                                 | `"start"`  | The position of the icon relative to the text.   |
+| `tooltip`       | `string`                                                           | —          | Optional tooltip text displayed on hover.        |
 
 ## Usage
 

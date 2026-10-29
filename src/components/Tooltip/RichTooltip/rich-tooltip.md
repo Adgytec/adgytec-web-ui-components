@@ -2,10 +2,10 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
-| `--md-rich-tooltip-background` | `var(--md-sys-color-surface-container)` | Background color of the rich tooltip. |
-| `--md-rich-tooltip-color` | `var(--md-sys-color-on-surface-variant)` | Text color of the rich tooltip. |
+| Token                          | Default Value                            | Description                           |
+| ------------------------------ | ---------------------------------------- | ------------------------------------- |
+| `--md-rich-tooltip-background` | `var(--md-sys-color-surface-container)`  | Background color of the rich tooltip. |
+| `--md-rich-tooltip-color`      | `var(--md-sys-color-on-surface-variant)` | Text color of the rich tooltip.       |
 
 The `RichTooltip` component is an implementation of the [Material 3 rich tooltip](https://m3.material.io/components/tooltips/overview#89f33800-4f51-4043-9884-219159f427f7). Rich tooltips provide more context than plain tooltips, supporting titles, body text, and interactive actions.
 
@@ -22,15 +22,19 @@ Rich tooltips are composed of several sub-components:
 ## Props
 
 ### RichTooltip
+
 Extends `React.ComponentPropsWithRef<"div">`.
 
 ### RichTooltipSubhead
+
 Extends [React Aria Components Heading](https://react-spectrum.adobe.com/react-aria/Heading.html).
 
 ### RichTooltipText
+
 Extends [React Aria Components Text](https://react-spectrum.adobe.com/react-aria/Text.html).
 
 ### RichTooltipActions
+
 Extends `React.ComponentPropsWithRef<"div">`. Recommended to use `Button` with `size="small"` and `color="text"` inside.
 
 ## Usage
@@ -38,29 +42,30 @@ Extends `React.ComponentPropsWithRef<"div">`. Recommended to use `Button` with `
 Rich tooltips should be used within a `Popover` component.
 
 ```tsx
-import { 
-  RichTooltip, 
-  RichTooltipInfo, 
-  RichTooltipSubhead, 
-  RichTooltipText, 
-  RichTooltipActions,
-  Popover,
-  Button
-} from '@adgytec/web-ui-components';
+import {
+    RichTooltip,
+    RichTooltipInfo,
+    RichTooltipSubhead,
+    RichTooltipText,
+    RichTooltipActions,
+    Popover,
+    Button,
+} from "@adgytec/web-ui-components";
 
 <Popover>
-  <RichTooltip>
-    <RichTooltipInfo>
-      <RichTooltipSubhead>Rich Tooltip Title</RichTooltipSubhead>
-      <RichTooltipText>
-        Rich tooltips provide more information than plain tooltips. They can include interactive elements like buttons.
-      </RichTooltipText>
-    </RichTooltipInfo>
-    <RichTooltipActions>
-      <Button label="Learn More" size="small" color="text" />
-    </RichTooltipActions>
-  </RichTooltip>
-</Popover>
+    <RichTooltip>
+        <RichTooltipInfo>
+            <RichTooltipSubhead>Rich Tooltip Title</RichTooltipSubhead>
+            <RichTooltipText>
+                Rich tooltips provide more information than plain tooltips. They
+                can include interactive elements like buttons.
+            </RichTooltipText>
+        </RichTooltipInfo>
+        <RichTooltipActions>
+            <Button label="Learn More" size="small" color="text" />
+        </RichTooltipActions>
+    </RichTooltip>
+</Popover>;
 ```
 
 

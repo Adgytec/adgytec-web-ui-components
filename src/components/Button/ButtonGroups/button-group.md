@@ -10,26 +10,26 @@ The `ButtonGroup` displays a set of buttons with a consistent spacing. It featur
 
 Extends [React Aria Components ToggleButtonGroup](https://react-spectrum.adobe.com/react-aria/ToggleButtonGroup.html) (excluding `orientation`).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The size of the buttons within the group. |
-| `shape` | `"round" \| "square"` | `"round"` | The shape of the buttons within the group. |
-| `color` | `"filled" \| "tonal" \| "outlined"` | `"filled"` | The color variant for the buttons. |
-| `iconPlacement` | `"start" \| "end"` | `"start"` | The default icon placement for buttons in the group. |
+| Prop            | Type                                                               | Default    | Description                                          |
+| --------------- | ------------------------------------------------------------------ | ---------- | ---------------------------------------------------- |
+| `size`          | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"`  | The size of the buttons within the group.            |
+| `shape`         | `"round" \| "square"`                                              | `"round"`  | The shape of the buttons within the group.           |
+| `color`         | `"filled" \| "tonal" \| "outlined"`                                | `"filled"` | The color variant for the buttons.                   |
+| `iconPlacement` | `"start" \| "end"`                                                 | `"start"`  | The default icon placement for buttons in the group. |
 
 ### Usage
 
 The `ButtonGroup` is designed to be used with standard `ToggleButton` components.
 
 ```tsx
-import { ButtonGroup, ToggleButton } from '@adgytec/web-ui-components';
-import { AlignLeft, AlignCenter, AlignRight } from 'lucide-react';
+import { ButtonGroup, ToggleButton } from "@adgytec/web-ui-components";
+import { AlignLeft, AlignCenter, AlignRight } from "lucide-react";
 
 <ButtonGroup selectionMode="single" color="tonal">
-  <ToggleButton id="left" icon={AlignLeft} aria-label="Align Left" />
-  <ToggleButton id="center" icon={AlignCenter} aria-label="Align Center" />
-  <ToggleButton id="right" icon={AlignRight} aria-label="Align Right" />
-</ButtonGroup>
+    <ToggleButton id="left" icon={AlignLeft} aria-label="Align Left" />
+    <ToggleButton id="center" icon={AlignCenter} aria-label="Align Center" />
+    <ToggleButton id="right" icon={AlignRight} aria-label="Align Right" />
+</ButtonGroup>;
 ```
 
 ---
@@ -46,35 +46,40 @@ The `ConnectedButtonGroup` visually connects buttons together, merging their bor
 ### Props
 
 #### `ConnectedButtonGroup`
+
 Extends [React Aria Components ToggleButtonGroup](https://react-spectrum.adobe.com/react-aria/ToggleButtonGroup.html) (excluding `orientation`).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The size of the group. |
-| `shape` | `"round" \| "square"` | `"round"` | The overall shape of the connected unit. |
-| `color` | `"filled" \| "tonal" \| "outlined" \| "elevated"` | `"filled"` | The color variant for the buttons. |
+| Prop    | Type                                                               | Default    | Description                              |
+| ------- | ------------------------------------------------------------------ | ---------- | ---------------------------------------- |
+| `size`  | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"`  | The size of the group.                   |
+| `shape` | `"round" \| "square"`                                              | `"round"`  | The overall shape of the connected unit. |
+| `color` | `"filled" \| "tonal" \| "outlined" \| "elevated"`                  | `"filled"` | The color variant for the buttons.       |
 
 #### `ConnectedButton`
+
 Extends [React Aria Components ToggleButton](https://react-spectrum.adobe.com/react-aria/ToggleButton.html).
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `icon` | `LucideIcon` | An optional icon to display. |
-| `selectedIcon` | `LucideIcon` | An optional icon to display when selected. |
-| `iconPlacement` | `"start" \| "end"` | Overrides the group's icon placement. |
-| `tooltip` | `string` | Optional tooltip text displayed on hover/focus. |
+| Prop            | Type               | Description                                     |
+| --------------- | ------------------ | ----------------------------------------------- |
+| `icon`          | `LucideIcon`       | An optional icon to display.                    |
+| `selectedIcon`  | `LucideIcon`       | An optional icon to display when selected.      |
+| `iconPlacement` | `"start" \| "end"` | Overrides the group's icon placement.           |
+| `tooltip`       | `string`           | Optional tooltip text displayed on hover/focus. |
 
 ### Usage
 
 ```tsx
-import { ConnectedButtonGroup, ConnectedButton } from '@adgytec/web-ui-components';
-import { Bold, Italic, Underline } from 'lucide-react';
+import {
+    ConnectedButtonGroup,
+    ConnectedButton,
+} from "@adgytec/web-ui-components";
+import { Bold, Italic, Underline } from "lucide-react";
 
 <ConnectedButtonGroup selectionMode="multiple" color="outlined">
-  <ConnectedButton id="bold" icon={Bold} aria-label="Bold" />
-  <ConnectedButton id="italic" icon={Italic} aria-label="Italic" />
-  <ConnectedButton id="underline" icon={Underline} aria-label="Underline" />
-</ConnectedButtonGroup>
+    <ConnectedButton id="bold" icon={Bold} aria-label="Bold" />
+    <ConnectedButton id="italic" icon={Italic} aria-label="Italic" />
+    <ConnectedButton id="underline" icon={Underline} aria-label="Underline" />
+</ConnectedButtonGroup>;
 ```
 
 

@@ -2,14 +2,14 @@
 
 ## Configurable CSS Tokens
 
-| Token | Description |
-|-------|-------------|
-| `--md-toggle-button-background` | Background color of the button in its unselected state. |
-| `--md-toggle-button-selected-background` | Background color of the button in its selected state. |
-| `--md-toggle-button-color` | Color of the icon in the unselected state. |
-| `--md-toggle-button-selected-color` | Color of the icon in the selected state. |
-| `--md-toggle-button-outline-color` | Outline color in the unselected state (for `outlined` color variant). |
-| `--md-toggle-button-selected-outline-color` | Outline color in the selected state. |
+| Token                                       | Description                                                           |
+| ------------------------------------------- | --------------------------------------------------------------------- |
+| `--md-toggle-button-background`             | Background color of the button in its unselected state.               |
+| `--md-toggle-button-selected-background`    | Background color of the button in its selected state.                 |
+| `--md-toggle-button-color`                  | Color of the icon in the unselected state.                            |
+| `--md-toggle-button-selected-color`         | Color of the icon in the selected state.                              |
+| `--md-toggle-button-outline-color`          | Outline color in the unselected state (for `outlined` color variant). |
+| `--md-toggle-button-selected-outline-color` | Outline color in the selected state.                                  |
 
 The `ToggleIconButton` component allows users to switch between two states using a compact icon-based interface. It implements Material 3 toggle icon button patterns.
 
@@ -17,15 +17,15 @@ The `ToggleIconButton` component allows users to switch between two states using
 
 The `ToggleIconButton` component extends [React Aria Components ToggleButton](https://react-spectrum.adobe.com/react-aria/ToggleButton.html) (excluding `children`).
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `icon` | `LucideIcon` | **Required** | The icon to display in the unselected state. |
-| `selectedIcon` | `LucideIcon` | — | The icon to display in the selected state. If not provided, `icon` is used for both states. |
-| `color` | `"filled" \| "tonal" \| "outlined" \| "standard"` | `"filled"` | The visual style and color scheme. |
-| `size` | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The size of the button and icon. |
-| `shape` | `"round" \| "square"` | `"round"` | The corner radius of the button. |
-| `width` | `"default" \| "wide"` | `"default"` | Controls whether the button has a standard circular/square aspect or a wider layout. |
-| `tooltip` | `string` | — | Optional tooltip text displayed on hover. |
+| Prop           | Type                                                               | Default      | Description                                                                                 |
+| -------------- | ------------------------------------------------------------------ | ------------ | ------------------------------------------------------------------------------------------- |
+| `icon`         | `LucideIcon`                                                       | **Required** | The icon to display in the unselected state.                                                |
+| `selectedIcon` | `LucideIcon`                                                       | —            | The icon to display in the selected state. If not provided, `icon` is used for both states. |
+| `color`        | `"filled" \| "tonal" \| "outlined" \| "standard"`                  | `"filled"`   | The visual style and color scheme.                                                          |
+| `size`         | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"`    | The size of the button and icon.                                                            |
+| `shape`        | `"round" \| "square"`                                              | `"round"`    | The corner radius of the button.                                                            |
+| `width`        | `"default" \| "wide"`                                              | `"default"`  | Controls whether the button has a standard circular/square aspect or a wider layout.        |
+| `tooltip`      | `string`                                                           | —            | Optional tooltip text displayed on hover.                                                   |
 
 ## Usage
 

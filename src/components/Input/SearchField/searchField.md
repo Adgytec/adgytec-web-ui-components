@@ -2,11 +2,11 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default Value | Description |
-|-------|---------------|-------------|
-| `--md-search-field-background` | `var(--md-sys-color-surface-container-high)` | Background color of the search field. |
-| `--md-search-field-color` | `var(--md-sys-color-on-surface)` | Text color of the search field. |
-| `--md-search-field-supporting-color` | `var(--md-sys-color-on-surface-variant)` | Color for supporting elements like the search icon and placeholder. |
+| Token                                | Default Value                                | Description                                                         |
+| ------------------------------------ | -------------------------------------------- | ------------------------------------------------------------------- |
+| `--md-search-field-background`       | `var(--md-sys-color-surface-container-high)` | Background color of the search field.                               |
+| `--md-search-field-color`            | `var(--md-sys-color-on-surface)`             | Text color of the search field.                                     |
+| `--md-search-field-supporting-color` | `var(--md-sys-color-on-surface-variant)`     | Color for supporting elements like the search icon and placeholder. |
 
 The `SearchField` component is an implementation of [Material 3 Search](https://m3.material.io/components/search/overview). It allows users to enter search queries with a clear action and search icon.
 
@@ -20,8 +20,8 @@ The `SearchField` extends [React Aria Components SearchField](https://react-spec
 
 ### Additional Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
+| Prop          | Type     | Default    | Description                                |
+| ------------- | -------- | ---------- | ------------------------------------------ |
 | `placeholder` | `string` | `"Search"` | The placeholder text for the search input. |
 
 ## Usage
@@ -29,29 +29,24 @@ The `SearchField` extends [React Aria Components SearchField](https://react-spec
 ### Basic SearchField
 
 ```tsx
-import { SearchField } from '@adgytec/web-ui-components';
+import { SearchField } from "@adgytec/web-ui-components";
 
-<SearchField 
-  aria-label="Search documentation" 
-  onChange={(value) => console.log(value)} 
-/>
+<SearchField
+    aria-label="Search documentation"
+    onChange={(value) => console.log(value)}
+/>;
 ```
 
 ### Controlled SearchField
 
 ```tsx
-import { SearchField } from '@adgytec/web-ui-components';
-import { useState } from 'react';
+import { SearchField } from "@adgytec/web-ui-components";
+import { useState } from "react";
 
 function Example() {
-  let [value, setValue] = useState('');
+    let [value, setValue] = useState("");
 
-  return (
-    <SearchField
-      value={value}
-      onChange={setValue}
-    />
-  );
+    return <SearchField value={value} onChange={setValue} />;
 }
 ```
 

@@ -2,11 +2,11 @@
 
 ## Configurable CSS Tokens
 
-| Token | Default | Description |
-|-------|---------|-------------|
-| `--md-app-bar-background` | `var(--md-sys-color-surface)` | Background color of the AppBar container. |
+| Token                               | Default                                 | Description                                             |
+| ----------------------------------- | --------------------------------------- | ------------------------------------------------------- |
+| `--md-app-bar-background`           | `var(--md-sys-color-surface)`           | Background color of the AppBar container.               |
 | `--md-app-bar-on-scroll-background` | `var(--md-sys-color-surface-container)` | Background color of the AppBar container when scrolled. |
-| `--md-app-bar-title-color` | `var(--md-sys-color-on-surface)` | Text and icon color inside the AppBar and headline. |
+| `--md-app-bar-title-color`          | `var(--md-sys-color-on-surface)`        | Text and icon color inside the AppBar and headline.     |
 
 The `AppBar` component (also known as a Top App Bar) is an implementation of the [Material 3 Top App Bar](https://m3.material.io/components/top-app-bar/overview). It displays information and actions relating to the current screen, supporting expressive layouts with flexible sizes (Small, Medium, Large) and alignment types (Default, Centered).
 
@@ -27,13 +27,13 @@ The AppBar module consists of five primary components:
 
 The `AppBar` component acts as a `<header>` element and accepts standard header attributes.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `"small" \| "medium" \| "large"` | `"small"` | The layout height and typography size variant of the AppBar. |
-| `alignment` | `"default" \| "centered"` | `"default"` | The text alignment of the headline. |
-| `leadingAction` | `ReactNode` | — | The action element rendered at the start (left) of the AppBar, typically a navigation `AppBarAction`. |
-| `trailingActions` | `ReactNode[]` | — | A list of actions rendered at the end (right) of the AppBar, such as `AppBarAction` or `AppBarAvatar` items. |
-| `headline` | `ReactNode` | — | The headline element of the AppBar, typically an `AppBarHeadline`. |
+| Prop              | Type                             | Default     | Description                                                                                                  |
+| ----------------- | -------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------ |
+| `size`            | `"small" \| "medium" \| "large"` | `"small"`   | The layout height and typography size variant of the AppBar.                                                 |
+| `alignment`       | `"default" \| "centered"`        | `"default"` | The text alignment of the headline.                                                                          |
+| `leadingAction`   | `ReactNode`                      | —           | The action element rendered at the start (left) of the AppBar, typically a navigation `AppBarAction`.        |
+| `trailingActions` | `ReactNode[]`                    | —           | A list of actions rendered at the end (right) of the AppBar, such as `AppBarAction` or `AppBarAvatar` items. |
+| `headline`        | `ReactNode`                      | —           | The headline element of the AppBar, typically an `AppBarHeadline`.                                           |
 
 ### Responsive Design / Layout Behavior
 
@@ -48,11 +48,11 @@ Extends the [React Aria Heading](https://react-spectrum.adobe.com/react-aria/Hea
 
 Based on the parent `AppBar`'s size, `AppBarHeadline` automatically adjusts its height and typography scale:
 
-| AppBar Size | Height | Typography Style |
-|-------------|--------|------------------|
-| `small` | `28px` | Title Large (`typography.titleLarge`) |
-| `medium` | `36px` | Headline Medium (`typography.headlineMedium`) |
-| `large` | `44px` | Display Small (`typography.displaySmall`) |
+| AppBar Size | Height | Typography Style                              |
+| ----------- | ------ | --------------------------------------------- |
+| `small`     | `28px` | Title Large (`typography.titleLarge`)         |
+| `medium`    | `36px` | Headline Medium (`typography.headlineMedium`) |
+| `large`     | `44px` | Display Small (`typography.displaySmall`)     |
 
 ---
 
@@ -78,10 +78,10 @@ Extends the [React Aria Button](https://react-spectrum.adobe.com/react-aria/Butt
 
 ## AppBarState Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `initialScrolling` | `boolean` | `false` | Sets the initial scrolling state of the AppBar. |
-| `children` | `ReactNode` | — | The child components to render within the state provider context. |
+| Prop               | Type        | Default | Description                                                       |
+| ------------------ | ----------- | ------- | ----------------------------------------------------------------- |
+| `initialScrolling` | `boolean`   | `false` | Sets the initial scrolling state of the AppBar.                   |
+| `children`         | `ReactNode` | —       | The child components to render within the state provider context. |
 
 ---
 
@@ -92,25 +92,35 @@ Extends the [React Aria Button](https://react-spectrum.adobe.com/react-aria/Butt
 A classic application header containing a menu button, title, and action buttons.
 
 ```tsx
-import { AppBar, AppBarAction, AppBarHeadline } from '@adgytec/web-ui-components';
-import { Menu, Search, MoreVertical } from 'lucide-react';
+import {
+    AppBar,
+    AppBarAction,
+    AppBarHeadline,
+} from "@adgytec/web-ui-components";
+import { Menu, Search, MoreVertical } from "lucide-react";
 
 function Header() {
-  return (
-    <AppBar
-      size="small"
-      leadingAction={
-        <AppBarAction icon={Menu} aria-label="Open menu" onPress={() => {}} />
-      }
-      headline={
-        <AppBarHeadline>Dashboard</AppBarHeadline>
-      }
-      trailingActions={[
-        <AppBarAction key="search" icon={Search} aria-label="Search" />,
-        <AppBarAction key="more" icon={MoreVertical} aria-label="More options" />
-      ]}
-    />
-  );
+    return (
+        <AppBar
+            size="small"
+            leadingAction={
+                <AppBarAction
+                    icon={Menu}
+                    aria-label="Open menu"
+                    onPress={() => {}}
+                />
+            }
+            headline={<AppBarHeadline>Dashboard</AppBarHeadline>}
+            trailingActions={[
+                <AppBarAction key="search" icon={Search} aria-label="Search" />,
+                <AppBarAction
+                    key="more"
+                    icon={MoreVertical}
+                    aria-label="More options"
+                />,
+            ]}
+        />
+    );
 }
 ```
 
@@ -119,27 +129,33 @@ function Header() {
 Ideal for single-page contexts or profile-focused headers.
 
 ```tsx
-import { AppBar, AppBarAction, AppBarHeadline, AppBarAvatar } from '@adgytec/web-ui-components';
-import { ArrowLeft } from 'lucide-react';
+import {
+    AppBar,
+    AppBarAction,
+    AppBarHeadline,
+    AppBarAvatar,
+} from "@adgytec/web-ui-components";
+import { ArrowLeft } from "lucide-react";
 
 function UserProfileHeader() {
-  return (
-    <AppBar
-      size="small"
-      alignment="centered"
-      leadingAction={
-        <AppBarAction icon={ArrowLeft} aria-label="Go back" />
-      }
-      headline={
-        <AppBarHeadline>User Profile</AppBarHeadline>
-      }
-      trailingActions={[
-        <AppBarAvatar key="profile" aria-label="View profile">
-          <img src="/avatar-placeholder.png" alt="User initials/avatar" />
-        </AppBarAvatar>
-      ]}
-    />
-  );
+    return (
+        <AppBar
+            size="small"
+            alignment="centered"
+            leadingAction={
+                <AppBarAction icon={ArrowLeft} aria-label="Go back" />
+            }
+            headline={<AppBarHeadline>User Profile</AppBarHeadline>}
+            trailingActions={[
+                <AppBarAvatar key="profile" aria-label="View profile">
+                    <img
+                        src="/avatar-placeholder.png"
+                        alt="User initials/avatar"
+                    />
+                </AppBarAvatar>,
+            ]}
+        />
+    );
 }
 ```
 
@@ -148,26 +164,30 @@ function UserProfileHeader() {
 Perfect for main entry points or details pages with large titles, providing additional visual hierarchy.
 
 ```tsx
-import { AppBar, AppBarAction, AppBarHeadline } from '@adgytec/web-ui-components';
-import { Menu, Search, Share2, Star } from 'lucide-react';
+import {
+    AppBar,
+    AppBarAction,
+    AppBarHeadline,
+} from "@adgytec/web-ui-components";
+import { Menu, Search, Share2, Star } from "lucide-react";
 
 function ArticleHeader() {
-  return (
-    <AppBar
-      size="large"
-      leadingAction={
-        <AppBarAction icon={Menu} aria-label="Menu" />
-      }
-      headline={
-        <AppBarHeadline>Expressive Typography in Material Design</AppBarHeadline>
-      }
-      trailingActions={[
-        <AppBarAction key="star" icon={Star} aria-label="Bookmark" />,
-        <AppBarAction key="share" icon={Share2} aria-label="Share" />,
-        <AppBarAction key="search" icon={Search} aria-label="Search" />
-      ]}
-    />
-  );
+    return (
+        <AppBar
+            size="large"
+            leadingAction={<AppBarAction icon={Menu} aria-label="Menu" />}
+            headline={
+                <AppBarHeadline>
+                    Expressive Typography in Material Design
+                </AppBarHeadline>
+            }
+            trailingActions={[
+                <AppBarAction key="star" icon={Star} aria-label="Bookmark" />,
+                <AppBarAction key="share" icon={Share2} aria-label="Share" />,
+                <AppBarAction key="search" icon={Search} aria-label="Search" />,
+            ]}
+        />
+    );
 }
 ```
 
@@ -176,38 +196,55 @@ function ArticleHeader() {
 Wrap the layout in an `AppBarState` to automatically toggle styling (background color change and shadow elevation) when scrolling. Use the `useAppBarState` hook inside scroll containers to update the scrolling state.
 
 ```tsx
-import { AppBar, AppBarAction, AppBarHeadline, AppBarState, useAppBarState } from '@adgytec/web-ui-components';
-import { Menu, Search } from 'lucide-react';
-import { useEffect } from 'react';
+import {
+    AppBar,
+    AppBarAction,
+    AppBarHeadline,
+    AppBarState,
+    useAppBarState,
+} from "@adgytec/web-ui-components";
+import { Menu, Search } from "lucide-react";
+import { useEffect } from "react";
 
 function ScrollHandler() {
-  const appBarState = useAppBarState();
+    const appBarState = useAppBarState();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      appBarState?.updateScrolling(window.scrollY > 0);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [appBarState]);
+    useEffect(() => {
+        const handleScroll = () => {
+            appBarState?.updateScrolling(window.scrollY > 0);
+        };
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [appBarState]);
 
-  return null;
+    return null;
 }
 
 function Page() {
-  return (
-    <AppBarState>
-      <AppBar
-        leadingAction={<AppBarAction icon={Menu} aria-label="Menu" />}
-        headline={<AppBarHeadline>Scroll to See Background Change</AppBarHeadline>}
-        trailingActions={[<AppBarAction key="search" icon={Search} aria-label="Search" />]}
-      />
-      <ScrollHandler />
-      <div style={{ height: '2000px', padding: '16px' }}>
-        Scroll down to observe the background change and shadow elevation.
-      </div>
-    </AppBarState>
-  );
+    return (
+        <AppBarState>
+            <AppBar
+                leadingAction={<AppBarAction icon={Menu} aria-label="Menu" />}
+                headline={
+                    <AppBarHeadline>
+                        Scroll to See Background Change
+                    </AppBarHeadline>
+                }
+                trailingActions={[
+                    <AppBarAction
+                        key="search"
+                        icon={Search}
+                        aria-label="Search"
+                    />,
+                ]}
+            />
+            <ScrollHandler />
+            <div style={{ height: "2000px", padding: "16px" }}>
+                Scroll down to observe the background change and shadow
+                elevation.
+            </div>
+        </AppBarState>
+    );
 }
 ```
 
