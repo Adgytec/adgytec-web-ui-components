@@ -56,6 +56,8 @@
         }
 
         &[data-hovered] {
+            cursor: pointer;
+
             --_state-layer-opacity: var(--md-sys-state-hover);
             --_shadow: var(--md-sys-elevation-shadow-1);
         }
