@@ -143,12 +143,16 @@ export const ListItem: React.FC<ListItemProps> = ({
 
                         <div className={clsx(styles["content"])}>
                             {overline && overline}
-                            {isValidElement<HTMLAttributes<HTMLElement>>(label)
-                                ? cloneElement<HTMLAttributes<HTMLElement>>(
-                                      label,
-                                      { id: labelID }
-                                  )
-                                : label}
+                            {isValidElement<HTMLAttributes<HTMLElement>>(
+                                label
+                            ) ? (
+                                cloneElement<HTMLAttributes<HTMLElement>>(
+                                    label,
+                                    { id: labelID }
+                                )
+                            ) : (
+                                <span id={labelID}>{label}</span>
+                            )}
                             {supporting && supporting}
                         </div>
 

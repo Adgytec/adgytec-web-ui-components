@@ -34,7 +34,6 @@ import type { CheckboxProps } from "./types";
  */
 export const Checkbox: React.FC<CheckboxProps> = ({
     children,
-    className,
     labelPlacement,
     ...props
 }) => {
