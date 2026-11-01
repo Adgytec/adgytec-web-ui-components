@@ -1,10 +1,13 @@
 import { clsx } from "clsx";
 import { Check } from "lucide-react";
+import { cloneElement, type HTMLAttributes, isValidElement } from "react";
+import { useId } from "react-aria";
 import {
     CheckboxContext,
     DEFAULT_SLOT,
     ListBoxItem,
     Provider,
+    SwitchFieldContext,
 } from "react-aria-components";
 import { Splash, useSplash } from "@/components/Splash";
 import { useListBoxConfig } from "../core";
@@ -63,6 +66,12 @@ export const ListItem: React.FC<ListItemProps> = ({
     const listItemSelectionIndicator =
         selectionIndicator ?? listBoxSelectionIndicator ?? "none";
 
+    const labelID = useId(
+        isValidElement<HTMLAttributes<HTMLElement>>(label)
+            ? label.props.id
+            : undefined
+    );
+
     const { handlePress, splashInfo } = useSplash(onPress);
     const hasTrailing = (trailing?.length ?? 0) > 0;
 
@@ -101,6 +110,17 @@ export const ListItem: React.FC<ListItemProps> = ({
                                                 isDisabled ||
                                                 selectionMode === "none",
                                             isReadOnly: true,
+                                            "aria-labelledby": labelID,
+                                        },
+                                    },
+                                },
+                            ],
+                            [
+                                SwitchFieldContext,
+                                {
+                                    slots: {
+                                        [DEFAULT_SLOT]: {
+                                            "aria-labelledby": labelID,
                                         },
                                     },
                                 },
@@ -123,7 +143,12 @@ export const ListItem: React.FC<ListItemProps> = ({
 
                         <div className={clsx(styles["content"])}>
                             {overline && overline}
-                            {label}
+                            {isValidElement<HTMLAttributes<HTMLElement>>(label)
+                                ? cloneElement<HTMLAttributes<HTMLElement>>(
+                                      label,
+                                      { id: labelID }
+                                  )
+                                : label}
                             {supporting && supporting}
                         </div>
 
