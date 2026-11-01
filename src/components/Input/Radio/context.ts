@@ -2,13 +2,11 @@ import { createContext } from "react";
 import type { RadioLabelPlacement } from "./types";
 
 /**
- * Shared context value provided by {@link RadioGroup} to child {@link Radio} components.
+ * Configuration context value passed down from [`RadioGroup`](src/components/Input/Radio/RadioGroup.tsx) to child [`Radio`](src/components/Input/Radio/Radio.tsx) components.
  */
 export interface RadioGroupContextValue {
-    /** Inherited label placement. */
+    /** Inherited label placement for child radio items. */
     labelPlacement?: RadioLabelPlacement;
-    /** Inherited container state layer flag. */
-    containerStateLayer?: boolean;
 }
 
 /**

@@ -84,20 +84,12 @@ export const RenderTabs = ({
                             gap: "1.5rem",
                         }}
                     >
-                        <RadioGroup
-                            containerStateLayer
-                            label="Theme"
-                            defaultValue="auto"
-                        >
+                        <RadioGroup label="Theme" defaultValue="auto">
                             <Radio value="auto">Auto</Radio>
                             <Radio value="light">Light</Radio>
                             <Radio value="dark">Dark</Radio>
                         </RadioGroup>
-                        <RadioGroup
-                            containerStateLayer
-                            label="Font size"
-                            defaultValue="medium"
-                        >
+                        <RadioGroup label="Font size" defaultValue="medium">
                             <Radio value="small">Small</Radio>
                             <Radio value="medium">Medium</Radio>
                             <Radio value="large">Large</Radio>

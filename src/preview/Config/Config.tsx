@@ -201,31 +201,19 @@ export const ConfigPreview = () => {
             </div>
 
             <div className="items">
-                <RadioGroup
-                    className="radio-primary"
-                    label="Primary"
-                    containerStateLayer
-                >
+                <RadioGroup className="radio-primary" label="Primary">
                     <Radio value="cat">Cat</Radio>
                     <Radio value="dog">Dog</Radio>
                     <Radio value="dragon">Dragon</Radio>
                 </RadioGroup>
 
-                <RadioGroup
-                    className="radio-primary-alt"
-                    label="Primary alt"
-                    containerStateLayer
-                >
+                <RadioGroup className="radio-primary-alt" label="Primary alt">
                     <Radio value="cat">Cat</Radio>
                     <Radio value="dog">Dog</Radio>
                     <Radio value="dragon">Dragon</Radio>
                 </RadioGroup>
 
-                <RadioGroup
-                    className="radio-tertiary"
-                    label="Tertiary"
-                    containerStateLayer
-                >
+                <RadioGroup className="radio-tertiary" label="Tertiary">
                     <Radio value="cat">Cat</Radio>
                     <Radio value="dog">Dog</Radio>
                     <Radio value="dragon">Dragon</Radio>
@@ -233,7 +221,6 @@ export const ConfigPreview = () => {
 
                 <RadioGroup
                     className="radio-primary-fixed"
-                    containerStateLayer
                     label="Primary Fixed"
                 >
                     <Radio value="cat">Cat</Radio>
@@ -244,18 +231,13 @@ export const ConfigPreview = () => {
                 <RadioGroup
                     className="radio-secondary-fixed"
                     label="Secondary Fixed"
-                    containerStateLayer
                 >
                     <Radio value="cat">Cat</Radio>
                     <Radio value="dog">Dog</Radio>
                     <Radio value="dragon">Dragon</Radio>
                 </RadioGroup>
 
-                <RadioGroup
-                    className="radio-inverse"
-                    label="Inverse"
-                    containerStateLayer
-                >
+                <RadioGroup className="radio-inverse" label="Inverse">
                     <Radio value="cat">Cat</Radio>
                     <Radio value="dog">Dog</Radio>
                     <Radio value="dragon">Dragon</Radio>

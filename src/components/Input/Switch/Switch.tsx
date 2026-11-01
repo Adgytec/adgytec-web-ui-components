@@ -60,7 +60,7 @@ export const Switch: React.FC<SwitchProps> = ({
 
                 return (
                     <SwitchButton className={clsx(styles["switch"])}>
-                        {(renderProps) => {
+                        {(buttonRenderProps) => {
                             const {
                                 isSelected,
                                 isHovered,
@@ -69,7 +69,7 @@ export const Switch: React.FC<SwitchProps> = ({
                                 isFocusVisible,
                                 isPressed,
                                 isReadOnly,
-                            } = renderProps;
+                            } = buttonRenderProps;
 
                             let iconValue: LucideIcon | undefined;
                             if (icon !== "none" && isSelected) {

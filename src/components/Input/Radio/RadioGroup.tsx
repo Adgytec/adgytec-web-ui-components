@@ -8,14 +8,14 @@ import styles from "./radio.module.css";
 import type { RadioGroupProps } from "./types";
 
 /**
- * A container managing mutually exclusive {@link Radio} options.
+ * A container managing mutually exclusive [`Radio`](src/components/Input/Radio/Radio.tsx) options.
  *
  * Coordinates single-selection radio values, keyboard navigation arrow-key roving,
  * accessible labels, helper descriptions, and validation error messages.
  *
  * @example
  * ```tsx
- * import { RadioGroup, Radio } from '@adgytec/web-ui-components';
+ * import { RadioGroup, Radio } from "@adgytec/web-ui-components";
  *
  * <RadioGroup label="Delivery Speed" defaultValue="standard">
  *     <Radio value="standard">Standard (3-5 days)</Radio>
@@ -31,13 +31,11 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
     showDescriptionOnInvalid = false,
     children,
     className,
-    radioItemsGap = 24,
     labelPlacement,
-    containerStateLayer,
     ...props
 }) => {
     return (
-        <RadioGroupContext value={{ labelPlacement, containerStateLayer }}>
+        <RadioGroupContext value={{ labelPlacement }}>
             <AriaRadioGroup
                 className={(renderProps) =>
                     clsx(
@@ -50,7 +48,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
                 {...props}
                 data-radio-group
             >
-                {({ orientation, isInvalid }) => {
+                {({ isInvalid }) => {
                     const showDescription =
                         description &&
                         (!isInvalid || (isInvalid && showDescriptionOnInvalid));
@@ -59,19 +57,12 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
                         <>
                             {label && <Label>{label}</Label>}
 
-                            <div
-                                data-orientation={orientation}
-                                className={clsx(styles["radio-items"])}
-                                style={{
-                                    gap: `calc(${radioItemsGap} * var(--dp, 1px))`,
-                                }}
-                            >
-                                {children}
-                            </div>
+                            {children}
 
                             {showDescription && (
                                 <Description>{description}</Description>
                             )}
+
                             <FieldError>{errorMessage}</FieldError>
                         </>
                     );

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { Radio, RadioGroup } from "react-aria-components";
+import type { RadioField, RadioGroup } from "react-aria-components";
 import type { CoreInputProps } from "../core";
 
 /**
@@ -11,53 +11,40 @@ import type { CoreInputProps } from "../core";
 export type RadioLabelPlacement = "start" | "end";
 
 /**
- * Props for the {@link RadioGroup} component.
- * Extends React Aria's `RadioGroup` props and {@link CoreInputProps}.
+ * Props for the [`RadioGroup`](src/components/Input/Radio/RadioGroup.tsx) component.
+ *
+ * Extends React Aria's `RadioGroup` props (excluding `children` and `orientation`) and [`CoreInputProps`](src/components/Input/core/types.ts).
  */
 export interface RadioGroupProps
-    extends Omit<React.ComponentPropsWithRef<typeof RadioGroup>, "children">,
+    extends Omit<
+            React.ComponentPropsWithRef<typeof RadioGroup>,
+            "children" | "orientation"
+        >,
         CoreInputProps {
     /** The child radio buttons or custom layout structure rendered within the group. */
     children?: ReactNode;
 
     /**
-     * Spacing (in pixels) between adjacent radio items.
-     *
-     * @default 24
-     */
-    radioItemsGap?: number;
-
-    /**
      * Default label placement applied to all child radio items within the group.
+     * Can be overridden per individual [`Radio`](src/components/Input/Radio/Radio.tsx).
      *
      * @default "end"
      */
     labelPlacement?: RadioLabelPlacement;
-
-    /**
-     * When `true`, displays the state layer (hover, press, focus) across the entire radio container.
-     *
-     * @default false
-     */
-    containerStateLayer?: boolean;
 }
 
 /**
- * Props for the {@link Radio} component.
- * Extends React Aria's `Radio` props.
+ * Props for the [`Radio`](src/components/Input/Radio/Radio.tsx) component.
+ *
+ * Extends all properties from React Aria's `RadioField`, including selection value and accessibility states.
  */
-export interface RadioProps extends React.ComponentPropsWithRef<typeof Radio> {
+export interface RadioProps
+    extends React.ComponentPropsWithRef<typeof RadioField> {
     /**
      * Alignment of the label text relative to the indicator circle.
+     * If omitted, inherits from the parent [`RadioGroup`](src/components/Input/Radio/RadioGroup.tsx) `labelPlacement`.
      *
      * @default "end"
      */
     labelPlacement?: RadioLabelPlacement;
-
-    /**
-     * When `true`, displays the state layer (hover, press, focus) across the entire radio container.
-     *
-     * @default false
-     */
-    containerStateLayer?: boolean;
 }

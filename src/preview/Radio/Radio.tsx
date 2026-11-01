@@ -1,8 +1,8 @@
-import { Label, Radio, RadioGroup } from "../../components/Input";
+import { Radio, RadioGroup } from "../../components/Input";
 
 export const RadioPreview = () => {
     return (
-        <>
+        <div className="items-grid">
             <RadioGroup
                 label="Disabled"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
@@ -15,10 +15,8 @@ export const RadioPreview = () => {
             </RadioGroup>
 
             <RadioGroup
-                label="Disabled"
+                label="Default"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
-                isDisabled
-                orientation="horizontal"
             >
                 <Radio value="cat">Cat</Radio>
                 <Radio value="dog">Dog</Radio>
@@ -26,31 +24,16 @@ export const RadioPreview = () => {
             </RadioGroup>
 
             <RadioGroup
-                label="Enabled"
+                label="Invalid"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
+                errorMessage="sample error message"
                 isInvalid
-                containerStateLayer
-                showDescriptionOnInvalid
             >
                 <Radio value="cat">Cat</Radio>
                 <Radio value="dog">Dog</Radio>
                 <Radio value="dragon">Dragon</Radio>
             </RadioGroup>
-
-            <RadioGroup
-                label="Enabled"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
-                orientation="horizontal"
-                labelPlacement="start"
-                containerStateLayer
-            >
-                <Radio value="cat">Cat</Radio>
-                <Radio value="dog">
-                    <Label>Dog</Label>
-                </Radio>
-                <Radio value="dragon">Dragon</Radio>
-            </RadioGroup>
-        </>
+        </div>
     );
 };
 

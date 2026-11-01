@@ -55,14 +55,6 @@
         }
     }
 
-    .radio-items {
-        display: grid;
-
-        &[data-orientation="horizontal"] {
-            display: flex;
-        }
-    }
-
     .radio {
         /* invalid tokens */
         --_md-radio-invalid-icon-color: var(--md-sys-color-error);
@@ -146,26 +138,6 @@
         }
     }
 
-    .state-layer::before {
-        content: "";
-
-        position: absolute;
-        inset: calc(-1 * var(--md-sys-layout-space-12));
-
-        background-color: var(--_state-layer-color);
-        border-radius: var(--md-sys-shape-corner-radius-extra-small);
-
-        pointer-events: none;
-
-        transition: background-color
-            var(--md-sys-motion-expressive-fast-effects)
-            var(--md-sys-motion-expressive-fast-effects-duration);
-
-        @media (prefers-reduced-motion) {
-            transition: none;
-        }
-    }
-
     .indicator {
         --_indicator-color: var(--_md-radio-icon-color);
 
@@ -225,7 +197,7 @@
     }
 
     /* state layer */
-    .indicator[data-show-state-layer]::before {
+    .indicator::before {
         content: "";
 
         position: absolute;
