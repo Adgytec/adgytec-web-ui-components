@@ -8,14 +8,14 @@ import { CheckboxGroupContext } from "./context";
 import type { CheckboxGroupProps } from "./types";
 
 /**
- * A container managing a set of related {@link Checkbox} controls.
+ * A container managing a set of related [`Checkbox`](src/components/Input/Checkbox/Checkbox.tsx) controls.
  *
  * Coordinates group selection values, accessible group labels, helper descriptions,
- * error validation messages, and consistent item spacing.
+ * and error validation messages.
  *
  * @example
  * ```tsx
- * import { CheckboxGroup, Checkbox } from '@adgytec/web-ui-components';
+ * import { CheckboxGroup, Checkbox } from "@adgytec/web-ui-components";
  *
  * <CheckboxGroup label="Notification Preferences">
  *     <Checkbox value="email">Email</Checkbox>
@@ -30,14 +30,12 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     errorMessage,
     children,
     className,
-    checkboxItemsGap = 24,
     labelPlacement,
-    containerStateLayer,
     showDescriptionOnInvalid = false,
     ...props
 }) => {
     return (
-        <CheckboxGroupContext value={{ labelPlacement, containerStateLayer }}>
+        <CheckboxGroupContext value={{ labelPlacement }}>
             <AriaCheckboxGroup
                 className={(renderProps) =>
                     clsx(
@@ -58,14 +56,7 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
                         <>
                             {label && <Label>{label}</Label>}
 
-                            <div
-                                className={clsx(styles["checkbox-items"])}
-                                style={{
-                                    gap: `calc(${checkboxItemsGap} * var(--dp, 1px))`,
-                                }}
-                            >
-                                {children}
-                            </div>
+                            {children}
 
                             {showDescription && (
                                 <Description>{description}</Description>

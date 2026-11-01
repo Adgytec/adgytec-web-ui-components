@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { useContext } from "react";
-import { Checkbox as AriaCheckbox } from "react-aria-components";
-import { typography } from "@/utils";
+import { CheckboxButton, CheckboxField } from "react-aria-components";
 import { TapTarget } from "@/utils/tapTarget";
 import styles from "./checkbox.module.css";
 import { CheckboxGroupContext } from "./context";
@@ -10,15 +9,26 @@ import type { CheckboxProps } from "./types";
 /**
  * A checkbox control implementing Material Design 3 Checkbox guidelines.
  *
- * Supports unchecked, checked, and indeterminate states with smooth animated SVG paths,
- * accessible keyboard activation, and flexible label positioning.
+ * Supports unchecked, checked, and indeterminate states with animated SVG paths,
+ * accessible keyboard activation, state layers, and flexible label positioning.
+ * Built on React Aria's `CheckboxField` and `CheckboxButton` components.
  *
  * @example
  * ```tsx
- * import { Checkbox } from '@adgytec/web-ui-components';
+ * import { Checkbox } from "@adgytec/web-ui-components";
  *
  * <Checkbox isSelected={agree} onChange={setAgree}>
  *     I accept the terms and conditions
+ * </Checkbox>
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // Indeterminate checkbox with start label placement
+ * import { Checkbox } from "@adgytec/web-ui-components";
+ *
+ * <Checkbox isIndeterminate labelPlacement="start">
+ *     Select all items
  * </Checkbox>
  * ```
  */
@@ -26,89 +36,91 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     children,
     className,
     labelPlacement,
-    containerStateLayer,
     ...props
 }) => {
-    const {
-        labelPlacement: groupLabelPlacement,
-        containerStateLayer: groupContainerStateLayer,
-    } = useContext(CheckboxGroupContext);
+    const { labelPlacement: groupLabelPlacement } =
+        useContext(CheckboxGroupContext);
     const placement = labelPlacement ?? groupLabelPlacement ?? "end";
-    const stateLayer = containerStateLayer ?? groupContainerStateLayer ?? false;
 
     return (
-        <AriaCheckbox
-            className={(renderProps) =>
-                clsx(
-                    styles["checkbox"],
-                    stateLayer && styles["state-layer"],
-                    typography.labelLarge,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
-            {...props}
-            data-checkbox
-        >
+        <CheckboxField {...props} data-checkbox>
             {(renderProps) => {
-                const {
-                    isSelected,
-                    isHovered,
-                    isDisabled,
-                    isFocused,
-                    isFocusVisible,
-                    isPressed,
-                    isInvalid,
-                    isIndeterminate,
-                } = renderProps;
-
-                const dataAttrs = {
-                    "data-selected": isSelected || undefined,
-                    "data-hovered": isHovered || undefined,
-                    "data-disabled": isDisabled || undefined,
-                    "data-focused": isFocused || undefined,
-                    "data-focus-visible": isFocusVisible || undefined,
-                    "data-pressed": isPressed || undefined,
-                    "data-invalid": isInvalid || undefined,
-                    "data-indeterminate": isIndeterminate || undefined,
-                    "data-show-state-layer": !stateLayer || undefined,
-                    "data-filled": isSelected || isIndeterminate || undefined,
-                };
-
                 const label =
                     typeof children === "function"
                         ? children(renderProps)
                         : children;
+
                 return (
-                    <>
-                        {placement === "start" && label}
+                    <CheckboxButton className={clsx(styles["checkbox"])}>
+                        {(buttonRenderProps) => {
+                            const {
+                                isSelected,
+                                isHovered,
+                                isDisabled,
+                                isFocused,
+                                isFocusVisible,
+                                isPressed,
+                                isInvalid,
+                                isIndeterminate,
+                            } = buttonRenderProps;
 
-                        <span
-                            className={clsx(styles["indicator"], TapTarget)}
-                            {...dataAttrs}
-                        >
-                            <svg
-                                viewBox="0 0 18 18"
-                                aria-hidden="true"
-                                key={
-                                    isIndeterminate ? "indeterminate" : "check"
-                                }
-                                className={styles["svg"]}
-                                {...dataAttrs}
-                            >
-                                {isIndeterminate ? (
-                                    <rect x={1} y={7.5} width={16} height={3} />
-                                ) : (
-                                    <polyline points="2 9 7 14 16 4" />
-                                )}
-                            </svg>
-                        </span>
+                            const dataAttrs = {
+                                "data-selected": isSelected || undefined,
+                                "data-hovered": isHovered || undefined,
+                                "data-disabled": isDisabled || undefined,
+                                "data-focused": isFocused || undefined,
+                                "data-focus-visible":
+                                    isFocusVisible || undefined,
+                                "data-pressed": isPressed || undefined,
+                                "data-invalid": isInvalid || undefined,
+                                "data-indeterminate":
+                                    isIndeterminate || undefined,
+                                "data-filled":
+                                    isSelected || isIndeterminate || undefined,
+                            };
 
-                        {placement === "end" && label}
-                    </>
+                            return (
+                                <>
+                                    {placement === "start" && label}
+
+                                    <span
+                                        className={clsx(
+                                            styles["indicator"],
+                                            TapTarget
+                                        )}
+                                        {...dataAttrs}
+                                    >
+                                        <svg
+                                            viewBox="0 0 18 18"
+                                            aria-hidden="true"
+                                            key={
+                                                isIndeterminate
+                                                    ? "indeterminate"
+                                                    : "check"
+                                            }
+                                            className={styles["svg"]}
+                                            {...dataAttrs}
+                                        >
+                                            {isIndeterminate ? (
+                                                <rect
+                                                    x={1}
+                                                    y={7.5}
+                                                    width={16}
+                                                    height={3}
+                                                />
+                                            ) : (
+                                                <polyline points="2 9 7 14 16 4" />
+                                            )}
+                                        </svg>
+                                    </span>
+
+                                    {placement === "end" && label}
+                                </>
+                            );
+                        }}
+                    </CheckboxButton>
                 );
             }}
-        </AriaCheckbox>
+        </CheckboxField>
     );
 };

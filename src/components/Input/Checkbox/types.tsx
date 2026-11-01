@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { Checkbox, CheckboxGroup } from "react-aria-components";
+import type { CheckboxField, CheckboxGroup } from "react-aria-components";
 import type { CoreInputProps } from "../core";
 
 /**
@@ -11,8 +11,9 @@ import type { CoreInputProps } from "../core";
 export type CheckboxLabelPlacement = "start" | "end";
 
 /**
- * Props for the {@link CheckboxGroup} component.
- * Extends React Aria's `CheckboxGroup` props and {@link CoreInputProps}.
+ * Props for the [`CheckboxGroup`](src/components/Input/Checkbox/CheckboxGroup.tsx) component.
+ *
+ * Extends React Aria's `CheckboxGroup` props (excluding `children`) and [`CoreInputProps`](src/components/Input/core/types.ts).
  */
 export interface CheckboxGroupProps
     extends Omit<React.ComponentPropsWithRef<typeof CheckboxGroup>, "children">,
@@ -21,46 +22,27 @@ export interface CheckboxGroupProps
     children?: ReactNode;
 
     /**
-     * Vertical spacing (in pixels) between child checkbox items.
-     *
-     * @default 24
-     */
-    checkboxItemsGap?: number;
-
-    /**
      * Default label placement applied to all child checkboxes within the group.
+     * Can be overridden per individual [`Checkbox`](src/components/Input/Checkbox/Checkbox.tsx).
      *
      * @default "end"
      */
     labelPlacement?: CheckboxLabelPlacement;
-
-    /**
-     * When `true`, displays the state layer (hover, press, focus) across the entire checkbox container
-     * rather than only on the indicator box.
-     *
-     * @default false
-     */
-    containerStateLayer?: boolean;
 }
 
 /**
- * Props for the {@link Checkbox} component.
- * Extends React Aria's `Checkbox` props.
+ * Props for the [`Checkbox`](src/components/Input/Checkbox/Checkbox.tsx) component.
+ *
+ * Extends all properties from React Aria's `CheckboxField`, including selection states,
+ * form submission, indeterminate state, validation, and accessibility.
  */
 export interface CheckboxProps
-    extends React.ComponentPropsWithRef<typeof Checkbox> {
+    extends React.ComponentPropsWithRef<typeof CheckboxField> {
     /**
      * Alignment of the label text relative to the indicator box.
-     * Overrides the group-level setting if nested inside a {@link CheckboxGroup}.
+     * Overrides the group-level setting if nested inside a [`CheckboxGroup`](src/components/Input/Checkbox/CheckboxGroup.tsx).
      *
      * @default "end"
      */
     labelPlacement?: CheckboxLabelPlacement;
-
-    /**
-     * When `true`, displays the state layer (hover, press, focus) across the entire checkbox container.
-     *
-     * @default false
-     */
-    containerStateLayer?: boolean;
 }

@@ -71,10 +71,8 @@ export const RenderTabs = ({
                             label="Homepage"
                             defaultValue="react-aria.adobe.com"
                         />
-                        <Checkbox containerStateLayer defaultSelected>
-                            Show sidebar
-                        </Checkbox>
-                        <Checkbox containerStateLayer>Show status bar</Checkbox>
+                        <Checkbox defaultSelected>Show sidebar</Checkbox>
+                        <Checkbox>Show status bar</Checkbox>
                     </Form>
                 </TabPanel>
                 <TabPanel id="appearance">
@@ -98,7 +96,6 @@ export const RenderTabs = ({
                 </TabPanel>
                 <TabPanel id="notifications">
                     <CheckboxGroup
-                        containerStateLayer
                         label="Notifications settings"
                         defaultValue={["account", "dms"]}
                     >

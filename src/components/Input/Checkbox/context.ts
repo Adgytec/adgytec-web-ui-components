@@ -2,13 +2,11 @@ import { createContext } from "react";
 import type { CheckboxLabelPlacement } from "./types";
 
 /**
- * Shared context value provided by {@link CheckboxGroup} to child {@link Checkbox} components.
+ * Configuration context value passed down from [`CheckboxGroup`](src/components/Input/Checkbox/CheckboxGroup.tsx) to child [`Checkbox`](src/components/Input/Checkbox/Checkbox.tsx) components.
  */
 export interface CheckboxGroupContextValue {
-    /** Inherited label placement. */
+    /** Inherited label placement for child checkbox items. */
     labelPlacement?: CheckboxLabelPlacement;
-    /** Inherited container state layer flag. */
-    containerStateLayer?: boolean;
 }
 
 /**

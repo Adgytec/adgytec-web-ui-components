@@ -245,33 +245,27 @@ export const ConfigPreview = () => {
             </div>
 
             <div className="items">
-                <Checkbox className="checkbox-primary" containerStateLayer>
+                <Checkbox className="checkbox-primary">
                     Primary checkbox
                 </Checkbox>
 
-                <Checkbox className="checkbox-primary-alt" containerStateLayer>
+                <Checkbox className="checkbox-primary-alt">
                     Primary alt checkbox
                 </Checkbox>
 
-                <Checkbox className="checkbox-tertiary" containerStateLayer>
+                <Checkbox className="checkbox-tertiary">
                     Tertiary checkbox
                 </Checkbox>
 
-                <Checkbox
-                    className="checkbox-primary-fixed"
-                    containerStateLayer
-                >
+                <Checkbox className="checkbox-primary-fixed">
                     Primary fixed checkbox
                 </Checkbox>
 
-                <Checkbox
-                    className="checkbox-secondary-fixed"
-                    containerStateLayer
-                >
+                <Checkbox className="checkbox-secondary-fixed">
                     Secondary fixed checkbox
                 </Checkbox>
 
-                <Checkbox className="checkbox-inverse" containerStateLayer>
+                <Checkbox className="checkbox-inverse">
                     Inverse checkbox
                 </Checkbox>
             </div>

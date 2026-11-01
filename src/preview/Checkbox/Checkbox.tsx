@@ -1,60 +1,23 @@
-import { Checkbox, CheckboxGroup, Label } from "../../components/Input";
+import { Checkbox, CheckboxGroup } from "../../components/Input";
 
 export const CheckboxPreview = () => {
     return (
-        <>
+        <div className="items-grid">
             <div className="items">
-                <Checkbox isDisabled>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </Checkbox>
+                <Checkbox />
 
-                <Checkbox isDisabled isSelected>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </Checkbox>
+                <Checkbox isInvalid />
 
-                <Checkbox containerStateLayer>
-                    <Label>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </Label>
-                </Checkbox>
+                <Checkbox isIndeterminate />
 
-                <Checkbox isIndeterminate isDisabled>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </Checkbox>
+                <Checkbox isDisabled />
 
-                <Checkbox isIndeterminate>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </Checkbox>
-
-                <Checkbox isIndeterminate isInvalid>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </Checkbox>
-
-                <Checkbox isIndeterminate isInvalid isDisabled>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </Checkbox>
+                <Checkbox isDisabled isSelected />
             </div>
 
             <CheckboxGroup
                 label="lorem ipsum"
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
-                isDisabled
-            >
-                <Checkbox>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </Checkbox>
-
-                <Checkbox isInvalid>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing.
-                </Checkbox>
-
-                <Checkbox>Lorem ipsum dolor sit amet, consectetur.</Checkbox>
-            </CheckboxGroup>
-
-            <CheckboxGroup
-                label="lorem ipsum"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
-                containerStateLayer
             >
                 <Checkbox value="one">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -68,27 +31,7 @@ export const CheckboxPreview = () => {
                     Lorem ipsum dolor sit amet, consectetur.
                 </Checkbox>
             </CheckboxGroup>
-
-            <CheckboxGroup
-                isInvalid
-                label="lorem ipsum"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur lacinia laoreet arcu, sit amet auctor ligula ultricies tincidunt. "
-                showDescriptionOnInvalid
-                containerStateLayer
-            >
-                <Checkbox value="one">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </Checkbox>
-
-                <Checkbox value="two">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing.
-                </Checkbox>
-
-                <Checkbox value="three">
-                    Lorem ipsum dolor sit amet, consectetur.
-                </Checkbox>
-            </CheckboxGroup>
-        </>
+        </div>
     );
 };
 
