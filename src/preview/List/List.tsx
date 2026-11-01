@@ -1,8 +1,19 @@
 import clsx from "clsx";
-import { Activity, EllipsisVertical } from "lucide-react";
+import {
+    Activity,
+    Bluetooth,
+    BluetoothOff,
+    EllipsisVertical,
+    Flashlight,
+    FlashlightOff,
+    Touchpad,
+    TouchpadOff,
+    Wifi,
+    WifiOff,
+} from "lucide-react";
 import { Heading } from "react-aria-components";
 import { typography } from "@/utils";
-import { Checkbox } from "../../components/Input";
+import { Checkbox, Switch } from "../../components/Input";
 import {
     ListAction,
     ListAvatar,
@@ -20,6 +31,7 @@ import {
     ListOverlineText,
     ListSupportingText,
 } from "../../components/List";
+import { useState } from "react";
 
 const ListRadio = () => {
     return (
@@ -172,9 +184,101 @@ const ListSelection = () => {
     );
 };
 
+const ListSettings = () => {
+    const [selection, setSelection] = useState((1 << 4) - 1);
+
+    const settings = [
+        {
+            label: "Wifi",
+            icon: Wifi,
+            offIcon: WifiOff,
+            supporting: "Connect to available wireless networks.",
+        },
+        {
+            label: "Bluetooth",
+            icon: Bluetooth,
+            offIcon: BluetoothOff,
+            supporting: "Connect to nearby Bluetooth devices.",
+        },
+        {
+            label: "Flashlight",
+            icon: Flashlight,
+            offIcon: FlashlightOff,
+            supporting: "Turn the device flashlight on or off.",
+        },
+        {
+            label: "Touchpad",
+            icon: Touchpad,
+            offIcon: TouchpadOff,
+            supporting: "Enable or disable the touchpad.",
+        },
+    ];
+
+    const handleSelectionChange = (bit: number, isSelected: boolean) => {
+        setSelection((prev) =>
+            isSelected ? prev | (1 << bit) : prev & ~(1 << bit)
+        );
+    };
+
+    const toggleSelection = (bit: number) => {
+        setSelection((prev) => prev ^ (1 << bit));
+    };
+
+    const isSelected = (bit: number) => (selection & (1 << bit)) !== 0;
+
+    return (
+        <div className="items-grid list-preview">
+            <Heading
+                className={clsx(
+                    typography.headlineLargeEmphasized,
+                    "list-heading"
+                )}
+            >
+                Settings
+            </Heading>
+
+            <ListBox>
+                {settings.map(({ label, icon, offIcon, supporting }, index) => {
+                    const selected = isSelected(index);
+
+                    return (
+                        <ListItem
+                            key={label}
+                            onAction={() => toggleSelection(index)}
+                            leading={
+                                <ListIcon icon={selected ? icon : offIcon} />
+                            }
+                            label={<ListLabelText>{label}</ListLabelText>}
+                            supporting={
+                                <ListSupportingText>
+                                    {supporting}
+                                </ListSupportingText>
+                            }
+                            trailing={[
+                                <Switch
+                                    key="selection"
+                                    icon="both"
+                                    selectedIcon={icon}
+                                    unselectedIcon={offIcon}
+                                    isSelected={selected}
+                                    onChange={(value) =>
+                                        handleSelectionChange(index, value)
+                                    }
+                                />,
+                            ]}
+                        />
+                    );
+                })}
+            </ListBox>
+        </div>
+    );
+};
+
 export const ListPreview = () => {
     return (
         <div className="items-grid">
+            <ListSettings />
+
             <ListRadio />
 
             <ListSelection />
