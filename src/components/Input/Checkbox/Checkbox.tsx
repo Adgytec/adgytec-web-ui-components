@@ -5,6 +5,7 @@ import { TapTarget } from "@/utils/tapTarget";
 import styles from "./checkbox.module.css";
 import { CheckboxGroupContext } from "./context";
 import type { CheckboxProps } from "./types";
+import { typography } from "@/utils";
 
 /**
  * A checkbox control implementing Material Design 3 Checkbox guidelines.
@@ -50,7 +51,12 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                         : children;
 
                 return (
-                    <CheckboxButton className={clsx(styles["checkbox"])}>
+                    <CheckboxButton
+                        className={clsx(
+                            styles["checkbox"],
+                            typography.labelLarge
+                        )}
+                    >
                         {(buttonRenderProps) => {
                             const {
                                 isSelected,

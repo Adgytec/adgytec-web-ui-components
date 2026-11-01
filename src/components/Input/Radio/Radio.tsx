@@ -5,6 +5,7 @@ import { TapTarget } from "@/utils/tapTarget";
 import { RadioGroupContext } from "./context";
 import styles from "./radio.module.css";
 import type { RadioProps } from "./types";
+import { typography } from "@/utils";
 
 /**
  * A radio button control implementing Material Design 3 Radio guidelines.
@@ -40,7 +41,9 @@ export const Radio: React.FC<RadioProps> = ({
                         ? children(renderProps)
                         : children;
                 return (
-                    <RadioButton className={clsx(styles["radio"])}>
+                    <RadioButton
+                        className={clsx(styles["radio"], typography.labelLarge)}
+                    >
                         {(buttonRenderProps) => {
                             const {
                                 isSelected,

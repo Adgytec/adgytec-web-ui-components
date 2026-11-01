@@ -6,7 +6,7 @@ import {
     SwitchButton,
 } from "react-aria-components";
 import { Icon } from "@/components/Icon";
-import { TapTarget } from "@/utils";
+import { TapTarget, typography } from "@/utils";
 import styles from "./switch.module.css";
 import type { SwitchProps } from "./types";
 
@@ -59,7 +59,12 @@ export const Switch: React.FC<SwitchProps> = ({
                         : children;
 
                 return (
-                    <SwitchButton className={clsx(styles["switch"])}>
+                    <SwitchButton
+                        className={clsx(
+                            styles["switch"],
+                            typography.labelLarge
+                        )}
+                    >
                         {(buttonRenderProps) => {
                             const {
                                 isSelected,
