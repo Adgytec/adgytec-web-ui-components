@@ -1,5 +1,8 @@
+import clsx from "clsx";
 import { Activity, EllipsisVertical } from "lucide-react";
-import { Checkbox, Switch } from "../../components/Input";
+import { Heading } from "react-aria-components";
+import { typography } from "@/utils";
+import { Checkbox } from "../../components/Input";
 import {
     ListAction,
     ListAvatar,
@@ -18,11 +21,36 @@ import {
     ListSupportingText,
 } from "../../components/List";
 
-export const ListPreview = () => {
+const ListRadio = () => {
     return (
-        <div className="items list-preview">
-            <ListBox selectionMode="single" alignY="center">
+        <div className="items-grid list-preview">
+            <Heading
+                className={clsx(
+                    typography.headlineLargeEmphasized,
+                    "list-heading"
+                )}
+            >
+                Radio
+            </Heading>
+        </div>
+    );
+};
+
+const ListSelection = () => {
+    return (
+        <div className="items-grid list-preview">
+            <Heading
+                className={clsx(
+                    typography.headlineLargeEmphasized,
+                    "list-heading"
+                )}
+            >
+                Selection
+            </Heading>
+
+            <ListBox selectionMode="multiple" selectionIndicator="leading">
                 <ListItem
+                    selectionIndicator="leading"
                     leading={<Checkbox slot="selection" />}
                     label={<ListLabelText>List item</ListLabelText>}
                     supporting={
@@ -31,7 +59,6 @@ export const ListPreview = () => {
                             elit.
                         </ListSupportingText>
                     }
-                    trailing={[<Switch key="selection" slot="selection" />]}
                 />
 
                 <ListItem
@@ -52,6 +79,7 @@ export const ListPreview = () => {
                             elit.
                         </ListSupportingText>
                     }
+                    trailing={[<Checkbox key="selection" slot="selection" />]}
                 />
 
                 <ListItem
@@ -72,7 +100,9 @@ export const ListPreview = () => {
                             elit.
                         </ListSupportingText>
                     }
+                    trailing={[<Checkbox key="selection" slot="selection" />]}
                 />
+
                 <ListItem
                     leading={
                         <ListMedia variant="large-video">
@@ -91,7 +121,9 @@ export const ListPreview = () => {
                             elit.
                         </ListSupportingText>
                     }
+                    trailing={[<Checkbox key="selection" slot="selection" />]}
                 />
+
                 <ListItem
                     leading={<ListIcon icon={Activity} />}
                     id="two"
@@ -106,18 +138,23 @@ export const ListPreview = () => {
                         />,
                     ]}
                 />
+
                 <ListItem
                     id="five"
                     isDisabled
                     label={<ListLabelText>Lorem ipsum</ListLabelText>}
                     overline={<ListOverlineText>Sample</ListOverlineText>}
+                    trailing={[<Checkbox key="selection" slot="selection" />]}
                 />
+
                 <ListItem
                     leading={<ListAvatar>R</ListAvatar>}
                     id="three"
                     label={<ListLabelText>Lorem ipsum</ListLabelText>}
                     overline={<ListOverlineText>Sample</ListOverlineText>}
+                    trailing={[<Checkbox key="selection" slot="selection" />]}
                 />
+
                 <ListItem
                     id="four"
                     overline={<ListOverlineText>Sample</ListOverlineText>}
@@ -128,8 +165,19 @@ export const ListPreview = () => {
                             elit. Proin id velit quis est gravida aliquam.
                         </ListSupportingText>
                     }
+                    trailing={[<Checkbox key="selection" slot="selection" />]}
                 />
             </ListBox>
+        </div>
+    );
+};
+
+export const ListPreview = () => {
+    return (
+        <div className="items-grid">
+            <ListRadio />
+
+            <ListSelection />
         </div>
     );
 };

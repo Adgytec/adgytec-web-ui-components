@@ -36,9 +36,10 @@ The List module consists of ten components:
 
 Extends the [React Aria ListBox](https://react-spectrum.adobe.com/react-aria/ListBox.html) component and accepts all of its props (e.g., `selectionMode`, `selectedKeys`, `onSelectionChange`, `items`, `disabledKeys`).
 
-| Prop     | Type                           | Default    | Description                                                                            |
-| -------- | ------------------------------ | ---------- | -------------------------------------------------------------------------------------- |
-| `alignY` | `"start" \| "center" \| "end"` | `"center"` | Vertical alignment of elements (`leading`, `trailing`, and content) across list items. |
+| Prop                 | Type                                | Default    | Description                                                                                                                                                  |
+| -------------------- | ----------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `alignY`             | `"start" \| "center" \| "end"`      | `"center"` | Vertical alignment of elements (`leading`, `trailing`, and content) across list items.                                                                       |
+| `selectionIndicator` | `"leading" \| "trailing" \| "none"` | `"none"`   | Placement of the checkmark selection icon when list items are selected. Replaces `leading` or `trailing` content with a `ListIcon` rendering a `Check` icon. |
 
 ### Layout & Shape Behavior
 
@@ -52,17 +53,19 @@ Extends the [React Aria ListBox](https://react-spectrum.adobe.com/react-aria/Lis
 
 Extends the [React Aria ListBoxItem](https://react-spectrum.adobe.com/react-aria/ListBox.html#listboxitem) component, omitting `children`.
 
-| Prop         | Type          | Default | Description                                                                                                        |
-| ------------ | ------------- | ------- | ------------------------------------------------------------------------------------------------------------------ |
-| `label`      | `ReactNode`   | —       | **Required.** The primary label element of the list item, typically `ListLabelText`.                               |
-| `leading`    | `ReactNode`   | —       | Element rendered at the start of the list item (e.g., `ListIcon`, `ListAvatar`, `ListMedia`, or a `Checkbox`).     |
-| `overline`   | `ReactNode`   | —       | Small text rendered above the label, typically `ListOverlineText`.                                                 |
-| `supporting` | `ReactNode`   | —       | Secondary descriptive text rendered beneath the label, typically `ListSupportingText`.                             |
-| `trailing`   | `ReactNode[]` | —       | An array of elements rendered at the end of the list item (e.g., `ListTrailingText`, `ListAction`, or a `Switch`). |
+| Prop                 | Type                                | Default               | Description                                                                                                                                                   |
+| -------------------- | ----------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `label`              | `ReactNode`                         | —                     | **Required.** The primary label element of the list item, typically `ListLabelText`.                                                                          |
+| `leading`            | `ReactNode`                         | —                     | Element rendered at the start of the list item (e.g., `ListIcon`, `ListAvatar`, `ListMedia`, or a `Checkbox`).                                                |
+| `overline`           | `ReactNode`                         | —                     | Small text rendered above the label, typically `ListOverlineText`.                                                                                            |
+| `supporting`         | `ReactNode`                         | —                     | Secondary descriptive text rendered beneath the label, typically `ListSupportingText`.                                                                        |
+| `trailing`           | `ReactNode[]`                       | —                     | An array of elements rendered at the end of the list item (e.g., `ListTrailingText`, `ListAction`, or a `Switch`).                                            |
+| `selectionIndicator` | `"leading" \| "trailing" \| "none"` | Inherited or `"none"` | Overrides selection indicator placement for this item. Replaces the corresponding `leading` or `trailing` element with a `ListIcon` check icon when selected. |
 
 ### State & Selection Integration
 
-- **Checkbox and Switch slots**: When an embedded `Checkbox` or `Switch` with `slot="selection"` is provided in `leading` or `trailing`, `ListItem` automatically connects it to its `isSelected` and `isDisabled` states via React Aria context provider. The control is marked `isReadOnly: true` so interactions across the whole row seamlessly trigger item selection and ripple animation.
+- **Selection Indicator**: When `selectionIndicator="leading"` or `"trailing"` is configured on `ListBox` (or overridden on a `ListItem`), selecting an item dynamically replaces the corresponding `leading` or `trailing` container's content with a `ListIcon` rendering a `Check` icon.
+- **Checkbox slot**: When an embedded `Checkbox` with `slot="selection"` is provided in `leading` or `trailing`, `ListItem` automatically connects it to its `isSelected` state via React Aria context provider. The control is marked `isReadOnly: true` and is disabled when `selectionMode === "none"` or the item is disabled, allowing row interactions to seamlessly control item selection.
 - **Ripple Effect**: Integrates with `useSplash` to display Material 3 touch ripple splash feedback on press.
 - **Corner radius morphing**: Dynamically animates corner radius across interaction states (extra small at rest, medium on hover, large when selected, focused, or pressed).
 
@@ -388,6 +391,39 @@ function AlignedList() {
                 trailing={[
                     <ListTrailingText key="date">Nov 12</ListTrailingText>,
                 ]}
+            />
+        </ListBox>
+    );
+}
+```
+
+### 6. Selection List with Automatic Check Indicators (`selectionIndicator`)
+
+Use `selectionIndicator="leading"` or `"trailing"` on `ListBox` (or `ListItem`) to automatically display a checkmark icon when an item is selected, replacing the leading or trailing element.
+
+```tsx
+import {
+    ListBox,
+    ListItem,
+    ListAvatar,
+    ListLabelText,
+    ListSupportingText,
+} from "@adgytec/web-ui-components";
+
+function SelectionIndicatorList() {
+    return (
+        <ListBox selectionMode="multiple" selectionIndicator="leading">
+            <ListItem
+                id="user-1"
+                leading={<ListAvatar>JD</ListAvatar>}
+                label={<ListLabelText>Jane Doe</ListLabelText>}
+                supporting={<ListSupportingText>Engineer</ListSupportingText>}
+            />
+            <ListItem
+                id="user-2"
+                leading={<ListAvatar>AS</ListAvatar>}
+                label={<ListLabelText>Alex Smith</ListLabelText>}
+                supporting={<ListSupportingText>Designer</ListSupportingText>}
             />
         </ListBox>
     );

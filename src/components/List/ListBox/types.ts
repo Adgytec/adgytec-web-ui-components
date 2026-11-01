@@ -1,4 +1,5 @@
 import type { ListBox } from "react-aria-components";
+import type { SelectionIndicator } from "../core";
 
 /**
  * Vertical alignment options for elements (leading media, text content, and trailing actions)
@@ -20,4 +21,16 @@ export interface ListBoxProps<T extends object>
      * @default "center"
      */
     alignY?: ListAlignY;
+
+    /**
+     * Placement of the checkmark indicator when a list item is selected.
+     * Can be overridden per individual [`ListItem`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/List/ListItem/ListItem.tsx).
+     *
+     * - `"leading"`: Replaces the leading element with a check icon when selected.
+     * - `"trailing"`: Replaces the trailing element with a check icon when selected.
+     * - `"none"`: Disables automatic checkmark icon replacement (default).
+     *
+     * @default "none"
+     */
+    selectionIndicator?: SelectionIndicator;
 }

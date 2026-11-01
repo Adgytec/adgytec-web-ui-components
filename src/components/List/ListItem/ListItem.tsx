@@ -1,11 +1,14 @@
 import { clsx } from "clsx";
+import { Check } from "lucide-react";
 import {
     CheckboxContext,
+    DEFAULT_SLOT,
     ListBoxItem,
     Provider,
-    SwitchContext,
 } from "react-aria-components";
 import { Splash, useSplash } from "@/components/Splash";
+import { useListBoxConfig } from "../core";
+import { ListIcon } from "../ListIcon";
 import styles from "./listItem.module.css";
 import type { ListItemProps } from "./types";
 
@@ -14,7 +17,8 @@ import type { ListItemProps } from "./types";
  *
  * Supports structured slot composition (`leading`, `overline`, `label`, `supporting`, `trailing`),
  * dynamic corner radius morphing on hover/focus/selection, touch ripple splash feedback,
- * and automatic synchronization with nested selection controls (`Checkbox` or `Switch` with `slot="selection"`).
+ * contextual checkmark replacement on selection (`selectionIndicator`),
+ * and automatic synchronization with nested selection controls (`Checkbox` with `slot="selection"`).
  *
  * @example
  * ```tsx
@@ -51,8 +55,14 @@ export const ListItem: React.FC<ListItemProps> = ({
     trailing,
     className,
     onPress,
+    selectionIndicator,
     ...props
 }) => {
+    const { selectionIndicator: listBoxSelectionIndicator } =
+        useListBoxConfig();
+    const listItemSelectionIndicator =
+        selectionIndicator ?? listBoxSelectionIndicator ?? "none";
+
     const { handlePress, splashInfo } = useSplash(onPress);
     const hasTrailing = (trailing?.length ?? 0) > 0;
 
@@ -70,52 +80,67 @@ export const ListItem: React.FC<ListItemProps> = ({
             data-list-item={true}
             {...props}
         >
-            {({ isSelected, isDisabled }) => (
-                <Provider
-                    values={[
-                        [
-                            CheckboxContext,
-                            {
-                                slots: {
-                                    selection: {
-                                        isSelected,
-                                        isDisabled,
-                                        isReadOnly: true,
+            {({ isSelected, isDisabled, selectionMode }) => {
+                const leadingSelectionIcon =
+                    isSelected && listItemSelectionIndicator === "leading";
+
+                const trailingSelectionIcon =
+                    isSelected && listItemSelectionIndicator === "trailing";
+
+                return (
+                    <Provider
+                        values={[
+                            [
+                                CheckboxContext,
+                                {
+                                    slots: {
+                                        [DEFAULT_SLOT]: {},
+                                        selection: {
+                                            isSelected,
+                                            isDisabled:
+                                                isDisabled ||
+                                                selectionMode === "none",
+                                            isReadOnly: true,
+                                        },
                                     },
                                 },
-                            },
-                        ],
-                        [
-                            SwitchContext,
-                            {
-                                slots: {
-                                    selection: {
-                                        isSelected,
-                                        isDisabled,
-                                        isReadOnly: true,
-                                    },
-                                },
-                            },
-                        ],
-                    ]}
-                >
-                    {splashInfo && <Splash {...splashInfo} />}
+                            ],
+                        ]}
+                    >
+                        {splashInfo && <Splash {...splashInfo} />}
 
-                    {leading && (
-                        <div className={clsx(styles["leading"])}>{leading}</div>
-                    )}
+                        {leadingSelectionIcon ? (
+                            <div className={clsx(styles["leading"])}>
+                                <ListIcon icon={Check} />
+                            </div>
+                        ) : (
+                            leading && (
+                                <div className={clsx(styles["leading"])}>
+                                    {leading}
+                                </div>
+                            )
+                        )}
 
-                    <div className={clsx(styles["content"])}>
-                        {overline && overline}
-                        {label}
-                        {supporting && supporting}
-                    </div>
+                        <div className={clsx(styles["content"])}>
+                            {overline && overline}
+                            {label}
+                            {supporting && supporting}
+                        </div>
 
-                    {hasTrailing && (
-                        <div className={styles["trailing"]}>{trailing}</div>
-                    )}
-                </Provider>
-            )}
+                        {trailingSelectionIcon ? (
+                            <div className={styles["trailing"]}>
+                                <ListIcon icon={Check} />
+                            </div>
+                        ) : (
+                            hasTrailing && (
+                                <div className={styles["trailing"]}>
+                                    {trailing}
+                                </div>
+                            )
+                        )}
+                    </Provider>
+                );
+            }}
         </ListBoxItem>
     );
 };

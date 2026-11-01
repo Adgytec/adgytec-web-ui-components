@@ -975,6 +975,11 @@
 }
 
 .list-preview {
-    padding: 1rem;
-    background-color: var(--md-sys-color-tertiary-container);
+    padding: var(--md-sys-layout-space-20);
+    background-color: var(--md-sys-color-surface-container-highest);
+    border-radius: var(--md-sys-shape-corner-radius-large);
+}
+
+.list-heading {
+    text-align: center;
 }

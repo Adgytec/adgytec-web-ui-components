@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { ListBoxItem } from "react-aria-components";
+import type { SelectionIndicator } from "../core";
 
 /**
  * Props for the [`ListItem`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/List/ListItem/ListItem.tsx) component.
@@ -33,4 +34,17 @@ export interface ListItemProps
      * Array of elements rendered at the end of the list item (e.g. trailing metadata text, action buttons, or selection switches).
      */
     trailing?: ReactNode[];
+
+    /**
+     * Placement of the checkmark indicator when this item is selected.
+     * When set, replaces the corresponding `leading` or `trailing` element with a check icon when selected.
+     * If omitted, inherits from the parent [`ListBox`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/List/ListBox/ListBox.tsx) `selectionIndicator`, defaulting to `"none"`.
+     *
+     * - `"leading"`: Replaces the `leading` element with a check icon when selected.
+     * - `"trailing"`: Replaces the `trailing` element with a check icon when selected.
+     * - `"none"`: Disables checkmark icon replacement.
+     *
+     * @default "none"
+     */
+    selectionIndicator?: SelectionIndicator;
 }

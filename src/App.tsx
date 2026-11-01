@@ -1,3 +1,4 @@
+import "./styles/app.css";
 import type { ReactNode } from "react";
 import type { Orientation } from "react-aria";
 import { Collection } from "react-aria-components";

@@ -103,6 +103,10 @@
             transition: none;
         }
 
+        &[data-selection-mode] {
+            cursor: pointer;
+        }
+
         &[data-hovered] {
             --_shape: var(--_md-list-item-hovered-shape);
             --_state-layer-opacity: var(--md-sys-state-hover);
@@ -126,6 +130,8 @@
         }
 
         &[data-disabled] {
+            cursor: auto;
+
             --_md-list-color: var(--_md-list-disabled-color);
             --_md-list-label-color: var(--_md-list-disabled-color);
 
