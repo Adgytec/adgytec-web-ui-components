@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import { cloneElement, type HTMLAttributes, isValidElement } from "react";
 import { useId } from "react-aria";
 import {
-    CheckboxContext,
+    CheckboxFieldContext,
     DEFAULT_SLOT,
     ListBoxItem,
     Provider,
@@ -100,7 +100,7 @@ export const ListItem: React.FC<ListItemProps> = ({
                     <Provider
                         values={[
                             [
-                                CheckboxContext,
+                                CheckboxFieldContext,
                                 {
                                     slots: {
                                         [DEFAULT_SLOT]: {},
