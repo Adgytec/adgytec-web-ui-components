@@ -1,17 +1,19 @@
 import type { LucideIcon } from "lucide-react";
-import type { Switch } from "react-aria-components";
+import type { SwitchField } from "react-aria-components";
 
 /**
- * Props for the {@link Switch} component.
- * Extends React Aria's {@link Switch} props.
+ * Props for the [`Switch`](src/components/Input/Switch/Switch.tsx) component.
+ *
+ * Extends all properties from React Aria's `SwitchField`, including form submission (`name`, `value`),
+ * selection states (`isSelected`, `defaultSelected`, `onChange`), validation, and accessibility.
  */
 export interface SwitchProps
-    extends React.ComponentPropsWithRef<typeof Switch> {
+    extends React.ComponentPropsWithRef<typeof SwitchField> {
     /**
      * Determines which icons to render within the switch handle.
      *
-     * - `"none"`: No icons.
-     * - `"selected"`: Icon rendered only when selected (default).
+     * - `"none"`: No icons rendered.
+     * - `"selected"`: Icon rendered only when the switch is selected (default).
      * - `"both"`: Render selected icon when on, and unselected icon when off.
      *
      * @default "selected"
@@ -21,16 +23,12 @@ export interface SwitchProps
     /**
      * Alignment of the label text relative to the switch track.
      *
+     * - `"start"`: Label appears before (to the left of) the switch track.
+     * - `"end"`: Label appears after (to the right of) the switch track.
+     *
      * @default "start"
      */
     labelPlacement?: "start" | "end";
-
-    /**
-     * When `true`, displays the state layer across the whole component container.
-     *
-     * @default false
-     */
-    containerStateLayer?: boolean;
 
     /**
      * Custom icon rendered when the switch is unselected (used when `icon="both"`).

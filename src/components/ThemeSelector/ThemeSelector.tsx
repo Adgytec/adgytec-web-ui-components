@@ -131,11 +131,7 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
                 </ConnectedButtonGroup>
             </ThemeItem>
 
-            <Switch
-                isSelected={isMonochrome}
-                onChange={setMonochrome}
-                containerStateLayer
-            >
+            <Switch isSelected={isMonochrome} onChange={setMonochrome}>
                 <ThemeItem
                     heading={monochromeDetails.heading}
                     description={monochromeDetails.description}

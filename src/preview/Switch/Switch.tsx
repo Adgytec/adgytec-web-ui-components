@@ -1,61 +1,56 @@
+import clsx from "clsx";
 import { Globe, GlobeOff } from "lucide-react";
+import { Heading } from "react-aria-components";
+import { typography } from "@/utils";
 import { Switch } from "../../components/Input";
 
 export const SwitchPreview = () => {
     return (
-        <>
-            <div className="items">
-                <Switch isDisabled icon="none">
-                    Disabled no icon
-                </Switch>
-
-                <Switch isDisabled icon="both">
-                    Disabled with icon
-                </Switch>
-
-                <Switch isDisabled isSelected>
-                    Disabled selected
-                </Switch>
-
-                <Switch>Selected icon</Switch>
-
-                <Switch
-                    unselectedIcon={GlobeOff}
-                    selectedIcon={Globe}
-                    icon="both"
+        <div className="items-grid">
+            <div className="items-grid">
+                <Heading
+                    className={clsx(typography.titleLarge)}
+                    style={{
+                        textAlign: "center",
+                    }}
                 >
-                    Custom icon
-                </Switch>
+                    Normal
+                </Heading>
 
-                <Switch containerStateLayer icon="both">
-                    Both icon
-                </Switch>
+                <div className="items">
+                    <Switch isDisabled icon="none" />
 
-                <Switch icon="none">Icon none</Switch>
+                    <Switch />
+
+                    <Switch isDisabled isSelected />
+                </div>
             </div>
 
             <div className="items-grid">
-                <Switch isDisabled icon="none">
-                    Disabled no icon
-                </Switch>
+                <Heading
+                    className={clsx(typography.titleLarge)}
+                    style={{
+                        textAlign: "center",
+                    }}
+                >
+                    With Label
+                </Heading>
 
-                <Switch isDisabled icon="both">
-                    Disabled with icon
-                </Switch>
+                <div className="items">
+                    <Switch
+                        unselectedIcon={GlobeOff}
+                        selectedIcon={Globe}
+                        icon="both"
+                    >
+                        Custom icon
+                    </Switch>
 
-                <Switch isDisabled isSelected>
-                    Disabled selected
-                </Switch>
+                    <Switch icon="both">Both icon</Switch>
 
-                <Switch>Selected icon</Switch>
-
-                <Switch icon="both" containerStateLayer>
-                    Both icon
-                </Switch>
-
-                <Switch icon="none">Icon none</Switch>
+                    <Switch icon="none">No icon</Switch>
+                </div>
             </div>
-        </>
+        </div>
     );
 };
 

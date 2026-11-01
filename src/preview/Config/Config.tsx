@@ -179,33 +179,25 @@ export const ConfigPreview = () => {
             </div>
 
             <div className="items">
-                <Switch className="switch-primary" containerStateLayer>
-                    switch-primary
-                </Switch>
+                <Switch className="switch-primary">switch-primary</Switch>
 
-                <Switch className="switch-primary-alt" containerStateLayer>
+                <Switch className="switch-primary-alt">
                     switch-primary-alt
                 </Switch>
 
-                <Switch className="switch-secondary" containerStateLayer>
-                    switch-secondary
-                </Switch>
+                <Switch className="switch-secondary">switch-secondary</Switch>
 
-                <Switch className="switch-tertiary" containerStateLayer>
-                    switch-tertiary
-                </Switch>
+                <Switch className="switch-tertiary">switch-tertiary</Switch>
 
-                <Switch className="switch-primary-fixed" containerStateLayer>
+                <Switch className="switch-primary-fixed">
                     switch-primary-fixed
                 </Switch>
 
-                <Switch className="switch-secondary-fixed" containerStateLayer>
+                <Switch className="switch-secondary-fixed">
                     switch-secondary-fixed
                 </Switch>
 
-                <Switch className="switch-inverse" containerStateLayer>
-                    switch-inverse
-                </Switch>
+                <Switch className="switch-inverse">switch-inverse</Switch>
             </div>
 
             <div className="items">
