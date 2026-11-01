@@ -33,21 +33,6 @@ import {
     ListSupportingText,
 } from "../../components/List";
 
-const ListRadio = () => {
-    return (
-        <div className="items-grid list-preview">
-            <Heading
-                className={clsx(
-                    typography.headlineLargeEmphasized,
-                    "list-heading"
-                )}
-            >
-                Radio
-            </Heading>
-        </div>
-    );
-};
-
 const ListSelection = () => {
     return (
         <div className="items-grid list-preview">
@@ -184,7 +169,7 @@ const ListSelection = () => {
     );
 };
 
-const ListSettings = () => {
+const ListSwitch = () => {
     const [selection, setSelection] = useState((1 << 4) - 1);
 
     const settings = [
@@ -234,7 +219,7 @@ const ListSettings = () => {
                     "list-heading"
                 )}
             >
-                Settings
+                Switch
             </Heading>
 
             <ListBox>
@@ -277,9 +262,7 @@ const ListSettings = () => {
 export const ListPreview = () => {
     return (
         <div className="items-grid">
-            <ListSettings />
-
-            <ListRadio />
+            <ListSwitch />
 
             <ListSelection />
         </div>

@@ -976,7 +976,7 @@
 
 .list-preview {
     padding: var(--md-sys-layout-space-20);
-    background-color: var(--md-sys-color-surface-container-highest);
+    background-color: var(--md-sys-color-surface-container);
     border-radius: var(--md-sys-shape-corner-radius-large);
 }
 
