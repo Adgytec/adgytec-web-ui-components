@@ -20,14 +20,7 @@ export const ListBoxConfigContext = createContext<ListBoxConfigContextValue>(
 
 /**
  * Hook to access [`ListBox`](src/components/List/ListBox/ListBox.tsx) configuration within a [`ListItem`](src/components/List/ListItem/ListItem.tsx).
- *
- * @throws {Error} If called outside a [`ListBox`](src/components/List/ListBox/ListBox.tsx).
  */
 export function useListBoxConfig() {
-    const ctx = useContext(ListBoxConfigContext);
-    if (!ctx) {
-        throw new Error("useListBoxConfig must be used inside ListBox");
-    }
-
-    return ctx;
+    return useContext(ListBoxConfigContext);
 }
