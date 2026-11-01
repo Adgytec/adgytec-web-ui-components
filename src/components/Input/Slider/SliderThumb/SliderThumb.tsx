@@ -7,7 +7,7 @@ import { SliderThumbStateContext } from "./context";
 import styles from "./sliderThumb.module.css";
 
 /**
- * Props for the [`SliderThumb`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/SliderThumb/SliderThumb.tsx) component.
+ * Props for the [`SliderThumb`](src/components/Input/Slider/SliderThumb/SliderThumb.tsx) component.
  */
 export interface SliderThumbProps
     extends Omit<
@@ -32,7 +32,7 @@ export interface SliderThumbProps
  * Draggable handle component within a slider track.
  *
  * Wraps React Aria's `SliderThumb`, managing state transitions (drag, hover, focus)
- * and hosting the [`SliderOutput`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/SliderOutput/SliderOutput.tsx)
+ * and hosting the [`SliderOutput`](src/components/Input/Slider/SliderOutput/SliderOutput.tsx)
  * value bubble.
  *
  * @example

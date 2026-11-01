@@ -3,7 +3,7 @@ import { Popover as AriaPopover } from "react-aria-components";
 import styles from "./popover.module.css";
 
 /**
- * Props for the [`Popover`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Popover/Popover.tsx) component.
+ * Props for the [`Popover`](src/components/Popover/Popover.tsx) component.
  *
  * Extends all properties from React Aria's `Popover`, including positioning (`placement`, `offset`, `crossOffset`),
  * portal containers, and entry/exit transition states.

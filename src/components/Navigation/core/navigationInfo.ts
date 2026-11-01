@@ -23,8 +23,8 @@ export const NavigationInfoContext =
 /**
  * Hook to access the current navigation level's unique ID and nesting depth.
  *
- * @throws If rendered outside of a [`Navigation`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/Navigation/Navigation.tsx)
- * or [`SubNavigation`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/SubNavigation/SubNavigation/SubNavigation.tsx) component.
+ * @throws If rendered outside of a [`Navigation`](src/components/Navigation/Navigation/Navigation.tsx)
+ * or [`SubNavigation`](src/components/Navigation/SubNavigation/SubNavigation/SubNavigation.tsx) component.
  * @returns The current {@link NavigationInfoContextType}.
  */
 export function useNavigationInfo() {

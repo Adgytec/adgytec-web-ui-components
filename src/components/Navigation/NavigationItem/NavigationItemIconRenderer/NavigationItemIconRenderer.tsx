@@ -6,7 +6,7 @@ const IconRenderer: React.FC<{ icon: LucideIcon }> = ({ icon }) => {
 };
 
 /**
- * Props for the [`NavigationItemIconRenderer`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationItem/NavigationItemIconRenderer/NavigationItemIconRenderer.tsx) component.
+ * Props for the [`NavigationItemIconRenderer`](src/components/Navigation/NavigationItem/NavigationItemIconRenderer/NavigationItemIconRenderer.tsx) component.
  */
 export interface NavigationItemIconRendererProps {
     /**

@@ -4,13 +4,13 @@ import { typography } from "@/utils";
 import { MenuSectionHeaderStyles } from "../core";
 
 /**
- * Props for the [`MenuSectionHeader`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/MenuSectionHeader/MenuSectionHeader.tsx) component.
+ * Props for the [`MenuSectionHeader`](src/components/Menu/MenuSectionHeader/MenuSectionHeader.tsx) component.
  */
 export interface MenuSectionHeaderProps
     extends React.ComponentPropsWithRef<"header"> {}
 
 /**
- * Section header title rendered at the top of a [`MenuSection`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/MenuSection/MenuSection.tsx).
+ * Section header title rendered at the top of a [`MenuSection`](src/components/Menu/MenuSection/MenuSection.tsx).
  *
  * Styled with Material Design 3 `labelLarge` typography and accessible section header semantics.
  *

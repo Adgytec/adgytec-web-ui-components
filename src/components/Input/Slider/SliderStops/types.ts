@@ -2,7 +2,7 @@ import type { Orientation } from "react-aria";
 import type { SliderVariant } from "../core";
 
 /**
- * Props for the [`SliderStops`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/SliderStops/SliderStops.tsx) component.
+ * Props for the [`SliderStops`](src/components/Input/Slider/SliderStops/SliderStops.tsx) component.
  */
 export type SliderStopsProps = {
     /**

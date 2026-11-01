@@ -24,7 +24,7 @@ export const NavigationContext = createContext<NavigationContextType | null>(
 
 /**
  * Hook to access active state predicates (`isLinkActive` and `isButtonActive`) from the parent
- * [`Navigation`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/Navigation/Navigation.tsx) container.
+ * [`Navigation`](src/components/Navigation/Navigation/Navigation.tsx) container.
  *
  * @throws If called outside of a `Navigation` component.
  * @returns The current {@link NavigationContextType}.

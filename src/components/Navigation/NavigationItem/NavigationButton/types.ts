@@ -3,7 +3,7 @@ import type { Button } from "react-aria-components";
 import type { NavigationItemProps } from "../core";
 
 /**
- * Props for the [`NavigationButton`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationItem/NavigationButton/NavigationButton.tsx) component.
+ * Props for the [`NavigationButton`](src/components/Navigation/NavigationItem/NavigationButton/NavigationButton.tsx) component.
  */
 export interface NavigationButtonProps
     extends Omit<
@@ -17,7 +17,7 @@ export interface NavigationButtonProps
     prefix?: string;
 
     /**
-     * Button label content. If omitted, falls back to the label provided to [`SubNavigationTrigger`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/SubNavigation/SubNavigationTrigger/SubNavigationTrigger.tsx).
+     * Button label content. If omitted, falls back to the label provided to [`SubNavigationTrigger`](src/components/Navigation/SubNavigation/SubNavigationTrigger/SubNavigationTrigger.tsx).
      */
     label?: ReactNode;
 }

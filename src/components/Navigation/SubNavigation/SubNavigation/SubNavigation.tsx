@@ -19,13 +19,13 @@ import { NavigationScrollContainer } from "../../NavigationScrollContainer";
 import { useNavigationState } from "../../NavigationState";
 
 /**
- * Props for the [`SubNavigation`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/SubNavigation/SubNavigation/SubNavigation.tsx) component.
+ * Props for the [`SubNavigation`](src/components/Navigation/SubNavigation/SubNavigation/SubNavigation.tsx) component.
  */
 export interface SubNavigationProps extends React.ComponentPropsWithRef<"nav"> {
     /**
      * Heading title displayed at the top of the sub-navigation panel.
      * If omitted, inherits the label provided to the ancestor
-     * [`SubNavigationTrigger`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/SubNavigation/SubNavigationTrigger/SubNavigationTrigger.tsx).
+     * [`SubNavigationTrigger`](src/components/Navigation/SubNavigation/SubNavigationTrigger/SubNavigationTrigger.tsx).
      */
     label?: ReactNode;
 }

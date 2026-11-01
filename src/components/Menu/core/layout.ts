@@ -18,7 +18,7 @@ export const MenuItemIconSize = 20;
 export const MenuBaseLayout = styles["layout"];
 
 /**
- * Resolves the CSS class corresponding to a given [`MenuLayout`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/core/layout.ts#L8) variant.
+ * Resolves the CSS class corresponding to a given [`MenuLayout`](src/components/Menu/core/layout.ts#L8) variant.
  *
  * @param layout - The layout density variant.
  * @returns The CSS class name.

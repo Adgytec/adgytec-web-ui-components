@@ -18,7 +18,7 @@ import type { SliderProps } from "./types";
  * Material Design 3 single-value slider component.
  *
  * Allows users to choose a specific numeric value along a track using a draggable thumb.
- * Supports configurable sizes, step indicators via [`SliderStops`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/SliderStops/SliderStops.tsx),
+ * Supports configurable sizes, step indicators via [`SliderStops`](src/components/Input/Slider/SliderStops/SliderStops.tsx),
  * inset icons with automatic minimum-value swapping, and custom output formatting.
  *
  * @example

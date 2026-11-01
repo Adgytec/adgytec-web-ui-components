@@ -41,8 +41,8 @@ export const NavigationStateContext =
 /**
  * Hook to access the current navigation state manager.
  *
- * @throws If called outside of a [`NavigationState`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationState/NavigationState.tsx)
- * or [`Navigation`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/Navigation/Navigation.tsx) component.
+ * @throws If called outside of a [`NavigationState`](src/components/Navigation/NavigationState/NavigationState.tsx)
+ * or [`Navigation`](src/components/Navigation/Navigation/Navigation.tsx) component.
  * @returns The current {@link NavigationStateContextType}.
  */
 export function useNavigationState() {

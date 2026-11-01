@@ -18,7 +18,7 @@ export const menuItemBaseColor = styles["color"];
 export const menuItemLabelColor = styles["label"];
 
 /**
- * Resolves the CSS class corresponding to a given [`MenuColor`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/core/color.ts#L8) variant.
+ * Resolves the CSS class corresponding to a given [`MenuColor`](src/components/Menu/core/color.ts#L8) variant.
  *
  * @param color - The selected color variant.
  * @returns The CSS class name.

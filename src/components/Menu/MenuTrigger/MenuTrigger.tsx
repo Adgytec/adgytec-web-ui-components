@@ -3,7 +3,7 @@ import { MenuConfigContext } from "../context";
 import type { MenuColor, MenuLayout } from "../core";
 
 /**
- * Props for the [`MenuTrigger`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/MenuTrigger/MenuTrigger.tsx) component.
+ * Props for the [`MenuTrigger`](src/components/Menu/MenuTrigger/MenuTrigger.tsx) component.
  */
 export interface MenuTriggerProps
     extends React.ComponentPropsWithRef<typeof AriaMenuTrigger> {
@@ -25,8 +25,8 @@ export interface MenuTriggerProps
 /**
  * Container component that manages menu visibility and trigger interaction states.
  *
- * Wraps React Aria's `MenuTrigger` and provides [`MenuConfigContext`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/context/context.ts)
- * to configure the color scheme and layout density across descendant [`Menu`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/Menu/Menu.tsx) components.
+ * Wraps React Aria's `MenuTrigger` and provides [`MenuConfigContext`](src/components/Menu/context/context.ts)
+ * to configure the color scheme and layout density across descendant [`Menu`](src/components/Menu/Menu/Menu.tsx) components.
  *
  * @example
  * ```tsx

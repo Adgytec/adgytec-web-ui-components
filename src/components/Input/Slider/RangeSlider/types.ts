@@ -9,7 +9,7 @@ type Tuple<T> = [T, T];
 export type RangeSliderType = Tuple<number>;
 
 /**
- * Props for the dual-thumb [`RangeSlider`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/RangeSlider/RangeSlider.tsx) component.
+ * Props for the dual-thumb [`RangeSlider`](src/components/Input/Slider/RangeSlider/RangeSlider.tsx) component.
  */
 export interface RangeSliderProps<T extends RangeSliderType>
     extends Omit<React.ComponentPropsWithRef<typeof Slider<T>>, "children">,

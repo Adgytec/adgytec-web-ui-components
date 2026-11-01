@@ -100,7 +100,7 @@ const Nav: React.FC<NavigationProps> = ({
  *
  * Coordinates navigation header titles, dialog/drawer modal close buttons, scroll position synchronization,
  * and context providers for link/button active states and portal-rendered sub-navigation panels.
- * Automatically provides a [`NavigationState`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationState/NavigationState.tsx)
+ * Automatically provides a [`NavigationState`](src/components/Navigation/NavigationState/NavigationState.tsx)
  * if not already nested within one.
  *
  * @example

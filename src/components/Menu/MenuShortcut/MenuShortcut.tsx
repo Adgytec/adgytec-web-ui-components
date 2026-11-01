@@ -2,12 +2,12 @@ import clsx from "clsx";
 import { typography } from "@/utils/typography";
 
 /**
- * Props for the [`MenuShortcut`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/MenuShortcut/MenuShortcut.tsx) component.
+ * Props for the [`MenuShortcut`](src/components/Menu/MenuShortcut/MenuShortcut.tsx) component.
  */
 export interface MenuShortcutProps extends React.ComponentPropsWithRef<"kbd"> {}
 
 /**
- * Keyboard shortcut badge (`<kbd>`) displayed at the trailing edge of a [`MenuItem`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/MenuItem/MenuItem.tsx).
+ * Keyboard shortcut badge (`<kbd>`) displayed at the trailing edge of a [`MenuItem`](src/components/Menu/MenuItem/MenuItem.tsx).
  *
  * Styled with Material Design 3 `labelLarge` typography and appropriate contrast.
  *

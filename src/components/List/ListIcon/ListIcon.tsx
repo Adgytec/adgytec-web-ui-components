@@ -3,7 +3,7 @@ import { Icon } from "@/components/Icon";
 import styles from "./listIcon.module.css";
 
 /**
- * Props for the [`ListIcon`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/List/ListIcon/ListIcon.tsx) component.
+ * Props for the [`ListIcon`](src/components/List/ListIcon/ListIcon.tsx) component.
  */
 export interface ListIconProps
     extends Omit<
@@ -12,7 +12,7 @@ export interface ListIconProps
     > {}
 
 /**
- * Standardized leading icon component for a [`ListItem`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/List/ListItem/ListItem.tsx).
+ * Standardized leading icon component for a [`ListItem`](src/components/List/ListItem/ListItem.tsx).
  *
  * Hardcodes a standard 20px dimension while dynamically inheriting the list item's
  * text and interaction state colors.

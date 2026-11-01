@@ -4,8 +4,8 @@ import { typography } from "@/utils";
 import styles from "./navigationItem.module.css";
 
 /**
- * Common configuration properties shared across navigation items ([`NavigationLink`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationItem/NavigationLink/NavigationLink.tsx)
- * and [`NavigationButton`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationItem/NavigationButton/NavigationButton.tsx)).
+ * Common configuration properties shared across navigation items ([`NavigationLink`](src/components/Navigation/NavigationItem/NavigationLink/NavigationLink.tsx)
+ * and [`NavigationButton`](src/components/Navigation/NavigationItem/NavigationButton/NavigationButton.tsx)).
  */
 export interface NavigationItemProps {
     /**

@@ -25,9 +25,9 @@ export type OutputRenderer =
  * Common configuration properties shared across all slider variants.
  *
  * Extends base options for labels, sizing, step tick marks, and value outputs
- * across [`Slider`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/Slider/Slider.tsx),
- * [`RangeSlider`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/RangeSlider/RangeSlider.tsx),
- * and [`CenteredSlider`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/CenteredSlider/CenteredSlider.tsx).
+ * across [`Slider`](src/components/Input/Slider/Slider/Slider.tsx),
+ * [`RangeSlider`](src/components/Input/Slider/RangeSlider/RangeSlider.tsx),
+ * and [`CenteredSlider`](src/components/Input/Slider/CenteredSlider/CenteredSlider.tsx).
  */
 export interface BaseSliderProps {
     /**

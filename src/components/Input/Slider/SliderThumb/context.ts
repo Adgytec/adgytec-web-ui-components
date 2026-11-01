@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 /**
- * State values exposed by the parent [`SliderThumb`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/SliderThumb/SliderThumb.tsx)
+ * State values exposed by the parent [`SliderThumb`](src/components/Input/Slider/SliderThumb/SliderThumb.tsx)
  * representing current user interactions.
  */
 export type SliderThumbStateContextValue = {
@@ -25,7 +25,7 @@ export type SliderThumbStateContextValue = {
 
 /**
  * React context providing thumb interaction state to child components such as
- * [`SliderOutput`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/SliderOutput/SliderOutput.tsx).
+ * [`SliderOutput`](src/components/Input/Slider/SliderOutput/SliderOutput.tsx).
  */
 export const SliderThumbStateContext =
     createContext<SliderThumbStateContextValue>({});

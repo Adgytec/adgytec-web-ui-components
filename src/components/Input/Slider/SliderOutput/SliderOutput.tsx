@@ -6,7 +6,7 @@ import { SliderThumbStateContext } from "../SliderThumb/context";
 import styles from "./sliderOutput.module.css";
 
 /**
- * Props for the [`SliderOutput`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/SliderOutput/SliderOutput.tsx) component.
+ * Props for the [`SliderOutput`](src/components/Input/Slider/SliderOutput/SliderOutput.tsx) component.
  */
 export interface SliderOutputProps
     extends React.ComponentPropsWithRef<typeof AriaSliderOutput> {}
@@ -14,7 +14,7 @@ export interface SliderOutputProps
 /**
  * Output tooltip / badge component displaying the current value of the slider thumb.
  *
- * Automatically connects to [`SliderThumbStateContext`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/SliderThumb/context.ts)
+ * Automatically connects to [`SliderThumbStateContext`](src/components/Input/Slider/SliderThumb/context.ts)
  * to reflect hover, focus, and dragging states on data attributes.
  *
  * @example

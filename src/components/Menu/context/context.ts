@@ -2,7 +2,7 @@ import { createContext } from "react";
 import type { MenuColor, MenuLayout } from "../core";
 
 /**
- * Configuration options propagated from [`MenuTrigger`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/MenuTrigger/MenuTrigger.tsx)
+ * Configuration options propagated from [`MenuTrigger`](src/components/Menu/MenuTrigger/MenuTrigger.tsx)
  * down to child menus.
  */
 export type MenuConfigContextValue = {

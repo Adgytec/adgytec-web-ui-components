@@ -20,7 +20,7 @@ import type { RangeSliderProps, RangeSliderType } from "./types";
  *
  * Allows users to choose a numeric range `[start, end]` using two independently draggable
  * thumbs. Displays an active filled track between the thumbs, supports step indicators
- * via [`SliderStops`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Input/Slider/SliderStops/SliderStops.tsx),
+ * via [`SliderStops`](src/components/Input/Slider/SliderStops/SliderStops.tsx),
  * and handles thumb overlap transitions.
  *
  * @example

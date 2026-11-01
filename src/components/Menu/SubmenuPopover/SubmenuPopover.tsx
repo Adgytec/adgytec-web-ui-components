@@ -3,7 +3,7 @@ import { Popover } from "@/components/Popover";
 import styles from "./submenuPopover.module.css";
 
 /**
- * Props for the [`SubmenuPopover`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/SubmenuPopover/SubmenuPopover.tsx) component.
+ * Props for the [`SubmenuPopover`](src/components/Menu/SubmenuPopover/SubmenuPopover.tsx) component.
  */
 export interface SubmenuPopoverProps
     extends React.ComponentPropsWithRef<typeof Popover> {}

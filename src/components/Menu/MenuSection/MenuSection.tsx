@@ -3,16 +3,16 @@ import { MenuSection as AriaMenuSection } from "react-aria-components";
 import { MenuSectionStyles } from "../core";
 
 /**
- * Props for the [`MenuSection`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/MenuSection/MenuSection.tsx) component.
+ * Props for the [`MenuSection`](src/components/Menu/MenuSection/MenuSection.tsx) component.
  */
 export interface MenuSectionProps<T extends object>
     extends React.ComponentPropsWithRef<typeof AriaMenuSection<T>> {}
 
 /**
- * Groups related menu items into logical sections within a [`Menu`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/Menu/Menu.tsx).
+ * Groups related menu items into logical sections within a [`Menu`](src/components/Menu/Menu/Menu.tsx).
  *
- * Typically contains a [`MenuSectionHeader`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/MenuSectionHeader/MenuSectionHeader.tsx)
- * and one or more [`MenuItem`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/MenuItem/MenuItem.tsx) components.
+ * Typically contains a [`MenuSectionHeader`](src/components/Menu/MenuSectionHeader/MenuSectionHeader.tsx)
+ * and one or more [`MenuItem`](src/components/Menu/MenuItem/MenuItem.tsx) components.
  *
  * @example
  * ```tsx

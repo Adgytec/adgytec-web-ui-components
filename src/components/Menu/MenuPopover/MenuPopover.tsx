@@ -3,15 +3,15 @@ import { Popover } from "@/components/Popover";
 import styles from "./menuPopover.module.css";
 
 /**
- * Props for the [`MenuPopover`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/MenuPopover/MenuPopover.tsx) component.
+ * Props for the [`MenuPopover`](src/components/Menu/MenuPopover/MenuPopover.tsx) component.
  */
 export interface MenuPopoverProps
     extends React.ComponentPropsWithRef<typeof Popover> {}
 
 /**
- * Surface overlay container for the [`Menu`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Menu/Menu/Menu.tsx) component.
+ * Surface overlay container for the [`Menu`](src/components/Menu/Menu/Menu.tsx) component.
  *
- * Wraps [`Popover`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Popover/Popover.tsx)
+ * Wraps [`Popover`](src/components/Popover/Popover.tsx)
  * with Material Design 3 surface styling, rounded corners, and shadow elevation.
  *
  * @example

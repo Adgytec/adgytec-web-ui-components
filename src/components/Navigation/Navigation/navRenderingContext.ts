@@ -18,9 +18,9 @@ export const NavigationRenderingContext =
 
 /**
  * Hook to access the parent navigation container element used for portal mounting of
- * [`SubNavigation`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/SubNavigation/SubNavigation/SubNavigation.tsx).
+ * [`SubNavigation`](src/components/Navigation/SubNavigation/SubNavigation/SubNavigation.tsx).
  *
- * @throws If called outside of a [`Navigation`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/Navigation/Navigation.tsx) component.
+ * @throws If called outside of a [`Navigation`](src/components/Navigation/Navigation/Navigation.tsx) component.
  * @returns The current {@link NavigationRenderingContextType}.
  */
 export function useNavigationContainer() {

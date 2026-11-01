@@ -3,11 +3,11 @@ import { NavigationStateContext } from "./context";
 import type { NavScrollInfo, SubNavItem } from "./types";
 
 /**
- * Props for the [`NavigationState`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationState/NavigationState.tsx) component.
+ * Props for the [`NavigationState`](src/components/Navigation/NavigationState/NavigationState.tsx) component.
  */
 export interface NavigationStateProps {
     /**
-     * Child elements, typically one or more [`Navigation`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/Navigation/Navigation.tsx) instances.
+     * Child elements, typically one or more [`Navigation`](src/components/Navigation/Navigation/Navigation.tsx) instances.
      */
     children?: ReactNode;
 }

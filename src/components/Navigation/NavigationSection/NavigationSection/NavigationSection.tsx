@@ -2,7 +2,7 @@ import clsx from "clsx";
 import styles from "./navigationSection.module.css";
 
 /**
- * Props for the [`NavigationSection`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationSection/NavigationSection/NavigationSection.tsx) component.
+ * Props for the [`NavigationSection`](src/components/Navigation/NavigationSection/NavigationSection/NavigationSection.tsx) component.
  */
 export interface NavigationSectionProps
     extends React.ComponentPropsWithRef<"section"> {}

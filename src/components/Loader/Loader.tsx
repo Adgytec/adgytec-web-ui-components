@@ -4,9 +4,9 @@ import { Icon } from "../Icon";
 import styles from "./loader.module.css";
 
 /**
- * Props for the [`Loader`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Loader/Loader.tsx) component.
+ * Props for the [`Loader`](src/components/Loader/Loader.tsx) component.
  *
- * Extends all properties from [`Icon`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Icon/Icon.tsx)
+ * Extends all properties from [`Icon`](src/components/Icon/Icon.tsx)
  * while omitting `icon` (which is fixed to `LoaderCircle`) and internal `className`.
  */
 export interface LoaderProps

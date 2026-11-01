@@ -29,7 +29,7 @@ export const ListMediaLargeVideoWidth = 114;
 export const ListMediaLargeVideoHeight = 64;
 
 /**
- * Preset dimension variants for the [`ListMedia`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/List/ListMedia/ListMedia.tsx) container:
+ * Preset dimension variants for the [`ListMedia`](src/components/List/ListMedia/ListMedia.tsx) container:
  * - `"image"`: 56px × 56px square thumbnail.
  * - `"video"`: 100px × 56px 16:9 aspect video preview.
  * - `"large-video"`: 114px × 64px enlarged video preview.
@@ -37,7 +37,7 @@ export const ListMediaLargeVideoHeight = 64;
 export type ListMediaVariant = "image" | "video" | "large-video";
 
 /**
- * Props for the [`ListMedia`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/List/ListMedia/ListMedia.tsx) container component.
+ * Props for the [`ListMedia`](src/components/List/ListMedia/ListMedia.tsx) container component.
  */
 export interface ListMediaProps extends React.ComponentPropsWithRef<"div"> {
     /**

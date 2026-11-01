@@ -4,13 +4,13 @@ import { typography } from "@/utils";
 import styles from "./navigationSectionLabel.module.css";
 
 /**
- * Props for the [`NavigationSectionLabel`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationSection/NavigationSectionLabel/NavigationSectionLabel.tsx) component.
+ * Props for the [`NavigationSectionLabel`](src/components/Navigation/NavigationSection/NavigationSectionLabel/NavigationSectionLabel.tsx) component.
  */
 export interface NavigationSectionLabelProps
     extends React.ComponentPropsWithRef<typeof Heading> {}
 
 /**
- * Styled title heading for a [`NavigationSection`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationSection/NavigationSection/NavigationSection.tsx).
+ * Styled title heading for a [`NavigationSection`](src/components/Navigation/NavigationSection/NavigationSection/NavigationSection.tsx).
  *
  * Rendered with Material Design 3 `titleSmall` typography and accessible heading semantics.
  *

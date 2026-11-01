@@ -8,7 +8,7 @@ import {
 import { useNavigationState } from "../../NavigationState";
 
 /**
- * Props for the [`SubNavigationTrigger`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/SubNavigation/SubNavigationTrigger/SubNavigationTrigger.tsx) component.
+ * Props for the [`SubNavigationTrigger`](src/components/Navigation/SubNavigation/SubNavigationTrigger/SubNavigationTrigger.tsx) component.
  */
 export interface SubNavigationTriggerProps {
     /**
@@ -17,7 +17,7 @@ export interface SubNavigationTriggerProps {
     stateID: string;
 
     /**
-     * Child elements, typically an opening trigger button and a [`SubNavigation`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/SubNavigation/SubNavigation/SubNavigation.tsx) panel.
+     * Child elements, typically an opening trigger button and a [`SubNavigation`](src/components/Navigation/SubNavigation/SubNavigation/SubNavigation.tsx) panel.
      */
     children?: ReactNode;
 
@@ -29,7 +29,7 @@ export interface SubNavigationTriggerProps {
 
 /**
  * Orchestrator component tying together an opening action button and its sliding
- * [`SubNavigation`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/SubNavigation/SubNavigation/SubNavigation.tsx) panel.
+ * [`SubNavigation`](src/components/Navigation/SubNavigation/SubNavigation/SubNavigation.tsx) panel.
  *
  * Configures button click handlers to slide the sub-navigation panel into view, increments the
  * depth counter, and passes down the section label.

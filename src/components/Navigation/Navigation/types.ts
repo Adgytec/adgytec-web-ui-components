@@ -11,7 +11,7 @@ export type IsLinkActive = (href?: string) => boolean;
 export type IsButtonActive = (prefix?: string) => boolean;
 
 /**
- * Props for the root [`Navigation`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/Navigation/Navigation.tsx) container component.
+ * Props for the root [`Navigation`](src/components/Navigation/Navigation/Navigation.tsx) container component.
  */
 export interface NavigationProps extends React.ComponentPropsWithRef<"nav"> {
     /**
@@ -20,13 +20,13 @@ export interface NavigationProps extends React.ComponentPropsWithRef<"nav"> {
     label?: ReactNode;
 
     /**
-     * Callback function used by child [`NavigationLink`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationItem/NavigationLink/NavigationLink.tsx)
+     * Callback function used by child [`NavigationLink`](src/components/Navigation/NavigationItem/NavigationLink/NavigationLink.tsx)
      * components to determine their active state from their `href`.
      */
     isLinkActive?: IsLinkActive;
 
     /**
-     * Callback function used by child [`NavigationButton`](file:///home/rohan/work/adgytec/adgytec-web-ui-components/src/components/Navigation/NavigationItem/NavigationButton/NavigationButton.tsx)
+     * Callback function used by child [`NavigationButton`](src/components/Navigation/NavigationItem/NavigationButton/NavigationButton.tsx)
      * components to determine their active state from their `prefix`.
      */
     isButtonActive?: IsButtonActive;
