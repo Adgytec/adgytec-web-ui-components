@@ -34,13 +34,20 @@ export interface ThemeItemProps {
      * @default false
      */
     useInline?: boolean;
+
+    /**
+     * Whether the setting item is disabled (visually dimmed and non-interactive).
+     *
+     * @default false
+     */
+    isDisabled?: boolean;
 }
 
 /**
  * Layout helper component for a single setting item within {@link ThemeSelector}.
  *
  * Renders a styled heading (`typography.titleMedium`), an optional description (`typography.bodyMedium`),
- * and the child controls. Supports both block rendering and inline `span` rendering.
+ * and the child controls. Supports both block rendering and inline `span` rendering, as well as disabled styling.
  *
  * @example
  * ```tsx
@@ -64,18 +71,35 @@ export const ThemeItem: React.FC<ThemeItemProps> = ({
     children,
     className,
     useInline = false,
+    isDisabled = false,
 }) => {
     if (useInline) {
         return (
-            <span className={clsx(styles["theme-item"], className)}>
+            <span
+                className={clsx(
+                    styles["theme-item"],
+                    isDisabled && styles["disabled"],
+                    className
+                )}
+                data-disabled={isDisabled || undefined}
+            >
                 <span className={clsx(styles["theme-item-info"])}>
-                    <span className={clsx(typography.titleMedium)} slot="label">
+                    <span
+                        className={clsx(
+                            typography.titleMedium,
+                            styles["theme-item-heading"]
+                        )}
+                        slot="label"
+                    >
                         {heading}
                     </span>
 
                     {description && (
                         <span
-                            className={clsx(typography.bodyMedium)}
+                            className={clsx(
+                                typography.bodyMedium,
+                                styles["theme-item-description"]
+                            )}
                             slot="description"
                         >
                             {description}
@@ -87,13 +111,35 @@ export const ThemeItem: React.FC<ThemeItemProps> = ({
             </span>
         );
     }
+
     return (
-        <div className={clsx(styles["theme-item"], className)}>
+        <div
+            className={clsx(
+                styles["theme-item"],
+                isDisabled && styles["disabled"],
+                className
+            )}
+            data-disabled={isDisabled || undefined}
+        >
             <div className={clsx(styles["theme-item-info"])}>
-                <h3 className={clsx(typography.titleMedium)}>{heading}</h3>
+                <h3
+                    className={clsx(
+                        typography.titleMedium,
+                        styles["theme-item-heading"]
+                    )}
+                >
+                    {heading}
+                </h3>
 
                 {description && (
-                    <p className={clsx(typography.bodyMedium)}>{description}</p>
+                    <p
+                        className={clsx(
+                            typography.bodyMedium,
+                            styles["theme-item-description"]
+                        )}
+                    >
+                        {description}
+                    </p>
                 )}
             </div>
 

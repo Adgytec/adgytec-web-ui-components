@@ -1,3 +1,5 @@
+import type { ButtonSize, ConnectedButtonGroupColor } from "../Button";
+
 /**
  * Base translation interface providing a section heading and optional description.
  */
@@ -96,4 +98,51 @@ export type ThemeSelectorProps = {
      * Custom text and translations for the Monochrome toggle section.
      */
     monochromeDetails?: ThemeMonochromeTranslations;
+
+    /**
+     * Optional custom CSS class name applied to the root container.
+     */
+    className?: string;
+
+    /**
+     * Color styling variant for the connected button groups.
+     *
+     * @default "tonal"
+     */
+    buttonColor?: ConnectedButtonGroupColor;
+
+    /**
+     * Size of the connected button groups.
+     *
+     * @default "small"
+     */
+    buttonSize?: ButtonSize;
+
+    /**
+     * Whether to show the Theme Mode selection section.
+     *
+     * @default true
+     */
+    showMode?: boolean;
+
+    /**
+     * Whether to show the Theme Contrast selection section.
+     *
+     * @default true
+     */
+    showContrast?: boolean;
+
+    /**
+     * Whether to show the Monochrome toggle section.
+     *
+     * @default true
+     */
+    showMonochrome?: boolean;
+
+    /**
+     * Whether to render dividers between sections.
+     *
+     * @default false
+     */
+    showDividers?: boolean;
 };

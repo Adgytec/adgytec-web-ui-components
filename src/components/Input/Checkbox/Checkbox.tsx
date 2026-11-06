@@ -1,11 +1,11 @@
 import clsx from "clsx";
 import { useContext } from "react";
 import { CheckboxButton, CheckboxField } from "react-aria-components";
+import { typography } from "@/utils";
 import { TapTarget } from "@/utils/tapTarget";
 import styles from "./checkbox.module.css";
 import { CheckboxGroupContext } from "./context";
 import type { CheckboxProps } from "./types";
-import { typography } from "@/utils";
 
 /**
  * A checkbox control implementing Material Design 3 Checkbox guidelines.

@@ -1,12 +1,31 @@
+import type { LucideIcon } from "lucide-react";
+import { Moon, Sun, SunMoon } from "lucide-react";
 import type { Key } from "react-aria-components";
 import type { ThemeContrast, ThemeMode } from "@/utils";
 import type { ThemeContrastTranslations, ThemeModeTranslations } from "./types";
 
 /**
- * Generates an array of theme mode options with translated labels.
+ * Item representation for a theme mode option.
+ */
+export interface ThemeModeItem {
+    id: ThemeMode;
+    value: string;
+    icon: LucideIcon;
+}
+
+/**
+ * Item representation for a theme contrast option.
+ */
+export interface ThemeContrastItem {
+    id: ThemeContrast;
+    value: string;
+}
+
+/**
+ * Generates an array of theme mode options with translated labels and icons.
  *
  * @param modeDetails - Translations for theme mode labels (`system`, `light`, `dark`).
- * @returns Array of mode items with `id` and localized `value`.
+ * @returns Array of mode items with `id`, localized `value`, and `icon`.
  *
  * @example
  * ```tsx
@@ -20,14 +39,11 @@ import type { ThemeContrastTranslations, ThemeModeTranslations } from "./types";
  */
 export const modeItems = (
     modeDetails: ThemeModeTranslations
-): {
-    id: ThemeMode;
-    value: string;
-}[] => {
+): ThemeModeItem[] => {
     return [
-        { id: "system", value: modeDetails.system },
-        { id: "light", value: modeDetails.light },
-        { id: "dark", value: modeDetails.dark },
+        { id: "system", value: modeDetails.system, icon: SunMoon },
+        { id: "light", value: modeDetails.light, icon: Sun },
+        { id: "dark", value: modeDetails.dark, icon: Moon },
     ];
 };
 
@@ -49,10 +65,7 @@ export const modeItems = (
  */
 export const contrastItems = (
     contrastDetails: ThemeContrastTranslations
-): {
-    id: ThemeContrast;
-    value: string;
-}[] => {
+): ThemeContrastItem[] => {
     return [
         { id: "standard", value: contrastDetails.standard },
         { id: "medium", value: contrastDetails.medium },
@@ -64,7 +77,7 @@ export const contrastItems = (
  * Type guard function to check if a React Aria `Key` is a valid {@link ThemeMode}.
  *
  * @param value - The key to test.
- * @returns `true` if `value` is `"system"`, `"light"`, or `"dark"`.
+ * @returns `true` if `value` is `"system"`, `"dark"`, or `"light"`.
  *
  * @example
  * ```tsx

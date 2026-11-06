@@ -1,11 +1,11 @@
 import { clsx } from "clsx";
 import { useContext } from "react";
 import { RadioButton, RadioField } from "react-aria-components";
+import { typography } from "@/utils";
 import { TapTarget } from "@/utils/tapTarget";
 import { RadioGroupContext } from "./context";
 import styles from "./radio.module.css";
 import type { RadioProps } from "./types";
-import { typography } from "@/utils";
 
 /**
  * A radio button control implementing Material Design 3 Radio guidelines.

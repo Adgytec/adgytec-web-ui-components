@@ -1,8 +1,17 @@
 import clsx from "clsx";
+import { Palette } from "lucide-react";
 import { useMemo } from "react";
 import { useTheme } from "@/utils";
 import { ConnectedButton, ConnectedButtonGroup } from "../Button";
+import { Divider } from "../Divider";
 import { Switch } from "../Input";
+import {
+    ListBox,
+    ListIcon,
+    ListItem,
+    ListLabelText,
+    ListSupportingText,
+} from "../List";
 import { contrastItems, isThemeContrast, isThemeMode, modeItems } from "./core";
 import { ThemeItem } from "./ThemeItem";
 import styles from "./themeSelector.module.css";
@@ -43,9 +52,9 @@ const defaultMonochrome: ThemeMonochromeTranslations = {
  * Settings UI component for managing application theme appearance.
  *
  * Provides user controls for:
- * - **Theme Mode**: Connected button group with `"System"`, `"Light"`, and `"Dark"` options.
+ * - **Theme Mode**: Connected button group with `"System"`, `"Light"`, and `"Dark"` options, featuring dedicated icons.
  * - **Theme Contrast**: Connected button group with `"Standard"`, `"Medium"`, and `"High"` options (disabled when monochrome is active).
- * - **Monochrome Mode**: An interactive {@link Switch} to toggle neutral grayscale styling.
+ * - **Monochrome Mode**: An interactive {@link ListItem} with {@link Switch} and {@link ListIcon} to toggle neutral grayscale styling.
  *
  * Directly connects to {@link useTheme} to read and update theme settings, which are
  * persisted to local storage and applied to `document.documentElement` by {@link ThemeProvider}.
@@ -67,6 +76,13 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
     modeDetails = defaultMode,
     contrastDetails = defaultContrast,
     monochromeDetails = defaultMonochrome,
+    className,
+    buttonColor = "tonal",
+    buttonSize = "small",
+    showMode = true,
+    showContrast = true,
+    showMonochrome = true,
+    showDividers = false,
 }) => {
     const {
         mode,
@@ -84,60 +100,97 @@ export const ThemeSelector: React.FC<ThemeSelectorProps> = ({
     );
 
     return (
-        <div className={clsx(styles["selector"])}>
-            <ThemeItem
-                heading={modeDetails.heading}
-                description={modeDetails.description}
-            >
-                <ConnectedButtonGroup
-                    selectionMode="single"
-                    selectedKeys={[mode]}
-                    onSelectionChange={(keys) => {
-                        const themeMode = Array.from(keys)[0];
-                        if (!isThemeMode(themeMode)) return;
-
-                        setMode(themeMode);
-                    }}
+        <div className={clsx(styles["selector"], className)}>
+            {showMode && (
+                <ThemeItem
+                    heading={modeDetails.heading}
+                    description={modeDetails.description}
                 >
-                    {themeModeItems.map((item) => (
-                        <ConnectedButton key={item.id} id={item.id}>
-                            {item.value}
-                        </ConnectedButton>
-                    ))}
-                </ConnectedButtonGroup>
-            </ThemeItem>
+                    <ConnectedButtonGroup
+                        color={buttonColor}
+                        size={buttonSize}
+                        selectionMode="single"
+                        selectedKeys={[mode]}
+                        onSelectionChange={(keys) => {
+                            const themeMode = Array.from(keys)[0];
+                            if (!isThemeMode(themeMode)) return;
 
-            <ThemeItem
-                heading={contrastDetails.heading}
-                description={contrastDetails.description}
-            >
-                <ConnectedButtonGroup
-                    color="tonal"
-                    selectionMode="single"
-                    selectedKeys={[contrast]}
-                    onSelectionChange={(keys) => {
-                        const themeContrast = Array.from(keys)[0];
-                        if (!isThemeContrast(themeContrast)) return;
+                            setMode(themeMode);
+                        }}
+                    >
+                        {themeModeItems.map((item) => (
+                            <ConnectedButton
+                                key={item.id}
+                                id={item.id}
+                                icon={item.icon}
+                            >
+                                {item.value}
+                            </ConnectedButton>
+                        ))}
+                    </ConnectedButtonGroup>
+                </ThemeItem>
+            )}
 
-                        setContrast(themeContrast);
-                    }}
+            {showDividers && showMode && (showContrast || showMonochrome) && (
+                <Divider />
+            )}
+
+            {showContrast && (
+                <ThemeItem
+                    heading={contrastDetails.heading}
+                    description={contrastDetails.description}
                     isDisabled={isMonochrome}
                 >
-                    {themeContrastItems.map((item) => (
-                        <ConnectedButton key={item.id} id={item.id}>
-                            {item.value}
-                        </ConnectedButton>
-                    ))}
-                </ConnectedButtonGroup>
-            </ThemeItem>
+                    <ConnectedButtonGroup
+                        color={buttonColor}
+                        size={buttonSize}
+                        selectionMode="single"
+                        selectedKeys={[contrast]}
+                        onSelectionChange={(keys) => {
+                            const themeContrast = Array.from(keys)[0];
+                            if (!isThemeContrast(themeContrast)) return;
 
-            <Switch isSelected={isMonochrome} onChange={setMonochrome}>
-                <ThemeItem
-                    heading={monochromeDetails.heading}
-                    description={monochromeDetails.description}
-                    useInline
-                ></ThemeItem>
-            </Switch>
+                            setContrast(themeContrast);
+                        }}
+                        isDisabled={isMonochrome}
+                    >
+                        {themeContrastItems.map((item) => (
+                            <ConnectedButton key={item.id} id={item.id}>
+                                {item.value}
+                            </ConnectedButton>
+                        ))}
+                    </ConnectedButtonGroup>
+                </ThemeItem>
+            )}
+
+            {showDividers && showContrast && showMonochrome && <Divider />}
+
+            {showMonochrome && (
+                <ListBox aria-label={monochromeDetails.heading}>
+                    <ListItem
+                        onAction={() => setMonochrome(!isMonochrome)}
+                        leading={<ListIcon icon={Palette} />}
+                        label={
+                            <ListLabelText>
+                                {monochromeDetails.heading}
+                            </ListLabelText>
+                        }
+                        supporting={
+                            <ListSupportingText>
+                                {monochromeDetails.description}
+                            </ListSupportingText>
+                        }
+                        trailing={[
+                            <Switch
+                                key="selection"
+                                isSelected={isMonochrome}
+                                onChange={setMonochrome}
+                                aria-label={monochromeDetails.heading}
+                            />,
+                        ]}
+                    />
+                </ListBox>
+            )}
         </div>
     );
 };

@@ -1,3 +1,9 @@
+@layer adgytec.overrides {
+    .selector {
+        --md-list-item-background: var(--md-sys-color-surface-container);
+    }
+}
+
 @layer adgytec.comps {
     .selector {
         display: grid;
@@ -6,10 +12,31 @@
 
     .theme-item {
         display: grid;
-        gap: var(--md-sys-layout-space-16);
+        gap: var(--md-sys-layout-space-12);
+
+        transition: opacity var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    .theme-item[data-disabled="true"],
+    .theme-item.disabled {
+        opacity: var(--md-sys-state-disabled-content);
     }
 
     .theme-item-info {
         display: grid;
+        gap: var(--md-sys-layout-space-4);
+    }
+
+    .theme-item-heading {
+        color: var(--md-sys-color-on-surface);
+    }
+
+    .theme-item-description {
+        color: var(--md-sys-color-on-surface-variant);
     }
 }
