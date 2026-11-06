@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { SheetLayout } from "../core";
+import type { SheetLayout } from "../../core";
 
 /**
  * Context value passed from {@link BottomSheetModal} to descendant {@link BottomSheet} components.

@@ -1,2 +1,2 @@
 export * from "./BottomSheet";
-export type * from "./types";
+export * from "./BottomSheetModal";

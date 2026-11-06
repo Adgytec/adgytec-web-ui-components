@@ -1,5 +1,4 @@
 export * from "./BottomSheet";
-export * from "./BottomSheetModal";
+export * from "./BottomSwipeSheet";
 export * from "./core";
 export * from "./SideSheet";
-export * from "./SideSheetModal";
