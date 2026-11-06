@@ -1,5 +1,10 @@
 @layer adgytec.comps {
     .modal {
+        --_sheet-modal-motion: var(--md-sys-motion-expressive-fast-spatial);
+        --_sheet-modal-motion-duration: var(
+            --md-sys-motion-expressive-fast-spatial-duration
+        );
+
         --_detached-margin: var(--md-sys-layout-space-16);
         --_top-padding: var(--md-sys-layout-space-64);
 
@@ -11,11 +16,19 @@
 
         margin-block-start: var(--_top-padding);
 
+        &[data-layout="standard"] {
+            --_sheet-modal-motion: var(--md-sys-motion-expressive-fast-effects);
+            --_sheet-modal-motion-duration: var(
+                --md-sys-motion-expressive-fast-effects-duration
+            );
+        }
+
         &[data-layout="detached"] {
             margin-block-end: var(--_detached-margin);
         }
 
-        transition: translate var(--_modal-motion) var(--_modal-motion-duration);
+        transition: translate var(--_sheet-modal-motion)
+            var(--_sheet-modal-motion-duration);
 
         @media (prefers-reduced-motion) {
             transition: none;
