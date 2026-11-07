@@ -7,7 +7,6 @@ import { Button } from "./components/Button";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "./components/Tabs";
 import { AppBarPreview } from "./preview/AppBar";
 import { BottomSheetPreview } from "./preview/BottomSheet";
-import { BottomSwipeSheetPreview } from "./preview/BottomSwipeSheet";
 import { ButtonPreview } from "./preview/Button";
 import { ButtonGroupPreview } from "./preview/ButtonGroup";
 import { CalendarPreview } from "./preview/Calendar";
@@ -80,11 +79,6 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
-        {
-            id: "bottom-swipe-sheet",
-            label: "Bottom Swipe Sheet",
-            Component: BottomSwipeSheetPreview,
-        },
         {
             id: "list-preview",
             label: "List",
