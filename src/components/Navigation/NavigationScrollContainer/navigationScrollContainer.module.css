@@ -21,7 +21,14 @@
             outline-color: var(--focus-indicator-color);
         }
 
-        /* 2dp for focus outline offset and 3dp for focus outline width + 1dp to prevent clipping */
-        padding-block: calc(6 * var(--dp, 1px));
+        padding-block: var(--md-sys-layout-space-16);
+        mask-image: linear-gradient(
+            to bottom,
+            transparent var(--md-sys-layout-space-none)
+                var(--md-sys-layout-space-8),
+            black var(--md-sys-layout-space-12)
+                calc(100% - var(--md-sys-layout-space-12)),
+            transparent
+        );
     }
 }
