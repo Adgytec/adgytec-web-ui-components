@@ -56,6 +56,8 @@
     }
 
     .grouped {
+        --_md-menu-elevation: var(--md-sys-elevation-shadow-2);
+
         --_menu-elevation: none;
         --_menu-padding: 0;
         --_menu-shape: var(--_md-menu-shape);
