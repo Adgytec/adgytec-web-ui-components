@@ -1,0 +1,9 @@
+@layer adgytec.comps {
+    .sheet {
+        background-color: green;
+    }
+
+    .sheet-content {
+        background-color: rebeccapurple;
+    }
+}
