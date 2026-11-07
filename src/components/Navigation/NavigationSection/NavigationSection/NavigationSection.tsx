@@ -11,6 +11,8 @@ export interface NavigationSectionProps
 /**
  * Semantic container used to group related navigation items and an optional section heading.
  *
+ * Automatically adapts inner padding and layout based on the active navigation variant.
+ *
  * @example
  * ```tsx
  * import {

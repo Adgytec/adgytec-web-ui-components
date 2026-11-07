@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import type { Variant } from "../core";
 
+export type { Variant };
+
 /**
  * Callback function signature used to determine whether a navigation link matching `href` is currently active.
  */
@@ -44,5 +46,13 @@ export interface NavigationProps extends React.ComponentPropsWithRef<"nav"> {
      */
     containerClassName?: string;
 
+    /**
+     * Visual display variant of the navigation drawer.
+     *
+     * - `"expanded"`: Standard full-width navigation drawer displaying full header titles and inline item labels.
+     * - `"collapsed"`: Compact rail-style navigation displaying icons with tooltips, compact stacked labels, and collapsed section headers.
+     *
+     * @default "expanded"
+     */
     variant?: Variant;
 }

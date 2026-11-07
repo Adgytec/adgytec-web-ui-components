@@ -14,7 +14,7 @@ import type { NavigationLinkProps } from "./types";
  *
  * Renders an accessible navigation link that evaluates active URL state matching (using `href`),
  * automatically toggles between resting and active icons, and applies Material Design 3
- * active state pill backgrounds.
+ * active state pill backgrounds. Automatically adapts between `"expanded"` inline layout and `"collapsed"` rail layout with tooltips and stacked labels.
  *
  * @example
  * ```tsx

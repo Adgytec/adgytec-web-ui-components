@@ -33,8 +33,8 @@ export interface SubNavigationProps extends React.ComponentPropsWithRef<"nav"> {
 /**
  * Secondary sliding navigation panel rendered into the root navigation container via a React Portal.
  *
- * Provides a dedicated header with an animated back button, accessible focus containment via `FocusScope`,
- * slide-in transition animations, and independent scroll position synchronization.
+ * Provides a dedicated header with an animated back button (adapting width and alignment based on the active navigation variant),
+ * accessible focus containment via `FocusScope`, slide-in transition animations, and independent scroll position synchronization.
  *
  * @example
  * ```tsx

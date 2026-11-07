@@ -35,8 +35,17 @@ export interface NavigationItemProps {
  */
 export const NavigationItemStyles = styles["item"];
 
+/**
+ * CSS class applied to the container wrapper of a navigation item in collapsed variant.
+ */
 export const NavigationItemCollapsedStyles = styles["collapsed"];
 
+/**
+ * Resolves the typography utility class for navigation item labels based on the active variant.
+ *
+ * @param variant - The current navigation display variant (`"expanded"` or `"collapsed"`).
+ * @returns The typography utility class (`labelLarge` for expanded, `labelMedium` for collapsed).
+ */
 export function navigationItemLabelTypography(variant: Variant) {
     if (variant === "expanded") return typography.labelLarge;
     return typography.labelMedium;

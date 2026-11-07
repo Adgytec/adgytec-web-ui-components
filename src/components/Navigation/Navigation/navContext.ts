@@ -15,6 +15,9 @@ export type NavigationContextType = {
      */
     isButtonActive?: IsButtonActive;
 
+    /**
+     * Visual display variant inherited from the parent navigation container.
+     */
     variant: Variant;
 };
 

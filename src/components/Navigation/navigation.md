@@ -31,9 +31,9 @@
 ## Components
 
 The Navigation module consists of:
-1. `Navigation` - The main layout container for navigation. It manages the container DOM reference and root navigation context.
-2. `NavigationLink` - A navigation item component that renders as an anchor link.
-3. `NavigationButton` - A button-style navigation item, used to toggle nested sub-navigation.
+1. `Navigation` - The main layout container for navigation. It manages the container DOM reference, variant state, and root navigation context. Supports `"expanded"` (default full drawer) and `"collapsed"` (compact rail) variants.
+2. `NavigationLink` - A navigation item component that renders as an anchor link, adapting automatically to expanded and collapsed layouts.
+3. `NavigationButton` - A button-style navigation item, used to toggle nested sub-navigation, adapting automatically to expanded and collapsed layouts.
 4. `NavigationSection` - A container component used to group related navigation items.
 5. `NavigationSectionLabel` - A styled title component for label groups inside a section.
 6. `SubNavigation` - A secondary navigation panel that slides into view. It is rendered via a React Portal to keep the DOM output clean and isolated.
@@ -48,13 +48,14 @@ The Navigation module consists of:
 
 Extends standard HTML `<nav>` attribute types.
 
-| Prop                 | Type                           | Default      | Description                                                                        |
-| -------------------- | ------------------------------ | ------------ | ---------------------------------------------------------------------------------- |
-| `label`              | `ReactNode`                    | —            | Title text or element for the navigation header.                                   |
-| `isLinkActive`       | `(href?: string) => boolean`   | —            | Callback function to determine if a given URL matching `href` is currently active. |
-| `isButtonActive`     | `(prefix?: string) => boolean` | —            | Callback function to determine if an action button matching `prefix` is active.    |
-| `stateID`            | `string`                       | `"__root__"` | State identifier for syncing transitions.                                          |
-| `containerClassName` | `string`                       | —            | CSS class for the navigation container.                                            |
+| Prop                 | Type                           | Default      | Description                                                                                                                                                             |
+| -------------------- | ------------------------------ | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `label`              | `ReactNode`                    | —            | Title text or element for the navigation header (rendered when `variant="expanded"`).                                                                                   |
+| `variant`            | `"collapsed" \| "expanded"`    | `"expanded"` | Visual display variant of the navigation drawer. In `"collapsed"` mode, renders as a compact rail (80px–96px) with tooltip labels, stacked text, and collapsed headers. |
+| `isLinkActive`       | `(href?: string) => boolean`   | —            | Callback function to determine if a given URL matching `href` is currently active.                                                                                      |
+| `isButtonActive`     | `(prefix?: string) => boolean` | —            | Callback function to determine if an action button matching `prefix` is active.                                                                                         |
+| `stateID`            | `string`                       | `"__root__"` | State identifier for syncing transitions.                                                                                                                               |
+| `containerClassName` | `string`                       | —            | CSS class for the navigation container.                                                                                                                                 |
 
 ### `NavigationLink`
 
@@ -79,6 +80,14 @@ Extends the [React Aria Button](https://react-spectrum.adobe.com/react-aria/Butt
 | `activeIcon` | `LucideIcon`                              | —       | Optional icon display when the item is active.    |
 | `isActive`   | `boolean \| (prefix?: string) => boolean` | —       | Force override active state.                      |
 | `prefix`     | `string`                                  | —       | Optional prefix string compared in active checks. |
+
+### `NavigationSection`
+
+Extends standard HTML `<section>` element attributes (`React.ComponentPropsWithRef<"section">`). Automatically adjusts padding and layout according to the parent `Navigation` variant.
+
+### `NavigationSectionLabel`
+
+Extends React Aria Components `Heading` attributes (`React.ComponentPropsWithRef<typeof Heading>`). Renders section heading titles with `typography.titleSmall` styling, truncating with ellipsis when in collapsed rail variant.
 
 ### `SubNavigation`
 
@@ -130,6 +139,79 @@ function SideNav() {
                     label="App Settings"
                     icon={Settings}
                 />
+            </NavigationSection>
+        </Navigation>
+    );
+}
+```
+
+### Collapsed Rail Navigation
+
+Set `variant="collapsed"` to render a compact rail navigation bar (80px–96px width). Navigation items automatically render with tooltips on hover/focus and stacked labels beneath icons.
+
+```tsx
+import {
+    Navigation,
+    NavigationLink,
+    NavigationSection,
+    NavigationSectionLabel,
+    SubNavigationTrigger,
+    NavigationButton,
+    SubNavigation,
+} from "@adgytec/web-ui-components";
+import {
+    LayoutDashboard,
+    Mail,
+    Shield,
+    ShieldCheck,
+    Users,
+} from "lucide-react";
+
+function CollapsedSideRail() {
+    const currentPath = window.location.pathname;
+
+    return (
+        <Navigation
+            variant="collapsed"
+            isLinkActive={(href) => currentPath === href}
+            isButtonActive={(prefix) => currentPath.startsWith(prefix)}
+        >
+            <NavigationSection>
+                <NavigationSectionLabel>Workspace</NavigationSectionLabel>
+                <NavigationLink
+                    href="/dashboard"
+                    label="Dashboard"
+                    icon={LayoutDashboard}
+                    activeIcon={LayoutDashboard}
+                />
+                <NavigationLink
+                    href="/inbox"
+                    label="Inbox"
+                    icon={Mail}
+                    activeIcon={Mail}
+                />
+            </NavigationSection>
+
+            <NavigationSection>
+                <NavigationSectionLabel>Admin</NavigationSectionLabel>
+                <SubNavigationTrigger
+                    stateID="identity"
+                    label="Identity & Access"
+                >
+                    <NavigationButton
+                        icon={Shield}
+                        activeIcon={ShieldCheck}
+                        prefix="/admin"
+                    />
+                    <SubNavigation>
+                        <NavigationLink
+                            href="/admin/users"
+                            label="Users"
+                            icon={Users}
+                            activeIcon={Users}
+                        />
+                    </SubNavigation>
+                </SubNavigationTrigger>
             </NavigationSection>
         </Navigation>
     );

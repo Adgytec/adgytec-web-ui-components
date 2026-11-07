@@ -17,6 +17,7 @@ import type { NavigationButtonProps } from "./types";
  * Typically used as an action trigger within a [`SubNavigationTrigger`](src/components/Navigation/SubNavigation/SubNavigationTrigger/SubNavigationTrigger.tsx)
  * to open a nested sub-navigation panel. Automatically evaluates active state matching based on its `prefix`,
  * switches between resting and active icons, and inherits labels from parent triggers.
+ * Automatically adapts between `"expanded"` inline layout and `"collapsed"` rail layout with tooltips and stacked labels.
  *
  * @example
  * ```tsx

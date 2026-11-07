@@ -14,6 +14,7 @@ export interface NavigationSectionLabelProps
  * Styled title heading for a [`NavigationSection`](src/components/Navigation/NavigationSection/NavigationSection/NavigationSection.tsx).
  *
  * Rendered with Material Design 3 `titleSmall` typography and accessible heading semantics.
+ * Adapts layout between expanded and collapsed navigation variants, truncating with ellipsis in collapsed mode.
  *
  * @example
  * ```tsx
