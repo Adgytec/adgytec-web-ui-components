@@ -1,5 +1,5 @@
 import type { Modal } from "react-aria-components";
-import type { SheetLayout } from "../core";
+import type { SheetLayout } from "../../core";
 
 /**
  * Props for the {@link BottomSheetModal} component.

@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { SheetLayout } from "../core";
+import type { SheetLayout } from "../../core";
 import type { SideSheetAlignment } from "./types";
 
 /**

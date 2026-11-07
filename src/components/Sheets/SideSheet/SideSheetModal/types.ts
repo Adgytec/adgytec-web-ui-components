@@ -1,5 +1,5 @@
 import type { Modal } from "react-aria-components";
-import type { SheetLayout } from "../core";
+import type { SheetLayout } from "../../core";
 
 /**
  * Alignment edge for a side sheet on the screen.
