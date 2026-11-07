@@ -1,0 +1,9 @@
+@layer adgytec.comps {
+    .overlay {
+        background-color: blue;
+    }
+
+    .backdrop {
+        background-color: red;
+    }
+}
