@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+import type { Variant } from "../core";
 import type { IsButtonActive, IsLinkActive } from "./types";
 
 /**
@@ -13,6 +14,8 @@ export type NavigationContextType = {
      * Active predicate function for buttons.
      */
     isButtonActive?: IsButtonActive;
+
+    variant: Variant;
 };
 
 /**

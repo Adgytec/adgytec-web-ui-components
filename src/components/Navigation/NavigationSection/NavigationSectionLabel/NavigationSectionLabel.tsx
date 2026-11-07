@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { Heading } from "react-aria-components";
 import { typography } from "@/utils";
+import { useNavigationContext } from "../../Navigation/navContext";
 import styles from "./navigationSectionLabel.module.css";
 
 /**
@@ -23,9 +24,12 @@ export const NavigationSectionLabel: React.FC<NavigationSectionLabelProps> = ({
     className,
     ...props
 }) => {
+    const { variant } = useNavigationContext();
+
     return (
         <Heading
             className={clsx(styles["label"], typography.titleSmall, className)}
+            data-variant={variant}
             {...props}
         />
     );

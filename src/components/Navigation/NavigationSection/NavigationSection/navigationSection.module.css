@@ -4,5 +4,9 @@
         gap: var(--_md-navigation-items-gap);
 
         margin-block-end: var(--md-sys-layout-space-16);
+
+        &[data-variant="collapsed"] {
+            justify-items: center;
+        }
     }
 }

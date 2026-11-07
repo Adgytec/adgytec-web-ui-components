@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { useNavigationContext } from "../../Navigation/navContext";
 import styles from "./navigationSection.module.css";
 
 /**
@@ -29,7 +30,13 @@ export const NavigationSection: React.FC<NavigationSectionProps> = ({
     className,
     ...props
 }) => {
+    const { variant } = useNavigationContext();
+
     return (
-        <section className={clsx(styles["section"], className)} {...props} />
+        <section
+            className={clsx(styles["section"], className)}
+            {...props}
+            data-variant={variant}
+        />
     );
 };

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { Variant } from "../core";
 
 /**
  * Callback function signature used to determine whether a navigation link matching `href` is currently active.
@@ -42,4 +43,6 @@ export interface NavigationProps extends React.ComponentPropsWithRef<"nav"> {
      * Optional CSS class applied to the outer container `<div>` wrapping the navigation surface.
      */
     containerClassName?: string;
+
+    variant?: Variant;
 }

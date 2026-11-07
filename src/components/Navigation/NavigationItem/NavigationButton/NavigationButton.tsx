@@ -3,7 +3,11 @@ import { useContext } from "react";
 import { Button } from "react-aria-components";
 import { NavLabelContext } from "../../core";
 import { useNavigationContext } from "../../Navigation/navContext";
-import { NavigationItemLabelTypography, NavigationItemStyles } from "../core";
+import {
+    NavigationItemStyles,
+    navigationItemLabelTypography,
+    renderNavItem,
+} from "../core";
 import { NavigationItemIconRenderer } from "../NavigationItemIconRenderer";
 import type { NavigationButtonProps } from "./types";
 
@@ -31,7 +35,7 @@ export const NavigationButton: React.FC<NavigationButtonProps> = ({
     isActive,
     ...props
 }) => {
-    const { isButtonActive } = useNavigationContext();
+    const { isButtonActive, variant } = useNavigationContext();
     const buttonActive =
         typeof isActive === "function"
             ? isActive(prefix)
@@ -40,12 +44,12 @@ export const NavigationButton: React.FC<NavigationButtonProps> = ({
     const triggerLabel = useContext(NavLabelContext);
     const buttonLabel = label ?? triggerLabel;
 
-    return (
+    return renderNavItem(
         <Button
             className={(renderProps) =>
                 clsx(
                     NavigationItemStyles,
-                    NavigationItemLabelTypography,
+                    navigationItemLabelTypography(variant),
                     typeof className === "function"
                         ? className(renderProps)
                         : className
@@ -54,13 +58,16 @@ export const NavigationButton: React.FC<NavigationButtonProps> = ({
             {...props}
             slot="open"
             data-active={buttonActive || undefined}
+            data-variant={variant}
         >
             <NavigationItemIconRenderer
                 icon={icon}
                 activeIcon={activeIcon}
                 isActive={buttonActive}
             />
-            {buttonLabel}
-        </Button>
+            {variant === "expanded" && buttonLabel}
+        </Button>,
+        buttonLabel,
+        variant
     );
 };

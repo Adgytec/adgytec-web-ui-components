@@ -9,5 +9,15 @@
         padding-block-end: var(--md-sys-layout-space-4);
 
         color: var(--_md-navigation-section-label-color);
+
+        &[data-variant="collapsed"] {
+            padding-inline: 0;
+            justify-self: normal;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: start;
+        }
     }
 }

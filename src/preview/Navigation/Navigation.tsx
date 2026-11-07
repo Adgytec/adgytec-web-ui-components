@@ -41,6 +41,7 @@ import {
     Workflow,
 } from "lucide-react";
 import { DialogTrigger } from "react-aria-components";
+import type { Variant } from "@/components/Navigation/core";
 import { Button } from "../../components/Button";
 import { ModalOverlay } from "../../components/Dialog";
 import {
@@ -55,9 +56,9 @@ import {
 } from "../../components/Navigation";
 import { SideSheetDialog, SideSheetModal } from "../../components/Sheets";
 
-export const NavStatePreview = () => {
+export const NavStatePreview = ({ variant }: { variant?: Variant }) => {
     return (
-        <Navigation label="Adgytec Workspace">
+        <Navigation label="Adgytec Workspace" variant={variant}>
             <NavigationLink
                 label="Dashboard"
                 icon={LayoutDashboard}
@@ -357,12 +358,110 @@ export const NavPreview = () => {
                     </DialogTrigger>
 
                     <div className="nav">
+                        <NavStatePreview variant="collapsed" />
+                    </div>
+
+                    <div className="nav">
                         <NavStatePreview />
                     </div>
                 </NavigationState>
             </div>
 
             <div className="items">
+                <div className="nav">
+                    <Navigation label="Adgytec Workspace" variant="collapsed">
+                        <NavigationSection>
+                            <NavigationSectionLabel>
+                                Workspace
+                            </NavigationSectionLabel>
+
+                            <NavigationLink
+                                label="Dashboard"
+                                icon={LayoutDashboard}
+                                activeIcon={LayoutDashboard}
+                            />
+
+                            <NavigationLink
+                                label="Inbox"
+                                icon={Mail}
+                                activeIcon={Mail}
+                            />
+
+                            <NavigationLink
+                                label="Tasks"
+                                icon={Clipboard}
+                                activeIcon={Clipboard}
+                            />
+                        </NavigationSection>
+
+                        <NavigationSection>
+                            <NavigationSectionLabel>
+                                Administration
+                            </NavigationSectionLabel>
+
+                            <SubNavigationTrigger
+                                label="Identity & Access"
+                                stateID="Identity & Access"
+                            >
+                                <NavigationButton
+                                    icon={Shield}
+                                    activeIcon={ShieldCheck}
+                                />
+
+                                <SubNavigation>
+                                    <NavigationLink
+                                        label="Users"
+                                        icon={Users}
+                                        activeIcon={Users}
+                                    />
+
+                                    <NavigationLink
+                                        label="Roles"
+                                        icon={BadgeCheck}
+                                        activeIcon={BadgeCheck}
+                                    />
+
+                                    <NavigationLink
+                                        label="Groups"
+                                        icon={UsersRound}
+                                        activeIcon={UsersRound}
+                                    />
+                                </SubNavigation>
+                            </SubNavigationTrigger>
+
+                            <SubNavigationTrigger
+                                label="Settings"
+                                stateID="Settings"
+                            >
+                                <NavigationButton
+                                    icon={Settings}
+                                    activeIcon={Settings}
+                                />
+
+                                <SubNavigation>
+                                    <NavigationLink
+                                        label="General"
+                                        icon={Settings}
+                                        activeIcon={Settings}
+                                    />
+
+                                    <NavigationLink
+                                        label="Billing"
+                                        icon={DollarSign}
+                                        activeIcon={DollarSign}
+                                    />
+
+                                    <NavigationLink
+                                        label="Integrations"
+                                        icon={Globe}
+                                        activeIcon={Globe}
+                                    />
+                                </SubNavigation>
+                            </SubNavigationTrigger>
+                        </NavigationSection>
+                    </Navigation>
+                </div>
+
                 <div className="nav">
                     <Navigation label="Adgytec Workspace">
                         <NavigationSection>

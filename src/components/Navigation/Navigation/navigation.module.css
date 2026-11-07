@@ -5,5 +5,25 @@
         position: relative;
         border-radius: inherit;
         overflow: clip;
+
+        &:not([data-modal]) {
+            inline-size: clamp(
+                var(--_min-inline-size),
+                var(--_inline-size),
+                var(--_max-inline-size)
+            );
+
+            &[data-variant="expanded"] {
+                --_min-inline-size: calc(220 * var(--dp, 1px));
+                --_inline-size: 33svi;
+                --_max-inline-size: calc(360 * var(--dp, 1px));
+            }
+
+            &[data-variant="collapsed"] {
+                --_min-inline-size: calc(80 * var(--dp, 1px));
+                --_inline-size: 16svi;
+                --_max-inline-size: calc(96 * var(--dp, 1px));
+            }
+        }
     }
 }

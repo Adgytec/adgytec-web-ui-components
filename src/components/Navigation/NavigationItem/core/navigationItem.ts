@@ -1,6 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { typography } from "@/utils";
+import type { Variant } from "../../core";
 import styles from "./navigationItem.module.css";
 
 /**
@@ -30,11 +31,13 @@ export interface NavigationItemProps {
 }
 
 /**
- * Standard typography style (`titleSmall`) for navigation item label text.
- */
-export const NavigationItemLabelTypography = typography.titleSmall;
-
-/**
  * CSS class for individual navigation item styling, interactive state layers, and padding.
  */
 export const NavigationItemStyles = styles["item"];
+
+export const NavigationItemCollapsedStyles = styles["collapsed"];
+
+export function navigationItemLabelTypography(variant: Variant) {
+    if (variant === "expanded") return typography.labelLarge;
+    return typography.labelMedium;
+}

@@ -13,6 +13,26 @@
 * configurable tokens end */
 
 @layer adgytec.comps {
+    .collapsed {
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: var(--md-sys-layout-space-4);
+        text-align: center;
+
+        max-inline-size: var(--md-sys-layout-space-56);
+        padding-block: var(--md-sys-layout-space-8);
+
+        [data-label] {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+        }
+    }
+
     .item {
         --_md-navigation-item-active-background: var(
             --md-navigation-item-active-background,
@@ -75,6 +95,13 @@
         cursor: pointer;
         border-radius: var(--md-sys-shape-corner-radius-full);
 
+        &[data-variant="collapsed"] {
+            --_md-navigation-item-padding-block: var(--md-sys-layout-space-4);
+            --_md-navigation-item-padding-inline: var(--md-sys-layout-space-12);
+
+            justify-content: center;
+        }
+
         &[data-active] {
             --_background: var(--_md-navigation-item-active-background);
             --_icon-color: var(--_md-navigation-item-active-icon-color);
@@ -122,18 +149,5 @@
         @media (prefers-reduced-motion) {
             transition: none;
         }
-    }
-
-    .item[data-focus-visible] {
-        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
-        --focus-indicator-offset: calc(2 * var(--dp, 1px));
-        --focus-indicator-color: var(--md-sys-color-secondary);
-
-        outline-width: var(--focus-indicator-thickness);
-        outline-style: solid;
-        outline-offset: var(--focus-indicator-offset);
-        outline-color: var(--focus-indicator-color);
-
-        z-index: 1;
     }
 }

@@ -14,7 +14,7 @@ import {
     SubNavigationHeaderStyles,
     useNavigationInfo,
 } from "../../core";
-import { useNavigationContainer } from "../../Navigation";
+import { useNavigationContainer, useNavigationContext } from "../../Navigation";
 import { NavigationScrollContainer } from "../../NavigationScrollContainer";
 import { useNavigationState } from "../../NavigationState";
 
@@ -67,6 +67,7 @@ export const SubNavigation: React.FC<SubNavigationProps> = ({
 
     const isInModal = useInDialog();
 
+    const { variant } = useNavigationContext();
     const { id, depth } = useNavigationInfo();
     const { isInert, isSubNavigationOpen } = useNavigationState();
     const { container } = useNavigationContainer();
@@ -103,15 +104,21 @@ export const SubNavigation: React.FC<SubNavigationProps> = ({
                         data-sub-nav={true}
                         data-modal={isInModal || undefined}
                     >
-                        <Header className={clsx(SubNavigationHeaderStyles)}>
+                        <Header
+                            className={clsx(SubNavigationHeaderStyles)}
+                            data-variant={variant}
+                        >
                             <IconButton
                                 icon={ArrowLeft}
                                 color="standard"
                                 slot="close"
+                                width={
+                                    variant === "collapsed" ? "wide" : undefined
+                                }
                                 data-close-button
                             />
 
-                            {headerLabel && (
+                            {variant === "expanded" && headerLabel && (
                                 <Heading
                                     className={clsx(typography.titleLarge)}
                                     data-heading
@@ -121,7 +128,7 @@ export const SubNavigation: React.FC<SubNavigationProps> = ({
                             )}
                         </Header>
 
-                        <NavigationScrollContainer>
+                        <NavigationScrollContainer data-variant={variant}>
                             {children}
                         </NavigationScrollContainer>
                     </nav>

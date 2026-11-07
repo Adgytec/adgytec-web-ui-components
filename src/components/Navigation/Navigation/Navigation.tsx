@@ -31,6 +31,7 @@ const Nav: React.FC<NavigationProps> = ({
     inert,
     style,
     containerClassName,
+    variant = "expanded",
     ...props
 }) => {
     const depth = 0;
@@ -45,13 +46,15 @@ const Nav: React.FC<NavigationProps> = ({
         <Provider
             values={[
                 [NavigationRenderingContext, { container }],
-                [NavigationContext, { isLinkActive, isButtonActive }],
+                [NavigationContext, { isLinkActive, isButtonActive, variant }],
                 [NavigationInfoContext, { id: stateID, depth }],
             ]}
         >
             <div
                 ref={setContainer}
                 className={clsx(styles["container"], containerClassName)}
+                data-modal={isInModal || undefined}
+                data-variant={variant}
             >
                 <nav
                     className={clsx(NavigationStyles, className)}
@@ -66,7 +69,7 @@ const Nav: React.FC<NavigationProps> = ({
                 >
                     {renderHeader && (
                         <Header className={clsx(NavigationHeaderStyles)}>
-                            {label && (
+                            {label && variant === "expanded" && (
                                 <Heading
                                     className={clsx(typography.titleLarge)}
                                     data-heading
@@ -86,7 +89,7 @@ const Nav: React.FC<NavigationProps> = ({
                         </Header>
                     )}
 
-                    <NavigationScrollContainer>
+                    <NavigationScrollContainer data-variant={variant}>
                         {children}
                     </NavigationScrollContainer>
                 </nav>

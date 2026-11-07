@@ -30,5 +30,11 @@
                 calc(100% - var(--md-sys-layout-space-12)),
             transparent
         );
+
+        &[data-variant="collapsed"] {
+            overflow-x: clip;
+            padding-inline: 0;
+            justify-content: center;
+        }
     }
 }
