@@ -1,0 +1,56 @@
+@layer adgytec.comps {
+    .container {
+        --_md-loading-indicator-active-indicator-color: var(
+            --md-loading-indicator-active-indicator-color,
+            var(--_active-indicator-default-color)
+        );
+
+        --_md-loading-indicator-container-size: var(--md-sys-layout-space-48);
+
+        background-color: var(
+            --_md-loading-indicator-container-color,
+            transparent
+        );
+        inline-size: var(--_md-loading-indicator-container-size);
+        aspect-ratio: 1 / 1;
+        border-radius: var(--md-sys-shape-corner-radius-full);
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        &[data-containment="default"] {
+            --_active-indicator-default-color: var(--md-sys-color-primary);
+        }
+
+        &[data-containment="contained"] {
+            --_md-loading-indicator-container-color: var(
+                --md-loading-indicator-container-color,
+                var(--md-sys-color-primary-container)
+            );
+
+            --_active-indicator-default-color: var(
+                --md-sys-color-on-primary-container
+            );
+        }
+    }
+
+    .indicator {
+        /* 38 : 48 => 19 : 24 */
+        --_md-loading-indicator-active-indicator-size: calc(
+            var(--_md-loading-indicator-container-size) *
+            19 / 24
+        );
+
+        background-color: var(--_md-loading-indicator-active-indicator-color);
+        inline-size: var(--_md-loading-indicator-active-indicator-size);
+        aspect-ratio: 1 / 1;
+
+        border-radius: inherit;
+
+        mask-image: url("../../shapes/loading-indicator.svg");
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
+    }
+}

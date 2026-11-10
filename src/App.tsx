@@ -27,6 +27,7 @@ import { IconButtonPreview } from "./preview/IconButton";
 import { InputPreview } from "./preview/Input";
 import { LinkPreview } from "./preview/Link";
 import { ListPreview } from "./preview/List";
+import { LoadingIndicatorPreview } from "./preview/LoadingIndicator";
 import { MenuPreview } from "./preview/Menu";
 import { NavPreview } from "./preview/Navigation";
 import { RadioPreview } from "./preview/Radio";
@@ -79,6 +80,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "loading-indicator",
+            label: "Loading indicator",
+            Component: LoadingIndicatorPreview,
+        },
         {
             id: "list-preview",
             label: "List",
