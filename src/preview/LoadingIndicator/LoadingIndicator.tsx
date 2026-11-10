@@ -6,10 +6,38 @@ export const LoadingIndicatorPreview = () => {
     return (
         <div className="items-grid">
             {sizes.map((size) => (
-                <div key={size} className="items">
-                    <LoadingIndicator size={size} />
+                <div
+                    key={size}
+                    className="items"
+                    style={{ textAlign: "center" }}
+                >
+                    <div>
+                        <LoadingIndicator size={size} />
 
-                    <LoadingIndicator size={size} containment="contained" />
+                        <LoadingIndicator size={size} containment="contained" />
+                    </div>
+
+                    <div className="loading-indicator-primary-alt">
+                        <LoadingIndicator size={size} />
+
+                        <span data-contained>
+                            <LoadingIndicator
+                                size={size}
+                                containment="contained"
+                            />
+                        </span>
+                    </div>
+
+                    <div className="loading-indicator-tertiary">
+                        <LoadingIndicator size={size} />
+
+                        <span data-contained>
+                            <LoadingIndicator
+                                size={size}
+                                containment="contained"
+                            />
+                        </span>
+                    </div>
                 </div>
             ))}
         </div>

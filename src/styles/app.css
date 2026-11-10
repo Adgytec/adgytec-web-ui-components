@@ -980,3 +980,31 @@
 .list-heading {
     text-align: center;
 }
+
+.loading-indicator-primary-alt {
+    --md-loading-indicator-active-indicator-color: var(
+        --md-extended-color-primary-alt-color
+    );
+
+    > [data-contained] {
+        --md-loading-indicator-container-color: var(
+            --md-extended-color-primary-alt-color-container
+        );
+        --md-loading-indicator-active-indicator-color: var(
+            --md-extended-color-primary-alt-on-color-container
+        );
+    }
+}
+
+.loading-indicator-tertiary {
+    --md-loading-indicator-active-indicator-color: var(--md-sys-color-tertiary);
+
+    > [data-contained] {
+        --md-loading-indicator-container-color: var(
+            --md-sys-color-tertiary-container
+        );
+        --md-loading-indicator-active-indicator-color: var(
+            --md-sys-color-on-tertiary-container
+        );
+    }
+}
