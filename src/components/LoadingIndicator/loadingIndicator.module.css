@@ -1,3 +1,10 @@
+/* configurable tokens
+*
+* --md-loading-indicator-active-indicator-color
+* --md-loading-indicator-container-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .container {
         --_md-loading-indicator-active-indicator-color: var(
