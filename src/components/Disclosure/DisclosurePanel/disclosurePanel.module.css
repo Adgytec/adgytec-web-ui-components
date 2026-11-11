@@ -1,4 +1,29 @@
 @layer adgytec.comps {
     .panel {
+        color: var(--_panel-color);
+        background-color: var(--_panel-background);
+
+        border-end-start-radius: var(--_md-disclosure-expanded-shape);
+        border-end-end-radius: var(--_md-disclosure-expanded-shape);
+
+        height: var(--disclosure-panel-height);
+        overflow: clip;
+
+        transition:
+            height var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            background-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        > div {
+            padding-block-end: var(--_md-list-item-padding-block);
+            padding-inline: var(--_md-list-item-padding-inline);
+        }
     }
 }

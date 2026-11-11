@@ -1,4 +1,175 @@
 @layer adgytec.comps {
-    .trigger {
+    .reset {
+        all: unset;
+
+        inline-size: 100%;
+        cursor: pointer;
+
+        position: relative;
+        overflow: clip;
+
+        &[data-disabled] {
+            cursor: default;
+        }
+
+        &[data-pending] {
+            cursor: default;
+        }
+    }
+
+    .button {
+        --_md-list-item-spacing: var(--md-sys-layout-space-12);
+
+        /* shapes */
+        --_md-list-item-shape: var(--_md-disclosure-shape);
+        --_md-list-item-selected-shape: var(--_md-disclosure-expanded-shape);
+
+        --_md-list-item-hovered-shape: var(--md-sys-shape-corner-radius-medium);
+        --_md-list-item-hovered-selected-shape: var(
+            --md-sys-shape-corner-radius-large
+        );
+        --_md-list-item-interaction-shape: var(
+            --md-sys-shape-corner-radius-large
+        );
+
+        --_shape: var(--_md-list-item-shape);
+
+        --_background: var(--_md-list-item-background);
+
+        /* state layer */
+        --_state-color: var(--md-sys-color-on-surface);
+        --_state-layer-opacity: 0;
+
+        --_state-layer-color: rgb(
+            from var(--_state-color) r g b /
+            var(--_state-layer-opacity)
+        );
+
+        border-radius: var(--_shape);
+        background: var(--_background);
+        color: var(--_md-list-color);
+
+        display: flex;
+        align-items: center;
+        gap: var(--_md-list-item-spacing);
+
+        padding-inline: var(--_md-list-item-padding-inline);
+        padding-block: var(--_md-list-item-padding-block);
+
+        transition:
+            border-radius var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            background-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            box-shadow var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-hovered] {
+            cursor: pointer;
+
+            --_shape: var(--_md-list-item-hovered-shape);
+            --_state-layer-opacity: var(--md-sys-state-hover);
+        }
+
+        &[data-focus-visible] {
+            --_shape: var(--_md-list-item-interaction-shape);
+            --_state-layer-opacity: var(--md-sys-state-focus);
+        }
+
+        &[data-pressed] {
+            --_shape: var(--_md-list-item-interaction-shape);
+            --_state-layer-opacity: var(--md-sys-state-pressed);
+        }
+
+        &[data-disabled] {
+            --_md-list-color: var(--_md-list-disabled-color);
+            --_md-list-label-color: var(--_md-list-disabled-color);
+
+            --_state-layer-opacity: var(--md-sys-state-disabled-container);
+            --_background: var(--_md-list-item-selected-disabled-background);
+        }
+    }
+
+    .button[data-expanded] {
+        --_shape: var(--_md-list-item-selected-shape);
+
+        --_md-list-color: var(--_md-list-selected-color);
+        --_md-list-label-color: var(--_md-list-selected-color);
+
+        --_background: var(--_md-list-item-selected-background);
+
+        border-end-end-radius: 0;
+        border-end-start-radius: 0;
+
+        &[data-hovered] {
+            --_shape: var(--_md-list-item-hovered-selected-shape);
+        }
+
+        &[data-focus-visible] {
+            --_shape: var(--_md-list-item-interaction-shape);
+        }
+
+        &[data-pressed] {
+            --_shape: var(--_md-list-item-interaction-shape);
+        }
+
+        &[data-disabled] {
+            --_state-layer-opacity: 0;
+            --_background: var(--_md-list-item-selected-disabled-background);
+            --_md-list-color: var(--_md-list-disabled-color);
+            --_md-list-label-color: var(--_md-list-disabled-color);
+        }
+    }
+
+    /* state layer */
+    .button::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+
+        background-color: var(--_state-layer-color);
+
+        transition: background-color var(--md-sys-motion-standard-fast-spatial)
+            var(--md-sys-motion-standard-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    /* focus indicator */
+    .button[data-focus-visible] {
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
+
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
+
+        z-index: 1;
+    }
+
+    .leading,
+    .trailing {
+        display: flex;
+        align-items: center;
+    }
+
+    .label {
+        display: grid;
+    }
+
+    .trailing {
+        margin-inline-start: auto;
     }
 }

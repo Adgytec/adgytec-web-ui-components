@@ -1,14 +1,11 @@
 import { clsx } from "clsx";
+import { ChevronDown } from "lucide-react";
 import { useContext } from "react";
 import { Button, DisclosureStateContext, Heading } from "react-aria-components";
+import { Splash, useSplash } from "@/components/Splash";
+import { DisclosureIcon } from "..";
 import styles from "./disclosureHeader.module.css";
-
-/**
- * Props for the {@link DisclosureHeader} component.
- * Extends React Aria's {@link Heading} props.
- */
-export interface DisclosureHeaderProps
-    extends React.ComponentPropsWithRef<typeof Heading> {}
+import type { DisclosureHeaderProps } from "./types";
 
 /**
  * The interactive header that toggles expansion of a {@link Disclosure} component.
@@ -29,20 +26,33 @@ export interface DisclosureHeaderProps
  * ```
  */
 export const DisclosureHeader: React.FC<DisclosureHeaderProps> = ({
-    children,
-    ...props
+    label,
+    leading,
 }) => {
+    const { splashInfo, handlePress } = useSplash();
+
     const disclosureContext = useContext(DisclosureStateContext);
     const { isExpanded } = disclosureContext || {};
 
     return (
-        <Heading {...props}>
+        <Heading>
             <Button
-                className={clsx(styles["trigger"])}
+                onPress={handlePress}
+                className={clsx(styles["reset"], styles["button"])}
                 slot="trigger"
                 data-expanded={isExpanded || undefined}
             >
-                {children}
+                {splashInfo && <Splash {...splashInfo} />}
+
+                {leading && (
+                    <div className={clsx(styles["leading"])}>{leading}</div>
+                )}
+
+                <div className={clsx(styles["label"])}>{label}</div>
+
+                <div className={clsx(styles["trailing"])}>
+                    <DisclosureIcon icon={ChevronDown} />
+                </div>
             </Button>
         </Heading>
     );

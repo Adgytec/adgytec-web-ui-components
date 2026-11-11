@@ -1,18 +1,27 @@
+import { Shield, ShieldOff } from "lucide-react";
 import {
     Disclosure,
     DisclosureGroup,
     DisclosureHeader,
+    DisclosureIcon,
+    DisclosureLabel,
     DisclosurePanel,
 } from "../../components/Disclosure";
 import { typography } from "../../utils/typography";
 
 export const DisclosurePreview = () => {
     return (
-        <>
+        <div className="items-grid list-preview">
             <Disclosure>
-                <DisclosureHeader>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </DisclosureHeader>
+                <DisclosureHeader
+                    leading={<DisclosureIcon icon={Shield} />}
+                    label={
+                        <DisclosureLabel>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit.
+                        </DisclosureLabel>
+                    }
+                />
 
                 <DisclosurePanel>
                     Morbi eget arcu non sapien semper imperdiet. Pellentesque
@@ -33,10 +42,16 @@ export const DisclosurePreview = () => {
                 </DisclosurePanel>
             </Disclosure>
 
-            <Disclosure isDisabled>
-                <DisclosureHeader>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </DisclosureHeader>
+            <Disclosure isDisabled isExpanded>
+                <DisclosureHeader
+                    leading={<DisclosureIcon icon={ShieldOff} />}
+                    label={
+                        <DisclosureLabel>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit.
+                        </DisclosureLabel>
+                    }
+                />
 
                 <DisclosurePanel>
                     Nulla viverra nulla nisi, tincidunt varius leo interdum
@@ -48,22 +63,22 @@ export const DisclosurePreview = () => {
                 Disclosure Group
             </h3>
 
-            <DisclosureGroup>
-                <Disclosure>
-                    <DisclosureHeader>Personal Information</DisclosureHeader>
-                    <DisclosurePanel>
-                        Personal information form here.
-                    </DisclosurePanel>
-                </Disclosure>
-
-                <Disclosure>
-                    <DisclosureHeader>Billing Address</DisclosureHeader>
-                    <DisclosurePanel>
-                        Billing address form here.
-                    </DisclosurePanel>
-                </Disclosure>
-            </DisclosureGroup>
-        </>
+            {/* <DisclosureGroup> */}
+            {/*     <Disclosure> */}
+            {/*         <DisclosureHeader>Personal Information</DisclosureHeader> */}
+            {/*         <DisclosurePanel> */}
+            {/*             Personal information form here. */}
+            {/*         </DisclosurePanel> */}
+            {/*     </Disclosure> */}
+            {/**/}
+            {/*     <Disclosure> */}
+            {/*         <DisclosureHeader>Billing Address</DisclosureHeader> */}
+            {/*         <DisclosurePanel> */}
+            {/*             Billing address form here. */}
+            {/*         </DisclosurePanel> */}
+            {/*     </Disclosure> */}
+            {/* </DisclosureGroup> */}
+        </div>
     );
 };
 

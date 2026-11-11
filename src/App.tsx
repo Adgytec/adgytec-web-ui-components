@@ -81,6 +81,7 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },
         {
             id: "shape",
             label: "Shape",
@@ -181,7 +182,6 @@ const App = () => {
         { id: "tags", label: "Tags", Component: TagsPreview },
         { id: "tabs", label: "Tabs", Component: TabsPreview },
         { id: "toolbar", label: "Toolbar", Component: ToolbarPreview },
-        { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },
         { id: "select", label: "Select", Component: SelectPreview },
         { id: "date-field", label: "Date Field", Component: DateFieldPreview },
         { id: "time-field", label: "Time Field", Component: TimeFieldPreview },
