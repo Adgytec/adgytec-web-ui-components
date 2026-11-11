@@ -1,12 +1,16 @@
 /* configurable tokens
 *
 * --md-shape-color
+* --md-shape-rotate-duration
+* --md-shape-content-scale
 *
 * configurable tokens end */
 
 @layer adgytec.comps {
     .shape {
         --_md-shape-color: var(--md-shape-color, var(--md-sys-color-primary));
+        --_md-shape-rotate-duration: var(--md-shape-rotate-duration, 4s);
+        --_md-shape-content-scale: var(--md-shape-content-scale, 1);
 
         display: inline-flex;
         align-items: center;
@@ -19,140 +23,115 @@
         mask-size: contain;
 
         &[data-rotate] {
+            animation: shape-rotate var(--_md-shape-rotate-duration, 4s) linear
+                infinite;
+
+            @media (prefers-reduced-motion) {
+                animation: none;
+            }
+
+            & > * {
+                animation: shape-rotate var(--_md-shape-rotate-duration, 4s)
+                    linear infinite reverse;
+                transform-origin: center;
+                scale: var(--_md-shape-content-scale, 1);
+
+                @media (prefers-reduced-motion) {
+                    animation: none;
+                }
+            }
+
+            /* Calibrated content scale per shape to prevent solid bg exposure without over-zooming */
             &[data-shape="arch"] {
-                mask-image: url("../../shapes/rotate/arch.svg");
+                --_md-shape-content-scale: 1.31;
             }
 
             &[data-shape="arrow"] {
-                mask-image: url("../../shapes/rotate/arrow.svg");
+                --_md-shape-content-scale: 1.19;
             }
 
             &[data-shape="boom"] {
-                mask-image: url("../../shapes/rotate/boom.svg");
+                --_md-shape-content-scale: 1.04;
             }
 
             &[data-shape="bun"] {
-                mask-image: url("../../shapes/rotate/bun.svg");
-            }
-
-            &[data-shape="burst"] {
-                mask-image: url("../../shapes/rotate/burst.svg");
-            }
-
-            &[data-shape="clamshell"] {
-                mask-image: url("../../shapes/rotate/clamshell.svg");
-            }
-
-            &[data-shape="diamond"] {
-                mask-image: url("../../shapes/rotate/diamond.svg");
+                --_md-shape-content-scale: 1.18;
             }
 
             &[data-shape="fan"] {
-                mask-image: url("../../shapes/rotate/fan.svg");
-            }
-
-            &[data-shape="flower"] {
-                mask-image: url("../../shapes/rotate/flower.svg");
+                --_md-shape-content-scale: 1.3;
             }
 
             &[data-shape="gem"] {
-                mask-image: url("../../shapes/rotate/gem.svg");
+                --_md-shape-content-scale: 1.07;
             }
 
             &[data-shape="ghost-ish"] {
-                mask-image: url("../../shapes/rotate/ghost-ish.svg");
+                --_md-shape-content-scale: 1.43;
             }
 
             &[data-shape="heart"] {
-                mask-image: url("../../shapes/rotate/heart.svg");
+                --_md-shape-content-scale: 1.18;
             }
 
             &[data-shape="leaf-clover4"] {
-                mask-image: url("../../shapes/rotate/leaf-clover4.svg");
+                --_md-shape-content-scale: 1.18;
             }
 
             &[data-shape="leaf-clover8"] {
-                mask-image: url("../../shapes/rotate/leaf-clover8.svg");
+                --_md-shape-content-scale: 1.07;
             }
 
             &[data-shape="oval"] {
-                mask-image: url("../../shapes/rotate/oval.svg");
+                --_md-shape-content-scale: 1.2;
             }
 
             &[data-shape="pentagon"] {
-                mask-image: url("../../shapes/rotate/pentagon.svg");
+                --_md-shape-content-scale: 1.11;
             }
 
             &[data-shape="pill"] {
-                mask-image: url("../../shapes/rotate/pill.svg");
+                --_md-shape-content-scale: 1.07;
             }
 
             &[data-shape="pixel-circle"] {
-                mask-image: url("../../shapes/rotate/pixel-circle.svg");
+                --_md-shape-content-scale: 1.12;
             }
 
             &[data-shape="pixel-triangle"] {
-                mask-image: url("../../shapes/rotate/pixel-triangle.svg");
-            }
-
-            &[data-shape="puffy"] {
-                mask-image: url("../../shapes/rotate/puffy.svg");
-            }
-
-            &[data-shape="puffy-diamond"] {
-                mask-image: url("../../shapes/rotate/puffy-diamond.svg");
+                --_md-shape-content-scale: 1.28;
             }
 
             &[data-shape="semicircle"] {
-                mask-image: url("../../shapes/rotate/semicircle.svg");
+                --_md-shape-content-scale: 1.12;
             }
 
             &[data-shape="sided-cookie4"] {
-                mask-image: url("../../shapes/rotate/sided-cookie4.svg");
-            }
-
-            &[data-shape="sided-cookie6"] {
-                mask-image: url("../../shapes/rotate/sided-cookie6.svg");
+                --_md-shape-content-scale: 1.21;
             }
 
             &[data-shape="sided-cookie7"] {
-                mask-image: url("../../shapes/rotate/sided-cookie7.svg");
+                --_md-shape-content-scale: 1.06;
             }
 
             &[data-shape="sided-cookie9"] {
-                mask-image: url("../../shapes/rotate/sided-cookie9.svg");
-            }
-
-            &[data-shape="sided-cookie12"] {
-                mask-image: url("../../shapes/rotate/sided-cookie12.svg");
+                --_md-shape-content-scale: 1.05;
             }
 
             &[data-shape="slanted"] {
-                mask-image: url("../../shapes/rotate/slanted.svg");
-            }
-
-            &[data-shape="soft-boom"] {
-                mask-image: url("../../shapes/rotate/soft-boom.svg");
+                --_md-shape-content-scale: 1.23;
             }
 
             &[data-shape="soft-burst"] {
-                mask-image: url("../../shapes/rotate/soft-burst.svg");
+                --_md-shape-content-scale: 1.06;
             }
 
             &[data-shape="square"] {
-                mask-image: url("../../shapes/rotate/square.svg");
-            }
-
-            &[data-shape="sunny"] {
-                mask-image: url("../../shapes/rotate/sunny.svg");
+                --_md-shape-content-scale: 1.17;
             }
 
             &[data-shape="triangle"] {
-                mask-image: url("../../shapes/rotate/triangle.svg");
-            }
-
-            &[data-shape="very-sunny"] {
-                mask-image: url("../../shapes/rotate/very-sunny.svg");
+                --_md-shape-content-scale: 1.24;
             }
         }
 
@@ -294,6 +273,15 @@
 
         &[data-shape="very-sunny"] {
             mask-image: url("../../shapes/very-sunny.svg");
+        }
+    }
+
+    @keyframes shape-rotate {
+        from {
+            rotate: 0deg;
+        }
+        to {
+            rotate: 360deg;
         }
     }
 }

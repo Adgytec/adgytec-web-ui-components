@@ -12,6 +12,7 @@ import type { ShapeProps } from "./types";
  *
  * Configurable CSS tokens:
  * - `--md-shape-color`: Background color of the shape (defaults to `currentColor`).
+ * - `--md-shape-rotate-duration`: Duration for one full rotation when `rotate` is enabled (defaults to `4s`).
  *
  * @see https://github.com/beercss/beercss/blob/main/docs/SHAPE.md
  * @see https://m3.material.io/styles/shape/overview
@@ -39,6 +40,8 @@ export const Shape: React.FC<ShapeProps> = ({
     name,
     className,
     rotate = false,
+    rotateDuration = 4,
+    style,
     ...props
 }) => {
     return (
@@ -46,6 +49,14 @@ export const Shape: React.FC<ShapeProps> = ({
             className={clsx(styles["shape"], className)}
             data-shape={name}
             data-rotate={rotate || undefined}
+            style={
+                {
+                    ...(rotate && {
+                        "--_md-shape-rotate-duration": `calc(${rotateDuration} * 1s)`,
+                    }),
+                    ...style,
+                } as React.CSSProperties
+            }
             {...props}
         />
     );

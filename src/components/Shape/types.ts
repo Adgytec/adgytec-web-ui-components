@@ -55,5 +55,15 @@ export interface ShapeProps extends React.ComponentPropsWithRef<"div"> {
      */
     name: ShapeName;
 
+    /**
+     * Whether the shape should rotate continuously.
+     * @default false
+     */
     rotate?: boolean;
+
+    /**
+     * Duration in seconds for one full rotation.
+     * @default 4
+     */
+    rotateDuration?: number;
 }

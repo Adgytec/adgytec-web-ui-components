@@ -2,9 +2,11 @@
 
 ## Configurable CSS Tokens
 
-| Token              | Default Value  | Description                                 |
-| ------------------ | -------------- | ------------------------------------------- |
-| `--md-shape-color` | `currentColor` | Background fill color of the shape element. |
+| Token                        | Default Value  | Description                                                                       |
+| ---------------------------- | -------------- | --------------------------------------------------------------------------------- |
+| `--md-shape-color`           | `currentColor` | Background fill color of the shape element.                                       |
+| `--md-shape-rotate-duration` | `4s`           | Duration in seconds for one full rotation when `rotate` is enabled.               |
+| `--md-shape-content-scale`   | `1`            | Base scale factor for child content inside the shape (auto-calibrated per shape). |
 
 The `Shape` component renders elements styled and masked with [Material Design 3 Expressive Shapes](https://m3.material.io/styles/shape/overview). Sourced from the [Beer CSS Shapes](https://github.com/beercss/beercss/blob/main/docs/SHAPE.md) specification, it uses CSS `mask-image` to clip its background and children into any of the 35 distinct expressive shapes.
 
@@ -16,9 +18,11 @@ The `Shape` component does not set any fixed width or height dimensions. It enfo
 
 The `Shape` component extends standard `<div>` HTML attributes (`React.ComponentPropsWithRef<"div">`).
 
-| Prop   | Type        | Default      | Description                                                          |
-| ------ | ----------- | ------------ | -------------------------------------------------------------------- |
-| `name` | `ShapeName` | **Required** | The Material 3 expressive shape to display (union of all 35 shapes). |
+| Prop             | Type        | Default      | Description                                                          |
+| ---------------- | ----------- | ------------ | -------------------------------------------------------------------- |
+| `name`           | `ShapeName` | **Required** | The Material 3 expressive shape to display (union of all 35 shapes). |
+| `rotate`         | `boolean`   | `false`      | Whether the shape should rotate continuously.                        |
+| `rotateDuration` | `number`    | `4`          | Duration in seconds for one full rotation.                           |
 
 ## Available Shapes
 
@@ -70,6 +74,20 @@ import { Shape } from "@adgytec/web-ui-components";
 <Shape name="leaf-clover4" className="custom-shape">
     <div style={{ width: 64, height: 64 }} />
 </Shape>;
+```
+
+### Rotating Shapes
+
+```tsx
+// Rotating with default 4s duration
+<Shape name="arch" rotate>
+    <img src="photo.jpg" alt="Rotating arch portrait" />
+</Shape>
+
+// Custom rotation duration (e.g. 8 seconds)
+<Shape name="flower" rotate rotateDuration={8}>
+    <img src="photo.jpg" alt="Slow rotating flower" />
+</Shape>
 ```
 
 

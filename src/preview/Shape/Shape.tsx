@@ -27,34 +27,34 @@ export const ShapePreview = () => {
                             />
                         </Shape>
 
-                        <Shape name={name} data-image>
+                        <Shape name={name}>
                             <img
-                                src="https://picsum.photos/56"
+                                src="https://picsum.photos/100"
                                 alt="sample"
-                                width={56}
-                                height={56}
+                                width={100}
+                                height={100}
+                            />
+                        </Shape>
+
+                        <Shape name={name} rotate>
+                            <img
+                                src="https://picsum.photos/175"
+                                alt="sample"
+                                width={150}
+                                height={150}
+                            />
+                        </Shape>
+
+                        <Shape name={name} rotate rotateDuration={10}>
+                            <img
+                                src="https://picsum.photos/175"
+                                alt="sample"
+                                width={150}
+                                height={150}
                             />
                         </Shape>
 
                         <Shape name={name}>
-                            <div
-                                style={{
-                                    inlineSize: "200px",
-                                    blockSize: "200px",
-                                }}
-                            />
-                        </Shape>
-
-                        <Shape name={name} data-image>
-                            <img
-                                src="https://picsum.photos/200"
-                                alt="sample"
-                                width={200}
-                                height={200}
-                            />
-                        </Shape>
-
-                        <Shape name={name} rotate data-image>
                             <img
                                 src="https://picsum.photos/200"
                                 alt="sample"
