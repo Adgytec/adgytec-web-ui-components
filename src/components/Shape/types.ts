@@ -54,4 +54,6 @@ export interface ShapeProps extends React.ComponentPropsWithRef<"div"> {
      * The Material Design 3 expressive shape to display.
      */
     name: ShapeName;
+
+    rotate?: boolean;
 }

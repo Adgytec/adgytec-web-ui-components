@@ -35,11 +35,17 @@ import type { ShapeProps } from "./types";
  * </Shape>
  * ```
  */
-export const Shape: React.FC<ShapeProps> = ({ name, className, ...props }) => {
+export const Shape: React.FC<ShapeProps> = ({
+    name,
+    className,
+    rotate = false,
+    ...props
+}) => {
     return (
         <div
             className={clsx(styles["shape"], className)}
             data-shape={name}
+            data-rotate={rotate || undefined}
             {...props}
         />
     );

@@ -53,6 +53,15 @@ export const ShapePreview = () => {
                                 height={200}
                             />
                         </Shape>
+
+                        <Shape name={name} rotate data-image>
+                            <img
+                                src="https://picsum.photos/200"
+                                alt="sample"
+                                width={200}
+                                height={200}
+                            />
+                        </Shape>
                     </div>
                 </div>
             ))}
