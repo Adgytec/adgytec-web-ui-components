@@ -1,6 +1,4 @@
 @layer adgytec.comps {
     .group {
-        display: grid;
-        gap: var(--md-sys-layout-space-24);
     }
 }

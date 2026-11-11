@@ -1,17 +1,6 @@
 import { clsx } from "clsx";
-import { ChevronRight } from "lucide-react";
 import { useContext } from "react";
 import { Button, DisclosureStateContext, Heading } from "react-aria-components";
-import {
-    ButtonReset,
-    buttonColorBase,
-    buttonColorConfig,
-} from "@/components/Button";
-import { Icon } from "@/components/Icon";
-import { Splash } from "@/components/Splash/Splash";
-import { useSplash } from "@/components/Splash/useSplash";
-import { TapTarget, type Typography } from "@/utils";
-import { useDisclosureTypographyContext } from "../context";
 import styles from "./disclosureHeader.module.css";
 
 /**
@@ -19,15 +8,7 @@ import styles from "./disclosureHeader.module.css";
  * Extends React Aria's {@link Heading} props.
  */
 export interface DisclosureHeaderProps
-    extends React.ComponentPropsWithRef<typeof Heading> {
-    /**
-     * Custom typography style for the disclosure header label.
-     * Overrides the default or group-level typography.
-     *
-     * @default typography.titleMediumEmphasized
-     */
-    labelTypography?: Typography;
-}
+    extends React.ComponentPropsWithRef<typeof Heading> {}
 
 /**
  * The interactive header that toggles expansion of a {@link Disclosure} component.
@@ -49,38 +30,18 @@ export interface DisclosureHeaderProps
  */
 export const DisclosureHeader: React.FC<DisclosureHeaderProps> = ({
     children,
-    labelTypography,
     ...props
 }) => {
-    const { splashInfo, handlePress } = useSplash();
-
     const disclosureContext = useContext(DisclosureStateContext);
     const { isExpanded } = disclosureContext || {};
-
-    const { label } = useDisclosureTypographyContext({
-        label: labelTypography,
-    });
 
     return (
         <Heading {...props}>
             <Button
-                onPress={handlePress}
-                className={clsx(
-                    ButtonReset,
-                    TapTarget,
-                    styles["trigger"],
-                    buttonColorBase,
-                    buttonColorConfig("standard"),
-                    label
-                )}
+                className={clsx(styles["trigger"])}
                 slot="trigger"
                 data-expanded={isExpanded || undefined}
-                data-shape="square"
             >
-                <span className={styles["state-layer"]}>
-                    {splashInfo && <Splash {...splashInfo} />}
-                </span>
-                <Icon withText icon={ChevronRight} />
                 {children}
             </Button>
         </Heading>

@@ -1,7 +1,5 @@
 import clsx from "clsx";
 import { DisclosureGroup as AriaDisclosureGroup } from "react-aria-components";
-import type { Typography } from "@/utils";
-import { DisclosureTypographyContext } from "../context";
 import styles from "./disclosureGroup.module.css";
 
 /**
@@ -9,21 +7,7 @@ import styles from "./disclosureGroup.module.css";
  * Extends React Aria's {@link AriaDisclosureGroup} props.
  */
 export interface DisclosureGroupProps
-    extends React.ComponentPropsWithRef<typeof AriaDisclosureGroup> {
-    /**
-     * Default typography style applied to all {@link DisclosureHeader} labels within the group.
-     *
-     * @default typography.titleMediumEmphasized
-     */
-    labelTypography?: Typography;
-
-    /**
-     * Default typography style applied to all {@link DisclosurePanel} bodies within the group.
-     *
-     * @default typography.bodyLarge
-     */
-    panelTypography?: Typography;
-}
+    extends React.ComponentPropsWithRef<typeof AriaDisclosureGroup> {}
 
 /**
  * An accordion grouping container for managing multiple related {@link Disclosure} sections.
@@ -59,26 +43,20 @@ export interface DisclosureGroupProps
  * ```
  */
 export const DisclosureGroup: React.FC<DisclosureGroupProps> = ({
-    labelTypography,
-    panelTypography,
     className,
     ...props
 }) => {
     return (
-        <DisclosureTypographyContext
-            value={{ label: labelTypography, panel: panelTypography }}
-        >
-            <AriaDisclosureGroup
-                className={(renderProps) =>
-                    clsx(
-                        styles["group"],
-                        typeof className === "function"
-                            ? className(renderProps)
-                            : className
-                    )
-                }
-                {...props}
-            />
-        </DisclosureTypographyContext>
+        <AriaDisclosureGroup
+            className={(renderProps) =>
+                clsx(
+                    styles["group"],
+                    typeof className === "function"
+                        ? className(renderProps)
+                        : className
+                )
+            }
+            {...props}
+        />
     );
 };

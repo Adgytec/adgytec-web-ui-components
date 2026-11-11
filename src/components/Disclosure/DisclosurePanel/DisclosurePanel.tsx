@@ -1,7 +1,5 @@
 import { clsx } from "clsx";
 import { DisclosurePanel as AriaDisclosurePanel } from "react-aria-components";
-import type { Typography } from "@/utils";
-import { useDisclosureTypographyContext } from "../context";
 import styles from "./disclosurePanel.module.css";
 
 /**
@@ -9,15 +7,7 @@ import styles from "./disclosurePanel.module.css";
  * Extends React Aria's {@link AriaDisclosurePanel} props.
  */
 export interface DisclosurePanelProps
-    extends React.ComponentPropsWithRef<typeof AriaDisclosurePanel> {
-    /**
-     * Custom typography style for the disclosure panel content.
-     * Overrides the default or group-level typography.
-     *
-     * @default typography.bodyLarge
-     */
-    panelTypography?: Typography;
-}
+    extends React.ComponentPropsWithRef<typeof AriaDisclosurePanel> {}
 
 /**
  * The collapsible content container displayed when a {@link Disclosure} is expanded.
@@ -40,19 +30,13 @@ export interface DisclosurePanelProps
 export const DisclosurePanel: React.FC<DisclosurePanelProps> = ({
     className,
     children,
-    panelTypography,
     ...props
 }) => {
-    const { panel } = useDisclosureTypographyContext({
-        panel: panelTypography,
-    });
-
     return (
         <AriaDisclosurePanel
             className={(renderProps) =>
                 clsx(
                     styles["panel"],
-                    panel,
                     typeof className === "function"
                         ? className(renderProps)
                         : className
