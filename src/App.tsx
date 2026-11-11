@@ -35,6 +35,7 @@ import { RangeCalendarPreview } from "./preview/RangeCalendar";
 import { RangeSliderPreview } from "./preview/RangeSlider";
 import { SearchFieldPreview } from "./preview/SearchField";
 import { SelectPreview } from "./preview/Select";
+import { ShapePreview } from "./preview/Shape";
 import { SideSheetPreview } from "./preview/SideSheet";
 import { SliderPreview } from "./preview/Slider";
 import { SnackbarPreview } from "./preview/Snackbar";
@@ -80,6 +81,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "shape",
+            label: "Shape",
+            Component: ShapePreview,
+        },
         {
             id: "loading-indicator",
             label: "Loading indicator",

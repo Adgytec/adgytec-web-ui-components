@@ -16,6 +16,7 @@ export * from "./components/LoadingIndicator";
 export * from "./components/Menu";
 export * from "./components/Navigation";
 export * from "./components/Popover";
+export * from "./components/Shape";
 export * from "./components/Sheets";
 export * from "./components/Snackbar";
 export * from "./components/Splash";

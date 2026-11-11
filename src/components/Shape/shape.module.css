@@ -1,0 +1,161 @@
+/* configurable tokens
+*
+* --md-shape-color
+*
+* configurable tokens end */
+
+@layer adgytec.comps {
+    .shape {
+        --_md-shape-color: var(--md-shape-color, var(--md-sys-color-primary));
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1 / 1;
+        background-color: var(--_md-shape-color);
+
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
+
+        &[data-shape="arch"] {
+            mask-image: url("../../shapes/arch.svg");
+        }
+
+        &[data-shape="arrow"] {
+            mask-image: url("../../shapes/arrow.svg");
+        }
+
+        &[data-shape="boom"] {
+            mask-image: url("../../shapes/boom.svg");
+        }
+
+        &[data-shape="bun"] {
+            mask-image: url("../../shapes/bun.svg");
+        }
+
+        &[data-shape="burst"] {
+            mask-image: url("../../shapes/burst.svg");
+        }
+
+        &[data-shape="circle"] {
+            mask-image: url("../../shapes/circle.svg");
+        }
+
+        &[data-shape="clamshell"] {
+            mask-image: url("../../shapes/clamshell.svg");
+        }
+
+        &[data-shape="diamond"] {
+            mask-image: url("../../shapes/diamond.svg");
+        }
+
+        &[data-shape="fan"] {
+            mask-image: url("../../shapes/fan.svg");
+        }
+
+        &[data-shape="flower"] {
+            mask-image: url("../../shapes/flower.svg");
+        }
+
+        &[data-shape="gem"] {
+            mask-image: url("../../shapes/gem.svg");
+        }
+
+        &[data-shape="ghost-ish"] {
+            mask-image: url("../../shapes/ghost-ish.svg");
+        }
+
+        &[data-shape="heart"] {
+            mask-image: url("../../shapes/heart.svg");
+        }
+
+        &[data-shape="leaf-clover4"] {
+            mask-image: url("../../shapes/leaf-clover4.svg");
+        }
+
+        &[data-shape="leaf-clover8"] {
+            mask-image: url("../../shapes/leaf-clover8.svg");
+        }
+
+        &[data-shape="oval"] {
+            mask-image: url("../../shapes/oval.svg");
+        }
+
+        &[data-shape="pentagon"] {
+            mask-image: url("../../shapes/pentagon.svg");
+        }
+
+        &[data-shape="pill"] {
+            mask-image: url("../../shapes/pill.svg");
+        }
+
+        &[data-shape="pixel-circle"] {
+            mask-image: url("../../shapes/pixel-circle.svg");
+        }
+
+        &[data-shape="pixel-triangle"] {
+            mask-image: url("../../shapes/pixel-triangle.svg");
+        }
+
+        &[data-shape="puffy"] {
+            mask-image: url("../../shapes/puffy.svg");
+        }
+
+        &[data-shape="puffy-diamond"] {
+            mask-image: url("../../shapes/puffy-diamond.svg");
+        }
+
+        &[data-shape="semicircle"] {
+            mask-image: url("../../shapes/semicircle.svg");
+        }
+
+        &[data-shape="sided-cookie4"] {
+            mask-image: url("../../shapes/sided-cookie4.svg");
+        }
+
+        &[data-shape="sided-cookie6"] {
+            mask-image: url("../../shapes/sided-cookie6.svg");
+        }
+
+        &[data-shape="sided-cookie7"] {
+            mask-image: url("../../shapes/sided-cookie7.svg");
+        }
+
+        &[data-shape="sided-cookie9"] {
+            mask-image: url("../../shapes/sided-cookie9.svg");
+        }
+
+        &[data-shape="sided-cookie12"] {
+            mask-image: url("../../shapes/sided-cookie12.svg");
+        }
+
+        &[data-shape="slanted"] {
+            mask-image: url("../../shapes/slanted.svg");
+        }
+
+        &[data-shape="soft-boom"] {
+            mask-image: url("../../shapes/soft-boom.svg");
+        }
+
+        &[data-shape="soft-burst"] {
+            mask-image: url("../../shapes/soft-burst.svg");
+        }
+
+        &[data-shape="square"] {
+            mask-image: url("../../shapes/square.svg");
+        }
+
+        &[data-shape="sunny"] {
+            mask-image: url("../../shapes/sunny.svg");
+        }
+
+        &[data-shape="triangle"] {
+            mask-image: url("../../shapes/triangle.svg");
+        }
+
+        &[data-shape="very-sunny"] {
+            mask-image: url("../../shapes/very-sunny.svg");
+        }
+    }
+}
