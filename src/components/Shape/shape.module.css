@@ -136,143 +136,143 @@
         }
 
         &[data-shape="arch"] {
-            mask-image: url("../../shapes/arch.svg");
+            mask-image: url("../../shapes/arch.svg?no-inline");
         }
 
         &[data-shape="arrow"] {
-            mask-image: url("../../shapes/arrow.svg");
+            mask-image: url("../../shapes/arrow.svg?no-inline");
         }
 
         &[data-shape="boom"] {
-            mask-image: url("../../shapes/boom.svg");
+            mask-image: url("../../shapes/boom.svg?no-inline");
         }
 
         &[data-shape="bun"] {
-            mask-image: url("../../shapes/bun.svg");
+            mask-image: url("../../shapes/bun.svg?no-inline");
         }
 
         &[data-shape="burst"] {
-            mask-image: url("../../shapes/burst.svg");
+            mask-image: url("../../shapes/burst.svg?no-inline");
         }
 
         &[data-shape="circle"] {
-            mask-image: url("../../shapes/circle.svg");
+            mask-image: url("../../shapes/circle.svg?no-inline");
         }
 
         &[data-shape="clamshell"] {
-            mask-image: url("../../shapes/clamshell.svg");
+            mask-image: url("../../shapes/clamshell.svg?no-inline");
         }
 
         &[data-shape="diamond"] {
-            mask-image: url("../../shapes/diamond.svg");
+            mask-image: url("../../shapes/diamond.svg?no-inline");
         }
 
         &[data-shape="fan"] {
-            mask-image: url("../../shapes/fan.svg");
+            mask-image: url("../../shapes/fan.svg?no-inline");
         }
 
         &[data-shape="flower"] {
-            mask-image: url("../../shapes/flower.svg");
+            mask-image: url("../../shapes/flower.svg?no-inline");
         }
 
         &[data-shape="gem"] {
-            mask-image: url("../../shapes/gem.svg");
+            mask-image: url("../../shapes/gem.svg?no-inline");
         }
 
         &[data-shape="ghost-ish"] {
-            mask-image: url("../../shapes/ghost-ish.svg");
+            mask-image: url("../../shapes/ghost-ish.svg?no-inline");
         }
 
         &[data-shape="heart"] {
-            mask-image: url("../../shapes/heart.svg");
+            mask-image: url("../../shapes/heart.svg?no-inline");
         }
 
         &[data-shape="leaf-clover4"] {
-            mask-image: url("../../shapes/leaf-clover4.svg");
+            mask-image: url("../../shapes/leaf-clover4.svg?no-inline");
         }
 
         &[data-shape="leaf-clover8"] {
-            mask-image: url("../../shapes/leaf-clover8.svg");
+            mask-image: url("../../shapes/leaf-clover8.svg?no-inline");
         }
 
         &[data-shape="oval"] {
-            mask-image: url("../../shapes/oval.svg");
+            mask-image: url("../../shapes/oval.svg?no-inline");
         }
 
         &[data-shape="pentagon"] {
-            mask-image: url("../../shapes/pentagon.svg");
+            mask-image: url("../../shapes/pentagon.svg?no-inline");
         }
 
         &[data-shape="pill"] {
-            mask-image: url("../../shapes/pill.svg");
+            mask-image: url("../../shapes/pill.svg?no-inline");
         }
 
         &[data-shape="pixel-circle"] {
-            mask-image: url("../../shapes/pixel-circle.svg");
+            mask-image: url("../../shapes/pixel-circle.svg?no-inline");
         }
 
         &[data-shape="pixel-triangle"] {
-            mask-image: url("../../shapes/pixel-triangle.svg");
+            mask-image: url("../../shapes/pixel-triangle.svg?no-inline");
         }
 
         &[data-shape="puffy"] {
-            mask-image: url("../../shapes/puffy.svg");
+            mask-image: url("../../shapes/puffy.svg?no-inline");
         }
 
         &[data-shape="puffy-diamond"] {
-            mask-image: url("../../shapes/puffy-diamond.svg");
+            mask-image: url("../../shapes/puffy-diamond.svg?no-inline");
         }
 
         &[data-shape="semicircle"] {
-            mask-image: url("../../shapes/semicircle.svg");
+            mask-image: url("../../shapes/semicircle.svg?no-inline");
         }
 
         &[data-shape="sided-cookie4"] {
-            mask-image: url("../../shapes/sided-cookie4.svg");
+            mask-image: url("../../shapes/sided-cookie4.svg?no-inline");
         }
 
         &[data-shape="sided-cookie6"] {
-            mask-image: url("../../shapes/sided-cookie6.svg");
+            mask-image: url("../../shapes/sided-cookie6.svg?no-inline");
         }
 
         &[data-shape="sided-cookie7"] {
-            mask-image: url("../../shapes/sided-cookie7.svg");
+            mask-image: url("../../shapes/sided-cookie7.svg?no-inline");
         }
 
         &[data-shape="sided-cookie9"] {
-            mask-image: url("../../shapes/sided-cookie9.svg");
+            mask-image: url("../../shapes/sided-cookie9.svg?no-inline");
         }
 
         &[data-shape="sided-cookie12"] {
-            mask-image: url("../../shapes/sided-cookie12.svg");
+            mask-image: url("../../shapes/sided-cookie12.svg?no-inline");
         }
 
         &[data-shape="slanted"] {
-            mask-image: url("../../shapes/slanted.svg");
+            mask-image: url("../../shapes/slanted.svg?no-inline");
         }
 
         &[data-shape="soft-boom"] {
-            mask-image: url("../../shapes/soft-boom.svg");
+            mask-image: url("../../shapes/soft-boom.svg?no-inline");
         }
 
         &[data-shape="soft-burst"] {
-            mask-image: url("../../shapes/soft-burst.svg");
+            mask-image: url("../../shapes/soft-burst.svg?no-inline");
         }
 
         &[data-shape="square"] {
-            mask-image: url("../../shapes/square.svg");
+            mask-image: url("../../shapes/square.svg?no-inline");
         }
 
         &[data-shape="sunny"] {
-            mask-image: url("../../shapes/sunny.svg");
+            mask-image: url("../../shapes/sunny.svg?no-inline");
         }
 
         &[data-shape="triangle"] {
-            mask-image: url("../../shapes/triangle.svg");
+            mask-image: url("../../shapes/triangle.svg?no-inline");
         }
 
         &[data-shape="very-sunny"] {
-            mask-image: url("../../shapes/very-sunny.svg");
+            mask-image: url("../../shapes/very-sunny.svg?no-inline");
         }
     }
 

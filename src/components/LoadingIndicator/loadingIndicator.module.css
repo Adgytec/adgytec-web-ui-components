@@ -55,7 +55,7 @@
 
         border-radius: inherit;
 
-        mask-image: url("../../shapes/loading-indicator.svg");
+        mask-image: url("../../shapes/loading-indicator.svg?no-inline");
         mask-repeat: no-repeat;
         mask-position: center;
         mask-size: contain;
