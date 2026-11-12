@@ -13,14 +13,22 @@ export interface DisclosureProps
  * An expandable section component implementing Material Design 3 disclosure/accordion item behavior.
  *
  * Controls showing and hiding associated content based on user interaction with its {@link DisclosureHeader}.
- * Manages open/collapsed state, accessible ARIA attributes (`aria-expanded`, `aria-controls`), and keyboard navigation.
+ * Manages open/collapsed state, accessible ARIA attributes (`aria-expanded`, `aria-controls`), keyboard navigation,
+ * and morphing corner radius styling.
  *
  * @example
  * ```tsx
- * import { Disclosure, DisclosureHeader, DisclosurePanel } from '@adgytec/web-ui-components';
+ * import {
+ *     Disclosure,
+ *     DisclosureHeader,
+ *     DisclosureLabel,
+ *     DisclosurePanel
+ * } from '@adgytec/web-ui-components';
  *
  * <Disclosure>
- *     <DisclosureHeader>Collapsible Section</DisclosureHeader>
+ *     <DisclosureHeader
+ *         label={<DisclosureLabel>Collapsible Section</DisclosureLabel>}
+ *     />
  *     <DisclosurePanel>
  *         Detailed information displayed when expanded.
  *     </DisclosurePanel>

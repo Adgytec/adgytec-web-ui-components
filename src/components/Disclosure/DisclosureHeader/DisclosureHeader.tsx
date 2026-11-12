@@ -2,25 +2,34 @@ import { clsx } from "clsx";
 import { ChevronDown } from "lucide-react";
 import { useContext } from "react";
 import { Button, DisclosureStateContext, Heading } from "react-aria-components";
+import { ListIcon } from "@/components/List";
 import { Splash, useSplash } from "@/components/Splash";
-import { DisclosureIcon } from "..";
 import styles from "./disclosureHeader.module.css";
 import type { DisclosureHeaderProps } from "./types";
 
 /**
  * The interactive header that toggles expansion of a {@link Disclosure} component.
  *
- * Renders a semantic heading enclosing an accessible button trigger equipped with an expanding
- * chevron indicator icon and Material Design touch ripple feedback.
+ * Renders a semantic heading enclosing an accessible button trigger equipped with touch ripple
+ * feedback (`Splash`), support for optional leading content (`leading`), header label content (`label`),
+ * and an automatically rotating chevron indicator icon at the trailing edge.
  *
  * @example
  * ```tsx
- * import { Disclosure, DisclosureHeader, DisclosurePanel, typography } from '@adgytec/web-ui-components';
+ * import {
+ *     Disclosure,
+ *     DisclosureHeader,
+ *     DisclosureLabel,
+ *     DisclosurePanel,
+ *     DisclosureIcon
+ * } from '@adgytec/web-ui-components';
+ * import { Shield } from 'lucide-react';
  *
  * <Disclosure>
- *     <DisclosureHeader labelTypography={typography.titleLarge}>
- *         Section Title
- *     </DisclosureHeader>
+ *     <DisclosureHeader
+ *         leading={<DisclosureIcon icon={Shield} />}
+ *         label={<DisclosureLabel>Section Title</DisclosureLabel>}
+ *     />
  *     <DisclosurePanel>Section Content</DisclosurePanel>
  * </Disclosure>
  * ```
@@ -54,7 +63,7 @@ export const DisclosureHeader: React.FC<DisclosureHeaderProps> = ({
                     className={clsx(styles["trailing"])}
                     data-expanded={isExpanded || undefined}
                 >
-                    <DisclosureIcon icon={ChevronDown} />
+                    <ListIcon icon={ChevronDown} />
                 </div>
             </Button>
         </Heading>

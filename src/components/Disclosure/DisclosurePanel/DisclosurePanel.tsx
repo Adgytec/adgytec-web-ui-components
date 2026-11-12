@@ -13,16 +13,23 @@ export interface DisclosurePanelProps
 /**
  * The collapsible content container displayed when a {@link Disclosure} is expanded.
  *
- * Automatically manages visibility, smooth collapse/expand layout transitions,
- * and inherited or customized typography.
+ * Automatically manages visibility, smooth collapse/expand layout transitions via `--disclosure-panel-height`,
+ * and default Material Design 3 `bodyLarge` typography.
  *
  * @example
  * ```tsx
- * import { Disclosure, DisclosureHeader, DisclosurePanel, typography } from '@adgytec/web-ui-components';
+ * import {
+ *     Disclosure,
+ *     DisclosureHeader,
+ *     DisclosureLabel,
+ *     DisclosurePanel
+ * } from '@adgytec/web-ui-components';
  *
  * <Disclosure>
- *     <DisclosureHeader>FAQ Question</DisclosureHeader>
- *     <DisclosurePanel panelTypography={typography.bodyMedium}>
+ *     <DisclosureHeader
+ *         label={<DisclosureLabel>FAQ Question</DisclosureLabel>}
+ *     />
+ *     <DisclosurePanel>
  *         Answer text explaining details in depth.
  *     </DisclosurePanel>
  * </Disclosure>

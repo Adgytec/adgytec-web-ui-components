@@ -13,8 +13,8 @@ export interface DisclosureGroupProps
  * An accordion grouping container for managing multiple related {@link Disclosure} sections.
  *
  * Supports single or multi-expansion modes via React Aria props (`allowsMultipleExpanded`),
- * coordinates keyboard navigation between items, and provides shared typography tokens
- * to all descendant disclosure headers and panels.
+ * coordinates keyboard navigation between items, and applies connected Material 3 styling
+ * with compact inner radius between items and rounded container boundaries.
  *
  * @example
  * ```tsx
@@ -22,21 +22,21 @@ export interface DisclosureGroupProps
  *     DisclosureGroup,
  *     Disclosure,
  *     DisclosureHeader,
- *     DisclosurePanel,
- *     typography
+ *     DisclosureLabel,
+ *     DisclosurePanel
  * } from '@adgytec/web-ui-components';
  *
- * <DisclosureGroup
- *     allowsMultipleExpanded
- *     labelTypography={typography.titleMedium}
- *     panelTypography={typography.bodyMedium}
- * >
+ * <DisclosureGroup allowsMultipleExpanded>
  *     <Disclosure id="step-1">
- *         <DisclosureHeader>Step 1: Account Info</DisclosureHeader>
+ *         <DisclosureHeader
+ *             label={<DisclosureLabel>Step 1: Account Info</DisclosureLabel>}
+ *         />
  *         <DisclosurePanel>Enter your username and password.</DisclosurePanel>
  *     </Disclosure>
  *     <Disclosure id="step-2">
- *         <DisclosureHeader>Step 2: Profile Details</DisclosureHeader>
+ *         <DisclosureHeader
+ *             label={<DisclosureLabel>Step 2: Profile Details</DisclosureLabel>}
+ *         />
  *         <DisclosurePanel>Upload an avatar and bio.</DisclosurePanel>
  *     </Disclosure>
  * </DisclosureGroup>
