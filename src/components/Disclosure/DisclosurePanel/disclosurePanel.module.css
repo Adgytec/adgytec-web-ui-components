@@ -25,7 +25,7 @@
 
         > div {
             padding-inline: var(--_md-disclosure-padding-inline);
-            padding-block-end: var(--_md-disclosure-padding-block);
+            padding-block: var(--_md-disclosure-padding-block);
         }
     }
 }
