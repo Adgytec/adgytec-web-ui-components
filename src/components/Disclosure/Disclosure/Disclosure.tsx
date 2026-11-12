@@ -41,6 +41,7 @@ export const Disclosure: React.FC<DisclosureProps> = ({
                         : className
                 )
             }
+            data-disclosure
             {...props}
         />
     );

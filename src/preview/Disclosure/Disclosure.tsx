@@ -42,6 +42,23 @@ export const DisclosurePreview = () => {
                 </DisclosurePanel>
             </Disclosure>
 
+            <Disclosure isDisabled>
+                <DisclosureHeader
+                    leading={<DisclosureIcon icon={ShieldOff} />}
+                    label={
+                        <DisclosureLabel>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit.
+                        </DisclosureLabel>
+                    }
+                />
+
+                <DisclosurePanel>
+                    Nulla viverra nulla nisi, tincidunt varius leo interdum
+                    quis.
+                </DisclosurePanel>
+            </Disclosure>
+
             <Disclosure isDisabled isExpanded>
                 <DisclosureHeader
                     leading={<DisclosureIcon icon={ShieldOff} />}
@@ -63,21 +80,33 @@ export const DisclosurePreview = () => {
                 Disclosure Group
             </h3>
 
-            {/* <DisclosureGroup> */}
-            {/*     <Disclosure> */}
-            {/*         <DisclosureHeader>Personal Information</DisclosureHeader> */}
-            {/*         <DisclosurePanel> */}
-            {/*             Personal information form here. */}
-            {/*         </DisclosurePanel> */}
-            {/*     </Disclosure> */}
-            {/**/}
-            {/*     <Disclosure> */}
-            {/*         <DisclosureHeader>Billing Address</DisclosureHeader> */}
-            {/*         <DisclosurePanel> */}
-            {/*             Billing address form here. */}
-            {/*         </DisclosurePanel> */}
-            {/*     </Disclosure> */}
-            {/* </DisclosureGroup> */}
+            <DisclosureGroup>
+                <Disclosure>
+                    <DisclosureHeader
+                        label={
+                            <DisclosureLabel>
+                                Personal Information
+                            </DisclosureLabel>
+                        }
+                    />
+
+                    <DisclosurePanel>
+                        Personal information form here.
+                    </DisclosurePanel>
+                </Disclosure>
+
+                <Disclosure>
+                    <DisclosureHeader
+                        label={
+                            <DisclosureLabel>Billing Address</DisclosureLabel>
+                        }
+                    />
+
+                    <DisclosurePanel>
+                        Billing address form here.
+                    </DisclosurePanel>
+                </Disclosure>
+            </DisclosureGroup>
         </div>
     );
 };

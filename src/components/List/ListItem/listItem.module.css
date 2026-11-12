@@ -132,7 +132,6 @@
             --_md-list-label-color: var(--_md-list-disabled-color);
 
             --_state-layer-opacity: var(--md-sys-state-disabled-container);
-            --_background: var(--_md-list-item-selected-disabled-background);
         }
     }
 

@@ -18,24 +18,6 @@
     }
 
     .button {
-        --_md-list-item-spacing: var(--md-sys-layout-space-12);
-
-        /* shapes */
-        --_md-list-item-shape: var(--_md-disclosure-shape);
-        --_md-list-item-selected-shape: var(--_md-disclosure-expanded-shape);
-
-        --_md-list-item-hovered-shape: var(--md-sys-shape-corner-radius-medium);
-        --_md-list-item-hovered-selected-shape: var(
-            --md-sys-shape-corner-radius-large
-        );
-        --_md-list-item-interaction-shape: var(
-            --md-sys-shape-corner-radius-large
-        );
-
-        --_shape: var(--_md-list-item-shape);
-
-        --_background: var(--_md-list-item-background);
-
         /* state layer */
         --_state-color: var(--md-sys-color-on-surface);
         --_state-layer-opacity: 0;
@@ -45,16 +27,24 @@
             var(--_state-layer-opacity)
         );
 
-        border-radius: var(--_shape);
-        background: var(--_background);
-        color: var(--_md-list-color);
+        /* colors */
+        --_background: var(--_md-disclosure-background);
+        --_color: var(--_md-disclosure-color);
 
         display: flex;
         align-items: center;
-        gap: var(--_md-list-item-spacing);
+        gap: var(--_md-disclosure-spacing);
 
-        padding-inline: var(--_md-list-item-padding-inline);
-        padding-block: var(--_md-list-item-padding-block);
+        padding-inline: var(--_md-disclosure-padding-inline);
+        padding-block: var(--_md-disclosure-padding-block);
+
+        background-color: var(--_background);
+        color: var(--_color);
+
+        border-start-start-radius: var(--_md-disclosure-shape-start-start);
+        border-start-end-radius: var(--_md-disclosure-shape-start-end);
+        border-end-start-radius: var(--_md-disclosure-shape-end-start);
+        border-end-end-radius: var(--_md-disclosure-shape-end-end);
 
         transition:
             border-radius var(--md-sys-motion-expressive-fast-spatial)
@@ -62,68 +52,84 @@
             background-color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration),
             color var(--md-sys-motion-expressive-fast-effects)
-            var(--md-sys-motion-expressive-fast-effects-duration),
-            box-shadow var(--md-sys-motion-expressive-fast-spatial)
-            var(--md-sys-motion-expressive-fast-spatial-duration);
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
         @media (prefers-reduced-motion) {
             transition: none;
         }
 
         &[data-hovered] {
-            cursor: pointer;
-
-            --_shape: var(--_md-list-item-hovered-shape);
             --_state-layer-opacity: var(--md-sys-state-hover);
+
+            --_md-disclosure-shape-start-start: var(
+                --_md-disclosure-hovered-shape
+            );
+            --_md-disclosure-shape-start-end: var(
+                --_md-disclosure-hovered-shape
+            );
+            --_md-disclosure-shape-end-start: var(
+                --_md-disclosure-hovered-shape
+            );
+            --_md-disclosure-shape-end-end: var(--_md-disclosure-hovered-shape);
         }
 
         &[data-focus-visible] {
-            --_shape: var(--_md-list-item-interaction-shape);
             --_state-layer-opacity: var(--md-sys-state-focus);
+
+            --_md-disclosure-shape-start-start: var(
+                --_md-disclosure-interaction-shape
+            );
+            --_md-disclosure-shape-start-end: var(
+                --_md-disclosure-interaction-shape
+            );
+            --_md-disclosure-shape-end-start: var(
+                --_md-disclosure-interaction-shape
+            );
+            --_md-disclosure-shape-end-end: var(
+                --_md-disclosure-interaction-shape
+            );
         }
 
         &[data-pressed] {
-            --_shape: var(--_md-list-item-interaction-shape);
             --_state-layer-opacity: var(--md-sys-state-pressed);
+
+            --_md-disclosure-shape-start-start: var(
+                --_md-disclosure-interaction-shape
+            );
+            --_md-disclosure-shape-start-end: var(
+                --_md-disclosure-interaction-shape
+            );
+            --_md-disclosure-shape-end-start: var(
+                --_md-disclosure-interaction-shape
+            );
+            --_md-disclosure-shape-end-end: var(
+                --_md-disclosure-interaction-shape
+            );
         }
 
         &[data-disabled] {
-            --_md-list-color: var(--_md-list-disabled-color);
-            --_md-list-label-color: var(--_md-list-disabled-color);
-
             --_state-layer-opacity: var(--md-sys-state-disabled-container);
-            --_background: var(--_md-list-item-selected-disabled-background);
+
+            --_color: var(--_md-disclosure-disabled-color);
         }
     }
 
     .button[data-expanded] {
-        --_shape: var(--_md-list-item-selected-shape);
+        --_color: var(--_md-disclosure-expanded-color);
+        --_background: var(--_md-disclosure-expanded-background);
 
-        --_md-list-color: var(--_md-list-selected-color);
-        --_md-list-label-color: var(--_md-list-selected-color);
-
-        --_background: var(--_md-list-item-selected-background);
-
-        border-end-end-radius: 0;
-        border-end-start-radius: 0;
-
-        &[data-hovered] {
-            --_shape: var(--_md-list-item-hovered-selected-shape);
-        }
-
-        &[data-focus-visible] {
-            --_shape: var(--_md-list-item-interaction-shape);
-        }
-
-        &[data-pressed] {
-            --_shape: var(--_md-list-item-interaction-shape);
-        }
+        --_md-disclosure-shape-start-start: var(
+            --_md-disclosure-expanded-shape
+        );
+        --_md-disclosure-shape-start-end: var(--_md-disclosure-expanded-shape);
+        --_md-disclosure-shape-end-start: calc(2 * var(--dp, 1px));
+        --_md-disclosure-shape-end-end: calc(2 * var(--dp, 1px));
 
         &[data-disabled] {
             --_state-layer-opacity: 0;
-            --_background: var(--_md-list-item-selected-disabled-background);
-            --_md-list-color: var(--_md-list-disabled-color);
-            --_md-list-label-color: var(--_md-list-disabled-color);
+
+            --_color: var(--_md-disclosure-disabled-color);
+            --_background: var(--_md-disclosure-expanded-disabled-background);
         }
     }
 
@@ -171,5 +177,20 @@
 
     .trailing {
         margin-inline-start: auto;
+
+        > svg {
+            transition: rotate var(--md-sys-motion-expressive-fast-spatial)
+                var(--md-sys-motion-expressive-fast-spatial-duration);
+
+            @media (prefers-reduced-motion) {
+                transition: none;
+            }
+        }
+
+        &[data-expanded] {
+            > svg {
+                rotate: 180deg;
+            }
+        }
     }
 }

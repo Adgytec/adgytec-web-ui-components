@@ -50,7 +50,10 @@ export const DisclosureHeader: React.FC<DisclosureHeaderProps> = ({
 
                 <div className={clsx(styles["label"])}>{label}</div>
 
-                <div className={clsx(styles["trailing"])}>
+                <div
+                    className={clsx(styles["trailing"])}
+                    data-expanded={isExpanded || undefined}
+                >
                     <DisclosureIcon icon={ChevronDown} />
                 </div>
             </Button>

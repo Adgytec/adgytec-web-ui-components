@@ -1,0 +1,38 @@
+@layer adgytec.overrides {
+    .group > [data-disclosure] {
+        --_md-disclosure-shape-start-start: var(
+            --md-sys-shape-corner-radius-extra-small
+        );
+        --_md-disclosure-shape-start-end: var(
+            --md-sys-shape-corner-radius-extra-small
+        );
+        --_md-disclosure-shape-end-start: var(
+            --md-sys-shape-corner-radius-extra-small
+        );
+        --_md-disclosure-shape-end-end: var(
+            --md-sys-shape-corner-radius-extra-small
+        );
+    }
+
+    .group > [data-disclosure]:first-child {
+        --_md-disclosure-shape-start-start: var(--_md-disclosure-group-shape);
+        --_md-disclosure-shape-start-end: var(--_md-disclosure-group-shape);
+    }
+
+    .group > [data-disclosure]:last-child {
+        --_md-disclosure-shape-end-start: var(--_md-disclosure-group-shape);
+        --_md-disclosure-shape-end-end: var(--_md-disclosure-group-shape);
+    }
+}
+
+@layer adgytec.comps {
+    .group {
+        --_md-disclosure-group-shape: var(--md-sys-shape-corner-radius-large);
+        --_md-disclosure-group-spacing: calc(2 * var(--dp, 1px));
+
+        display: grid;
+        gap: var(--_md-disclosure-group-spacing);
+
+        border-radius: var(--_md-disclosure-group-shape);
+    }
+}

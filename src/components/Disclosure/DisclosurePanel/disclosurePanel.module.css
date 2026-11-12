@@ -1,8 +1,10 @@
 @layer adgytec.comps {
     .panel {
-        color: var(--_panel-color);
-        background-color: var(--_panel-background);
+        background-color: var(--_md-disclosure-panel-background);
+        color: var(--_md-disclosure-panel-color);
 
+        border-start-start-radius: calc(2 * var(--dp, 1px));
+        border-start-end-radius: calc(2 * var(--dp, 1px));
         border-end-start-radius: var(--_md-disclosure-expanded-shape);
         border-end-end-radius: var(--_md-disclosure-expanded-shape);
 
@@ -22,8 +24,8 @@
         }
 
         > div {
-            padding-block-end: var(--_md-list-item-padding-block);
-            padding-inline: var(--_md-list-item-padding-inline);
+            padding-inline: var(--_md-disclosure-padding-inline);
+            padding-block-end: var(--_md-disclosure-padding-block);
         }
     }
 }

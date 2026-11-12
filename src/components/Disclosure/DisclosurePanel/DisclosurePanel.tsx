@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import { DisclosurePanel as AriaDisclosurePanel } from "react-aria-components";
+import { typography } from "@/utils";
 import styles from "./disclosurePanel.module.css";
 
 /**
@@ -37,6 +38,7 @@ export const DisclosurePanel: React.FC<DisclosurePanelProps> = ({
             className={(renderProps) =>
                 clsx(
                     styles["panel"],
+                    typography.bodyLarge,
                     typeof className === "function"
                         ? className(renderProps)
                         : className
