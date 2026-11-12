@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import { useMemo } from "react";
 import { ToggleButtonGroup as AriaToggleButtonGroup } from "react-aria-components";
-import { ButtonGroupContext } from "../ButtonGroupContext";
+import { ButtonGroupContext } from "../../core/context";
 import styles from "./buttonGroup.module.css";
 import type { ButtonGroupProps } from "./types";
 

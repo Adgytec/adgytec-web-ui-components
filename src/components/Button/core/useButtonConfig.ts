@@ -1,5 +1,5 @@
-import { useButtonGroupContext } from "../ButtonGroups";
 import type { ButtonIconPlacement } from "./button";
+import { useButtonGroupContext } from "./context";
 import type { ButtonShape } from "./shape";
 import type { ButtonSize } from "./sizes";
 

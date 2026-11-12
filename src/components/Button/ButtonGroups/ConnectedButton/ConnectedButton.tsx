@@ -13,7 +13,7 @@ import {
     buttonColorConfig,
     withTooltip,
 } from "../../core";
-import { useConnectedButtonGroupContext } from "../ButtonGroupContext";
+import { useConnectedButtonGroupContext } from "../../core/context";
 import styles from "./connectedButton.module.css";
 import type { ConnectedButtonProps } from "./types";
 

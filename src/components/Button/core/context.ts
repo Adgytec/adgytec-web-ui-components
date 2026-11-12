@@ -1,11 +1,8 @@
-import { createContext } from "react";
-import type {
-    ButtonIconPlacement,
-    ButtonShape,
-    ButtonSize,
-    ConnectedButtonGroupColor,
-    CoreButtonColor,
-} from "../../core";
+import { createContext, useContext } from "react";
+import type { ButtonIconPlacement } from "./button";
+import type { ConnectedButtonGroupColor, CoreButtonColor } from "./color";
+import type { ButtonShape } from "./shape";
+import type { ButtonSize } from "./sizes";
 
 /**
  * Configuration options provided by a standard {@link ButtonGroup} to its descendant buttons.
@@ -51,3 +48,21 @@ export const ConnectedButtonGroupContext =
         shape: "round",
         color: "filled",
     });
+
+/**
+ * Accesses the enclosing {@link ButtonGroupContext} values.
+ *
+ * @returns The inherited configuration from the nearest ancestor `ButtonGroup`, or an empty object if unnested.
+ */
+export function useButtonGroupContext() {
+    return useContext(ButtonGroupContext);
+}
+
+/**
+ * Accesses the enclosing {@link ConnectedButtonGroupContext} values.
+ *
+ * @returns The configuration provided by the enclosing `ConnectedButtonGroup`. Defaults to small/round/filled if unnested.
+ */
+export function useConnectedButtonGroupContext() {
+    return useContext(ConnectedButtonGroupContext);
+}
