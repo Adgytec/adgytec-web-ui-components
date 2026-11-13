@@ -11,6 +11,32 @@ import {
 import { fabVariantBase, fabVariantConfig } from "../core/fab";
 import type { ExtendedFloatingActionButtonProps } from "./types";
 
+/**
+ * An Extended Floating Action Button (Extended FAB) implementing [Material Design 3 Extended FAB](https://m3.material.io/components/floating-action-button/overview).
+ *
+ * Extended FABs display an icon alongside a text label (or text only), providing clearer context
+ * than a standard icon-only FAB. They appear above primary screen content for key actions.
+ *
+ * Supports filled and tonal color schemes, primary/secondary/tertiary variants,
+ * small/medium/large sizes, start/end icon placement, ripple splash animations, and optional tooltips.
+ *
+ * Configurable CSS tokens:
+ * - `--md-fab-background`: Background color of the Extended FAB container.
+ * - `--md-fab-color`: Text and icon color of the Extended FAB.
+ *
+ * @example
+ * ```tsx
+ * import { ExtendedFloatingActionButton } from "@adgytec/web-ui-components";
+ * import { Pencil } from "lucide-react";
+ *
+ * <ExtendedFloatingActionButton
+ *     icon={Pencil}
+ *     onPress={() => handleCompose()}
+ * >
+ *     Compose
+ * </ExtendedFloatingActionButton>
+ * ```
+ */
 export const ExtendedFloatingActionButton: React.FC<
     ExtendedFloatingActionButtonProps
 > = ({

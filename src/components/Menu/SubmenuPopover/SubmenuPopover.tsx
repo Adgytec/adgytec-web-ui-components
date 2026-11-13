@@ -3,7 +3,8 @@ import { Popover } from "@/components/Popover";
 import styles from "./submenuPopover.module.css";
 
 /**
- * Props for the [`SubmenuPopover`](src/components/Menu/SubmenuPopover/SubmenuPopover.tsx) component.
+ * Props for the {@link SubmenuPopover} component.
+ * Extends standard {@link Popover} props.
  */
 export interface SubmenuPopoverProps
     extends React.ComponentPropsWithRef<typeof Popover> {}
@@ -11,11 +12,14 @@ export interface SubmenuPopoverProps
 /**
  * Specialized popover container for nested cascading submenus.
  *
- * Defaults to an `offset` of `-1` px so the submenu slightly overlaps the parent
- * menu edge according to Material Design 3 menu specifications.
+ * Configured with two-dimensional scaling (`data-scale-xy`) for smooth menu transitions
+ * and defaults to an `offset` of `-1` px so the submenu slightly overlaps the parent
+ * menu edge according to Material Design 3 specifications.
  *
  * @example
  * ```tsx
+ * import { Menu, MenuItem, SubmenuPopover } from "@adgytec/web-ui-components";
+ *
  * <SubmenuPopover>
  *     <Menu>
  *         <MenuItem label="Sub-item 1" />

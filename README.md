@@ -16,6 +16,7 @@ A robust, accessible, and highly customizable React component library implementi
 ### Buttons
 
 - **Standard Buttons**: Button, Icon Button, Link Button, Link Icon Button.
+- **Floating Action Buttons**: Floating Action Button, Extended Floating Action Button.
 - **Toggle Buttons**: Toggle Button, Toggle Icon Button.
 - **Complex Buttons**: Split Button.
 - **Groups**: Button Group (with morphing animation), Connected Button Group.

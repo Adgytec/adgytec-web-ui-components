@@ -14,6 +14,7 @@ The `RichTooltip` component is an implementation of the [Material 3 rich tooltip
 Rich tooltips are composed of several sub-components:
 
 - `RichTooltipTrigger`: Trigger wrapper managing hover, focus, and long-press display states.
+- `RichTooltipPopover`: Popover surface container configured with two-dimensional scale entrance and exit transitions (`data-scale-xy`).
 - `RichTooltip`: The main container.
 - `RichTooltipInfo`: Container for the text content (subhead and text).
 - `RichTooltipSubhead`: The title/header of the tooltip.
@@ -25,6 +26,10 @@ Rich tooltips are composed of several sub-components:
 ### RichTooltipTrigger
 
 Extends [React Aria Components PreviewTrigger](https://react-spectrum.adobe.com/react-aria/PreviewTrigger.html).
+
+### RichTooltipPopover
+
+Extends `React.ComponentPropsWithRef<typeof Popover>`.
 
 ### RichTooltip
 
@@ -44,15 +49,15 @@ Extends `React.ComponentPropsWithRef<"div">`. Recommended to use `Button` with `
 
 ## Usage
 
-Rich tooltips should be used with a `RichTooltipTrigger` and a `Popover` component.
+Rich tooltips should be used with a `RichTooltipTrigger` and a `RichTooltipPopover` component.
 
 ```tsx
 import {
     Button,
-    Popover,
     RichTooltip,
     RichTooltipActions,
     RichTooltipInfo,
+    RichTooltipPopover,
     RichTooltipSubhead,
     RichTooltipText,
     RichTooltipTrigger,
@@ -60,7 +65,7 @@ import {
 
 <RichTooltipTrigger>
     <Button label="More Info" />
-    <Popover>
+    <RichTooltipPopover>
         <RichTooltip>
             <RichTooltipInfo>
                 <RichTooltipSubhead>Rich Tooltip Title</RichTooltipSubhead>
@@ -73,7 +78,7 @@ import {
                 <Button label="Learn More" size="small" color="text" />
             </RichTooltipActions>
         </RichTooltip>
-    </Popover>
+    </RichTooltipPopover>
 </RichTooltipTrigger>;
 ```
 

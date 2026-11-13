@@ -1,3 +1,10 @@
+/* configurable tokens
+*
+* --md-fab-background
+* --md-fab-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .fab {
         --_md-fab-elevation: var(--md-sys-elevation-shadow-3);
