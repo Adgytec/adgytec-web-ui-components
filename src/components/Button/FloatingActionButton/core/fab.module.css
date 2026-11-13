@@ -107,17 +107,36 @@
     }
 
     .primary {
+        --_md-fab-background-default: var(--md-sys-color-primary);
+        --_md-fab-color-default: var(--md-sys-color-on-primary);
+
         &[data-tonal] {
+            --_md-fab-background-default: var(--md-sys-color-primary-container);
+            --_md-fab-color-default: var(--md-sys-color-on-primary-container);
         }
     }
 
     .secondary {
+        --_md-fab-background-default: var(--md-sys-color-secondary);
+        --_md-fab-color-default: var(--md-sys-color-on-secondary);
+
         &[data-tonal] {
+            --_md-fab-background-default: var(
+                --md-sys-color-secondary-container
+            );
+            --_md-fab-color-default: var(--md-sys-color-on-secondary-container);
         }
     }
 
     .tertiary {
+        --_md-fab-background-default: var(--md-sys-color-tertiary);
+        --_md-fab-color-default: var(--md-sys-color-on-tertiary);
+
         &[data-tonal] {
+            --_md-fab-background-default: var(
+                --md-sys-color-tertiary-container
+            );
+            --_md-fab-color-default: var(--md-sys-color-on-tertiary-container);
         }
     }
 }
