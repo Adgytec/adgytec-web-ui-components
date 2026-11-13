@@ -110,7 +110,7 @@
         --_md-fab-background-default: var(--md-sys-color-primary);
         --_md-fab-color-default: var(--md-sys-color-on-primary);
 
-        &[data-tonal] {
+        &[data-color="tonal"] {
             --_md-fab-background-default: var(--md-sys-color-primary-container);
             --_md-fab-color-default: var(--md-sys-color-on-primary-container);
         }
@@ -120,7 +120,7 @@
         --_md-fab-background-default: var(--md-sys-color-secondary);
         --_md-fab-color-default: var(--md-sys-color-on-secondary);
 
-        &[data-tonal] {
+        &[data-color="tonal"] {
             --_md-fab-background-default: var(
                 --md-sys-color-secondary-container
             );
@@ -132,7 +132,7 @@
         --_md-fab-background-default: var(--md-sys-color-tertiary);
         --_md-fab-color-default: var(--md-sys-color-on-tertiary);
 
-        &[data-tonal] {
+        &[data-color="tonal"] {
             --_md-fab-background-default: var(
                 --md-sys-color-tertiary-container
             );
