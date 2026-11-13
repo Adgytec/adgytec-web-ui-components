@@ -55,8 +55,8 @@
         position: absolute;
 
         color: var(--_md-slider-icon-color);
-        transition: color var(--md-sys-motion-standard-fast-spatial)
-            var(--md-sys-motion-standard-fast-spatial-duration);
+        transition: color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
         @media (prefers-reduced-motion) {
             transition: none;

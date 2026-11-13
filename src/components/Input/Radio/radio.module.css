@@ -240,8 +240,8 @@
         transition:
             background-color var(--md-sys-motion-expressive-default-effects)
             var(--md-sys-motion-expressive-default-effects-duration),
-            scale var(--md-sys-motion-standard-default-spatial)
-            var(--md-sys-motion-standard-default-spatial-duration);
+            scale var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
 
         @media (prefers-reduced-motion) {
             transition: none;

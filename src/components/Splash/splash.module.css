@@ -19,8 +19,8 @@
         );
         opacity: 0;
 
-        animation: ripple var(--md-sys-motion-expressive-slow-spatial)
-            var(--md-sys-motion-expressive-slow-spatial-duration);
+        animation: ripple var(--md-sys-motion-expressive-slow-effects)
+            var(--md-sys-motion-expressive-slow-effects-duration);
 
         @media (prefers-reduced-motion) {
             animation: none;
