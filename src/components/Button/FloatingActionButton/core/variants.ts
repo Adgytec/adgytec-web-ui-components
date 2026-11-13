@@ -1,1 +1,1 @@
-export type FloatingActionButtonVariants = "primary" | "secondary" | "tertiary";
+export type FABVariants = "primary" | "secondary" | "tertiary";

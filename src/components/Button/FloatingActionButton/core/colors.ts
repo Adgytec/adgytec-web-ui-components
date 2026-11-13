@@ -1,1 +1,1 @@
-export type FloatingActionButtonColors = "filled" | "tonal";
+export type FABColors = "filled" | "tonal";

@@ -1,0 +1,38 @@
+@layer adgytec.comps {
+    .size {
+        border-radius: var(--_md-fab-shape);
+        padding: var(--_md-fab-padding);
+
+        &[data-extended] {
+            display: flex;
+            align-items: center;
+            gap: var(--_md-extended-fab-icon-label-spacing);
+
+            padding-inline: var(--_md-extended-fab-padding-inline);
+        }
+    }
+
+    .small {
+        --_md-fab-shape: var(--md-sys-shape-corner-radius-large);
+        --_md-fab-padding: var(--md-sys-layout-space-16);
+
+        --_md-extended-fab-icon-label-spacing: var(--md-sys-layout-space-8);
+        --_md-extended-fab-padding-inline: var(--md-sys-layout-space-16);
+    }
+
+    .medium {
+        --_md-fab-shape: var(--md-sys-shape-corner-radius-large-increased);
+        --_md-fab-padding: calc(26 * var(--dp, 1px));
+
+        --_md-extended-fab-icon-label-spacing: var(--md-sys-layout-space-12);
+        --_md-extended-fab-padding-inline: calc(26 * var(--dp, 1px));
+    }
+
+    .large {
+        --_md-fab-shape: var(--md-sys-shape-corner-radius-large);
+        --_md-fab-padding: calc(30 * var(--dp, 1px));
+
+        --_md-extended-fab-icon-label-spacing: var(--md-sys-layout-space-16);
+        --_md-extended-fab-padding-inline: var(--md-sys-layout-space-28);
+    }
+}
