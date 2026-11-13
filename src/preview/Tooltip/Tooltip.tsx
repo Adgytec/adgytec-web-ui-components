@@ -1,9 +1,9 @@
 import { Button, LinkButton } from "../../components/Button";
-import { Popover } from "../../components/Popover";
 import {
     RichTooltip,
     RichTooltipActions,
     RichTooltipInfo,
+    RichTooltipPopover,
     RichTooltipSubhead,
     RichTooltipText,
     RichTooltipTrigger,
@@ -23,7 +23,7 @@ export const TooltipPreview = () => {
             <RichTooltipTrigger>
                 <Button>Rich Tooltip</Button>
 
-                <Popover>
+                <RichTooltipPopover>
                     <RichTooltip>
                         <RichTooltipInfo>
                             <RichTooltipSubhead>Lorem Ipsum</RichTooltipSubhead>
@@ -48,7 +48,7 @@ export const TooltipPreview = () => {
                             <Button color="text">Lorem</Button>
                         </RichTooltipActions>
                     </RichTooltip>
-                </Popover>
+                </RichTooltipPopover>
             </RichTooltipTrigger>
         </div>
     );

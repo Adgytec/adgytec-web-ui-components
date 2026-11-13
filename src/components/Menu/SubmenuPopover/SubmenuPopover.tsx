@@ -31,6 +31,7 @@ export const SubmenuPopover: React.FC<SubmenuPopoverProps> = ({
 }) => {
     return (
         <Popover
+            data-scale-xy
             offset={offset}
             className={(renderProps) =>
                 clsx(
