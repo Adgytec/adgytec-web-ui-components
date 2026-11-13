@@ -21,6 +21,17 @@
         cursor: pointer;
         text-align: center;
 
+        display: inline-flex;
+        align-items: center;
+
+        border-radius: var(--_md-fab-shape);
+        padding: var(--_md-fab-padding);
+
+        &[data-extended] {
+            gap: var(--_md-extended-fab-icon-label-spacing);
+            padding-inline: var(--_md-extended-fab-padding-inline);
+        }
+
         &[data-disabled] {
             cursor: default;
         }

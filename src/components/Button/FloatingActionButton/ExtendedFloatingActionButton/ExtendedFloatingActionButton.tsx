@@ -6,7 +6,6 @@ import { withTooltip } from "../../core";
 import {
     ExtendedFABLabelTextMapping,
     FABIconSizeMapping,
-    fabSizeBase,
     fabSizeConfig,
 } from "../core";
 import { fabVariantBase, fabVariantConfig } from "../core/fab";
@@ -35,7 +34,6 @@ export const ExtendedFloatingActionButton: React.FC<
                 clsx(
                     fabVariantConfig(variant),
                     fabVariantBase,
-                    fabSizeBase,
                     fabSizeConfig(size),
                     ExtendedFABLabelTextMapping[size],
                     typeof className === "function"
@@ -44,6 +42,7 @@ export const ExtendedFloatingActionButton: React.FC<
                 )
             }
             data-color={color}
+            data-extended
             {...props}
         >
             {(renderProps) => (

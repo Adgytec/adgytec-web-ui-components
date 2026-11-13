@@ -21,6 +21,7 @@ import { DateRangePickerPreview } from "./preview/DateRangePicker";
 import { DecoratorsPreview } from "./preview/Decorators";
 import { DialogPreview } from "./preview/Dialog";
 import { DisclosurePreview } from "./preview/Disclosure";
+import { FABPreview } from "./preview/FAB";
 import { GradientsPreview } from "./preview/Gradients";
 import { IconPreview } from "./preview/Icon";
 import { IconButtonPreview } from "./preview/IconButton";
@@ -49,7 +50,6 @@ import { TimeFieldPreview } from "./preview/TimeField";
 import { ToolbarPreview } from "./preview/Toolbar";
 import { TooltipPreview } from "./preview/Tooltip";
 import { typography } from "./utils/typography";
-import { FABPreview } from "./preview/FAB";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {

@@ -1,17 +1,4 @@
 @layer adgytec.comps {
-    .size {
-        border-radius: var(--_md-fab-shape);
-        padding: var(--_md-fab-padding);
-
-        &[data-extended] {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--_md-extended-fab-icon-label-spacing);
-
-            padding-inline: var(--_md-extended-fab-padding-inline);
-        }
-    }
-
     .small {
         --_md-fab-shape: var(--md-sys-shape-corner-radius-large);
         --_md-fab-padding: var(--md-sys-layout-space-16);

@@ -18,5 +18,3 @@ export const ExtendedFABLabelTextMapping: Record<FABSizes, string> = {
 export const fabSizeConfig = (size: FABSizes) => {
     return styles[size];
 };
-
-export const fabSizeBase = styles["size"];
