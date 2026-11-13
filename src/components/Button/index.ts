@@ -1,6 +1,7 @@
 export * from "./Button";
 export * from "./ButtonGroups";
 export * from "./core";
+export * from "./FloatingActionButton";
 export * from "./IconButton";
 export * from "./LinkButton";
 export * from "./LinkIconButton";
