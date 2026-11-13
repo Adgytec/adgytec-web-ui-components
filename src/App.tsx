@@ -49,6 +49,7 @@ import { TimeFieldPreview } from "./preview/TimeField";
 import { ToolbarPreview } from "./preview/Toolbar";
 import { TooltipPreview } from "./preview/Tooltip";
 import { typography } from "./utils/typography";
+import { FABPreview } from "./preview/FAB";
 
 // preview container
 const PreviewContainer = (props: { label: string; children: ReactNode }) => {
@@ -81,6 +82,7 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        { id: "FAB", label: "FAB", Component: FABPreview },
         { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },
         {
             id: "shape",
