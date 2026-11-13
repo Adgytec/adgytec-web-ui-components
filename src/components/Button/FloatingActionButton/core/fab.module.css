@@ -1,0 +1,123 @@
+@layer adgytec.comps {
+    .fab {
+        --_md-fab-elevation: var(--md-sys-elevation-shadow-3);
+
+        --_md-fab-background: var(
+            --md-fab-background,
+            var(--_md-fab-background-default)
+        );
+        --_md-fab-color: var(--md-fab-color, var(--_md-fab-color-default));
+
+        /* state layer */
+        --_state-color: var(--_md-fab-color);
+        --_state-layer-opacity: 0;
+
+        --_state-layer-color: rgb(
+            from var(--_state-color) r g b /
+            var(--_state-layer-opacity)
+        );
+
+        all: unset;
+        cursor: pointer;
+        text-align: center;
+
+        &[data-disabled] {
+            cursor: default;
+        }
+
+        &[data-pending] {
+            cursor: default;
+        }
+
+        position: relative;
+        overflow: clip;
+
+        box-shadow: var(--_md-fab-elevation);
+        background-color: var(--_md-fab-background);
+        color: var(--_md-fab-color);
+
+        transition:
+            background-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            box-shadow var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-hovered] {
+            --_md-fab-elevation: var(--md-sys-elevation-shadow-4);
+            --_state-layer-opacity: var(--md-sys-state-hover);
+        }
+
+        &[data-focus-visible] {
+            --_state-layer-opacity: var(--md-sys-state-focus);
+        }
+
+        &[data-pressed] {
+            --_state-layer-opacity: var(--md-sys-state-pressed);
+        }
+
+        &[data-disabled] {
+            --_md-fab-background: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-container)
+            );
+            --_md-fab-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+        }
+    }
+
+    /* state layer */
+    .fab::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+
+        background-color: var(--_state-layer-color);
+
+        transition: background-color
+            var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    /* focus indicator */
+    .fab[data-focus-visible] {
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
+
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
+
+        z-index: 1;
+    }
+
+    .primary {
+        &[data-tonal] {
+        }
+    }
+
+    .secondary {
+        &[data-tonal] {
+        }
+    }
+
+    .tertiary {
+        &[data-tonal] {
+        }
+    }
+}

@@ -4,7 +4,7 @@
         padding: var(--_md-fab-padding);
 
         &[data-extended] {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: var(--_md-extended-fab-icon-label-spacing);
 
