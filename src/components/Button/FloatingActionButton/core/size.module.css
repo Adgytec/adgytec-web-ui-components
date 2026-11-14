@@ -17,9 +17,13 @@
 
     .large {
         --_md-fab-shape: var(--md-sys-shape-corner-radius-large);
-        --_md-fab-padding: calc(30 * var(--dp, 1px));
+        --_md-fab-padding: var(--md-sys-layout-space-32);
 
         --_md-extended-fab-icon-label-spacing: var(--md-sys-layout-space-16);
         --_md-extended-fab-padding-inline: var(--md-sys-layout-space-28);
+
+        &[data-icon] {
+            --_md-fab-padding: calc(30 * var(--dp, 1px));
+        }
     }
 }
