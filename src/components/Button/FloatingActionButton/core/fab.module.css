@@ -5,6 +5,38 @@
 *
 * configurable tokens end */
 
+@layer adgytec.overrides {
+    .primary[data-fab-menu-button] {
+        --_md-fab-background-default: var(--md-sys-color-primary-container);
+        --_md-fab-color-default: var(--md-sys-color-on-primary-container);
+
+        &[data-pressed] {
+            --_md-fab-background-default: var(--md-sys-color-primary);
+            --_md-fab-color-default: var(--md-sys-color-on-primary);
+        }
+    }
+
+    .secondary[data-fab-menu-button] {
+        --_md-fab-background-default: var(--md-sys-color-secondary-container);
+        --_md-fab-color-default: var(--md-sys-color-on-secondary-container);
+
+        &[data-pressed] {
+            --_md-fab-background-default: var(--md-sys-color-secondary);
+            --_md-fab-color-default: var(--md-sys-color-on-secondary);
+        }
+    }
+
+    .tertiary[data-fab-menu-button] {
+        --_md-fab-background-default: var(--md-sys-color-tertiary-container);
+        --_md-fab-color-default: var(--md-sys-color-on-tertiary-container);
+
+        &[data-pressed] {
+            --_md-fab-background-default: var(--md-sys-color-tertiary);
+            --_md-fab-color-default: var(--md-sys-color-on-tertiary);
+        }
+    }
+}
+
 @layer adgytec.comps {
     .fab {
         --_md-fab-elevation: var(--md-sys-elevation-shadow-3);

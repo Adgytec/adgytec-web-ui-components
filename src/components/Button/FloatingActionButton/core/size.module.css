@@ -32,6 +32,10 @@
 
         &[data-fab-menu-button] {
             --_md-fab-pressed-shape: var(--md-sys-shape-corner-radius-full);
+
+            &[data-pressed] {
+                --_md-fab-padding: var(--md-sys-layout-space-16);
+            }
         }
     }
 
@@ -55,6 +59,10 @@
 
         &[data-fab-menu-button] {
             --_md-fab-pressed-shape: var(--md-sys-shape-corner-radius-full);
+
+            &[data-pressed] {
+                --_md-fab-padding: var(--md-sys-layout-space-16);
+            }
         }
     }
 }
