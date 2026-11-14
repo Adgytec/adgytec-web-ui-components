@@ -1,6 +1,9 @@
 @layer adgytec.comps {
     .small {
+        /* height 56 */
         --_md-fab-shape: var(--md-sys-shape-corner-radius-large);
+        --_md-fab-pressed-shape: var(--md-sys-shape-corner-radius-small);
+
         --_md-fab-padding: var(--md-sys-layout-space-16);
 
         --_md-extended-fab-icon-label-spacing: var(--md-sys-layout-space-8);
@@ -8,7 +11,10 @@
     }
 
     .medium {
+        /* height 80 */
         --_md-fab-shape: var(--md-sys-shape-corner-radius-large-increased);
+        --_md-fab-pressed-shape: var(--md-sys-shape-corner-radius-medium);
+
         --_md-fab-padding: calc(26 * var(--dp, 1px));
 
         --_md-extended-fab-icon-label-spacing: var(--md-sys-layout-space-12);
@@ -16,7 +22,10 @@
     }
 
     .large {
-        --_md-fab-shape: var(--md-sys-shape-corner-radius-large);
+        /* height 96 */
+        --_md-fab-shape: var(--md-sys-shape-corner-radius-extra-large);
+        --_md-fab-pressed-shape: var(--md-sys-shape-corner-radius-large);
+
         --_md-fab-padding: var(--md-sys-layout-space-32);
 
         --_md-extended-fab-icon-label-spacing: var(--md-sys-layout-space-16);

@@ -24,6 +24,8 @@
             var(--_state-layer-opacity)
         );
 
+        --_shape: var(--_md-fab-shape);
+
         all: unset;
         cursor: pointer;
         text-align: center;
@@ -31,7 +33,7 @@
         display: inline-flex;
         align-items: center;
 
-        border-radius: var(--_md-fab-shape);
+        border-radius: var(--_shape);
         padding: var(--_md-fab-padding);
 
         &[data-extended] {
@@ -55,6 +57,8 @@
         color: var(--_md-fab-color);
 
         transition:
+            border-radius var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
             background-color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration),
             color var(--md-sys-motion-expressive-fast-effects)
@@ -77,6 +81,7 @@
 
         &[data-pressed] {
             --_state-layer-opacity: var(--md-sys-state-pressed);
+            --_shape: var(--_md-fab-pressed-shape);
         }
 
         &[data-disabled] {
