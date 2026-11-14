@@ -16,6 +16,11 @@
         &[data-fab-menu-button] {
             --_md-fab-pressed-shape: var(--md-sys-shape-corner-radius-full);
         }
+
+        &[data-fab-menu-item] {
+            --_md-fab-shape: var(--md-sys-shape-corner-radius-full);
+            --_md-extended-fab-padding-inline: var(--md-sys-layout-space-24);
+        }
     }
 
     .medium {
