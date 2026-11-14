@@ -42,7 +42,11 @@ import {
 } from "lucide-react";
 import { DialogTrigger } from "react-aria-components";
 import type { Variant } from "@/components/Navigation/core";
-import { Button } from "../../components/Button";
+import {
+    Button,
+    ExtendedFloatingActionButton,
+    FloatingActionButton,
+} from "../../components/Button";
 import { ModalOverlay } from "../../components/Dialog";
 import {
     Navigation,
@@ -59,6 +63,20 @@ import { SideSheetDialog, SideSheetModal } from "../../components/Sheets";
 export const NavStatePreview = ({ variant }: { variant?: Variant }) => {
     return (
         <Navigation label="Adgytec Workspace" variant={variant}>
+            <div className="nav-fab">
+                {variant === "collapsed" ? (
+                    <FloatingActionButton
+                        icon={Send}
+                        tooltip="Send"
+                        size="small"
+                    />
+                ) : (
+                    <ExtendedFloatingActionButton icon={Send} size="small">
+                        Send
+                    </ExtendedFloatingActionButton>
+                )}
+            </div>
+
             <NavigationLink
                 label="Dashboard"
                 icon={LayoutDashboard}
