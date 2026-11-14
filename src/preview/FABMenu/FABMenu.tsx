@@ -160,6 +160,14 @@ export const FABMenuPreview = () => {
                     </div>
                 </div>
             ))}
+
+            <div
+                style={{
+                    paddingBlock: "10rem",
+                }}
+            >
+                sample space for last item proper opening in mobile preview
+            </div>
         </div>
     );
 };

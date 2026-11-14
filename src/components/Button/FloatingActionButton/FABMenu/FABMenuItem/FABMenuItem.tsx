@@ -10,6 +10,24 @@ import { fabVariantBase, fabVariantConfig } from "../../core/fab";
 import { useFABMenuVariant } from "../context";
 import type { FABMenuItemProps } from "./types";
 
+/**
+ * Action item component rendered inside a {@link FABMenu}.
+ *
+ * Implements Material 3 Speed Dial menu item design:
+ * - Rendered as a small, pill-shaped Extended FAB with an icon and label text.
+ * - Inherits the active semantic `variant` color scheme from {@link FABMenuTrigger}.
+ * - Integrates React Aria Components `MenuItem` for full keyboard navigation and selection handling.
+ *
+ * @example
+ * ```tsx
+ * import { FABMenuItem } from "@adgytec/web-ui-components";
+ * import { FileText } from "lucide-react";
+ *
+ * <FABMenuItem id="document" icon={FileText}>
+ *     Document
+ * </FABMenuItem>
+ * ```
+ */
 export const FABMenuItem: React.FC<FABMenuItemProps> = ({
     icon,
     className,

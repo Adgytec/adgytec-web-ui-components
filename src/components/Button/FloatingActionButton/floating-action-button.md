@@ -11,10 +11,11 @@ Floating Action Buttons (FABs) are implementations of [Material 3 Floating Actio
 
 ## Components
 
-The FAB system includes two components:
+The FAB system includes:
 
 - `FloatingActionButton`: Standard icon-only FAB with rounded/squircle container.
 - `ExtendedFloatingActionButton`: Extended FAB with an icon and text label (or text only), providing additional context for the action.
+- `FABMenu`: An expandable Speed Dial menu system. See [FAB Menu documentation](src/components/Button/FloatingActionButton/FABMenu/fab-menu.md).
 
 ## Props
 

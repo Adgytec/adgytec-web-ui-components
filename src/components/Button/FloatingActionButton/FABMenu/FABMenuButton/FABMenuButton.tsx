@@ -10,6 +10,28 @@ import { useFABMenuVariant } from "../context";
 import styles from "./fabMenuButton.module.css";
 import type { FABMenuButtonProps } from "./types";
 
+/**
+ * Trigger button component for the {@link FABMenu} (Speed Dial).
+ *
+ * Implements the Material 3 Speed Dial trigger behavior:
+ * - Rendered inside a positioned container that anchors the menu layout.
+ * - Displays tonal container colors in its idle state and transitions to solid colors when pressed/expanded.
+ * - Automatically swaps the provided action icon with an `X` (close) icon when pressed.
+ * - Supports Material ripple splashes, responsive sizes (`small`, `medium`, `large`), and tooltips.
+ *
+ * @example
+ * ```tsx
+ * import { FABMenuButton } from "@adgytec/web-ui-components";
+ * import { Plus } from "lucide-react";
+ *
+ * <FABMenuButton
+ *     icon={Plus}
+ *     size="medium"
+ *     tooltip="Quick Actions"
+ *     aria-label="Quick Actions"
+ * />
+ * ```
+ */
 export const FABMenuButton: React.FC<FABMenuButtonProps> = ({
     icon,
     size = "medium",
