@@ -1010,8 +1010,5 @@
 }
 
 .nav-fab {
-    display: flex;
-    align-items: center;
-
     padding-block-end: 1rem;
 }

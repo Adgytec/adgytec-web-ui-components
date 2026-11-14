@@ -69,7 +69,7 @@ export const ExtendedFloatingActionButton: React.FC<
             }
             data-color={color}
             data-extended
-            data-icon={icon || undefined}
+            data-icon={icon ? true : undefined}
             {...props}
         >
             {(renderProps) => (

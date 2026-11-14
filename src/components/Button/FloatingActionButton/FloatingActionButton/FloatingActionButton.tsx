@@ -60,6 +60,8 @@ export const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
                 )
             }
             {...props}
+            aria-label={props["aria-label"] || tooltip}
+            data-icon
         >
             {splashInfo && <Splash {...splashInfo} />}
             <Icon icon={icon} size={FABIconSizeMapping[size]} />
