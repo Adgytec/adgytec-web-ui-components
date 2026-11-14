@@ -1,6 +1,10 @@
 @layer adgytec.comps {
     .small {
         /* height 56 */
+        --md-sys-shape-corner-radius-full: var(
+            --md-sys-shape-corner-radius-extra-large
+        );
+
         --_md-fab-shape: var(--md-sys-shape-corner-radius-large);
         --_md-fab-pressed-shape: var(--md-sys-shape-corner-radius-small);
 
@@ -8,10 +12,16 @@
 
         --_md-extended-fab-icon-label-spacing: var(--md-sys-layout-space-8);
         --_md-extended-fab-padding-inline: var(--md-sys-layout-space-16);
+
+        &[data-fab-menu-button] {
+            --_md-fab-pressed-shape: var(--md-sys-shape-corner-radius-full);
+        }
     }
 
     .medium {
         /* height 80 */
+        --md-sys-shape-corner-radius-full: calc(40 * var(--dp, 1px));
+
         --_md-fab-shape: var(--md-sys-shape-corner-radius-large-increased);
         --_md-fab-pressed-shape: var(--md-sys-shape-corner-radius-medium);
 
@@ -19,10 +29,18 @@
 
         --_md-extended-fab-icon-label-spacing: var(--md-sys-layout-space-12);
         --_md-extended-fab-padding-inline: calc(26 * var(--dp, 1px));
+
+        &[data-fab-menu-button] {
+            --_md-fab-pressed-shape: var(--md-sys-shape-corner-radius-full);
+        }
     }
 
     .large {
         /* height 96 */
+        --md-sys-shape-corner-radius-full: var(
+            --md-sys-shape-corner-radius-extra-extra-large
+        );
+
         --_md-fab-shape: var(--md-sys-shape-corner-radius-extra-large);
         --_md-fab-pressed-shape: var(--md-sys-shape-corner-radius-large);
 
@@ -33,6 +51,10 @@
 
         &[data-icon] {
             --_md-fab-padding: calc(30 * var(--dp, 1px));
+        }
+
+        &[data-fab-menu-button] {
+            --_md-fab-pressed-shape: var(--md-sys-shape-corner-radius-full);
         }
     }
 }
