@@ -26,12 +26,13 @@ export const FABMenuItem: React.FC<FABMenuItemProps> = ({
                     fabSizeConfig("small"),
                     ExtendedFABLabelTextMapping["small"],
                     typeof className === "function"
-                        ? clsx(renderProps)
+                        ? className(renderProps)
                         : className
                 )
             }
             {...props}
             data-fab-menu-item
+            data-extended
         >
             {(renderProps) => (
                 <>

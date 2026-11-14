@@ -22,6 +22,7 @@ import { DecoratorsPreview } from "./preview/Decorators";
 import { DialogPreview } from "./preview/Dialog";
 import { DisclosurePreview } from "./preview/Disclosure";
 import { FABPreview } from "./preview/FAB";
+import { FABMenuPreview } from "./preview/FABMenu";
 import { GradientsPreview } from "./preview/Gradients";
 import { IconPreview } from "./preview/Icon";
 import { IconButtonPreview } from "./preview/IconButton";
@@ -83,6 +84,7 @@ const App = () => {
         },
 
         { id: "FAB", label: "FAB", Component: FABPreview },
+        { id: "fab-menu", label: "FAB Menu", Component: FABMenuPreview },
         { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },
         {
             id: "shape",

@@ -6,6 +6,10 @@
 * configurable tokens end */
 
 @layer adgytec.overrides {
+    .fab[data-fab-menu-item] {
+        box-shadow: none;
+    }
+
     .primary[data-fab-menu-button] {
         --_md-fab-background-default: var(--md-sys-color-primary-container);
         --_md-fab-color-default: var(--md-sys-color-on-primary-container);
@@ -90,6 +94,8 @@
         color: var(--_md-fab-color);
 
         transition:
+            padding var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
             border-radius var(--md-sys-motion-expressive-fast-spatial)
             var(--md-sys-motion-expressive-fast-spatial-duration),
             background-color var(--md-sys-motion-expressive-fast-effects)
