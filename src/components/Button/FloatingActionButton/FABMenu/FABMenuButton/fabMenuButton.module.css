@@ -1,0 +1,17 @@
+@layer adgytec.comps {
+    .container {
+        display: flex;
+        justify-content: var(--_md-fab-menu-button-horizontal, end);
+        align-items: var(--_md-fab-menu-button-vertical, start);
+    }
+
+    .medium {
+        inline-size: var(--md-sys-layout-space-80);
+        block-size: var(--md-sys-layout-space-80);
+    }
+
+    .large {
+        inline-size: var(--md-sys-layout-space-96);
+        block-size: var(--md-sys-layout-space-96);
+    }
+}

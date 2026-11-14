@@ -1,7 +1,17 @@
 import { Popover } from "@/components/Popover";
 
 export const FABMenuPopover: React.FC<
-    React.ComponentPropsWithRef<typeof Popover>
-> = ({ placement = "top end", ...props }) => {
-    return <Popover placement={placement} {...props} data-scale-xy />;
+    Omit<
+        React.ComponentPropsWithRef<typeof Popover>,
+        "placement" | "shouldFlip"
+    >
+> = ({ ...props }) => {
+    return (
+        <Popover
+            shouldFlip={false}
+            placement="top end"
+            {...props}
+            data-scale-xy
+        />
+    );
 };

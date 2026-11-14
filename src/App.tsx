@@ -83,8 +83,8 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
-        { id: "FAB", label: "FAB", Component: FABPreview },
         { id: "fab-menu", label: "FAB Menu", Component: FABMenuPreview },
+        { id: "FAB", label: "FAB", Component: FABPreview },
         { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },
         {
             id: "shape",
