@@ -32,6 +32,7 @@ import { ListPreview } from "./preview/List";
 import { LoadingIndicatorPreview } from "./preview/LoadingIndicator";
 import { MenuPreview } from "./preview/Menu";
 import { NavPreview } from "./preview/Navigation";
+import { ProgressIndicatorPreview } from "./preview/ProgressIndicator";
 import { RadioPreview } from "./preview/Radio";
 import { RangeCalendarPreview } from "./preview/RangeCalendar";
 import { RangeSliderPreview } from "./preview/RangeSlider";
@@ -83,6 +84,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "progress-indicator",
+            label: "Progress Indicator",
+            Component: ProgressIndicatorPreview,
+        },
         { id: "fab-menu", label: "FAB Menu", Component: FABMenuPreview },
         { id: "FAB", label: "FAB", Component: FABPreview },
         { id: "disclosure", label: "Disclosure", Component: DisclosurePreview },

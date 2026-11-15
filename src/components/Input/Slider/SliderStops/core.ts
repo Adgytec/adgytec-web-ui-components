@@ -162,7 +162,7 @@ export const calcStops: CalculateStops = ({
     /**
      * Reduced stop rendering mode.
      */
-    if (step === 1 || !showInBetweenSteps) {
+    if (!showInBetweenSteps) {
         return [createStop(minValue), createStop(lastStopValue)];
     }
 
