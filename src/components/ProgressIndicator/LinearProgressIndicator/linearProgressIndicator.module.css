@@ -67,22 +67,7 @@
     }
 
     .track[data-indeterminate] {
-        .active,
-        .in-active {
-            flex: 0;
-            min-inline-size: 0;
-        }
-
-        .in-active:first-child {
-            flex-grow: 0.5;
-        }
-
-        .active {
-            flex-grow: 0.25;
-        }
-
-        .in-active:last-child {
-            flex-grow: 0.25;
-        }
+        display: block;
+        block-size: var(--_md-linear-progress-indicator-block-size);
     }
 }

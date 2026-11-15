@@ -18,6 +18,7 @@ const WAVELENGTH = 15;
 const GAP = 4;
 const FADE_IN = 10; // wave grows over the first 10%
 const FADE_OUT = 5; // wave shrinks over the last 5%
+const REFERENCE_SIZE = 48; // the size where 10 * WAVELENGTH feels right
 
 export const CircularProgressIndicatorSineWaveProps = (
     percentage: number,
@@ -60,7 +61,7 @@ export const CircularProgressIndicatorSineWaveProps = (
             ...shared,
             amplitude,
             wavelength: WAVELENGTH,
-            speed: 10 * WAVELENGTH,
+            speed: 10 * WAVELENGTH * (size / REFERENCE_SIZE),
             strokeColor: "var(--_md-circular-progress-indicator-active-color)",
             // for indeterminate, the caller supplies start/end
             ...(isIndeterminate

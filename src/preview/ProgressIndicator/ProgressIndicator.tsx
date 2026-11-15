@@ -86,7 +86,7 @@ export const ProgressIndicatorPreview = () => {
 
             {/* ---------- circular sizes ---------- */}
             <div className="items" data-progress-indicator>
-                <CircularProgressIndicator value={value} size={32} />
+                <CircularProgressIndicator value={value} size={24} />
                 <CircularProgressIndicator value={value} size={48} />
                 <CircularProgressIndicator value={value} size={64} />
                 <CircularProgressIndicator value={value} size={96} />
