@@ -114,7 +114,7 @@ const radius = ringRadius(48, 4, 1.6); // 16.4px
 
 ### `usePhase(speed)`
 
-React hook that drives wave phase translation using `requestAnimationFrame`. If `speed === 0`, it returns `0` without initializing a RAF loop.
+React hook that drives wave phase translation using `requestAnimationFrame`. Automatically respects `prefers-reduced-motion: reduce` (or `speed === 0`) by returning `0` and skipping the animation loop.
 
 ```tsx
 import { usePhase } from "@adgytec/web-ui-components";

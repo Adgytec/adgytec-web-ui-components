@@ -1,3 +1,10 @@
+/* configurable tokens
+*
+* --md-circular-progress-indicator-active-color
+* --md-circular-progress-indicator-track-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .indicator {
         --_md-circular-progress-indicator-active-color: var(

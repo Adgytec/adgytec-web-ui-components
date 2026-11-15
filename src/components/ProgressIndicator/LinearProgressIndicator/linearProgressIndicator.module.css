@@ -1,3 +1,10 @@
+/* configurable tokens
+*
+* --md-linear-progress-indicator-active-color
+* --md-linear-progress-indicator-track-color
+*
+* configurable tokens end */
+
 @property --md-li-b1-tail {
     syntax: "<number>";
     inherits: true;
@@ -103,6 +110,14 @@
         & > * {
             position: absolute;
             inset-block: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+            --md-li-b1-head: 0.75;
+            --md-li-b1-tail: 0;
+            --md-li-b2-head: 0;
+            --md-li-b2-tail: 0;
         }
     }
 

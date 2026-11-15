@@ -67,9 +67,9 @@ export const Sine: React.FC<SineWaveProps> = ({
         >
             {width > 0 && (
                 <svg
+                    aria-hidden={true}
                     width={width}
                     height={height}
-                    aria-label="sine-wave"
                     style={{ display: "block" }}
                 >
                     <path

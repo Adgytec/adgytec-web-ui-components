@@ -33,6 +33,7 @@ export interface CircularProgressIndicatorProps
 
     /**
      * Diameter / bounding size of the circular progress indicator in pixels.
+     * Clamped between `MinProgressIndicatorSize` (24) and `MaxProgressIndicatorSize` (240).
      *
      * @default 48
      */
@@ -80,11 +81,16 @@ export const CircularProgressIndicatorSineWaveProps = (
     const amplitude = wavy ? RESERVED_AMPLITUDE * factor : 0;
 
     // gap between the round caps, converted to turns
-    const R = ringRadius(size, strokeWidth, RESERVED_AMPLITUDE);
-    const gapTurns = (GAP + strokeWidth) / R / (2 * Math.PI);
+    const R = Math.max(1, ringRadius(size, strokeWidth, RESERVED_AMPLITUDE));
+    const rawGapTurns = (GAP + strokeWidth) / R / (2 * Math.PI);
+    const gapTurns = Math.min(rawGapTurns, 0.25);
 
     const p = percentage / 100;
     const full = p >= 0.999;
+
+    // Clamp gap in determinate mode so it does not exceed half the arc length
+    const activeGap = full ? 0 : Math.min(gapTurns, p * 0.5);
+    const trackGap = full ? 0 : Math.min(gapTurns, (1 - p) * 0.5);
 
     const shared = {
         size,
@@ -104,8 +110,8 @@ export const CircularProgressIndicatorSineWaveProps = (
             ...(isIndeterminate
                 ? {}
                 : {
-                      start: full ? 0 : gapTurns / 2,
-                      end: full ? 1 : p - gapTurns / 2,
+                      start: full ? 0 : activeGap / 2,
+                      end: full ? 1 : p - activeGap / 2,
                   }),
         },
         track: {
@@ -113,8 +119,8 @@ export const CircularProgressIndicatorSineWaveProps = (
             amplitude: 0,
             speed: 0, // flat, so no animation loop
             strokeColor: "var(--_md-circular-progress-indicator-track-color)",
-            start: p + gapTurns / 2,
-            end: 1 - gapTurns / 2,
+            start: p + trackGap / 2,
+            end: 1 - trackGap / 2,
         },
     };
 };

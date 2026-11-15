@@ -37,7 +37,7 @@ The `CircularProgressIndicator` component extends [React Aria Components Progres
 | `isIndeterminate` | `boolean`                                                                  | `false`     | Whether the progress indicator represents an indeterminate loading state.                         |
 | `thickness`       | `"default" \| "thick"`                                                     | `"default"` | Stroke thickness variant: `"default"` (4px) or `"thick"` (8px).                                   |
 | `wavy`            | `boolean`                                                                  | `true`      | Whether the active progress track renders an animated sine wave. When `false`, renders flat ring. |
-| `size`            | `number`                                                                   | `48`        | Diameter / bounding box of the circular indicator in pixels.                                      |
+| `size`            | `number`                                                                   | `48`        | Diameter / bounding box of the circular indicator in pixels (clamped between 24 and 240).         |
 | `children`        | `React.ReactNode \| ((values: ProgressBarRenderProps) => React.ReactNode)` | —           | Optional content (such as a percentage label) rendered in the center of the ring.                 |
 | `className`       | `string \| ((values: ProgressBarRenderProps) => string)`                   | —           | Additional CSS class names.                                                                       |
 | `style`           | `React.CSSProperties`                                                      | —           | Custom inline styles.                                                                             |
@@ -152,6 +152,14 @@ You can customize the indicator and track colors using CSS variables:
     <CircularProgressIndicator isIndeterminate />
 </div>;
 ```
+
+---
+
+## Reduced Motion
+
+Both `CircularProgressIndicator` and `LinearProgressIndicator` respect the `prefers-reduced-motion: reduce` preference (detected via `useMediaQuery` from `usehooks-ts`):
+- **Wave Oscillation**: Wave phase animation is frozen (`phase = 0`) and the `requestAnimationFrame` loop is skipped.
+- **Indeterminate Animation**: The continuous rotation, expansion, and sweeping animations are disabled, displaying a calm, static indicator arc or bar.
 
 ---
 

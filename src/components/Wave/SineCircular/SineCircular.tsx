@@ -73,7 +73,7 @@ export const SineCircular: React.FC<SineWaveCircularProps> = ({
             width={size}
             height={size}
             viewBox={`0 0 ${size} ${size}`}
-            aria-label="sine-wave-circular"
+            aria-hidden={true}
             style={{ display: "block" }}
         >
             {d && (

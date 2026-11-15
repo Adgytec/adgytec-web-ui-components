@@ -1,12 +1,18 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { ProgressBar } from "react-aria-components";
-import { getUsableIndicatorSize } from "@/components/LoadingIndicator";
+import { useMediaQuery } from "usehooks-ts";
 import { SineCircular } from "@/components/Wave";
-import type { ProgressIndicatorThickness } from "../core/thickness";
+import {
+    DefaultProgressIndicatorSize,
+    getUsableProgressIndicatorSize,
+    type ProgressIndicatorThickness,
+} from "../core";
 import styles from "./circularProgressIndicator.module.css";
-import type { CircularProgressIndicatorProps } from "./types";
-import { CircularProgressIndicatorSineWaveProps } from "./types"; // wherever it lives
+import {
+    type CircularProgressIndicatorProps,
+    CircularProgressIndicatorSineWaveProps,
+} from "./types";
 
 const CYCLE = 1333; // ms per grow + shrink
 const MIN_LEN = 0.12; // shortest arc, in turns
@@ -18,10 +24,13 @@ const ease = (u: number) =>
 
 // tail and head of the indeterminate arc, in turns
 function useIndeterminateArc(enabled: boolean) {
+    const prefersReducedMotion = useMediaQuery(
+        "(prefers-reduced-motion: reduce)"
+    );
     const [arc, setArc] = useState({ tail: 0, head: MIN_LEN });
 
     useEffect(() => {
-        if (!enabled) return;
+        if (!enabled || prefersReducedMotion) return;
 
         let raf = 0;
         const start = performance.now();
@@ -50,9 +59,9 @@ function useIndeterminateArc(enabled: boolean) {
 
         raf = requestAnimationFrame(tick);
         return () => cancelAnimationFrame(raf);
-    }, [enabled]);
+    }, [enabled, prefersReducedMotion]);
 
-    return arc;
+    return prefersReducedMotion ? { tail: 0, head: MAX_LEN } : arc;
 }
 
 interface RingProps {
@@ -79,19 +88,26 @@ const Ring: React.FC<RingProps> = ({
     );
     const arc = useIndeterminateArc(isIndeterminate);
 
+    // Clamp gap so it never exceeds half the arc length of either active or track segment
+    const activeArcLen = arc.head - arc.tail;
+    const activeGap = Math.min(gapTurns, activeArcLen * 0.5);
+
+    const trackArcLen = arc.tail + 1 - arc.head;
+    const trackGap = Math.min(gapTurns, trackArcLen * 0.5);
+
     const activeProps = isIndeterminate
         ? {
               ...active,
-              start: arc.tail + gapTurns / 2,
-              end: arc.head - gapTurns / 2,
+              start: arc.tail + activeGap / 2,
+              end: arc.head - activeGap / 2,
           }
         : active;
 
     const trackProps = isIndeterminate
         ? {
               ...track,
-              start: arc.head + gapTurns / 2,
-              end: arc.tail + 1 - gapTurns / 2,
+              start: arc.head + trackGap / 2,
+              end: arc.tail + 1 - trackGap / 2,
           }
         : track;
 
@@ -144,12 +160,12 @@ export const CircularProgressIndicator: React.FC<
 > = ({
     thickness = "default",
     wavy = true,
-    size = 48,
+    size = DefaultProgressIndicatorSize,
     children,
     className,
     ...props
 }) => {
-    const usableSize = getUsableIndicatorSize(size);
+    const usableSize = getUsableProgressIndicatorSize(size);
 
     return (
         <ProgressBar
