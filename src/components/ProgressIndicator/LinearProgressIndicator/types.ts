@@ -6,6 +6,7 @@ export type LinearProgressIndicatorThickness = "default" | "thick";
 export interface LinearProgressIndicatorProps
     extends React.ComponentPropsWithRef<typeof ProgressBar> {
     thickness?: LinearProgressIndicatorThickness;
+    wavy?: boolean;
 }
 
 export const LinearProgressIndicatorThicknessToStrokeWidthMapping: Record<
@@ -26,12 +27,13 @@ export const LinearProgressIndicatorSineWaveProps = (
     const fadeIn = 5; // wave grows over the first 5%
     const fadeOut = 5; // wave shrinks over the last 5%
 
-    const factor = Math.max(
-        0,
-        Math.min(1, percentage / fadeIn, (100 - percentage) / fadeOut)
-    );
-
-    const amplitude = baseAmplitude * factor;
+    const amplitude = isInderminate
+        ? baseAmplitude
+        : baseAmplitude *
+          Math.max(
+              0,
+              Math.min(1, percentage / fadeIn, (100 - percentage) / fadeOut)
+          );
 
     const wavelength = isInderminate ? 20 : 40;
 

@@ -9,7 +9,7 @@ import {
 
 export const LinearProgressIndicator: React.FC<
     LinearProgressIndicatorProps
-> = ({ thickness = "default", children, className, ...props }) => {
+> = ({ thickness = "default", wavy = true, children, className, ...props }) => {
     return (
         <ProgressBar
             className={(renderProps) =>
@@ -42,14 +42,17 @@ export const LinearProgressIndicator: React.FC<
                                         inlineSize: `${percentage}%`,
                                     }}
                                     className={clsx(styles["active"])}
+                                    data-wavy={wavy}
                                 >
-                                    <Sine
-                                        {...LinearProgressIndicatorSineWaveProps(
-                                            percentage,
-                                            isIndeterminate,
-                                            thickness
-                                        )}
-                                    />
+                                    {wavy && (
+                                        <Sine
+                                            {...LinearProgressIndicatorSineWaveProps(
+                                                percentage,
+                                                isIndeterminate,
+                                                thickness
+                                            )}
+                                        />
+                                    )}
                                 </div>
                             )}
 

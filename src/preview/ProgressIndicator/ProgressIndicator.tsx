@@ -15,9 +15,25 @@ export const ProgressIndicatorPreview = () => {
                 <Slider value={value} onChange={setValue} />
             </div>
 
-            <LinearProgressIndicator value={value} />
+            <div className="items" data-progress-indicator>
+                <LinearProgressIndicator value={value} />
 
-            <LinearProgressIndicator value={value} thickness="thick" />
+                <LinearProgressIndicator wavy={false} value={value} />
+            </div>
+
+            <div className="items" data-progress-indicator>
+                <LinearProgressIndicator value={value} thickness="thick" />
+
+                <LinearProgressIndicator
+                    wavy={false}
+                    value={value}
+                    thickness="thick"
+                />
+            </div>
+
+            <LinearProgressIndicator isIndeterminate />
+
+            <LinearProgressIndicator isIndeterminate thickness="thick" />
         </div>
     );
 };

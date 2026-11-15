@@ -1012,3 +1012,7 @@
 .nav-fab {
     padding-block-end: 1rem;
 }
+
+.items[data-progress-indicator] {
+    flex-wrap: nowrap;
+}

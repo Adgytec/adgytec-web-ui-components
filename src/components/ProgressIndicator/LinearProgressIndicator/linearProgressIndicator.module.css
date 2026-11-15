@@ -52,6 +52,11 @@
 
     .active {
         block-size: var(--_md-linear-progress-indicator-block-size);
+
+        &[data-wavy="false"] {
+            border-radius: var(--md-sys-shape-corner-radius-full);
+            background-color: var(--_md-linear-progress-indicator-active-color);
+        }
     }
 
     .in-active {
