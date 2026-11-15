@@ -114,6 +114,31 @@ const Ring: React.FC<RingProps> = ({
     );
 };
 
+/**
+ * Circular progress indicator inspired by Material 3 design specifications with support for animated wavy paths.
+ *
+ * Displays either a determinate progress arc (0–100%) or an indeterminate animated spinning and expanding/contracting arc.
+ * The active track can optionally display an animated sine wave (`wavy={true}`).
+ *
+ * @example
+ * ```tsx
+ * import { CircularProgressIndicator } from "@adgytec/web-ui-components";
+ *
+ * // Determinate progress (e.g. 60%)
+ * <CircularProgressIndicator value={60} aria-label="Loading files" />
+ *
+ * // Flat determinate progress (no waves)
+ * <CircularProgressIndicator value={60} wavy={false} />
+ *
+ * // Indeterminate loading spinner
+ * <CircularProgressIndicator isIndeterminate aria-label="Loading..." />
+ *
+ * // Thick variant with custom size and label
+ * <CircularProgressIndicator value={75} thickness="thick" size={64}>
+ *     {({ percentage }) => <span>{percentage}%</span>}
+ * </CircularProgressIndicator>
+ * ```
+ */
 export const CircularProgressIndicator: React.FC<
     CircularProgressIndicatorProps
 > = ({

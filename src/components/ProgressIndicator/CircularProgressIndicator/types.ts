@@ -6,10 +6,36 @@ import {
     ProgressIndicatorThicknessToStrokeWidth,
 } from "../core/thickness";
 
+/**
+ * Props for the {@link CircularProgressIndicator} component.
+ *
+ * Extends React Aria Components `ProgressBar` props with thickness, wavy, and size options.
+ */
 export interface CircularProgressIndicatorProps
     extends React.ComponentPropsWithRef<typeof ProgressBar> {
+    /**
+     * Stroke thickness variant for the indicator ring.
+     *
+     * - `"default"`: 4px stroke thickness.
+     * - `"thick"`: 8px stroke thickness.
+     *
+     * @default "default"
+     */
     thickness?: ProgressIndicatorThickness;
+
+    /**
+     * Whether the active progress track renders an animated sine wave.
+     * When set to `false`, a smooth circular ring without waves is rendered.
+     *
+     * @default true
+     */
     wavy?: boolean;
+
+    /**
+     * Diameter / bounding size of the circular progress indicator in pixels.
+     *
+     * @default 48
+     */
     size?: number;
 }
 
@@ -20,6 +46,17 @@ const FADE_IN = 10; // wave grows over the first 10%
 const FADE_OUT = 5; // wave shrinks over the last 5%
 const REFERENCE_SIZE = 48; // the size where 10 * WAVELENGTH feels right
 
+/**
+ * Computes sine wave configuration props for both the active and track layers
+ * of a {@link CircularProgressIndicator}, including spacing gap turns between endpoints.
+ *
+ * @param percentage - Progress percentage value between 0 and 100.
+ * @param isIndeterminate - Whether the indicator is in an indeterminate state.
+ * @param thickness - Selected thickness variant (`"default"` or `"thick"`).
+ * @param size - Diameter of the circular indicator in pixels.
+ * @param wavy - Whether wavy mode is active.
+ * @returns Configured wave props for active and track layers and the calculated gap in turns.
+ */
 export const CircularProgressIndicatorSineWaveProps = (
     percentage: number,
     isIndeterminate: boolean,

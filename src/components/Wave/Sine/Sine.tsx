@@ -3,6 +3,27 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { usePhase } from "../core";
 import type { SineWaveProps } from "./types";
 
+/**
+ * Renders an animated horizontal sine wave SVG.
+ *
+ * Automatically measures its container width using a `ResizeObserver` and dynamically generates
+ * an SVG path with smooth sine wave oscillations.
+ *
+ * @example
+ * ```tsx
+ * import { Sine } from "@adgytec/web-ui-components";
+ *
+ * // Standard animated sine wave
+ * <div style={{ width: 200, height: 20 }}>
+ *     <Sine amplitude={3} wavelength={40} strokeColor="var(--md-sys-color-primary)" />
+ * </div>
+ *
+ * // Static sine wave without animation
+ * <div style={{ width: 200, height: 20 }}>
+ *     <Sine speed={0} />
+ * </div>
+ * ```
+ */
 export const Sine: React.FC<SineWaveProps> = ({
     amplitude = 3,
     wavelength = 40,
