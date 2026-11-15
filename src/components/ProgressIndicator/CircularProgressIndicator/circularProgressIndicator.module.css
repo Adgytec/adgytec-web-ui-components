@@ -1,10 +1,12 @@
 @layer adgytec.comps {
     .indicator {
         --_md-circular-progress-indicator-active-color: var(
-            --md-sys-color-primary
+            --md-circular-progress-indicator-active-color,
+            var(--md-sys-color-primary)
         );
         --_md-circular-progress-indicator-track-color: var(
-            --md-sys-color-secondary-container
+            --md-circular-progress-indicator-track-color,
+            var(--md-sys-color-secondary-container)
         );
 
         display: inline-grid;

@@ -38,17 +38,7 @@ export const ProgressIndicatorPreview = () => {
             <div className="items" data-progress-indicator>
                 <LinearProgressIndicator isIndeterminate />
 
-                <LinearProgressIndicator isIndeterminate wavy={false} />
-            </div>
-
-            <div className="items" data-progress-indicator>
                 <LinearProgressIndicator isIndeterminate thickness="thick" />
-
-                <LinearProgressIndicator
-                    isIndeterminate
-                    thickness="thick"
-                    wavy={false}
-                />
             </div>
 
             {/* ---------- circular ---------- */}

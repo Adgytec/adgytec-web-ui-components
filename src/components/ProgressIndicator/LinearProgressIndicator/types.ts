@@ -13,7 +13,6 @@ export interface LinearProgressIndicatorProps
 
 export const LinearProgressIndicatorSineWaveProps = (
     percentage: number,
-    isInderminate: boolean,
     thickness: ProgressIndicatorThickness
 ): SineWaveProps => {
     const baseAmplitude = 3;
@@ -21,16 +20,14 @@ export const LinearProgressIndicatorSineWaveProps = (
     const fadeIn = 5; // wave grows over the first 5%
     const fadeOut = 5; // wave shrinks over the last 5%
 
-    const amplitude = isInderminate
-        ? baseAmplitude
-        : baseAmplitude *
-          Math.max(
-              0,
-              Math.min(1, percentage / fadeIn, (100 - percentage) / fadeOut)
-          );
+    const amplitude =
+        baseAmplitude *
+        Math.max(
+            0,
+            Math.min(1, percentage / fadeIn, (100 - percentage) / fadeOut)
+        );
 
-    const wavelength = isInderminate ? 20 : 40;
-
+    const wavelength = 40;
     return {
         amplitude,
         wavelength,

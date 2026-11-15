@@ -1,3 +1,24 @@
+@property --md-li-b1-tail {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+}
+@property --md-li-b1-head {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+}
+@property --md-li-b2-tail {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+}
+@property --md-li-b2-head {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+}
+
 @layer adgytec.comps {
     .indicator {
         --_md-linear-progress-indicator-active-color: var(
@@ -67,7 +88,126 @@
     }
 
     .track[data-indeterminate] {
+        --_half-gap: calc(var(--md-sys-layout-space-4) / 2);
+        --_duration: 2600ms; /* raise for slower, lower for faster */
+
         display: block;
         block-size: var(--_md-linear-progress-indicator-block-size);
+
+        animation:
+            li-b1-head var(--_duration) infinite,
+            li-b1-tail var(--_duration) infinite,
+            li-b2-head var(--_duration) infinite,
+            li-b2-tail var(--_duration) infinite;
+
+        & > * {
+            position: absolute;
+            inset-block: 0;
+        }
+    }
+
+    /* track 1: left edge → bar 2's tail */
+    [data-segment="track-1"] {
+        inset-inline-start: 0;
+        inset-inline-end: calc(
+            (1 - var(--md-li-b2-tail)) *
+            100% +
+            min(var(--_half-gap), (1 - var(--md-li-b2-tail)) * 100%)
+        );
+    }
+
+    /* bar 2 */
+    [data-segment="bar-2"] {
+        inset-inline-start: calc(
+            var(--md-li-b2-tail) *
+            100% +
+            min(var(--_half-gap), var(--md-li-b2-tail) * 100%)
+        );
+        inset-inline-end: calc(
+            (1 - var(--md-li-b2-head)) *
+            100% +
+            min(var(--_half-gap), (1 - var(--md-li-b2-head)) * 100%)
+        );
+    }
+
+    /* track 2: bar 2's head → bar 1's tail */
+    [data-segment="track-2"] {
+        inset-inline-start: calc(
+            var(--md-li-b2-head) *
+            100% +
+            min(var(--_half-gap), var(--md-li-b2-head) * 100%)
+        );
+        inset-inline-end: calc(
+            (1 - var(--md-li-b1-tail)) *
+            100% +
+            min(var(--_half-gap), (1 - var(--md-li-b1-tail)) * 100%)
+        );
+    }
+
+    /* bar 1 */
+    [data-segment="bar-1"] {
+        inset-inline-start: calc(
+            var(--md-li-b1-tail) *
+            100% +
+            min(var(--_half-gap), var(--md-li-b1-tail) * 100%)
+        );
+        inset-inline-end: calc(
+            (1 - var(--md-li-b1-head)) *
+            100% +
+            min(var(--_half-gap), (1 - var(--md-li-b1-head)) * 100%)
+        );
+    }
+
+    /* track 3: bar 1's head → right edge */
+    [data-segment="track-3"] {
+        inset-inline-start: calc(
+            var(--md-li-b1-head) *
+            100% +
+            min(var(--_half-gap), var(--md-li-b1-head) * 100%)
+        );
+        inset-inline-end: 0;
+    }
+
+    @keyframes li-b1-head {
+        0% {
+            --md-li-b1-head: 0;
+            animation-timing-function: cubic-bezier(0.2, 0, 0.8, 1);
+        }
+        42.86%,
+        100% {
+            --md-li-b1-head: 1;
+        }
+    }
+    @keyframes li-b1-tail {
+        0%,
+        19.03% {
+            --md-li-b1-tail: 0;
+            animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+        }
+        61.9%,
+        100% {
+            --md-li-b1-tail: 1;
+        }
+    }
+    @keyframes li-b2-head {
+        0%,
+        57.14% {
+            --md-li-b2-head: 0;
+            animation-timing-function: cubic-bezier(0, 0, 0.65, 1);
+        }
+        89.54%,
+        100% {
+            --md-li-b2-head: 1;
+        }
+    }
+    @keyframes li-b2-tail {
+        0%,
+        60% {
+            --md-li-b2-tail: 0;
+            animation-timing-function: cubic-bezier(0.3, 0, 0.5, 1);
+        }
+        100% {
+            --md-li-b2-tail: 1;
+        }
     }
 }
