@@ -35,29 +35,63 @@ export const LinearProgressIndicator: React.FC<
                         <div
                             className={clsx(styles["track"])}
                             data-thickness={thickness}
+                            data-indeterminate={isIndeterminate || undefined}
                         >
-                            {percentage > 0 && (
-                                <div
-                                    style={{
-                                        inlineSize: `${percentage}%`,
-                                    }}
-                                    className={clsx(styles["active"])}
-                                    data-wavy={wavy}
-                                >
-                                    {wavy && (
-                                        <Sine
-                                            {...LinearProgressIndicatorSineWaveProps(
-                                                percentage,
-                                                isIndeterminate,
-                                                thickness
+                            {isIndeterminate ? (
+                                <>
+                                    <div
+                                        className={clsx(styles["in-active"])}
+                                    />
+
+                                    <div
+                                        className={clsx(styles["active"])}
+                                        data-wavy={wavy}
+                                    >
+                                        {wavy && (
+                                            <Sine
+                                                {...LinearProgressIndicatorSineWaveProps(
+                                                    percentage,
+                                                    isIndeterminate,
+                                                    thickness
+                                                )}
+                                            />
+                                        )}
+                                    </div>
+
+                                    <div
+                                        className={clsx(styles["in-active"])}
+                                    />
+                                </>
+                            ) : (
+                                <>
+                                    {percentage > 0 && (
+                                        <div
+                                            style={{
+                                                inlineSize: `${percentage}%`,
+                                            }}
+                                            className={clsx(styles["active"])}
+                                            data-wavy={wavy}
+                                        >
+                                            {wavy && (
+                                                <Sine
+                                                    {...LinearProgressIndicatorSineWaveProps(
+                                                        percentage,
+                                                        isIndeterminate,
+                                                        thickness
+                                                    )}
+                                                />
+                                            )}
+                                        </div>
+                                    )}
+
+                                    {percentage < 100 && (
+                                        <div
+                                            className={clsx(
+                                                styles["in-active"]
                                             )}
                                         />
                                     )}
-                                </div>
-                            )}
-
-                            {percentage < 100 && (
-                                <div className={clsx(styles["in-active"])} />
+                                </>
                             )}
                         </div>
                     </>

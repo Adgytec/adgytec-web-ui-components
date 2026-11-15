@@ -34,7 +34,7 @@
         }
     }
 
-    .track::before {
+    .track:not([data-indeterminate])::before {
         content: "";
         position: absolute;
 
@@ -64,5 +64,25 @@
         border-radius: var(--md-sys-shape-corner-radius-full);
         background-color: var(--_md-linear-progress-indicator-track-color);
         block-size: var(--_md-linear-progress-indicator-block-size);
+    }
+
+    .track[data-indeterminate] {
+        .active,
+        .in-active {
+            flex: 0;
+            min-inline-size: 0;
+        }
+
+        .in-active:first-child {
+            flex-grow: 0.5;
+        }
+
+        .active {
+            flex-grow: 0.25;
+        }
+
+        .in-active:last-child {
+            flex-grow: 0.25;
+        }
     }
 }
