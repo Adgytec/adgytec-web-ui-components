@@ -1,3 +1,5 @@
+// visual inspiration from dux shell media player seeker
+
 import clsx from "clsx";
 import { Slider, SliderThumb, SliderTrack } from "react-aria-components";
 import { Sine } from "../Wave";
@@ -5,7 +7,6 @@ import styles from "./progressSlider.module.css";
 import type { ProgressSliderProps } from "./types";
 
 export const ProgressSlider = <T extends number>({
-    buffered,
     active = true,
     className,
     isDisabled,

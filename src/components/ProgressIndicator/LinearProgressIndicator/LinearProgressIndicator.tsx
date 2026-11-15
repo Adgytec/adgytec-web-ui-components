@@ -68,7 +68,7 @@ export const LinearProgressIndicator: React.FC<
                                 // order is always: track, bar 2, track, bar 1, track
                                 <>
                                     <div
-                                        className={styles["in-active"]}
+                                        className={styles["inactive"]}
                                         data-segment="track-1"
                                     />
                                     <div
@@ -77,7 +77,7 @@ export const LinearProgressIndicator: React.FC<
                                         data-segment="bar-2"
                                     />
                                     <div
-                                        className={styles["in-active"]}
+                                        className={styles["inactive"]}
                                         data-segment="track-2"
                                     />
                                     <div
@@ -86,7 +86,7 @@ export const LinearProgressIndicator: React.FC<
                                         data-segment="bar-1"
                                     />
                                     <div
-                                        className={styles["in-active"]}
+                                        className={styles["inactive"]}
                                         data-segment="track-3"
                                     />
                                 </>
