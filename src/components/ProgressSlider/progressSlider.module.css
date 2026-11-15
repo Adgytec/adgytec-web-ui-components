@@ -1,3 +1,12 @@
+/* configurable tokens
+ *
+ * --md-slider-active-track-color
+ * --md-slider-inactive-track-color
+ *
+ * --md-slider-thumb-color
+ *
+ * configurable tokens end */
+
 @layer adgytec.comps {
     .slider {
         --_md-slider-active-track-color: var(

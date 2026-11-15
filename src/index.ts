@@ -17,6 +17,7 @@ export * from "./components/Menu";
 export * from "./components/Navigation";
 export * from "./components/Popover";
 export * from "./components/ProgressIndicator";
+export * from "./components/ProgressSlider";
 export * from "./components/Shape";
 export * from "./components/Sheets";
 export * from "./components/Snackbar";
