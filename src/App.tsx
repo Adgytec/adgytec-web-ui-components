@@ -36,6 +36,7 @@ import {
     ProgressIndicatorExperimentalPreview,
     ProgressIndicatorPreview,
 } from "./preview/ProgressIndicator";
+import { ProgressSliderPreview } from "./preview/ProgressSlider";
 import { RadioPreview } from "./preview/Radio";
 import { RangeCalendarPreview } from "./preview/RangeCalendar";
 import { RangeSliderPreview } from "./preview/RangeSlider";
@@ -88,6 +89,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "progress-slider",
+            label: "Progress Slider",
+            Component: ProgressSliderPreview,
+        },
         {
             id: "progress-indicator",
             label: "Progress Indicator ",
