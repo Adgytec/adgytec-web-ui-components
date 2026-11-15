@@ -87,7 +87,7 @@
         }
     }
 
-    .in-active {
+    .inactive {
         flex: 1;
         border-radius: var(--md-sys-shape-corner-radius-full);
         background-color: var(--_md-linear-progress-indicator-track-color);

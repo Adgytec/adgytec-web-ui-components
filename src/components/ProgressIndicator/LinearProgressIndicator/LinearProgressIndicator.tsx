@@ -113,9 +113,7 @@ export const LinearProgressIndicator: React.FC<
 
                                     {percentage < 100 && (
                                         <div
-                                            className={clsx(
-                                                styles["in-active"]
-                                            )}
+                                            className={clsx(styles["inactive"])}
                                         />
                                     )}
                                 </>

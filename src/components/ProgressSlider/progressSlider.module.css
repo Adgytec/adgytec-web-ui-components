@@ -1,0 +1,101 @@
+@layer adgytec.comps {
+    .slider {
+        --_md-slider-active-track-color: var(
+            --md-slider-active-track-color,
+            var(--md-sys-color-primary)
+        );
+        --_md-slider-inactive-track-color: var(
+            --md-slider-inactive-track-color,
+            var(--md-sys-color-secondary-container)
+        );
+
+        --_md-slider-thumb-color: var(
+            --md-slider-thumb-color,
+            var(--_md-slider-active-track-color)
+        );
+
+        &[data-disabled] {
+            --_md-slider-active-track-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            --_md-slider-inactive-track-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-container)
+            );
+        }
+    }
+
+    .track {
+        block-size: var(--md-sys-layout-space-4);
+
+        display: flex;
+        gap: calc(10 * var(--dp, 1px));
+    }
+
+    .thumb {
+        --_thumb-size: var(--md-sys-layout-space-12);
+
+        inline-size: var(--_thumb-size);
+        block-size: var(--_thumb-size);
+        border-radius: var(--md-sys-shape-corner-radius-full);
+
+        position: absolute;
+
+        inset-block-start: 50%;
+
+        background-color: var(--_md-slider-thumb-color);
+        transition:
+            block-size var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
+            inline-size var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-focus-visible]::before {
+            --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+            --focus-indicator-offset: calc(6 * var(--dp, 1px));
+            --focus-indicator-color: var(--md-sys-color-secondary);
+
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+
+            z-index: 2;
+
+            outline-width: var(--focus-indicator-thickness);
+            outline-style: solid;
+            outline-offset: var(--focus-indicator-offset);
+            outline-color: var(--focus-indicator-color);
+        }
+
+        &[data-dragging],
+        &[data-focus-visible] {
+            inline-size: var(--md-sys-layout-space-4);
+            block-size: var(--md-sys-layout-space-24);
+        }
+
+        &[data-disabled] {
+            background-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+        }
+    }
+
+    .active:not([data-wavy]) {
+        border-radius: var(--md-sys-shape-corner-radius-full);
+        background-color: var(--_md-slider-active-track-color);
+    }
+
+    .inactive {
+        flex: 1;
+        min-width: 0;
+        border-radius: var(--md-sys-shape-corner-radius-full);
+        background-color: var(--_md-slider-inactive-track-color);
+    }
+}
