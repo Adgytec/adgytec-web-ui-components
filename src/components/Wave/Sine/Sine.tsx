@@ -1,5 +1,6 @@
 import type React from "react";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+import { usePhase } from "../core";
 import type { SineWaveProps } from "./types";
 
 export const Sine: React.FC<SineWaveProps> = ({
@@ -11,7 +12,7 @@ export const Sine: React.FC<SineWaveProps> = ({
 }) => {
     const box = useRef<HTMLDivElement>(null);
     const [width, setWidth] = useState(0);
-    const [phase, setPhase] = useState(0);
+    const phase = usePhase(speed);
 
     useLayoutEffect(() => {
         const el = box.current;
@@ -22,19 +23,6 @@ export const Sine: React.FC<SineWaveProps> = ({
         ro.observe(el);
         return () => ro.disconnect();
     }, []);
-
-    useEffect(() => {
-        if (speed === 0) return;
-
-        let raf = 0;
-        const start = performance.now();
-        const tick = (now: number) => {
-            setPhase(((now - start) / 1000) * speed);
-            raf = requestAnimationFrame(tick);
-        };
-        raf = requestAnimationFrame(tick);
-        return () => cancelAnimationFrame(raf);
-    }, [speed]);
 
     const height = 2 * amplitude + strokeWidth;
     const cy = height / 2;

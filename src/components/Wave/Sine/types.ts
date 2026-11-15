@@ -1,7 +1,3 @@
-export type SineWaveProps = {
-    amplitude?: number;
-    wavelength?: number;
-    strokeWidth?: number;
-    strokeColor?: string;
-    speed?: number;
-};
+import type { SineWaveBaseProps } from "../core";
+
+export interface SineWaveProps extends SineWaveBaseProps {}
