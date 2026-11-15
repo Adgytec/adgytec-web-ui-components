@@ -1,6 +1,6 @@
 import type React from "react";
 import { usePhase } from "../core";
-import type { SineCircularProps } from "./types";
+import type { SineWaveCircularProps } from "./types";
 
 export const ringRadius = (
     size: number,
@@ -8,7 +8,7 @@ export const ringRadius = (
     maxAmplitude: number
 ) => size / 2 - strokeWidth / 2 - maxAmplitude;
 
-export const SineCircular: React.FC<SineCircularProps> = ({
+export const SineCircular: React.FC<SineWaveCircularProps> = ({
     amplitude = 1.6,
     maxAmplitude = amplitude,
     wavelength = 15,

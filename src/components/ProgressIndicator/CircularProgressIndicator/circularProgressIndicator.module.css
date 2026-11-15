@@ -1,0 +1,28 @@
+@layer adgytec.comps {
+    .indicator {
+        --_md-circular-progress-indicator-active-color: var(
+            --md-sys-color-primary
+        );
+        --_md-circular-progress-indicator-track-color: var(
+            --md-sys-color-secondary-container
+        );
+
+        display: inline-grid;
+        place-items: center;
+    }
+
+    /* ring and label share the same cell, so the label sits in the center */
+    .ring,
+    .label {
+        grid-area: 1 / 1;
+    }
+
+    .ring {
+        position: relative;
+    }
+
+    .layer {
+        position: absolute;
+        inset: 0;
+    }
+}

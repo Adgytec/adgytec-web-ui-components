@@ -1,26 +1,20 @@
 import type { ProgressBar } from "react-aria-components";
 import type { SineWaveProps } from "@/components/Wave";
-
-export type LinearProgressIndicatorThickness = "default" | "thick";
+import {
+    type ProgressIndicatorThickness,
+    ProgressIndicatorThicknessToStrokeWidth,
+} from "../core/thickness";
 
 export interface LinearProgressIndicatorProps
     extends React.ComponentPropsWithRef<typeof ProgressBar> {
-    thickness?: LinearProgressIndicatorThickness;
+    thickness?: ProgressIndicatorThickness;
     wavy?: boolean;
 }
-
-export const LinearProgressIndicatorThicknessToStrokeWidthMapping: Record<
-    LinearProgressIndicatorThickness,
-    number
-> = {
-    default: 4,
-    thick: 8,
-};
 
 export const LinearProgressIndicatorSineWaveProps = (
     percentage: number,
     isInderminate: boolean,
-    thickness: LinearProgressIndicatorThickness
+    thickness: ProgressIndicatorThickness
 ): SineWaveProps => {
     const baseAmplitude = 3;
 
@@ -41,8 +35,7 @@ export const LinearProgressIndicatorSineWaveProps = (
         amplitude,
         wavelength,
         speed: wavelength,
-        strokeWidth:
-            LinearProgressIndicatorThicknessToStrokeWidthMapping[thickness],
+        strokeWidth: ProgressIndicatorThicknessToStrokeWidth[thickness],
         strokeColor: "var(--_md-linear-progress-indicator-active-color)",
     };
 };

@@ -1,6 +1,6 @@
 import type { SineWaveBaseProps } from "../core";
 
-export interface SineCircularProps extends SineWaveBaseProps {
+export interface SineWaveCircularProps extends SineWaveBaseProps {
     size?: number;
     /** space reserved for the wave; defaults to `amplitude` */
     maxAmplitude?: number;
