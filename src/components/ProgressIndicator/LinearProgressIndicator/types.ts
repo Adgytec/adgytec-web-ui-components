@@ -17,12 +17,26 @@ export const LinearProgressIndicatorThicknessToStrokeWidthMapping: Record<
 };
 
 export const LinearProgressIndicatorSineWaveProps = (
+    percentage: number,
     isInderminate: boolean,
     thickness: LinearProgressIndicatorThickness
 ): SineWaveProps => {
+    const baseAmplitude = 3;
+
+    const fadeIn = 5; // wave grows over the first 5%
+    const fadeOut = 5; // wave shrinks over the last 5%
+
+    const factor = Math.max(
+        0,
+        Math.min(1, percentage / fadeIn, (100 - percentage) / fadeOut)
+    );
+
+    const amplitude = baseAmplitude * factor;
+
     const wavelength = isInderminate ? 20 : 40;
+
     return {
-        amplitude: 3,
+        amplitude,
         wavelength,
         speed: wavelength,
         strokeWidth:

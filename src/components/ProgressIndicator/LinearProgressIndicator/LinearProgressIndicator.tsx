@@ -1,7 +1,11 @@
 import clsx from "clsx";
 import { ProgressBar } from "react-aria-components";
+import { Sine } from "@/components/Wave";
 import styles from "./linearProgressIndicator.module.css";
-import type { LinearProgressIndicatorProps } from "./types";
+import {
+    type LinearProgressIndicatorProps,
+    LinearProgressIndicatorSineWaveProps,
+} from "./types";
 
 export const LinearProgressIndicator: React.FC<
     LinearProgressIndicatorProps
@@ -20,22 +24,38 @@ export const LinearProgressIndicator: React.FC<
             data-thickness={thickness}
         >
             {(renderProps) => {
-                const { percentage } = renderProps;
+                const { percentage = 0, isIndeterminate } = renderProps;
+
                 return (
                     <>
                         {typeof children === "function"
                             ? children(renderProps)
                             : children}
 
-                        <div className={clsx(styles["track"])}>
-                            <div
-                                style={{
-                                    inlineSize: `${percentage}%`,
-                                }}
-                                className={clsx(styles["active"])}
-                            />
+                        <div
+                            className={clsx(styles["track"])}
+                            data-thickness={thickness}
+                        >
+                            {percentage > 0 && (
+                                <div
+                                    style={{
+                                        inlineSize: `${percentage}%`,
+                                    }}
+                                    className={clsx(styles["active"])}
+                                >
+                                    <Sine
+                                        {...LinearProgressIndicatorSineWaveProps(
+                                            percentage,
+                                            isIndeterminate,
+                                            thickness
+                                        )}
+                                    />
+                                </div>
+                            )}
 
-                            <div className={clsx(styles["in-active"])} />
+                            {percentage < 100 && (
+                                <div className={clsx(styles["in-active"])} />
+                            )}
                         </div>
                     </>
                 );

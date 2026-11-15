@@ -32,7 +32,10 @@ import { ListPreview } from "./preview/List";
 import { LoadingIndicatorPreview } from "./preview/LoadingIndicator";
 import { MenuPreview } from "./preview/Menu";
 import { NavPreview } from "./preview/Navigation";
-import { ProgressIndicatorPreview } from "./preview/ProgressIndicator";
+import {
+    ProgressIndicatorExperimentalPreview,
+    ProgressIndicatorPreview,
+} from "./preview/ProgressIndicator";
 import { RadioPreview } from "./preview/Radio";
 import { RangeCalendarPreview } from "./preview/RangeCalendar";
 import { RangeSliderPreview } from "./preview/RangeSlider";
@@ -85,11 +88,16 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
-        { id: "Wave", label: "Wave", Component: WavePreview },
         {
             id: "progress-indicator",
-            label: "Progress Indicator",
+            label: "Progress Indicator ",
             Component: ProgressIndicatorPreview,
+        },
+        { id: "Wave", label: "Wave", Component: WavePreview },
+        {
+            id: "progress-indicator-expr",
+            label: "Progress Indicator Experimental",
+            Component: ProgressIndicatorExperimentalPreview,
         },
         { id: "fab-menu", label: "FAB Menu", Component: FABMenuPreview },
         { id: "FAB", label: "FAB", Component: FABPreview },

@@ -47,9 +47,22 @@ export const Sine: React.FC<SineWaveProps> = ({
     }
 
     return (
-        <div ref={box} style={{ width: "100%", height }}>
+        <div
+            ref={box}
+            style={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+            }}
+        >
             {width > 0 && (
-                <svg width={width} height={height} aria-label="sine-wave">
+                <svg
+                    width={width}
+                    height={height}
+                    aria-label="sine-wave"
+                    style={{ display: "block" }}
+                >
                     <path
                         d={d}
                         fill="none"

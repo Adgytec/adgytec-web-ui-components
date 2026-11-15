@@ -23,10 +23,15 @@
     }
 
     .track {
-        background-color: red;
+        --_stop-indicator-end: 0;
+
         display: flex;
         gap: var(--md-sys-layout-space-4);
         position: relative;
+
+        &[data-thickness="thick"] {
+            --_stop-indicator-end: calc(2 * var(--dp, 1px));
+        }
     }
 
     .track::before {
@@ -36,16 +41,23 @@
         inline-size: var(--md-sys-layout-space-4);
         block-size: var(--md-sys-layout-space-4);
 
+        border-radius: 100%;
+
+        inset-inline-end: var(--_stop-indicator-end);
+        inset-block-start: 50%;
+        translate: 0 -50%;
+
         background-color: var(--_md-linear-progress-indicator-active-color);
     }
 
     .active {
-        background-color: blue;
         block-size: var(--_md-linear-progress-indicator-block-size);
     }
 
     .in-active {
-        background-color: green;
+        flex: 1;
+        border-radius: var(--md-sys-shape-corner-radius-full);
+        background-color: var(--_md-linear-progress-indicator-track-color);
         block-size: var(--_md-linear-progress-indicator-block-size);
     }
 }
