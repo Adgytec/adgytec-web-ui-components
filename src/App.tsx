@@ -51,6 +51,7 @@ import { ThemeSelectorPreview } from "./preview/ThemeSelector";
 import { TimeFieldPreview } from "./preview/TimeField";
 import { ToolbarPreview } from "./preview/Toolbar";
 import { TooltipPreview } from "./preview/Tooltip";
+import { WavePreview } from "./preview/Wave";
 import { typography } from "./utils/typography";
 
 // preview container
@@ -84,6 +85,7 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        { id: "Wave", label: "Wave", Component: WavePreview },
         {
             id: "progress-indicator",
             label: "Progress Indicator",
