@@ -1,0 +1,51 @@
+@layer adgytec.comps {
+    .indicator {
+        --_md-linear-progress-indicator-active-color: var(
+            --md-linear-progress-indicator-active-color,
+            var(--md-sys-color-primary)
+        );
+        --_md-linear-progress-indicator-track-color: var(
+            --md-linear-progress-indicator-track-color,
+            var(--md-sys-color-secondary-container)
+        );
+
+        --_md-linear-progress-indicator-block-size: var(
+            --md-sys-layout-space-4
+        );
+
+        inline-size: 100%;
+
+        &[data-thickness="thick"] {
+            --_md-linear-progress-indicator-block-size: var(
+                --md-sys-layout-space-8
+            );
+        }
+    }
+
+    .track {
+        background-color: red;
+        display: flex;
+        gap: var(--md-sys-layout-space-4);
+        position: relative;
+    }
+
+    .track::before {
+        content: "";
+        position: absolute;
+
+        inline-size: var(--md-sys-layout-space-4);
+        block-size: var(--md-sys-layout-space-4);
+
+        background-color: var(--_md-linear-progress-indicator-active-color);
+    }
+
+    .active {
+        background-color: blue;
+        block-size: var(--_md-linear-progress-indicator-block-size);
+    }
+
+    .in-active {
+        background-color: green;
+        block-size: var(--_md-linear-progress-indicator-block-size);
+    }
+}
