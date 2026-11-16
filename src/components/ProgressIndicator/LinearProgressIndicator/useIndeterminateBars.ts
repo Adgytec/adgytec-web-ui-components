@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 function cubicBezier(x1: number, y1: number, x2: number, y2: number) {
     const cx = 3 * x1,
@@ -66,20 +66,4 @@ export function useIndeterminateBars(): Bars {
     }, []);
 
     return bars;
-}
-
-export function useWidth() {
-    const ref = useRef<HTMLDivElement>(null);
-    const [w, setW] = useState(0);
-
-    useLayoutEffect(() => {
-        const el = ref.current;
-        if (!el) return;
-        setW(el.clientWidth);
-        const ro = new ResizeObserver(([e]) => setW(e.contentRect.width));
-        ro.observe(el);
-        return () => ro.disconnect();
-    }, []);
-
-    return { ref, w };
 }

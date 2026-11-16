@@ -1,12 +1,8 @@
-import { SineLinear } from "@/components/Wave";
+import { SineLinear, useWidth } from "@/components/Wave";
 import type { ProgressIndicatorThickness } from "../core";
 import styles from "./linearProgressIndicator.module.css";
 import { LinearProgressIndicatorSineWaveProps } from "./types";
-import {
-    clamp01,
-    useIndeterminateBars,
-    useWidth,
-} from "./useIndeterminateBars";
+import { clamp01, useIndeterminateBars } from "./useIndeterminateBars";
 
 const GAP = 4; // px, match --md-sys-layout-space-4
 const TRACK_COLOR = "var(--_md-linear-progress-indicator-track-color)";

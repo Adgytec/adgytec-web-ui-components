@@ -1,5 +1,5 @@
 import type { Slider } from "react-aria-components";
-import type { SineWaveProps } from "@/components/Wave";
+import type { SineLinearProps } from "@/components/Wave";
 
 /**
  * Props for the {@link ProgressSlider} component.
@@ -40,36 +40,40 @@ export interface ProgressSliderProps<T extends number>
     active?: boolean;
 }
 
-/**
- * Computes sine wave configuration props for {@link ProgressSlider}.
- *
- * Automatically fades wave amplitude near the start (0–5%) and end (95–100%) of the progress track
- * to ensure smooth visual transitions as the thumb scrubs near track boundaries.
- *
- * @param percentage - Current progress percentage between 0 and 100.
- * @returns Configured {@link SineWaveProps} for the linear sine wave.
- */
+const BASE_AMPLITUDE = 3;
+const FADE_IN = 5; // wave grows over the first 5%
+const FADE_OUT = 5; // wave shrinks over the last 5%
+const WAVELENGTH = 40;
+
 export const ProgressSliderSineWaveProps = (
+    wavy: boolean,
     percentage: number
-): SineWaveProps => {
-    const baseAmplitude = 3;
+): Omit<SineLinearProps, "width" | "start" | "end"> => {
+    const strokeWidth = 4;
+    const strokeColor = "var(--_md-slider-active-track-color)";
 
-    const fadeIn = 5; // wave grows over the first 5%
-    const fadeOut = 5; // wave shrinks over the last 5%
+    if (!wavy) {
+        return {
+            amplitude: 0,
+            maxAmplitude: 0, // SVG is only as tall as the stroke
+            wavelength: WAVELENGTH,
+            speed: 0, // no animation loop
+            strokeWidth,
+            strokeColor,
+        };
+    }
 
-    const amplitude =
-        baseAmplitude *
-        Math.max(
-            0,
-            Math.min(1, percentage / fadeIn, (100 - percentage) / fadeOut)
-        );
+    const factor = Math.max(
+        0,
+        Math.min(1, percentage / FADE_IN, (100 - percentage) / FADE_OUT)
+    );
 
-    const wavelength = 40;
     return {
-        amplitude,
-        wavelength,
-        speed: wavelength,
-        strokeWidth: 4,
-        strokeColor: "var(--_md-slider-active-track-color)",
+        amplitude: BASE_AMPLITUDE * factor,
+        maxAmplitude: BASE_AMPLITUDE, // keeps the SVG height fixed while the wave fades
+        wavelength: WAVELENGTH,
+        speed: WAVELENGTH,
+        strokeWidth,
+        strokeColor,
     };
 };

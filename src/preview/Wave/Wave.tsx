@@ -7,9 +7,9 @@ export const WavePreview = () => {
                 className="items-grid"
                 style={{ width: "100%", color: "var(--md-sys-color-primary)" }}
             >
-                <Sine />
+                <Sine width={200} />
 
-                <Sine speed={0} />
+                <Sine width={200} speed={0} />
             </div>
 
             <div

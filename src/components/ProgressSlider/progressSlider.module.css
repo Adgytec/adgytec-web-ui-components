@@ -36,14 +36,20 @@
     }
 
     .track {
+        position: relative;
         block-size: var(--md-sys-layout-space-4);
+    }
 
-        display: flex;
-        gap: calc(10 * var(--dp, 1px));
+    /* the SVG may be taller than the track, so center it on the track line */
+    .layer {
+        position: absolute;
+        inset-inline-start: 0;
+        inset-block-start: 50%;
+        translate: 0 -50%;
     }
 
     .thumb {
-        --_thumb-size: var(--md-sys-layout-space-12);
+        --_thumb-size: var(--md-sys-layout-space-16);
 
         inline-size: var(--_thumb-size);
         block-size: var(--_thumb-size);
@@ -85,7 +91,7 @@
         &[data-dragging],
         &[data-focus-visible] {
             inline-size: var(--md-sys-layout-space-4);
-            block-size: var(--md-sys-layout-space-24);
+            block-size: var(--md-sys-layout-space-32);
         }
 
         &[data-disabled] {
@@ -94,17 +100,5 @@
                 var(--md-sys-state-disabled-content)
             );
         }
-    }
-
-    .active:not([data-wavy]) {
-        border-radius: var(--md-sys-shape-corner-radius-full);
-        background-color: var(--_md-slider-active-track-color);
-    }
-
-    .inactive {
-        flex: 1;
-        min-width: 0;
-        border-radius: var(--md-sys-shape-corner-radius-full);
-        background-color: var(--_md-slider-inactive-track-color);
     }
 }
