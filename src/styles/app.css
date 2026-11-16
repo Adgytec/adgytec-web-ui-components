@@ -1016,3 +1016,9 @@
 .items[data-progress-indicator] {
     flex-wrap: nowrap;
 }
+
+.toolbar {
+    [data-variant="docked"] {
+        border-radius: var(--md-sys-shape-corner-radius-large);
+    }
+}

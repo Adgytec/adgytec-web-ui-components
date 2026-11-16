@@ -266,7 +266,7 @@ export const ToolbarPreview = () => {
     const orientation: Orientation[] = ["horizontal", "vertical"];
 
     return (
-        <div className="items-grid">
+        <div className="items-grid toolbar">
             {orientation.map((o) => (
                 <Fragment key={o}>
                     <RenderToolbar orientation={o} />
