@@ -22,6 +22,7 @@ export interface NavigationSectionLabelProps
  * ```
  */
 export const NavigationSectionLabel: React.FC<NavigationSectionLabelProps> = ({
+    level = 3,
     className,
     ...props
 }) => {
@@ -29,6 +30,7 @@ export const NavigationSectionLabel: React.FC<NavigationSectionLabelProps> = ({
 
     return (
         <Heading
+            level={level}
             className={clsx(styles["label"], typography.titleSmall, className)}
             data-variant={variant}
             {...props}

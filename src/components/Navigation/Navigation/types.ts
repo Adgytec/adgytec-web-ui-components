@@ -22,6 +22,8 @@ export interface NavigationProps extends React.ComponentPropsWithRef<"nav"> {
      */
     label?: ReactNode;
 
+    headingLevel?: number;
+
     /**
      * Callback function used by child [`NavigationLink`](src/components/Navigation/NavigationItem/NavigationLink/NavigationLink.tsx)
      * components to determine their active state from their `href`.

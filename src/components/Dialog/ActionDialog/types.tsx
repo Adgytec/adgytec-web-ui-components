@@ -25,6 +25,8 @@ export interface ActionDialogProps
     /** The title text displayed in the dialog header. */
     heading?: string;
 
+    headingLevel?: number;
+
     /**
      * An optional icon displayed within the dialog header.
      * When present, header content is centered per Material Design 3 guidelines.

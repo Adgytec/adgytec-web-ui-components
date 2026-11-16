@@ -57,6 +57,7 @@ import type { SideSheetProps } from "./types";
  */
 export const SideSheet: React.FC<SideSheetProps> = ({
     headline,
+    headingLevel = 2,
     actions,
     ...props
 }) => {
@@ -77,6 +78,7 @@ export const SideSheet: React.FC<SideSheetProps> = ({
                     >
                         {headline && (
                             <Heading
+                                level={headingLevel}
                                 slot="title"
                                 className={clsx(
                                     styles["headline"],

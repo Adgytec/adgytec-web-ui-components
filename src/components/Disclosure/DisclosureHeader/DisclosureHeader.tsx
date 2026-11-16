@@ -37,6 +37,7 @@ import type { DisclosureHeaderProps } from "./types";
 export const DisclosureHeader: React.FC<DisclosureHeaderProps> = ({
     label,
     leading,
+    headingLevel = 3,
 }) => {
     const { splashInfo, handlePress } = useSplash();
 
@@ -44,7 +45,7 @@ export const DisclosureHeader: React.FC<DisclosureHeaderProps> = ({
     const { isExpanded } = disclosureContext || {};
 
     return (
-        <Heading>
+        <Heading level={headingLevel}>
             <Button
                 onPress={handlePress}
                 className={clsx(styles["reset"], styles["button"])}

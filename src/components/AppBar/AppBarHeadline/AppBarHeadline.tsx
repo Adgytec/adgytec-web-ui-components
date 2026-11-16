@@ -23,6 +23,7 @@ export type AppBarHeadlineProps = React.ComponentPropsWithRef<typeof Heading>;
  * ```
  */
 export const AppBarHeadline: React.FC<AppBarHeadlineProps> = ({
+    level = 1,
     className,
     ...props
 }) => {
@@ -30,6 +31,7 @@ export const AppBarHeadline: React.FC<AppBarHeadlineProps> = ({
 
     return (
         <Heading
+            level={level}
             className={clsx(
                 appBarContext.headlineTypography,
                 styles["headline"],

@@ -98,6 +98,8 @@ export interface SideSheetProps
      */
     headline?: ReactNode;
 
+    headingLevel?: number;
+
     /**
      * Optional action buttons rendered in the bottom action bar.
      * Can be an array of React nodes or a render function receiving React Aria `DialogRenderProps` (such as `close`).

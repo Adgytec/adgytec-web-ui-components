@@ -14,4 +14,6 @@ export interface DisclosureHeaderProps {
      * The primary label content of the header, typically wrapped in {@link DisclosureLabel}.
      */
     label: ReactNode;
+
+    headingLevel?: number;
 }

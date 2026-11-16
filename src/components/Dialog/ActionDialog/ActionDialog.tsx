@@ -45,6 +45,7 @@ import type { ActionDialogProps } from "./types";
  */
 export const ActionDialog: React.FC<ActionDialogProps> = ({
     heading,
+    headingLevel = 2,
     icon,
     actions,
     divider = "none",
@@ -73,6 +74,7 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
 
                             {heading && (
                                 <Heading
+                                    level={headingLevel}
                                     slot="title"
                                     className={clsx(
                                         DialogHeadlineTypography,

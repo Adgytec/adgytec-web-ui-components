@@ -22,6 +22,7 @@ import { NavigationRenderingContext } from "./navRenderingContext";
 import type { NavigationProps } from "./types";
 
 const Nav: React.FC<NavigationProps> = ({
+    headingLevel = 2,
     label,
     children,
     className,
@@ -71,6 +72,7 @@ const Nav: React.FC<NavigationProps> = ({
                         <Header className={clsx(NavigationHeaderStyles)}>
                             {label && variant === "expanded" && (
                                 <Heading
+                                    level={headingLevel}
                                     className={clsx(typography.titleLarge)}
                                     data-heading
                                 >

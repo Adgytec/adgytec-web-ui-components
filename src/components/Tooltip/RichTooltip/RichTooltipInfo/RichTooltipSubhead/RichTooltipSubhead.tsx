@@ -25,11 +25,13 @@ export interface RichTooltipSubheadProps
  * ```
  */
 export const RichTooltipSubhead: React.FC<RichTooltipSubheadProps> = ({
+    level = 3,
     className,
     ...props
 }) => {
     return (
         <Heading
+            level={level}
             className={clsx(typography.titleSmall, className)}
             {...props}
         />

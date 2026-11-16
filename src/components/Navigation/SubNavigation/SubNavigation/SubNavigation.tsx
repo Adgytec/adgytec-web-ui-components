@@ -28,6 +28,8 @@ export interface SubNavigationProps extends React.ComponentPropsWithRef<"nav"> {
      * [`SubNavigationTrigger`](src/components/Navigation/SubNavigation/SubNavigationTrigger/SubNavigationTrigger.tsx).
      */
     label?: ReactNode;
+
+    headingLevel?: number;
 }
 
 /**
@@ -61,6 +63,7 @@ export const SubNavigation: React.FC<SubNavigationProps> = ({
     inert,
     ref,
     style,
+    headingLevel = 3,
     ...props
 }) => {
     const subNavRef = useObjectRef(ref);
@@ -120,6 +123,7 @@ export const SubNavigation: React.FC<SubNavigationProps> = ({
 
                             {variant === "expanded" && headerLabel && (
                                 <Heading
+                                    level={headingLevel}
                                     className={clsx(typography.titleLarge)}
                                     data-heading
                                 >
