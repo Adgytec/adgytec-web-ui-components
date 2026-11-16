@@ -44,6 +44,7 @@
 
         &[data-selected] {
             --_color: var(--_md-tabs-active-color);
+            --_state-color: var(--_md-tabs-active-indicator-color);
 
             --_focus-inset-inline-end: var(--_focus-inset-inline-end-active);
             --_focus-inset-block-end: var(--_focus-inset-block-end-active);

@@ -55,7 +55,7 @@
 
             [data-selection-indicator] {
                 inset-inline-start: 0;
-                inset-block-end: 0px;
+                inset-block-end: 0;
 
                 inline-size: 100%;
                 block-size: var(--_md-tabs-active-indicator-size);
@@ -73,7 +73,7 @@
 
             [data-selection-indicator] {
                 inset-block-start: 0;
-                inset-inline-end: 0px;
+                inset-inline-end: 0;
 
                 block-size: 100%;
                 inline-size: var(--_md-tabs-active-indicator-size);
