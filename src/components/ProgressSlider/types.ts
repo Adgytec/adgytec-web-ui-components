@@ -4,8 +4,8 @@ import type { SineLinearProps } from "@/components/Wave";
 /**
  * Props for the {@link ProgressSlider} component.
  *
- * Extends React Aria Components `Slider` props (omitting raw `children` to provide
- * an integrated animated wavy progress track and responsive thumb).
+ * Extends React Aria Components `Slider` props (omitting raw `children` and `orientation`
+ * to provide an integrated horizontal animated wavy progress track and responsive thumb).
  *
  * Configurable CSS tokens:
  * - `--md-slider-active-track-color`: Color of the active track portion and wavy sine wave (`var(--md-sys-color-primary)`).
@@ -45,6 +45,17 @@ const FADE_IN = 5; // wave grows over the first 5%
 const FADE_OUT = 5; // wave shrinks over the last 5%
 const WAVELENGTH = 40;
 
+/**
+ * Computes wave configuration props for {@link ProgressSlider}.
+ *
+ * Automatically fades wave amplitude near the start (0–5%) and end (95–100%) of the progress track
+ * to ensure smooth visual transitions as the thumb scrubs near boundaries. When `wavy` is `false`,
+ * zeroes out amplitude and speed to render a flat static track.
+ *
+ * @param wavy - Whether wave animations are enabled.
+ * @param percentage - Current progress percentage between 0 and 100.
+ * @returns Configured wave props for {@link SineLinear}.
+ */
 export const ProgressSliderSineWaveProps = (
     wavy: boolean,
     percentage: number

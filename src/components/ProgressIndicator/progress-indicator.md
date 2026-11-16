@@ -16,8 +16,8 @@ There are two primary components available:
 - `LinearProgressIndicator`: Renders a horizontal progress bar.
 
 > [!NOTE]
-> **Indeterminate Mode & Waves**:
-> In indeterminate mode (`isIndeterminate={true}`), **there are no waves** in the `LinearProgressIndicator` (it renders flat animated dual-bar segments following Material 3 motion specifications), regardless of the `wavy` prop. The `CircularProgressIndicator` preserves continuous wave motion during indeterminate state while animating arc length and rotation.
+> **Wave Animations in Progress Indicators**:
+> Both `CircularProgressIndicator` and `LinearProgressIndicator` support animated sine waves (`wavy={true}`) in both determinate and indeterminate loading modes. Setting `wavy={false}` displays smooth, flat active progress tracks and bars.
 
 ---
 
@@ -77,17 +77,17 @@ The `LinearProgressIndicator` displays progress horizontally across the availabl
 
 The `LinearProgressIndicator` component extends [React Aria Components ProgressBar](https://react-spectrum.adobe.com/react-aria/ProgressBar.html).
 
-| Prop              | Type                                                                       | Default     | Description                                                                                                                                                                    |
-| ----------------- | -------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `value`           | `number`                                                                   | —           | Current progress value.                                                                                                                                                        |
-| `minValue`        | `number`                                                                   | `0`         | Minimum progress value.                                                                                                                                                        |
-| `maxValue`        | `number`                                                                   | `100`       | Maximum progress value.                                                                                                                                                        |
-| `isIndeterminate` | `boolean`                                                                  | `false`     | Whether the progress indicator represents an indeterminate loading state. **In indeterminate mode, there are no waves** (renders flat animated segments regardless of `wavy`). |
-| `thickness`       | `"default" \| "thick"`                                                     | `"default"` | Height/thickness variant: `"default"` (4px) or `"thick"` (8px).                                                                                                                |
-| `wavy`            | `boolean`                                                                  | `true`      | Whether the active determinate bar renders an animated sine wave. **Note: In indeterminate mode, there are no waves regardless of this prop.**                                 |
-| `children`        | `React.ReactNode \| ((values: ProgressBarRenderProps) => React.ReactNode)` | —           | Optional content rendered alongside the progress bar (e.g. a label or status).                                                                                                 |
-| `className`       | `string \| ((values: ProgressBarRenderProps) => string)`                   | —           | Additional CSS class names.                                                                                                                                                    |
-| `style`           | `React.CSSProperties`                                                      | —           | Custom inline styles.                                                                                                                                                          |
+| Prop              | Type                                                                       | Default     | Description                                                                                                                         |
+| ----------------- | -------------------------------------------------------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `value`           | `number`                                                                   | —           | Current progress value.                                                                                                             |
+| `minValue`        | `number`                                                                   | `0`         | Minimum progress value.                                                                                                             |
+| `maxValue`        | `number`                                                                   | `100`       | Maximum progress value.                                                                                                             |
+| `isIndeterminate` | `boolean`                                                                  | `false`     | Whether the progress indicator represents an indeterminate loading state.                                                           |
+| `thickness`       | `"default" \| "thick"`                                                     | `"default"` | Height/thickness variant: `"default"` (4px) or `"thick"` (8px).                                                                     |
+| `wavy`            | `boolean`                                                                  | `true`      | Whether the active determinate or indeterminate progress bar renders an animated sine wave. When `false`, renders smooth flat bars. |
+| `children`        | `React.ReactNode \| ((values: ProgressBarRenderProps) => React.ReactNode)` | —           | Optional content rendered alongside the progress bar (e.g. a label or status).                                                      |
+| `className`       | `string \| ((values: ProgressBarRenderProps) => string)`                   | —           | Additional CSS class names.                                                                                                         |
+| `style`           | `React.CSSProperties`                                                      | —           | Custom inline styles.                                                                                                               |
 
 ### Usage
 
@@ -100,8 +100,11 @@ import { LinearProgressIndicator } from "@adgytec/web-ui-components";
 // Determinate flat progress bar (no waves)
 <LinearProgressIndicator value={40} wavy={false} />
 
-// Indeterminate progress bar (no waves in indeterminate mode)
+// Indeterminate wavy progress bar
 <LinearProgressIndicator isIndeterminate aria-label="Loading..." />
+
+// Indeterminate flat progress bar (no waves)
+<LinearProgressIndicator isIndeterminate wavy={false} aria-label="Loading..." />
 
 // Thick variant with label
 <LinearProgressIndicator value={70} thickness="thick">

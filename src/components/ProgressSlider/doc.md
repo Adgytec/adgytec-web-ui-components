@@ -12,9 +12,9 @@ The `ProgressSlider` component is an expressive progress seeker inspired by mode
 
 ### Features
 
-- **Animated Wavy Track**: Features an animated sine wave along the active track segment powered by the mathematical [`Sine`](../Wave/wave.md) component.
+- **Animated Wavy Track**: Features an animated sine wave along the active track segment powered by the mathematical [`SineLinear`](../Wave/wave.md) component.
 - **Smooth Edge Transitions**: Wave amplitude dynamically attenuates near track boundaries (0–5% and 95–100%) to provide seamless visual transitions as the thumb approaches minimum or maximum limits.
-- **Adaptive Interactive Thumb**: The slider thumb is styled as a compact circular dot (`12px`) at rest and smoothly morphs into an expanded vertical pill (`4px` × `24px`) during active dragging or keyboard focus navigation.
+- **Adaptive Interactive Thumb**: The slider thumb is styled as a circular dot (`16px`) at rest and smoothly morphs into an expanded vertical pill (`4px` × `32px`) during active dragging or keyboard focus navigation.
 - **Active State Toggling**: The `active` prop allows toggling between animated wave motion (e.g. playing media) and a clean solid flat track (e.g. paused media).
 - **Accessibility by Default**: Leverages React Aria Components `Slider` for comprehensive keyboard navigation (Arrow keys, Page Up/Down, Home, End), screen reader accessibility (`aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-orientation`), and high-visibility focus indicators.
 - **Motion & Accessibility Conscious**: Automatically respects user preferences for reduced motion (`prefers-reduced-motion`) by disabling layout transitions.
@@ -29,7 +29,7 @@ The `ProgressSlider` component is an expressive progress seeker inspired by mode
 
 ## Props
 
-The `ProgressSlider` component extends [React Aria Components Slider](https://react-spectrum.adobe.com/react-aria/Slider.html) (omitting raw `children`).
+The `ProgressSlider` component extends [React Aria Components Slider](https://react-spectrum.adobe.com/react-aria/Slider.html) (omitting raw `children` and `orientation`, as it is designed specifically for horizontal media playback scrubbing).
 
 | Prop              | Type                                                | Default | Description                                                                                      |
 | ----------------- | --------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------ |

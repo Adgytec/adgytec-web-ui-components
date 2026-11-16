@@ -1,55 +1,72 @@
 # Wave
 
-The `Wave` component family provides mathematical SVG sine wave generators designed for dynamic, fluid wave animations. They are used internally by components like [ProgressIndicator](../ProgressIndicator/progress-indicator.md) and can be used directly for custom visual indicators, charts, loaders, and decorative effects.
+The `Wave` component family provides mathematical SVG sine wave generators designed for dynamic, fluid wave animations. They are used internally by components like [ProgressIndicator](../ProgressIndicator/progress-indicator.md) and [ProgressSlider](../ProgressSlider/doc.md), and can be used directly for custom visual indicators, charts, loaders, and decorative effects.
 
 All wave animations run via an optimized `requestAnimationFrame` loop using the `usePhase` hook.
 
 ## Components
 
-- `Sine`: Renders an animated horizontal sine wave inside a responsive container.
+- `SineLinear`: Renders an animated horizontal sine wave along a bounded track segment with fractional windowing.
 - `SineCircular`: Renders an animated sine wave modulated along a circular arc or closed ring.
 - `usePhase`: React hook that generates a continuous phase offset for animating waves.
+- `useWidth`: React hook that measures container width using `ResizeObserver`.
 
 ---
 
-## Sine
+## SineLinear
 
-The `Sine` component renders a horizontal sine wave that automatically adapts to the width of its parent container using `ResizeObserver`.
+The `SineLinear` component renders a horizontal sine wave along a track with an explicit `width` and normalized segment bounds (`start` and `end`, from `0` to `1`). The wave oscillation is anchored to the track's coordinate space, ensuring that wave crests stay stationary in space even as boundaries expand or contract.
 
 ### Props
 
-| Prop          | Type     | Default           | Description                                                                                       |
-| ------------- | -------- | ----------------- | ------------------------------------------------------------------------------------------------- |
-| `amplitude`   | `number` | `3`               | Peak vertical deviation (height) of the wave crest from its center line in pixels.                |
-| `wavelength`  | `number` | `40`              | Spatial period over which the wave pattern repeats in pixels.                                     |
-| `strokeWidth` | `number` | `4`               | Thickness of the SVG wave stroke line in pixels.                                                  |
-| `strokeColor` | `string` | `"currentColor"`  | SVG stroke color. Accepts any valid CSS color string or CSS variable.                             |
-| `speed`       | `number` | `wavelength` (40) | Animation speed in units per second. Setting `speed={0}` disables animation and freezes the wave. |
+| Prop           | Type     | Default           | Description                                                                                                        |
+| -------------- | -------- | ----------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `width`        | `number` | —                 | Total width of the track in pixels. Required.                                                                      |
+| `start`        | `number` | `0`               | Normalized start boundary of the visible segment as a fraction of track width (`0` to `1`).                        |
+| `end`          | `number` | `1`               | Normalized end boundary of the visible segment as a fraction of track width (`0` to `1`).                          |
+| `amplitude`    | `number` | `3`               | Peak vertical deviation (height) of the wave crest from its center line in pixels. `0` renders a flat line.        |
+| `maxAmplitude` | `number` | `amplitude`       | Reserved maximum wave amplitude. Keeps the SVG height fixed (`2 * maxAmplitude + strokeWidth`) as amplitude fades. |
+| `wavelength`   | `number` | `40`              | Spatial period over which the wave pattern repeats in pixels.                                                      |
+| `strokeWidth`  | `number` | `4`               | Thickness of the SVG wave stroke line in pixels.                                                                   |
+| `strokeColor`  | `string` | `"currentColor"`  | SVG stroke color. Accepts any valid CSS color string or CSS variable.                                              |
+| `speed`        | `number` | `wavelength` (40) | Animation speed in units per second. Setting `speed={0}` disables animation and freezes the wave.                  |
 
 ### Usage
 
 ```tsx
-import { Sine } from "@adgytec/web-ui-components";
+import { SineLinear, useWidth } from "@adgytec/web-ui-components";
 
-// Basic responsive animated horizontal sine wave
-<div style={{ width: "100%", height: 24 }}>
-    <Sine />
-</div>
+// Full-width animated horizontal sine wave inside a responsive container
+export function ResponsiveWave() {
+    const { ref, w } = useWidth();
 
-// Custom amplitude, wavelength, and theme color
-<div style={{ width: 300, height: 32 }}>
-    <Sine
-        amplitude={6}
-        wavelength={60}
-        strokeWidth={3}
-        strokeColor="var(--md-sys-color-primary)"
-    />
-</div>
+    return (
+        <div ref={ref} style={{ width: "100%", height: 24 }}>
+            {w > 0 && <SineLinear width={w} />}
+        </div>
+    );
+}
 
-// Static (non-animated) wave
-<div style={{ width: 200, height: 20 }}>
-    <Sine speed={0} />
-</div>
+// Partial segment (e.g. 0% to 60%) with custom styling
+<SineLinear
+    width={300}
+    start={0}
+    end={0.6}
+    amplitude={4}
+    wavelength={50}
+    strokeWidth={4}
+    strokeColor="var(--md-sys-color-primary)"
+/>
+
+// Flat line segment (amplitude: 0, speed: 0)
+<SineLinear
+    width={300}
+    start={0.6}
+    end={1}
+    amplitude={0}
+    speed={0}
+    strokeColor="var(--md-sys-color-secondary-container)"
+/>
 ```
 
 ---
@@ -101,6 +118,27 @@ import { SineCircular } from "@adgytec/web-ui-components";
 ---
 
 ## Utilities
+
+### `useWidth()`
+
+React hook that measures and observes the client width of a container element using `ResizeObserver`.
+
+Returns:
+- `ref`: Ref to attach to the container `<div>`.
+- `w`: Measured width of the element in pixels.
+
+```tsx
+import { SineLinear, useWidth } from "@adgytec/web-ui-components";
+
+function WavyBar() {
+    const { ref, w } = useWidth();
+    return (
+        <div ref={ref} style={{ width: "100%" }}>
+            {w > 0 && <SineLinear width={w} />}
+        </div>
+    );
+}
+```
 
 ### `ringRadius(size, strokeWidth, maxAmplitude)`
 

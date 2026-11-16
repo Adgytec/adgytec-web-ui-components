@@ -23,10 +23,11 @@ export interface LinearProgressIndicatorProps
     thickness?: ProgressIndicatorThickness;
 
     /**
-     * Whether the active determinate progress bar renders an animated sine wave.
+     * Whether the active progress indicator renders an animated sine wave.
      *
-     * **Note:** In indeterminate mode (`isIndeterminate={true}`), there are no waves
-     * regardless of this prop value. Indeterminate mode always renders flat animated bar segments.
+     * - When `true`: Displays an animated sine wave along the active track in determinate mode
+     *   and wavy dual bars in indeterminate mode.
+     * - When `false`: Displays smooth flat bars in both determinate and indeterminate modes.
      *
      * @default true
      */
@@ -39,6 +40,24 @@ const FADE_OUT = 5; // wave shrinks over the last 5%
 const WAVELENGTH = 40;
 const INDETERMINATE_WAVELENGTH = 20;
 
+/**
+ * Computes sine wave configuration props for {@link LinearProgressIndicator}.
+ *
+ * Configures wave amplitude, wavelength, speed, strokeWidth, and strokeColor for determinate
+ * and indeterminate progress states.
+ *
+ * Features:
+ * - **Boundary Amplitude Attenuation**: In determinate mode, smoothly scales wave amplitude
+ *   near track boundaries (0–5% and 95–100%) to prevent visual clipping at endpoints.
+ * - **Indeterminate Sizing**: Uses a tighter wavelength (`20px`) for dual moving indeterminate bars.
+ * - **Flat Mode Support**: When `wavy={false}`, zeroes out amplitude and speed for static rendering.
+ *
+ * @param percentage - Current determinate progress percentage between 0 and 100.
+ * @param thickness - Selected thickness variant (`"default"` or `"thick"`).
+ * @param isIndeterminate - Whether the progress indicator is in indeterminate mode.
+ * @param wavy - Whether wave animations are enabled.
+ * @returns Configured wave props for {@link SineLinear}.
+ */
 export const LinearProgressIndicatorSineWaveProps = (
     percentage: number,
     thickness: ProgressIndicatorThickness,

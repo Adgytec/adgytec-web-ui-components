@@ -53,6 +53,12 @@ const WaveLayers: React.FC<WaveLayersProps> = ({ width, wave, layers }) => {
     );
 };
 
+/**
+ * Determinate progress track for {@link LinearProgressIndicator}.
+ *
+ * Measures track width with {@link useWidth} and renders the inactive background track
+ * and active progress bar using layered {@link SineLinear} components separated by a 4px gap.
+ */
 export const DeterminateTrack: React.FC<
     TrackProps & { percentage: number }
 > = ({ percentage, thickness, wavy }) => {
@@ -82,6 +88,12 @@ export const DeterminateTrack: React.FC<
     );
 };
 
+/**
+ * Indeterminate progress track for {@link LinearProgressIndicator}.
+ *
+ * Dynamically computes dual moving bar positions via {@link useIndeterminateBars}
+ * and renders layered animated wave segments using {@link SineLinear}.
+ */
 export const IndeterminateTrack: React.FC<TrackProps> = ({
     thickness,
     wavy,

@@ -11,6 +11,48 @@ const clamp01 = (n: number) => Math.min(1, Math.max(0, n));
 const ACTIVE_OVERLAP = 2; // px the active track runs past the thumb center, under the thumb
 const INACTIVE_OFFSET = 12; // px from the thumb center to where the inactive track starts
 
+/**
+ * Expressive progress slider component inspired by modern media player seekers
+ * (such as the Material You / Android playback scrubber).
+ *
+ * Combines an interactive range slider with layered animated {@link SineLinear} tracks:
+ * - **Wavy Active Track**: When `active={true}` (default) and the slider is enabled, an animated
+ *   sine wave renders along the active track segment with smooth boundary fading (0–5% and 95–100%).
+ *   When `active={false}` or disabled, renders a clean flat bar.
+ * - **Layered Sine Tracks**: Uses coordinate-anchored {@link SineLinear} for both the active and
+ *   inactive tracks, ensuring seamless gap alignment and continuous wave oscillations during scrubbing.
+ * - **Adaptive Interactive Thumb**: Features an adaptive thumb that expands from a circular dot (`16px`)
+ *   into a vertical pill (`4px` × `32px`) when dragged (`[data-dragging]`) or keyboard focused (`[data-focus-visible]`).
+ * - **Accessibility**: Built on [React Aria Components Slider](https://react-spectrum.adobe.com/react-aria/Slider.html),
+ *   providing full keyboard navigation, screen reader support, focus ring indicators, and ARIA attributes.
+ *
+ * Configurable CSS tokens:
+ * - `--md-slider-active-track-color`: Color of the active portion of the track and wavy sine wave (`var(--md-sys-color-primary)`).
+ * - `--md-slider-inactive-track-color`: Color of the inactive background track (`var(--md-sys-color-secondary-container)`).
+ * - `--md-slider-thumb-color`: Color of the slider thumb (`var(--_md-slider-active-track-color)`).
+ *
+ * @example
+ * ```tsx
+ * import { useState } from "react";
+ * import { ProgressSlider } from "@adgytec/web-ui-components";
+ *
+ * export function AudioPlayerSeeker() {
+ *     const [currentTime, setCurrentTime] = useState(30);
+ *     const [isPlaying, setIsPlaying] = useState(true);
+ *
+ *     return (
+ *         <ProgressSlider
+ *             aria-label="Audio playback seeker"
+ *             minValue={0}
+ *             maxValue={180}
+ *             value={currentTime}
+ *             onChange={setCurrentTime}
+ *             active={isPlaying}
+ *         />
+ *     );
+ * }
+ * ```
+ */
 export const ProgressSlider = <T extends number>({
     active = true,
     className,

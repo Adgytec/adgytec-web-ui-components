@@ -46,9 +46,19 @@ const bar = (t: number): [number, number] => [
     seg(t, 0, 750, e1Head),
 ];
 
-// [tail, head] of each bar, as fractions 0..1 of the track
+/**
+ * Bar start and end boundaries as normalized fractions (`0` to `1`) of total track width.
+ */
 export type Bars = { b1: [number, number]; b2: [number, number] };
 
+/**
+ * Hook that computes the normalized head and tail positions of dual moving bars for
+ * indeterminate linear progress indicators following Material 3 motion specifications.
+ *
+ * Runs a continuous `requestAnimationFrame` loop animating two staggered cubic-bezier eased bars.
+ *
+ * @returns Object containing `b1` and `b2` normalized `[tail, head]` fraction ranges.
+ */
 export function useIndeterminateBars(): Bars {
     const [bars, setBars] = useState<Bars>({ b1: [0, 0], b2: [0, 0] });
 
