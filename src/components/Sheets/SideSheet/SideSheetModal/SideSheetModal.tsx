@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Modal } from "react-aria-components";
+import { composeRenderProps, Modal } from "react-aria-components";
 import { SideSheetContext } from "./context";
 import styles from "./sideSheetModal.module.css";
 import type { SideSheetModalProps } from "./types";
@@ -39,7 +39,6 @@ import type { SideSheetModalProps } from "./types";
  * ```
  */
 export const SideSheetModal: React.FC<SideSheetModalProps> = ({
-    className,
     alignment = "end",
     layout = "standard",
     ...props
@@ -49,15 +48,10 @@ export const SideSheetModal: React.FC<SideSheetModalProps> = ({
             <Modal
                 data-alignment={alignment}
                 data-layout={layout}
-                className={(renderProps) =>
-                    clsx(
-                        styles["modal"],
-                        typeof className === "function"
-                            ? className(renderProps)
-                            : className
-                    )
-                }
                 {...props}
+                className={composeRenderProps(props.className, (className) =>
+                    clsx(styles["modal"], className)
+                )}
             />
         </SideSheetContext>
     );

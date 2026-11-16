@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Check, X } from "lucide-react";
-import { Tag as AriaTag } from "react-aria-components";
+import { Tag as AriaTag, composeRenderProps } from "react-aria-components";
 import { typography } from "@/utils";
 import { IconButton } from "../Button";
 import { Icon } from "../Icon";
@@ -51,7 +51,6 @@ export const Tag: React.FC<TagProps> = ({
     icon,
     avatar,
     label,
-    className,
     onPress,
     textValue = label,
     ...props
@@ -61,16 +60,11 @@ export const Tag: React.FC<TagProps> = ({
     return (
         <AriaTag
             onPress={handlePress}
-            className={(renderProps) =>
-                clsx(
-                    styles["tag"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
-            textValue={textValue}
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["tag"], className)
+            )}
+            textValue={textValue}
             data-avatar={avatar ? true : undefined}
             data-icon={!avatar && icon ? true : undefined}
         >

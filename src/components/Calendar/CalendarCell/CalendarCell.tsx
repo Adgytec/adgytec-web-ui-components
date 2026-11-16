@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import { CalendarCell as AriaCalendarCell } from "react-aria-components";
+import {
+    CalendarCell as AriaCalendarCell,
+    composeRenderProps,
+} from "react-aria-components";
 import { typography } from "@/utils";
 import styles from "./calendarCell.module.css";
 
@@ -23,22 +26,15 @@ export interface CalendarCellProps
  * (selection start, in-between range, selection end), and disabled and outside-month styling.
  */
 export const CalendarCell: React.FC<CalendarCellProps> = ({
-    className,
     isRangeCalendar = false,
     ...props
 }) => {
     return (
         <AriaCalendarCell
-            className={(renderProps) =>
-                clsx(
-                    styles["cell"],
-                    typography.bodyLarge,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["cell"], typography.bodyLarge, className)
+            )}
             data-range-calendar={isRangeCalendar || undefined}
         >
             {({

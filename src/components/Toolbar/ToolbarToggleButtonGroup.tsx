@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ToggleButtonGroup } from "react-aria-components";
+import { composeRenderProps, ToggleButtonGroup } from "react-aria-components";
 import styles from "./toolbar.module.css";
 
 /**
@@ -39,18 +39,13 @@ export interface ToolbarToggleButtonGroupProps
  */
 export const ToolbarToggleButtonGroup: React.FC<
     ToolbarToggleButtonGroupProps
-> = ({ className, ...props }) => {
+> = ({ ...props }) => {
     return (
         <ToggleButtonGroup
-            className={(renderProps) =>
-                clsx(
-                    styles["section"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["section"], className)
+            )}
         />
     );
 };

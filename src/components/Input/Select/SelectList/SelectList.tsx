@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { ListBox } from "react-aria-components";
+import { composeRenderProps, ListBox } from "react-aria-components";
 import {
     MenuBaseLayout,
     type MenuColor,
@@ -30,24 +30,21 @@ export interface SelectListProps<T extends object>
 export const SelectList = <T extends object>({
     color = "standard",
     menuLayout = "standard",
-    className,
     ...props
 }: SelectListProps<T>) => {
     return (
         <ListBox
-            className={(renderProps) =>
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
                 clsx(
                     menuColorConfig(color),
                     menuBaseColor,
                     MenuBaseLayout,
                     menuLayoutConfig(menuLayout),
                     MenuStyles,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
+                    className
                 )
-            }
-            {...props}
+            )}
         />
     );
 };

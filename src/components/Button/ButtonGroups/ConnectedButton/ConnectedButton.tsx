@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import { ToggleButton as AriaToggleButton } from "react-aria-components";
+import {
+    ToggleButton as AriaToggleButton,
+    composeRenderProps,
+} from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
@@ -33,11 +36,9 @@ import type { ConnectedButtonProps } from "./types";
 export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
     icon,
     selectedIcon,
-    children,
     onPress,
     iconPlacement,
     tooltip,
-    className,
     ...props
 }) => {
     const {
@@ -50,26 +51,22 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
     const buttonIconPlacement = iconPlacement ?? groupIconPlacement ?? "start";
 
     const { splashInfo, handlePress } = useSplash(onPress);
-    const isChildFunc = typeof children === "function";
-
     return withTooltip(
         <AriaToggleButton
             onPress={handlePress}
-            className={(renderProps) =>
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
                 clsx(
                     ButtonReset,
                     TapTarget,
                     buttonColorConfig(color),
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
+                    className
                 )
-            }
-            {...props}
+            )}
             data-connected-button={true}
             data-button
         >
-            {(renderProps) => {
+            {composeRenderProps(props.children, (children, renderProps) => {
                 const {
                     isSelected,
                     isDisabled,
@@ -113,12 +110,12 @@ export const ConnectedButton: React.FC<ConnectedButtonProps> = ({
 
                         {buttonIconPlacement === "start" && iconComp}
 
-                        {isChildFunc ? children(renderProps) : children}
+                        {children}
 
                         {buttonIconPlacement === "end" && iconComp}
                     </span>
                 );
-            }}
+            })}
         </AriaToggleButton>,
         tooltip
     );

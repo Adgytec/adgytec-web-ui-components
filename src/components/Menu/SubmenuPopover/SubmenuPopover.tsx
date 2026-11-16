@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { composeRenderProps } from "react-aria-components";
 import { Popover } from "@/components/Popover";
 import styles from "./submenuPopover.module.css";
 
@@ -30,22 +31,16 @@ export interface SubmenuPopoverProps
  */
 export const SubmenuPopover: React.FC<SubmenuPopoverProps> = ({
     offset = -1,
-    className,
     ...props
 }) => {
     return (
         <Popover
             data-scale-xy
             offset={offset}
-            className={(renderProps) =>
-                clsx(
-                    styles["popover"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["popover"], className)
+            )}
         />
     );
 };

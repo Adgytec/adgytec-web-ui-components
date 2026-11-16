@@ -1,5 +1,8 @@
 import { clsx } from "clsx";
-import { Button as AriaButton } from "react-aria-components";
+import {
+    Button as AriaButton,
+    composeRenderProps,
+} from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Loader } from "@/components/Loader";
 import { Splash } from "@/components/Splash/Splash";
@@ -43,10 +46,8 @@ export const Button: React.FC<ButtonProps> = ({
     color,
     tooltip,
     icon,
-    children,
     onPress,
     iconPlacement,
-    className,
     ...props
 }) => {
     const { buttonColor, buttonShape, buttonSize, buttonIconPlacement } =
@@ -58,8 +59,6 @@ export const Button: React.FC<ButtonProps> = ({
         });
 
     const { splashInfo, handlePress } = useSplash(onPress);
-    const isChildFunc = typeof children === "function";
-
     const baseButtonDataAttrs = newButtonBaseDataAttrs({
         shape: buttonShape,
         size: buttonSize,
@@ -69,22 +68,20 @@ export const Button: React.FC<ButtonProps> = ({
     return withTooltip(
         <AriaButton
             onPress={handlePress}
-            className={(renderProps) =>
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
                 clsx(
                     ButtonReset,
                     TapTarget,
                     buttonSizeConfig(buttonSize),
                     buttonColorConfig(buttonColor),
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
+                    className
                 )
-            }
-            {...props}
+            )}
             {...baseButtonDataAttrs}
             data-button
         >
-            {(renderProps) => {
+            {composeRenderProps(props.children, (children, renderProps) => {
                 const {
                     isPending,
                     isDisabled,
@@ -124,12 +121,12 @@ export const Button: React.FC<ButtonProps> = ({
 
                         {buttonIconPlacement === "start" && iconComp}
 
-                        {isChildFunc ? children(renderProps) : children}
+                        {children}
 
                         {buttonIconPlacement === "end" && iconComp}
                     </span>
                 );
-            }}
+            })}
         </AriaButton>,
         tooltip
     );

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ListBoxItem } from "react-aria-components";
+import { composeRenderProps, ListBoxItem } from "react-aria-components";
 import { typography } from "@/utils";
 import styles from "./calendarMenuItem.module.css";
 
@@ -16,21 +16,14 @@ export interface CalendarMenuItemProps
  * Implements Material Design 3 selection styles, focus outlines, and typography.
  */
 export const CalendarMenuItem: React.FC<CalendarMenuItemProps> = ({
-    className,
     ...props
 }) => {
     return (
         <ListBoxItem
-            className={(renderProps) =>
-                clsx(
-                    styles["item"],
-                    typography.bodyLarge,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["item"], typography.bodyLarge, className)
+            )}
         />
     );
 };

@@ -1,5 +1,8 @@
 import { clsx } from "clsx";
-import { Button as AriaButton } from "react-aria-components";
+import {
+    Button as AriaButton,
+    composeRenderProps,
+} from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Loader } from "@/components/Loader";
 import { Splash } from "@/components/Splash/Splash";
@@ -48,7 +51,6 @@ export const IconButton: React.FC<IconButtonProps> = ({
     tooltip,
     icon,
     onPress,
-    className,
     ...props
 }) => {
     const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
@@ -74,18 +76,16 @@ export const IconButton: React.FC<IconButtonProps> = ({
     return withTooltip(
         <AriaButton
             onPress={handlePress}
-            className={(renderProps) =>
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
                 clsx(
                     ButtonReset,
                     TapTarget,
                     buttonSizeConfig(buttonSize),
                     buttonColorConfig(buttonColor),
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
+                    className
                 )
-            }
-            {...props}
+            )}
             {...iconButtonDataAttrs}
             data-button
         >

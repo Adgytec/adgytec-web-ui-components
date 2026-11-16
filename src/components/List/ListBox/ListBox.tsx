@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import { ListBox as AriaListBox } from "react-aria-components";
+import {
+    ListBox as AriaListBox,
+    composeRenderProps,
+} from "react-aria-components";
 import { ListBoxConfigContext } from "../core";
 import styles from "./listBox.module.css";
 import type { ListBoxProps } from "./types";
@@ -33,23 +36,16 @@ import type { ListBoxProps } from "./types";
  */
 export const ListBox = <T extends object>({
     alignY = "center",
-    className,
     selectionIndicator,
     ...props
 }: ListBoxProps<T>) => {
     return (
         <ListBoxConfigContext value={{ selectionIndicator }}>
             <AriaListBox
-                className={(renderProps) =>
-                    clsx(
-                        styles["list-box"],
-                        styles[alignY],
-                        typeof className === "function"
-                            ? className(renderProps)
-                            : className
-                    )
-                }
                 {...props}
+                className={composeRenderProps(props.className, (className) =>
+                    clsx(styles["list-box"], styles[alignY], className)
+                )}
             />
         </ListBoxConfigContext>
     );

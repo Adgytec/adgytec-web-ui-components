@@ -4,6 +4,7 @@ import { cloneElement, type HTMLAttributes, isValidElement } from "react";
 import { useId } from "react-aria";
 import {
     CheckboxFieldContext,
+    composeRenderProps,
     DEFAULT_SLOT,
     ListBoxItem,
     Provider,
@@ -56,7 +57,6 @@ export const ListItem: React.FC<ListItemProps> = ({
     label,
     supporting,
     trailing,
-    className,
     onPress,
     selectionIndicator,
     ...props
@@ -77,17 +77,12 @@ export const ListItem: React.FC<ListItemProps> = ({
 
     return (
         <ListBoxItem
-            className={(renderProps) =>
-                clsx(
-                    styles["list-item"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["list-item"], className)
+            )}
             onPress={handlePress}
             data-list-item={true}
-            {...props}
         >
             {({ isSelected, isDisabled, selectionMode }) => {
                 const leadingSelectionIcon =

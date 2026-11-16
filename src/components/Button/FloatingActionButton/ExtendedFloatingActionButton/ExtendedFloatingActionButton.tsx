@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Button } from "react-aria-components";
+import { Button, composeRenderProps } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash, useSplash } from "@/components/Splash";
 import { withTooltip } from "../../core";
@@ -43,8 +43,6 @@ export const ExtendedFloatingActionButton: React.FC<
     color = "filled",
     variant = "primary",
     size = "medium",
-    children,
-    className,
     tooltip,
     icon,
     iconPlacement = "start",
@@ -56,23 +54,21 @@ export const ExtendedFloatingActionButton: React.FC<
     return withTooltip(
         <Button
             onPress={handlePress}
-            className={(renderProps) =>
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
                 clsx(
                     fabVariantConfig(variant),
                     fabVariantBase,
                     fabSizeConfig(size),
                     ExtendedFABLabelTextMapping[size],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
+                    className
                 )
-            }
+            )}
             data-color={color}
             data-extended
             data-icon={icon ? true : undefined}
-            {...props}
         >
-            {(renderProps) => (
+            {composeRenderProps(props.children, (children) => (
                 <>
                     {splashInfo && <Splash {...splashInfo} />}
 
@@ -80,15 +76,13 @@ export const ExtendedFloatingActionButton: React.FC<
                         <Icon icon={icon} size={FABIconSizeMapping[size]} />
                     )}
 
-                    {typeof children === "function"
-                        ? children(renderProps)
-                        : children}
+                    {children}
 
                     {iconPlacement === "end" && icon && (
                         <Icon icon={icon} size={FABIconSizeMapping[size]} />
                     )}
                 </>
-            )}
+            ))}
         </Button>,
         tooltip
     );

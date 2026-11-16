@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import { Calendar as AriaCalendar } from "react-aria-components";
+import {
+    Calendar as AriaCalendar,
+    composeRenderProps,
+} from "react-aria-components";
 import { BaseCalendar } from "../BaseCalendar";
 import { CalendarBaseStyles, type WeekdayStyle } from "../core";
 
@@ -53,7 +56,6 @@ export interface CalendarProps
  */
 export const Calendar: React.FC<CalendarProps> = ({
     weekdayStyle,
-    className,
     previousMonthAriaLabel,
     nextMonthAriaLabel,
     previousYearAriaLabel,
@@ -62,15 +64,10 @@ export const Calendar: React.FC<CalendarProps> = ({
 }) => {
     return (
         <AriaCalendar
-            className={(renderProps) =>
-                clsx(
-                    CalendarBaseStyles,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(CalendarBaseStyles, className)
+            )}
             data-calendar
         >
             <BaseCalendar

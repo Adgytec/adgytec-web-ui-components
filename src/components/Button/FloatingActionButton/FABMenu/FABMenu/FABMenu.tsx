@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { Menu } from "react-aria-components";
+import { composeRenderProps, Menu } from "react-aria-components";
 import styles from "./fabMenu.module.css";
 
 /**
@@ -27,21 +27,13 @@ export interface FABMenuProps<T extends object = object>
  * </FABMenu>
  * ```
  */
-export const FABMenu = <T extends object>({
-    className,
-    ...props
-}: FABMenuProps<T>) => {
+export const FABMenu = <T extends object>({ ...props }: FABMenuProps<T>) => {
     return (
         <Menu
-            className={(renderProps) =>
-                clsx(
-                    styles["fab-menu"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["fab-menu"], className)
+            )}
         />
     );
 };

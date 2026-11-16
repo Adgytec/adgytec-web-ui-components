@@ -1,7 +1,11 @@
 import clsx from "clsx";
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
-import { Tab as AriaTab, SelectionIndicator } from "react-aria-components";
+import {
+    Tab as AriaTab,
+    composeRenderProps,
+    SelectionIndicator,
+} from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
@@ -45,28 +49,16 @@ export interface TabProps
  * }
  * ```
  */
-export const Tab: React.FC<TabProps> = ({
-    className,
-    label,
-    icon,
-    onPress,
-    ...props
-}) => {
+export const Tab: React.FC<TabProps> = ({ label, icon, onPress, ...props }) => {
     const { splashInfo, handlePress } = useSplash(onPress);
 
     return (
         <AriaTab
             onPress={handlePress}
-            className={(renderProps) =>
-                clsx(
-                    styles["tab"],
-                    typography.titleSmall,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["tab"], typography.titleSmall, className)
+            )}
             data-icon={icon ? true : undefined}
             data-tab={true}
         >

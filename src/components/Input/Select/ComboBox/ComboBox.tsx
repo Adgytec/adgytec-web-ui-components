@@ -2,6 +2,7 @@ import clsx from "clsx";
 import {
     ComboBox as AriaComboBox,
     ComboBoxValue,
+    composeRenderProps,
     TagGroup,
     TagList,
 } from "react-aria-components";
@@ -51,25 +52,17 @@ export const ComboBox = <
     description,
     errorMessage,
     showDescriptionOnInvalid = false,
-    children,
-    className,
     hideMultiSelectionValue = false,
     ...props
 }: ComboBoxProps<T, M>) => {
     return (
         <AriaComboBox
-            className={(renderProps) =>
-                clsx(
-                    Colors,
-                    InputGroupStyles,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(Colors, InputGroupStyles, className)
+            )}
         >
-            {(renderProps) => {
+            {composeRenderProps(props.children, (children, renderProps) => {
                 const { isInvalid } = renderProps;
                 const showDescription =
                     description &&
@@ -79,9 +72,7 @@ export const ComboBox = <
                     <ComboboxContext value={renderProps}>
                         {label && <Label>{label}</Label>}
 
-                        {typeof children === "function"
-                            ? children(renderProps)
-                            : children}
+                        {children}
 
                         {props.selectionMode === "multiple" &&
                             !hideMultiSelectionValue && (
@@ -142,7 +133,7 @@ export const ComboBox = <
                         </FieldError>
                     </ComboboxContext>
                 );
-            }}
+            })}
         </AriaComboBox>
     );
 };

@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import { Select as AriaSelect } from "react-aria-components";
+import {
+    Select as AriaSelect,
+    composeRenderProps,
+} from "react-aria-components";
 import { Colors, InputGroupStyles, SupportingTextStyles } from "../../core";
 import { Description } from "../../Description";
 import { FieldError } from "../../FieldError";
@@ -42,24 +45,16 @@ export const Select = <
     description,
     errorMessage,
     showDescriptionOnInvalid = false,
-    children,
-    className,
     ...props
 }: SelectProps<T, M>) => {
     return (
         <AriaSelect
-            className={(renderProps) =>
-                clsx(
-                    Colors,
-                    InputGroupStyles,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(Colors, InputGroupStyles, className)
+            )}
         >
-            {(renderProps) => {
+            {composeRenderProps(props.children, (children, renderProps) => {
                 const { isInvalid } = renderProps;
                 const showDescription =
                     description &&
@@ -69,9 +64,7 @@ export const Select = <
                     <>
                         {label && <Label>{label}</Label>}
 
-                        {typeof children === "function"
-                            ? children(renderProps)
-                            : children}
+                        {children}
 
                         {showDescription && (
                             <Description className={clsx(SupportingTextStyles)}>
@@ -84,7 +77,7 @@ export const Select = <
                         </FieldError>
                     </>
                 );
-            }}
+            })}
         </AriaSelect>
     );
 };

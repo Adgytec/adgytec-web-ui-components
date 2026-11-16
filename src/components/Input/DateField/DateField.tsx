@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import {
     DateField as AriaDateField,
+    composeRenderProps,
     DateInput,
     DateSegment,
     type DateValue,
@@ -42,22 +43,15 @@ export const DateField = <T extends DateValue>({
     description,
     errorMessage,
     showDescriptionOnInvalid = false,
-    className,
     ref,
     ...props
 }: DateFieldProps<T>) => {
     return (
         <AriaDateField
-            className={(renderProps) =>
-                clsx(
-                    Colors,
-                    InputGroupStyles,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(Colors, InputGroupStyles, className)
+            )}
         >
             {({ isInvalid }) => {
                 const showDescription =

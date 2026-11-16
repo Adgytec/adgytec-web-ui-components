@@ -1,5 +1,9 @@
 import clsx from "clsx";
-import { Slider as AriaSlider, SliderTrack } from "react-aria-components";
+import {
+    Slider as AriaSlider,
+    composeRenderProps,
+    SliderTrack,
+} from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Label } from "../../Label";
 import {
@@ -49,7 +53,6 @@ export const Slider = <T extends number>({
     minInsetIcon,
     maxStops,
     outputRenderer,
-    className,
     ...props
 }: SliderProps<T>) => {
     const canShowIcon = size !== "extra-small" && size !== "small";
@@ -60,16 +63,10 @@ export const Slider = <T extends number>({
             minValue={minValue}
             maxValue={maxValue}
             step={step}
-            className={(renderProps) =>
-                clsx(
-                    SliderStyles,
-                    SliderColors,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(SliderStyles, SliderColors, className)
+            )}
         >
             {({ orientation, state, isDisabled }) => {
                 const thumbValue = state.getThumbPercent(0);

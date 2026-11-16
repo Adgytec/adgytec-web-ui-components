@@ -1,6 +1,9 @@
 import { clsx } from "clsx";
 import { ChevronDown } from "lucide-react";
-import { Button as AriaButton } from "react-aria-components";
+import {
+    Button as AriaButton,
+    composeRenderProps,
+} from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
@@ -45,7 +48,6 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
     onPress,
     isDisabled,
     isPending,
-    className,
     ...props
 }) => {
     const splitButtonState = useSplitButtonContext();
@@ -60,18 +62,16 @@ export const SplitButtonTrigger: React.FC<SplitButtonTriggerProps> = ({
             onPress={handlePress}
             isDisabled={disabled}
             isPending={pending}
-            className={(renderProps) =>
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
                 clsx(
                     ButtonReset,
                     TapTarget,
                     SplitButtonTriggerBase,
                     buttonColorConfig(splitButtonState.color),
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
+                    className
                 )
-            }
-            {...props}
+            )}
             data-button
             data-split-button-trigger
         >

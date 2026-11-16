@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useContext } from "react";
-import { Dialog } from "react-aria-components";
+import { composeRenderProps, Dialog } from "react-aria-components";
 import { DialogContext } from "@/components/Dialog";
 import { BottomSheetContext } from "../BottomSheetModal";
 import styles from "./bottomSheet.module.css";
@@ -44,27 +44,19 @@ import type { BottomSheetProps } from "./types";
  * }
  * ```
  */
-export const BottomSheet: React.FC<BottomSheetProps> = ({
-    children,
-    className,
-    ...props
-}) => {
+export const BottomSheet: React.FC<BottomSheetProps> = ({ ...props }) => {
     const { layout } = useContext(BottomSheetContext);
 
     return (
         <DialogContext value={true}>
             <Dialog
-                className={clsx(styles["bottom-sheet"], className)}
-                data-layout={layout}
                 {...props}
+                className={clsx(styles["bottom-sheet"], props.className)}
+                data-layout={layout}
             >
-                {(renderProps) => (
-                    <>
-                        {typeof children === "function"
-                            ? children(renderProps)
-                            : children}
-                    </>
-                )}
+                {composeRenderProps(props.children, (children) => (
+                    <>{children}</>
+                ))}
             </Dialog>
         </DialogContext>
     );

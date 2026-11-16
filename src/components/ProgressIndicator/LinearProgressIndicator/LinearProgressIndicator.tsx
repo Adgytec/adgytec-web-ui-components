@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { ProgressBar } from "react-aria-components";
+import { composeRenderProps, ProgressBar } from "react-aria-components";
 import styles from "./linearProgressIndicator.module.css";
 import { DeterminateTrack, IndeterminateTrack } from "./Track";
 import type { LinearProgressIndicatorProps } from "./types";
@@ -44,28 +44,21 @@ import type { LinearProgressIndicatorProps } from "./types";
  */
 export const LinearProgressIndicator: React.FC<
     LinearProgressIndicatorProps
-> = ({ thickness = "default", wavy = true, children, className, ...props }) => {
+> = ({ thickness = "default", wavy = true, ...props }) => {
     return (
         <ProgressBar
-            className={(renderProps) =>
-                clsx(
-                    styles["indicator"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
             data-thickness={thickness}
+            className={composeRenderProps(props.className, (className) => {
+                return clsx(styles["indicator"], className);
+            })}
         >
-            {(renderProps) => {
+            {composeRenderProps(props.children, (children, renderProps) => {
                 const { percentage = 0, isIndeterminate } = renderProps;
 
                 return (
                     <>
-                        {typeof children === "function"
-                            ? children(renderProps)
-                            : children}
+                        {children}
 
                         {isIndeterminate ? (
                             <IndeterminateTrack
@@ -81,7 +74,7 @@ export const LinearProgressIndicator: React.FC<
                         )}
                     </>
                 );
-            }}
+            })}
         </ProgressBar>
     );
 };

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { GridListItem } from "react-aria-components";
+import { composeRenderProps, GridListItem } from "react-aria-components";
 import { Splash, useSplash } from "@/components/Splash";
 import styles from "./card.module.css";
 import type { CardProps } from "./types";
@@ -26,37 +26,25 @@ import type { CardProps } from "./types";
  */
 export const Card: React.FC<CardProps> = ({
     variant = "filled",
-    className,
     onPress,
-    children,
     ...props
 }) => {
     const { handlePress, splashInfo } = useSplash(onPress);
 
     return (
         <GridListItem
-            className={(renderProps) =>
-                clsx(
-                    styles["card"],
-                    styles[variant],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
-            onPress={handlePress}
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["card"], styles[variant], className)
+            )}
+            onPress={handlePress}
         >
-            {(renderProps) => {
-                return (
-                    <>
-                        {splashInfo && <Splash {...splashInfo} />}
-                        {typeof children === "function"
-                            ? children(renderProps)
-                            : children}
-                    </>
-                );
-            }}
+            {composeRenderProps(props.children, (children) => (
+                <>
+                    {splashInfo && <Splash {...splashInfo} />}
+                    {children}
+                </>
+            ))}
         </GridListItem>
     );
 };

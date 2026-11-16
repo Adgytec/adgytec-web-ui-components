@@ -1,5 +1,8 @@
 import { clsx } from "clsx";
-import { DisclosurePanel as AriaDisclosurePanel } from "react-aria-components";
+import {
+    DisclosurePanel as AriaDisclosurePanel,
+    composeRenderProps,
+} from "react-aria-components";
 import { typography } from "@/utils";
 import styles from "./disclosurePanel.module.css";
 
@@ -36,22 +39,15 @@ export interface DisclosurePanelProps
  * ```
  */
 export const DisclosurePanel: React.FC<DisclosurePanelProps> = ({
-    className,
     children,
     ...props
 }) => {
     return (
         <AriaDisclosurePanel
-            className={(renderProps) =>
-                clsx(
-                    styles["panel"],
-                    typography.bodyLarge,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["panel"], typography.bodyLarge, className)
+            )}
         >
             <div>{children}</div>
         </AriaDisclosurePanel>

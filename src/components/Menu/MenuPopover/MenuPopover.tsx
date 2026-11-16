@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { composeRenderProps } from "react-aria-components";
 import { Popover } from "@/components/Popover";
 import styles from "./menuPopover.module.css";
 
@@ -23,21 +24,13 @@ export interface MenuPopoverProps
  * </MenuPopover>
  * ```
  */
-export const MenuPopover: React.FC<MenuPopoverProps> = ({
-    className,
-    ...props
-}) => {
+export const MenuPopover: React.FC<MenuPopoverProps> = ({ ...props }) => {
     return (
         <Popover
-            className={(renderProps) =>
-                clsx(
-                    styles["popover"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["popover"], className)
+            )}
         />
     );
 };

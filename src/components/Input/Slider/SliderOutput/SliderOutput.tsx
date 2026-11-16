@@ -1,6 +1,9 @@
 import clsx from "clsx";
 import { useContext } from "react";
-import { SliderOutput as AriaSliderOutput } from "react-aria-components";
+import {
+    SliderOutput as AriaSliderOutput,
+    composeRenderProps,
+} from "react-aria-components";
 import { typography } from "@/utils";
 import { SliderThumbStateContext } from "../SliderThumb/context";
 import styles from "./sliderOutput.module.css";
@@ -24,26 +27,17 @@ export interface SliderOutputProps
  * </SliderOutput>
  * ```
  */
-export const SliderOutput: React.FC<SliderOutputProps> = ({
-    className,
-    ...props
-}) => {
+export const SliderOutput: React.FC<SliderOutputProps> = ({ ...props }) => {
     const { isDragging, isHovered, isFocused, isFocusVisible } = useContext(
         SliderThumbStateContext
     );
 
     return (
         <AriaSliderOutput
-            className={(renderProps) =>
-                clsx(
-                    styles["output"],
-                    typography.labelLarge,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["output"], typography.labelLarge, className)
+            )}
             data-focus-visible={isFocusVisible || undefined}
             data-dragging={isDragging || undefined}
             data-hovered={isHovered || undefined}

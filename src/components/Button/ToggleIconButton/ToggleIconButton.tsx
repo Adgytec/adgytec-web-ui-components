@@ -1,5 +1,8 @@
 import { clsx } from "clsx";
-import { ToggleButton as AriaToggleButton } from "react-aria-components";
+import {
+    ToggleButton as AriaToggleButton,
+    composeRenderProps,
+} from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
@@ -48,7 +51,6 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     selectedIcon,
     icon,
     onPress,
-    className,
     ...props
 }) => {
     const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
@@ -75,18 +77,16 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     return withTooltip(
         <AriaToggleButton
             onPress={handlePress}
-            className={(renderProps) =>
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
                 clsx(
                     ButtonReset,
                     TapTarget,
                     buttonSizeConfig(buttonSize),
                     buttonColorConfig(buttonColor),
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
+                    className
                 )
-            }
-            {...props}
+            )}
             {...iconButtonDataAttrs}
             data-button
         >

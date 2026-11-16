@@ -2,6 +2,7 @@ import clsx from "clsx";
 import {
     TextArea as AriaTextArea,
     TextField as AriaTextField,
+    composeRenderProps,
 } from "react-aria-components";
 import { typography } from "@/utils";
 import { CharacterCount } from "../CharacterCount";
@@ -46,7 +47,6 @@ export const TextArea: React.FC<TextAreaProps> = ({
     placeholder,
     showCharacterCount: hasCharacterCount,
     rows,
-    className,
     maxLength,
     value,
     defaultValue,
@@ -62,20 +62,14 @@ export const TextArea: React.FC<TextAreaProps> = ({
 
     return (
         <AriaTextField
-            className={(renderProps) =>
-                clsx(
-                    Colors,
-                    InputGroupStyles,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(Colors, InputGroupStyles, className)
+            )}
             maxLength={maxLength}
             value={currentValue}
             defaultValue={defaultValue}
             onChange={setValue}
-            {...props}
         >
             {({ isInvalid }) => {
                 const hasDescription =

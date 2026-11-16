@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Modal as AriaModal } from "react-aria-components";
+import { Modal as AriaModal, composeRenderProps } from "react-aria-components";
 import styles from "./modal.module.css";
 
 /**
@@ -26,18 +26,13 @@ export interface ModalProps
  * </ModalOverlay>
  * ```
  */
-export const Modal: React.FC<ModalProps> = ({ className, ...props }) => {
+export const Modal: React.FC<ModalProps> = ({ ...props }) => {
     return (
         <AriaModal
-            className={(renderProps) =>
-                clsx(
-                    styles["modal"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["modal"], className)
+            )}
         />
     );
 };

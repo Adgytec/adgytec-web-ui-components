@@ -1,4 +1,5 @@
 import { clsx } from "clsx";
+import { composeRenderProps } from "react-aria-components";
 import { Popover } from "@/components/Popover";
 import styles from "./selectPopover.module.css";
 
@@ -12,21 +13,13 @@ export interface SelectPopoverProps
 /**
  * Floating dropdown container for displaying {@link SelectList} items.
  */
-export const SelectPopover: React.FC<SelectPopoverProps> = ({
-    className,
-    ...props
-}) => {
+export const SelectPopover: React.FC<SelectPopoverProps> = ({ ...props }) => {
     return (
         <Popover
-            className={(renderProps) =>
-                clsx(
-                    styles["popover"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["popover"], className)
+            )}
         />
     );
 };

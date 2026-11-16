@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { composeRenderProps } from "react-aria-components";
 import { IconButton, type IconButtonProps } from "@/components/Button";
 import styles from "./listAction.module.css";
 
@@ -26,22 +27,16 @@ export interface ListActionProps extends Omit<IconButtonProps, "size"> {}
  */
 export const ListAction: React.FC<ListActionProps> = ({
     color = "standard",
-    className,
     ...props
 }) => {
     return (
         <IconButton
-            className={(renderProps) =>
-                clsx(
-                    styles["action"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["action"], className)
+            )}
             size="small"
             color={color}
-            {...props}
         />
     );
 };

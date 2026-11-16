@@ -1,5 +1,9 @@
 import clsx from "clsx";
-import { Slider as AriaSlider, SliderTrack } from "react-aria-components";
+import {
+    Slider as AriaSlider,
+    composeRenderProps,
+    SliderTrack,
+} from "react-aria-components";
 import { Label } from "../../Label";
 import {
     ActiveTrackStyles,
@@ -49,7 +53,6 @@ export const CenteredSlider = <T extends number>({
     showInBetweenSteps,
     maxStops,
     outputRenderer,
-    className,
     ...props
 }: CenteredSliderProps<T>) => {
     return (
@@ -58,16 +61,10 @@ export const CenteredSlider = <T extends number>({
             maxValue={maxValue}
             step={step}
             defaultValue={defaultValue}
-            className={(renderProps) =>
-                clsx(
-                    SliderStyles,
-                    SliderColors,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(SliderStyles, SliderColors, className)
+            )}
         >
             {({ orientation, state, isDisabled }) => {
                 const thumbValue = state.getThumbPercent(0);

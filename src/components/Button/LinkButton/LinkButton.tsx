@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { Link } from "react-aria-components";
+import { composeRenderProps, Link } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
@@ -40,9 +40,7 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
     color,
     tooltip,
     icon,
-    children,
     onPress,
-    className,
     iconPlacement,
     ...props
 }) => {
@@ -55,8 +53,6 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
         });
 
     const { splashInfo, handlePress } = useSplash(onPress);
-    const isChildFunc = typeof children === "function";
-
     const baseButtonDataAttrs = newButtonBaseDataAttrs({
         shape: buttonShape,
         size: buttonSize,
@@ -66,23 +62,21 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
     return withTooltip(
         <Link
             onPress={handlePress}
-            className={(renderProps) =>
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
                 clsx(
                     ButtonReset,
                     TapTarget,
                     buttonSizeConfig(buttonSize),
                     buttonColorConfig(buttonColor),
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
+                    className
                 )
-            }
-            {...props}
+            )}
             {...baseButtonDataAttrs}
             data-button
             data-link-button
         >
-            {(renderProps) => {
+            {composeRenderProps(props.children, (children, renderProps) => {
                 const {
                     isDisabled,
                     isFocusVisible,
@@ -118,12 +112,12 @@ export const LinkButton: React.FC<LinkButtonProps> = ({
 
                         {buttonIconPlacement === "start" && iconComp}
 
-                        {isChildFunc ? children(renderProps) : children}
+                        {children}
 
                         {buttonIconPlacement === "end" && iconComp}
                     </span>
                 );
-            }}
+            })}
         </Link>,
         tooltip
     );

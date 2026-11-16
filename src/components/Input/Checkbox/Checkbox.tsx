@@ -1,6 +1,10 @@
 import clsx from "clsx";
 import { useContext } from "react";
-import { CheckboxButton, CheckboxField } from "react-aria-components";
+import {
+    CheckboxButton,
+    CheckboxField,
+    composeRenderProps,
+} from "react-aria-components";
 import { typography } from "@/utils";
 import { TapTarget } from "@/utils/tapTarget";
 import styles from "./checkbox.module.css";
@@ -34,7 +38,6 @@ import type { CheckboxProps } from "./types";
  * ```
  */
 export const Checkbox: React.FC<CheckboxProps> = ({
-    children,
     labelPlacement,
     ...props
 }) => {
@@ -44,11 +47,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 
     return (
         <CheckboxField {...props} data-checkbox>
-            {(renderProps) => {
-                const label =
-                    typeof children === "function"
-                        ? children(renderProps)
-                        : children;
+            {composeRenderProps(props.children, (children) => {
+                const label = children;
 
                 return (
                     <CheckboxButton
@@ -125,7 +125,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                         }}
                     </CheckboxButton>
                 );
-            }}
+            })}
         </CheckboxField>
     );
 };

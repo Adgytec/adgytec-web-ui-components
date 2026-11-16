@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Check } from "lucide-react";
-import { ListBoxItem } from "react-aria-components";
+import { composeRenderProps, ListBoxItem } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import {
     MenuItemIconSize,
@@ -40,7 +40,6 @@ export const SelectItem: React.FC<SelectItemProps> = ({
     supportingText,
     trailingText,
     trailingIcon,
-    className,
     onPress,
     textValue = label,
     ...props
@@ -49,18 +48,12 @@ export const SelectItem: React.FC<SelectItemProps> = ({
 
     return (
         <ListBoxItem
-            className={(renderProps) =>
-                clsx(
-                    menuItemBaseColor,
-                    MenuItemStyles,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(menuItemBaseColor, MenuItemStyles, className)
+            )}
             textValue={textValue}
             onPress={handlePress}
-            {...props}
             data-multi-line={supportingText ? true : undefined}
         >
             {({ isSelected }) => (

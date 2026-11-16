@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { composeRenderProps } from "react-aria-components";
 import { IconButton, type IconButtonProps } from "@/components/Button";
 import styles from "./appBarAction.module.css";
 
@@ -23,20 +24,14 @@ export type AppBarActionProps = Omit<IconButtonProps, "size">;
  */
 export const AppBarAction: React.FC<AppBarActionProps> = ({
     color = "standard",
-    className,
     ...props
 }) => {
     return (
         <IconButton
-            className={(renderProps) =>
-                clsx(
-                    styles["action"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["action"], className)
+            )}
             color={color}
             size="small"
         />

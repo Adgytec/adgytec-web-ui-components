@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { Link } from "react-aria-components";
+import { composeRenderProps, Link } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
@@ -45,7 +45,6 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
     tooltip,
     icon,
     onPress,
-    className,
     ...props
 }) => {
     const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
@@ -71,18 +70,16 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
     return withTooltip(
         <Link
             onPress={handlePress}
-            className={(renderProps) =>
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
                 clsx(
                     ButtonReset,
                     TapTarget,
                     buttonSizeConfig(buttonSize),
                     buttonColorConfig(buttonColor),
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
+                    className
                 )
-            }
-            {...props}
+            )}
             {...iconButtonDataAttrs}
             data-button
             data-link-button

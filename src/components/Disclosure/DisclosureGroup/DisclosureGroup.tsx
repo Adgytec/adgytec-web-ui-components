@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import { DisclosureGroup as AriaDisclosureGroup } from "react-aria-components";
+import {
+    DisclosureGroup as AriaDisclosureGroup,
+    composeRenderProps,
+} from "react-aria-components";
 import styles from "./disclosureGroup.module.css";
 
 /**
@@ -43,20 +46,14 @@ export interface DisclosureGroupProps
  * ```
  */
 export const DisclosureGroup: React.FC<DisclosureGroupProps> = ({
-    className,
     ...props
 }) => {
     return (
         <AriaDisclosureGroup
-            className={(renderProps) =>
-                clsx(
-                    styles["group"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["group"], className)
+            )}
         />
     );
 };

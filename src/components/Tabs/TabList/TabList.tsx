@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import { TabList as AriaTabList } from "react-aria-components";
+import {
+    TabList as AriaTabList,
+    composeRenderProps,
+} from "react-aria-components";
 import styles from "./tabList.module.css";
 
 /**
@@ -44,21 +47,13 @@ export interface TabListProps<T extends object = object>
  * }
  * ```
  */
-export const TabList = <T extends object>({
-    className,
-    ...props
-}: TabListProps<T>) => {
+export const TabList = <T extends object>({ ...props }: TabListProps<T>) => {
     return (
         <AriaTabList
-            className={(renderProps) =>
-                clsx(
-                    styles["tab-list"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["tab-list"], className)
+            )}
         />
     );
 };

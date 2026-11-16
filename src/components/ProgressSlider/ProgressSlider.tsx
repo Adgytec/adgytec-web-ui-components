@@ -1,7 +1,12 @@
 // visual inspiration from dux shell media player seeker
 
 import clsx from "clsx";
-import { Slider, SliderThumb, SliderTrack } from "react-aria-components";
+import {
+    composeRenderProps,
+    Slider,
+    SliderThumb,
+    SliderTrack,
+} from "react-aria-components";
 import { SineLinear, useWidth } from "@/components/Wave";
 import styles from "./progressSlider.module.css";
 import { type ProgressSliderProps, ProgressSliderSineWaveProps } from "./types";
@@ -55,7 +60,6 @@ const INACTIVE_OFFSET = 12; // px from the thumb center to where the inactive tr
  */
 export const ProgressSlider = <T extends number>({
     active = true,
-    className,
     isDisabled,
     ...props
 }: ProgressSliderProps<T>) => {
@@ -64,16 +68,11 @@ export const ProgressSlider = <T extends number>({
 
     return (
         <Slider
-            className={(renderProps) =>
-                clsx(
-                    styles["slider"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
-            isDisabled={isDisabled}
             {...props}
+            isDisabled={isDisabled}
+            className={composeRenderProps(props.className, (className) => {
+                return clsx(styles["slider"], className);
+            })}
         >
             {({ state }) => {
                 const percentage = state.getThumbPercent(0) * 100;

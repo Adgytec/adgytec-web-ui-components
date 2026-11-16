@@ -1,6 +1,9 @@
 import clsx from "clsx";
 import { Check, ChevronRight } from "lucide-react";
-import { MenuItem as AriaMenuItem } from "react-aria-components";
+import {
+    MenuItem as AriaMenuItem,
+    composeRenderProps,
+} from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
@@ -43,7 +46,6 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     supportingText,
     trailingText,
     trailingIcon,
-    className,
     onPress,
     ...props
 }) => {
@@ -51,17 +53,11 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 
     return (
         <AriaMenuItem
-            className={(renderProps) =>
-                clsx(
-                    menuItemBaseColor,
-                    MenuItemStyles,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
-            onPress={handlePress}
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(menuItemBaseColor, MenuItemStyles, className)
+            )}
+            onPress={handlePress}
             data-multi-line={supportingText ? true : undefined}
         >
             {({ hasSubmenu, isSelected }) => {

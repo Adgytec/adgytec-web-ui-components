@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Button } from "react-aria-components";
+import { Button, composeRenderProps } from "react-aria-components";
 import {
     ButtonReset,
     buttonColorBase,
@@ -30,8 +30,6 @@ export type AppBarAvatarProps = React.ComponentPropsWithRef<typeof Button>;
  * ```
  */
 export const AppBarAvatar: React.FC<AppBarAvatarProps> = ({
-    className,
-    children,
     onPress,
     ...props
 }) => {
@@ -40,22 +38,20 @@ export const AppBarAvatar: React.FC<AppBarAvatarProps> = ({
     return (
         <Button
             onPress={handlePress}
-            className={(renderProps) =>
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
                 clsx(
                     ButtonReset,
                     styles["avatar"],
                     typography.labelLarge,
                     TapTarget,
                     buttonColorConfig("filled"),
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
+                    className
                 )
-            }
-            {...props}
+            )}
             data-button
         >
-            {(renderProps) => {
+            {composeRenderProps(props.children, (children, renderProps) => {
                 const {
                     isDisabled,
                     isFocusVisible,
@@ -77,12 +73,10 @@ export const AppBarAvatar: React.FC<AppBarAvatarProps> = ({
                     <span className={clsx(buttonColorBase)} {...dataAttrs}>
                         {splashInfo && <Splash {...splashInfo} />}
 
-                        {typeof children === "function"
-                            ? children(renderProps)
-                            : children}
+                        {children}
                     </span>
                 );
-            }}
+            })}
         </Button>
     );
 };

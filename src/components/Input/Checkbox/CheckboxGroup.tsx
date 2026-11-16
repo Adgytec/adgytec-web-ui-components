@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import { CheckboxGroup as AriaCheckboxGroup } from "react-aria-components";
+import {
+    CheckboxGroup as AriaCheckboxGroup,
+    composeRenderProps,
+} from "react-aria-components";
 import { Description } from "../Description";
 import { FieldError } from "../FieldError";
 import { Label } from "../Label";
@@ -29,7 +32,6 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     description,
     errorMessage,
     children,
-    className,
     labelPlacement,
     showDescriptionOnInvalid = false,
     ...props
@@ -37,15 +39,10 @@ export const CheckboxGroup: React.FC<CheckboxGroupProps> = ({
     return (
         <CheckboxGroupContext value={{ labelPlacement }}>
             <AriaCheckboxGroup
-                className={(renderProps) =>
-                    clsx(
-                        styles["checkbox-group"],
-                        typeof className === "function"
-                            ? className(renderProps)
-                            : className
-                    )
-                }
                 {...props}
+                className={composeRenderProps(props.className, (className) =>
+                    clsx(styles["checkbox-group"], className)
+                )}
             >
                 {({ isInvalid }) => {
                     const showDescription =

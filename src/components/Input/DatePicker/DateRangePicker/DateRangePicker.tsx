@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { CalendarDays } from "lucide-react";
 import {
     DateRangePicker as AriaRangeDatePicker,
+    composeRenderProps,
     DateInput,
     DateSegment,
     type DateValue,
@@ -52,23 +53,16 @@ export const DateRangePicker = <T extends DateValue>({
     description,
     errorMessage,
     showDescriptionOnInvalid = false,
-    className,
     ref,
     weekdayStyle,
     ...props
 }: DateRangePickerProps<T>) => {
     return (
         <AriaRangeDatePicker
-            className={(renderProps) =>
-                clsx(
-                    Colors,
-                    InputGroupStyles,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(Colors, InputGroupStyles, className)
+            )}
         >
             {({ isInvalid, isDisabled, isOpen }) => {
                 const showDescription =

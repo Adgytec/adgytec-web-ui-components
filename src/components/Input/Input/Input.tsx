@@ -5,6 +5,7 @@ import { useObjectRef } from "react-aria/useObjectRef";
 import {
     Input as AriaInput,
     TextField as AriaTextField,
+    composeRenderProps,
 } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { typography } from "@/utils";
@@ -64,7 +65,6 @@ export const Input: React.FC<InputProps> = ({
     suffix,
     leadingIcon,
     trailing,
-    className,
     showCharacterCount: hasCharacterCount,
     maxLength,
     value,
@@ -91,20 +91,14 @@ export const Input: React.FC<InputProps> = ({
 
     return (
         <AriaTextField
-            className={(renderProps) =>
-                clsx(
-                    Colors,
-                    InputGroupStyles,
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(Colors, InputGroupStyles, className)
+            )}
             maxLength={maxLength}
             value={currentValue}
             defaultValue={defaultValue}
             onChange={setValue}
-            {...props}
             {...layoutDataAttrs}
         >
             {({ isDisabled, isInvalid }) => {

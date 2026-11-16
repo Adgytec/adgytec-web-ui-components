@@ -1,6 +1,10 @@
 import { clsx } from "clsx";
 import { useContext } from "react";
-import { RadioButton, RadioField } from "react-aria-components";
+import {
+    composeRenderProps,
+    RadioButton,
+    RadioField,
+} from "react-aria-components";
 import { typography } from "@/utils";
 import { TapTarget } from "@/utils/tapTarget";
 import { RadioGroupContext } from "./context";
@@ -24,22 +28,15 @@ import type { RadioProps } from "./types";
  * </RadioGroup>
  * ```
  */
-export const Radio: React.FC<RadioProps> = ({
-    children,
-    labelPlacement,
-    ...props
-}) => {
+export const Radio: React.FC<RadioProps> = ({ labelPlacement, ...props }) => {
     const { labelPlacement: groupLabelPlacement } =
         useContext(RadioGroupContext);
     const placement = labelPlacement ?? groupLabelPlacement ?? "end";
 
     return (
         <RadioField {...props}>
-            {(renderProps) => {
-                const label =
-                    typeof children === "function"
-                        ? children(renderProps)
-                        : children;
+            {composeRenderProps(props.children, (children) => {
+                const label = children;
                 return (
                     <RadioButton
                         className={clsx(styles["radio"], typography.labelLarge)}
@@ -91,7 +88,7 @@ export const Radio: React.FC<RadioProps> = ({
                         }}
                     </RadioButton>
                 );
-            }}
+            })}
         </RadioField>
     );
 };

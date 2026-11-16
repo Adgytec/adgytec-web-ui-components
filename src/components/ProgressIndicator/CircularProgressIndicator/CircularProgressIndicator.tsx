@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
-import { ProgressBar } from "react-aria-components";
+import { composeRenderProps, ProgressBar } from "react-aria-components";
 import { useMediaQuery } from "usehooks-ts";
 import { SineCircular } from "@/components/Wave";
 import {
@@ -161,26 +161,19 @@ export const CircularProgressIndicator: React.FC<
     thickness = "default",
     wavy = true,
     size = DefaultProgressIndicatorSize,
-    children,
-    className,
     ...props
 }) => {
     const usableSize = getUsableProgressIndicatorSize(size);
 
     return (
         <ProgressBar
-            className={(renderProps) =>
-                clsx(
-                    styles["indicator"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
             data-thickness={thickness}
+            className={composeRenderProps(props.className, (className) => {
+                return clsx(styles["indicator"], className);
+            })}
         >
-            {(renderProps) => {
+            {composeRenderProps(props.children, (children, renderProps) => {
                 const { percentage = 0, isIndeterminate } = renderProps;
 
                 return (
@@ -193,15 +186,11 @@ export const CircularProgressIndicator: React.FC<
                             wavy={wavy}
                         />
                         {children && (
-                            <div className={styles["label"]}>
-                                {typeof children === "function"
-                                    ? children(renderProps)
-                                    : children}
-                            </div>
+                            <div className={styles["label"]}>{children}</div>
                         )}
                     </>
                 );
-            }}
+            })}
         </ProgressBar>
     );
 };

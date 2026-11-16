@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Heading } from "react-aria-components";
+import { composeRenderProps, Heading } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import {
     DialogBodyTypography,
@@ -47,7 +47,6 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
     heading,
     icon,
     actions,
-    children,
     divider = "none",
     ...props
 }) => {
@@ -62,7 +61,7 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
             data-dialog-head={!!heading || !!icon || undefined}
             data-actions={hasActions || undefined}
         >
-            {(renderProps) => (
+            {composeRenderProps(props.children, (children, renderProps) => (
                 <>
                     {(heading || icon) && (
                         <div
@@ -87,9 +86,7 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
                     )}
 
                     <div className={clsx(DialogBodyTypography, styles["body"])}>
-                        {typeof children === "function"
-                            ? children(renderProps)
-                            : children}
+                        {children}
                     </div>
 
                     {hasActions && (
@@ -105,7 +102,7 @@ export const ActionDialog: React.FC<ActionDialogProps> = ({
                         </div>
                     )}
                 </>
-            )}
+            ))}
         </Dialog>
     );
 };

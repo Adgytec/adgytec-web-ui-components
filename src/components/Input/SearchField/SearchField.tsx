@@ -1,6 +1,10 @@
 import { clsx } from "clsx";
 import { Search, X } from "lucide-react";
-import { SearchField as AriaSearchField, Input } from "react-aria-components";
+import {
+    SearchField as AriaSearchField,
+    composeRenderProps,
+    Input,
+} from "react-aria-components";
 import { IconButton } from "@/components/Button";
 import { Icon } from "@/components/Icon";
 import { typography } from "@/utils";
@@ -25,20 +29,14 @@ import type { SearchFieldProps } from "./types";
  */
 export const SearchField: React.FC<SearchFieldProps> = ({
     placeholder = "Search",
-    className,
     ...props
 }) => {
     return (
         <AriaSearchField
-            className={(renderProps) =>
-                clsx(
-                    styles["search-field"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["search-field"], className)
+            )}
         >
             {({ isEmpty }) => (
                 <>

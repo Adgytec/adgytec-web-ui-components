@@ -3,6 +3,7 @@ import { Check, type LucideIcon, X } from "lucide-react";
 import type { ReactNode } from "react";
 import {
     SwitchField as AriaSwitchField,
+    composeRenderProps,
     SwitchButton,
 } from "react-aria-components";
 import { Icon } from "@/components/Icon";
@@ -43,7 +44,6 @@ import type { SwitchProps } from "./types";
  * ```
  */
 export const Switch: React.FC<SwitchProps> = ({
-    children,
     icon = "selected",
     labelPlacement = "start",
     unselectedIcon = X,
@@ -52,11 +52,8 @@ export const Switch: React.FC<SwitchProps> = ({
 }) => {
     return (
         <AriaSwitchField {...props}>
-            {(renderProps) => {
-                const label =
-                    typeof children === "function"
-                        ? children(renderProps)
-                        : children;
+            {composeRenderProps(props.children, (children) => {
+                const label = children;
 
                 return (
                     <SwitchButton
@@ -134,7 +131,7 @@ export const Switch: React.FC<SwitchProps> = ({
                         }}
                     </SwitchButton>
                 );
-            }}
+            })}
         </AriaSwitchField>
     );
 };

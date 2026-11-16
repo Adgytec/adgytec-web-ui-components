@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Tabs as AriaTabs } from "react-aria-components";
+import { Tabs as AriaTabs, composeRenderProps } from "react-aria-components";
 import styles from "./tabs.module.css";
 
 /**
@@ -45,18 +45,13 @@ export interface TabsProps
  * }
  * ```
  */
-export const Tabs: React.FC<TabsProps> = ({ className, ...props }) => {
+export const Tabs: React.FC<TabsProps> = ({ ...props }) => {
     return (
         <AriaTabs
-            className={(renderProps) =>
-                clsx(
-                    styles["tabs"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["tabs"], className)
+            )}
         />
     );
 };

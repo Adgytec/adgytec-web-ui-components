@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { X } from "lucide-react";
 import { useContext } from "react";
-import { Header, Heading } from "react-aria-components";
+import { composeRenderProps, Header, Heading } from "react-aria-components";
 import { IconButton } from "@/components/Button";
 import { typography } from "@/utils";
 import { SideSheetContext } from "../SideSheetModal";
@@ -58,8 +58,6 @@ import type { SideSheetProps } from "./types";
 export const SideSheet: React.FC<SideSheetProps> = ({
     headline,
     actions,
-    className,
-    children,
     ...props
 }) => {
     const { alignment } = useContext(SideSheetContext);
@@ -67,11 +65,11 @@ export const SideSheet: React.FC<SideSheetProps> = ({
 
     return (
         <SideSheetDialog
-            className={clsx(styles["side-sheet"], className)}
             {...props}
+            className={clsx(styles["side-sheet"], props.className)}
             data-actions={hasActions || undefined}
         >
-            {(renderProps) => (
+            {composeRenderProps(props.children, (children, renderProps) => (
                 <>
                     <Header
                         className={clsx(styles["header"])}
@@ -97,11 +95,7 @@ export const SideSheet: React.FC<SideSheetProps> = ({
                         />
                     </Header>
 
-                    <div className={clsx(styles["main"])}>
-                        {typeof children === "function"
-                            ? children(renderProps)
-                            : children}
-                    </div>
+                    <div className={clsx(styles["main"])}>{children}</div>
 
                     {hasActions && (
                         <div
@@ -114,7 +108,7 @@ export const SideSheet: React.FC<SideSheetProps> = ({
                         </div>
                     )}
                 </>
-            )}
+            ))}
         </SideSheetDialog>
     );
 };

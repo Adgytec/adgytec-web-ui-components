@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import { Disclosure as AriaDisclosure } from "react-aria-components";
+import {
+    Disclosure as AriaDisclosure,
+    composeRenderProps,
+} from "react-aria-components";
 import styles from "./disclosure.module.css";
 
 /**
@@ -35,22 +38,14 @@ export interface DisclosureProps
  * </Disclosure>
  * ```
  */
-export const Disclosure: React.FC<DisclosureProps> = ({
-    className,
-    ...props
-}) => {
+export const Disclosure: React.FC<DisclosureProps> = ({ ...props }) => {
     return (
         <AriaDisclosure
-            className={(renderProps) =>
-                clsx(
-                    styles["disclosure"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
-            data-disclosure
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["disclosure"], className)
+            )}
+            data-disclosure
         />
     );
 };

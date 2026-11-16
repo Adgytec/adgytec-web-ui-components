@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import { useContext } from "react";
-import { Button } from "react-aria-components";
+import { Button, composeRenderProps } from "react-aria-components";
 import { NavLabelContext } from "../../core";
 import { useNavigationContext } from "../../Navigation/navContext";
 import {
@@ -28,7 +28,6 @@ import type { NavigationButtonProps } from "./types";
  * ```
  */
 export const NavigationButton: React.FC<NavigationButtonProps> = ({
-    className,
     icon,
     activeIcon,
     label,
@@ -47,16 +46,14 @@ export const NavigationButton: React.FC<NavigationButtonProps> = ({
 
     return renderNavItem(
         <Button
-            className={(renderProps) =>
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
                 clsx(
                     NavigationItemStyles,
                     navigationItemLabelTypography(variant),
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
+                    className
                 )
-            }
-            {...props}
+            )}
             slot="open"
             data-active={buttonActive || undefined}
             data-variant={variant}

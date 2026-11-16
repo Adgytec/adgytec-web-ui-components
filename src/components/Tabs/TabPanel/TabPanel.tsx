@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import { TabPanel as AriaTabPanel } from "react-aria-components";
+import {
+    TabPanel as AriaTabPanel,
+    composeRenderProps,
+} from "react-aria-components";
 import styles from "./tabPanel.module.css";
 
 /**
@@ -30,18 +33,13 @@ export interface TabPanelProps
  * }
  * ```
  */
-export const TabPanel: React.FC<TabPanelProps> = ({ className, ...props }) => {
+export const TabPanel: React.FC<TabPanelProps> = ({ ...props }) => {
     return (
         <AriaTabPanel
-            className={(renderProps) =>
-                clsx(
-                    styles["tab-panel"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["tab-panel"], className)
+            )}
         />
     );
 };

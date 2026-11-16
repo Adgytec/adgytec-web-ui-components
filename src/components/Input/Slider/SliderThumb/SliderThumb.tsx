@@ -1,6 +1,9 @@
 import clsx from "clsx";
 import type { Orientation } from "react-aria";
-import { SliderThumb as AriaSliderThumb } from "react-aria-components";
+import {
+    SliderThumb as AriaSliderThumb,
+    composeRenderProps,
+} from "react-aria-components";
 import type { OutputRenderer, SliderSize } from "../core";
 import { SliderOutput } from "../SliderOutput";
 import { SliderThumbStateContext } from "./context";
@@ -48,7 +51,6 @@ export interface SliderThumbProps
 export const SliderThumb: React.FC<SliderThumbProps> = ({
     index = 0,
     orientation,
-    className,
     size,
     outputRenderer,
     ...props
@@ -56,17 +58,11 @@ export const SliderThumb: React.FC<SliderThumbProps> = ({
     return (
         <AriaSliderThumb
             index={index}
-            className={(renderProps) =>
-                clsx(
-                    styles["thumb"],
-                    styles[size],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
-            data-orientation={orientation}
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["thumb"], styles[size], className)
+            )}
+            data-orientation={orientation}
             data-slider-thumb
         >
             {(renderProp) => (

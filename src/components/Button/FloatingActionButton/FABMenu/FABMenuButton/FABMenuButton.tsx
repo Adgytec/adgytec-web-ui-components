@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import { X } from "lucide-react";
-import { Button } from "react-aria-components";
+import { Button, composeRenderProps } from "react-aria-components";
 import { withTooltip } from "@/components/Button/core";
 import { Icon } from "@/components/Icon";
 import { Splash, useSplash } from "@/components/Splash";
@@ -36,7 +36,6 @@ export const FABMenuButton: React.FC<FABMenuButtonProps> = ({
     icon,
     size = "medium",
     onPress,
-    className,
     tooltip,
     ...props
 }) => {
@@ -48,17 +47,17 @@ export const FABMenuButton: React.FC<FABMenuButtonProps> = ({
             {withTooltip(
                 <Button
                     onPress={handlePress}
-                    className={(renderProps) =>
-                        clsx(
-                            fabVariantConfig(variant),
-                            fabVariantBase,
-                            fabSizeConfig(size),
-                            typeof className === "function"
-                                ? className(renderProps)
-                                : className
-                        )
-                    }
                     {...props}
+                    className={composeRenderProps(
+                        props.className,
+                        (className) =>
+                            clsx(
+                                fabVariantConfig(variant),
+                                fabVariantBase,
+                                fabSizeConfig(size),
+                                className
+                            )
+                    )}
                     aria-label={props["aria-label"] || tooltip}
                     data-icon
                     data-fab-menu-button

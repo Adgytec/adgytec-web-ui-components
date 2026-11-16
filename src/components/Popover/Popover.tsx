@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import { Popover as AriaPopover } from "react-aria-components";
+import {
+    Popover as AriaPopover,
+    composeRenderProps,
+} from "react-aria-components";
 import styles from "./popover.module.css";
 
 /**
@@ -36,18 +39,13 @@ export interface PopoverProps
  * </DialogTrigger>
  * ```
  */
-export const Popover: React.FC<PopoverProps> = ({ className, ...props }) => {
+export const Popover: React.FC<PopoverProps> = ({ ...props }) => {
     return (
         <AriaPopover
-            className={(renderProps) =>
-                clsx(
-                    styles["popover"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
-                )
-            }
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(styles["popover"], className)
+            )}
         />
     );
 };

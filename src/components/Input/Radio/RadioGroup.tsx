@@ -1,5 +1,8 @@
 import { clsx } from "clsx";
-import { RadioGroup as AriaRadioGroup } from "react-aria-components";
+import {
+    RadioGroup as AriaRadioGroup,
+    composeRenderProps,
+} from "react-aria-components";
 import { Description } from "../Description";
 import { FieldError } from "../FieldError";
 import { Label } from "../Label";
@@ -30,22 +33,16 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
     errorMessage,
     showDescriptionOnInvalid = false,
     children,
-    className,
     labelPlacement,
     ...props
 }) => {
     return (
         <RadioGroupContext value={{ labelPlacement }}>
             <AriaRadioGroup
-                className={(renderProps) =>
-                    clsx(
-                        styles["radio-group"],
-                        typeof className === "function"
-                            ? className(renderProps)
-                            : className
-                    )
-                }
                 {...props}
+                className={composeRenderProps(props.className, (className) =>
+                    clsx(styles["radio-group"], className)
+                )}
                 data-radio-group
             >
                 {({ isInvalid }) => {

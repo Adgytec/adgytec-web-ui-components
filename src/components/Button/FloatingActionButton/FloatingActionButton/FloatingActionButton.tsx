@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Button } from "react-aria-components";
+import { Button, composeRenderProps } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import { Splash, useSplash } from "@/components/Splash";
 import { withTooltip } from "../../core";
@@ -38,7 +38,6 @@ export const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
     variant = "primary",
     size = "medium",
     onPress,
-    className,
     tooltip,
     icon,
     ...props
@@ -49,17 +48,15 @@ export const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
         <Button
             onPress={handlePress}
             data-color={color}
-            className={(renderProps) =>
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
                 clsx(
                     fabVariantConfig(variant),
                     fabVariantBase,
                     fabSizeConfig(size),
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
+                    className
                 )
-            }
-            {...props}
+            )}
             aria-label={props["aria-label"] || tooltip}
             data-icon
         >

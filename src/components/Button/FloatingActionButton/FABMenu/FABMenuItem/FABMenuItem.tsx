@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { MenuItem } from "react-aria-components";
+import { composeRenderProps, MenuItem } from "react-aria-components";
 import { Icon } from "@/components/Icon";
 import {
     ExtendedFABLabelTextMapping,
@@ -28,39 +28,30 @@ import type { FABMenuItemProps } from "./types";
  * </FABMenuItem>
  * ```
  */
-export const FABMenuItem: React.FC<FABMenuItemProps> = ({
-    icon,
-    className,
-    children,
-    ...props
-}) => {
+export const FABMenuItem: React.FC<FABMenuItemProps> = ({ icon, ...props }) => {
     const variant = useFABMenuVariant();
     return (
         <MenuItem
-            className={(renderProps) =>
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
                 clsx(
                     fabVariantConfig(variant),
                     fabVariantBase,
                     fabSizeConfig("small"),
                     ExtendedFABLabelTextMapping["small"],
-                    typeof className === "function"
-                        ? className(renderProps)
-                        : className
+                    className
                 )
-            }
-            {...props}
+            )}
             data-fab-menu-item
             data-extended
         >
-            {(renderProps) => (
+            {composeRenderProps(props.children, (children) => (
                 <>
                     <Icon icon={icon} size={FABIconSizeMapping["small"]} />
 
-                    {typeof children === "function"
-                        ? children(renderProps)
-                        : children}
+                    {children}
                 </>
-            )}
+            ))}
         </MenuItem>
     );
 };
