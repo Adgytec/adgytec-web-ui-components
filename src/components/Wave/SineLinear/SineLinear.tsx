@@ -25,19 +25,22 @@ export const SineLinear: React.FC<SineLinearProps> = ({
 
     // wave is anchored to the track's x, so it stays put while ranges change
     const y = (x: number) => cy + amplitude * Math.sin(k * (x - r - phase));
-
     let d = "";
     if (b > a) {
-        d = `M${a},${y(a)}`;
-        for (let x = a + 2; x < b; x += 2) d += `L${x},${y(x)}`;
-        d += `L${b},${y(b)}`;
+        if (amplitude === 0) {
+            d = `M${a},${cy}L${b},${cy}`;
+        } else {
+            d = `M${a},${y(a)}`;
+            for (let x = a + 2; x < b; x += 2) d += `L${x},${y(x)}`;
+            d += `L${b},${y(b)}`;
+        }
     }
 
     return (
         <svg
             width={width}
             height={height}
-            aria-label="sine-wave"
+            aria-hidden={true}
             style={{ display: "block" }}
         >
             {d && (

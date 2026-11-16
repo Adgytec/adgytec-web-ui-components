@@ -1,5 +1,5 @@
 import type { ProgressBar } from "react-aria-components";
-import type { SineWaveProps } from "@/components/Wave";
+import type { SineLinearProps } from "@/components/Wave/SineLinear";
 import {
     type ProgressIndicatorThickness,
     ProgressIndicatorThicknessToStrokeWidth,
@@ -33,39 +33,44 @@ export interface LinearProgressIndicatorProps
     wavy?: boolean;
 }
 
-/**
- * Computes sine wave configuration props for determinate {@link LinearProgressIndicator}.
- *
- * Automatically fades wave amplitude near the start (0–5%) and end (95–100%) of the progress track.
- *
- * Note: Not used in indeterminate mode, as indeterminate linear progress indicators do not render waves.
- *
- * @param percentage - Current progress percentage between 0 and 100.
- * @param thickness - Selected thickness variant (`"default"` or `"thick"`).
- * @returns Configured {@link SineWaveProps} for the linear sine wave.
- */
+const BASE_AMPLITUDE = 3;
+const FADE_IN = 5; // wave grows over the first 5%
+const FADE_OUT = 5; // wave shrinks over the last 5%
+const WAVELENGTH = 40;
+
 export const LinearProgressIndicatorSineWaveProps = (
     percentage: number,
-    thickness: ProgressIndicatorThickness
-): SineWaveProps => {
-    const baseAmplitude = 3;
+    thickness: ProgressIndicatorThickness,
+    isIndeterminate = false,
+    wavy = true
+): Omit<SineLinearProps, "width" | "start" | "end"> => {
+    const strokeWidth = ProgressIndicatorThicknessToStrokeWidth[thickness];
+    const strokeColor = "var(--_md-linear-progress-indicator-active-color)";
 
-    const fadeIn = 5; // wave grows over the first 5%
-    const fadeOut = 5; // wave shrinks over the last 5%
+    if (!wavy) {
+        return {
+            amplitude: 0,
+            maxAmplitude: 0, // SVG is only as tall as the stroke
+            wavelength: WAVELENGTH,
+            speed: 0, // no animation loop
+            strokeWidth,
+            strokeColor,
+        };
+    }
 
-    const amplitude =
-        baseAmplitude *
-        Math.max(
-            0,
-            Math.min(1, percentage / fadeIn, (100 - percentage) / fadeOut)
-        );
+    const factor = isIndeterminate
+        ? 1
+        : Math.max(
+              0,
+              Math.min(1, percentage / FADE_IN, (100 - percentage) / FADE_OUT)
+          );
 
-    const wavelength = 40;
     return {
-        amplitude,
-        wavelength,
-        speed: wavelength,
-        strokeWidth: ProgressIndicatorThicknessToStrokeWidth[thickness],
-        strokeColor: "var(--_md-linear-progress-indicator-active-color)",
+        amplitude: BASE_AMPLITUDE * factor,
+        maxAmplitude: BASE_AMPLITUDE,
+        wavelength: WAVELENGTH,
+        speed: WAVELENGTH,
+        strokeWidth,
+        strokeColor,
     };
 };

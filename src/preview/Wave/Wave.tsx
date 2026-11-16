@@ -1,5 +1,4 @@
-import { Sine, SineCircular } from "@/components/Wave";
-import { SineLinear } from "@/components/Wave/SineLinear/SineLinear";
+import { Sine, SineCircular, SineLinear } from "@/components/Wave";
 
 export const WavePreview = () => {
     return (
