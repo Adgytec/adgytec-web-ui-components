@@ -37,6 +37,7 @@ const BASE_AMPLITUDE = 3;
 const FADE_IN = 5; // wave grows over the first 5%
 const FADE_OUT = 5; // wave shrinks over the last 5%
 const WAVELENGTH = 40;
+const INDETERMINATE_WAVELENGTH = 20;
 
 export const LinearProgressIndicatorSineWaveProps = (
     percentage: number,
@@ -47,11 +48,13 @@ export const LinearProgressIndicatorSineWaveProps = (
     const strokeWidth = ProgressIndicatorThicknessToStrokeWidth[thickness];
     const strokeColor = "var(--_md-linear-progress-indicator-active-color)";
 
+    const wavelength = isIndeterminate ? INDETERMINATE_WAVELENGTH : WAVELENGTH;
+
     if (!wavy) {
         return {
             amplitude: 0,
             maxAmplitude: 0, // SVG is only as tall as the stroke
-            wavelength: WAVELENGTH,
+            wavelength,
             speed: 0, // no animation loop
             strokeWidth,
             strokeColor,
@@ -68,8 +71,8 @@ export const LinearProgressIndicatorSineWaveProps = (
     return {
         amplitude: BASE_AMPLITUDE * factor,
         maxAmplitude: BASE_AMPLITUDE,
-        wavelength: WAVELENGTH,
-        speed: WAVELENGTH,
+        wavelength,
+        speed: wavelength,
         strokeWidth,
         strokeColor,
     };

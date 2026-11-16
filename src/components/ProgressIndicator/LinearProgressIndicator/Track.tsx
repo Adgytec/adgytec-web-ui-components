@@ -95,6 +95,9 @@ export const IndeterminateTrack: React.FC<TrackProps> = ({
     const wave = LinearProgressIndicatorSineWaveProps(0, thickness, true, wavy);
     const { inL, inR } = gapFractions(w, wave.strokeWidth ?? 4);
 
+    // whichever bar has the smaller tail is the left one
+    const [left, right] = [b1, b2].sort((a, b) => a[0] - b[0]);
+
     return (
         <div
             ref={ref}
@@ -107,26 +110,26 @@ export const IndeterminateTrack: React.FC<TrackProps> = ({
                     width={w}
                     wave={wave}
                     layers={[
-                        { key: "t1", flat: true, start: 0, end: inR(b2[0]) },
+                        { key: "t1", flat: true, start: 0, end: inR(left[0]) },
                         {
-                            key: "b2",
+                            key: "bar-a",
                             flat: false,
-                            start: inL(b2[0]),
-                            end: inR(b2[1]),
+                            start: inL(left[0]),
+                            end: inR(left[1]),
                         },
                         {
                             key: "t2",
                             flat: true,
-                            start: inL(b2[1]),
-                            end: inR(b1[0]),
+                            start: inL(left[1]),
+                            end: inR(right[0]),
                         },
                         {
-                            key: "b1",
+                            key: "bar-b",
                             flat: false,
-                            start: inL(b1[0]),
-                            end: inR(b1[1]),
+                            start: inL(right[0]),
+                            end: inR(right[1]),
                         },
-                        { key: "t3", flat: true, start: inL(b1[1]), end: 1 },
+                        { key: "t3", flat: true, start: inL(right[1]), end: 1 },
                     ]}
                 />
             )}

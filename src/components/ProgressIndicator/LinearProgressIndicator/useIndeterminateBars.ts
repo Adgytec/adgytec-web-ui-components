@@ -26,17 +26,25 @@ function cubicBezier(x1: number, y1: number, x2: number, y2: number) {
 
 export const clamp01 = (n: number) => Math.min(1, Math.max(0, n));
 
-const CYCLE = 2600; // ms, keep equal to --_duration in the CSS
+const CYCLE = 2600; // ms
+const BASE = 1750; // the timings below are on this scale
+const B2_SHIFT = 750; // bar 2 starts this long after bar 1
+
 const e1Head = cubicBezier(0.2, 0, 0.8, 1);
 const e1Tail = cubicBezier(0.4, 0, 0.6, 1);
-const e2Head = cubicBezier(0, 0, 0.65, 1);
-const e2Tail = cubicBezier(0.3, 0, 0.5, 1);
+
 const seg = (
     t: number,
     delay: number,
     dur: number,
     ease: (x: number) => number
 ) => ease(clamp01((t - delay) / dur));
+
+// [tail, head] for a bar that starts at t = 0
+const bar = (t: number): [number, number] => [
+    seg(t, 333, 750, e1Tail),
+    seg(t, 0, 750, e1Head),
+];
 
 // [tail, head] of each bar, as fractions 0..1 of the track
 export type Bars = { b1: [number, number]; b2: [number, number] };
@@ -48,11 +56,9 @@ export function useIndeterminateBars(): Bars {
         let raf = 0;
         const start = performance.now();
         const tick = (now: number) => {
-            const t = (((now - start) % CYCLE) / CYCLE) * 1750;
-            setBars({
-                b1: [seg(t, 333, 750, e1Tail), seg(t, 0, 750, e1Head)],
-                b2: [seg(t, 1267, 533, e2Tail), seg(t, 1000, 567, e2Head)],
-            });
+            const t = (((now - start) % CYCLE) / CYCLE) * BASE;
+            const t2 = (t - B2_SHIFT + BASE) % BASE;
+            setBars({ b1: bar(t), b2: bar(t2) });
             raf = requestAnimationFrame(tick);
         };
         raf = requestAnimationFrame(tick);
