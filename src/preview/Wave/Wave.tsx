@@ -1,15 +1,22 @@
-import { Sine, SineCircular, SineLinear } from "@/components/Wave";
+import { SineCircular, SineLinear } from "@/components/Wave";
 
 export const WavePreview = () => {
     return (
         <div className="items-grid">
             <div
                 className="items-grid"
-                style={{ width: "100%", color: "var(--md-sys-color-primary)" }}
+                style={{
+                    width: "100%",
+                    color: "var(--md-sys-color-primary)",
+                }}
             >
-                <Sine width={200} />
+                <SineLinear width={200} />
 
-                <Sine width={200} speed={0} />
+                <SineLinear width={200} end={0.5} />
+
+                <SineLinear width={200} start={0.5} />
+
+                <SineLinear width={200} start={0.25} end={0.75} />
             </div>
 
             <div
@@ -42,22 +49,6 @@ export const WavePreview = () => {
                 <SineCircular start={0} end={0.5} />{" "}
                 {/* half, 12 → 6 o'clock */}
                 <SineCircular start={0.25} end={0.75} /> {/* 3 → 9 o'clock */}
-            </div>
-
-            <div
-                className="items-grid"
-                style={{
-                    width: "100%",
-                    color: "var(--md-sys-color-primary)",
-                }}
-            >
-                <SineLinear width={200} />
-
-                <SineLinear width={200} end={0.5} />
-
-                <SineLinear width={200} start={0.5} />
-
-                <SineLinear width={200} start={0.25} end={0.75} />
             </div>
         </div>
     );
