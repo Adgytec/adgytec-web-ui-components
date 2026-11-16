@@ -28,12 +28,13 @@ The Side Sheet module consists of:
 
 Extends `SideSheetDialogProps` (which extends [React Aria Components Dialog](https://react-spectrum.adobe.com/react-aria/Dialog.html)).
 
-| Prop        | Type                                                               | Default     | Description                                                                                                          |
-| ----------- | ------------------------------------------------------------------ | ----------- | -------------------------------------------------------------------------------------------------------------------- |
-| `headline`  | `ReactNode`                                                        | `undefined` | Optional headline text or element displayed in the side sheet header. Rendered using `typography.titleLarge`.        |
-| `actions`   | `ReactNode[] \| ((renderProps: DialogRenderProps) => ReactNode[])` | `undefined` | Optional action buttons rendered in the bottom action bar. Receives dialog render props when provided as a function. |
-| `children`  | `ReactNode \| ((renderProps: DialogRenderProps) => ReactNode)`     | `undefined` | Main content rendered within the scrollable content area.                                                            |
-| `className` | `string`                                                           | `undefined` | Custom CSS class name applied to the side sheet element.                                                             |
+| Prop           | Type                                                               | Default     | Description                                                                                                          |
+| -------------- | ------------------------------------------------------------------ | ----------- | -------------------------------------------------------------------------------------------------------------------- |
+| `headline`     | `ReactNode`                                                        | `undefined` | Optional headline text or element displayed in the side sheet header. Rendered using `typography.titleLarge`.        |
+| `headingLevel` | `number`                                                           | `2`         | The semantic heading level for the side sheet header headline (e.g. 1-6).                                            |
+| `actions`      | `ReactNode[] \| ((renderProps: DialogRenderProps) => ReactNode[])` | `undefined` | Optional action buttons rendered in the bottom action bar. Receives dialog render props when provided as a function. |
+| `children`     | `ReactNode \| ((renderProps: DialogRenderProps) => ReactNode)`     | `undefined` | Main content rendered within the scrollable content area.                                                            |
+| `className`    | `string`                                                           | `undefined` | Custom CSS class name applied to the side sheet element.                                                             |
 
 ### `SideSheetDialog`
 

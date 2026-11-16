@@ -15,5 +15,10 @@ export interface DisclosureHeaderProps {
      */
     label: ReactNode;
 
+    /**
+     * The semantic heading level for the header button container (e.g. 1-6).
+     *
+     * @default 3
+     */
     headingLevel?: number;
 }

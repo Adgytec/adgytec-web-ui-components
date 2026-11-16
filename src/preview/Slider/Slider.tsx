@@ -79,7 +79,8 @@ export const SliderPreview = () => {
 
                                 <div>
                                     <Slider
-                                        label={`${o}--${size}`}
+                                        label={`${o}--${size}-no-output`}
+                                        outputRenderer={null}
                                         orientation={o}
                                         size={size}
                                         insetIcon={DollarSign}

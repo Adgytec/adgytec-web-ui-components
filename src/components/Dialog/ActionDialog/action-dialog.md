@@ -6,12 +6,13 @@ The `ActionDialog` is a pre-configured `Dialog` component that simplifies the cr
 
 The `ActionDialog` component extends the `Dialog` component (excluding `className`).
 
-| Prop      | Type                                            | Default  | Description                                                                                           |
-| --------- | ----------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------- |
-| `heading` | `string`                                        | —        | The title text displayed in the dialog header.                                                        |
-| `icon`    | `LucideIcon`                                    | —        | An optional icon displayed above the heading (centered) or beside it.                                 |
-| `actions` | `ReactNode[] \| ((renderProps) => ReactNode[])` | —        | An array of action buttons (usually `Button` components) to be displayed at the bottom of the dialog. |
-| `divider` | `ActionDialogDividerPlacement`                  | `"none"` | Placement of dividers within the dialog (`"none"`, `"all"`, `"after-heading"`, `"before-actions"`).   |
+| Prop           | Type                                            | Default  | Description                                                                                           |
+| -------------- | ----------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------- |
+| `heading`      | `string`                                        | —        | The title text displayed in the dialog header.                                                        |
+| `headingLevel` | `number`                                        | `2`      | The semantic heading level for the dialog title (e.g. 1-6).                                           |
+| `icon`         | `LucideIcon`                                    | —        | An optional icon displayed above the heading (centered) or beside it.                                 |
+| `actions`      | `ReactNode[] \| ((renderProps) => ReactNode[])` | —        | An array of action buttons (usually `Button` components) to be displayed at the bottom of the dialog. |
+| `divider`      | `ActionDialogDividerPlacement`                  | `"none"` | Placement of dividers within the dialog (`"none"`, `"all"`, `"after-heading"`, `"before-actions"`).   |
 
 ## Usage
 

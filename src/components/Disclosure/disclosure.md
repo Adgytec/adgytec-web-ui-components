@@ -65,10 +65,11 @@ Extends [React Aria Components Disclosure](https://react-spectrum.adobe.com/reac
 
 The interactive header rendered inside a `Disclosure`. Renders an accessible button trigger within a semantic heading.
 
-| Prop      | Type        | Default | Description                                                                                    |
-| --------- | ----------- | ------- | ---------------------------------------------------------------------------------------------- |
-| `label`   | `ReactNode` | —       | **Required.** The primary label content of the header, typically wrapped in `DisclosureLabel`. |
-| `leading` | `ReactNode` | —       | Optional leading element rendered at the start of the header, e.g. a `DisclosureIcon`.         |
+| Prop           | Type        | Default | Description                                                                                    |
+| -------------- | ----------- | ------- | ---------------------------------------------------------------------------------------------- |
+| `label`        | `ReactNode` | —       | **Required.** The primary label content of the header, typically wrapped in `DisclosureLabel`. |
+| `leading`      | `ReactNode` | —       | Optional leading element rendered at the start of the header, e.g. a `DisclosureIcon`.         |
+| `headingLevel` | `number`    | `3`     | The semantic heading level for the header button container (e.g. 1-6).                         |
 
 ### States & Interaction Details
 

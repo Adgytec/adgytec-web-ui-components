@@ -25,6 +25,11 @@ export interface ActionDialogProps
     /** The title text displayed in the dialog header. */
     heading?: string;
 
+    /**
+     * The semantic heading level for the dialog title (e.g. 1-6).
+     *
+     * @default 2
+     */
     headingLevel?: number;
 
     /**

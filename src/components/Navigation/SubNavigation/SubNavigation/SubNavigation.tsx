@@ -29,6 +29,11 @@ export interface SubNavigationProps extends React.ComponentPropsWithRef<"nav"> {
      */
     label?: ReactNode;
 
+    /**
+     * The semantic heading level for the sub-navigation header title (e.g. 1-6).
+     *
+     * @default 3
+     */
     headingLevel?: number;
 }
 

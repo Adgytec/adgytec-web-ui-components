@@ -27,6 +27,10 @@ export interface SliderThumbProps
     size: SliderSize;
     /**
      * Custom renderer or static node for the thumb value tooltip output.
+     *
+     * Setting this explicitly to `null` disables and suppresses rendering the slider output badge entirely.
+     *
+     * @default undefined (renders default SliderOutput)
      */
     outputRenderer?: OutputRenderer;
 }
@@ -67,7 +71,7 @@ export const SliderThumb: React.FC<SliderThumbProps> = ({
         >
             {(renderProp) => (
                 <SliderThumbStateContext value={renderProp}>
-                    {outputRenderer ? (
+                    {outputRenderer !== undefined ? (
                         typeof outputRenderer === "function" ? (
                             outputRenderer({
                                 ...renderProp,

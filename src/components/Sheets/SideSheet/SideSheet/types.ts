@@ -98,6 +98,11 @@ export interface SideSheetProps
      */
     headline?: ReactNode;
 
+    /**
+     * The semantic heading level for the side sheet header headline (e.g. 1-6).
+     *
+     * @default 2
+     */
     headingLevel?: number;
 
     /**

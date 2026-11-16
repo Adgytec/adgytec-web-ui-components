@@ -51,6 +51,7 @@ Extends standard HTML `<nav>` attribute types.
 | Prop                 | Type                           | Default      | Description                                                                                                                                                             |
 | -------------------- | ------------------------------ | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `label`              | `ReactNode`                    | —            | Title text or element for the navigation header (rendered when `variant="expanded"`).                                                                                   |
+| `headingLevel`       | `number`                       | `2`          | The semantic heading level for the navigation label heading (e.g. 1-6).                                                                                                 |
 | `variant`            | `"collapsed" \| "expanded"`    | `"expanded"` | Visual display variant of the navigation drawer. In `"collapsed"` mode, renders as a compact rail (80px–96px) with tooltip labels, stacked text, and collapsed headers. |
 | `isLinkActive`       | `(href?: string) => boolean`   | —            | Callback function to determine if a given URL matching `href` is currently active.                                                                                      |
 | `isButtonActive`     | `(prefix?: string) => boolean` | —            | Callback function to determine if an action button matching `prefix` is active.                                                                                         |
@@ -93,9 +94,10 @@ Extends React Aria Components `Heading` attributes (`React.ComponentPropsWithRef
 
 Extends standard HTML `<nav>` element attributes.
 
-| Prop    | Type        | Default | Description                                        |
-| ------- | ----------- | ------- | -------------------------------------------------- |
-| `label` | `ReactNode` | —       | Heading label rendered at the top of the sub-menu. |
+| Prop           | Type        | Default | Description                                                                |
+| -------------- | ----------- | ------- | -------------------------------------------------------------------------- |
+| `label`        | `ReactNode` | —       | Heading label rendered at the top of the sub-menu.                         |
+| `headingLevel` | `number`    | `3`     | The semantic heading level for the sub-navigation header title (e.g. 1-6). |
 
 ### `SubNavigationTrigger`
 

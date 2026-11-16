@@ -22,6 +22,11 @@ export interface NavigationProps extends React.ComponentPropsWithRef<"nav"> {
      */
     label?: ReactNode;
 
+    /**
+     * The semantic heading level for the navigation label heading (e.g. 1-6).
+     *
+     * @default 2
+     */
     headingLevel?: number;
 
     /**

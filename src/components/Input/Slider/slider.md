@@ -26,13 +26,13 @@ All components extend [React Aria Components Slider](https://react-spectrum.adob
 
 ### Common Props
 
-| Prop                 | Type                                                               | Default   | Description                                                        |
-| -------------------- | ------------------------------------------------------------------ | --------- | ------------------------------------------------------------------ |
-| `label`              | `ReactNode`                                                        | —         | The label for the slider.                                          |
-| `size`               | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The thickness of the track and size of the thumb.                  |
-| `showInBetweenSteps` | `boolean`                                                          | `true`    | Whether to display indicators for each step.                       |
-| `maxStops`           | `number`                                                           | 20        | Maximum number of step indicators to show (prevents overcrowding). |
-| `outputRenderer`     | `(value: number) => ReactNode`                                     | —         | Custom function to format the displayed value.                     |
+| Prop                 | Type                                                               | Default   | Description                                                                                                                                                                                                 |
+| -------------------- | ------------------------------------------------------------------ | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `label`              | `ReactNode`                                                        | —         | The label for the slider.                                                                                                                                                                                   |
+| `size`               | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The thickness of the track and size of the thumb.                                                                                                                                                           |
+| `showInBetweenSteps` | `boolean`                                                          | `true`    | Whether to display indicators for each step.                                                                                                                                                                |
+| `maxStops`           | `number`                                                           | 20        | Maximum number of step indicators to show (prevents overcrowding).                                                                                                                                          |
+| `outputRenderer`     | `OutputRenderer`                                                   | —         | Custom renderer or node for the floating value bubble badge. Accepts a render function `({ state, thumbIndex }) => ReactNode`, a static `ReactNode`, or explicit `null` to hide the output bubble entirely. |
 
 ### `Slider` Specific Props
 
@@ -101,6 +101,32 @@ import { CenteredSlider } from "@adgytec/web-ui-components";
     defaultValue={0}
     step={5}
     showInBetweenSteps
+/>;
+```
+
+### Disabling the Output Bubble
+
+Pass `outputRenderer={null}` to suppress the floating value bubble:
+
+```tsx
+import { Slider } from "@adgytec/web-ui-components";
+
+<Slider label="Volume" defaultValue={50} outputRenderer={null} />;
+```
+
+### Custom Output Formatting
+
+Pass a render function to customize the value displayed inside the thumb tooltip:
+
+```tsx
+import { Slider, SliderOutput } from "@adgytec/web-ui-components";
+
+<Slider
+    label="Volume"
+    defaultValue={50}
+    outputRenderer={({ state, thumbIndex }) => (
+        <SliderOutput>{state.getThumbValueLabel(thumbIndex)}%</SliderOutput>
+    )}
 />;
 ```
 

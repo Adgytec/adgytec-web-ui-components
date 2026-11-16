@@ -5,21 +5,31 @@ import type { SliderSize } from "./size";
 /**
  * Custom renderer for formatting or replacing the slider thumb value display.
  *
- * Can be a static {@link ReactNode} or a render function receiving the current
- * thumb state and index.
+ * Can be:
+ * - A render function receiving current thumb state and index: `({ state, thumbIndex, ...renderProps }) => ReactNode`
+ * - A static {@link ReactNode} to render inside the thumb
+ * - Explicit `null` to disable and suppress rendering the slider output badge entirely
+ *
+ * When `undefined` or omitted, defaults to rendering the standard {@link SliderOutput} bubble displaying
+ * `state.getThumbValueLabel(index)`.
  *
  * @example
  * ```tsx
+ * // Custom formatting
  * const formatPercent: OutputRenderer = ({ state, thumbIndex }) => (
  *     <span>{state.values[thumbIndex]}%</span>
  * );
+ *
+ * // Suppress output bubble entirely
+ * <Slider outputRenderer={null} />
  * ```
  */
 export type OutputRenderer =
     | ReactNode
     | ((
           renderProps: SliderThumbRenderProps & { thumbIndex: number }
-      ) => ReactNode);
+      ) => ReactNode)
+    | null;
 
 /**
  * Common configuration properties shared across all slider variants.
@@ -60,6 +70,24 @@ export interface BaseSliderProps {
 
     /**
      * Custom renderer or node for the floating value bubble / output badge.
+     *
+     * Accepts:
+     * - A render function receiving thumb state and index: `({ state, thumbIndex }) => ReactNode`
+     * - A static {@link ReactNode}
+     * - Explicit `null`: disables and suppresses rendering the slider output badge entirely
+     *
+     * When omitted or `undefined`, the default {@link SliderOutput} bubble is rendered.
+     *
+     * @default undefined (renders default SliderOutput)
+     *
+     * @example
+     * ```tsx
+     * // Disable output bubble entirely
+     * <Slider outputRenderer={null} />
+     *
+     * // Format value with custom unit
+     * <Slider outputRenderer={({ state, thumbIndex }) => `${state.values[thumbIndex]} dB`} />
+     * ```
      */
     outputRenderer?: OutputRenderer;
 }
