@@ -17,7 +17,7 @@ export const LoadingIndicatorPreview = () => {
                         <LoadingIndicator size={size} containment="contained" />
                     </div>
 
-                    <div className="loading-indicator-primary-alt">
+                    <div className="loading-indicator-secondary">
                         <LoadingIndicator size={size} />
 
                         <span data-contained>

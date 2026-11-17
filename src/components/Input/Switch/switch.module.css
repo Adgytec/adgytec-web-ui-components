@@ -50,6 +50,10 @@
             --md-switch-selected-handle-icon-color,
             var(--md-sys-color-primary)
         );
+        --_md-switch-selected-handle-interaction-icon-color: var(
+            --md-switch-selected-handle-interaction-icon-color,
+            var(--md-sys-color-on-primary-container)
+        );
 
         /* track tokens */
         --_md-switch-track-color: var(
@@ -222,6 +226,9 @@
             &[data-selected] {
                 --_handle-color: var(
                     --_md-switch-selected-handle-interaction-color
+                );
+                --_icon-color: var(
+                    --_md-switch-selected-handle-interaction-icon-color
                 );
             }
         }
