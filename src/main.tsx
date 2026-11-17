@@ -5,7 +5,6 @@ import "./styles/main.css";
 import "./styles/core";
 import "./styles/defaultTheme";
 import { SnackbarRegion } from "./components/Snackbar/SnackbarRegion.tsx";
-import { ThemeProvider } from "./components/ThemeSelector/ThemeProvider.tsx";
 
 const rootEl = document.getElementById("root");
 if (!rootEl) throw new Error("missing root element");
@@ -13,9 +12,7 @@ if (!rootEl) throw new Error("missing root element");
 createRoot(rootEl).render(
     <StrictMode>
         <SnackbarRegion>
-            <ThemeProvider>
-                <App />
-            </ThemeProvider>
+            <App />
         </SnackbarRegion>
     </StrictMode>
 );
