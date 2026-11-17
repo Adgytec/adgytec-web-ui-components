@@ -13,7 +13,7 @@ export default defineConfig({
         react(),
         libInjectCss(),
         dts({
-            tsconfigPath: "tsconfig.build.json",
+            tsconfigPath: "tsconfig.app.json",
             insertTypesEntry: true,
         }),
         Sonda(),
