@@ -70,6 +70,7 @@ export default defineConfig({
                 "clsx",
                 "@internationalized/date",
                 "react-transition-group",
+                "@material/material-color-utilities",
             ],
         },
     },

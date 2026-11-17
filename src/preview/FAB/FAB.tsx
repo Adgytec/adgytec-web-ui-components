@@ -7,7 +7,6 @@ import {
     FloatingActionButton,
 } from "../../components/Button/FloatingActionButton";
 import { typography } from "../../utils";
-import { FABMenuPreview } from "../FABMenu";
 
 export const FABPreview = () => {
     const sizes: FABSizes[] = ["small", "medium", "large"];
@@ -110,9 +109,6 @@ export const FABPreview = () => {
                     ))}
                 </div>
             ))}
-
-            {/* FABMenu */}
-            <FABMenuPreview />
         </div>
     );
 };

@@ -41,6 +41,7 @@
     },
     "peerDependencies": {
         "@internationalized/date": "^3.12.1",
+        "@material/material-color-utilities": "^0.4.0",
         "clsx": ">=2.1.1",
         "lucide-react": "^1.8.0",
         "react": ">=19.2.3",
@@ -53,6 +54,7 @@
     "devDependencies": {
         "@biomejs/biome": "^2.6.4",
         "@internationalized/date": "^3.12.4",
+        "@material/material-color-utilities": "^0.4.0",
         "@rolldown/plugin-babel": "^0.2.4",
         "@types/node": "^26.6.6",
         "@types/react": "^19.3.0",
