@@ -15,6 +15,7 @@ export default defineConfig({
         dts({
             tsconfigPath: "tsconfig.app.json",
             insertTypesEntry: true,
+            exclude: ["src/preview/**", "src/App.tsx", "src/main.tsx"],
         }),
         Sonda(),
         babel({ presets: [reactCompilerPreset()] }),
