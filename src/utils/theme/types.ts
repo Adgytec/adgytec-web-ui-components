@@ -8,7 +8,7 @@ import type {
 export type ThemeOptions = {
     ternaryDarkMode?: TernaryDarkModeOptions;
     defaultContrast?: number;
-    defaultSourceColor: string;
+    defaultSourceColor?: string;
     defaultScheme?: MaterialScheme;
 };
 
