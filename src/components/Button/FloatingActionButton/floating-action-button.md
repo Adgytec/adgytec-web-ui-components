@@ -45,6 +45,13 @@ Extends [React Aria Components Button](https://react-spectrum.adobe.com/react-ar
 | `size`          | `"small" \| "medium" \| "large"`         | `"medium"`  | Size preset of the container, icon, and typography. |
 | `tooltip`       | `string`                                 | —           | Optional tooltip text displayed on hover or focus.  |
 
+## Interactive States & Architecture
+
+- **Hardware-Accelerated Elevation**: Rather than transitioning `box-shadow` directly (which causes expensive layout repaints on every frame), FABs render an internal elevation overlay (`<span className={fabElevation} />`). It uses pseudo-elements to transition `opacity` between elevation levels (level 3 default up to level 4 on hover/focus), ensuring smooth 60fps animations.
+- **State Layers**: State feedback (hover, focus, pressed) is applied via a pseudo-element overlay transitioning `opacity` directly (`--_state-layer-opacity`), rather than recomputing color channels.
+- **Ripple Splash Feedback**: Pressing the button triggers a Material Design ripple effect encapsulated within a dedicated overflow container (`<span className={fabSplash} />`).
+- **Motion**: Adheres to Material 3 motion curves (`--md-sys-motion-expressive-fast-effects`) and automatically disables transitions when `prefers-reduced-motion` is enabled.
+
 ## Usage
 
 ### Floating Action Button

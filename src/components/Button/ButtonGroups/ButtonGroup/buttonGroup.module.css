@@ -11,6 +11,22 @@
             var(--_md-button-padding-inline) +
             var(--_morph, 0px)
         );
+
+        transition:
+            border-radius var(--_md-button-shape-motion)
+            var(--_md-button-shape-motion-duration),
+            background-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            border-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            padding var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
     }
 
     /* pressed item */

@@ -35,10 +35,11 @@ The `AppBar` component acts as a `<header>` element and accepts standard header 
 | `trailingActions` | `ReactNode[]`                    | —           | A list of actions rendered at the end (right) of the AppBar, such as `AppBarAction` or `AppBarAvatar` items. |
 | `headline`        | `ReactNode`                      | —           | The headline element of the AppBar, typically an `AppBarHeadline`.                                           |
 
-### Responsive Design / Layout Behavior
+### Responsive Design & Scroll Behavior
 
 - **Small size**: Renders all content in a single row. The headline is placed in the center space between the leading action and the trailing actions.
 - **Medium & Large sizes**: Renders as a two-row layout. The primary row holds the leading and trailing actions, while the secondary (bottom) row holds the `AppBarHeadline`, allowing the typography to expand expressively.
+- **Scroll Elevation Transition**: When content is scrolled under the AppBar (`[data-scroll]`), it transitions its background color to `--md-app-bar-on-scroll-background` and fades in an elevation shadow (`var(--md-sys-elevation-shadow-2)`). This elevation is rendered via a pseudo-element (`.app-bar::before`) transitioning `opacity` for hardware-accelerated performance without expensive `box-shadow` layout repaints.
 
 ---
 

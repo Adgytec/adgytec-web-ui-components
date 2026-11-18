@@ -16,6 +16,13 @@ export const fabVariantConfig = (variant: FABVariants) => {
  */
 export const fabVariantBase = styles["fab"];
 
+/**
+ * CSS module class name for the elevation layer element rendered inside Floating Action Buttons.
+ * Provides hardware-accelerated opacity transitions between elevation levels on interactive states.
+ */
 export const fabElevation = styles["elevation"];
 
+/**
+ * CSS module class name for the container element wrapping the interactive ripple splash effect.
+ */
 export const fabSplash = styles["splash"];

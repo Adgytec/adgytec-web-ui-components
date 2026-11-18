@@ -10,7 +10,7 @@ import type { ThemeProviderProps } from "./types";
  * Utilizes {@link useThemeGlobal} to maintain reactive theme state (source color, contrast,
  * dynamic scheme variant, and dark mode), persisted in `localStorage`. Automatically
  * invokes {@link GenerateTheme} whenever any theme property changes, applying the full suite
- * of Material Design 3 color tokens (`--md-sys-color-*`) directly to `document.body` along with
+ * of Material Design 3 color tokens (`--md-sys-color-*`) directly to `document.documentElement` along with
  * the appropriate CSS `color-scheme` attribute (`"light"` or `"dark"`).
  *
  * Child components can access and modify the active theme via the {@link useTheme} hook.

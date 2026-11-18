@@ -139,18 +139,18 @@ export type GenerateThemeOptions = {
 
     /**
      * Optional target DOM element onto which the CSS custom properties and `color-scheme` will be injected.
-     * Defaults to `document.body` if available in the runtime environment.
+     * Defaults to `document.documentElement` if available in the runtime environment.
      *
      * In SSR / Node.js environments where `document` is undefined, omitting this option will safely no-op.
      *
-     * @default document.body
+     * @default document.documentElement
      */
     target?: HTMLElement | null;
 };
 
 /**
  * Computes a Material Design 3 {@link DynamicScheme} from the provided options and injects
- * all corresponding `--md-sys-color-*` CSS variables onto the target element (defaults to `document.body`).
+ * all corresponding `--md-sys-color-*` CSS variables onto the target element (defaults to `document.documentElement`).
  *
  * This function can be called standalone outside of React to immediately apply a dynamic theme.
  * Safe for execution in Server-Side Rendering (SSR) environments.

@@ -30,7 +30,6 @@
 
         /* variable to use  */
         --_background-color: var(--_md-card-background);
-        --_shadow: var(--_md-card-elevation);
 
         border-radius: var(--md-card-shape);
         background-color: var(--_background-color);
@@ -172,7 +171,7 @@
 
             opacity: calc(
                 1 -
-                max(var(--opacity-hovered), var(--opacity-dragged))
+                max(var(--opacity-hovered, 0), var(--opacity-dragged, 0))
             );
 
             transition: opacity var(--md-sys-motion-expressive-fast-effects)

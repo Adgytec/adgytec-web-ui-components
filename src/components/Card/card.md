@@ -6,7 +6,6 @@
 | ---------------------- | -------------------------------------- | ----------------------------------------------------------------- |
 | `--md-card-background` | Variant-dependent (see variants below) | Background color of the Card container.                           |
 | `--md-card-icon-color` | `var(--md-sys-color-primary)`          | Color of icons rendered inside the Card (applied via `CardIcon`). |
-| `--md-card-elevation`  | Variant-dependent (see variants below) | Box shadow and elevation level of the Card container.             |
 | `--md-card-outline`    | `var(--md-sys-color-outline-variant)`  | Border outline color for the `outlined` variant.                  |
 
 The `Card` component is an implementation of [Material 3 Cards](https://m3.material.io/components/cards/overview). Cards contain content and actions about a single subject. They present information in a clear, digestible format and support three distinct visual variants (Filled, Elevated, Outlined), interactive press effects with ripple animation, and comprehensive accessibility and interaction states.
@@ -47,13 +46,13 @@ Material 3 defines three card variants, each designed for different visual hiera
 
 ### Interactive States & Visual Feedback
 
-- **Ripple Splash Feedback**: Integrated with `useSplash`, pressing or tapping an interactive card displays a Material Design ripple effect at the pointer location.
-- **Hover (`[data-hovered]`)**: Adds a semi-transparent state layer (`--md-sys-state-hover`) and increases elevation shadow (`elevation-shadow-1` for filled/outlined, `elevation-shadow-2` for elevated).
+- **Ripple Splash Feedback**: Integrated with `useSplash`, pressing or tapping an interactive card displays a Material Design ripple effect at the pointer location, confined within an internal `.splash` container with `overflow: clip`.
+- **Hover (`[data-hovered]`)**: Activates the semi-transparent state layer (`--md-sys-state-hover`) and fades in the hovered elevation shadow (`elevation-shadow-1` for filled/outlined, `elevation-shadow-2` for elevated).
 - **Focus Indicator (`[data-focus-visible]`)**: Displays a distinct 3px outline with 2px offset in `var(--md-sys-color-secondary)`.
 - **Pressed (`[data-pressed]`)**: Activates the pressed state layer (`--md-sys-state-pressed`) alongside the ripple animation.
-- **Dragging (`[data-dragging]`)**: Elevates the card (`elevation-shadow-3` for filled/outlined, `elevation-shadow-4` for elevated) with the drag state layer.
+- **Dragging (`[data-dragging]`)**: Fades in the dragged elevation shadow (`elevation-shadow-3` for filled/outlined, `elevation-shadow-4` for elevated) alongside the drag state layer.
 - **Disabled (`[data-disabled]`)**: Sets background and foreground content to disabled container and text opacities (`--md-sys-state-disabled-content` / `--md-sys-state-disabled-container`).
-- **Motion**: Transitions box-shadow and state layers smoothly with Material 3 spatial motion curves, respecting `prefers-reduced-motion`.
+- **High-Performance Motion**: Rather than transitioning `box-shadow` directly (which causes expensive layout repaints on every frame), elevation changes are rendered through dedicated elevation DOM overlays (`.elevation` and `.elevated-elevation`) that transition `opacity` smoothly with Material 3 spatial/effects motion curves, respecting `prefers-reduced-motion`. State layers also transition opacity directly.
 
 ---
 

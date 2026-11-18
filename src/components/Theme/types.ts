@@ -18,7 +18,7 @@ export type ThemeProviderProps = {
 
     /**
      * Optional target DOM element to apply the calculated CSS variables and `color-scheme` to.
-     * Defaults to `document.body` if available in the runtime environment.
+     * Defaults to `document.documentElement` if available in the runtime environment.
      */
     target?: HTMLElement | null;
 };

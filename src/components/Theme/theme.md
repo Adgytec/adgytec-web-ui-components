@@ -1,16 +1,16 @@
 # ThemeProvider
 
-The `ThemeProvider` component provides dynamic Material Design 3 theming across the entire application. It integrates with [`useThemeGlobal`](../../utils/theme/useThemeGlobal.ts) and [`GenerateTheme`](../../utils/theme/generate.ts) to calculate accessible color palettes from a seed color, contrast setting, and dynamic scheme variant, injecting CSS custom properties into `document.body` and providing reactive theme state to child components through React Context (accessible via [`useTheme`](./useTheme.ts)).
+The `ThemeProvider` component provides dynamic Material Design 3 theming across the entire application. It integrates with [`useThemeGlobal`](../../utils/theme/useThemeGlobal.ts) and [`GenerateTheme`](../../utils/theme/generate.ts) to calculate accessible color palettes from a seed color, contrast setting, and dynamic scheme variant, injecting CSS custom properties into `document.documentElement` and providing reactive theme state to child components through React Context (accessible via [`useTheme`](./useTheme.ts)).
 
 ---
 
 ## Props
 
-| Prop           | Type                  | Default         | Description                                                                                          |
-| -------------- | --------------------- | --------------- | ---------------------------------------------------------------------------------------------------- |
-| `children`     | `ReactNode`           | —               | Child components rendered within the themed application tree.                                        |
-| `themeOptions` | `ThemeOptions`        | —               | Configuration object defining the required seed color, and optional contrast, scheme, and dark mode. |
-| `target`       | `HTMLElement \| null` | `document.body` | Optional target DOM element to receive CSS variables and color-scheme.                               |
+| Prop           | Type                  | Default                    | Description                                                                                          |
+| -------------- | --------------------- | -------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `children`     | `ReactNode`           | —                          | Child components rendered within the themed application tree.                                        |
+| `themeOptions` | `ThemeOptions`        | —                          | Configuration object defining the required seed color, and optional contrast, scheme, and dark mode. |
+| `target`       | `HTMLElement \| null` | `document.documentElement` | Optional target DOM element to receive CSS variables and color-scheme.                               |
 
 ### `ThemeOptions` Details
 
@@ -25,7 +25,7 @@ The `ThemeProvider` component provides dynamic Material Design 3 theming across 
 
 ## Injected CSS Custom Properties
 
-Whenever the theme state changes (e.g. toggling dark mode or updating the seed color), `ThemeProvider` recalculates all Material 3 color roles and sets them on `document.body`:
+Whenever the theme state changes (e.g. toggling dark mode or updating the seed color), `ThemeProvider` recalculates all Material 3 color roles and sets them on `document.documentElement`:
 
 - **Document Color Scheme**: `color-scheme: "dark"` or `color-scheme: "light"`.
 - **Primary Roles**: `--md-sys-color-primary`, `--md-sys-color-on-primary`, `--md-sys-color-primary-container`, `--md-sys-color-on-primary-container`, etc.

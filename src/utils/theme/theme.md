@@ -52,23 +52,23 @@ A low-level custom React hook for inspecting and mutating the global Material De
 
 ### `GenerateTheme(options)`
 
-A standalone function that generates a Material Design 3 `DynamicScheme` and injects all resulting color tokens (`--md-sys-color-*`) directly into `document.body.style`, as well as updating the `color-scheme` CSS property (`"dark"` or `"light"`).
+A standalone function that generates a Material Design 3 `DynamicScheme` and injects all resulting color tokens (`--md-sys-color-*`) directly into `document.documentElement.style`, as well as updating the `color-scheme` CSS property (`"dark"` or `"light"`).
 
 Can be used without React components (e.g. during application bootstrap or in vanilla JavaScript environments).
 
 #### Options (`GenerateThemeOptions`)
 
-| Option        | Type                  | Description                                                                                                                                   |
-| ------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sourceColor` | `string`              | Seed color in hexadecimal format used to generate the color palette (e.g. `"#00ADEE"`).                                                       |
-| `contrast`    | `number`              | Contrast adjustment level (`-1.0` to `1.0`, where `0.0` is standard).                                                                         |
-| `variant`     | `Variant`             | Dynamic scheme variant algorithm from `@material/material-color-utilities` (e.g. `Variant.VIBRANT`).                                          |
-| `isDark`      | `boolean`             | Whether to produce dark mode (`true`) or light mode (`false`) colors.                                                                         |
-| `target`      | `HTMLElement \| null` | Optional DOM element to receive CSS properties. Defaults to `document.body`. Safely no-ops in SSR environments where `document` is undefined. |
+| Option        | Type                  | Description                                                                                                                                              |
+| ------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sourceColor` | `string`              | Seed color in hexadecimal format used to generate the color palette (e.g. `"#00ADEE"`).                                                                  |
+| `contrast`    | `number`              | Contrast adjustment level (`-1.0` to `1.0`, where `0.0` is standard).                                                                                    |
+| `variant`     | `Variant`             | Dynamic scheme variant algorithm from `@material/material-color-utilities` (e.g. `Variant.VIBRANT`).                                                     |
+| `isDark`      | `boolean`             | Whether to produce dark mode (`true`) or light mode (`false`) colors.                                                                                    |
+| `target`      | `HTMLElement \| null` | Optional DOM element to receive CSS properties. Defaults to `document.documentElement`. Safely no-ops in SSR environments where `document` is undefined. |
 
 #### Applied CSS Variables
 
-Sets all Material 3 system color roles on `document.body`:
+Sets all Material 3 system color roles on `document.documentElement`:
 - **Primary**: `--md-sys-color-primary`, `--md-sys-color-on-primary`, `--md-sys-color-primary-container`, `--md-sys-color-on-primary-container`
 - **Secondary**: `--md-sys-color-secondary`, `--md-sys-color-on-secondary`, `--md-sys-color-secondary-container`, `--md-sys-color-on-secondary-container`
 - **Tertiary**: `--md-sys-color-tertiary`, `--md-sys-color-on-tertiary`, `--md-sys-color-tertiary-container`, `--md-sys-color-on-tertiary-container`
@@ -148,7 +148,7 @@ Generate and apply theme tokens without React:
 import { GenerateTheme, COLOR_ADGYTEC_BLUE } from "@adgytec/web-ui-components";
 import { Variant } from "@material/material-color-utilities";
 
-// Apply theme to document.body immediately
+// Apply theme to document.documentElement immediately
 GenerateTheme({
     sourceColor: COLOR_ADGYTEC_BLUE,
     contrast: 0,

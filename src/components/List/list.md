@@ -66,7 +66,9 @@ Extends the [React Aria ListBoxItem](https://react-spectrum.adobe.com/react-aria
 
 - **Selection Indicator**: When `selectionIndicator="leading"` or `"trailing"` is configured on `ListBox` (or overridden on a `ListItem`), selecting an item dynamically replaces the corresponding `leading` or `trailing` container's content with a `ListIcon` rendering a `Check` icon.
 - **Checkbox slot**: When an embedded `Checkbox` with `slot="selection"` is provided in `leading` or `trailing`, `ListItem` automatically connects it to its `isSelected` state via React Aria context provider. The control is marked `isReadOnly: true` and is disabled when `selectionMode === "none"` or the item is disabled, allowing row interactions to seamlessly control item selection.
-- **Ripple Effect**: Integrates with `useSplash` to display Material 3 touch ripple splash feedback on press.
+- **Ripple Splash Layer**: Integrates with `useSplash` to display touch ripple feedback on press, confined within an internal `.splash` container with `overflow: clip` and `pointer-events: none` so that outer focus outlines and drop shadows remain unclipped.
+- **Hardware-Accelerated Elevation**: When dragging an item, elevation shadow (`var(--md-sys-elevation-shadow-4)`) is rendered using a pseudo-element (`.list-item::after`) transitioning `opacity` rather than animating `box-shadow` directly, ensuring 60fps GPU acceleration.
+- **State Layers**: Hover, focus, and pressed state layers are applied via a pseudo-element (`.list-item::before`) transitioning opacity (`--_state-layer-opacity`) directly.
 - **Corner radius morphing**: Dynamically animates corner radius across interaction states (extra small at rest, medium on hover, large when selected, focused, or pressed).
 
 ---
