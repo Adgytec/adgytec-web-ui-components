@@ -31,9 +31,7 @@
             color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration),
             border-color var(--md-sys-motion-expressive-fast-effects)
-            var(--md-sys-motion-expressive-fast-effects-duration),
-            box-shadow var(--md-sys-motion-expressive-fast-spatial)
-            var(--md-sys-motion-expressive-fast-spatial-duration);
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
         @media (prefers-reduced-motion) {
             transition: none;
