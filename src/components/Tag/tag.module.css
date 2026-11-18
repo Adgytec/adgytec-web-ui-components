@@ -53,11 +53,6 @@
 
         --_state-layer-opacity: 0;
 
-        --_state-layer-color: rgb(
-            from var(--_label-color) r g b /
-            var(--_state-layer-opacity)
-        );
-
         /* styles  */
 
         display: flex;
@@ -157,10 +152,11 @@
         inset: 0;
         border-radius: inherit;
 
-        background-color: var(--_state-layer-color);
+        pointer-events: none;
+        background-color: var(--_label-color);
+        opacity: var(--_state-layer-opacity);
 
-        transition: background-color
-            var(--md-sys-motion-expressive-fast-effects)
+        transition: opacity var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration);
 
         @media (prefers-reduced-motion) {

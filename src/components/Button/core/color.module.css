@@ -95,11 +95,6 @@
         --_state-color: var(--_md-button-state-layer);
         --_state-layer-opacity: 0;
 
-        --_state-layer-color: rgb(
-            from var(--_state-color) r g b /
-            var(--_state-layer-opacity)
-        );
-
         /* variable to use */
         --_background-color: var(--_md-button-background, transparent);
         --_color: var(--_md-button-color, transparent);
@@ -168,10 +163,11 @@
         inset: 0;
         border-radius: inherit;
 
-        background-color: var(--_state-layer-color);
+        pointer-events: none;
+        background-color: var(--_state-color);
+        opacity: var(--_state-layer-opacity);
 
-        transition: background-color
-            var(--md-sys-motion-expressive-fast-effects)
+        transition: opacity var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration);
 
         @media (prefers-reduced-motion) {
