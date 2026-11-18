@@ -92,11 +92,12 @@ function toCssRgb(argb: number): string {
  * and the root `color-scheme` property onto the target element.
  *
  * @param scheme - The generated {@link DynamicScheme} instance containing computed color values.
- * @param target - Optional DOM element to receive CSS properties (defaults to `document.body` if defined).
+ * @param target - Optional DOM element to receive CSS properties (defaults to `document.documentElement` if defined).
  */
 function applyScheme(scheme: DynamicScheme, target?: HTMLElement | null) {
     const el =
-        target ?? (typeof document !== "undefined" ? document.body : null);
+        target ??
+        (typeof document !== "undefined" ? document.documentElement : null);
 
     if (!el) {
         return;
