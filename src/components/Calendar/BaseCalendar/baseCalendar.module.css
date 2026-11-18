@@ -80,6 +80,13 @@
 
             border-block-start: calc(1 * var(--dp, 1px)) solid
                 var(--_md-calendar-menu-divider-color);
+
+            & div:has(> [data-menu-item][data-focus-visible]) {
+                /* Override the virtualizer's inline z-index so the focused item */
+                /* renders above adjacent items, including selected items. */
+                /* biome-ignore lint/complexity/noImportantStyles: Override the virtualizer's inline z-index. */
+                z-index: 1 !important;
+            }
         }
     }
 }

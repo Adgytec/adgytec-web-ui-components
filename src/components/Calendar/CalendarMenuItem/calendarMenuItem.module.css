@@ -31,7 +31,6 @@
         }
 
         &[data-focus-visible] {
-            z-index: 1;
             --_state-layer-opacity: var(--md-sys-state-focus);
         }
 
@@ -52,8 +51,7 @@
         }
     }
 
-    .item::before,
-    .item::after {
+    .item::before {
         content: "";
 
         position: absolute;
@@ -61,9 +59,6 @@
         border-radius: inherit;
 
         pointer-events: none;
-    }
-
-    .item::after {
         background-color: var(--_state-color);
         opacity: var(--_state-layer-opacity);
 
@@ -75,7 +70,7 @@
         }
     }
 
-    .item[data-focus-visible]::before {
+    .item[data-focus-visible] {
         --focus-indicator-thickness: calc(3 * var(--dp, 1px));
         --focus-indicator-offset: calc(1 * var(--dp, 1px));
         --focus-indicator-color: var(--md-sys-color-secondary);

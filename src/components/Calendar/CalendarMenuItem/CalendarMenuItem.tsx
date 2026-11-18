@@ -24,6 +24,7 @@ export const CalendarMenuItem: React.FC<CalendarMenuItemProps> = ({
             className={composeRenderProps(props.className, (className) =>
                 clsx(styles["item"], typography.bodyLarge, className)
             )}
+            data-menu-item
         />
     );
 };
