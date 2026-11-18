@@ -22,6 +22,7 @@
         );
         --_md-app-bar-headline-block-size: var(--md-sys-layout-space-28);
 
+        position: relative;
         display: grid;
         gap: var(--md-sys-layout-space-12);
 
@@ -47,9 +48,25 @@
         }
 
         &[data-scroll] {
+            --_appbar-before-opacity: 1;
+
             background-color: var(--_md-app-bar-on-scroll-background);
-            box-shadow: var(--md-sys-elevation-shadow-2);
         }
+    }
+
+    .app-bar::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+
+        box-shadow: var(--md-sys-elevation-shadow-2);
+
+        opacity: var(--_appbar-before-opacity, 0);
+
+        transition: opacity var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
     }
 
     .primary {

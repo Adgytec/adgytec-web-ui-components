@@ -41,7 +41,18 @@ export const Card: React.FC<CardProps> = ({
         >
             {composeRenderProps(props.children, (children) => (
                 <>
-                    {splashInfo && <Splash {...splashInfo} />}
+                    {splashInfo && (
+                        <span className={clsx(styles["splash"])}>
+                            <Splash {...splashInfo} />
+                        </span>
+                    )}
+
+                    {variant === "elevated" && (
+                        <span className={clsx(styles["elevated-elevation"])} />
+                    )}
+
+                    <span className={clsx(styles["elevation"])} />
+
                     {children}
                 </>
             ))}

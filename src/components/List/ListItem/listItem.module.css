@@ -75,7 +75,6 @@
         color: var(--_md-list-color);
 
         position: relative;
-        overflow: clip;
 
         display: flex;
         align-items: var(--md-list-align-y, "center");
@@ -90,9 +89,7 @@
             background-color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration),
             color var(--md-sys-motion-expressive-fast-effects)
-            var(--md-sys-motion-expressive-fast-effects-duration),
-            box-shadow var(--md-sys-motion-expressive-fast-spatial)
-            var(--md-sys-motion-expressive-fast-spatial-duration);
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
         @media (prefers-reduced-motion) {
             transition: none;
@@ -119,7 +116,7 @@
             --_shape: var(--_md-list-item-interaction-shape);
             --_state-layer-opacity: var(--md-sys-state-dragged);
 
-            box-shadow: var(--md-sys-elevation-shadow-4);
+            --_elevation-opacity: 1;
         }
 
         &[data-disabled] {
@@ -159,8 +156,8 @@
         }
     }
 
-    /* state layer */
-    .list-item::before {
+    .list-item::before,
+    .list-item::after {
         content: "";
 
         position: absolute;
@@ -168,8 +165,6 @@
         border-radius: inherit;
 
         pointer-events: none;
-        background-color: var(--_state-color);
-        opacity: var(--_state-layer-opacity);
 
         transition: opacity var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration);
@@ -177,6 +172,28 @@
         @media (prefers-reduced-motion) {
             transition: none;
         }
+    }
+
+    /* state layer */
+    .list-item::before {
+        background-color: var(--_state-color);
+        opacity: var(--_state-layer-opacity);
+    }
+
+    /* elevation */
+    .list-item::after {
+        box-shadow: var(--md-sys-elevation-shadow-4);
+        opacity: var(--_elevation-opacity, 0);
+    }
+
+    /* splash */
+    .splash {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+
+        overflow: clip;
+        pointer-events: none;
     }
 
     /* focus indicator */

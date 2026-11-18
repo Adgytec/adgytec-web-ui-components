@@ -2,7 +2,6 @@
 *
 * --md-card-background
 * --md-card-icon-color
-* --md-card-elevation
 * --md-card-outline
 *
 * configurable tokens end */
@@ -18,17 +17,16 @@
             var(--md-sys-color-primary)
         );
 
-        --_md-card-elevation: var(
-            --md-card-elevation,
-            var(--_md-card-elevation-default, var(--md-sys-elevation-shadow-0))
-        );
-
         --md-card-shape: var(--md-sys-shape-corner-radius-medium);
         --md-card-padding: var(--md-sys-layout-space-16);
 
         /* state layer */
         --_state-color: var(--md-sys-color-on-surface);
         --_state-layer-opacity: 0;
+
+        /* elevation */
+        --_elevation-hovered: var(--md-sys-elevation-shadow-1);
+        --_elevation-dragged: var(--md-sys-elevation-shadow-3);
 
         /* variable to use  */
         --_background-color: var(--_md-card-background);
@@ -39,22 +37,12 @@
         color: var(--_color);
 
         position: relative;
-        overflow: clip;
-
-        box-shadow: var(--_shadow);
-
-        transition: box-shadow var(--md-sys-motion-expressive-fast-spatial)
-            var(--md-sys-motion-expressive-fast-spatial-duration);
-
-        @media (prefers-reduced-motion) {
-            transition: none;
-        }
 
         &[data-hovered] {
             cursor: pointer;
 
+            --_elevation-hovered-opacity: 1;
             --_state-layer-opacity: var(--md-sys-state-hover);
-            --_shadow: var(--md-sys-elevation-shadow-1);
         }
 
         &[data-focus-visible] {
@@ -66,8 +54,8 @@
         }
 
         &[data-dragging] {
+            --_elevation-dragged-opacity: 1;
             --_state-layer-opacity: var(--md-sys-state-dragged);
-            --_shadow: var(--md-sys-elevation-shadow-3);
         }
 
         &[data-disabled] {
@@ -119,18 +107,80 @@
         z-index: 1;
     }
 
+    /* splash */
+    .splash {
+        position: absolute;
+        inset: 0;
+        border-radius: var(--md-card-shape);
+
+        pointer-events: none;
+        overflow: clip;
+    }
+
+    /* elevation */
+    .elevation {
+        position: absolute;
+        inset: 0;
+        border-radius: var(--md-card-shape);
+
+        pointer-events: none;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+
+            inset: 0;
+            border-radius: inherit;
+
+            transition: opacity var(--md-sys-motion-expressive-fast-effects)
+                var(--md-sys-motion-expressive-fast-effects-duration);
+
+            @media (prefers-reduced-motion) {
+                transition: none;
+            }
+        }
+
+        /* hovered */
+        &::before {
+            opacity: var(--_elevation-hovered-opacity, 0);
+            box-shadow: var(--_elevation-hovered);
+        }
+
+        /* dragged */
+        &::after {
+            opacity: var(--_elevation-dragged-opacity, 0);
+            box-shadow: var(--_elevation-dragged);
+        }
+    }
+
     .elevated {
-        --_md-card-elevation-default: var(--md-sys-elevation-shadow-1);
         --_md-card-background-default: var(
             --md-sys-color-surface-container-low
         );
 
-        &[data-hovered] {
-            --_shadow: var(--md-sys-elevation-shadow-2);
-        }
+        --_elevation-hovered: var(--md-sys-elevation-shadow-2);
+        --_elevation-dragged: var(--md-sys-elevation-shadow-4);
 
-        &[data-dragging] {
-            --_shadow: var(--md-sys-elevation-shadow-4);
+        .elevated-elevation {
+            position: absolute;
+            inset: 0;
+
+            pointer-events: none;
+            border-radius: var(--md-card-shape);
+            box-shadow: var(--md-sys-elevation-shadow-1);
+
+            opacity: calc(
+                1 -
+                max(var(--opacity-hovered), var(--opacity-dragged))
+            );
+
+            transition: opacity var(--md-sys-motion-expressive-fast-effects)
+                var(--md-sys-motion-expressive-fast-effects-duration);
+
+            @media (prefers-reduced-motion) {
+                transition: none;
+            }
         }
     }
 

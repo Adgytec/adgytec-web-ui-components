@@ -5,7 +5,12 @@ import { withTooltip } from "@/components/Button/core";
 import { Icon } from "@/components/Icon";
 import { Splash, useSplash } from "@/components/Splash";
 import { FABIconSizeMapping, fabSizeConfig } from "../../core";
-import { fabVariantBase, fabVariantConfig } from "../../core/fab";
+import {
+    fabElevation,
+    fabSplash,
+    fabVariantBase,
+    fabVariantConfig,
+} from "../../core/fab";
 import { useFABMenuVariant } from "../context";
 import styles from "./fabMenuButton.module.css";
 import type { FABMenuButtonProps } from "./types";
@@ -64,7 +69,14 @@ export const FABMenuButton: React.FC<FABMenuButtonProps> = ({
                 >
                     {({ isPressed }) => (
                         <>
-                            {splashInfo && <Splash {...splashInfo} />}
+                            {splashInfo && (
+                                <span className={clsx(fabSplash)}>
+                                    <Splash {...splashInfo} />
+                                </span>
+                            )}
+
+                            <span className={clsx(fabElevation)} />
+
                             {isPressed ? (
                                 <Icon
                                     icon={X}

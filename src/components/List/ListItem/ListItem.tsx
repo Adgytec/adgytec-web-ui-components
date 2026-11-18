@@ -122,7 +122,11 @@ export const ListItem: React.FC<ListItemProps> = ({
                             ],
                         ]}
                     >
-                        {splashInfo && <Splash {...splashInfo} />}
+                        {splashInfo && (
+                            <span className={clsx(styles["splash"])}>
+                                <Splash {...splashInfo} />
+                            </span>
+                        )}
 
                         {leadingSelectionIcon ? (
                             <div className={clsx(styles["leading"])}>

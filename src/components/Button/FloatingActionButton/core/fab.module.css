@@ -6,10 +6,6 @@
 * configurable tokens end */
 
 @layer adgytec.overrides {
-    .fab[data-fab-menu-item] {
-        box-shadow: none;
-    }
-
     .primary[data-fab-menu-button] {
         --_md-fab-background-default: var(--md-sys-color-primary-container);
         --_md-fab-color-default: var(--md-sys-color-on-primary-container);
@@ -43,7 +39,7 @@
 
 @layer adgytec.comps {
     .fab {
-        --_md-fab-elevation: var(--md-sys-elevation-shadow-3);
+        --_fab-default-elevation-opacity: 1;
 
         --_md-fab-background: var(
             --md-fab-background,
@@ -82,9 +78,7 @@
         }
 
         position: relative;
-        overflow: clip;
 
-        box-shadow: var(--_md-fab-elevation);
         background-color: var(--_md-fab-background);
         color: var(--_md-fab-color);
 
@@ -96,16 +90,14 @@
             background-color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration),
             color var(--md-sys-motion-expressive-fast-effects)
-            var(--md-sys-motion-expressive-fast-effects-duration),
-            box-shadow var(--md-sys-motion-expressive-fast-spatial)
-            var(--md-sys-motion-expressive-fast-spatial-duration);
+            var(--md-sys-motion-expressive-fast-effects-duration);
 
         @media (prefers-reduced-motion) {
             transition: none;
         }
 
         &[data-hovered] {
-            --_md-fab-elevation: var(--md-sys-elevation-shadow-4);
+            --_fab-default-elevation-opacity: 0;
             --_state-layer-opacity: var(--md-sys-state-hover);
         }
 
@@ -162,6 +154,49 @@
         outline-color: var(--focus-indicator-color);
 
         z-index: 1;
+    }
+
+    .splash {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+
+        overflow: clip;
+    }
+
+    /* elevation */
+    .elevation {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        border-radius: inherit;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+
+            pointer-events: none;
+
+            transition: opacity var(--md-sys-motion-expressive-fast-effects)
+                var(--md-sys-motion-expressive-fast-effects-duration);
+
+            @media (prefers-reduced-motion) {
+                transition: none;
+            }
+        }
+
+        &::before {
+            opacity: var(--_fab-default-elevation-opacity);
+            box-shadow: var(--md-sys-elevation-shadow-3);
+        }
+
+        &::after {
+            opacity: calc(1 - var(--_fab-default-elevation-opacity));
+            box-shadow: var(--md-sys-elevation-shadow-4);
+        }
     }
 
     .primary {

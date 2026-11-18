@@ -15,3 +15,7 @@ export const fabVariantConfig = (variant: FABVariants) => {
  * Base CSS module class name applied to all Floating Action Buttons.
  */
 export const fabVariantBase = styles["fab"];
+
+export const fabElevation = styles["elevation"];
+
+export const fabSplash = styles["splash"];

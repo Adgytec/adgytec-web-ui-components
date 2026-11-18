@@ -8,7 +8,12 @@ import {
     FABIconSizeMapping,
     fabSizeConfig,
 } from "../core";
-import { fabVariantBase, fabVariantConfig } from "../core/fab";
+import {
+    fabElevation,
+    fabSplash,
+    fabVariantBase,
+    fabVariantConfig,
+} from "../core/fab";
 import type { ExtendedFloatingActionButtonProps } from "./types";
 
 /**
@@ -70,7 +75,13 @@ export const ExtendedFloatingActionButton: React.FC<
         >
             {composeRenderProps(props.children, (children) => (
                 <>
-                    {splashInfo && <Splash {...splashInfo} />}
+                    {splashInfo && (
+                        <span className={clsx(fabSplash)}>
+                            <Splash {...splashInfo} />
+                        </span>
+                    )}
+
+                    <span className={clsx(fabElevation)} />
 
                     {iconPlacement === "start" && icon && (
                         <Icon icon={icon} size={FABIconSizeMapping[size]} />

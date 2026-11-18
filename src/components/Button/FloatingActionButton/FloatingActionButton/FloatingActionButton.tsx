@@ -4,7 +4,12 @@ import { Icon } from "@/components/Icon";
 import { Splash, useSplash } from "@/components/Splash";
 import { withTooltip } from "../../core";
 import { FABIconSizeMapping, fabSizeConfig } from "../core";
-import { fabVariantBase, fabVariantConfig } from "../core/fab";
+import {
+    fabElevation,
+    fabSplash,
+    fabVariantBase,
+    fabVariantConfig,
+} from "../core/fab";
 import type { FloatingActionButtonProps } from "./types";
 
 /**
@@ -60,7 +65,12 @@ export const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({
             aria-label={props["aria-label"] || tooltip}
             data-icon
         >
-            {splashInfo && <Splash {...splashInfo} />}
+            {splashInfo && (
+                <span className={clsx(fabSplash)}>
+                    <Splash {...splashInfo} />
+                </span>
+            )}
+            <span className={clsx(fabElevation)} />
             <Icon icon={icon} size={FABIconSizeMapping[size]} />
         </Button>,
         tooltip
