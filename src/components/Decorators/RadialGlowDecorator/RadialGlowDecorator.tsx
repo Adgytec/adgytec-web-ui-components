@@ -3,17 +3,17 @@ import type React from "react";
 import styles from "./radialGlowDecorator.module.css";
 
 /**
- * Predefined layout, blob placement, and motion variants for the {@link RadialGlowDecorator} component.
+ * Predefined layout and motion variants for the {@link RadialGlowDecorator} component.
  *
- * - `"default"`: 3 static blobs (primary, secondary, tertiary) spread across the viewport.
- * - `"split"`: 2 static blobs separated left and right, ideal for two-column or split layouts.
- * - `"top-bar"`: 3 horizontal blobs aligned across the top fold or header area.
- * - `"corners"`: 4 static blobs anchored in each of the four screen corners.
- * - `"aurora"`: 4 organic floating blobs with continuous drift animation for atmospheric ambiance.
- * - `"spotlight"`: 3 centered, layered blobs with an organic pulsating scale animation.
- * - `"nebula"`: 4 orbiting and drifting blobs creating an immersive, fluid cosmic look.
- * - `"horizon"`: 3 bottom-anchored blobs with rising and pulsating motion for footers and page bottoms.
- * - `"spiral"`: 3 blobs following a circular orbiting path for dynamic centerpiece effects.
+ * - `"default"`: Soft ambient multi-accent glow spread across the viewport.
+ * - `"split"`: Dual glows separated across left and right screen edges.
+ * - `"top-bar"`: Top-aligned header radiance flowing downward.
+ * - `"corners"`: Four-corner ambient glows radiating inward.
+ * - `"spotlight"`: Centered hero glow radiating from the upper center with subtle pulsation.
+ * - `"horizon"`: Bottom-aligned radiance flowing upward for footers and page bottoms.
+ * - `"aurora"`: Organic floating aurora radiance with continuous atmospheric drift.
+ * - `"nebula"`: Cosmic orbiting radiance with gentle multi-stop drift.
+ * - `"spiral"`: Orbiting fluid radiance following a circular path.
  */
 export type RadialGlowDecoratorVariant =
     | "default"
@@ -25,6 +25,20 @@ export type RadialGlowDecoratorVariant =
     | "nebula"
     | "horizon"
     | "spiral";
+
+/**
+ * Color palette options for {@link RadialGlowDecorator}.
+ *
+ * - `"multi"`: Dynamically mixes primary, secondary, and tertiary theme tokens (default).
+ * - `"primary"`: Uses only primary theme color tokens.
+ * - `"secondary"`: Uses only secondary theme color tokens.
+ * - `"tertiary"`: Uses only tertiary theme color tokens.
+ */
+export type RadialGlowDecoratorColor =
+    | "multi"
+    | "primary"
+    | "secondary"
+    | "tertiary";
 
 /**
  * Props for the {@link RadialGlowDecorator} component.
@@ -44,33 +58,41 @@ export interface RadialGlowDecoratorProps {
     style?: React.CSSProperties;
 
     /**
-     * Predefined layout, blob placement, and animation variant.
+     * Predefined layout and motion variant.
      *
      * @default "default"
      */
     variant?: RadialGlowDecoratorVariant;
+
+    /**
+     * Color palette mode for the glow gradients.
+     *
+     * @default "multi"
+     */
+    color?: RadialGlowDecoratorColor;
 }
 
 /**
  * A non-blocking decorative background component that renders smooth, theme-aware radial glow gradients.
  *
- * Layers multiple blurred color blobs to produce premium ambient lighting and background washes.
- * Automatically scales opacities between light and dark modes to ensure visual balance.
- * Spans the full page with `pointer-events: none` and `aria-hidden="true"`, ensuring no interference
+ * Renders hardware-accelerated CSS radial gradients derived from current Material Design 3 theme tokens
+ * (`--md-sys-color-primary`, `--md-sys-color-secondary`, `--md-sys-color-tertiary`).
+ * Automatically scales opacities between light and dark modes to ensure optimal visual contrast.
+ * Spans the full viewport with `pointer-events: none` and `aria-hidden="true"`, ensuring no interference
  * with user interactions or accessibility trees.
  *
  * @example
  * ```tsx
  * import { RadialGlowDecorator } from '@adgytec/web-ui-components';
  *
- * // Static multi-color radial gradient
+ * // Ambient multi-color radial gradient
  * <RadialGlowDecorator variant="default" />
  *
- * // Continuous floating aurora animation with custom z-index
- * <RadialGlowDecorator variant="aurora" zIndex={-20} />
+ * // Centered spotlight in primary theme color
+ * <RadialGlowDecorator variant="spotlight" color="primary" />
  *
- * // Centered pulsating spotlight for hero sections
- * <RadialGlowDecorator variant="spotlight" />
+ * // Continuous floating aurora animation
+ * <RadialGlowDecorator variant="aurora" zIndex={-20} />
  * ```
  */
 export const RadialGlowDecorator: React.FC<RadialGlowDecoratorProps> = ({
@@ -78,151 +100,15 @@ export const RadialGlowDecorator: React.FC<RadialGlowDecoratorProps> = ({
     className,
     style,
     variant = "default",
+    color = "multi",
 }) => {
     return (
         <div
             className={clsx(styles["container"], className)}
             aria-hidden="true"
             data-variant={variant}
+            data-color={color}
             style={{ zIndex, ...style }}
-        >
-            {variant === "default" && (
-                <>
-                    <div
-                        className={clsx(
-                            styles["blob"],
-                            styles["default-primary"]
-                        )}
-                    />
-                    <div
-                        className={clsx(
-                            styles["blob"],
-                            styles["default-secondary"]
-                        )}
-                    />
-                    <div
-                        className={clsx(
-                            styles["blob"],
-                            styles["default-tertiary"]
-                        )}
-                    />
-                </>
-            )}
-            {variant === "split" && (
-                <>
-                    <div
-                        className={clsx(styles["blob"], styles["split-left"])}
-                    />
-                    <div
-                        className={clsx(styles["blob"], styles["split-right"])}
-                    />
-                </>
-            )}
-            {variant === "top-bar" && (
-                <>
-                    <div
-                        className={clsx(
-                            styles["blob"],
-                            styles["top-bar-primary"]
-                        )}
-                    />
-                    <div
-                        className={clsx(
-                            styles["blob"],
-                            styles["top-bar-secondary"]
-                        )}
-                    />
-                    <div
-                        className={clsx(
-                            styles["blob"],
-                            styles["top-bar-tertiary"]
-                        )}
-                    />
-                </>
-            )}
-            {variant === "corners" && (
-                <>
-                    <div
-                        className={clsx(styles["blob"], styles["corner-tl"])}
-                    />
-                    <div
-                        className={clsx(styles["blob"], styles["corner-tr"])}
-                    />
-                    <div
-                        className={clsx(styles["blob"], styles["corner-bl"])}
-                    />
-                    <div
-                        className={clsx(styles["blob"], styles["corner-br"])}
-                    />
-                </>
-            )}
-            {variant === "aurora" && (
-                <>
-                    <div className={clsx(styles["blob"], styles["aurora-1"])} />
-                    <div className={clsx(styles["blob"], styles["aurora-2"])} />
-                    <div className={clsx(styles["blob"], styles["aurora-3"])} />
-                    <div className={clsx(styles["blob"], styles["aurora-4"])} />
-                </>
-            )}
-            {variant === "spotlight" && (
-                <>
-                    <div
-                        className={clsx(
-                            styles["blob"],
-                            styles["spotlight-primary"]
-                        )}
-                    />
-                    <div
-                        className={clsx(
-                            styles["blob"],
-                            styles["spotlight-secondary"]
-                        )}
-                    />
-                    <div
-                        className={clsx(
-                            styles["blob"],
-                            styles["spotlight-tertiary"]
-                        )}
-                    />
-                </>
-            )}
-            {variant === "nebula" && (
-                <>
-                    <div className={clsx(styles["blob"], styles["nebula-1"])} />
-                    <div className={clsx(styles["blob"], styles["nebula-2"])} />
-                    <div className={clsx(styles["blob"], styles["nebula-3"])} />
-                    <div className={clsx(styles["blob"], styles["nebula-4"])} />
-                </>
-            )}
-            {variant === "horizon" && (
-                <>
-                    <div
-                        className={clsx(
-                            styles["blob"],
-                            styles["horizon-primary"]
-                        )}
-                    />
-                    <div
-                        className={clsx(
-                            styles["blob"],
-                            styles["horizon-secondary"]
-                        )}
-                    />
-                    <div
-                        className={clsx(
-                            styles["blob"],
-                            styles["horizon-tertiary"]
-                        )}
-                    />
-                </>
-            )}
-            {variant === "spiral" && (
-                <>
-                    <div className={clsx(styles["blob"], styles["spiral-1"])} />
-                    <div className={clsx(styles["blob"], styles["spiral-2"])} />
-                    <div className={clsx(styles["blob"], styles["spiral-3"])} />
-                </>
-            )}
-        </div>
+        />
     );
 };

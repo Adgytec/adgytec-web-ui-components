@@ -5,616 +5,437 @@
         pointer-events: none;
         overflow: hidden;
 
-        /* Default Opacity (Light mode/Base defaults) - higher visibility */
-        --glow-opacity-18: 28%;
-        --glow-opacity-15: 24%;
-        --glow-opacity-14: 22%;
-        --glow-opacity-12: 20%;
-        --glow-opacity-10: 16%;
-        --glow-opacity-8: 12%;
-    }
+        /* Theme-aware color tokens */
+        --_glow-primary-color: var(--md-sys-color-primary);
+        --_glow-secondary-color: var(--md-sys-color-secondary);
+        --_glow-tertiary-color: var(--md-sys-color-tertiary);
 
-    :global([data-theme="dark"]) .container,
-    :global([data-theme="dark-high-contrast"]) .container,
-    :global([data-theme="dark-medium-contrast"]) .container,
-    :global([data-theme="monochrome-dark"]) .container {
-        --glow-opacity-18: 15%;
-        --glow-opacity-15: 12%;
-        --glow-opacity-14: 11%;
-        --glow-opacity-12: 10%;
-        --glow-opacity-10: 8%;
-        --glow-opacity-8: 6%;
-    }
+        /* Light mode default opacity */
+        --_glow-opacity-primary: 20%;
+        --_glow-opacity-secondary: 15%;
+        --_glow-opacity-tertiary: 12%;
 
-    @media (prefers-color-scheme: dark) {
-        .container {
-            --glow-opacity-18: 15%;
-            --glow-opacity-15: 12%;
-            --glow-opacity-14: 11%;
-            --glow-opacity-12: 10%;
-            --glow-opacity-10: 8%;
-            --glow-opacity-8: 6%;
+        /* Single-color palette overrides */
+        &[data-color="primary"] {
+            --_glow-secondary-color: var(--md-sys-color-primary);
+            --_glow-tertiary-color: var(--md-sys-color-primary);
+        }
+
+        &[data-color="secondary"] {
+            --_glow-primary-color: var(--md-sys-color-secondary);
+            --_glow-tertiary-color: var(--md-sys-color-secondary);
+        }
+
+        &[data-color="tertiary"] {
+            --_glow-primary-color: var(--md-sys-color-tertiary);
+            --_glow-secondary-color: var(--md-sys-color-tertiary);
+        }
+
+        /* Dark mode opacity adjustment (dark backgrounds require softer opacity) */
+        @media (prefers-color-scheme: dark) {
+            --_glow-opacity-primary: 14%;
+            --_glow-opacity-secondary: 10%;
+            --_glow-opacity-tertiary: 8%;
+        }
+
+        :global(body[style*="color-scheme: dark"]) &,
+        :global([style*="color-scheme: dark"]) &,
+        :global([color-scheme="dark"]) & {
+            --_glow-opacity-primary: 14%;
+            --_glow-opacity-secondary: 10%;
+            --_glow-opacity-tertiary: 8%;
+        }
+
+        :global(body[style*="color-scheme: light"]) &,
+        :global([style*="color-scheme: light"]) &,
+        :global([color-scheme="light"]) & {
+            --_glow-opacity-primary: 20%;
+            --_glow-opacity-secondary: 15%;
+            --_glow-opacity-tertiary: 12%;
         }
     }
 
-    :global([data-theme="light"]) .container,
-    :global([data-theme="light-high-contrast"]) .container,
-    :global([data-theme="light-medium-contrast"]) .container,
-    :global([data-theme="monochrome-light"]) .container {
-        --glow-opacity-18: 28%;
-        --glow-opacity-15: 24%;
-        --glow-opacity-14: 22%;
-        --glow-opacity-12: 20%;
-        --glow-opacity-10: 16%;
-        --glow-opacity-8: 12%;
+    /* DEFAULT / AMBIENT */
+    .container[data-variant="default"] {
+        background-image:
+            radial-gradient(
+                circle 45vmax at 15% 15%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-primary-color) var(--_glow-opacity-primary),
+                        transparent
+                    )
+                    0%,
+                transparent 70%
+            ),
+            radial-gradient(
+                circle 40vmax at 85% 85%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-secondary-color)
+                            var(--_glow-opacity-secondary),
+                        transparent
+                    )
+                    0%,
+                transparent 70%
+            ),
+            radial-gradient(
+                circle 35vmax at 75% 25%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-tertiary-color)
+                            var(--_glow-opacity-tertiary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            );
     }
 
-    .blob {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(180px);
-        pointer-events: none;
-        will-change: transform, filter;
+    /* SPLIT */
+    .container[data-variant="split"] {
+        background-image:
+            radial-gradient(
+                circle 50vmax at 0% 50%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-primary-color) var(--_glow-opacity-primary),
+                        transparent
+                    )
+                    0%,
+                transparent 70%
+            ),
+            radial-gradient(
+                circle 50vmax at 100% 50%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-secondary-color)
+                            var(--_glow-opacity-secondary),
+                        transparent
+                    )
+                    0%,
+                transparent 70%
+            );
     }
 
-    /* DEFAULT VARIANT */
-    .default-primary {
-        inline-size: 50vmax;
-        block-size: 50vmax;
-        top: -10vmax;
-        left: -10vmax;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-primary) var(--glow-opacity-15),
-            transparent
-        );
+    /* TOP-BAR */
+    .container[data-variant="top-bar"] {
+        background-image:
+            radial-gradient(
+                ellipse 50vmax 25vmax at 50% 0%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-primary-color) var(--_glow-opacity-primary),
+                        transparent
+                    )
+                    0%,
+                transparent 75%
+            ),
+            radial-gradient(
+                circle 30vmax at 20% 0%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-secondary-color)
+                            var(--_glow-opacity-secondary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            ),
+            radial-gradient(
+                circle 30vmax at 80% 0%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-tertiary-color)
+                            var(--_glow-opacity-tertiary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            );
     }
 
-    .default-secondary {
-        inline-size: 45vmax;
-        block-size: 45vmax;
-        bottom: -15vmax;
-        right: -10vmax;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-tertiary) var(--glow-opacity-12),
-            transparent
-        );
+    /* CORNERS */
+    .container[data-variant="corners"] {
+        background-image:
+            radial-gradient(
+                circle 35vmax at 0% 0%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-primary-color) var(--_glow-opacity-primary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            ),
+            radial-gradient(
+                circle 35vmax at 100% 0%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-tertiary-color)
+                            var(--_glow-opacity-tertiary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            ),
+            radial-gradient(
+                circle 35vmax at 0% 100%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-secondary-color)
+                            var(--_glow-opacity-secondary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            ),
+            radial-gradient(
+                circle 35vmax at 100% 100%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-primary-color) var(--_glow-opacity-tertiary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            );
     }
 
-    .default-tertiary {
-        inline-size: 40vmax;
-        block-size: 40vmax;
-        top: 25vh;
-        right: 15vw;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-secondary) var(--glow-opacity-10),
-            transparent
-        );
+    /* SPOTLIGHT */
+    .container[data-variant="spotlight"] {
+        background-image:
+            radial-gradient(
+                circle 35vmax at 50% 35%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-primary-color) var(--_glow-opacity-primary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            ),
+            radial-gradient(
+                circle 45vmax at 50% 45%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-secondary-color)
+                            var(--_glow-opacity-secondary),
+                        transparent
+                    )
+                    0%,
+                transparent 70%
+            ),
+            radial-gradient(
+                circle 55vmax at 50% 50%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-tertiary-color)
+                            var(--_glow-opacity-tertiary),
+                        transparent
+                    )
+                    0%,
+                transparent 75%
+            );
+        animation: glow-pulse 8s ease-in-out infinite alternate;
     }
 
-    /* SPLIT VARIANT */
-    .split-left {
-        inline-size: 60vmax;
-        block-size: 60vmax;
-        top: 20vh;
-        left: -20vmax;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-primary) var(--glow-opacity-12),
-            transparent
-        );
+    /* HORIZON */
+    .container[data-variant="horizon"] {
+        background-image:
+            radial-gradient(
+                ellipse 60vmax 25vmax at 50% 100%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-primary-color) var(--_glow-opacity-primary),
+                        transparent
+                    )
+                    0%,
+                transparent 75%
+            ),
+            radial-gradient(
+                circle 35vmax at 20% 100%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-secondary-color)
+                            var(--_glow-opacity-secondary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            ),
+            radial-gradient(
+                circle 35vmax at 80% 100%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-tertiary-color)
+                            var(--_glow-opacity-tertiary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            );
     }
 
-    .split-right {
-        inline-size: 60vmax;
-        block-size: 60vmax;
-        top: 20vh;
-        right: -20vmax;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-tertiary) var(--glow-opacity-10),
-            transparent
-        );
+    /* AURORA */
+    .container[data-variant="aurora"] {
+        background-image:
+            radial-gradient(
+                ellipse 50vmax 35vmax at 25% 20%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-primary-color) var(--_glow-opacity-primary),
+                        transparent
+                    )
+                    0%,
+                transparent 70%
+            ),
+            radial-gradient(
+                ellipse 45vmax 40vmax at 75% 30%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-tertiary-color)
+                            var(--_glow-opacity-tertiary),
+                        transparent
+                    )
+                    0%,
+                transparent 70%
+            ),
+            radial-gradient(
+                ellipse 55vmax 35vmax at 50% 75%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-secondary-color)
+                            var(--_glow-opacity-secondary),
+                        transparent
+                    )
+                    0%,
+                transparent 75%
+            );
+        animation: aurora-drift 20s ease-in-out infinite alternate;
     }
 
-    /* TOP-BAR VARIANT */
-    .top-bar-primary {
-        inline-size: 35vmax;
-        block-size: 20vmax;
-        top: -10vmax;
-        left: 10vw;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-primary) var(--glow-opacity-18),
-            transparent
-        );
+    /* NEBULA */
+    .container[data-variant="nebula"] {
+        background-image:
+            radial-gradient(
+                circle 40vmax at 40% 40%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-primary-color) var(--_glow-opacity-primary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            ),
+            radial-gradient(
+                circle 45vmax at 65% 55%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-secondary-color)
+                            var(--_glow-opacity-secondary),
+                        transparent
+                    )
+                    0%,
+                transparent 70%
+            ),
+            radial-gradient(
+                circle 35vmax at 35% 65%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-tertiary-color)
+                            var(--_glow-opacity-tertiary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            );
+        animation: nebula-drift 24s ease-in-out infinite alternate;
     }
 
-    .top-bar-secondary {
-        inline-size: 35vmax;
-        block-size: 20vmax;
-        top: -10vmax;
-        left: 40vw;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-tertiary) var(--glow-opacity-15),
-            transparent
-        );
+    /* SPIRAL */
+    .container[data-variant="spiral"] {
+        background-image:
+            radial-gradient(
+                circle 40vmax at 30% 35%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-primary-color) var(--_glow-opacity-primary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            ),
+            radial-gradient(
+                circle 40vmax at 70% 40%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-secondary-color)
+                            var(--_glow-opacity-secondary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            ),
+            radial-gradient(
+                circle 40vmax at 50% 70%,
+                color-mix(
+                        in srgb,
+                        var(--_glow-tertiary-color)
+                            var(--_glow-opacity-tertiary),
+                        transparent
+                    )
+                    0%,
+                transparent 65%
+            );
+        animation: spiral-orbit 28s ease-in-out infinite alternate;
     }
 
-    .top-bar-tertiary {
-        inline-size: 35vmax;
-        block-size: 20vmax;
-        top: -10vmax;
-        left: 70vw;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-secondary) var(--glow-opacity-12),
-            transparent
-        );
+    /* ANIMATIONS */
+    @keyframes glow-pulse {
+        0% {
+            transform: scale(1);
+            opacity: 0.9;
+        }
+        100% {
+            transform: scale(1.06);
+            opacity: 1.05;
+        }
     }
 
-    /* CORNERS VARIANT */
-    .corner-tl {
-        inline-size: 30vmax;
-        block-size: 30vmax;
-        top: -10vmax;
-        left: -10vmax;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-primary) var(--glow-opacity-15),
-            transparent
-        );
+    @keyframes aurora-drift {
+        0% {
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+        50% {
+            transform: translate3d(-2%, 3%, 0) scale(1.05);
+        }
+        100% {
+            transform: translate3d(3%, -2%, 0) scale(1.02);
+        }
     }
 
-    .corner-tr {
-        inline-size: 30vmax;
-        block-size: 30vmax;
-        top: -10vmax;
-        right: -10vmax;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-tertiary) var(--glow-opacity-12),
-            transparent
-        );
+    @keyframes nebula-drift {
+        0% {
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+        50% {
+            transform: translate3d(3%, -2%, 0) scale(1.06);
+        }
+        100% {
+            transform: translate3d(-2%, 2%, 0) scale(0.98);
+        }
     }
 
-    .corner-bl {
-        inline-size: 30vmax;
-        block-size: 30vmax;
-        bottom: -10vmax;
-        left: -10vmax;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-secondary) var(--glow-opacity-12),
-            transparent
-        );
-    }
-
-    .corner-br {
-        inline-size: 30vmax;
-        block-size: 30vmax;
-        bottom: -10vmax;
-        right: -10vmax;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-primary) var(--glow-opacity-10),
-            transparent
-        );
-    }
-
-    /* AURORA VARIANT */
-    .aurora-1 {
-        inline-size: 55vmax;
-        block-size: 40vmax;
-        top: -15vmax;
-        left: 5vw;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-primary) var(--glow-opacity-12),
-            transparent
-        );
-        animation: aurora-float-1 25s ease-in-out infinite alternate;
-    }
-
-    .aurora-2 {
-        inline-size: 50vmax;
-        block-size: 45vmax;
-        top: -10vmax;
-        left: 30vw;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-tertiary) var(--glow-opacity-10),
-            transparent
-        );
-        animation: aurora-float-2 22s ease-in-out infinite alternate;
-    }
-
-    .aurora-3 {
-        inline-size: 60vmax;
-        block-size: 40vmax;
-        top: -20vmax;
-        right: 5vw;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-secondary) var(--glow-opacity-12),
-            transparent
-        );
-        animation: aurora-float-3 28s ease-in-out infinite alternate;
-    }
-
-    .aurora-4 {
-        inline-size: 45vmax;
-        block-size: 40vmax;
-        bottom: -15vmax;
-        left: 25vw;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-primary) var(--glow-opacity-8),
-            transparent
-        );
-        animation: aurora-float-4 26s ease-in-out infinite alternate;
-    }
-
-    /* SPOTLIGHT VARIANT */
-    .spotlight-primary {
-        inline-size: 55vmax;
-        block-size: 55vmax;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-primary) var(--glow-opacity-14),
-            transparent
-        );
-        animation: spotlight-pulse-1 12s ease-in-out infinite alternate;
-    }
-
-    .spotlight-secondary {
-        inline-size: 45vmax;
-        block-size: 45vmax;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-tertiary) var(--glow-opacity-10),
-            transparent
-        );
-        animation: spotlight-pulse-2 16s ease-in-out infinite alternate;
-    }
-
-    .spotlight-tertiary {
-        inline-size: 35vmax;
-        block-size: 35vmax;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-secondary) var(--glow-opacity-8),
-            transparent
-        );
-        animation: spotlight-pulse-3 10s ease-in-out infinite alternate;
-    }
-
-    /* NEBULA VARIANT */
-    .nebula-1 {
-        inline-size: 65vmax;
-        block-size: 65vmax;
-        top: 10vh;
-        left: 10vw;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-primary) var(--glow-opacity-12),
-            transparent
-        );
-        animation: nebula-drift-1 30s ease-in-out infinite;
-    }
-
-    .nebula-2 {
-        inline-size: 55vmax;
-        block-size: 55vmax;
-        bottom: 10vh;
-        right: 10vw;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-tertiary) var(--glow-opacity-12),
-            transparent
-        );
-        animation: nebula-drift-2 35s ease-in-out infinite;
-    }
-
-    .nebula-3 {
-        inline-size: 50vmax;
-        block-size: 50vmax;
-        top: 30vh;
-        right: 15vw;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-secondary) var(--glow-opacity-10),
-            transparent
-        );
-        animation: nebula-drift-3 28s ease-in-out infinite;
-    }
-
-    .nebula-4 {
-        inline-size: 45vmax;
-        block-size: 45vmax;
-        bottom: 20vh;
-        left: 15vw;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-primary) var(--glow-opacity-8),
-            transparent
-        );
-        animation: nebula-drift-4 32s ease-in-out infinite;
-    }
-
-    /* HORIZON VARIANT */
-    .horizon-primary {
-        inline-size: 55vmax;
-        block-size: 30vmax;
-        bottom: -15vmax;
-        left: 10vw;
-        border-radius: 50% 50% 0 0;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-primary) var(--glow-opacity-15),
-            transparent
-        );
-        animation: horizon-pulse-1 8s ease-in-out infinite alternate;
-    }
-
-    .horizon-secondary {
-        inline-size: 60vmax;
-        block-size: 35vmax;
-        bottom: -20vmax;
-        left: 30vw;
-        border-radius: 50% 50% 0 0;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-tertiary) var(--glow-opacity-12),
-            transparent
-        );
-        animation: horizon-pulse-2 11s ease-in-out infinite alternate;
-    }
-
-    .horizon-tertiary {
-        inline-size: 50vmax;
-        block-size: 28vmax;
-        bottom: -18vmax;
-        right: 10vw;
-        border-radius: 50% 50% 0 0;
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-secondary) var(--glow-opacity-10),
-            transparent
-        );
-        animation: horizon-pulse-3 9s ease-in-out infinite alternate;
-    }
-
-    /* SPIRAL VARIANT */
-    .spiral-1 {
-        inline-size: 45vmax;
-        block-size: 45vmax;
-        top: calc(50% - 22.5vmax);
-        left: calc(50% - 22.5vmax);
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-primary) var(--glow-opacity-12),
-            transparent
-        );
-        animation: spiral-orbit-1 25s linear infinite;
-    }
-
-    .spiral-2 {
-        inline-size: 40vmax;
-        block-size: 40vmax;
-        top: calc(50% - 20vmax);
-        left: calc(50% - 20vmax);
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-tertiary) var(--glow-opacity-10),
-            transparent
-        );
-        animation: spiral-orbit-2 30s linear infinite;
-    }
-
-    .spiral-3 {
-        inline-size: 35vmax;
-        block-size: 35vmax;
-        top: calc(50% - 17.5vmax);
-        left: calc(50% - 17.5vmax);
-        background-color: color-mix(
-            in srgb,
-            var(--md-sys-color-secondary) var(--glow-opacity-10),
-            transparent
-        );
-        animation: spiral-orbit-3 20s linear infinite;
-    }
-}
-
-/* Animations for premium organic feeling */
-@keyframes aurora-float-1 {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-    100% {
-        transform: translate(5vw, 5vh) scale(1.1);
-    }
-}
-
-@keyframes aurora-float-2 {
-    0% {
-        transform: translate(0, 0) scale(1.1);
-    }
-    100% {
-        transform: translate(-4vw, -6vh) scale(0.95);
-    }
-}
-
-@keyframes aurora-float-3 {
-    0% {
-        transform: translate(0, 0) scale(0.95);
-    }
-    100% {
-        transform: translate(6vw, -4vh) scale(1.05);
-    }
-}
-
-@keyframes aurora-float-4 {
-    0% {
-        transform: translate(0, 0) scale(1.05);
-    }
-    100% {
-        transform: translate(-5vw, 4vh) scale(1);
-    }
-}
-
-@keyframes spotlight-pulse-1 {
-    0% {
-        transform: translate(-50%, -50%) scale(0.9);
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-}
-
-@keyframes spotlight-pulse-2 {
-    0% {
-        transform: translate(-48%, -52%) scale(1.1);
-    }
-    100% {
-        transform: translate(-52%, -48%) scale(0.9);
-    }
-}
-
-@keyframes spotlight-pulse-3 {
-    0% {
-        transform: translate(-52%, -48%) scale(0.95);
-    }
-    100% {
-        transform: translate(-48%, -52%) scale(1.05);
-    }
-}
-
-@keyframes nebula-drift-1 {
-    0% {
-        transform: translate(0, 0) scale(1) rotate(0deg);
-    }
-    33% {
-        transform: translate(10vw, 15vh) scale(1.15) rotate(120deg);
-    }
-    66% {
-        transform: translate(-10vw, 10vh) scale(0.9) rotate(240deg);
-    }
-    100% {
-        transform: translate(0, 0) scale(1) rotate(360deg);
-    }
-}
-
-@keyframes nebula-drift-2 {
-    0% {
-        transform: translate(0, 0) scale(1) rotate(0deg);
-    }
-    33% {
-        transform: translate(-15vw, -10vh) scale(0.9) rotate(-120deg);
-    }
-    66% {
-        transform: translate(5vw, -15vh) scale(1.1) rotate(-240deg);
-    }
-    100% {
-        transform: translate(0, 0) scale(1) rotate(-360deg);
-    }
-}
-
-@keyframes nebula-drift-3 {
-    0% {
-        transform: translate(0, 0) scale(1);
-    }
-    50% {
-        transform: translate(-8vw, 12vh) scale(1.2);
-    }
-    100% {
-        transform: translate(0, 0) scale(1);
-    }
-}
-
-@keyframes nebula-drift-4 {
-    0% {
-        transform: translate(0, 0) scale(1.1);
-    }
-    50% {
-        transform: translate(12vw, -10vh) scale(0.9);
-    }
-    100% {
-        transform: translate(0, 0) scale(1.1);
-    }
-}
-
-@keyframes horizon-pulse-1 {
-    0% {
-        transform: translateY(0) scale(0.95);
-    }
-    100% {
-        transform: translateY(-2vmax) scale(1.05);
-    }
-}
-
-@keyframes horizon-pulse-2 {
-    0% {
-        transform: translateY(0) scale(1.05);
-    }
-    100% {
-        transform: translateY(-3vmax) scale(0.95);
-    }
-}
-
-@keyframes horizon-pulse-3 {
-    0% {
-        transform: translateY(0) scale(0.9);
-    }
-    100% {
-        transform: translateY(-2vmax) scale(1.1);
-    }
-}
-
-@keyframes spiral-orbit-1 {
-    0% {
-        transform: rotate(0deg) translate(15vmax) rotate(0deg) scale(0.9);
-    }
-    50% {
-        transform: rotate(180deg) translate(15vmax) rotate(-180deg) scale(1.1);
-    }
-    100% {
-        transform: rotate(360deg) translate(15vmax) rotate(-360deg) scale(0.9);
-    }
-}
-
-@keyframes spiral-orbit-2 {
-    0% {
-        transform: rotate(0deg) translate(-12vmax) rotate(0deg) scale(1.1);
-    }
-    50% {
-        transform: rotate(-180deg) translate(-12vmax) rotate(180deg) scale(0.9);
-    }
-    100% {
-        transform: rotate(-360deg) translate(-12vmax) rotate(360deg) scale(1.1);
-    }
-}
-
-@keyframes spiral-orbit-3 {
-    0% {
-        transform: rotate(90deg) translate(10vmax) rotate(-90deg) scale(1);
-    }
-    50% {
-        transform: rotate(270deg) translate(10vmax) rotate(-270deg) scale(0.85);
-    }
-    100% {
-        transform: rotate(450deg) translate(10vmax) rotate(-450deg) scale(1);
+    @keyframes spiral-orbit {
+        0% {
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+        50% {
+            transform: translate3d(1%, -1%, 0) scale(1.04);
+        }
+        100% {
+            transform: translate3d(-1%, 2%, 0) scale(1.02);
+        }
     }
 }

@@ -38,7 +38,7 @@ import { GridBackgroundDecorator } from '@adgytec/web-ui-components';
 
 ## RadialGlowDecorator
 
-The `RadialGlowDecorator` component layers multiple blurred radial blobs to create premium, colorful background washes. Opacities are theme-aware, automatically scaling up in light mode to remain visible against bright backgrounds while remaining soft and subtle in dark mode.
+The `RadialGlowDecorator` component renders smooth, hardware-accelerated radial glow gradients derived from active Material Design 3 theme tokens (`--md-sys-color-primary`, `--md-sys-color-secondary`, `--md-sys-color-tertiary`). Opacities are theme-aware, automatically scaling up in light mode to remain visible against bright backgrounds while remaining soft and subtle in dark mode.
 
 ### Props
 
@@ -48,20 +48,22 @@ The `RadialGlowDecorator` component layers multiple blurred radial blobs to crea
 | `className` | `string`                                                                                                         | —           | Additional CSS class names.                      |
 | `style`     | `React.CSSProperties`                                                                                            | —           | Custom inline styles.                            |
 | `variant`   | `"default" \| "split" \| "top-bar" \| "corners" \| "aurora" \| "spotlight" \| "nebula" \| "horizon" \| "spiral"` | `"default"` | Predefined layout and motion variant.            |
+| `color`     | `"multi" \| "primary" \| "secondary" \| "tertiary"`                                                              | `"multi"`   | Color palette mode derived from theme tokens.    |
 
 ### Layout Variants
 
-| Variant       | Blobs                                  | Animation                     | Best For                                  |
-| ------------- | -------------------------------------- | ----------------------------- | ----------------------------------------- |
-| `"default"`   | 3 Blobs (Primary, Tertiary, Secondary) | Static placement              | General page backgrounds                  |
-| `"split"`     | 2 Blobs (Left primary, Right tertiary) | Static placement              | Two-column layouts                        |
-| `"top-bar"`   | 3 Blobs aligned horizontally at top    | Static placement              | Headers and landing page top folds        |
-| `"corners"`   | 4 Blobs positioned in all corners      | Static placement              | Framing content containers                |
-| `"aurora"`    | 4 Blobs (Organic floating)             | Continuous floating drift     | Dreamy, atmospheric visual aesthetics     |
-| `"spotlight"` | 3 Centered layered blobs               | Organic pulsating scale       | Hero sections and centered elements       |
-| `"nebula"`    | 4 Blobs drifting organically           | Rotational & orbital drifting | Immersive, fluid cosmic background looks  |
-| `"horizon"`   | 3 Oval bottom-anchored blobs           | Rising/pulsating scale        | Grounding footers or landing page ends    |
-| `"spiral"`    | 3 Blobs orbiting the center            | Circular orbit & scale path   | High-motion, interactive centerpiece feel |
+| Variant       | Layout / Composition              | Animation                    | Best For                                  |
+| ------------- | --------------------------------- | ---------------------------- | ----------------------------------------- |
+| `"default"`   | Multi-accent ambient radial blend | Static placement             | General page backgrounds                  |
+| `"split"`     | Dual glows on opposing sides      | Static placement             | Two-column layouts                        |
+| `"top-bar"`   | Top-aligned horizontal radiance   | Static placement             | Headers and landing page top folds        |
+| `"corners"`   | Four corners radiating inward     | Static placement             | Framing content containers                |
+| `"aurora"`    | Organic multi-stop floating glow  | Continuous atmospheric drift | Dreamy, atmospheric visual aesthetics     |
+| `"spotlight"` | Centered hero glow                | Subtle pulsating scale       | Hero sections and centered elements       |
+| `"nebula"`    | Cosmic multi-accent drift         | Smooth drift & pulsation     | Immersive, fluid cosmic background looks  |
+| `"horizon"`   | Bottom-aligned grounded radiance  | Static placement             | Grounding footers or landing page ends    |
+| `"spiral"`    | Circular orbiting radiance        | Fluid orbital motion         | High-motion, interactive centerpiece feel |
+
 ### Usage
 
 ```tsx
@@ -70,13 +72,9 @@ import { RadialGlowDecorator } from '@adgytec/web-ui-components';
 // Simple default radial background
 <RadialGlowDecorator variant="default" />
 
+// Centered primary spotlight glow
+<RadialGlowDecorator variant="spotlight" color="primary" />
+
 // Floating animated aurora theme
 <RadialGlowDecorator variant="aurora" zIndex={-20} />
-
-// Center-pulsing spotlight theme
-<RadialGlowDecorator variant="spotlight" />
 ```
-
----
-
-Generated by Gemini
