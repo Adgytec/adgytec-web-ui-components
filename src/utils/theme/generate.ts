@@ -89,19 +89,25 @@ function toCssRgb(argb: number): string {
 
 /**
  * Injects calculated Material Design 3 color palette CSS custom properties (`--md-sys-color-*`)
- * and the root `color-scheme` property onto `document.body`.
+ * and the root `color-scheme` property onto the target element.
  *
  * @param scheme - The generated {@link DynamicScheme} instance containing computed color values.
+ * @param target - Optional DOM element to receive CSS properties (defaults to `document.body` if defined).
  */
-function applyScheme(scheme: DynamicScheme) {
-    const body = document.body;
+function applyScheme(scheme: DynamicScheme, target?: HTMLElement | null) {
+    const el =
+        target ?? (typeof document !== "undefined" ? document.body : null);
 
-    body.style.setProperty("color-scheme", scheme.isDark ? "dark" : "light");
+    if (!el) {
+        return;
+    }
+
+    el.style.setProperty("color-scheme", scheme.isDark ? "dark" : "light");
 
     for (const [token, property] of Object.entries(colorRoles)) {
         const color = scheme[property as keyof DynamicScheme] as number;
 
-        body.style.setProperty(`--md-sys-color-${token}`, toCssRgb(color));
+        el.style.setProperty(`--md-sys-color-${token}`, toCssRgb(color));
     }
 }
 
@@ -129,15 +135,26 @@ export type GenerateThemeOptions = {
      * Whether to generate dark mode (`true`) or light mode (`false`) colors.
      */
     isDark: boolean;
+
+    /**
+     * Optional target DOM element onto which the CSS custom properties and `color-scheme` will be injected.
+     * Defaults to `document.body` if available in the runtime environment.
+     *
+     * In SSR / Node.js environments where `document` is undefined, omitting this option will safely no-op.
+     *
+     * @default document.body
+     */
+    target?: HTMLElement | null;
 };
 
 /**
  * Computes a Material Design 3 {@link DynamicScheme} from the provided options and injects
- * all corresponding `--md-sys-color-*` CSS variables onto `document.body`.
+ * all corresponding `--md-sys-color-*` CSS variables onto the target element (defaults to `document.body`).
  *
  * This function can be called standalone outside of React to immediately apply a dynamic theme.
+ * Safe for execution in Server-Side Rendering (SSR) environments.
  *
- * @param options - Configuration options defining seed color, contrast, variant, and dark mode.
+ * @param options - Configuration options defining seed color, contrast, variant, dark mode, and optional target element.
  *
  * @example
  * ```ts
@@ -157,6 +174,7 @@ export function GenerateTheme({
     contrast,
     variant,
     isDark,
+    target,
 }: GenerateThemeOptions) {
     const scheme = new DynamicScheme({
         sourceColorHct: Hct.fromInt(argbFromHex(sourceColor)),
@@ -166,5 +184,5 @@ export function GenerateTheme({
         specVersion: "2025",
         platform: "phone",
     });
-    applyScheme(scheme);
+    applyScheme(scheme, target);
 }

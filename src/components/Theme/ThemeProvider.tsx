@@ -1,16 +1,19 @@
 import { useEffect } from "react";
-import { GenerateTheme, useTheme } from "@/utils/theme";
+import { GenerateTheme, useThemeGlobal } from "@/utils/theme";
+import { ThemeContext } from "./context";
 import type { ThemeProviderProps } from "./types";
 
 /**
  * Top-level provider component that generates and synchronizes Material Design 3 theme
- * CSS variables across the document.
+ * CSS variables across the document and exposes theme state through React Context.
  *
- * Utilizes {@link useTheme} to maintain reactive theme state (source color, contrast,
- * dynamic scheme variant, and dark mode mode) persisted in `localStorage`. Automatically
+ * Utilizes {@link useThemeGlobal} to maintain reactive theme state (source color, contrast,
+ * dynamic scheme variant, and dark mode), persisted in `localStorage`. Automatically
  * invokes {@link GenerateTheme} whenever any theme property changes, applying the full suite
  * of Material Design 3 color tokens (`--md-sys-color-*`) directly to `document.body` along with
  * the appropriate CSS `color-scheme` attribute (`"light"` or `"dark"`).
+ *
+ * Child components can access and modify the active theme via the {@link useTheme} hook.
  *
  * @example
  * ```tsx
@@ -29,23 +32,27 @@ import type { ThemeProviderProps } from "./types";
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     children,
     themeOptions,
+    target,
 }) => {
-    const { ternaryDarkMode, contrast, sourceColor, scheme } =
-        useTheme(themeOptions);
+    const theme = useThemeGlobal(themeOptions);
 
     useEffect(() => {
         GenerateTheme({
-            sourceColor: sourceColor.value,
-            contrast: contrast.value,
-            variant: scheme.value,
-            isDark: ternaryDarkMode.isDarkMode,
+            sourceColor: theme.sourceColor.value,
+            contrast: theme.contrast.value,
+            variant: theme.scheme.value,
+            isDark: theme.ternaryDarkMode.isDarkMode,
+            target,
         });
     }, [
-        ternaryDarkMode.isDarkMode,
-        contrast.value,
-        sourceColor.value,
-        scheme.value,
+        theme.ternaryDarkMode.isDarkMode,
+        theme.contrast.value,
+        theme.sourceColor.value,
+        theme.scheme.value,
+        target,
     ]);
 
-    return children;
+    return (
+        <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+    );
 };

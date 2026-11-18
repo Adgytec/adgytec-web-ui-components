@@ -7,11 +7,8 @@ import {
     ToggleButton,
 } from "@/components/Button";
 import { CenteredSlider } from "@/components/Input";
-import {
-    COLOR_ADGYTEC_BLUE,
-    COLOR_ADGYTEC_YELLOW,
-    useTheme,
-} from "@/utils/theme";
+import { useTheme } from "@/components/Theme";
+import { COLOR_ADGYTEC_BLUE, COLOR_ADGYTEC_YELLOW } from "@/utils/theme";
 
 const schemes = [
     { label: "Content", value: Variant.CONTENT },
@@ -37,7 +34,7 @@ export const ThemeSelectorPreview = () => {
         contrast: { setValue: setContrast, value: contrast },
         scheme: { setValue: setVariant, value: variant },
         ternaryDarkMode: { ternaryDarkMode, setTernaryDarkMode },
-    } = useTheme({ defaultSourceColor: COLOR_ADGYTEC_YELLOW });
+    } = useTheme();
 
     return (
         <div className="items-grid">

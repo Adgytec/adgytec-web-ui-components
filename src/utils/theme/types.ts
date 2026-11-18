@@ -6,7 +6,7 @@ import type {
 } from "usehooks-ts";
 
 /**
- * Options used to initialize and configure the theme state via {@link useTheme}
+ * Options used to initialize and configure the theme state via {@link useThemeGlobal}
  * or {@link ThemeProvider}.
  */
 export type ThemeOptions = {
@@ -25,12 +25,10 @@ export type ThemeOptions = {
     defaultContrast?: number;
 
     /**
-     * Default seed color in hexadecimal format used to generate the Material 3 color palette.
-     * Defaults to {@link COLOR_ADGYTEC_BLUE} (`"#00ADEE"`).
-     *
-     * @default COLOR_ADGYTEC_BLUE
+     * Default seed color in hexadecimal format used to generate the Material 3 color palette
+     * (e.g. `COLOR_ADGYTEC_BLUE` or `COLOR_ADGYTEC_YELLOW`).
      */
-    defaultSourceColor?: string;
+    defaultSourceColor: string;
 
     /**
      * Default dynamic scheme variant algorithm from Material Color Utilities
@@ -59,7 +57,7 @@ export type ThemeReturnValue<T> = {
 };
 
 /**
- * Complete theme control interface returned by the {@link useTheme} hook.
+ * Complete theme control interface returned by {@link useThemeGlobal} or {@link useTheme}.
  */
 export type ThemeReturn = {
     /**

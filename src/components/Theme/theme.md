@@ -1,21 +1,22 @@
 # ThemeProvider
 
-The `ThemeProvider` component provides dynamic Material Design 3 theming across the entire application. It integrates with [`useTheme`](src/utils/theme/useTheme.ts) and [`GenerateTheme`](src/utils/theme/generate.ts) to calculate accessible color palettes from a seed color, contrast setting, and dynamic scheme variant, injecting CSS custom properties into `document.body`.
+The `ThemeProvider` component provides dynamic Material Design 3 theming across the entire application. It integrates with [`useThemeGlobal`](../../utils/theme/useThemeGlobal.ts) and [`GenerateTheme`](../../utils/theme/generate.ts) to calculate accessible color palettes from a seed color, contrast setting, and dynamic scheme variant, injecting CSS custom properties into `document.body` and providing reactive theme state to child components through React Context (accessible via [`useTheme`](./useTheme.ts)).
 
 ---
 
 ## Props
 
-| Prop           | Type           | Default | Description                                                                                                    |
-| -------------- | -------------- | ------- | -------------------------------------------------------------------------------------------------------------- |
-| `children`     | `ReactNode`    | —       | Child components rendered within the themed application tree.                                                  |
-| `themeOptions` | `ThemeOptions` | —       | Optional configuration object defining initial/fallback theme values, contrast, scheme, and dark mode options. |
+| Prop           | Type                  | Default         | Description                                                                                          |
+| -------------- | --------------------- | --------------- | ---------------------------------------------------------------------------------------------------- |
+| `children`     | `ReactNode`           | —               | Child components rendered within the themed application tree.                                        |
+| `themeOptions` | `ThemeOptions`        | —               | Configuration object defining the required seed color, and optional contrast, scheme, and dark mode. |
+| `target`       | `HTMLElement \| null` | `document.body` | Optional target DOM element to receive CSS variables and color-scheme.                               |
 
 ### `ThemeOptions` Details
 
 | Option               | Type                     | Default                                      | Description                                                                       |
 | -------------------- | ------------------------ | -------------------------------------------- | --------------------------------------------------------------------------------- |
-| `defaultSourceColor` | `string`                 | `COLOR_ADGYTEC_BLUE` (`"#00ADEE"`)           | Hex string representing the seed color used to compute dynamic color roles.       |
+| `defaultSourceColor` | `string`                 | — _(Required)_                               | Hex string representing the seed color used to compute dynamic color roles.       |
 | `defaultContrast`    | `number`                 | `0`                                          | Numeric contrast level (`-1.0` to `1.0`, where `0.0` represents standard).        |
 | `defaultScheme`      | `MaterialScheme`         | `MaterialScheme.VIBRANT` (`Variant.VIBRANT`) | Dynamic color scheme algorithm variant from `@material/material-color-utilities`. |
 | `ternaryDarkMode`    | `TernaryDarkModeOptions` | —                                            | Dark mode configuration options passed to `useTernaryDarkMode`.                   |
@@ -57,12 +58,14 @@ Wrap the root of your application with `ThemeProvider`:
 ```tsx
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { ThemeProvider } from "@adgytec/web-ui-components";
+import { ThemeProvider, COLOR_ADGYTEC_BLUE } from "@adgytec/web-ui-components";
 import App from "./App";
 
 createRoot(document.getElementById("root")!).render(
     <StrictMode>
-        <ThemeProvider>
+        <ThemeProvider
+            themeOptions={{ defaultSourceColor: COLOR_ADGYTEC_BLUE }}
+        >
             <App />
         </ThemeProvider>
     </StrictMode>
@@ -95,7 +98,7 @@ export function Root() {
 
 ### 3. Pairing with `useTheme` for a Theme Switcher
 
-Any child component within or outside the provider can call `useTheme` to inspect and modify the active theme settings:
+Any child component within the `ThemeProvider` hierarchy can call `useTheme` to inspect and modify the active theme settings:
 
 ```tsx
 import { useTheme } from "@adgytec/web-ui-components";

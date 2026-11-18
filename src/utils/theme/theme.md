@@ -17,15 +17,17 @@ Brand color constants for default themes:
 
 ## Functions & Hooks
 
-### `useTheme(opts?)`
+### `useThemeGlobal(opts)`
 
-A custom React hook for inspecting and mutating the active Material Design 3 theme state with built-in `localStorage` persistence.
+A low-level custom React hook for inspecting and mutating the global Material Design 3 theme state with direct `localStorage` persistence.
+
+> **Note:** Within standard application component trees wrapped with `ThemeProvider`, prefer using the context-based [`useTheme`](../../components/Theme/useTheme.ts) hook from `@adgytec/web-ui-components`. Use `useThemeGlobal` when managing theme state outside of a provider hierarchy or when building custom providers.
 
 #### Options (`ThemeOptions`)
 
 | Option               | Type                     | Default                                      | Description                                                               |
 | -------------------- | ------------------------ | -------------------------------------------- | ------------------------------------------------------------------------- |
-| `defaultSourceColor` | `string`                 | `COLOR_ADGYTEC_BLUE` (`"#00ADEE"`)           | Initial/fallback seed color in hexadecimal format.                        |
+| `defaultSourceColor` | `string`                 | — _(Required)_                               | Seed color in hexadecimal format used to generate the color palette.      |
 | `defaultContrast`    | `number`                 | `0`                                          | Initial/fallback contrast level (`-1.0` to `1.0`, where `0` is standard). |
 | `defaultScheme`      | `MaterialScheme`         | `MaterialScheme.VIBRANT` (`Variant.VIBRANT`) | Initial dynamic scheme variant algorithm from Material Color Utilities.   |
 | `ternaryDarkMode`    | `TernaryDarkModeOptions` | —                                            | Configuration options passed to `usehooks-ts` `useTernaryDarkMode`.       |
@@ -56,12 +58,13 @@ Can be used without React components (e.g. during application bootstrap or in va
 
 #### Options (`GenerateThemeOptions`)
 
-| Option        | Type      | Description                                                                                          |
-| ------------- | --------- | ---------------------------------------------------------------------------------------------------- |
-| `sourceColor` | `string`  | Seed color in hexadecimal format used to generate the color palette (e.g. `"#00ADEE"`).              |
-| `contrast`    | `number`  | Contrast adjustment level (`-1.0` to `1.0`, where `0.0` is standard).                                |
-| `variant`     | `Variant` | Dynamic scheme variant algorithm from `@material/material-color-utilities` (e.g. `Variant.VIBRANT`). |
-| `isDark`      | `boolean` | Whether to produce dark mode (`true`) or light mode (`false`) colors.                                |
+| Option        | Type                  | Description                                                                                                                                   |
+| ------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sourceColor` | `string`              | Seed color in hexadecimal format used to generate the color palette (e.g. `"#00ADEE"`).                                                       |
+| `contrast`    | `number`              | Contrast adjustment level (`-1.0` to `1.0`, where `0.0` is standard).                                                                         |
+| `variant`     | `Variant`             | Dynamic scheme variant algorithm from `@material/material-color-utilities` (e.g. `Variant.VIBRANT`).                                          |
+| `isDark`      | `boolean`             | Whether to produce dark mode (`true`) or light mode (`false`) colors.                                                                         |
+| `target`      | `HTMLElement \| null` | Optional DOM element to receive CSS properties. Defaults to `document.body`. Safely no-ops in SSR environments where `document` is undefined. |
 
 #### Applied CSS Variables
 
@@ -79,16 +82,16 @@ Sets all Material 3 system color roles on `document.body`:
 
 ## Usage
 
-### 1. Building a Custom Theme Controller
+### 1. Building a Standalone / Custom Theme Controller
 
-Use `useTheme` to create controls for dark mode, brand seed colors, and contrast:
+Use `useThemeGlobal` to create controls for dark mode, brand seed colors, and contrast independently of a provider:
 
 ```tsx
 import {
-    useTheme,
+    useThemeGlobal,
     COLOR_ADGYTEC_YELLOW,
     COLOR_ADGYTEC_BLUE,
-} from "@adgytec/web-ui-components";
+} from "@adgytec/web-ui-components/utils";
 import { Variant } from "@material/material-color-utilities";
 
 export function ThemeControls() {
@@ -97,7 +100,7 @@ export function ThemeControls() {
         sourceColor: { value: color, setValue: setColor },
         contrast: { value: contrast, setValue: setContrast },
         scheme: { value: variant, setValue: setVariant },
-    } = useTheme({ defaultSourceColor: COLOR_ADGYTEC_YELLOW });
+    } = useThemeGlobal({ defaultSourceColor: COLOR_ADGYTEC_YELLOW });
 
     return (
         <div>
