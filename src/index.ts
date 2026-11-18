@@ -24,6 +24,7 @@ export * from "./components/Snackbar";
 export * from "./components/Splash";
 export * from "./components/Tabs";
 export * from "./components/Tag";
+export * from "./components/Theme";
 export * from "./components/Toolbar";
 export * from "./components/Tooltip";
 export * from "./components/Wave";

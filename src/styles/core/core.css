@@ -6,5 +6,4 @@
 
 @import "reset.css" layer(adgytec.reset);
 @import "./tokens/tokens.css" layer(adgytec.tokens);
-@import "./theme/monochrome/monochrome.css" layer(adgytec.tokens);
 @import "./typography/typography.css" layer(adgytec.base);

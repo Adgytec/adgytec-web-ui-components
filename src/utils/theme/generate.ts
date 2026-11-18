@@ -8,6 +8,10 @@ import {
     type Variant,
 } from "@material/material-color-utilities";
 
+/**
+ * Mapping of Material Design 3 CSS custom property color role names (kebab-case)
+ * to the corresponding property getters on {@link DynamicScheme}.
+ */
 const colorRoles = {
     primary: "primary",
     "on-primary": "onPrimary",
@@ -73,10 +77,22 @@ const colorRoles = {
     "surface-container-highest": "surfaceContainerHighest",
 } as const satisfies Record<string, keyof DynamicScheme>;
 
+/**
+ * Converts an ARGB integer into modern CSS `rgb(r g b)` space-separated string syntax.
+ *
+ * @param argb - Numeric ARGB color value.
+ * @returns Modern CSS `rgb(r g b)` string.
+ */
 function toCssRgb(argb: number): string {
     return `rgb(${redFromArgb(argb)} ${greenFromArgb(argb)} ${blueFromArgb(argb)})`;
 }
 
+/**
+ * Injects calculated Material Design 3 color palette CSS custom properties (`--md-sys-color-*`)
+ * and the root `color-scheme` property onto `document.body`.
+ *
+ * @param scheme - The generated {@link DynamicScheme} instance containing computed color values.
+ */
 function applyScheme(scheme: DynamicScheme) {
     const body = document.body;
 
@@ -89,13 +105,53 @@ function applyScheme(scheme: DynamicScheme) {
     }
 }
 
+/**
+ * Parameters for generating and applying a dynamic Material Design 3 color theme.
+ */
 export type GenerateThemeOptions = {
+    /**
+     * Seed color in hexadecimal format used to anchor the dynamic color scheme (e.g. `"#00ADEE"`).
+     */
     sourceColor: string;
+
+    /**
+     * Contrast level adjustment multiplier (`-1.0` to `1.0`, where `0.0` is standard contrast).
+     */
     contrast: number;
+
+    /**
+     * Dynamic scheme variant algorithm from Material Color Utilities
+     * (e.g. `Variant.VIBRANT`, `Variant.EXPRESSIVE`, `Variant.TONAL_SPOT`).
+     */
     variant: Variant;
+
+    /**
+     * Whether to generate dark mode (`true`) or light mode (`false`) colors.
+     */
     isDark: boolean;
 };
 
+/**
+ * Computes a Material Design 3 {@link DynamicScheme} from the provided options and injects
+ * all corresponding `--md-sys-color-*` CSS variables onto `document.body`.
+ *
+ * This function can be called standalone outside of React to immediately apply a dynamic theme.
+ *
+ * @param options - Configuration options defining seed color, contrast, variant, and dark mode.
+ *
+ * @example
+ * ```ts
+ * import { GenerateTheme, COLOR_ADGYTEC_BLUE } from "@adgytec/web-ui-components";
+ * import { Variant } from "@material/material-color-utilities";
+ *
+ * GenerateTheme({
+ *     sourceColor: COLOR_ADGYTEC_BLUE,
+ *     contrast: 0,
+ *     variant: Variant.VIBRANT,
+ *     isDark: false,
+ * });
+ * ```
+ */
 export function GenerateTheme({
     sourceColor,
     contrast,

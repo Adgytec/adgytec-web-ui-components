@@ -16,9 +16,6 @@
         },
         "./styles/core.css": {
             "import": "./dist/assets/core.css"
-        },
-        "./styles/defaultTheme.css": {
-            "import": "./dist/assets/defaultTheme.css"
         }
     },
     "main": "./dist/index.js",
