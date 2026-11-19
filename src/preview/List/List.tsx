@@ -16,6 +16,8 @@ import { Heading } from "react-aria-components";
 import { typography } from "@/utils";
 import { Checkbox, Switch } from "../../components/Input";
 import {
+    GridListBox,
+    GridListItem,
     ListAction,
     ListAvatar,
     ListBox,
@@ -122,18 +124,12 @@ const ListSelection = () => {
                 />
 
                 <ListItem
+                    selectionIndicator="trailing"
                     leading={<ListIcon icon={Activity} />}
                     id="two"
                     label={<ListLabelText>Lorem ipsum</ListLabelText>}
                     overline={<ListOverlineText>Sample</ListOverlineText>}
-                    trailing={[
-                        <ListAction
-                            key="ellipsis"
-                            color="tonal"
-                            width="narrow"
-                            icon={EllipsisVertical}
-                        />,
-                    ]}
+                    trailing={[<Checkbox key="selection" slot="selection" />]}
                 />
 
                 <ListItem
@@ -222,12 +218,12 @@ const ListSwitch = () => {
                 Switch
             </Heading>
 
-            <ListBox>
+            <GridListBox>
                 {settings.map(({ label, icon, offIcon, supporting }, index) => {
                     const selected = isSelected(index);
 
                     return (
-                        <ListItem
+                        <GridListItem
                             key={label}
                             onAction={() => toggleSelection(index)}
                             leading={
@@ -254,7 +250,60 @@ const ListSwitch = () => {
                         />
                     );
                 })}
-            </ListBox>
+            </GridListBox>
+        </div>
+    );
+};
+
+const GridListSelection = () => {
+    return (
+        <div className="items-grid list-preview">
+            <Heading
+                className={clsx(
+                    typography.headlineLargeEmphasized,
+                    "list-heading"
+                )}
+            >
+                GridList
+            </Heading>
+
+            <GridListBox
+                aria-label="Grid list example"
+                selectionMode="multiple"
+                selectionIndicator="leading"
+            >
+                <GridListItem
+                    id="grid-item-1"
+                    selectionIndicator="leading"
+                    leading={<Checkbox slot="selection" />}
+                    label={<ListLabelText>Grid item 1</ListLabelText>}
+                    supporting={
+                        <ListSupportingText>
+                            Item in GridListBox with selection indicator.
+                        </ListSupportingText>
+                    }
+                    trailing={[
+                        <ListAction
+                            key="ellipsis"
+                            color="tonal"
+                            width="narrow"
+                            icon={EllipsisVertical}
+                        />,
+                    ]}
+                />
+
+                <GridListItem
+                    id="grid-item-2"
+                    leading={<ListIcon icon={Wifi} />}
+                    label={<ListLabelText>Grid item 2</ListLabelText>}
+                    supporting={
+                        <ListSupportingText>
+                            Secondary text describing the grid item.
+                        </ListSupportingText>
+                    }
+                    trailing={[<Checkbox key="selection" slot="selection" />]}
+                />
+            </GridListBox>
         </div>
     );
 };
@@ -263,6 +312,8 @@ export const ListPreview = () => {
     return (
         <div className="items-grid">
             <ListSwitch />
+
+            <GridListSelection />
 
             <ListSelection />
         </div>

@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import type { SelectionIndicator } from "./selectionIndicator";
+import type { SelectionIndicator } from "./list";
 
 /**
  * Configuration context value passed down from [`ListBox`](src/components/List/ListBox/ListBox.tsx) to child items.
@@ -23,4 +23,10 @@ export const ListBoxConfigContext = createContext<ListBoxConfigContextValue>(
  */
 export function useListBoxConfig() {
     return useContext(ListBoxConfigContext);
+}
+
+export const GridListBoxContext = createContext<boolean | null>(null);
+
+export function useInGridListBox() {
+    return useContext(GridListBoxContext) === true;
 }

@@ -1,19 +1,22 @@
 import { clsx } from "clsx";
 import { Check } from "lucide-react";
-import { cloneElement, type HTMLAttributes, isValidElement } from "react";
-import { useId } from "react-aria";
 import {
     CheckboxFieldContext,
     composeRenderProps,
     DEFAULT_SLOT,
     ListBoxItem,
     Provider,
-    SwitchFieldContext,
 } from "react-aria-components";
 import { Splash, useSplash } from "@/components/Splash";
-import { useListBoxConfig } from "../core";
+import {
+    listeItemContentStyle,
+    listItemLeadingStyle,
+    listItemSplashStyle,
+    listItemStyle,
+    listItemTrailingStyle,
+    useListBoxConfig,
+} from "../core";
 import { ListIcon } from "../ListIcon";
-import styles from "./listItem.module.css";
 import type { ListItemProps } from "./types";
 
 /**
@@ -66,12 +69,6 @@ export const ListItem: React.FC<ListItemProps> = ({
     const listItemSelectionIndicator =
         selectionIndicator ?? listBoxSelectionIndicator ?? "none";
 
-    const labelID = useId(
-        isValidElement<HTMLAttributes<HTMLElement>>(label)
-            ? label.props.id
-            : undefined
-    );
-
     const { handlePress, splashInfo } = useSplash(onPress);
     const hasTrailing = (trailing?.length ?? 0) > 0;
 
@@ -79,7 +76,7 @@ export const ListItem: React.FC<ListItemProps> = ({
         <ListBoxItem
             {...props}
             className={composeRenderProps(props.className, (className) =>
-                clsx(styles["list-item"], className)
+                clsx(listItemStyle, className)
             )}
             onPress={handlePress}
             data-list-item={true}
@@ -105,17 +102,6 @@ export const ListItem: React.FC<ListItemProps> = ({
                                                 isDisabled ||
                                                 selectionMode === "none",
                                             isReadOnly: true,
-                                            "aria-labelledby": labelID,
-                                        },
-                                    },
-                                },
-                            ],
-                            [
-                                SwitchFieldContext,
-                                {
-                                    slots: {
-                                        [DEFAULT_SLOT]: {
-                                            "aria-labelledby": labelID,
                                         },
                                     },
                                 },
@@ -123,45 +109,36 @@ export const ListItem: React.FC<ListItemProps> = ({
                         ]}
                     >
                         {splashInfo && (
-                            <span className={clsx(styles["splash"])}>
+                            <span className={clsx(listItemSplashStyle)}>
                                 <Splash {...splashInfo} />
                             </span>
                         )}
 
                         {leadingSelectionIcon ? (
-                            <div className={clsx(styles["leading"])}>
+                            <div className={clsx(listItemLeadingStyle)}>
                                 <ListIcon icon={Check} />
                             </div>
                         ) : (
                             leading && (
-                                <div className={clsx(styles["leading"])}>
+                                <div className={clsx(listItemLeadingStyle)}>
                                     {leading}
                                 </div>
                             )
                         )}
 
-                        <div className={clsx(styles["content"])}>
+                        <div className={clsx(listeItemContentStyle)}>
                             {overline && overline}
-                            {isValidElement<HTMLAttributes<HTMLElement>>(
-                                label
-                            ) ? (
-                                cloneElement<HTMLAttributes<HTMLElement>>(
-                                    label,
-                                    { id: labelID }
-                                )
-                            ) : (
-                                <span id={labelID}>{label}</span>
-                            )}
+                            {label}
                             {supporting && supporting}
                         </div>
 
                         {trailingSelectionIcon ? (
-                            <div className={styles["trailing"]}>
+                            <div className={clsx(listItemTrailingStyle)}>
                                 <ListIcon icon={Check} />
                             </div>
                         ) : (
                             hasTrailing && (
-                                <div className={styles["trailing"]}>
+                                <div className={listItemTrailingStyle}>
                                     {trailing}
                                 </div>
                             )

@@ -12,23 +12,25 @@
 | `--md-list-avatar-background`        | `var(--md-sys-color-primary-container)`      | Background color of the `ListAvatar` container.                   |
 | `--md-list-avatar-color`             | `var(--md-sys-color-on-primary-container)`   | Text and icon color inside `ListAvatar`.                          |
 
-The `ListBox` and `ListItem` components are an implementation of [Material 3 Lists](https://m3.material.io/components/lists/overview). Lists are continuous, vertical indexes of text and images. They display related items and make actions easy to find and perform. The module supports single and multiple selection, interactive state layers, touch ripple effects, rich media formats, and flexible slot-based composition.
+The `ListBox`, `GridListBox`, `ListItem`, and `GridListItem` components are an implementation of [Material 3 Lists](https://m3.material.io/components/lists/overview). Lists are continuous, vertical indexes of text and images. They display related items and make actions easy to find and perform. The module supports single and multiple selection, interactive state layers, touch ripple effects, rich media formats, and flexible slot-based composition.
 
 ---
 
 ## Components
 
-The List module consists of ten components:
+The List module consists of twelve components:
 1. `ListBox` - The main container component that coordinates list items, vertical alignment, and keyboard navigation.
 2. `ListItem` - The interactive list item component managing slots (`leading`, `overline`, `label`, `supporting`, `trailing`), selection state, and ripple feedback.
-3. `ListLabelText` - The primary headline/label text component using `typography.bodyLarge`.
-4. `ListSupportingText` - A secondary descriptive text component placed beneath the label using `typography.bodyMedium`.
-5. `ListOverlineText` - An eyebrow/overline text component placed above the label using `typography.labelSmall`.
-6. `ListTrailingText` - A metadata or trailing text component placed at the end of the item using `typography.labelSmall`.
-7. `ListIcon` - A standardized 20px icon wrapper that adapts to the item's state colors.
-8. `ListAvatar` - A circular 40px avatar container with `typography.titleMedium` for user initials or profile images.
-9. `ListMedia` - A styled container for leading thumbnail images or videos (`image`, `video`, `large-video`).
-10. `ListAction` - A pre-configured `IconButton` variant (`size="small"`, 48px touch target) for trailing actions.
+3. `GridListBox` - Container component using React Aria's `GridList`, coordinating items, keyboard navigation, and vertical alignment without the `layout` prop.
+4. `GridListItem` - The interactive grid list item component using React Aria's `GridListItem`, sharing the same slots, selection handling, and styling as `ListItem`.
+5. `ListLabelText` - The primary headline/label text component using `typography.bodyLarge`.
+6. `ListSupportingText` - A secondary descriptive text component placed beneath the label using `typography.bodyMedium`.
+7. `ListOverlineText` - An eyebrow/overline text component placed above the label using `typography.labelSmall`.
+8. `ListTrailingText` - A metadata or trailing text component placed at the end of the item using `typography.labelSmall`.
+9. `ListIcon` - A standardized 20px icon wrapper that adapts to the item's state colors.
+10. `ListAvatar` - A circular 40px avatar container with `typography.titleMedium` for user initials or profile images.
+11. `ListMedia` - A styled container for leading thumbnail images or videos (`image`, `video`, `large-video`).
+12. `ListAction` - A pre-configured `IconButton` variant (`size="small"`, 48px touch target) for trailing actions.
 
 ---
 
@@ -46,6 +48,17 @@ Extends the [React Aria ListBox](https://react-spectrum.adobe.com/react-aria/Lis
 - **Item spacing**: List items are spaced with a gap of `2px` (`calc(2 * var(--dp, 1px))`).
 - **Rounded bounds**: The first and last items in the `ListBox` automatically inherit the list shape corner radius (`var(--md-sys-shape-corner-radius-large)`).
 - **Responsive vertical alignment**: Controls `--md-list-align-y`, allowing elements to align to top (`start`), middle (`center`), or bottom (`end`).
+
+---
+
+## GridListBox Props
+
+Extends the [React Aria GridList](https://react-spectrum.adobe.com/react-aria/GridList.html) component and accepts its props (e.g., `selectionMode`, `selectedKeys`, `onSelectionChange`, `items`, `disabledKeys`, `onAction`), omitting the `layout` prop. Uses the same CSS and visual styling as `ListBox`.
+
+| Prop                 | Type                                | Default    | Description                                                                                                                                                  |
+| -------------------- | ----------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `alignY`             | `"start" \| "center" \| "end"`      | `"center"` | Vertical alignment of elements (`leading`, `trailing`, and content) across list items.                                                                       |
+| `selectionIndicator` | `"leading" \| "trailing" \| "none"` | `"none"`   | Placement of the checkmark selection icon when list items are selected. Replaces `leading` or `trailing` content with a `ListIcon` rendering a `Check` icon. |
 
 ---
 
@@ -70,6 +83,21 @@ Extends the [React Aria ListBoxItem](https://react-spectrum.adobe.com/react-aria
 - **Hardware-Accelerated Elevation**: When dragging an item, elevation shadow (`var(--md-sys-elevation-shadow-4)`) is rendered using a pseudo-element (`.list-item::after`) transitioning `opacity` rather than animating `box-shadow` directly, ensuring 60fps GPU acceleration.
 - **State Layers**: Hover, focus, and pressed state layers are applied via a pseudo-element (`.list-item::before`) transitioning opacity (`--_state-layer-opacity`) directly.
 - **Corner radius morphing**: Dynamically animates corner radius across interaction states (extra small at rest, medium on hover, large when selected, focused, or pressed).
+
+---
+
+## GridListItem Props
+
+Extends the [React Aria GridListItem](https://react-spectrum.adobe.com/react-aria/GridList.html#gridlistitem) component, omitting `children`. Uses the same slot-based API, CSS styling, ripple effects, and selection integration as `ListItem`.
+
+| Prop                 | Type                                | Default               | Description                                                                                                                                                   |
+| -------------------- | ----------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `label`              | `ReactNode`                         | —                     | **Required.** The primary label element of the list item, typically `ListLabelText`.                                                                          |
+| `leading`            | `ReactNode`                         | —                     | Element rendered at the start of the list item (e.g., `ListIcon`, `ListAvatar`, `ListMedia`, or a `Checkbox`).                                                |
+| `overline`           | `ReactNode`                         | —                     | Small text rendered above the label, typically `ListOverlineText`.                                                                                            |
+| `supporting`         | `ReactNode`                         | —                     | Secondary descriptive text rendered beneath the label, typically `ListSupportingText`.                                                                        |
+| `trailing`           | `ReactNode[]`                       | —                     | An array of elements rendered at the end of the list item (e.g., `ListTrailingText`, `ListAction`, or a `Switch`).                                            |
+| `selectionIndicator` | `"leading" \| "trailing" \| "none"` | Inherited or `"none"` | Overrides selection indicator placement for this item. Replaces the corresponding `leading` or `trailing` element with a `ListIcon` check icon when selected. |
 
 ---
 

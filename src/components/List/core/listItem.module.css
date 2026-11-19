@@ -190,7 +190,7 @@
     .splash {
         position: absolute;
         inset: 0;
-        border-radius: inherit;
+        border-radius: var(--_shape);
 
         overflow: clip;
         pointer-events: none;

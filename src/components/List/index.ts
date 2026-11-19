@@ -1,4 +1,6 @@
 export * from "./core";
+export * from "./GridListBox";
+export * from "./GridListItem";
 export * from "./ListAction";
 export * from "./ListAvatar";
 export * from "./ListBox";

@@ -3,8 +3,11 @@ import {
     ListBox as AriaListBox,
     composeRenderProps,
 } from "react-aria-components";
-import { ListBoxConfigContext } from "../core";
-import styles from "./listBox.module.css";
+import {
+    ListBoxConfigContext,
+    listBoxAlignYStyle,
+    listBoxStyle,
+} from "../core";
 import type { ListBoxProps } from "./types";
 
 /**
@@ -44,7 +47,7 @@ export const ListBox = <T extends object>({
             <AriaListBox
                 {...props}
                 className={composeRenderProps(props.className, (className) =>
-                    clsx(styles["list-box"], styles[alignY], className)
+                    clsx(listBoxStyle, listBoxAlignYStyle(alignY), className)
                 )}
             />
         </ListBoxConfigContext>

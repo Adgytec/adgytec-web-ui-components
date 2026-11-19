@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { Text } from "react-aria-components";
 import { typography } from "@/utils";
+import { useInGridListBox } from "../core";
 import styles from "./listLabelText.module.css";
 
 /**
@@ -23,10 +24,11 @@ export const ListLabelText: React.FC<ListLabelTextProps> = ({
     className,
     ...props
 }) => {
+    const inGridList = useInGridListBox();
     return (
         <Text
             className={clsx(styles["label"], typography.bodyLarge, className)}
-            slot="label"
+            slot={inGridList ? undefined : "label"}
             {...props}
         />
     );
