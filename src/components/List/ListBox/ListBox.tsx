@@ -16,6 +16,10 @@ import type { ListBoxProps } from "./types";
  * Coordinates vertical indexing of items, keyboard navigation, single/multiple selection,
  * unified vertical alignment of elements (`alignY`), and contextual selection indicator placement (`selectionIndicator`).
  *
+ * Built on React Aria Components' `ListBox`, omitting the `layout` prop in favor of Material 3 vertical list styling.
+ * For lists with nested interactive elements (such as buttons or switches) and two-dimensional keyboard navigation,
+ * see [`GridListBox`](src/components/List/GridListBox/GridListBox.tsx).
+ *
  * @example
  * ```tsx
  * import {

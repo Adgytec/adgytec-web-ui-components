@@ -16,9 +16,12 @@ import type { GridListBoxProps } from "./types";
  * Material Design 3 GridList container component.
  *
  * Coordinates vertical indexing of items, keyboard navigation, single/multiple selection,
- * row actions, unified vertical alignment of elements (`alignY`), and contextual selection indicator placement (`selectionIndicator`).
+ * row actions (`onAction`), unified vertical alignment of elements (`alignY`), and contextual selection indicator placement (`selectionIndicator`).
  *
- * Built on React Aria Components' `GridList`, omitting the `layout` prop.
+ * Built on React Aria Components' `GridList`, omitting the `layout` prop in favor of Material 3 vertical list styling.
+ * Unlike standard [`ListBox`](src/components/List/ListBox/ListBox.tsx), `GridListBox` implements an ARIA `grid` pattern
+ * where list items can contain actionable child elements (such as buttons, switches, or links) with two-dimensional
+ * keyboard accessibility.
  *
  * @example
  * ```tsx
@@ -28,15 +31,24 @@ import type { GridListBoxProps } from "./types";
  *     ListIcon,
  *     ListLabelText,
  *     ListSupportingText,
+ *     ListAction,
  * } from "@adgytec/web-ui-components";
- * import { Mail } from "lucide-react";
+ * import { Mail, Trash2 } from "lucide-react";
  *
- * <GridListBox selectionMode="single" selectionIndicator="leading">
+ * <GridListBox selectionMode="multiple" selectionIndicator="leading">
  *     <GridListItem
  *         id="inbox"
  *         leading={<ListIcon icon={Mail} />}
  *         label={<ListLabelText>Inbox</ListLabelText>}
  *         supporting={<ListSupportingText>2 unread messages</ListSupportingText>}
+ *         trailing={[
+ *             <ListAction
+ *                 key="delete"
+ *                 icon={Trash2}
+ *                 aria-label="Delete message"
+ *                 onPress={() => console.log("Delete")}
+ *             />,
+ *         ]}
  *     />
  * </GridListBox>
  * ```

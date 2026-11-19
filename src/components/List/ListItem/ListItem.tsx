@@ -27,6 +27,10 @@ import type { ListItemProps } from "./types";
  * contextual checkmark replacement on selection (`selectionIndicator`),
  * and automatic synchronization with nested selection controls (`Checkbox` with `slot="selection"`).
  *
+ * Built on React Aria Components' `ListBoxItem` for use inside a [`ListBox`](src/components/List/ListBox/ListBox.tsx).
+ * For lists with nested interactive elements (such as buttons or switches) and two-dimensional keyboard navigation,
+ * see [`GridListItem`](src/components/List/GridListItem/GridListItem.tsx) within a [`GridListBox`](src/components/List/GridListBox/GridListBox.tsx).
+ *
  * @example
  * ```tsx
  * import {

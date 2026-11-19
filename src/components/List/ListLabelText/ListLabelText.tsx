@@ -11,9 +11,11 @@ export interface ListLabelTextProps
     extends Omit<React.ComponentPropsWithRef<typeof Text>, "slot"> {}
 
 /**
- * Primary headline/label text component for a [`ListItem`](src/components/List/ListItem/ListItem.tsx).
+ * Primary headline/label text component for a [`ListItem`](src/components/List/ListItem/ListItem.tsx) or [`GridListItem`](src/components/List/GridListItem/GridListItem.tsx).
  *
- * Automatically binds to `slot="label"` with Material Design 3 `bodyLarge` typography.
+ * Styled with Material Design 3 `bodyLarge` typography. Automatically binds to `slot="label"` when used within
+ * a standard `ListBox`, and omits the slot when rendered inside a [`GridListBox`](src/components/List/GridListBox/GridListBox.tsx)
+ * to comply with React Aria `GridListItem` slot requirements.
  *
  * @example
  * ```tsx

@@ -10,7 +10,7 @@ export interface ListTrailingTextProps
     extends React.ComponentPropsWithRef<typeof Text> {}
 
 /**
- * Trailing metadata or timestamp text component placed at the end of a [`ListItem`](src/components/List/ListItem/ListItem.tsx).
+ * Trailing metadata or timestamp text component placed at the end of a [`ListItem`](src/components/List/ListItem/ListItem.tsx) or [`GridListItem`](src/components/List/GridListItem/GridListItem.tsx).
  *
  * Styled with Material Design 3 `labelSmall` typography.
  *

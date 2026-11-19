@@ -10,7 +10,7 @@ export interface ListSupportingTextProps
     extends Omit<React.ComponentPropsWithRef<typeof Text>, "slot"> {}
 
 /**
- * Secondary descriptive text component placed beneath the label in a [`ListItem`](src/components/List/ListItem/ListItem.tsx).
+ * Secondary descriptive text component placed beneath the label in a [`ListItem`](src/components/List/ListItem/ListItem.tsx) or [`GridListItem`](src/components/List/GridListItem/GridListItem.tsx).
  *
  * Automatically binds to `slot="description"` with Material Design 3 `bodyMedium` typography.
  *

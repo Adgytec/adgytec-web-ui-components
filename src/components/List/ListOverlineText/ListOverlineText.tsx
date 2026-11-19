@@ -10,7 +10,7 @@ export interface ListOverlineTextProps
     extends React.ComponentPropsWithRef<typeof Text> {}
 
 /**
- * Eyebrow or overline category text component displayed above the label in a [`ListItem`](src/components/List/ListItem/ListItem.tsx).
+ * Eyebrow or overline category text component displayed above the label in a [`ListItem`](src/components/List/ListItem/ListItem.tsx) or [`GridListItem`](src/components/List/GridListItem/GridListItem.tsx).
  *
  * Styled with Material Design 3 `labelSmall` typography.
  *

@@ -9,7 +9,7 @@ import styles from "./listAction.module.css";
 export interface ListActionProps extends Omit<IconButtonProps, "size"> {}
 
 /**
- * Pre-configured trailing action icon button for a [`ListItem`](src/components/List/ListItem/ListItem.tsx).
+ * Pre-configured trailing action icon button for a [`ListItem`](src/components/List/ListItem/ListItem.tsx) or [`GridListItem`](src/components/List/GridListItem/GridListItem.tsx).
  *
  * Hardcodes `size="small"` while ensuring a full 48px touch target area for accessibility,
  * defaulting to the `"standard"` icon button color style.

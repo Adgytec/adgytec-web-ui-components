@@ -8,7 +8,7 @@ import styles from "./listAvatar.module.css";
 export interface ListAvatarProps extends React.ComponentPropsWithRef<"div"> {}
 
 /**
- * Circular 40px avatar container for user initials or profile images inside a [`ListItem`](src/components/List/ListItem/ListItem.tsx).
+ * Circular 40px avatar container for user initials or profile images inside a [`ListItem`](src/components/List/ListItem/ListItem.tsx) or [`GridListItem`](src/components/List/GridListItem/GridListItem.tsx).
  *
  * Automatically styles text content with Material Design 3 `titleMedium` typography,
  * and scales nested `<img>` elements with `object-fit: cover`.

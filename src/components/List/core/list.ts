@@ -9,6 +9,9 @@ import styles from "./listBox.module.css";
  */
 export type SelectionIndicator = "leading" | "trailing" | "none";
 
+/**
+ * Common base props shared between [`ListBox`](src/components/List/ListBox/ListBox.tsx) and [`GridListBox`](src/components/List/GridListBox/GridListBox.tsx).
+ */
 export interface ListBoxBaseProps {
     /**
      * Vertical alignment of leading, text, and trailing elements across list items.
@@ -32,12 +35,20 @@ export interface ListBoxBaseProps {
 
 /**
  * Vertical alignment options for elements (leading media, text content, and trailing actions)
- * across list items in a [`ListBox`](src/components/List/ListBox/ListBox.tsx).
+ * across list items in a [`ListBox`](src/components/List/ListBox/ListBox.tsx) or [`GridListBox`](src/components/List/GridListBox/GridListBox.tsx).
  */
 export type ListAlignY = "start" | "center" | "end";
 
+/**
+ * Base CSS class for list containers (`ListBox` and `GridListBox`).
+ */
 export const listBoxStyle = styles["list-box"];
 
+/**
+ * Returns the CSS class corresponding to the vertical alignment mode for list items.
+ *
+ * @param alignY - The vertical alignment option (`"start"`, `"center"`, or `"end"`).
+ */
 export const listBoxAlignYStyle = (alignY: ListAlignY) => {
     return styles[alignY];
 };

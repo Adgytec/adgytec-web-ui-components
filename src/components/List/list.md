@@ -19,9 +19,9 @@ The `ListBox`, `GridListBox`, `ListItem`, and `GridListItem` components are an i
 ## Components
 
 The List module consists of twelve components:
-1. `ListBox` - The main container component that coordinates list items, vertical alignment, and keyboard navigation.
+1. `ListBox` - The main container component for option selection lists, coordinating items, vertical alignment, and keyboard navigation.
 2. `ListItem` - The interactive list item component managing slots (`leading`, `overline`, `label`, `supporting`, `trailing`), selection state, and ripple feedback.
-3. `GridListBox` - Container component using React Aria's `GridList`, coordinating items, keyboard navigation, and vertical alignment without the `layout` prop.
+3. `GridListBox` - Container component using React Aria's `GridList`, supporting interactive row controls, row actions, keyboard navigation, and vertical alignment without the `layout` prop.
 4. `GridListItem` - The interactive grid list item component using React Aria's `GridListItem`, sharing the same slots, selection handling, and styling as `ListItem`.
 5. `ListLabelText` - The primary headline/label text component using `typography.bodyLarge`.
 6. `ListSupportingText` - A secondary descriptive text component placed beneath the label using `typography.bodyMedium`.
@@ -32,11 +32,22 @@ The List module consists of twelve components:
 11. `ListMedia` - A styled container for leading thumbnail images or videos (`image`, `video`, `large-video`).
 12. `ListAction` - A pre-configured `IconButton` variant (`size="small"`, 48px touch target) for trailing actions.
 
+### ListBox vs. GridListBox
+
+| Feature                         | `ListBox` + `ListItem`                                                                 | `GridListBox` + `GridListItem`                                                                  |
+| ------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **ARIA Pattern**                | `listbox` (`role="listbox"`, `role="option"`)                                          | `grid` (`role="grid"`, `role="row"`, `role="gridcell"`)                                         |
+| **Primary Use Case**            | Option lists where the entire row is selectable without independent focusable controls | Interactive lists with nested focusable controls (buttons, switches, checkboxes) or row actions |
+| **Keyboard Navigation**         | Vertical arrow navigation through options (single tab stop)                            | Two-dimensional arrow navigation across rows and into interactive row child controls            |
+| **Row Actions (`onAction`)**    | Supported for item activation                                                          | Supported (`onAction`), distinct from row selection                                             |
+| **Nested Interactive Elements** | Discouraged by ARIA spec (items are single focus targets)                              | Fully supported with keyboard access to each action control                                     |
+| **`ListLabelText` Slot**        | Binds to `slot="label"`                                                                | Slot is omitted (`undefined`) to match RAC `GridListItem` semantics                             |
+
 ---
 
 ## ListBox Props
 
-Extends the [React Aria ListBox](https://react-spectrum.adobe.com/react-aria/ListBox.html) component and accepts all of its props (e.g., `selectionMode`, `selectedKeys`, `onSelectionChange`, `items`, `disabledKeys`).
+Extends the [React Aria ListBox](https://react-spectrum.adobe.com/react-aria/ListBox.html) component and accepts all of its props (e.g., `selectionMode`, `selectedKeys`, `onSelectionChange`, `items`, `disabledKeys`), omitting the `layout` prop in favor of Material 3 vertical list styling.
 
 | Prop                 | Type                                | Default    | Description                                                                                                                                                  |
 | -------------------- | ----------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -53,7 +64,7 @@ Extends the [React Aria ListBox](https://react-spectrum.adobe.com/react-aria/Lis
 
 ## GridListBox Props
 
-Extends the [React Aria GridList](https://react-spectrum.adobe.com/react-aria/GridList.html) component and accepts its props (e.g., `selectionMode`, `selectedKeys`, `onSelectionChange`, `items`, `disabledKeys`, `onAction`), omitting the `layout` prop. Uses the same CSS and visual styling as `ListBox`.
+Extends the [React Aria GridList](https://react-spectrum.adobe.com/react-aria/GridList.html) component and accepts its props (e.g., `selectionMode`, `selectedKeys`, `onSelectionChange`, `items`, `disabledKeys`, `onAction`), omitting the `layout` prop in favor of Material 3 vertical list styling. Uses the same CSS and visual styling as `ListBox`.
 
 | Prop                 | Type                                | Default    | Description                                                                                                                                                  |
 | -------------------- | ----------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -88,7 +99,7 @@ Extends the [React Aria ListBoxItem](https://react-spectrum.adobe.com/react-aria
 
 ## GridListItem Props
 
-Extends the [React Aria GridListItem](https://react-spectrum.adobe.com/react-aria/GridList.html#gridlistitem) component, omitting `children`. Uses the same slot-based API, CSS styling, ripple effects, and selection integration as `ListItem`.
+Extends the [React Aria GridListItem](https://react-spectrum.adobe.com/react-aria/GridList.html#gridlistitem) component, omitting `children`. Uses the same slot-based API, CSS styling, ripple effects, corner radius morphing, and selection integration as `ListItem`.
 
 | Prop                 | Type                                | Default               | Description                                                                                                                                                   |
 | -------------------- | ----------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -105,7 +116,8 @@ Extends the [React Aria GridListItem](https://react-spectrum.adobe.com/react-ari
 
 Extends the [React Aria Text](https://react-spectrum.adobe.com/react-aria/Text.html) component, omitting the `slot` prop.
 
-- Defaults to `slot="label"`.
+- Defaults to `slot="label"` within `ListBox` / `ListItem`.
+- Automatically omits the `slot` prop (`undefined`) when rendered inside `GridListBox` / `GridListItem` to conform to React Aria's `GridListItem` requirements.
 - Typography: `typography.bodyLarge`.
 - Color: `--_md-list-label-color` (defaults to `var(--md-sys-color-on-surface)`).
 
@@ -456,6 +468,127 @@ function SelectionIndicatorList() {
                 supporting={<ListSupportingText>Designer</ListSupportingText>}
             />
         </ListBox>
+    );
+}
+```
+
+### 7. Interactive Grid List with Nested Actions (`GridListBox`, `GridListItem`)
+
+`GridListBox` and `GridListItem` implement the ARIA `grid` pattern, providing full keyboard accessibility and independent focus stops for nested interactive controls (such as buttons, switches, or links) alongside row-level `onAction` handling.
+
+```tsx
+import {
+    GridListBox,
+    GridListItem,
+    ListAction,
+    ListIcon,
+    ListLabelText,
+    ListSupportingText,
+    Switch,
+} from "@adgytec/web-ui-components";
+import { Wifi, Trash2, MoreVertical } from "lucide-react";
+
+function NetworkSettingsGridList() {
+    return (
+        <GridListBox
+            aria-label="Network connections"
+            onAction={(key) => console.log(`Triggered item: ${key}`)}
+        >
+            <GridListItem
+                id="wifi"
+                leading={<ListIcon icon={Wifi} />}
+                label={<ListLabelText>Wi-Fi</ListLabelText>}
+                supporting={
+                    <ListSupportingText>
+                        Connected to Office-5G
+                    </ListSupportingText>
+                }
+                trailing={[
+                    <Switch
+                        key="toggle"
+                        aria-label="Toggle Wi-Fi"
+                        defaultSelected
+                    />,
+                    <ListAction
+                        key="more"
+                        icon={MoreVertical}
+                        aria-label="Wi-Fi settings"
+                        onPress={() => console.log("Open Wi-Fi settings")}
+                    />,
+                ]}
+            />
+            <GridListItem
+                id="guest"
+                leading={<ListIcon icon={Wifi} />}
+                label={<ListLabelText>Guest Network</ListLabelText>}
+                supporting={<ListSupportingText>Available</ListSupportingText>}
+                trailing={[
+                    <ListAction
+                        key="delete"
+                        icon={Trash2}
+                        aria-label="Forget network"
+                        onPress={() => console.log("Forget network")}
+                    />,
+                ]}
+            />
+        </GridListBox>
+    );
+}
+```
+
+### 8. Selection Grid List with Checkboxes and Indicators
+
+Combining `GridListBox` multiple selection with embedded `Checkbox` components and dynamic selection indicators.
+
+```tsx
+import {
+    Checkbox,
+    GridListBox,
+    GridListItem,
+    ListAction,
+    ListIcon,
+    ListLabelText,
+    ListSupportingText,
+} from "@adgytec/web-ui-components";
+import { Folder, MoreVertical } from "lucide-react";
+
+function FileSelectorGridList() {
+    return (
+        <GridListBox
+            aria-label="Select files"
+            selectionMode="multiple"
+            selectionIndicator="leading"
+        >
+            <GridListItem
+                id="documents"
+                leading={<Checkbox slot="selection" />}
+                label={<ListLabelText>Documents</ListLabelText>}
+                supporting={
+                    <ListSupportingText>
+                        12 items • Updated 2h ago
+                    </ListSupportingText>
+                }
+                trailing={[
+                    <ListAction
+                        key="more"
+                        icon={MoreVertical}
+                        aria-label="Document options"
+                        onPress={() => console.log("Document options")}
+                    />,
+                ]}
+            />
+            <GridListItem
+                id="pictures"
+                leading={<ListIcon icon={Folder} />}
+                label={<ListLabelText>Pictures</ListLabelText>}
+                supporting={
+                    <ListSupportingText>
+                        84 items • Updated yesterday
+                    </ListSupportingText>
+                }
+                trailing={[<Checkbox key="select" slot="selection" />]}
+            />
+        </GridListBox>
     );
 }
 ```

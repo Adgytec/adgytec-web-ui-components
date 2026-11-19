@@ -24,7 +24,8 @@ import type { GridListItemProps } from "./types";
  * contextual checkmark replacement on selection (`selectionIndicator`),
  * and automatic synchronization with nested selection controls (`Checkbox` with `slot="selection"`).
  *
- * Built on React Aria Components' `GridListItem`.
+ * Built on React Aria Components' `GridListItem` for use within a [`GridListBox`](src/components/List/GridListBox/GridListBox.tsx).
+ * Supports keyboard navigation across interactive row elements (e.g. action buttons, switches) and row-level actions (`onAction`).
  *
  * @example
  * ```tsx
@@ -38,20 +39,22 @@ import type { GridListItemProps } from "./types";
  * } from "@adgytec/web-ui-components";
  * import { Star, Trash2 } from "lucide-react";
  *
- * <GridListItem
- *     id="starred-email"
- *     leading={<ListIcon icon={Star} />}
- *     label={<ListLabelText>Project Roadmap</ListLabelText>}
- *     supporting={<ListSupportingText>Updated yesterday by Alex</ListSupportingText>}
- *     trailing={[
- *         <ListAction
- *             key="delete"
- *             icon={Trash2}
- *             aria-label="Delete item"
- *             onPress={() => handleDelete()}
- *         />,
- *     ]}
- * />
+ * <GridListBox selectionMode="multiple">
+ *     <GridListItem
+ *         id="starred-email"
+ *         leading={<ListIcon icon={Star} />}
+ *         label={<ListLabelText>Project Roadmap</ListLabelText>}
+ *         supporting={<ListSupportingText>Updated yesterday by Alex</ListSupportingText>}
+ *         trailing={[
+ *             <ListAction
+ *                 key="delete"
+ *                 icon={Trash2}
+ *                 aria-label="Delete item"
+ *                 onPress={() => handleDelete()}
+ *             />,
+ *         ]}
+ *     />
+ * </GridListBox>
  * ```
  */
 export const GridListItem: React.FC<GridListItemProps> = ({

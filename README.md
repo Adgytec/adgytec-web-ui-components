@@ -43,6 +43,7 @@ A robust, accessible, and highly customizable React component library implementi
 
 ### Data Display
 
+- **Lists**: Material 3 list containers (`ListBox`, `GridListBox`) with slot-based items (`ListItem`, `GridListItem`), supporting single/multiple selection, ripple effects, avatars, media, and interactive actions.
 - **Tags**: Expressive chips for attributes and selection.
 - **Images**: Responsive image component with resolution-based presets.
 - **Icons**: Unified wrapper for Lucide icons with design system sizing.
