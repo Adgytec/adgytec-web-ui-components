@@ -29,6 +29,10 @@ export interface NavigationItemProps {
      */
     isActive?: boolean | ((value?: string) => boolean);
 
+    /**
+     * Optional badge element (such as [`Badge`](src/components/Badge/Badge/Badge.tsx)) displayed alongside
+     * the item label in expanded layout or anchored over the icon in collapsed rail layout.
+     */
     badge?: ReactNode;
 }
 

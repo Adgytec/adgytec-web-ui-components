@@ -1,3 +1,10 @@
+/* configurable tokens
+*
+* --md-badge-background
+* --md-badge-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .badge {
         --_md-badge-background: var(

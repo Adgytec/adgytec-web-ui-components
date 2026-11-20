@@ -39,6 +39,7 @@ The Navigation module consists of:
 6. `SubNavigation` - A secondary navigation panel that slides into view. It is rendered via a React Portal to keep the DOM output clean and isolated.
 7. `SubNavigationTrigger` - A wrapper component that ties together an action trigger (like a `NavigationButton`) and its corresponding `SubNavigation` child.
 8. `NavigationState` - A wrapper/provider that coordinates transition states, depth level tracking, and synchronized scrolling across multiple instances of navigation.
+9. `NavigationScrollContainer` - A scrollable container wrapping React Aria Components `Toolbar` with vertical orientation, providing accessible keyboard navigation and scroll progress preservation.
 
 ---
 
@@ -62,25 +63,31 @@ Extends standard HTML `<nav>` attribute types.
 
 Extends the [React Aria Link](https://react-spectrum.adobe.com/react-aria/Link.html) component.
 
-| Prop         | Type                                    | Default | Description                                      |
-| ------------ | --------------------------------------- | ------- | ------------------------------------------------ |
-| `label`      | `ReactNode`                             | —       | The text or node label of the item.              |
-| `icon`       | `LucideIcon`                            | —       | Optional icon display when the item is inactive. |
-| `activeIcon` | `LucideIcon`                            | —       | Optional icon display when the item is active.   |
-| `isActive`   | `boolean \| (href?: string) => boolean` | —       | Force override active state.                     |
-| `href`       | `string`                                | —       | Optional URL link location.                      |
+| Prop         | Type                                    | Default | Description                                                                                                                                     |
+| ------------ | --------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `label`      | `ReactNode`                             | —       | The text or node label of the item.                                                                                                             |
+| `icon`       | `LucideIcon`                            | —       | Optional icon display when the item is inactive.                                                                                                |
+| `activeIcon` | `LucideIcon`                            | —       | Optional icon display when the item is active.                                                                                                  |
+| `isActive`   | `boolean \| (href?: string) => boolean` | —       | Force override active state.                                                                                                                    |
+| `href`       | `string`                                | —       | Optional URL link location.                                                                                                                     |
+| `badge`      | `ReactNode`                             | —       | Optional badge element (such as `Badge`) rendered inline with the label in expanded layout, or anchored over the icon in collapsed rail layout. |
 
 ### `NavigationButton`
 
 Extends the [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.html) component.
 
-| Prop         | Type                                      | Default | Description                                       |
-| ------------ | ----------------------------------------- | ------- | ------------------------------------------------- |
-| `label`      | `ReactNode`                               | —       | The button label content.                         |
-| `icon`       | `LucideIcon`                              | —       | Optional icon display when the item is inactive.  |
-| `activeIcon` | `LucideIcon`                              | —       | Optional icon display when the item is active.    |
-| `isActive`   | `boolean \| (prefix?: string) => boolean` | —       | Force override active state.                      |
-| `prefix`     | `string`                                  | —       | Optional prefix string compared in active checks. |
+| Prop         | Type                                      | Default | Description                                                                                                                                     |
+| ------------ | ----------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `label`      | `ReactNode`                               | —       | The button label content.                                                                                                                       |
+| `icon`       | `LucideIcon`                              | —       | Optional icon display when the item is inactive.                                                                                                |
+| `activeIcon` | `LucideIcon`                              | —       | Optional icon display when the item is active.                                                                                                  |
+| `isActive`   | `boolean \| (prefix?: string) => boolean` | —       | Force override active state.                                                                                                                    |
+| `prefix`     | `string`                                  | —       | Optional prefix string compared in active checks.                                                                                               |
+| `badge`      | `ReactNode`                               | —       | Optional badge element (such as `Badge`) rendered inline with the label in expanded layout, or anchored over the icon in collapsed rail layout. |
+
+### `NavigationScrollContainer`
+
+Extends React Aria Components `Toolbar` attributes (`React.ComponentPropsWithRef<typeof Toolbar>`). Wraps scrollable navigation content with vertical orientation for accessible keyboard navigation, and automatically preserves scroll progress across navigation state transitions.
 
 ### `NavigationSection`
 

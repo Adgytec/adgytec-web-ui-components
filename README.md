@@ -43,6 +43,7 @@ A robust, accessible, and highly customizable React component library implementi
 
 ### Data Display
 
+- **Badges**: Material 3 visual indicators (`Badge`, `BadgeAnchor`) for numerical counts and notification dot alerts.
 - **Lists**: Material 3 list containers (`ListBox`, `GridListBox`) with slot-based items (`ListItem`, `GridListItem`), supporting single/multiple selection, ripple effects, avatars, media, and interactive actions.
 - **Tags**: Expressive chips for attributes and selection.
 - **Images**: Responsive image component with resolution-based presets.

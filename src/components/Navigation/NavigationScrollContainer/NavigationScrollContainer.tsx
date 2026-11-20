@@ -9,6 +9,7 @@ import styles from "./navigationScrollContainer.module.css";
 
 /**
  * Props for the [`NavigationScrollContainer`](src/components/Navigation/NavigationScrollContainer/NavigationScrollContainer.tsx) component.
+ * Extends React Aria Components `Toolbar` attributes with vertical orientation.
  */
 export interface NavigationScrollContainerProps
     extends React.ComponentPropsWithRef<typeof Toolbar> {}
@@ -16,7 +17,8 @@ export interface NavigationScrollContainerProps
 /**
  * Scrollable viewport container for navigation items and sections.
  *
- * Automatically records and restores scroll progress on mount and scroll events,
+ * Built on React Aria Components' `Toolbar` with vertical orientation, providing accessible keyboard
+ * navigation across navigation items. Automatically records and restores scroll progress on mount and scroll events,
  * coordinating with [`NavigationState`](src/components/Navigation/NavigationState/NavigationState.tsx)
  * to keep scroll positions synchronized when navigating into and out of sub-menus.
  *
