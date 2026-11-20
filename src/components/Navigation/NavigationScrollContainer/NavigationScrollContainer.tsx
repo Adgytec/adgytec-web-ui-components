@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useLayoutEffect } from "react";
 import { useObjectRef } from "react-aria";
+import { Toolbar } from "react-aria-components";
 import { getScrollProgress, getScrollTopFromProgress } from "@/utils";
 import { useNavigationInfo } from "../core";
 import { useNavigationState } from "../NavigationState";
@@ -10,7 +11,7 @@ import styles from "./navigationScrollContainer.module.css";
  * Props for the [`NavigationScrollContainer`](src/components/Navigation/NavigationScrollContainer/NavigationScrollContainer.tsx) component.
  */
 export interface NavigationScrollContainerProps
-    extends React.ComponentPropsWithRef<"div"> {}
+    extends React.ComponentPropsWithRef<typeof Toolbar> {}
 
 /**
  * Scrollable viewport container for navigation items and sections.
@@ -51,7 +52,8 @@ export const NavigationScrollContainer: React.FC<
     }, [scrollContainerRef, id, getNavigationScrollProgress]);
 
     return (
-        <div
+        <Toolbar
+            orientation="vertical"
             ref={scrollContainerRef}
             onScroll={(e) => {
                 saveNavigationScrollTopProgress(
