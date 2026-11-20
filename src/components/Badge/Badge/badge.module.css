@@ -1,0 +1,9 @@
+@layer adgytec.comps {
+    .badge {
+        --_md-badge-background: var(
+            --md-badge-background,
+            var(--md-sys-color-error)
+        );
+        --_md-badge-color: var(--md-badge-color, var(--md-sys-color-on-error));
+    }
+}
