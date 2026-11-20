@@ -31,7 +31,7 @@
         overflow: clip;
 
         min-inline-size: var(--md-sys-layout-space-16);
-        max-block-size: var(--md-sys-layout-space-16);
+        block-size: var(--md-sys-layout-space-16);
 
         padding-inline: var(--md-sys-layout-space-4);
         border-radius: var(--md-sys-layout-space-8);
