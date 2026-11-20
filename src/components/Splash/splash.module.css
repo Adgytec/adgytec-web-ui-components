@@ -13,10 +13,7 @@
         aspect-ratio: 1 / 1;
         border-radius: var(--md-sys-shape-corner-radius-full);
 
-        background-color: rgb(
-            from var(--_splash-color) r g b /
-            var(--md-sys-state-pressed)
-        );
+        background-color: rgb(from var(--_splash-color) r g b / 0.16);
         opacity: 0;
 
         animation: ripple var(--md-sys-motion-expressive-slow-spatial)
