@@ -5,5 +5,28 @@
             var(--md-sys-color-error)
         );
         --_md-badge-color: var(--md-badge-color, var(--md-sys-color-on-error));
+
+        background-color: var(--_md-badge-background);
+        color: var(--_md-badge-color);
+    }
+
+    .badge:not([data-count]) {
+        inline-size: calc(6 * var(--dp, 1px));
+        aspect-ratio: 1 / 1;
+        border-radius: calc(3 * var(--dp, 1px));
+    }
+
+    .badge[data-count] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        overflow: clip;
+
+        min-inline-size: var(--md-sys-layout-space-16);
+        max-block-size: var(--md-sys-layout-space-16);
+
+        padding-inline: var(--md-sys-layout-space-4);
+        border-radius: var(--md-sys-layout-space-8);
     }
 }

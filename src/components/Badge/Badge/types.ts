@@ -1,5 +1,7 @@
 export interface BadgeProps
     extends Omit<React.ComponentPropsWithRef<"span">, "children"> {
     count?: number;
-    truncateAfter?: number;
+    overflowAt?: number;
 }
+
+export const MAX_OVERFLOW_AT = 1000;
