@@ -1,6 +1,9 @@
 @layer adgytec.comps {
     .anchor {
         position: relative;
+
+        display: inline-flex;
+        align-items: center;
     }
 
     .badge {

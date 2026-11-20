@@ -26,12 +26,13 @@ The `ToggleIconButton` component extends [React Aria Components ToggleButton](ht
 | `shape`        | `"round" \| "square"`                                              | `"round"`    | The corner radius of the button.                                                            |
 | `width`        | `"default" \| "wide"`                                              | `"default"`  | Controls whether the button has a standard circular/square aspect or a wider layout.        |
 | `tooltip`      | `string`                                                           | —            | Optional tooltip text displayed on hover.                                                   |
+| `badge`        | `ReactNode`                                                        | —            | Optional badge element (such as `Badge`) anchored over the icon.                            |
 
 ## Usage
 
 ```tsx
-import { ToggleIconButton } from '@adgytec/web-ui-components';
-import { Volume2, VolumeX } from 'lucide-react';
+import { Badge, ToggleIconButton } from '@adgytec/web-ui-components';
+import { Bookmark, Volume2, VolumeX } from 'lucide-react';
 
 <ToggleIconButton 
   icon={Volume2} 
@@ -45,6 +46,13 @@ import { Volume2, VolumeX } from 'lucide-react';
   color="outlined" 
   isSelected={true} 
   aria-label="Toggle Volume"
+/>
+
+// With notification badge
+<ToggleIconButton 
+  icon={Bookmark} 
+  badge={<Badge />} 
+  aria-label="Bookmarks" 
 />
 ```
 

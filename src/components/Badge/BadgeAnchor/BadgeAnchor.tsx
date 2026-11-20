@@ -27,7 +27,11 @@ export const BadgeAnchor: React.FC<BadgeAnchorProps> = ({
     ...props
 }) => {
     return (
-        <span className={clsx(styles["anchor"], className)} {...props}>
+        <span
+            className={clsx(styles["anchor"], className)}
+            data-badge-anchor
+            {...props}
+        >
             {children}
 
             {badge && (

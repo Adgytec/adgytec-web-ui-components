@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import { composeRenderProps, Link } from "react-aria-components";
+import { BadgeAnchor } from "@/components/Badge";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
@@ -12,6 +13,7 @@ import {
     buttonColorConfig,
     buttonSizeConfig,
     IconButtonIconSizeMapping,
+    IconButtonSplash,
     newButtonBaseDataAttrs,
     useButtonConfig,
     withTooltip,
@@ -28,12 +30,23 @@ import type { LinkIconButtonProps } from "./types";
  *
  * @example
  * ```tsx
+ * import { Badge, LinkIconButton } from "@adgytec/web-ui-components";
+ * import { Github, MessageSquare } from "lucide-react";
+ *
  * <LinkIconButton
  *     href="https://github.com"
  *     target="_blank"
  *     icon={Github}
  *     tooltip="GitHub Profile"
  *     aria-label="GitHub Profile"
+ * />
+ *
+ * // With notification badge
+ * <LinkIconButton
+ *     href="/messages"
+ *     icon={MessageSquare}
+ *     badge={<Badge count={3} />}
+ *     aria-label="Messages"
  * />
  * ```
  */
@@ -45,6 +58,7 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
     tooltip,
     icon,
     onPress,
+    badge,
     ...props
 }) => {
     const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
@@ -102,6 +116,10 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
                 };
 
                 const iconSize = IconButtonIconSizeMapping[buttonSize];
+                const renderedIcon = icon && (
+                    <Icon icon={icon} size={iconSize} />
+                );
+
                 return (
                     <span
                         className={clsx(
@@ -111,8 +129,18 @@ export const LinkIconButton: React.FC<LinkIconButtonProps> = ({
                         )}
                         {...dataAttrs}
                     >
-                        {splashInfo && <Splash {...splashInfo} />}
-                        {icon && <Icon icon={icon} size={iconSize} />}
+                        {splashInfo && (
+                            <span className={clsx(IconButtonSplash)}>
+                                <Splash {...splashInfo} />
+                            </span>
+                        )}
+                        {badge ? (
+                            <BadgeAnchor badge={badge}>
+                                {renderedIcon}
+                            </BadgeAnchor>
+                        ) : (
+                            renderedIcon
+                        )}
                     </span>
                 );
             }}

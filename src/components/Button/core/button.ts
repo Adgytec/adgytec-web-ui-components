@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import type { ReactNode } from "react";
 import styles from "./button.module.css";
 import type { AllButtonColor, ButtonColor, IconButtonColor } from "./color";
 import type { ButtonShape } from "./shape";
@@ -47,6 +48,8 @@ export interface IconButtonBaseProps {
     tooltip?: string;
     /** Required Lucide icon component rendered inside the button. */
     icon: LucideIcon;
+    /** Optional badge element (such as `Badge`) anchored over the icon. */
+    badge?: ReactNode;
 }
 
 /** CSS class resetting default button/link styling (outlines, borders, backgrounds). */
@@ -77,3 +80,5 @@ export function newButtonBaseDataAttrs({
         "data-color": color,
     };
 }
+
+export const IconButtonSplash = styles["splash"];

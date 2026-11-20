@@ -41,8 +41,9 @@ Extends standard HTML `<span>` attributes (`React.ComponentPropsWithRef<"span">`
 
 ---
 
-## Integration with Navigation & Tabs
+## Integration with Navigation, Buttons & Tabs
 
+- **`IconButton`, `LinkIconButton`, `ToggleIconButton`**: Support a `badge` prop directly, automatically anchoring the badge to the top-end corner of the icon via `BadgeAnchor`. In `IconButton`, the badge is automatically hidden while in a pending loading state (`isPending`).
 - **`NavigationButton` & `NavigationLink`**: Support a `badge` prop directly. In `"expanded"` navigation mode, the badge renders inline after the item label. In `"collapsed"` rail mode, the badge is automatically wrapped via `BadgeAnchor` and positioned over the icon.
 - **`Tab`**: Badges can be embedded inside a `Tab`'s `label` prop to display unread counts on tab items.
 
@@ -153,6 +154,27 @@ import { Bell } from "lucide-react";
         />
     </TabList>
 </Tabs>;
+```
+
+### 7. In Icon Buttons
+
+Directly passing a badge to `IconButton`, `LinkIconButton`, or `ToggleIconButton`.
+
+```tsx
+import {
+    Badge,
+    IconButton,
+    ToggleIconButton,
+} from "@adgytec/web-ui-components";
+import { Bell, Bookmark } from "lucide-react";
+
+<IconButton
+    icon={Bell}
+    badge={<Badge count={4} />}
+    aria-label="Notifications"
+/>;
+
+<ToggleIconButton icon={Bookmark} badge={<Badge />} aria-label="Bookmarks" />;
 ```
 
 ---

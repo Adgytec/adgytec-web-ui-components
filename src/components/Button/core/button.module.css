@@ -18,6 +18,10 @@
         position: relative;
         overflow: clip;
 
+        &[data-icon-button] {
+            overflow: visible;
+        }
+
         --_md-button-shape-motion: var(--md-sys-motion-expressive-fast-spatial);
         --_md-button-shape-motion-duration: var(
             --md-sys-motion-expressive-fast-spatial-duration
@@ -36,5 +40,13 @@
         @media (prefers-reduced-motion) {
             transition: none;
         }
+    }
+
+    .splash {
+        position: absolute;
+        inset: 0;
+        overflow: clip;
+
+        border-radius: inherit;
     }
 }

@@ -23,12 +23,13 @@ The `LinkIconButton` component extends [React Aria Components Link](https://reac
 | `shape`   | `"round" \| "square"`                                              | `"round"`    | The corner radius of the button.                                                     |
 | `width`   | `"default" \| "wide"`                                              | `"default"`  | Controls whether the button has a standard circular/square aspect or a wider layout. |
 | `tooltip` | `string`                                                           | —            | Optional tooltip text displayed on hover.                                            |
+| `badge`   | `ReactNode`                                                        | —            | Optional badge element (such as `Badge`) anchored over the icon.                     |
 
 ## Usage
 
 ```tsx
-import { LinkIconButton } from '@adgytec/web-ui-components';
-import { Github, Twitter } from 'lucide-react';
+import { Badge, LinkIconButton } from '@adgytec/web-ui-components';
+import { Github, MessageSquare, Twitter } from 'lucide-react';
 
 <LinkIconButton 
   href="https://github.com" 
@@ -42,6 +43,14 @@ import { Github, Twitter } from 'lucide-react';
   icon={Twitter} 
   color="tonal"
   aria-label="Twitter"
+/>
+
+// With notification badge
+<LinkIconButton 
+  href="/messages" 
+  icon={MessageSquare} 
+  badge={<Badge count={3} />} 
+  aria-label="Messages" 
 />
 ```
 

@@ -14,30 +14,38 @@ The `IconButton` component is an implementation of [Material 3 Icon Buttons](htt
 
 The `IconButton` component extends [React Aria Components Button](https://react-spectrum.adobe.com/react-aria/Button.html) (excluding `children`).
 
-| Prop      | Type                                                               | Default      | Description                                                                          |
-| --------- | ------------------------------------------------------------------ | ------------ | ------------------------------------------------------------------------------------ |
-| `icon`    | `LucideIcon`                                                       | **Required** | The icon to display.                                                                 |
-| `color`   | `"filled" \| "tonal" \| "outlined" \| "standard"`                  | `"filled"`   | The visual style and color scheme.                                                   |
-| `size`    | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"`    | The size of the button and icon.                                                     |
-| `shape`   | `"round" \| "square"`                                              | `"round"`    | The corner radius of the button.                                                     |
-| `width`   | `"default" \| "wide"`                                              | `"default"`  | Controls whether the button has a standard circular/square aspect or a wider layout. |
-| `tooltip` | `string`                                                           | —            | Optional tooltip text displayed on hover.                                            |
+| Prop      | Type                                                               | Default      | Description                                                                                           |
+| --------- | ------------------------------------------------------------------ | ------------ | ----------------------------------------------------------------------------------------------------- |
+| `icon`    | `LucideIcon`                                                       | **Required** | The icon to display.                                                                                  |
+| `color`   | `"filled" \| "tonal" \| "outlined" \| "standard"`                  | `"filled"`   | The visual style and color scheme.                                                                    |
+| `size`    | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"`    | The size of the button and icon.                                                                      |
+| `shape`   | `"round" \| "square"`                                              | `"round"`    | The corner radius of the button.                                                                      |
+| `width`   | `"default" \| "wide"`                                              | `"default"`  | Controls whether the button has a standard circular/square aspect or a wider layout.                  |
+| `tooltip` | `string`                                                           | —            | Optional tooltip text displayed on hover.                                                             |
+| `badge`   | `ReactNode`                                                        | —            | Optional badge element (such as `Badge`) anchored over the icon (hidden while `isPending` is active). |
 
 ## Usage
 
 ```tsx
-import { IconButton } from '@adgytec/web-ui-components';
-import { Settings, MoreVertical } from 'lucide-react';
+import { Badge, IconButton } from '@adgytec/web-ui-components';
+import { Bell, Settings, MoreVertical } from 'lucide-react';
 
 // Basic filled variant
 <IconButton icon={MoreVertical} aria-label="More options" />
 
-// standard variant with tooltip
+// Standard variant with tooltip
 <IconButton 
   icon={Settings} 
   color="standard" 
   tooltip="Settings" 
   aria-label="Settings"
+/>
+
+// With notification badge
+<IconButton 
+  icon={Bell} 
+  badge={<Badge count={4} />} 
+  aria-label="Notifications" 
 />
 ```
 

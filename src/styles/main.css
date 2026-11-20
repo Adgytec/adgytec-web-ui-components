@@ -9,6 +9,8 @@
 
     caret-color: var(--md-sys-color-primary);
     accent-color: var(--md-sys-color-primary);
+
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {

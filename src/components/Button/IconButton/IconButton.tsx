@@ -3,6 +3,7 @@ import {
     Button as AriaButton,
     composeRenderProps,
 } from "react-aria-components";
+import { BadgeAnchor } from "@/components/Badge";
 import { Icon } from "@/components/Icon";
 import { Loader } from "@/components/Loader";
 import { Splash } from "@/components/Splash/Splash";
@@ -16,6 +17,7 @@ import {
     buttonColorConfig,
     buttonSizeConfig,
     IconButtonIconSizeMapping,
+    IconButtonSplash,
     newButtonBaseDataAttrs,
     useButtonConfig,
     withTooltip,
@@ -27,19 +29,29 @@ import type { IconButtonProps } from "./types";
  *
  * Designed for space-constrained UI elements, actions, toolbars, and controls that can
  * be clearly represented by an icon alone. Automatically swaps the icon with a `Loader`
- * spinner when `isPending` is active.
+ * spinner when `isPending` is active (during which any `badge` is hidden).
  *
  * Extends React Aria's `Button`. Always provide an accessible `aria-label` or `aria-labelledby`
  * attribute for screen reader accessibility.
  *
  * @example
  * ```tsx
+ * import { Badge, IconButton } from "@adgytec/web-ui-components";
+ * import { Bell, Settings } from "lucide-react";
+ *
  * <IconButton
  *     icon={Settings}
  *     color="tonal"
  *     tooltip="Settings"
  *     aria-label="Settings"
  *     onPress={() => openSettings()}
+ * />
+ *
+ * // With notification badge
+ * <IconButton
+ *     icon={Bell}
+ *     badge={<Badge count={4} />}
+ *     aria-label="Notifications"
  * />
  * ```
  */
@@ -51,6 +63,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
     tooltip,
     icon,
     onPress,
+    badge,
     ...props
 }) => {
     const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
@@ -108,6 +121,12 @@ export const IconButton: React.FC<IconButtonProps> = ({
                 };
 
                 const iconSize = IconButtonIconSizeMapping[buttonSize];
+                const renderedIcon = isPending ? (
+                    <Loader size={iconSize} />
+                ) : (
+                    icon && <Icon icon={icon} size={iconSize} />
+                );
+
                 return (
                     <span
                         className={clsx(
@@ -117,11 +136,18 @@ export const IconButton: React.FC<IconButtonProps> = ({
                         )}
                         {...dataAttrs}
                     >
-                        {splashInfo && <Splash {...splashInfo} />}
-                        {isPending ? (
-                            <Loader size={iconSize} />
+                        {splashInfo && (
+                            <span className={clsx(IconButtonSplash)}>
+                                <Splash {...splashInfo} />
+                            </span>
+                        )}
+
+                        {badge && !isPending ? (
+                            <BadgeAnchor badge={badge}>
+                                {renderedIcon}
+                            </BadgeAnchor>
                         ) : (
-                            icon && <Icon icon={icon} size={iconSize} />
+                            renderedIcon
                         )}
                     </span>
                 );

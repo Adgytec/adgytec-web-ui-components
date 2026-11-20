@@ -3,6 +3,7 @@ import {
     ToggleButton as AriaToggleButton,
     composeRenderProps,
 } from "react-aria-components";
+import { BadgeAnchor } from "@/components/Badge";
 import { Icon } from "@/components/Icon";
 import { Splash } from "@/components/Splash/Splash";
 import { useSplash } from "@/components/Splash/useSplash";
@@ -15,6 +16,7 @@ import {
     buttonColorConfig,
     buttonSizeConfig,
     IconButtonIconSizeMapping,
+    IconButtonSplash,
     newButtonBaseDataAttrs,
     useButtonConfig,
     withTooltip,
@@ -32,6 +34,9 @@ import type { ToggleIconButtonProps } from "./types";
  *
  * @example
  * ```tsx
+ * import { Badge, ToggleIconButton } from "@adgytec/web-ui-components";
+ * import { Bookmark, Volume2, VolumeX } from "lucide-react";
+ *
  * <ToggleIconButton
  *     icon={Volume2}
  *     selectedIcon={VolumeX}
@@ -39,6 +44,13 @@ import type { ToggleIconButtonProps } from "./types";
  *     onChange={setIsMuted}
  *     tooltip={isMuted ? "Unmute" : "Mute"}
  *     aria-label={isMuted ? "Unmute" : "Mute"}
+ * />
+ *
+ * // With notification badge
+ * <ToggleIconButton
+ *     icon={Bookmark}
+ *     badge={<Badge />}
+ *     aria-label="Bookmarks"
  * />
  * ```
  */
@@ -51,6 +63,7 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
     selectedIcon,
     icon,
     onPress,
+    badge,
     ...props
 }) => {
     const { buttonColor, buttonShape, buttonSize } = useButtonConfig({
@@ -113,6 +126,10 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                 if (isSelected && selectedIcon) iconToRender = selectedIcon;
 
                 const iconSize = IconButtonIconSizeMapping[buttonSize];
+                const renderedIcon = iconToRender && (
+                    <Icon icon={iconToRender} size={iconSize} />
+                );
+
                 return (
                     <span
                         className={clsx(
@@ -122,10 +139,18 @@ export const ToggleIconButton: React.FC<ToggleIconButtonProps> = ({
                         )}
                         {...dataAttrs}
                     >
-                        {splashInfo && <Splash {...splashInfo} />}
+                        {splashInfo && (
+                            <span className={clsx(IconButtonSplash)}>
+                                <Splash {...splashInfo} />
+                            </span>
+                        )}
 
-                        {iconToRender && (
-                            <Icon icon={iconToRender} size={iconSize} />
+                        {badge ? (
+                            <BadgeAnchor badge={badge}>
+                                {renderedIcon}
+                            </BadgeAnchor>
+                        ) : (
+                            renderedIcon
                         )}
                     </span>
                 );
