@@ -24,12 +24,12 @@ export interface AppBarProps
     alignment?: AppBarAlignment;
 
     /**
-     * Action element rendered at the leading edge (left in LTR), typically an {@link AppBarAction}.
+     * Action element rendered at the leading edge (left in LTR), typically an {@link AppBarAction} or {@link AppBarLinkAction}.
      */
     leadingAction?: ReactNode;
 
     /**
-     * List of action elements rendered at the trailing edge (right in LTR), such as {@link AppBarAction} or {@link AppBarAvatar}.
+     * List of action elements rendered at the trailing edge (right in LTR), such as {@link AppBarAction}, {@link AppBarLinkAction}, or {@link AppBarAvatar}.
      */
     trailingActions?: ReactNode[];
 

@@ -14,12 +14,13 @@ The `AppBar` component (also known as a Top App Bar) is an implementation of the
 
 ## Components
 
-The AppBar module consists of five primary components:
+The AppBar module consists of six primary components:
 1. `AppBar` - The main container component that coordinates the layout, actions, and headline.
 2. `AppBarHeadline` - A styled title component that automatically aligns and sizes itself based on the AppBar context.
 3. `AppBarAction` - A pre-configured standard `IconButton` variant optimized for AppBar navigation and actions.
-4. `AppBarAvatar` - An interactive, circular avatar button that supports ripple effects and visual state changes.
-5. `AppBarState` - A context provider that manages and shares the scrolling state of the AppBar to toggle its scrolled visual style.
+4. `AppBarLinkAction` - A pre-configured standard `LinkIconButton` variant for navigation links within the AppBar.
+5. `AppBarAvatar` - An interactive, circular avatar button that supports ripple effects and visual state changes.
+6. `AppBarState` - A context provider that manages and shares the scrolling state of the AppBar to toggle its scrolled visual style.
 
 ---
 
@@ -60,6 +61,15 @@ Based on the parent `AppBar`'s size, `AppBarHeadline` automatically adjusts its 
 ## AppBarAction Props
 
 Extends the custom `IconButton` component, omitting the `size` prop.
+
+- Defaults to `color="standard"`.
+- Hardcodes `size="small"` to align with the Material 3 specifications for app bar actions.
+
+---
+
+## AppBarLinkAction Props
+
+Extends the custom `LinkIconButton` component, omitting the `size` prop.
 
 - Defaults to `color="standard"`.
 - Hardcodes `size="small"` to align with the Material 3 specifications for app bar actions.

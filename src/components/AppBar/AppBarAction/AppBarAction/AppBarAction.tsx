@@ -1,12 +1,8 @@
 import clsx from "clsx";
 import { composeRenderProps } from "react-aria-components";
-import { IconButton, type IconButtonProps } from "@/components/Button";
-import styles from "./appBarAction.module.css";
-
-/**
- * Props for the {@link AppBarAction} component, omitting `size` which is fixed to `"small"`.
- */
-export type AppBarActionProps = Omit<IconButtonProps, "size">;
+import { IconButton } from "@/components/Button";
+import { AppBarActionStyles } from "../core";
+import type { AppBarActionProps } from "./types";
 
 /**
  * Action button specifically styled and sized for use inside the {@link AppBar}.
@@ -30,7 +26,7 @@ export const AppBarAction: React.FC<AppBarActionProps> = ({
         <IconButton
             {...props}
             className={composeRenderProps(props.className, (className) =>
-                clsx(styles["action"], className)
+                clsx(AppBarActionStyles, className)
             )}
             color={color}
             size="small"

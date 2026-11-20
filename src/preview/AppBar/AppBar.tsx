@@ -1,10 +1,11 @@
 import clsx from "clsx";
-import { Bell, CloudSnow, Palette, Settings } from "lucide-react";
+import { Bell, CloudSnow, ExternalLink, Palette, Settings } from "lucide-react";
 import {
     AppBar,
     AppBarAction,
     AppBarAvatar,
     AppBarHeadline,
+    AppBarLinkAction,
     AppBarState,
 } from "../../components/AppBar";
 import { typography } from "../../utils/typography";
@@ -19,6 +20,13 @@ export const AppBarPreview = () => {
 
                 <div className="items">
                     <AppBarAction icon={Bell} />
+
+                    <AppBarLinkAction
+                        href="https://github.com"
+                        target="_blank"
+                        icon={ExternalLink}
+                        aria-label="External Link"
+                    />
 
                     <AppBarAvatar>R</AppBarAvatar>
 

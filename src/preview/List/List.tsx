@@ -4,6 +4,7 @@ import {
     Bluetooth,
     BluetoothOff,
     EllipsisVertical,
+    ExternalLink,
     Flashlight,
     FlashlightOff,
     Touchpad,
@@ -24,6 +25,7 @@ import {
     ListIcon,
     ListItem,
     ListLabelText,
+    ListLinkAction,
     ListMedia,
     ListMediaImageHeight,
     ListMediaImageWidth,
@@ -283,6 +285,13 @@ const GridListSelection = () => {
                         </ListSupportingText>
                     }
                     trailing={[
+                        <ListLinkAction
+                            key="link"
+                            href="https://example.com"
+                            target="_blank"
+                            icon={ExternalLink}
+                            aria-label="Open link"
+                        />,
                         <ListAction
                             key="ellipsis"
                             color="tonal"

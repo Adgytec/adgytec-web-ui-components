@@ -18,7 +18,7 @@ The `ListBox`, `GridListBox`, `ListItem`, and `GridListItem` components are an i
 
 ## Components
 
-The List module consists of twelve components:
+The List module consists of thirteen components:
 1. `ListBox` - The main container component for option selection lists, coordinating items, vertical alignment, and keyboard navigation.
 2. `ListItem` - The interactive list item component managing slots (`leading`, `overline`, `label`, `supporting`, `trailing`), selection state, and ripple feedback.
 3. `GridListBox` - Container component using React Aria's `GridList`, supporting interactive row controls, row actions, keyboard navigation, and vertical alignment without the `layout` prop.
@@ -31,6 +31,7 @@ The List module consists of twelve components:
 10. `ListAvatar` - A circular 40px avatar container with `typography.titleMedium` for user initials or profile images.
 11. `ListMedia` - A styled container for leading thumbnail images or videos (`image`, `video`, `large-video`).
 12. `ListAction` - A pre-configured `IconButton` variant (`size="small"`, 48px touch target) for trailing actions.
+13. `ListLinkAction` - A pre-configured `LinkIconButton` variant (`size="small"`, 48px touch target) for trailing navigation links.
 
 ### ListBox vs. GridListBox
 
@@ -194,6 +195,15 @@ Embedded `<img>` and `<video>` elements automatically inherit rounded corners (`
 ## ListAction Props
 
 Extends the custom `IconButton` component, omitting the `size` prop.
+
+- Defaults to `color="standard"`.
+- Hardcodes `size="small"` with an accessible `48px` × `48px` touch target.
+
+---
+
+## ListLinkAction Props
+
+Extends the custom `LinkIconButton` component, omitting the `size` prop.
 
 - Defaults to `color="standard"`.
 - Hardcodes `size="small"` with an accessible `48px` × `48px` touch target.

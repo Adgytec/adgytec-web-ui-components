@@ -1,12 +1,8 @@
 import clsx from "clsx";
 import { composeRenderProps } from "react-aria-components";
-import { IconButton, type IconButtonProps } from "@/components/Button";
-import styles from "./listAction.module.css";
-
-/**
- * Props for the [`ListAction`](src/components/List/ListAction/ListAction.tsx) component.
- */
-export interface ListActionProps extends Omit<IconButtonProps, "size"> {}
+import { IconButton } from "@/components/Button";
+import { ListActionStyles } from "../core";
+import type { ListActionProps } from "./types";
 
 /**
  * Pre-configured trailing action icon button for a [`ListItem`](src/components/List/ListItem/ListItem.tsx) or [`GridListItem`](src/components/List/GridListItem/GridListItem.tsx).
@@ -33,7 +29,7 @@ export const ListAction: React.FC<ListActionProps> = ({
         <IconButton
             {...props}
             className={composeRenderProps(props.className, (className) =>
-                clsx(styles["action"], className)
+                clsx(ListActionStyles, className)
             )}
             size="small"
             color={color}
