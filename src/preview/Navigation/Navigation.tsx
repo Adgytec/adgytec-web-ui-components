@@ -41,6 +41,7 @@ import {
     Workflow,
 } from "lucide-react";
 import { DialogTrigger } from "react-aria-components";
+import { Badge } from "@/components/Badge";
 import type { Variant } from "@/components/Navigation/core";
 import {
     Button,
@@ -338,12 +339,14 @@ export const NavStatePreview = ({ variant }: { variant?: Variant }) => {
             </SubNavigationTrigger>
 
             <NavigationLink
+                badge={<Badge />}
                 label="Billing"
                 icon={CreditCard}
                 activeIcon={CreditCard}
             />
 
             <NavigationLink
+                badge={<Badge count={84} />}
                 label="Audit Logs"
                 icon={History}
                 activeIcon={History}

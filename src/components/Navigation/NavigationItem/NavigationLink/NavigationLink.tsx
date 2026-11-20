@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { composeRenderProps, Link } from "react-aria-components";
+import { BadgeAnchor } from "@/components/Badge";
 import { useNavigationContext } from "../../Navigation/navContext";
 import {
     NavigationItemStyles,
@@ -30,6 +31,7 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
     label,
     href,
     isActive,
+    badge,
     ...props
 }) => {
     const { isLinkActive, variant } = useNavigationContext();
@@ -37,6 +39,14 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
         typeof isActive === "function"
             ? isActive(href)
             : (isActive ?? isLinkActive?.(href));
+
+    const renderedIcon = (
+        <NavigationItemIconRenderer
+            icon={icon}
+            activeIcon={activeIcon}
+            isActive={linkActive}
+        />
+    );
 
     return renderNavItem(
         <Link
@@ -52,12 +62,16 @@ export const NavigationLink: React.FC<NavigationLinkProps> = ({
             data-active={linkActive || undefined}
             data-variant={variant}
         >
-            <NavigationItemIconRenderer
-                icon={icon}
-                activeIcon={activeIcon}
-                isActive={linkActive}
-            />
-            {variant === "expanded" && label}
+            {variant === "collapsed" && badge ? (
+                <BadgeAnchor badge={badge}>{renderedIcon}</BadgeAnchor>
+            ) : (
+                renderedIcon
+            )}
+            {variant === "expanded" && (
+                <>
+                    {label} {badge}
+                </>
+            )}
         </Link>,
         label,
         variant

@@ -24,6 +24,7 @@ export const Badge: React.FC<BadgeProps> = ({
             className={clsx(styles["badge"], typography.labelSmall, className)}
             data-count={count === undefined ? undefined : true}
             {...props}
+            data-badge
         >
             {label && <span className={clsx(styles["label"])}>{label}</span>}
         </span>

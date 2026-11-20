@@ -1,6 +1,7 @@
 import { clsx } from "clsx";
 import { useContext } from "react";
 import { Button, composeRenderProps } from "react-aria-components";
+import { BadgeAnchor } from "@/components/Badge";
 import { NavLabelContext } from "../../core";
 import { useNavigationContext } from "../../Navigation/navContext";
 import {
@@ -33,6 +34,7 @@ export const NavigationButton: React.FC<NavigationButtonProps> = ({
     label,
     prefix,
     isActive,
+    badge,
     ...props
 }) => {
     const { isButtonActive, variant } = useNavigationContext();
@@ -43,6 +45,14 @@ export const NavigationButton: React.FC<NavigationButtonProps> = ({
 
     const triggerLabel = useContext(NavLabelContext);
     const buttonLabel = label ?? triggerLabel;
+
+    const renderedIcon = (
+        <NavigationItemIconRenderer
+            icon={icon}
+            activeIcon={activeIcon}
+            isActive={buttonActive}
+        />
+    );
 
     return renderNavItem(
         <Button
@@ -58,12 +68,16 @@ export const NavigationButton: React.FC<NavigationButtonProps> = ({
             data-active={buttonActive || undefined}
             data-variant={variant}
         >
-            <NavigationItemIconRenderer
-                icon={icon}
-                activeIcon={activeIcon}
-                isActive={buttonActive}
-            />
-            {variant === "expanded" && buttonLabel}
+            {variant === "collapsed" && badge ? (
+                <BadgeAnchor badge={badge}>{renderedIcon}</BadgeAnchor>
+            ) : (
+                renderedIcon
+            )}
+            {variant === "expanded" && (
+                <>
+                    {buttonLabel} {badge}
+                </>
+            )}
         </Button>,
         buttonLabel,
         variant

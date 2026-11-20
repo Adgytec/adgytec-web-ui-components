@@ -6,6 +6,7 @@
         );
         --_md-badge-color: var(--md-badge-color, var(--md-sys-color-on-error));
 
+        display: inline-flex;
         background-color: var(--_md-badge-background);
         color: var(--_md-badge-color);
     }
@@ -17,7 +18,6 @@
     }
 
     .badge[data-count] {
-        display: inline-flex;
         align-items: center;
         justify-content: center;
 

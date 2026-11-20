@@ -28,6 +28,8 @@ export interface NavigationItemProps {
      * Override flag or predicate function evaluating whether the item is currently active.
      */
     isActive?: boolean | ((value?: string) => boolean);
+
+    badge?: ReactNode;
 }
 
 /**

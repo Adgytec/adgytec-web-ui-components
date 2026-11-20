@@ -1,6 +1,7 @@
 import { Bell, SwatchBook, UserRound } from "lucide-react";
 import type { Orientation } from "react-aria";
 import { Form } from "react-aria-components";
+import { Badge } from "@/components/Badge";
 import { Button } from "../../components/Button";
 import {
     Checkbox,
@@ -48,7 +49,11 @@ export const RenderTabs = ({
                 />
                 <Tab
                     id="notifications"
-                    label="Notifications"
+                    label={
+                        <>
+                            Notifications <Badge count={34} />
+                        </>
+                    }
                     icon={Bell}
                     isDisabled={isDisabled}
                 />

@@ -1,0 +1,14 @@
+@layer adgytec.comps {
+    .anchor {
+        position: relative;
+    }
+
+    .badge {
+        position: absolute;
+
+        inset-inline-end: 0;
+        inset-block-start: 0;
+
+        translate: 50% -50%;
+    }
+}
