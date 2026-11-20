@@ -6,6 +6,7 @@ import { useLocalStorage } from "usehooks-ts";
 import { Button } from "./components/Button";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "./components/Tabs";
 import { AppBarPreview } from "./preview/AppBar";
+import { BadgePreview } from "./preview/Badge";
 import { BottomSheetPreview } from "./preview/BottomSheet";
 import { ButtonPreview } from "./preview/Button";
 import { ButtonGroupPreview } from "./preview/ButtonGroup";
@@ -88,6 +89,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "badge",
+            label: "Badge",
+            Component: BadgePreview,
+        },
         {
             id: "progress-slider",
             label: "Progress Slider",
