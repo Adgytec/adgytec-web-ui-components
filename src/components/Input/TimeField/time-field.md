@@ -2,22 +2,24 @@
 
 ## Configurable CSS Tokens
 
-| Token                                  | Default Value                 | Description                                          |
-| -------------------------------------- | ----------------------------- | ---------------------------------------------------- |
-| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the time field is focused. |
+| Token                                  | Default Value                                   | Description                                                |
+| -------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------- |
+| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)`                   | Color of the outline when the time field is focused.       |
+| `--md-textfield-background`            | `var(--md-sys-color-surface-container-highest)` | Background color for the filled variant of the time field. |
 
-The `TimeField` component allows users to enter and edit a time value using a keyboard, with validation and segment-based input. It implements Material 3 text field patterns for its layout.
+The `TimeField` component allows users to enter and edit a time value using a keyboard, with validation and segment-based input. It implements Material 3 text field patterns with support for filled and outlined variants.
 
 ## Props
 
 The `TimeField` component extends [React Aria Components TimeField](https://react-spectrum.adobe.com/react-aria/TimeField.html) (excluding `children`).
 
-| Prop                       | Type                                                | Default | Description                                                        |
-| -------------------------- | --------------------------------------------------- | ------- | ------------------------------------------------------------------ |
-| `label`                    | `ReactNode`                                         | —       | The label for the time field.                                      |
-| `description`              | `ReactNode`                                         | —       | Help text displayed below the input.                               |
-| `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —       | Error message displayed when validation fails.                     |
-| `showDescriptionOnInvalid` | `boolean`                                           | `false` | Whether to keep showing the description when the input is invalid. |
+| Prop                       | Type                                                | Default    | Description                                                        |
+| -------------------------- | --------------------------------------------------- | ---------- | ------------------------------------------------------------------ |
+| `label`                    | `ReactNode`                                         | —          | The label for the time field.                                      |
+| `description`              | `ReactNode`                                         | —          | Help text displayed below the input.                               |
+| `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —          | Error message displayed when validation fails.                     |
+| `variant`                  | `"filled" \| "outlined"`                            | `"filled"` | Visual styling variant of the time field container.                |
+| `showDescriptionOnInvalid` | `boolean`                                           | `false`    | Whether to keep showing the description when the input is invalid. |
 
 ## Usage
 
@@ -25,7 +27,16 @@ The `TimeField` component extends [React Aria Components TimeField](https://reac
 import { TimeField } from "@adgytec/web-ui-components";
 import { Time } from "@internationalized/date";
 
+// Filled variant (default)
 <TimeField
+    label="Appointment Time"
+    description="Please enter the desired time"
+    defaultValue={new Time(9, 0)}
+/>;
+
+// Outlined variant
+<TimeField
+    variant="outlined"
     label="Appointment Time"
     description="Please enter the desired time"
     defaultValue={new Time(9, 0)}

@@ -19,6 +19,11 @@ import styles from "./selectTrigger.module.css";
  */
 export interface SelectTriggerProps
     extends Omit<React.ComponentPropsWithRef<typeof Button>, "children"> {
+    /**
+     * Visual styling variant for the select trigger container.
+     *
+     * @default "filled"
+     */
     variant?: Variant;
 }
 

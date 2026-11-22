@@ -26,5 +26,10 @@ export interface CoreInputProps {
      */
     showDescriptionOnInvalid?: boolean;
 
+    /**
+     * Visual styling variant for the input container.
+     *
+     * @default "filled"
+     */
     variant?: Variant;
 }

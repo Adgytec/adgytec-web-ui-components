@@ -25,6 +25,12 @@ export interface ComboBoxTriggerProps
         RefProp<typeof Input> {
     /** Placeholder text displayed when the combobox input is empty. */
     placeholder?: string;
+
+    /**
+     * Visual styling variant for the combobox trigger container.
+     *
+     * @default "filled"
+     */
     variant?: Variant;
 }
 

@@ -2,22 +2,24 @@
 
 ## Configurable CSS Tokens
 
-| Token                                  | Default Value                 | Description                                          |
-| -------------------------------------- | ----------------------------- | ---------------------------------------------------- |
-| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the date field is focused. |
+| Token                                  | Default Value                                   | Description                                                |
+| -------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------- |
+| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)`                   | Color of the outline when the date field is focused.       |
+| `--md-textfield-background`            | `var(--md-sys-color-surface-container-highest)` | Background color for the filled variant of the date field. |
 
-The `DateField` component allows users to enter and edit a date using a keyboard, with validation and segment-based input. It implements Material 3 text field patterns for its layout.
+The `DateField` component allows users to enter and edit a date using a keyboard, with validation and segment-based input. It implements Material 3 text field patterns with support for filled and outlined variants.
 
 ## Props
 
 The `DateField` component extends [React Aria Components DateField](https://react-spectrum.adobe.com/react-aria/DateField.html) (excluding `children`).
 
-| Prop                       | Type                                                | Default | Description                                                        |
-| -------------------------- | --------------------------------------------------- | ------- | ------------------------------------------------------------------ |
-| `label`                    | `ReactNode`                                         | —       | The label for the date field.                                      |
-| `description`              | `ReactNode`                                         | —       | Help text displayed below the input.                               |
-| `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —       | Error message displayed when validation fails.                     |
-| `showDescriptionOnInvalid` | `boolean`                                           | `false` | Whether to keep showing the description when the input is invalid. |
+| Prop                       | Type                                                | Default    | Description                                                        |
+| -------------------------- | --------------------------------------------------- | ---------- | ------------------------------------------------------------------ |
+| `label`                    | `ReactNode`                                         | —          | The label for the date field.                                      |
+| `description`              | `ReactNode`                                         | —          | Help text displayed below the input.                               |
+| `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —          | Error message displayed when validation fails.                     |
+| `variant`                  | `"filled" \| "outlined"`                            | `"filled"` | Visual styling variant of the date field container.                |
+| `showDescriptionOnInvalid` | `boolean`                                           | `false`    | Whether to keep showing the description when the input is invalid. |
 
 ## Usage
 
@@ -25,7 +27,16 @@ The `DateField` component extends [React Aria Components DateField](https://reac
 import { DateField } from "@adgytec/web-ui-components";
 import { today, getLocalTimeZone } from "@internationalized/date";
 
+// Filled variant (default)
 <DateField
+    label="Birth Date"
+    description="Please enter your date of birth"
+    defaultValue={today(getLocalTimeZone())}
+/>;
+
+// Outlined variant
+<DateField
+    variant="outlined"
     label="Birth Date"
     description="Please enter your date of birth"
     defaultValue={today(getLocalTimeZone())}

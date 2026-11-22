@@ -2,11 +2,12 @@
 
 ## Configurable CSS Tokens
 
-| Token                                  | Default Value                 | Description                                                       |
-| -------------------------------------- | ----------------------------- | ----------------------------------------------------------------- |
-| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the combo box input is focused or open. |
+| Token                                  | Default Value                                   | Description                                                       |
+| -------------------------------------- | ----------------------------------------------- | ----------------------------------------------------------------- |
+| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)`                   | Color of the outline when the combo box input is focused or open. |
+| `--md-textfield-background`            | `var(--md-sys-color-surface-container-highest)` | Background color for the filled variant of the combobox trigger.  |
 
-The `ComboBox` component combines a text input with a listbox, allowing users to filter a list of options or enter a custom value. It supports single and multiple selection.
+The `ComboBox` component combines a text input with a listbox, allowing users to filter a list of options or enter a custom value. It supports single and multiple selection, as well as filled and outlined variants.
 
 ## Components
 
@@ -30,6 +31,15 @@ Extends [React Aria Components ComboBox](https://react-spectrum.adobe.com/react-
 | `showDescriptionOnInvalid` | `boolean`                                           | `false` | Whether to keep showing the description when invalid.                                  |
 | `hideMultiSelectionValue`  | `boolean`                                           | `false` | If true, selected tags are not displayed in the container (useful for custom layouts). |
 
+### `ComboBoxTrigger`
+
+Extends React Aria Components `Input` ref properties.
+
+| Prop          | Type                     | Default    | Description                                               |
+| ------------- | ------------------------ | ---------- | --------------------------------------------------------- |
+| `placeholder` | `string`                 | —          | Placeholder text displayed when the combobox is empty.    |
+| `variant`     | `"filled" \| "outlined"` | `"filled"` | Visual styling variant of the combobox trigger container. |
+
 ## Usage
 
 ### Single Selection
@@ -43,8 +53,24 @@ import {
     SelectItem,
 } from "@adgytec/web-ui-components";
 
+// Filled variant (default)
 <ComboBox label="User">
     <ComboBoxTrigger placeholder="Select a user" />
+    <ComboBoxPopover>
+        <SelectList>
+            <SelectItem id="1" textValue="John Doe">
+                John Doe
+            </SelectItem>
+            <SelectItem id="2" textValue="Jane Smith">
+                Jane Smith
+            </SelectItem>
+        </SelectList>
+    </ComboBoxPopover>
+</ComboBox>;
+
+// Outlined variant
+<ComboBox label="User">
+    <ComboBoxTrigger variant="outlined" placeholder="Select a user" />
     <ComboBoxPopover>
         <SelectList>
             <SelectItem id="1" textValue="John Doe">

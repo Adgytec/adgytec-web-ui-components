@@ -2,32 +2,45 @@
 
 ## Configurable CSS Tokens
 
-| Token                                  | Default Value                 | Description                                         |
-| -------------------------------------- | ----------------------------- | --------------------------------------------------- |
-| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the text area is focused. |
+| Token                                  | Default Value                                   | Description                                               |
+| -------------------------------------- | ----------------------------------------------- | --------------------------------------------------------- |
+| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)`                   | Color of the outline when the text area is focused.       |
+| `--md-textfield-background`            | `var(--md-sys-color-surface-container-highest)` | Background color for the filled variant of the text area. |
 
-The `TextArea` component is a multi-line version of the `Input` component, allowing for longer text entry. It implements Material 3 text field patterns.
+The `TextArea` component is a multi-line version of the `Input` component, allowing for longer text entry. It implements Material 3 text field patterns with support for filled and outlined variants.
 
 ## Props
 
 The `TextArea` component extends [React Aria Components TextField](https://react-spectrum.adobe.com/react-aria/TextField.html) (excluding `children`).
 
-| Prop                       | Type                                                | Default | Description                                           |
-| -------------------------- | --------------------------------------------------- | ------- | ----------------------------------------------------- |
-| `label`                    | `ReactNode`                                         | —       | The label for the text area.                          |
-| `description`              | `ReactNode`                                         | —       | Help text displayed below the input.                  |
-| `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —       | Error message displayed when validation fails.        |
-| `placeholder`              | `string`                                            | —       | Placeholder text displayed when empty.                |
-| `rows`                     | `number`                                            | —       | The initial number of visible text rows.              |
-| `showCharacterCount`       | `boolean`                                           | `false` | Whether to display the current character count.       |
-| `showDescriptionOnInvalid` | `boolean`                                           | `false` | Whether to keep showing the description when invalid. |
+| Prop                       | Type                                                | Default    | Description                                           |
+| -------------------------- | --------------------------------------------------- | ---------- | ----------------------------------------------------- |
+| `label`                    | `ReactNode`                                         | —          | The label for the text area.                          |
+| `description`              | `ReactNode`                                         | —          | Help text displayed below the input.                  |
+| `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —          | Error message displayed when validation fails.        |
+| `placeholder`              | `string`                                            | —          | Placeholder text displayed when empty.                |
+| `rows`                     | `number`                                            | —          | The initial number of visible text rows.              |
+| `variant`                  | `"filled" \| "outlined"`                            | `"filled"` | Visual styling variant of the text area container.    |
+| `showCharacterCount`       | `boolean`                                           | `false`    | Whether to display the current character count.       |
+| `showDescriptionOnInvalid` | `boolean`                                           | `false`    | Whether to keep showing the description when invalid. |
 
 ## Usage
 
 ```tsx
 import { TextArea } from "@adgytec/web-ui-components";
 
+// Filled variant (default)
 <TextArea
+    label="Comments"
+    placeholder="Enter your feedback here..."
+    rows={4}
+    maxLength={500}
+    showCharacterCount
+/>;
+
+// Outlined variant
+<TextArea
+    variant="outlined"
     label="Comments"
     placeholder="Enter your feedback here..."
     rows={4}

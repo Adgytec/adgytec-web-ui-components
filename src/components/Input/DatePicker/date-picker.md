@@ -2,11 +2,12 @@
 
 ## Configurable CSS Tokens
 
-| Token                                  | Default Value                 | Description                                                   |
-| -------------------------------------- | ----------------------------- | ------------------------------------------------------------- |
-| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the date picker's input is focused. |
+| Token                                  | Default Value                                   | Description                                                   |
+| -------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------- |
+| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)`                   | Color of the outline when the date picker's input is focused. |
+| `--md-textfield-background`            | `var(--md-sys-color-surface-container-highest)` | Background color for the filled variant of the date picker.   |
 
-The `DatePicker` component combines a `DateField` with a `Calendar` popover, allowing users to select a date either by typing or by using a visual calendar.
+The `DatePicker` component combines a `DateField` with a `Calendar` popover, allowing users to select a date either by typing or by using a visual calendar. It supports filled and outlined variants.
 
 ## Components
 
@@ -17,13 +18,14 @@ The `DatePicker` component combines a `DateField` with a `Calendar` popover, all
 
 Both `DatePicker` and `DateRangePicker` extend their respective [React Aria Components](https://react-spectrum.adobe.com/react-aria/DatePicker.html) (excluding `children`).
 
-| Prop                       | Type                                                | Default | Description                                                        |
-| -------------------------- | --------------------------------------------------- | ------- | ------------------------------------------------------------------ |
-| `label`                    | `ReactNode`                                         | —       | The label for the date picker.                                     |
-| `description`              | `ReactNode`                                         | —       | Help text displayed below the input.                               |
-| `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —       | Error message displayed when validation fails.                     |
-| `showDescriptionOnInvalid` | `boolean`                                           | `false` | Whether to keep showing the description when the input is invalid. |
-| `weekdayStyle`             | `"narrow" \| "short"`                               | —       | The formatting style for weekday headers in the calendar popover.  |
+| Prop                       | Type                                                | Default    | Description                                                        |
+| -------------------------- | --------------------------------------------------- | ---------- | ------------------------------------------------------------------ |
+| `label`                    | `ReactNode`                                         | —          | The label for the date picker.                                     |
+| `description`              | `ReactNode`                                         | —          | Help text displayed below the input.                               |
+| `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —          | Error message displayed when validation fails.                     |
+| `variant`                  | `"filled" \| "outlined"`                            | `"filled"` | Visual styling variant of the date picker container.               |
+| `showDescriptionOnInvalid` | `boolean`                                           | `false`    | Whether to keep showing the description when the input is invalid. |
+| `weekdayStyle`             | `"narrow" \| "short"`                               | —          | The formatting style for weekday headers in the calendar popover.  |
 
 ## Usage
 
@@ -32,7 +34,15 @@ Both `DatePicker` and `DateRangePicker` extend their respective [React Aria Comp
 ```tsx
 import { DatePicker } from "@adgytec/web-ui-components";
 
+// Filled variant (default)
 <DatePicker label="Event Date" description="Select the date for the event" />;
+
+// Outlined variant
+<DatePicker
+    variant="outlined"
+    label="Event Date"
+    description="Select the date for the event"
+/>;
 ```
 
 ### Date Range Picker
@@ -40,7 +50,15 @@ import { DatePicker } from "@adgytec/web-ui-components";
 ```tsx
 import { DateRangePicker } from "@adgytec/web-ui-components";
 
+// Filled variant (default)
 <DateRangePicker
+    label="Stay Period"
+    description="Select your check-in and check-out dates"
+/>;
+
+// Outlined variant
+<DateRangePicker
+    variant="outlined"
     label="Stay Period"
     description="Select your check-in and check-out dates"
 />;

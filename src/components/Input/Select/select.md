@@ -2,14 +2,15 @@
 
 ## Configurable CSS Tokens
 
-| Token                                  | Default Value                 | Description                                                    |
-| -------------------------------------- | ----------------------------- | -------------------------------------------------------------- |
-| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)` | Color of the outline when the select field is focused or open. |
+| Token                                  | Default Value                                   | Description                                                    |
+| -------------------------------------- | ----------------------------------------------- | -------------------------------------------------------------- |
+| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)`                   | Color of the outline when the select field is focused or open. |
+| `--md-textfield-background`            | `var(--md-sys-color-surface-container-highest)` | Background color for the filled variant of the select trigger. |
 
 > [!NOTE]
 > To configure the colors of the select options popover, use the `Menu` configurable CSS tokens (such as `--md-menu-background`).
 
-The `Select` component displays a list of options and allows a user to select one or more of them. It implements Material 3 text field patterns for the collapsed state.
+The `Select` component displays a list of options and allows a user to select one or more of them. It implements Material 3 text field patterns for the collapsed state, supporting both filled and outlined variants.
 
 ## Components
 
@@ -34,6 +35,14 @@ Extends [React Aria Components Select](https://react-spectrum.adobe.com/react-ar
 | `errorMessage`             | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —       | Error message displayed when validation fails.        |
 | `showDescriptionOnInvalid` | `boolean`                                           | `false` | Whether to keep showing the description when invalid. |
 
+### `SelectTrigger`
+
+Extends React Aria Components `Button` (excluding `children`).
+
+| Prop      | Type                     | Default    | Description                                             |
+| --------- | ------------------------ | ---------- | ------------------------------------------------------- |
+| `variant` | `"filled" \| "outlined"` | `"filled"` | Visual styling variant of the select trigger container. |
+
 ## Usage
 
 ```tsx
@@ -45,6 +54,7 @@ import {
     SelectItem,
 } from "@adgytec/web-ui-components";
 
+// Filled variant (default)
 <Select label="Frequency">
     <SelectTrigger />
     <SelectPopover>
@@ -57,6 +67,21 @@ import {
             </SelectItem>
             <SelectItem id="monthly" textValue="Monthly">
                 Monthly
+            </SelectItem>
+        </SelectList>
+    </SelectPopover>
+</Select>;
+
+// Outlined variant
+<Select label="Frequency">
+    <SelectTrigger variant="outlined" />
+    <SelectPopover>
+        <SelectList>
+            <SelectItem id="daily" textValue="Daily">
+                Daily
+            </SelectItem>
+            <SelectItem id="weekly" textValue="Weekly">
+                Weekly
             </SelectItem>
         </SelectList>
     </SelectPopover>
