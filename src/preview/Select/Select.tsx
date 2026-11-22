@@ -1,3 +1,6 @@
+import clsx from "clsx";
+import type { Variant } from "@/components/Input/core";
+import { typography } from "@/utils";
 import { Divider } from "../../components/Divider";
 import {
     ComboBox,
@@ -6,161 +9,121 @@ import {
     Select,
     SelectItem,
     SelectList,
-    SelectListSection,
-    SelectListSectionHeader,
     SelectPopover,
     SelectTrigger,
 } from "../../components/Input";
 
+export const RenderSelect = ({
+    isInvalid,
+    isDisabled,
+    variant,
+}: {
+    isInvalid?: boolean;
+    isDisabled?: boolean;
+    variant?: Variant;
+}) => {
+    return (
+        <Select
+            label="Icecream"
+            description="Flavors of icecream"
+            placeholder="Select Icecream"
+            isInvalid={isInvalid}
+            isDisabled={isDisabled}
+            showDescriptionOnInvalid={isInvalid}
+        >
+            <SelectTrigger variant={variant} />
+
+            <SelectPopover>
+                <SelectList>
+                    <SelectItem label="Strawberry" />
+                    <SelectItem label="Mango" />
+                    <Divider />
+                    <SelectItem label="Chocolate" />
+                    <SelectItem label="Cherry" />
+                </SelectList>
+            </SelectPopover>
+        </Select>
+    );
+};
+
+export const RenderComboBox = ({
+    isInvalid,
+    isDisabled,
+    variant,
+}: {
+    isInvalid?: boolean;
+    isDisabled?: boolean;
+    variant?: Variant;
+}) => {
+    return (
+        <ComboBox
+            label="Icecream"
+            description="Flavors of icecream"
+            isInvalid={isInvalid}
+            isDisabled={isDisabled}
+            showDescriptionOnInvalid={isInvalid}
+        >
+            <ComboBoxTrigger placeholder="Select Icecream" variant={variant} />
+
+            <ComboBoxPopover>
+                <SelectList>
+                    <SelectItem label="Strawberry" />
+                    <SelectItem label="Mango" />
+                    <Divider />
+                    <SelectItem label="Chocolate" />
+                    <SelectItem label="Cherry" />
+                </SelectList>
+            </ComboBoxPopover>
+        </ComboBox>
+    );
+};
+
 export const SelectPreview = () => {
     return (
-        <div className="items">
-            <Select
-                label="Icecream"
-                description="Flavors of icecream"
-                placeholder="Select Icecream"
-                isInvalid
-                showDescriptionOnInvalid
-            >
-                <SelectTrigger />
+        <div className="items-grid">
+            <h3 className={clsx(typography.titleLargeEmphasized)}>Select</h3>
 
-                <SelectPopover>
-                    <SelectList>
-                        <SelectItem label="Strawberry" />
+            <div className="items">
+                <RenderSelect />
+                <RenderSelect variant="outlined" />
+            </div>
 
-                        <SelectItem label="Mango" />
+            <div className="items">
+                <RenderSelect isInvalid />
+                <RenderSelect isInvalid variant="outlined" />
+            </div>
 
-                        <Divider />
+            <div className="items">
+                <RenderSelect isDisabled />
+                <RenderSelect isDisabled variant="outlined" />
+            </div>
 
-                        <SelectItem label="Chocalate" />
+            <div className="items">
+                <RenderSelect isInvalid isDisabled />
+                <RenderSelect isInvalid isDisabled variant="outlined" />
+            </div>
 
-                        <SelectItem label="Cherry" />
-                    </SelectList>
-                </SelectPopover>
-            </Select>
+            <h3 className={clsx(typography.titleLargeEmphasized)}>Combo Box</h3>
 
-            <Select
-                label="Icecream"
-                description="Flavors of icecream"
-                placeholder="Select Icecream"
-                selectionMode="multiple"
-            >
-                <SelectTrigger />
+            <div className="items">
+                <RenderComboBox />
+                <RenderComboBox variant="outlined" />
+            </div>
 
-                <SelectPopover>
-                    <SelectList>
-                        <SelectListSection>
-                            <SelectListSectionHeader>
-                                Specials 😋
-                            </SelectListSectionHeader>
+            <div className="items">
+                <RenderComboBox isInvalid />
+                <RenderComboBox isInvalid variant="outlined" />
+            </div>
 
-                            <SelectItem label="Strawberry" />
+            <div className="items">
+                <RenderComboBox isDisabled />
+                <RenderComboBox isDisabled variant="outlined" />
+            </div>
 
-                            <SelectItem label="Mango" />
-                        </SelectListSection>
-
-                        <Divider />
-
-                        <SelectItem label="Chocalate" />
-
-                        <SelectItem label="Cherry" />
-                    </SelectList>
-                </SelectPopover>
-            </Select>
-
-            <Select
-                label="Icecream"
-                description="Flavors of icecream"
-                placeholder="Select Icecream"
-                selectionMode="multiple"
-                isDisabled
-            >
-                <SelectTrigger />
-
-                <SelectPopover>
-                    <SelectList>
-                        <SelectListSection>
-                            <SelectListSectionHeader>
-                                Specials 😋
-                            </SelectListSectionHeader>
-
-                            <SelectItem label="Strawberry" />
-
-                            <SelectItem label="Mango" />
-                        </SelectListSection>
-
-                        <Divider />
-
-                        <SelectItem label="Chocalate" />
-
-                        <SelectItem label="Cherry" />
-                    </SelectList>
-                </SelectPopover>
-            </Select>
-
-            <ComboBox label="Icecream" description="Flavors of icecream">
-                <ComboBoxTrigger placeholder="Select Icecream" />
-
-                <ComboBoxPopover>
-                    <SelectList>
-                        <SelectItem label="Strawberry" />
-
-                        <SelectItem label="Mango" />
-
-                        <SelectItem label="Chocalate" />
-
-                        <SelectItem label="Cherry" />
-                    </SelectList>
-                </ComboBoxPopover>
-            </ComboBox>
-
-            <ComboBox
-                label="Icecream"
-                description="Flavors of icecream"
-                selectionMode="multiple"
-                isInvalid
-                showDescriptionOnInvalid
-            >
-                <ComboBoxTrigger placeholder="Select Icecream" />
-
-                <ComboBoxPopover>
-                    <SelectList>
-                        <SelectItem label="Strawberry" />
-
-                        <SelectItem label="Mango" />
-
-                        <SelectItem label="Chocalate" />
-
-                        <SelectItem label="Cherry" />
-                    </SelectList>
-                </ComboBoxPopover>
-            </ComboBox>
-
-            <ComboBox
-                label="Icecream"
-                description="Flavors of icecream"
-                isDisabled
-            >
-                <ComboBoxTrigger placeholder="Select Icecream" />
-
-                <ComboBoxPopover>
-                    <SelectList>
-                        <SelectListSection>
-                            <SelectListSectionHeader>
-                                Specials 😋
-                            </SelectListSectionHeader>
-
-                            <SelectItem label="Strawberry" />
-
-                            <SelectItem label="Mango" />
-                        </SelectListSection>
-
-                        <SelectItem label="Chocalate" />
-
-                        <SelectItem label="Cherry" />
-                    </SelectList>
-                </ComboBoxPopover>
-            </ComboBox>
+            <div className="items">
+                <RenderComboBox isInvalid isDisabled />
+                <RenderComboBox isInvalid isDisabled variant="outlined" />
+            </div>
         </div>
     );
 };

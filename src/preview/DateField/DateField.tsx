@@ -1,14 +1,18 @@
+import type { Variant } from "@/components/Input/core";
 import { DateField } from "../../components/Input";
 
 export const RenderDateField = ({
     isInvalid,
     isDisabled,
+    variant,
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
+    variant?: Variant;
 }) => {
     return (
         <DateField
+            variant={variant}
             label="Appointment Date"
             description="Add your appointment date"
             isDisabled={isDisabled}
@@ -21,14 +25,26 @@ export const RenderDateField = ({
 
 export const DateFieldPreview = () => {
     return (
-        <div className="items">
-            <RenderDateField />
+        <div className="items-grid">
+            <div className="items">
+                <RenderDateField />
+                <RenderDateField variant="outlined" />
+            </div>
 
-            <RenderDateField isInvalid />
+            <div className="items">
+                <RenderDateField isInvalid />
+                <RenderDateField isInvalid variant="outlined" />
+            </div>
 
-            <RenderDateField isDisabled />
+            <div className="items">
+                <RenderDateField isDisabled />
+                <RenderDateField isDisabled variant="outlined" />
+            </div>
 
-            <RenderDateField isInvalid isDisabled />
+            <div className="items">
+                <RenderDateField isInvalid isDisabled />
+                <RenderDateField isInvalid isDisabled variant="outlined" />
+            </div>
         </div>
     );
 };

@@ -1,14 +1,18 @@
+import type { Variant } from "@/components/Input/core";
 import { TimeField } from "../../components/Input";
 
 export const RenderTimeField = ({
     isInvalid,
     isDisabled,
+    variant,
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
+    variant?: Variant;
 }) => {
     return (
         <TimeField
+            variant={variant}
             label="Appointment Time"
             description="Add your appointment time"
             isDisabled={isDisabled}
@@ -21,14 +25,26 @@ export const RenderTimeField = ({
 
 export const TimeFieldPreview = () => {
     return (
-        <div className="items">
-            <RenderTimeField />
+        <div className="items-grid">
+            <div className="items">
+                <RenderTimeField />
+                <RenderTimeField variant="outlined" />
+            </div>
 
-            <RenderTimeField isInvalid />
+            <div className="items">
+                <RenderTimeField isInvalid />
+                <RenderTimeField isInvalid variant="outlined" />
+            </div>
 
-            <RenderTimeField isDisabled />
+            <div className="items">
+                <RenderTimeField isDisabled />
+                <RenderTimeField isDisabled variant="outlined" />
+            </div>
 
-            <RenderTimeField isInvalid isDisabled />
+            <div className="items">
+                <RenderTimeField isInvalid isDisabled />
+                <RenderTimeField isInvalid isDisabled variant="outlined" />
+            </div>
         </div>
     );
 };

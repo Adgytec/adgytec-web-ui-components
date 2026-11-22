@@ -77,8 +77,6 @@
 
             &:not([data-disabled])[data-variant="filled"] {
                 --button-color: var(--md-sys-color-on-error-container);
-                --editor-infix-color: var(--md-sys-color-on-error-container);
-                --editor-color: var(--md-sys-color-on-error-container);
             }
         }
 
@@ -136,9 +134,14 @@
     }
 
     .editor {
-        border-radius: var(--md-sys-shape-corner-radius-large);
+        --padding-inline-start-core: var(--md-sys-layout-space-16);
+        --padding-inline-end-core: var(--md-sys-layout-space-16);
+        --padding-block-core: var(--md-sys-layout-space-16);
 
-        padding: var(--md-sys-layout-space-16);
+        padding-inline: var(--padding-inline-start) var(--padding-inline-end);
+        padding-block: var(--padding-block);
+
+        border-radius: var(--md-sys-shape-corner-radius-large);
 
         display: inline-flex;
         align-items: center;
@@ -156,12 +159,28 @@
             var(--md-sys-motion-expressive-fast-effects-duration);
 
         &[data-variant="outlined"] {
+            --_1dp: calc(1 * var(--dp, 1px));
+
+            --padding-inline-start: calc(
+                var(--padding-inline-start-core) -
+                var(--_1dp)
+            );
+            --padding-inline-end: calc(
+                var(--padding-inline-end-core) -
+                var(--_1dp)
+            );
+            --padding-block: calc(var(--padding-block-core) - var(--_1dp));
+
             border: var(--outline-width) solid var(--outline-color);
             outline: var(--outline-width-focused) solid
                 var(--outline-color-focused);
         }
 
         &[data-variant="filled"] {
+            --padding-inline-start: var(--padding-inline-start-core);
+            --padding-inline-end: var(--padding-inline-end-core);
+            --padding-block: var(--padding-block-core);
+
             background-color: var(--background-color);
         }
 
@@ -170,12 +189,12 @@
         }
 
         &[data-trailing] {
-            padding-inline-end: var(--md-sys-layout-space-12);
-            padding-block: var(--md-sys-layout-space-8);
+            --padding-inline-end-core: var(--md-sys-layout-space-12);
+            --padding-block-core: var(--md-sys-layout-space-8);
         }
 
         &[data-leading] {
-            padding-inline-start: var(--md-sys-layout-space-12);
+            --padding-inline-start-core: var(--md-sys-layout-space-12);
         }
 
         &:not([data-disabled]) {
@@ -226,8 +245,7 @@
         &[data-textarea] {
             resize: vertical;
 
-            /* 2dp for border thickness */
-            min-block-size: calc(58 * var(--dp, 1px));
+            min-block-size: calc(56 * var(--dp, 1px));
             max-block-size: calc(300 * var(--dp, 1px));
 
             &[data-disabled] {

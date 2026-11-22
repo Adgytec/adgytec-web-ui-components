@@ -1,17 +1,21 @@
 import { Armchair, Mail } from "lucide-react";
 import { useState } from "react";
+import type { Variant } from "@/components/Input/core";
 import { Input, InputButton } from "../../components/Input";
 
 export const RenderInput = ({
     isInvalid,
     isDisabled,
+    variant,
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
+    variant?: Variant;
 }) => {
     const [val, setVal] = useState("");
     return (
         <Input
+            variant={variant}
             label="Email"
             type="text"
             description="Enter your Adgytec work email"
@@ -35,14 +39,26 @@ export const RenderInput = ({
 
 export const InputPreview = () => {
     return (
-        <div className="items">
-            <RenderInput />
+        <div className="items-grid">
+            <div className="items">
+                <RenderInput />
+                <RenderInput variant="outlined" />
+            </div>
 
-            <RenderInput isInvalid />
+            <div className="items">
+                <RenderInput isInvalid />
+                <RenderInput isInvalid variant="outlined" />
+            </div>
 
-            <RenderInput isDisabled />
+            <div className="items">
+                <RenderInput isDisabled />
+                <RenderInput isDisabled variant="outlined" />
+            </div>
 
-            <RenderInput isInvalid isDisabled />
+            <div className="items">
+                <RenderInput isInvalid isDisabled />
+                <RenderInput isInvalid isDisabled variant="outlined" />
+            </div>
         </div>
     );
 };

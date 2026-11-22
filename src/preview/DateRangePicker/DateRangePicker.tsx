@@ -1,22 +1,53 @@
+import type { Variant } from "@/components/Input/core";
 import { DateRangePicker } from "../../components/Input";
+
+export const RenderDateRangePicker = ({
+    isInvalid,
+    isDisabled,
+    variant,
+}: {
+    isInvalid?: boolean;
+    isDisabled?: boolean;
+    variant?: Variant;
+}) => {
+    return (
+        <DateRangePicker
+            variant={variant}
+            label="Dates"
+            description="Select date range"
+            isInvalid={isInvalid}
+            isDisabled={isDisabled}
+            showDescriptionOnInvalid={isInvalid}
+        />
+    );
+};
 
 export const DateRangePickerPreview = () => {
     return (
-        <div className="items">
-            <DateRangePicker label="Dates" description="Select date range" />
+        <div className="items-grid">
+            <div className="items">
+                <RenderDateRangePicker />
+                <RenderDateRangePicker variant="outlined" />
+            </div>
 
-            <DateRangePicker
-                label="Dates"
-                description="Select date range"
-                showDescriptionOnInvalid
-                isInvalid
-            />
+            <div className="items">
+                <RenderDateRangePicker isInvalid />
+                <RenderDateRangePicker isInvalid variant="outlined" />
+            </div>
 
-            <DateRangePicker
-                label="Dates"
-                description="Select date range"
-                isDisabled
-            />
+            <div className="items">
+                <RenderDateRangePicker isDisabled />
+                <RenderDateRangePicker isDisabled variant="outlined" />
+            </div>
+
+            <div className="items">
+                <RenderDateRangePicker isInvalid isDisabled />
+                <RenderDateRangePicker
+                    isInvalid
+                    isDisabled
+                    variant="outlined"
+                />
+            </div>
         </div>
     );
 };
