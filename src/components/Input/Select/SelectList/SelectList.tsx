@@ -45,6 +45,7 @@ export const SelectList = <T extends object>({
                     className
                 )
             )}
+            data-select-menu
         />
     );
 };

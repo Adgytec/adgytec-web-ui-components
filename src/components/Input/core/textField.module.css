@@ -102,7 +102,7 @@
     }
 
     .date-segment {
-        border-radius: var(--md-sys-shape-corner-radius-extra-small);
+        border-radius: var(--md-sys-shape-corner-radius-large);
 
         &[data-focused],
         &[data-focus-visible] {
@@ -116,7 +116,7 @@
     }
 
     .editor {
-        border-radius: var(--md-sys-shape-corner-radius-extra-small);
+        border-radius: var(--md-sys-shape-corner-radius-large);
 
         border: var(--outline-width) solid var(--outline-color);
         outline: var(--outline-width-focused) solid var(--outline-color-focused);

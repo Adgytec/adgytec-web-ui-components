@@ -38,6 +38,10 @@
         &:focus-within {
             --_md-menu-shape: var(--md-sys-shape-corner-radius-large);
         }
+
+        &[data-select-menu] {
+            --_md-menu-shape: var(--md-sys-shape-corner-radius-large);
+        }
     }
 
     .standard {

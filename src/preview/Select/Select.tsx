@@ -103,15 +103,9 @@ export const SelectPreview = () => {
 
                 <ComboBoxPopover>
                     <SelectList>
-                        <SelectListSection>
-                            <SelectListSectionHeader>
-                                Specials 😋
-                            </SelectListSectionHeader>
+                        <SelectItem label="Strawberry" />
 
-                            <SelectItem label="Strawberry" />
-
-                            <SelectItem label="Mango" />
-                        </SelectListSection>
+                        <SelectItem label="Mango" />
 
                         <SelectItem label="Chocalate" />
 
@@ -131,15 +125,9 @@ export const SelectPreview = () => {
 
                 <ComboBoxPopover>
                     <SelectList>
-                        <SelectListSection>
-                            <SelectListSectionHeader>
-                                Specials 😋
-                            </SelectListSectionHeader>
+                        <SelectItem label="Strawberry" />
 
-                            <SelectItem label="Strawberry" />
-
-                            <SelectItem label="Mango" />
-                        </SelectListSection>
+                        <SelectItem label="Mango" />
 
                         <SelectItem label="Chocalate" />
 
