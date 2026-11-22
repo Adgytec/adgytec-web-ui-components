@@ -8,7 +8,12 @@ import { usePress } from "react-aria/usePress";
 import { Input } from "react-aria-components";
 import { IconButton } from "@/components/Button";
 import { type RefProp, typography } from "@/utils";
-import { EditorInputStyles, EditorStyles, UnsetStyles } from "../../core";
+import {
+    EditorInputStyles,
+    EditorStyles,
+    UnsetStyles,
+    type Variant,
+} from "../../core";
 import { ComboboxContext } from "../ComboBox/context";
 import styles from "./comboBoxTrigger.module.css";
 
@@ -20,6 +25,7 @@ export interface ComboBoxTriggerProps
         RefProp<typeof Input> {
     /** Placeholder text displayed when the combobox input is empty. */
     placeholder?: string;
+    variant?: Variant;
 }
 
 /**
@@ -30,6 +36,7 @@ export const ComboBoxTrigger: React.FC<ComboBoxTriggerProps> = ({
     placeholder,
     dir,
     ref,
+    variant = "filled",
     ...props
 }) => {
     const inputRef = useObjectRef(ref);
@@ -54,6 +61,7 @@ export const ComboBoxTrigger: React.FC<ComboBoxTriggerProps> = ({
         "data-input": true,
         "data-disabled": isDisabled || undefined,
         "data-open": isOpen || undefined,
+        "data-variant": variant,
     };
 
     return (

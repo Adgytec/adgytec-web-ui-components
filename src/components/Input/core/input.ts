@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { ValidationResult } from "react-aria-components";
+import type { Variant } from "./variant";
 
 /**
  * Shared input wrapper props providing accessible labeling, descriptions, and error feedback.
@@ -24,4 +25,6 @@ export interface CoreInputProps {
      * @default false
      */
     showDescriptionOnInvalid?: boolean;
+
+    variant?: Variant;
 }

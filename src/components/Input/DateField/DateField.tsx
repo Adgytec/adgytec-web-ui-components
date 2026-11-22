@@ -44,6 +44,7 @@ export const DateField = <T extends DateValue>({
     errorMessage,
     showDescriptionOnInvalid = false,
     ref,
+    variant = "filled",
     ...props
 }: DateFieldProps<T>) => {
     return (
@@ -72,6 +73,7 @@ export const DateField = <T extends DateValue>({
                                 DateInputStyles
                             )}
                             data-date-input={true}
+                            data-variant={variant}
                         >
                             {(segment) => (
                                 <DateSegment

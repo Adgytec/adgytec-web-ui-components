@@ -51,6 +51,7 @@ export const DatePicker = <T extends DateValue>({
     showDescriptionOnInvalid = false,
     ref,
     weekdayStyle,
+    variant = "filled",
     ...props
 }: DatePickerProps<T>) => {
     return (
@@ -77,6 +78,7 @@ export const DatePicker = <T extends DateValue>({
                             data-trailing={true}
                             data-open={isOpen || undefined}
                             data-date-input={true}
+                            data-variant={variant}
                         >
                             <DateInput
                                 ref={ref}

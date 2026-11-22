@@ -1,5 +1,5 @@
 @layer adgytec.overrides {
     .button[data-invalid] {
-        --md-button-color: var(--group-color);
+        --md-button-color: var(--button-color);
     }
 }

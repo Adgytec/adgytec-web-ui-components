@@ -9,6 +9,7 @@ import {
     EditorStyles,
     TextFieldIconSize,
     UnsetStyles,
+    type Variant,
 } from "../../core";
 import styles from "./selectTrigger.module.css";
 
@@ -17,12 +18,17 @@ import styles from "./selectTrigger.module.css";
  * Extends React Aria's `Button` props (excluding `children`).
  */
 export interface SelectTriggerProps
-    extends Omit<React.ComponentPropsWithRef<typeof Button>, "children"> {}
+    extends Omit<React.ComponentPropsWithRef<typeof Button>, "children"> {
+    variant?: Variant;
+}
 
 /**
  * The clickable input trigger button that displays the selected value and toggles the select dropdown menu.
  */
-export const SelectTrigger: React.FC<SelectTriggerProps> = (props) => {
+export const SelectTrigger: React.FC<SelectTriggerProps> = ({
+    variant = "filled",
+    ...props
+}) => {
     const selectContextVal = useContext(SelectStateContext);
     const invalid = selectContextVal?.displayValidation.isInvalid;
 
@@ -38,6 +44,7 @@ export const SelectTrigger: React.FC<SelectTriggerProps> = (props) => {
             {...props}
             data-invalid={invalid || undefined}
             data-select-trigger={true}
+            data-variant={variant}
         >
             <SelectValue className={clsx(styles["select-value"])}>
                 {({ selectedText, isPlaceholder, defaultChildren }) =>

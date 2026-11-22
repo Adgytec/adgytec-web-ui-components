@@ -15,6 +15,12 @@
             var(--md-sys-state-disabled-content)
         );
 
+        /* filled */
+        --_md-textfield-filled-background: var(
+            --md-textfield-background,
+            var(--md-sys-color-surface-container-highest)
+        );
+
         /* outline color */
         --outline-color-normal: var(--md-sys-color-outline);
         --outline-color-invalid: var(--md-sys-color-error);
@@ -56,15 +62,29 @@
         --outline-color: var(--outline-color-normal);
         --outline-color-focused: transparent;
 
+        --background-color: var(--_md-textfield-filled-background);
+        --button-color: var(--group-color-normal);
+
         --placeholder-color: var(--group-color-normal);
 
         &[data-invalid] {
             --group-color: var(--group-color-invalid);
             --caret-color: var(--caret-color-invalid);
             --outline-color: var(--outline-color-invalid);
+
+            --button-color: var(--group-color-invalid);
+            --background-color: var(--md-sys-color-error-container);
+
+            &:not([data-disabled])[data-variant="filled"] {
+                --button-color: var(--md-sys-color-on-error-container);
+                --editor-infix-color: var(--md-sys-color-on-error-container);
+                --editor-color: var(--md-sys-color-on-error-container);
+            }
         }
 
         &[data-disabled] {
+            --background-color: var(--_md-textfield-filled-background);
+
             --group-color: var(--disabled-color);
 
             --editor-infix-color: var(--disabled-color);
@@ -118,9 +138,6 @@
     .editor {
         border-radius: var(--md-sys-shape-corner-radius-large);
 
-        border: var(--outline-width) solid var(--outline-color);
-        outline: var(--outline-width-focused) solid var(--outline-color-focused);
-
         padding: var(--md-sys-layout-space-16);
 
         display: inline-flex;
@@ -137,6 +154,16 @@
             var(--md-sys-motion-expressive-fast-effects-duration),
             outline-color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration);
+
+        &[data-variant="outlined"] {
+            border: var(--outline-width) solid var(--outline-color);
+            outline: var(--outline-width-focused) solid
+                var(--outline-color-focused);
+        }
+
+        &[data-variant="filled"] {
+            background-color: var(--background-color);
+        }
 
         &[data-input] {
             cursor: text;

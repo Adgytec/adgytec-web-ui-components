@@ -71,6 +71,7 @@ export const Input: React.FC<InputProps> = ({
     defaultValue,
     ref,
     onChange,
+    variant = "filled",
     ...props
 }) => {
     const inputRef = useObjectRef(ref);
@@ -87,6 +88,7 @@ export const Input: React.FC<InputProps> = ({
     const layoutDataAttrs = {
         "data-trailing": trailing ? true : undefined,
         "data-leading": leadingIcon ? true : undefined,
+        "data-variant": variant,
     };
 
     return (

@@ -55,6 +55,7 @@ export const DateRangePicker = <T extends DateValue>({
     showDescriptionOnInvalid = false,
     ref,
     weekdayStyle,
+    variant = "filled",
     ...props
 }: DateRangePickerProps<T>) => {
     return (
@@ -81,6 +82,7 @@ export const DateRangePicker = <T extends DateValue>({
                             data-trailing={true}
                             data-open={isOpen || undefined}
                             data-date-input={true}
+                            data-variant={variant}
                         >
                             <div
                                 className={clsx(

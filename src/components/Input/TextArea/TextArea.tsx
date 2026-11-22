@@ -52,6 +52,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
     defaultValue,
     onChange,
     ref,
+    variant = "filled",
     ...props
 }) => {
     const { currentValue, setValue } = useControllableState({
@@ -91,6 +92,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
                                 typography.bodyLarge
                             )}
                             data-textarea={true}
+                            data-variant={variant}
                         />
 
                         {hasDescription && (
