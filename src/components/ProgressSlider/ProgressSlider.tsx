@@ -17,13 +17,13 @@ const INACTIVE_OFFSET = 8; // px from the thumb center to where the inactive tra
  * (such as the Material You / Android playback scrubber).
  *
  * Combines an interactive range slider with layered animated {@link SineLinear} tracks:
- * - **Wavy Active Track**: When `active={true}` (default) and the slider is enabled, an animated
+ * - **Wavy Active Track**: When `wavy={true}` (default) and the slider is enabled, an animated
  *   sine wave renders along the active track segment with smooth boundary fading (0–5% and 95–100%).
- *   When `active={false}` or disabled, renders a clean flat bar.
+ *   When `wavy={false}` or disabled, renders a clean flat bar.
  * - **Layered Sine Tracks**: Uses coordinate-anchored {@link SineLinear} for both the active and
  *   inactive tracks, ensuring seamless gap alignment and continuous wave oscillations during scrubbing.
- * - **Adaptive Interactive Thumb**: Features an adaptive thumb that expands from a circular dot (`16px`)
- *   into a vertical pill (`4px` × `32px`) when dragged (`[data-dragging]`) or keyboard focused (`[data-focus-visible]`).
+ * - **Slider Thumb**: Integrates the unified {@link SliderThumb} component (with `size="extra-small"`),
+ *   providing standardized drag state styling, high-visibility focus indicator rings, and smooth interaction.
  * - **Accessibility**: Built on [React Aria Components Slider](https://react-spectrum.adobe.com/react-aria/Slider.html),
  *   providing full keyboard navigation, screen reader support, focus ring indicators, and ARIA attributes.
  *
@@ -48,7 +48,7 @@ const INACTIVE_OFFSET = 8; // px from the thumb center to where the inactive tra
  *             maxValue={180}
  *             value={currentTime}
  *             onChange={setCurrentTime}
- *             active={isPlaying}
+ *             wavy={isPlaying}
  *         />
  *     );
  * }

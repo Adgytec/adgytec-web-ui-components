@@ -14,16 +14,16 @@ The `ProgressSlider` component is an expressive progress seeker inspired by mode
 
 - **Animated Wavy Track**: Features an animated sine wave along the active track segment powered by the mathematical [`SineLinear`](../Wave/wave.md) component.
 - **Smooth Edge Transitions**: Wave amplitude dynamically attenuates near track boundaries (0–5% and 95–100%) to provide seamless visual transitions as the thumb approaches minimum or maximum limits.
-- **Adaptive Interactive Thumb**: The slider thumb is styled as a circular dot (`16px`) at rest and smoothly morphs into an expanded vertical pill (`4px` × `32px`) during active dragging or keyboard focus navigation.
-- **Active State Toggling**: The `active` prop allows toggling between animated wave motion (e.g. playing media) and a clean solid flat track (e.g. paused media).
+- **Interactive Slider Thumb**: Uses the unified [`SliderThumb`](../Input/Slider/slider.md) component (`size="extra-small"`), styled with consistent focus indicator rings, state transitions, and responsive dragging feedback.
+- **Wavy State Toggling**: The `wavy` prop allows toggling between animated wave motion (e.g. playing media) and a clean solid flat track (e.g. paused media).
 - **Accessibility by Default**: Leverages React Aria Components `Slider` for comprehensive keyboard navigation (Arrow keys, Page Up/Down, Home, End), screen reader accessibility (`aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-orientation`), and high-visibility focus indicators.
 - **Motion & Accessibility Conscious**: Automatically respects user preferences for reduced motion (`prefers-reduced-motion`) by disabling layout transitions.
 
 > [!NOTE]
-> **Active & Disabled States**:
-> - When `active={true}` (default) and the slider is enabled, the active track renders an animated sine wave.
-> - When `active={false}`, the active track renders as a flat solid rounded bar without wave motion.
-> - When `isDisabled={true}`, wave animations are suppressed and the slider renders flat using disabled surface tokens regardless of the `active` prop value.
+> **Wavy & Disabled States**:
+> - When `wavy={true}` (default) and the slider is enabled, the active track renders an animated sine wave.
+> - When `wavy={false}`, the active track renders as a flat solid rounded bar without wave motion.
+> - When `isDisabled={true}`, wave animations are suppressed and the slider renders flat using disabled surface tokens regardless of the `wavy` prop value.
 
 ---
 
@@ -40,7 +40,7 @@ The `ProgressSlider` component extends [React Aria Components Slider](https://re
 | `minValue`        | `number`                                            | `0`     | The minimum permissible value.                                                                   |
 | `maxValue`        | `number`                                            | `100`   | The maximum permissible value.                                                                   |
 | `step`            | `number`                                            | `1`     | The step increment for value changes.                                                            |
-| `active`          | `boolean`                                           | `true`  | Whether the active progress track renders an animated sine wave (`false` renders a flat bar).    |
+| `wavy`            | `boolean`                                           | `true`  | Whether the active progress track renders an animated sine wave (`false` renders a flat bar).    |
 | `isDisabled`      | `boolean`                                           | `false` | Whether the slider is disabled. Disables user interaction and renders flat disabled track/thumb. |
 | `aria-label`      | `string`                                            | —       | Accessible text label for screen readers.                                                        |
 | `aria-labelledby` | `string`                                            | —       | The ID of an element that labels the slider.                                                     |
@@ -63,7 +63,7 @@ export function BasicProgressSlider() {
 
 ### Media Player Seeker with Play/Pause State
 
-Toggle between wavy and flat track states according to media playback status using the `active` prop:
+Toggle between wavy and flat track states according to media playback status using the `wavy` prop:
 
 ```tsx
 import { useState } from "react";
@@ -81,7 +81,7 @@ export function MediaPlayerScrubber() {
                 maxValue={210}
                 value={currentTime}
                 onChange={setCurrentTime}
-                active={isPlaying}
+                wavy={isPlaying}
             />
             <button type="button" onClick={() => setIsPlaying(!isPlaying)}>
                 {isPlaying ? "Pause" : "Play"}
@@ -93,7 +93,7 @@ export function MediaPlayerScrubber() {
 
 ### Flat Track Mode (No Waves)
 
-Setting `active={false}` renders a solid rounded bar along the active track without wave animations:
+Setting `wavy={false}` renders a solid rounded bar along the active track without wave animations:
 
 ```tsx
 import { ProgressSlider } from "@adgytec/web-ui-components";
@@ -103,7 +103,7 @@ export function FlatProgressSlider() {
         <ProgressSlider
             aria-label="Volume level"
             defaultValue={60}
-            active={false}
+            wavy={false}
         />
     );
 }

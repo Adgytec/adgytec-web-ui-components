@@ -33,7 +33,7 @@ export interface ProgressSliderProps<T extends number>
      *
      * - When `true` (and not disabled): The active track displays an animated sine wave.
      * - When `false`: The active track renders as a solid flat bar (ideal for paused states).
-     * - When `isDisabled={true}`: The track renders flat regardless of `active`.
+     * - When `isDisabled={true}`: The track renders flat regardless of `wavy`.
      *
      * @default true
      */
