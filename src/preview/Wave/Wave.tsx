@@ -28,18 +28,10 @@ export const WavePreview = () => {
             >
                 {/* full wavy ring (defaults) */}
                 <SineCircular />
-                {/* custom size, wave and color */}
-                <SineCircular
-                    size={64}
-                    amplitude={2}
-                    wavelength={20}
-                    strokeWidth={5}
-                    strokeColor="#6750a4"
-                />
                 {/* faster, slower, reversed, frozen */}
-                <SineCircular speed={60} />
-                <SineCircular speed={10} />
-                <SineCircular speed={-30} />
+                <SineCircular speed={300} />
+                <SineCircular speed={100} />
+                <SineCircular speed={-150} />
                 <SineCircular speed={0} />
                 {/* flat ring (no wave) */}
                 <SineCircular amplitude={0} />
