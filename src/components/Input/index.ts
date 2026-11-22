@@ -1,4 +1,5 @@
 export * from "./Checkbox";
+export * from "./core";
 export * from "./DateField";
 export * from "./DatePicker";
 export * from "./Description";
