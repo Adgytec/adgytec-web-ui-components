@@ -20,13 +20,14 @@ export const RenderNumberField = ({
             description="Enter the quantity of items"
             placeholder="0"
             minValue={0}
-            maxValue={100}
+            maxValue={100000}
             value={val}
             onChange={setVal}
             showButton={showButton}
             isInvalid={isInvalid}
             isDisabled={isDisabled}
             showDescriptionOnInvalid={isInvalid}
+            formatOptions={{ style: "decimal" }}
         />
     );
 };

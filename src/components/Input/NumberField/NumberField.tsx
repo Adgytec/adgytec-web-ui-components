@@ -21,6 +21,45 @@ import { InputButton } from "../Input";
 import { Label } from "../Label";
 import type { NumberFieldProps } from "./types";
 
+/**
+ * A number input field allowing users to enter, increment, and decrement numerical values.
+ *
+ * Implements Material Design 3 Text Field guidelines and wraps React Aria Components' {@link AriaNumberField}.
+ * Supports keyboard entry, arrow key stepping, scroll wheel adjustment, min/max limits, step intervals,
+ * internationalized number formatting (currency, percentages, decimals), stepper buttons,
+ * helper descriptions, validation error messages, and filled/outlined visual variants.
+ *
+ * @example
+ * ```tsx
+ * import { NumberField } from '@adgytec/web-ui-components';
+ *
+ * // Basic number field with label and limits
+ * <NumberField
+ *     label="Quantity"
+ *     defaultValue={1}
+ *     minValue={1}
+ *     maxValue={100}
+ * />
+ *
+ * // Currency formatting
+ * <NumberField
+ *     label="Amount"
+ *     defaultValue={49.99}
+ *     formatOptions={{
+ *         style: "currency",
+ *         currency: "USD",
+ *     }}
+ * />
+ *
+ * // Outlined variant without stepper buttons
+ * <NumberField
+ *     variant="outlined"
+ *     label="Age"
+ *     showButton="none"
+ *     minValue={0}
+ * />
+ * ```
+ */
 export const NumberField: React.FC<NumberFieldProps> = ({
     label,
     description,
