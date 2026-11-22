@@ -7,6 +7,7 @@ export * from "./FieldError";
 export * from "./hooks";
 export * from "./Input";
 export * from "./Label";
+export * from "./NumberField";
 export * from "./Radio";
 export * from "./SearchField";
 export * from "./Select";

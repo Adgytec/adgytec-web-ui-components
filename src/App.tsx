@@ -32,6 +32,7 @@ import { ListPreview } from "./preview/List";
 import { LoadingIndicatorPreview } from "./preview/LoadingIndicator";
 import { MenuPreview } from "./preview/Menu";
 import { NavPreview } from "./preview/Navigation";
+import { NumberFieldPreview } from "./preview/NumberField";
 import { ProgressIndicatorPreview } from "./preview/ProgressIndicator";
 import { ProgressSliderPreview } from "./preview/ProgressSlider";
 import { RadioPreview } from "./preview/Radio";
@@ -86,6 +87,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "number-field",
+            label: "Number Field",
+            Component: NumberFieldPreview,
+        },
         {
             id: "badge",
             label: "Badge",
