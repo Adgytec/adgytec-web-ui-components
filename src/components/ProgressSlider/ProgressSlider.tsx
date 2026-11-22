@@ -1,20 +1,16 @@
 // visual inspiration from dux shell media player seeker
 
 import clsx from "clsx";
-import {
-    composeRenderProps,
-    Slider,
-    SliderThumb,
-    SliderTrack,
-} from "react-aria-components";
+import { composeRenderProps, Slider, SliderTrack } from "react-aria-components";
 import { SineLinear, useWidth } from "@/components/Wave";
+import { SliderThumb } from "../Input/Slider/SliderThumb";
 import styles from "./progressSlider.module.css";
 import { type ProgressSliderProps, ProgressSliderSineWaveProps } from "./types";
 
 const INACTIVE_COLOR = "var(--_md-slider-inactive-track-color)";
 const clamp01 = (n: number) => Math.min(1, Math.max(0, n));
 
-const INACTIVE_OFFSET = 12; // px from the thumb center to where the inactive track starts
+const INACTIVE_OFFSET = 8; // px from the thumb center to where the inactive track starts
 
 /**
  * Expressive progress slider component inspired by modern media player seekers
@@ -90,9 +86,7 @@ export const ProgressSlider = <T extends number>({
                 const L = Math.max(1, w - sw);
                 const x = (percentage / 100) * w; // thumb center in px
 
-                const activeEnd = isDisabled
-                    ? clamp01((x - INACTIVE_OFFSET - sw) / L)
-                    : clamp01((x - sw) / L);
+                const activeEnd = clamp01((x - INACTIVE_OFFSET - sw) / L);
                 const inactiveStart = (x + INACTIVE_OFFSET) / L;
 
                 return (
@@ -117,7 +111,12 @@ export const ProgressSlider = <T extends number>({
                             </>
                         )}
 
-                        <SliderThumb className={clsx(styles["thumb"])} />
+                        <SliderThumb
+                            orientation="horizontal"
+                            size="extra-small"
+                            outputRenderer={null}
+                            className={clsx(styles["thumb"])}
+                        />
                     </SliderTrack>
                 );
             }}

@@ -21,7 +21,7 @@ export const ProgressSliderPreview = () => {
             </div>
 
             <ProgressSlider active={active} value={value} onChange={setValue} />
-
+            <br />
             <ProgressSlider value={value} onChange={setValue} isDisabled />
         </div>
     );
