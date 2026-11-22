@@ -55,12 +55,12 @@ const INACTIVE_OFFSET = 8; // px from the thumb center to where the inactive tra
  * ```
  */
 export const ProgressSlider = <T extends number>({
-    active = true,
+    wavy = true,
     isDisabled,
     ...props
 }: ProgressSliderProps<T>) => {
     const { w, ref } = useWidth();
-    const wavy = !isDisabled && active;
+    const useWaves = !isDisabled && wavy;
 
     return (
         <Slider
@@ -73,7 +73,7 @@ export const ProgressSlider = <T extends number>({
             {({ state }) => {
                 const percentage = state.getThumbPercent(0) * 100;
 
-                const wave = ProgressSliderSineWaveProps(wavy, percentage);
+                const wave = ProgressSliderSineWaveProps(useWaves, percentage);
                 const sw = wave.strokeWidth ?? 4;
                 const activeProps = { ...wave, width: w };
                 const inactiveProps = {

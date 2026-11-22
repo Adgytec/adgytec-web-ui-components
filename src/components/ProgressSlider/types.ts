@@ -37,7 +37,7 @@ export interface ProgressSliderProps<T extends number>
      *
      * @default true
      */
-    active?: boolean;
+    wavy?: boolean;
 }
 
 const BASE_AMPLITUDE = 3;

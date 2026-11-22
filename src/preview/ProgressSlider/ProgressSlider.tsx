@@ -5,22 +5,22 @@ import { ProgressSlider } from "@/components/ProgressSlider";
 export const ProgressSliderPreview = () => {
     const [value, setValue] = useState(33);
 
-    const [active, setActive] = useState(true);
+    const [wavy, setWavy] = useState(true);
 
     return (
         <div className="items-grid">
             <div className="items">
                 <ToggleButton
                     shape="square"
-                    isSelected={active}
-                    onChange={setActive}
+                    isSelected={wavy}
+                    onChange={setWavy}
                     size="extra-large"
                 >
-                    Active
+                    Wavy
                 </ToggleButton>
             </div>
 
-            <ProgressSlider active={active} value={value} onChange={setValue} />
+            <ProgressSlider wavy={wavy} value={value} onChange={setValue} />
             <br />
             <ProgressSlider value={value} onChange={setValue} isDisabled />
         </div>
