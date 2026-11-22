@@ -7,9 +7,9 @@ import { typography } from "@/utils";
 import {
     EditorInputStyles,
     EditorStyles,
+    type InputVariant,
     TextFieldIconSize,
     UnsetStyles,
-    type Variant,
 } from "../../core";
 import styles from "./selectTrigger.module.css";
 
@@ -24,7 +24,7 @@ export interface SelectTriggerProps
      *
      * @default "filled"
      */
-    variant?: Variant;
+    variant?: InputVariant;
 }
 
 /**

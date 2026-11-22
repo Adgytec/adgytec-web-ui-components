@@ -1,5 +1,4 @@
-import type { Variant } from "@/components/Input/core";
-import { DateField } from "../../components/Input";
+import { DateField, type InputVariant } from "../../components/Input";
 
 export const RenderDateField = ({
     isInvalid,
@@ -8,7 +7,7 @@ export const RenderDateField = ({
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
-    variant?: Variant;
+    variant?: InputVariant;
 }) => {
     return (
         <DateField

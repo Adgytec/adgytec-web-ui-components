@@ -1,11 +1,11 @@
 import clsx from "clsx";
-import type { Variant } from "@/components/Input/core";
 import { typography } from "@/utils";
 import { Divider } from "../../components/Divider";
 import {
     ComboBox,
     ComboBoxPopover,
     ComboBoxTrigger,
+    type InputVariant,
     Select,
     SelectItem,
     SelectList,
@@ -20,7 +20,7 @@ export const RenderSelect = ({
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
-    variant?: Variant;
+    variant?: InputVariant;
 }) => {
     return (
         <Select
@@ -53,7 +53,7 @@ export const RenderComboBox = ({
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
-    variant?: Variant;
+    variant?: InputVariant;
 }) => {
     return (
         <ComboBox

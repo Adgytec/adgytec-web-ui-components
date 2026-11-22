@@ -1,5 +1,4 @@
-import type { Variant } from "@/components/Input/core";
-import { TimeField } from "../../components/Input";
+import { type InputVariant, TimeField } from "../../components/Input";
 
 export const RenderTimeField = ({
     isInvalid,
@@ -8,7 +7,7 @@ export const RenderTimeField = ({
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
-    variant?: Variant;
+    variant?: InputVariant;
 }) => {
     return (
         <TimeField

@@ -11,8 +11,8 @@ import { type RefProp, typography } from "@/utils";
 import {
     EditorInputStyles,
     EditorStyles,
+    type InputVariant,
     UnsetStyles,
-    type Variant,
 } from "../../core";
 import { ComboboxContext } from "../ComboBox/context";
 import styles from "./comboBoxTrigger.module.css";
@@ -31,7 +31,7 @@ export interface ComboBoxTriggerProps
      *
      * @default "filled"
      */
-    variant?: Variant;
+    variant?: InputVariant;
 }
 
 /**

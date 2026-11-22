@@ -4,4 +4,4 @@
  * - `filled`: Renders a solid container background (default).
  * - `outlined`: Renders a bordered container with a transparent background.
  */
-export type Variant = "filled" | "outlined";
+export type InputVariant = "filled" | "outlined";

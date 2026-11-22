@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import type { ValidationResult } from "react-aria-components";
-import type { Variant } from "./variant";
+import type { InputVariant } from "./variant";
 
 /**
  * Shared input wrapper props providing accessible labeling, descriptions, and error feedback.
@@ -31,5 +31,5 @@ export interface CoreInputProps {
      *
      * @default "filled"
      */
-    variant?: Variant;
+    variant?: InputVariant;
 }

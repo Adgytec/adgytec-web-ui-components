@@ -1,7 +1,6 @@
 import { Armchair, Mail } from "lucide-react";
 import { useState } from "react";
-import type { Variant } from "@/components/Input/core";
-import { Input, InputButton } from "../../components/Input";
+import { Input, InputButton, type InputVariant } from "../../components/Input";
 
 export const RenderInput = ({
     isInvalid,
@@ -10,7 +9,7 @@ export const RenderInput = ({
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
-    variant?: Variant;
+    variant?: InputVariant;
 }) => {
     const [val, setVal] = useState("");
     return (

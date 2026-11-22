@@ -1,5 +1,4 @@
-import type { Variant } from "@/components/Input/core";
-import { DateRangePicker } from "../../components/Input";
+import { DateRangePicker, type InputVariant } from "../../components/Input";
 
 export const RenderDateRangePicker = ({
     isInvalid,
@@ -8,7 +7,7 @@ export const RenderDateRangePicker = ({
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
-    variant?: Variant;
+    variant?: InputVariant;
 }) => {
     return (
         <DateRangePicker

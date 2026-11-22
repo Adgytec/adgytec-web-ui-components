@@ -1,6 +1,5 @@
 import { CalendarDate } from "@internationalized/date";
-import type { Variant } from "@/components/Input/core";
-import { DatePicker } from "../../components/Input";
+import { DatePicker, type InputVariant } from "../../components/Input";
 
 export const RenderDatePicker = ({
     isInvalid,
@@ -9,7 +8,7 @@ export const RenderDatePicker = ({
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
-    variant?: Variant;
+    variant?: InputVariant;
 }) => {
     const minValue = new CalendarDate(1998, 12, 31);
     const maxValue = new CalendarDate(1999, 2, 1);

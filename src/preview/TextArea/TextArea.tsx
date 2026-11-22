@@ -1,6 +1,5 @@
 import { useState } from "react";
-import type { Variant } from "@/components/Input/core";
-import { TextArea } from "../../components/Input";
+import { type InputVariant, TextArea } from "../../components/Input";
 
 export const RenderTextArea = ({
     isInvalid,
@@ -9,7 +8,7 @@ export const RenderTextArea = ({
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
-    variant?: Variant;
+    variant?: InputVariant;
 }) => {
     const [val, setVal] = useState("");
     return (

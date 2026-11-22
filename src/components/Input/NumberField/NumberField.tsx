@@ -92,7 +92,12 @@ export const NumberField: React.FC<NumberFieldProps> = ({
                             data-input={true}
                         >
                             {showDecrement && (
-                                <InputButton icon={Minus} slot="decrement" />
+                                <InputButton
+                                    icon={Minus}
+                                    slot="decrement"
+                                    isDisabled={isDisabled}
+                                    data-invalid={isInvalid || undefined}
+                                />
                             )}
 
                             <AriaInput
@@ -108,7 +113,12 @@ export const NumberField: React.FC<NumberFieldProps> = ({
                             />
 
                             {showIncrement && (
-                                <InputButton icon={Plus} slot="increment" />
+                                <InputButton
+                                    icon={Plus}
+                                    slot="increment"
+                                    isDisabled={isDisabled}
+                                    data-invalid={isInvalid || undefined}
+                                />
                             )}
                         </span>
 
