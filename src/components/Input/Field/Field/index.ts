@@ -4,5 +4,6 @@ export * from "./Description";
 export * from "./FieldButton";
 export * from "./FieldError";
 export * from "./FieldGroup";
+export * from "./FieldIcon";
 export * from "./hooks";
 export * from "./Label";
