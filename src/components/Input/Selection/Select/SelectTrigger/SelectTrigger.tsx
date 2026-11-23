@@ -1,16 +1,18 @@
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
 import { useContext } from "react";
-import { Button, SelectStateContext, SelectValue } from "react-aria-components";
-import { Icon } from "@/components/Icon";
-import { typography } from "@/utils";
 import {
-    EditorInputStyles,
-    EditorStyles,
-    type InputVariant,
-    TextFieldIconSize,
-    UnsetStyles,
-} from "../../../core";
+    Button,
+    composeRenderProps,
+    SelectStateContext,
+    SelectValue,
+} from "react-aria-components";
+import {
+    BaseFieldStyles,
+    type CoreFieldProps,
+    Field,
+    FieldIcon,
+} from "@/components/Input/Field";
 import styles from "./selectTrigger.module.css";
 
 /**
@@ -18,20 +20,14 @@ import styles from "./selectTrigger.module.css";
  * Extends React Aria's `Button` props (excluding `children`).
  */
 export interface SelectTriggerProps
-    extends Omit<React.ComponentPropsWithRef<typeof Button>, "children"> {
-    /**
-     * Visual styling variant for the select trigger container.
-     *
-     * @default "filled"
-     */
-    variant?: InputVariant;
-}
+    extends Omit<React.ComponentPropsWithRef<typeof Button>, "children">,
+        Omit<CoreFieldProps, "leading" | "trailing"> {}
 
 /**
  * The clickable input trigger button that displays the selected value and toggles the select dropdown menu.
  */
 export const SelectTrigger: React.FC<SelectTriggerProps> = ({
-    variant = "filled",
+    variant,
     ...props
 }) => {
     const selectContextVal = useContext(SelectStateContext);
@@ -39,25 +35,39 @@ export const SelectTrigger: React.FC<SelectTriggerProps> = ({
 
     return (
         <Button
-            className={clsx(
-                UnsetStyles,
-                EditorStyles,
-                EditorInputStyles,
-                typography.bodyLarge,
-                styles["trigger"]
-            )}
             {...props}
-            data-invalid={invalid || undefined}
-            data-select-trigger={true}
-            data-variant={variant}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(BaseFieldStyles, styles["trigger"], className)
+            )}
         >
-            <SelectValue className={clsx(styles["select-value"])}>
-                {({ selectedText, isPlaceholder, defaultChildren }) =>
-                    isPlaceholder ? defaultChildren : selectedText
-                }
-            </SelectValue>
-
-            <Icon icon={ChevronDown} size={TextFieldIconSize} />
+            {({ isDisabled, isFocusVisible, isPressed }) => {
+                return (
+                    <Field
+                        variant={variant}
+                        isDisabled={isDisabled}
+                        isInvalid={invalid}
+                        trailing={
+                            <FieldIcon
+                                className={clsx(styles["icon"])}
+                                icon={ChevronDown}
+                            />
+                        }
+                        data-focused-override={
+                            isFocusVisible || isPressed || undefined
+                        }
+                    >
+                        <SelectValue className={clsx(styles["select-value"])}>
+                            {({
+                                selectedText,
+                                isPlaceholder,
+                                defaultChildren,
+                            }) =>
+                                isPlaceholder ? defaultChildren : selectedText
+                            }
+                        </SelectValue>
+                    </Field>
+                );
+            }}
         </Button>
     );
 };

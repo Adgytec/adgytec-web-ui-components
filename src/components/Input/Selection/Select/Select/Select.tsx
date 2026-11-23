@@ -1,10 +1,8 @@
-import clsx from "clsx";
 import {
     Select as AriaSelect,
     composeRenderProps,
 } from "react-aria-components";
-import { Colors, InputGroupStyles, SupportingTextStyles } from "../../../core";
-import { Description, FieldError, Label } from "../../../Field";
+import { FieldGroup } from "@/components/Input/Field/Field/FieldGroup/FieldGroup";
 import type { SelectProps } from "./types";
 
 /**
@@ -42,38 +40,20 @@ export const Select = <
     label,
     description,
     errorMessage,
-    showDescriptionOnInvalid = false,
     ...props
 }: SelectProps<T, M>) => {
     return (
-        <AriaSelect
-            {...props}
-            className={composeRenderProps(props.className, (className) =>
-                clsx(Colors, InputGroupStyles, className)
-            )}
-        >
-            {composeRenderProps(props.children, (children, renderProps) => {
-                const { isInvalid } = renderProps;
-                const showDescription =
-                    description &&
-                    (!isInvalid || (isInvalid && showDescriptionOnInvalid));
-
+        <AriaSelect {...props}>
+            {composeRenderProps(props.children, (children) => {
                 return (
-                    <>
-                        {label && <Label>{label}</Label>}
-
+                    <FieldGroup
+                        label={label}
+                        description={description}
+                        errorMessage={errorMessage}
+                        hasTrailing={true}
+                    >
                         {children}
-
-                        {showDescription && (
-                            <Description className={clsx(SupportingTextStyles)}>
-                                {description}
-                            </Description>
-                        )}
-
-                        <FieldError className={clsx(SupportingTextStyles)}>
-                            {errorMessage}
-                        </FieldError>
-                    </>
+                    </FieldGroup>
                 );
             })}
         </AriaSelect>

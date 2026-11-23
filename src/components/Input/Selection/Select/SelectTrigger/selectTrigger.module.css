@@ -9,8 +9,7 @@
             --rotate: 180deg;
         }
 
-        > svg {
-            color: var(--group-color);
+        svg {
             rotate: var(--rotate);
             transition: rotate var(--md-sys-motion-expressive-fast-spatial)
                 var(--md-sys-motion-expressive-fast-spatial-duration);
@@ -18,19 +17,6 @@
             @media (prefers-reduced-motion) {
                 transition: none;
             }
-        }
-
-        &[data-pressed] {
-            --outline-color: var(--outline-color-focused-normal);
-            --outline-color-focused: var(--outline-color);
-
-            &[data-invalid] {
-                --outline-color: var(--outline-color-invalid);
-            }
-        }
-
-        &[data-disabled] {
-            cursor: default;
         }
     }
 
