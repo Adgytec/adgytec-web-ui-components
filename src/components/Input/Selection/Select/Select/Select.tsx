@@ -4,9 +4,7 @@ import {
     composeRenderProps,
 } from "react-aria-components";
 import { Colors, InputGroupStyles, SupportingTextStyles } from "../../../core";
-import { Description } from "../../../Description";
-import { FieldError } from "../../../FieldError";
-import { Label } from "../../../Label";
+import { Description, FieldError, Label } from "../../../Field";
 import type { SelectProps } from "./types";
 
 /**

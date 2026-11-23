@@ -9,9 +9,7 @@ import {
 import { Tag } from "@/components/Tag";
 import { typography } from "@/utils";
 import { Colors, InputGroupStyles, SupportingTextStyles } from "../../../core";
-import { Description } from "../../../Description";
-import { FieldError } from "../../../FieldError";
-import { Label } from "../../../Label";
+import { Description, FieldError, Label } from "../../../Field";
 import styles from "./comboBox.module.css";
 import { ComboboxContext } from "./context";
 import type { ComboBoxProps } from "./types";

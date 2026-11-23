@@ -21,10 +21,8 @@ import {
     SupportingTextStyles,
     UnsetStyles,
 } from "../../core";
-import { Description } from "../../Description";
-import { FieldError } from "../../FieldError";
+import { Description, FieldError, Label } from "../../Field";
 import { InputButton } from "../../Input";
-import { Label } from "../../Label";
 import { DatePickerGroupStyles, DatePickerPopoverStyles } from "../core";
 import type { DatePickerProps } from "./types";
 

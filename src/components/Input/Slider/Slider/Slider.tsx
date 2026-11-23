@@ -5,7 +5,7 @@ import {
     SliderTrack,
 } from "react-aria-components";
 import { Icon } from "@/components/Icon";
-import { Label } from "../../Label";
+import { Label } from "../../Field";
 import {
     SliderColors,
     SliderSizeStyles,

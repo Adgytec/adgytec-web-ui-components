@@ -1,32 +1,36 @@
 import clsx from "clsx";
 import { type RefProp, typography } from "@/utils";
-import { CharacterCountStyles } from "../core";
+import { CharacterCountStyles } from "../../../core";
 
 /**
  * Props for the {@link CharacterCount} component.
  */
 export interface CharacterCountProps extends RefProp<"span"> {
-    /** Current character count. */
+    /**
+     * Current character length of the input field.
+     */
     count: number;
-    /** Optional maximum allowed character limit. */
+
+    /**
+     * Maximum character limit allocated for the field.
+     */
     maxLength?: number;
 }
 
-/**
- * Displays the current character count and optional maximum character limit below text inputs.
- */
 export const CharacterCount: React.FC<CharacterCountProps> = ({
     count,
     maxLength,
+    ref,
     ...props
 }) => {
     return (
         <span
+            ref={ref}
             className={clsx(CharacterCountStyles, typography.labelMedium)}
             {...props}
         >
             {count}
-            {maxLength !== undefined && `/${maxLength}`}
+            {maxLength ? `/${maxLength}` : ""}
         </span>
     );
 };

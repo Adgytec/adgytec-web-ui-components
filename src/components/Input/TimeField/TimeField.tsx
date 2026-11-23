@@ -17,9 +17,7 @@ import {
     SupportingTextStyles,
     UnsetStyles,
 } from "../core";
-import { Description } from "../Description";
-import { FieldError } from "../FieldError";
-import { Label } from "../Label";
+import { Description, FieldError, Label } from "../Field";
 import type { TimeFieldProps } from "./types";
 
 /**

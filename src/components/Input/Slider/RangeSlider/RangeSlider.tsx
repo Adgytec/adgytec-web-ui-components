@@ -4,7 +4,7 @@ import {
     composeRenderProps,
     SliderTrack,
 } from "react-aria-components";
-import { Label } from "../../Label";
+import { Label } from "../../Field";
 import {
     ActiveTrackStyles,
     InactiveTrackStyles,

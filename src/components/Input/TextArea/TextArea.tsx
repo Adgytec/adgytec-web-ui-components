@@ -5,7 +5,6 @@ import {
     composeRenderProps,
 } from "react-aria-components";
 import { typography } from "@/utils";
-import { CharacterCount } from "../CharacterCount";
 import {
     Colors,
     EditorInputStyles,
@@ -14,10 +13,13 @@ import {
     SupportingTextStyles,
     UnsetStyles,
 } from "../core";
-import { Description } from "../Description";
-import { FieldError } from "../FieldError";
-import { useControllableState } from "../hooks";
-import { Label } from "../Label";
+import {
+    CharacterCount,
+    Description,
+    FieldError,
+    Label,
+    useControllableState,
+} from "../Field";
 import type { TextAreaProps } from "./types";
 
 /**

@@ -3,9 +3,7 @@ import {
     CheckboxGroup as AriaCheckboxGroup,
     composeRenderProps,
 } from "react-aria-components";
-import { Description } from "../../../Description";
-import { FieldError } from "../../../FieldError";
-import { Label } from "../../../Label";
+import { Description, FieldError, Label } from "../../../Field";
 import { CheckboxGroupContext } from "../core";
 import styles from "./checkboxGroup.module.css";
 import type { CheckboxGroupProps } from "./types";
