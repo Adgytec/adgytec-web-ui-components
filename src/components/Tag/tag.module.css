@@ -46,6 +46,8 @@
             var(--md-sys-color-on-secondary-container)
         );
 
+        --_md-chip-shape: var(--md-sys-shape-corner-radius-small);
+
         /* derived */
         --_background: var(--_md-chip-background-color);
         --_label-color: var(--_md-chip-label-color);
@@ -67,13 +69,15 @@
 
         padding-inline: var(--md-sys-layout-space-12);
         padding-block: calc(5 * var(--dp, 1px));
-        border-radius: var(--md-sys-shape-corner-radius-small);
+        border-radius: var(--_md-chip-shape);
 
         border: calc(1 * var(--dp, 1px)) solid
             var(--md-sys-color-outline-variant);
         outline: none;
 
         transition:
+            border-radius var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration),
             background-color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration),
             color var(--md-sys-motion-expressive-fast-effects)
@@ -109,6 +113,7 @@
             --_icon-color: var(--_md-chip-selected-icon-color);
 
             border-color: transparent;
+            --_md-chip-shape: var(--md-sys-shape-corner-radius-large);
         }
 
         &[data-hovered] {
@@ -121,6 +126,7 @@
 
         &[data-pressed] {
             --_state-layer-opacity: var(--md-sys-state-pressed);
+            --_md-chip-shape: var(--md-sys-shape-corner-radius-extra-small);
         }
 
         &[data-disabled] {
