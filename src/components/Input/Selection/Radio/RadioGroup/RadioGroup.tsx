@@ -29,7 +29,6 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
     label,
     description,
     errorMessage,
-    showDescriptionOnInvalid = false,
     children,
     labelPlacement,
     ...props
@@ -44,21 +43,19 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
                 data-radio-group
             >
                 {({ isInvalid }) => {
-                    const showDescription =
-                        description &&
-                        (!isInvalid || (isInvalid && showDescriptionOnInvalid));
-
                     return (
                         <>
                             {label && <Label>{label}</Label>}
 
                             {children}
 
-                            {showDescription && (
-                                <Description>{description}</Description>
+                            {isInvalid ? (
+                                <FieldError>{errorMessage}</FieldError>
+                            ) : (
+                                description && (
+                                    <Description>{description}</Description>
+                                )
                             )}
-
-                            <FieldError>{errorMessage}</FieldError>
                         </>
                     );
                 }}
