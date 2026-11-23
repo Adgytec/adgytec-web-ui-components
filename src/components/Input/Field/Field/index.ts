@@ -1,6 +1,7 @@
 export * from "./CharacterCount";
 export * from "./core";
 export * from "./Description";
+export * from "./Field";
 export * from "./FieldButton";
 export * from "./FieldError";
 export * from "./FieldGroup";

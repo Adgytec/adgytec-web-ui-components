@@ -1,0 +1,172 @@
+@layer adgytec.comps {
+    .field {
+        --_md-field-color: var(
+            --md-field-color,
+            var(--md-sys-color-on-surface)
+        );
+        --_md-field-infix-color: var(
+            --md-field-infix-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+
+        --_md-field-button-color: var(--_md-field-infix-color);
+
+        --padding-inline-start-core: var(--md-sys-layout-space-16);
+        --padding-inline-end-core: var(--md-sys-layout-space-16);
+        --padding-block-core: var(--md-sys-layout-space-16);
+
+        --_caret-color: var(--md-sys-color-primary);
+        --_color: var(--_md-field-infix-color);
+
+        padding-inline: var(--padding-inline-start) var(--padding-inline-end);
+        padding-block: var(--padding-block);
+        border-radius: var(--md-sys-shape-corner-radius-large);
+
+        display: inline-flex;
+        align-items: center;
+        gap: var(--md-sys-layout-space-16);
+
+        overflow: auto;
+        scrollbar-width: none;
+
+        position: relative;
+
+        color: var(--_color);
+
+        &[data-disabled] {
+            --_disabled-color: rgb(
+                from var(--md-sys-color-on-surface) r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            --_color: var(--_disabled-color);
+        }
+
+        &[data-trailing] {
+            --padding-inline-end-core: var(--md-sys-layout-space-12);
+            --padding-block-core: var(--md-sys-layout-space-8);
+        }
+
+        &[data-leading] {
+            --padding-inline-start-core: var(--md-sys-layout-space-12);
+            --padding-block-core: var(--md-sys-layout-space-8);
+        }
+    }
+
+    .filled {
+        --_md-field-background-color: var(
+            --md-field-background-color,
+            var(--md-sys-color-surface-container-highest)
+        );
+
+        --padding-inline-start: var(--padding-inline-start-core);
+        --padding-inline-end: var(--padding-inline-end-core);
+        --padding-block: var(--padding-block-core);
+
+        --_background-color: var(--_md-field-background-color);
+        --_state-color: var(--md-sys-color-on-surface);
+        --_state-opacity: 0;
+
+        background-color: var(--_background-color);
+
+        &[data-invalid] {
+            --_background-color: var(--md-sys-color-error-container);
+            --_caret-color: var(--md-sys-color-on-error-container);
+            --_md-field-button-color: var(--md-sys-color-on-error-container);
+        }
+
+        &[data-hovered] {
+            --_state-opacity: var(--md-sys-state-hover);
+        }
+
+        &[data-focus-visible] {
+            --_state-opacity: var(--md-sys-state-focus);
+        }
+
+        &[data-disabled] {
+            --_background-color: rgb(
+                from var() r g b /
+                var(--md-sys-state-disabled-container)
+            );
+        }
+    }
+
+    /* state layer */
+    .filled::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+
+        background-color: var(--_state-color);
+        opacity: var(--_state-opacity);
+
+        transition: opacity var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+    }
+
+    .outlined {
+        --_md-field-focused-outline-color: var(
+            --md-field-focused-outline-color,
+            var(--md-sys-color-primary)
+        );
+
+        --_1dp: calc(1 * var(--dp, 1px));
+
+        --padding-inline-start: calc(
+            var(--padding-inline-start-core) -
+            var(--_1dp)
+        );
+        --padding-inline-end: calc(
+            var(--padding-inline-end-core) -
+            var(--_1dp)
+        );
+        --padding-block: calc(var(--padding-block-core) - var(--_1dp));
+
+        --outline-width: calc(1 * var(--dp, 1px));
+        --outline-width-focused: calc(2 * var(--dp, 1px));
+
+        --_outline-color: var(--md-sys-color-outline);
+        --_outline-color-focus: transparent;
+
+        border: var(--outline-width) solid var(--_outline-color);
+        outline: var(--outline-width-focused) solid var(--_outline-color-focus);
+
+        transition:
+            border-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration),
+            outline-color var(--md-sys-motion-expressive-fast-effects)
+            var(--md-sys-motion-expressive-fast-effects-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
+        }
+
+        &[data-invalid] {
+            --_outline-color: var(--md-sys-color-error);
+            --_caret-color: var(--md-sys-color-error);
+            --_md-field-button-color: var(--md-sys-color-error);
+        }
+
+        &[data-hovered] {
+            --_outline-color: var(--md-sys-color-on-surface);
+
+            &[data-invalid] {
+                --_outline-color: var(--md-sys-color-on-error-container);
+            }
+        }
+
+        &[data-focus-visible] {
+            --_outline-color: var(--_md-field-focused-outline-color);
+            --_outline-color-focus: var(--_outline-color);
+
+            &[data-invalid] {
+                --_outline-color: var(--md-sys-color-error);
+            }
+        }
+    }
+}

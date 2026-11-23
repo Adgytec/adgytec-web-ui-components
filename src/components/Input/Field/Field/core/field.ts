@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
+import { cloneElement, isValidElement } from "react";
 import type { ValidationResult } from "react-aria-components";
+import { FieldButton } from "../FieldButton/FieldButton";
 import type { FieldVariant } from "./variant";
 
 export interface CoreFieldProps {
@@ -16,4 +18,35 @@ export interface CoreFieldProps {
     errorMessage?: ReactNode | ((validation: ValidationResult) => ReactNode);
 
     variant?: FieldVariant;
+}
+
+type FieldButtonElementProps = React.ComponentProps<typeof FieldButton> & {
+    "data-invalid"?: boolean;
+};
+
+/**
+ * Injects input validation and disabled states into child {@link InputButton} elements.
+ *
+ * @param params - Configuration containing `node`, `isInvalid`, and `isDisabled`.
+ * @returns Cloned element with attached state data attributes, or the original node if not an InputButton.
+ */
+export function addStateAttrsToFieldButton({
+    node,
+    isInvalid,
+    isDisabled,
+}: {
+    node: ReactNode;
+    isInvalid: boolean;
+    isDisabled: boolean;
+}) {
+    if (!isValidElement<FieldButtonElementProps>(node)) {
+        return node;
+    }
+
+    if (node.type !== FieldButton) return node;
+
+    return cloneElement(node, {
+        "data-invalid": isInvalid || undefined,
+        isDisabled,
+    });
 }
