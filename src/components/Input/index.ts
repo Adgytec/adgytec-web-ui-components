@@ -3,7 +3,6 @@ export * from "./DateField";
 export * from "./DatePicker";
 export * from "./Field";
 export * from "./Input";
-export * from "./NumberField";
 export * from "./SearchField";
 export * from "./Selection";
 export * from "./Slider";

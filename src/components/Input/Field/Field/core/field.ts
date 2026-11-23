@@ -2,9 +2,10 @@ import type { ReactNode } from "react";
 import { cloneElement, isValidElement } from "react";
 import type { ValidationResult } from "react-aria-components";
 import { FieldButton } from "../FieldButton/FieldButton";
+import styles from "./field.module.css";
 import type { FieldVariant } from "./variant";
 
-export interface CoreFieldProps {
+export interface CoreFieldGroupProps {
     /** The accessible label displayed above or alongside the input control. */
     label?: ReactNode;
 
@@ -16,6 +17,12 @@ export interface CoreFieldProps {
      * Can be static content or a render function receiving the current {@link ValidationResult}.
      */
     errorMessage?: ReactNode | ((validation: ValidationResult) => ReactNode);
+}
+
+export interface CoreFieldProps {
+    leading?: ReactNode;
+
+    trailing?: ReactNode;
 
     variant?: FieldVariant;
 }
@@ -50,3 +57,5 @@ export function addStateAttrsToFieldButton({
         isDisabled,
     });
 }
+
+export const UnsetFieldStyles = styles["unset"];

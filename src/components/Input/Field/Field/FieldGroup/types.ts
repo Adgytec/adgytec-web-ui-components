@@ -1,9 +1,9 @@
 import type { Group } from "react-aria-components";
-import type { CoreFieldProps } from "../core";
+import type { CoreFieldGroupProps } from "../core";
 
 export interface FieldGroupProps
     extends React.ComponentPropsWithRef<typeof Group>,
-        Omit<CoreFieldProps, "variant"> {
+        Omit<CoreFieldGroupProps, "variant"> {
     hasLeading?: boolean;
     hasTrailing?: boolean;
 }

@@ -34,6 +34,7 @@
         color: var(--_color);
 
         &[data-disabled] {
+            cursor: default;
             --_disabled-color: rgb(
                 from var(--md-sys-color-on-surface) r g b /
                 var(--md-sys-state-disabled-content)
@@ -78,13 +79,13 @@
             --_state-opacity: var(--md-sys-state-hover);
         }
 
-        &[data-focus-visible] {
+        &[data-focus-within] {
             --_state-opacity: var(--md-sys-state-focus);
         }
 
         &[data-disabled] {
             --_background-color: rgb(
-                from var() r g b /
+                from var(--md-sys-color-on-surface) r g b /
                 var(--md-sys-state-disabled-container)
             );
         }
@@ -97,6 +98,7 @@
         position: absolute;
         inset: 0;
         border-radius: inherit;
+        pointer-events: none;
 
         background-color: var(--_state-color);
         opacity: var(--_state-opacity);
@@ -160,13 +162,17 @@
             }
         }
 
-        &[data-focus-visible] {
+        &[data-focus-within] {
             --_outline-color: var(--_md-field-focused-outline-color);
             --_outline-color-focus: var(--_outline-color);
 
             &[data-invalid] {
                 --_outline-color: var(--md-sys-color-error);
             }
+        }
+
+        &[data-disabled] {
+            --_outline-color: var(--_disabled-color);
         }
     }
 }

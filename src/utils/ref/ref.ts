@@ -30,9 +30,6 @@ import type { ComponentRef, ElementType, Ref } from "react";
  * }
  * ```
  */
-export type RefProp<T extends ElementType> = {
-    /**
-     * Optional ref targeting the underlying DOM element or component instance.
-     */
-    ref?: Ref<ComponentRef<T>>;
+export type RefProp<T extends ElementType, K extends string = "ref"> = {
+    [P in K]?: Ref<ComponentRef<T>>;
 };
