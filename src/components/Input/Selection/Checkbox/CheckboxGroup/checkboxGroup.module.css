@@ -1,0 +1,14 @@
+@layer adgytec.comps {
+    .checkbox-group {
+        display: grid;
+        gap: var(--md-sys-layout-space-16);
+
+        &[data-disabled] {
+            color: rgb(
+                from currentcolor r g b /
+                var(--md-sys-state-disabled-content)
+            );
+            cursor: default;
+        }
+    }
+}
