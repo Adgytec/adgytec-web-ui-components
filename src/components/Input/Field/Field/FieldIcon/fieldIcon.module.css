@@ -4,8 +4,7 @@
         align-items: center;
         justify-content: center;
 
-        /* size similar to icon button(small) for easier handling of padding with FieldButton */
-        inline-size: var(--md-sys-layout-space-40);
-        aspect-ratio: 1 / 1;
+        /* size similar to icon button(small) for easier handling of padding-block with FieldButton */
+        block-size: var(--md-sys-layout-space-40);
     }
 }
