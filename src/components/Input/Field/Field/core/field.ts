@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { PointerEvent, ReactNode } from "react";
 import { cloneElement, isValidElement } from "react";
 import type { ValidationResult } from "react-aria-components";
 import { FieldButton } from "../FieldButton/FieldButton";
@@ -58,4 +58,20 @@ export function addStateAttrsToFieldButton({
     });
 }
 
-export const UnsetFieldStyles = styles["unset"];
+export const BaseFieldStyles = styles["base"];
+
+export function focusOnPointerDown(ref: React.RefObject<HTMLElement | null>) {
+    return (e: PointerEvent<HTMLElement>) => {
+        const target = e.target as HTMLElement;
+
+        if (
+            ref.current?.contains(target) ||
+            target.closest("button, a, [role='button']")
+        ) {
+            return;
+        }
+
+        e.preventDefault();
+        ref.current?.focus();
+    };
+}

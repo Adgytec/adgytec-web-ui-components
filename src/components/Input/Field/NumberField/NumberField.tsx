@@ -1,6 +1,7 @@
 import clsx from "clsx";
+import { useObjectRef } from "react-aria";
 import { NumberField as AriaNumberField, Input } from "react-aria-components";
-import { Field, UnsetFieldStyles } from "../Field";
+import { BaseFieldStyles, Field, focusOnPointerDown } from "../Field";
 import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
 import type { NumberFieldProps } from "./types";
 
@@ -12,8 +13,11 @@ export const NumberField: React.FC<NumberFieldProps> = ({
     variant,
     leading,
     trailing,
+    inputRef,
     ...props
 }) => {
+    const ref = useObjectRef(inputRef);
+
     return (
         <AriaNumberField {...props}>
             <FieldGroup
@@ -23,8 +27,13 @@ export const NumberField: React.FC<NumberFieldProps> = ({
                 hasLeading={leading ? true : undefined}
                 hasTrailing={trailing ? true : undefined}
             >
-                <Field leading={leading} trailing={trailing} variant={variant}>
-                    <Input className={clsx(UnsetFieldStyles)} />
+                <Field
+                    leading={leading}
+                    trailing={trailing}
+                    variant={variant}
+                    onPointerDown={focusOnPointerDown(ref)}
+                >
+                    <Input className={clsx(BaseFieldStyles)} ref={ref} />
                 </Field>
             </FieldGroup>
         </AriaNumberField>
