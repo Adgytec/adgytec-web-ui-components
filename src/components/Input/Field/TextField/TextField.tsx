@@ -1,13 +1,18 @@
 import clsx from "clsx";
 import { useObjectRef } from "react-aria";
-import { TextField as AriaTextField, Input } from "react-aria-components";
 import {
-    BaseFieldStyles,
+    TextField as AriaTextField,
+    composeRenderProps,
+    Input,
+} from "react-aria-components";
+import {
     CharacterCount,
     Field,
-    FieldColorStyles,
+    FieldAutoSizeStyles,
+    FieldEditorColorStyles,
     FieldTypography,
     focusOnPointerDown,
+    UnsetFieldStyles,
     useControllableState,
 } from "../Field";
 import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
@@ -48,6 +53,9 @@ export const TextField: React.FC<TextFieldProps> = ({
     return (
         <AriaTextField
             {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(FieldAutoSizeStyles, className)
+            )}
             maxLength={maxLength}
             value={currentValue}
             defaultValue={defaultValue}
@@ -119,8 +127,8 @@ export const TextField: React.FC<TextFieldProps> = ({
                                 dir={editorDir}
                                 placeholder={placeholder}
                                 className={clsx(
-                                    BaseFieldStyles,
-                                    FieldColorStyles,
+                                    UnsetFieldStyles,
+                                    FieldEditorColorStyles,
                                     FieldTypography,
                                     styles["input"]
                                 )}

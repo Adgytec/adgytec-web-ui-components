@@ -8,12 +8,12 @@ import {
     SelectValue,
 } from "react-aria-components";
 import {
-    BaseFieldStyles,
     type CoreFieldProps,
-    FieldColorStyles,
+    FieldEditorColorStyles,
     FieldIcon,
     FieldStyle,
     FieldVariantStyles,
+    UnsetFieldStyles,
 } from "@/components/Input/Field";
 import styles from "./selectTrigger.module.css";
 
@@ -40,7 +40,7 @@ export const SelectTrigger: React.FC<SelectTriggerProps> = ({
             {...props}
             className={composeRenderProps(props.className, (className) =>
                 clsx(
-                    BaseFieldStyles,
+                    UnsetFieldStyles,
                     FieldStyle,
                     FieldVariantStyles(variant),
                     styles["trigger"],
@@ -57,7 +57,7 @@ export const SelectTrigger: React.FC<SelectTriggerProps> = ({
                         className={({ isPlaceholder }) =>
                             clsx(
                                 styles["select-value"],
-                                !isPlaceholder && FieldColorStyles
+                                !isPlaceholder && FieldEditorColorStyles
                             )
                         }
                     >

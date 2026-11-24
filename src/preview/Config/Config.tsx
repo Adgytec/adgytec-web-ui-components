@@ -9,12 +9,13 @@ import {
 import {
     CenteredSlider,
     Checkbox,
-    Input,
+    FieldIcon,
     Radio,
     RadioGroup,
     RangeSlider,
     Slider,
     Switch,
+    TextField,
 } from "../../components/Input";
 import {
     Menu,
@@ -271,42 +272,45 @@ export const ConfigPreview = () => {
             </div>
 
             <div className="items">
-                <Input
+                <TextField
                     label="Email"
                     type="text"
                     description="Enter your Adgytec work email"
                     placeholder="username"
                     suffix={"@adgytec.in"}
-                    // editorDir="rtl"
-                    leadingIcon={Mail}
+                    editorDir="rtl"
+                    leading={<FieldIcon icon={Mail} />}
                     showCharacterCount
                     maxLength={64}
+                    variant="outlined"
                 />
 
-                <Input
+                <TextField
                     className="input-primary-alt"
                     label="Email"
                     type="text"
                     description="Enter your Adgytec work email"
                     placeholder="username"
                     suffix={"@adgytec.in"}
-                    // editorDir="rtl"
-                    leadingIcon={Mail}
+                    editorDir="rtl"
+                    leading={<FieldIcon icon={Mail} />}
                     showCharacterCount
                     maxLength={64}
+                    variant="outlined"
                 />
 
-                <Input
+                <TextField
                     className="input-tertiary"
                     label="Email"
                     type="text"
                     description="Enter your Adgytec work email"
                     placeholder="username"
                     suffix={"@adgytec.in"}
-                    // editorDir="rtl"
-                    leadingIcon={Mail}
+                    editorDir="rtl"
+                    leading={<FieldIcon icon={Mail} />}
                     showCharacterCount
                     maxLength={64}
+                    variant="outlined"
                 />
             </div>
 

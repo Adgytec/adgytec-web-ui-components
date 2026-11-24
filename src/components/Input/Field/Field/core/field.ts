@@ -59,9 +59,10 @@ export function addStateAttrsToFieldButton({
     });
 }
 
-export const BaseFieldStyles = styles["base"];
-export const FieldColorStyles = styles["color"];
+export const UnsetFieldStyles = styles["unset"];
+export const FieldEditorColorStyles = styles["editor-color"];
 export const FieldTypography = typography.bodyLarge;
+export const FieldAutoSizeStyles = styles["field-auto-size"];
 
 export function focusOnPointerDown(ref: React.RefObject<HTMLElement | null>) {
     return (e: PointerEvent<HTMLElement>) => {

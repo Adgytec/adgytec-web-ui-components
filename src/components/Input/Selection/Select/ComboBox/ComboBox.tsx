@@ -6,6 +6,7 @@ import {
     TagGroup,
     TagList,
 } from "react-aria-components";
+import { FieldAutoSizeStyles } from "@/components/Input/Field";
 import { FieldGroup } from "@/components/Input/Field/Field/FieldGroup/FieldGroup";
 import { Tag } from "@/components/Tag";
 import { typography } from "@/utils";
@@ -51,7 +52,12 @@ export const ComboBox = <
     ...props
 }: ComboBoxProps<T, M>) => {
     return (
-        <AriaComboBox {...props}>
+        <AriaComboBox
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(FieldAutoSizeStyles, className)
+            )}
+        >
             {composeRenderProps(
                 props.children,
                 (children, { isDisabled, isInvalid }) => {

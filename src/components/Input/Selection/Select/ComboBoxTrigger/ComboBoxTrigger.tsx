@@ -3,13 +3,13 @@ import { ChevronDown } from "lucide-react";
 import { useObjectRef } from "react-aria";
 import { Input } from "react-aria-components";
 import {
-    BaseFieldStyles,
     type CoreFieldProps,
     Field,
     FieldButton,
-    FieldColorStyles,
+    FieldEditorColorStyles,
     FieldTypography,
     focusOnPointerDown,
+    UnsetFieldStyles,
 } from "@/components/Input/Field";
 import type { RefProp } from "@/utils";
 import styles from "./comboBoxTrigger.module.css";
@@ -52,8 +52,8 @@ export const ComboBoxTrigger: React.FC<ComboBoxTriggerProps> = ({
                 ref={ref}
                 placeholder={placeholder}
                 className={clsx(
-                    BaseFieldStyles,
-                    FieldColorStyles,
+                    UnsetFieldStyles,
+                    FieldEditorColorStyles,
                     FieldTypography
                 )}
             />

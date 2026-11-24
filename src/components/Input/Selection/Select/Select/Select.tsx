@@ -1,7 +1,9 @@
+import clsx from "clsx";
 import {
     Select as AriaSelect,
     composeRenderProps,
 } from "react-aria-components";
+import { FieldAutoSizeStyles } from "@/components/Input/Field";
 import { FieldGroup } from "@/components/Input/Field/Field/FieldGroup/FieldGroup";
 import type { SelectProps } from "./types";
 
@@ -43,7 +45,12 @@ export const Select = <
     ...props
 }: SelectProps<T, M>) => {
     return (
-        <AriaSelect {...props}>
+        <AriaSelect
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(FieldAutoSizeStyles, className)
+            )}
+        >
             {composeRenderProps(
                 props.children,
                 (children, { isDisabled, isInvalid }) => {

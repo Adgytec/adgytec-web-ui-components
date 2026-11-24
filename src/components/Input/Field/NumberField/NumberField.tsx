@@ -1,12 +1,17 @@
 import clsx from "clsx";
 import { useObjectRef } from "react-aria";
-import { NumberField as AriaNumberField, Input } from "react-aria-components";
 import {
-    BaseFieldStyles,
+    NumberField as AriaNumberField,
+    composeRenderProps,
+    Input,
+} from "react-aria-components";
+import {
     Field,
-    FieldColorStyles,
+    FieldAutoSizeStyles,
+    FieldEditorColorStyles,
     FieldTypography,
     focusOnPointerDown,
+    UnsetFieldStyles,
 } from "../Field";
 import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
 import type { NumberFieldProps } from "./types";
@@ -26,7 +31,12 @@ export const NumberField: React.FC<NumberFieldProps> = ({
     const ref = useObjectRef(inputRef);
 
     return (
-        <AriaNumberField {...props}>
+        <AriaNumberField
+            {...props}
+            className={composeRenderProps(props.className, (className) =>
+                clsx(FieldAutoSizeStyles, className)
+            )}
+        >
             {({ isDisabled, isInvalid }) => (
                 <FieldGroup
                     label={label}
@@ -47,8 +57,8 @@ export const NumberField: React.FC<NumberFieldProps> = ({
                             dir={editorDir}
                             placeholder={placeholder}
                             className={clsx(
-                                BaseFieldStyles,
-                                FieldColorStyles,
+                                UnsetFieldStyles,
+                                FieldEditorColorStyles,
                                 FieldTypography
                             )}
                             ref={ref}

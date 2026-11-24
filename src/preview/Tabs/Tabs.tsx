@@ -6,9 +6,9 @@ import { Button } from "../../components/Button";
 import {
     Checkbox,
     CheckboxGroup,
-    Input,
     Radio,
     RadioGroup,
+    TextField,
 } from "../../components/Input";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "../../components/Tabs";
 
@@ -72,9 +72,10 @@ export const RenderTabs = ({
                             gap: "1.5rem",
                         }}
                     >
-                        <Input
+                        <TextField
                             label="Homepage"
                             defaultValue="react-aria.adobe.com"
+                            variant="outlined"
                         />
                         <Checkbox defaultSelected>Show sidebar</Checkbox>
                         <Checkbox>Show status bar</Checkbox>
@@ -117,8 +118,11 @@ export const RenderTabs = ({
                             gap: "1.5rem",
                         }}
                     >
-                        <Input label="Name" defaultValue="Devon Govett" />
-                        <Input label="Username" defaultValue="@devongovett" />
+                        <TextField label="Name" defaultValue="Devon Govett" />
+                        <TextField
+                            label="Username"
+                            defaultValue="@devongovett"
+                        />
                         <Button>Update profile</Button>
                     </Form>
                 </TabPanel>

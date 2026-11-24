@@ -21,8 +21,7 @@ import {
     SupportingTextStyles,
     UnsetStyles,
 } from "../../core";
-import { Description, FieldError, Label } from "../../Field";
-import { InputButton } from "../../Input";
+import { Description, FieldButton, FieldError, Label } from "../../Field";
 import { DatePickerGroupStyles, DatePickerPopoverStyles } from "../core";
 import type { DatePickerProps } from "./types";
 
@@ -99,7 +98,7 @@ export const DatePicker = <T extends DateValue>({
                                 )}
                             </DateInput>
 
-                            <InputButton
+                            <FieldButton
                                 icon={CalendarDays}
                                 isDisabled={isDisabled}
                                 data-invalid={isInvalid || undefined}

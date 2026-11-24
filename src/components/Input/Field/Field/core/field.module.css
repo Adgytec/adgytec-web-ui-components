@@ -1,13 +1,17 @@
 @layer adgytec.comps {
-    .base {
+    .unset {
         all: unset;
     }
 
-    .color {
+    .editor-color {
         color: var(--_md-field-color);
 
         &::placeholder {
             color: var(--_color);
         }
+    }
+
+    .field-auto-size {
+        display: inline-grid;
     }
 }

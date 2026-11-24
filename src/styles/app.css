@@ -660,7 +660,7 @@
 }
 
 .input-tertiary {
-    --md-textfield-focused-outline-color: var(--md-sys-color-tertiary);
+    --md-field-focused-outline-color: var(--md-sys-color-tertiary);
 }
 
 .menu-theme-ocean {
