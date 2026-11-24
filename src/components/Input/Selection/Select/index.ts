@@ -1,5 +1,4 @@
 export * from "./ComboBox";
-export * from "./ComboBoxPopover";
 export * from "./ComboBoxTrigger";
 export * from "./Select";
 export * from "./SelectItem";

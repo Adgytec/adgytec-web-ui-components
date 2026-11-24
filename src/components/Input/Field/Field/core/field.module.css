@@ -5,5 +5,9 @@
 
     .color {
         color: var(--_md-field-color);
+
+        &::placeholder {
+            color: var(--_color);
+        }
     }
 }

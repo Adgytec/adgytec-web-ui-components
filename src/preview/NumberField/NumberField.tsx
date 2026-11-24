@@ -1,5 +1,4 @@
 import { Minus, Plus } from "lucide-react";
-import { useState } from "react";
 import { FieldButton } from "@/components/Input";
 import { type InputVariant, NumberField } from "../../components/Input";
 
@@ -12,7 +11,6 @@ export const RenderNumberField = ({
     isDisabled?: boolean;
     variant?: InputVariant;
 }) => {
-    const [val, setVal] = useState(10);
     return (
         <NumberField
             variant={variant}
@@ -21,8 +19,6 @@ export const RenderNumberField = ({
             placeholder="0"
             minValue={0}
             maxValue={100000}
-            value={val}
-            onChange={setVal}
             isInvalid={isInvalid}
             isDisabled={isDisabled}
             formatOptions={{ style: "decimal" }}

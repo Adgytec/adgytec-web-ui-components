@@ -1,102 +1,59 @@
-import clsx from "clsx";
+import { clsx } from "clsx";
 import { ChevronDown } from "lucide-react";
-import { useContext } from "react";
 import { useObjectRef } from "react-aria";
-import { useFocusRing } from "react-aria/useFocusRing";
-import { useHover } from "react-aria/useHover";
-import { usePress } from "react-aria/usePress";
 import { Input } from "react-aria-components";
-import { IconButton } from "@/components/Button";
-import { type RefProp, typography } from "@/utils";
 import {
-    EditorInputStyles,
-    EditorStyles,
-    type InputVariant,
-    UnsetStyles,
-} from "../../../core";
-import { ComboboxContext } from "../ComboBox/context";
+    BaseFieldStyles,
+    type CoreFieldProps,
+    Field,
+    FieldButton,
+    FieldColorStyles,
+    FieldTypography,
+    focusOnPointerDown,
+} from "@/components/Input/Field";
+import type { RefProp } from "@/utils";
 import styles from "./comboBoxTrigger.module.css";
 
 /**
  * Props for the {@link ComboBoxTrigger} component.
  */
 export interface ComboBoxTriggerProps
-    extends Omit<React.ComponentPropsWithoutRef<"span">, "children">,
-        RefProp<typeof Input> {
+    extends Omit<CoreFieldProps, "leading" | "trailing">,
+        RefProp<typeof Input, "inputRef"> {
     /** Placeholder text displayed when the combobox input is empty. */
     placeholder?: string;
-
-    /**
-     * Visual styling variant for the combobox trigger container.
-     *
-     * @default "filled"
-     */
-    variant?: InputVariant;
 }
 
 /**
  * The composite editable text input and chevron dropdown trigger button for a {@link ComboBox}.
  */
 export const ComboBoxTrigger: React.FC<ComboBoxTriggerProps> = ({
-    className,
     placeholder,
-    dir,
-    ref,
-    variant = "filled",
-    ...props
+    variant,
+    inputRef,
 }) => {
-    const inputRef = useObjectRef(ref);
-
-    const { isInvalid, isDisabled, isOpen } = useContext(ComboboxContext);
-    const { isFocused, isFocusVisible, focusProps } = useFocusRing({
-        isTextInput: true,
-    });
-    const { isHovered, hoverProps } = useHover({});
-    const { pressProps } = usePress({
-        onPress: () => {
-            inputRef.current?.focus();
-        },
-    });
-
-    const dataAttrs = {
-        "data-hovered": isHovered || undefined,
-        "data-focused": isFocused || undefined,
-        "data-focus-visible": isFocusVisible || undefined,
-        "data-trailing": true,
-        "data-invalid": isInvalid || undefined,
-        "data-input": true,
-        "data-disabled": isDisabled || undefined,
-        "data-open": isOpen || undefined,
-        "data-variant": variant,
-    };
+    const ref = useObjectRef(inputRef);
 
     return (
-        <span
-            {...pressProps}
-            {...hoverProps}
-            className={clsx(EditorStyles, className)}
-            {...props}
-            {...dataAttrs}
+        <Field
+            variant={variant}
+            trailing={
+                <FieldButton
+                    className={clsx(styles["trigger"])}
+                    icon={ChevronDown}
+                />
+            }
+            onPointerDown={focusOnPointerDown(ref)}
         >
             <Input
-                ref={inputRef}
-                {...focusProps}
+                ref={ref}
                 placeholder={placeholder}
                 className={clsx(
-                    UnsetStyles,
-                    EditorInputStyles,
-                    typography.bodyLarge,
-                    styles["input"]
+                    BaseFieldStyles,
+                    FieldColorStyles,
+                    FieldTypography
                 )}
-                data-input={true}
-                dir={dir}
             />
-            <IconButton
-                className={clsx(styles["trigger"])}
-                icon={ChevronDown}
-                color="standard"
-                data-invalid={isInvalid || undefined}
-            />
-        </span>
+        </Field>
     );
 };

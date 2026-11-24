@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { composeRenderProps, Group } from "react-aria-components";
 import { Description } from "../Description";
 import { FieldError } from "../FieldError";
 import { Label } from "../Label";
@@ -10,48 +9,40 @@ export const FieldGroup: React.FC<FieldGroupProps> = ({
     label,
     description,
     errorMessage,
+    isInvalid,
+    isDisabled,
     hasLeading = false,
     hasTrailing = false,
+    className,
+    children,
     ...props
 }) => {
     const dataAttrs = {
         "data-leading": hasLeading || undefined,
         "data-trailing": hasTrailing || undefined,
+        "data-disabled": isDisabled || undefined,
+        "data-invalid": isInvalid || undefined,
     };
 
     return (
-        <Group
+        <div
             {...props}
             {...dataAttrs}
-            className={composeRenderProps(props.className, (className) =>
-                clsx(styles["group"], className)
-            )}
+            className={clsx(styles["group"], className)}
         >
-            {composeRenderProps(props.children, (children, { isInvalid }) => {
-                return (
-                    <>
-                        {label && (
-                            <Label className={clsx(styles["label"])}>
-                                {label}
-                            </Label>
-                        )}
+            {label && <Label className={clsx(styles["label"])}>{label}</Label>}
 
-                        {children}
+            {children}
 
-                        {!isInvalid && description && (
-                            <Description
-                                className={clsx(styles["supporting-text"])}
-                            >
-                                {description}
-                            </Description>
-                        )}
+            {!isInvalid && description && (
+                <Description className={clsx(styles["supporting-text"])}>
+                    {description}
+                </Description>
+            )}
 
-                        <FieldError className={clsx(styles["supporting-text"])}>
-                            {errorMessage}
-                        </FieldError>
-                    </>
-                );
-            })}
-        </Group>
+            <FieldError className={clsx(styles["supporting-text"])}>
+                {errorMessage}
+            </FieldError>
+        </div>
     );
 };

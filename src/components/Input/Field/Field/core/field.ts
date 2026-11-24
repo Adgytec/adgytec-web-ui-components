@@ -1,6 +1,7 @@
 import type { PointerEvent, ReactNode } from "react";
 import { cloneElement, isValidElement } from "react";
 import type { ValidationResult } from "react-aria-components";
+import { typography } from "@/utils";
 import { FieldButton } from "../FieldButton/FieldButton";
 import styles from "./field.module.css";
 import type { FieldVariant } from "./variant";
@@ -60,6 +61,7 @@ export function addStateAttrsToFieldButton({
 
 export const BaseFieldStyles = styles["base"];
 export const FieldColorStyles = styles["color"];
+export const FieldTypography = typography.bodyLarge;
 
 export function focusOnPointerDown(ref: React.RefObject<HTMLElement | null>) {
     return (e: PointerEvent<HTMLElement>) => {

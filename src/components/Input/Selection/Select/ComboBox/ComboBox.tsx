@@ -6,12 +6,10 @@ import {
     TagGroup,
     TagList,
 } from "react-aria-components";
+import { FieldGroup } from "@/components/Input/Field/Field/FieldGroup/FieldGroup";
 import { Tag } from "@/components/Tag";
 import { typography } from "@/utils";
-import { Colors, InputGroupStyles, SupportingTextStyles } from "../../../core";
-import { Description, FieldError, Label } from "../../../Field";
 import styles from "./comboBox.module.css";
-import { ComboboxContext } from "./context";
 import type { ComboBoxProps } from "./types";
 
 /**
@@ -49,89 +47,80 @@ export const ComboBox = <
     label,
     description,
     errorMessage,
-    showDescriptionOnInvalid = false,
-    hideMultiSelectionValue = false,
+    hideMultiSelectionTags = false,
     ...props
 }: ComboBoxProps<T, M>) => {
     return (
-        <AriaComboBox
-            {...props}
-            className={composeRenderProps(props.className, (className) =>
-                clsx(Colors, InputGroupStyles, className)
-            )}
-        >
-            {composeRenderProps(props.children, (children, renderProps) => {
-                const { isInvalid } = renderProps;
-                const showDescription =
-                    description &&
-                    (!isInvalid || (isInvalid && showDescriptionOnInvalid));
+        <AriaComboBox {...props}>
+            {composeRenderProps(
+                props.children,
+                (children, { isDisabled, isInvalid }) => {
+                    return (
+                        <FieldGroup
+                            label={label}
+                            description={description}
+                            errorMessage={errorMessage}
+                            hasTrailing={true}
+                            isInvalid={isInvalid}
+                            isDisabled={isDisabled}
+                        >
+                            {children}
 
-                return (
-                    <ComboboxContext value={renderProps}>
-                        {label && <Label>{label}</Label>}
-
-                        {children}
-
-                        {props.selectionMode === "multiple" &&
-                            !hideMultiSelectionValue && (
-                                <ComboBoxValue<T>
-                                    className={clsx(
-                                        styles["selected-value"],
-                                        typography.bodyLarge
-                                    )}
-                                >
-                                    {({ state }) => {
-                                        return (
-                                            <TagGroup
-                                                aria-label="Selected Items"
-                                                onRemove={(keys) => {
-                                                    if (
-                                                        Array.isArray(
-                                                            state.value
-                                                        )
-                                                    ) {
-                                                        state.setValue(
-                                                            state.value.filter(
-                                                                (k) =>
-                                                                    !keys.has(k)
+                            {props.selectionMode === "multiple" &&
+                                !hideMultiSelectionTags && (
+                                    <ComboBoxValue<T>
+                                        className={clsx(
+                                            styles["selected-value"],
+                                            typography.bodyLarge
+                                        )}
+                                    >
+                                        {({ state }) => {
+                                            return (
+                                                <TagGroup
+                                                    aria-label="Selected Items"
+                                                    onRemove={(keys) => {
+                                                        if (
+                                                            Array.isArray(
+                                                                state.value
                                                             )
-                                                        );
-                                                    }
-                                                }}
-                                            >
-                                                <TagList
-                                                    items={state.selectedItems}
-                                                    className={clsx(
-                                                        styles["tag-list"]
-                                                    )}
+                                                        ) {
+                                                            state.setValue(
+                                                                state.value.filter(
+                                                                    (k) =>
+                                                                        !keys.has(
+                                                                            k
+                                                                        )
+                                                                )
+                                                            );
+                                                        }
+                                                    }}
                                                 >
-                                                    {(item) => (
-                                                        <Tag
-                                                            id={item.key}
-                                                            label={
-                                                                item.textValue
-                                                            }
-                                                        />
-                                                    )}
-                                                </TagList>
-                                            </TagGroup>
-                                        );
-                                    }}
-                                </ComboBoxValue>
-                            )}
-
-                        {showDescription && (
-                            <Description className={clsx(SupportingTextStyles)}>
-                                {description}
-                            </Description>
-                        )}
-
-                        <FieldError className={clsx(SupportingTextStyles)}>
-                            {errorMessage}
-                        </FieldError>
-                    </ComboboxContext>
-                );
-            })}
+                                                    <TagList
+                                                        items={
+                                                            state.selectedItems
+                                                        }
+                                                        className={clsx(
+                                                            styles["tag-list"]
+                                                        )}
+                                                    >
+                                                        {(item) => (
+                                                            <Tag
+                                                                id={item.key}
+                                                                label={
+                                                                    item.textValue
+                                                                }
+                                                            />
+                                                        )}
+                                                    </TagList>
+                                                </TagGroup>
+                                            );
+                                        }}
+                                    </ComboBoxValue>
+                                )}
+                        </FieldGroup>
+                    );
+                }
+            )}
         </AriaComboBox>
     );
 };

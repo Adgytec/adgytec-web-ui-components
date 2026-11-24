@@ -3,7 +3,6 @@ import { typography } from "@/utils";
 import { Divider } from "../../components/Divider";
 import {
     ComboBox,
-    ComboBoxPopover,
     ComboBoxTrigger,
     type InputVariant,
     Select,
@@ -50,10 +49,12 @@ export const RenderComboBox = ({
     isInvalid,
     isDisabled,
     variant,
+    multiple = false,
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
     variant?: InputVariant;
+    multiple?: boolean;
 }) => {
     return (
         <ComboBox
@@ -61,12 +62,11 @@ export const RenderComboBox = ({
             description="Flavors of icecream"
             isInvalid={isInvalid}
             isDisabled={isDisabled}
-            showDescriptionOnInvalid={isInvalid}
-            selectionMode="multiple"
+            selectionMode={multiple ? "multiple" : "single"}
         >
             <ComboBoxTrigger placeholder="Select Icecream" variant={variant} />
 
-            <ComboBoxPopover>
+            <SelectPopover>
                 <SelectList>
                     <SelectItem label="Strawberry" />
                     <SelectItem label="Mango" />
@@ -74,7 +74,7 @@ export const RenderComboBox = ({
                     <SelectItem label="Chocolate" />
                     <SelectItem label="Cherry" />
                 </SelectList>
-            </ComboBoxPopover>
+            </SelectPopover>
         </ComboBox>
     );
 };
@@ -107,13 +107,13 @@ export const SelectPreview = () => {
             <h3 className={clsx(typography.titleLargeEmphasized)}>Combo Box</h3>
 
             <div className="items">
-                <RenderComboBox />
+                <RenderComboBox multiple />
                 <RenderComboBox variant="outlined" />
             </div>
 
             <div className="items">
                 <RenderComboBox isInvalid />
-                <RenderComboBox isInvalid variant="outlined" />
+                <RenderComboBox isInvalid variant="outlined" multiple />
             </div>
 
             <div className="items">

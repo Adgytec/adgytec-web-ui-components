@@ -44,18 +44,23 @@ export const Select = <
 }: SelectProps<T, M>) => {
     return (
         <AriaSelect {...props}>
-            {composeRenderProps(props.children, (children) => {
-                return (
-                    <FieldGroup
-                        label={label}
-                        description={description}
-                        errorMessage={errorMessage}
-                        hasTrailing={true}
-                    >
-                        {children}
-                    </FieldGroup>
-                );
-            })}
+            {composeRenderProps(
+                props.children,
+                (children, { isDisabled, isInvalid }) => {
+                    return (
+                        <FieldGroup
+                            label={label}
+                            description={description}
+                            errorMessage={errorMessage}
+                            hasTrailing={true}
+                            isInvalid={isInvalid}
+                            isDisabled={isDisabled}
+                        >
+                            {children}
+                        </FieldGroup>
+                    );
+                }
+            )}
         </AriaSelect>
     );
 };

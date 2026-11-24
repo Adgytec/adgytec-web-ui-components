@@ -5,6 +5,7 @@ import {
     BaseFieldStyles,
     Field,
     FieldColorStyles,
+    FieldTypography,
     focusOnPointerDown,
 } from "../Field";
 import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
@@ -25,25 +26,34 @@ export const NumberField: React.FC<NumberFieldProps> = ({
 
     return (
         <AriaNumberField {...props}>
-            <FieldGroup
-                label={label}
-                description={description}
-                errorMessage={errorMessage}
-                hasLeading={leading ? true : undefined}
-                hasTrailing={trailing ? true : undefined}
-            >
-                <Field
-                    leading={leading}
-                    trailing={trailing}
-                    variant={variant}
-                    onPointerDown={focusOnPointerDown(ref)}
+            {({ isDisabled, isInvalid }) => (
+                <FieldGroup
+                    label={label}
+                    description={description}
+                    errorMessage={errorMessage}
+                    hasLeading={leading ? true : undefined}
+                    hasTrailing={trailing ? true : undefined}
+                    isInvalid={isInvalid}
+                    isDisabled={isDisabled}
                 >
-                    <Input
-                        className={clsx(BaseFieldStyles, FieldColorStyles)}
-                        ref={ref}
-                    />
-                </Field>
-            </FieldGroup>
+                    <Field
+                        leading={leading}
+                        trailing={trailing}
+                        variant={variant}
+                        onPointerDown={focusOnPointerDown(ref)}
+                    >
+                        <Input
+                            placeholder={placeholder}
+                            className={clsx(
+                                BaseFieldStyles,
+                                FieldColorStyles,
+                                FieldTypography
+                            )}
+                            ref={ref}
+                        />
+                    </Field>
+                </FieldGroup>
+            )}
         </AriaNumberField>
     );
 };
