@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { typography } from "@/utils";
-import { CharacterCountStyles } from "../../../core";
 
 /**
  * Props for the {@link CharacterCount} component.
@@ -28,11 +27,7 @@ export const CharacterCount: React.FC<CharacterCountProps> = ({
     return (
         <span
             ref={ref}
-            className={clsx(
-                CharacterCountStyles,
-                typography.labelMedium,
-                className
-            )}
+            className={clsx(typography.labelMedium, className)}
             {...props}
         >
             {count}

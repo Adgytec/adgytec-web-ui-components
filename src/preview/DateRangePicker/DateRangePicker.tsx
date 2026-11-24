@@ -1,4 +1,9 @@
-import { DateRangePicker, type InputVariant } from "../../components/Input";
+import { RangeCalendar } from "@/components/Calendar";
+import {
+    DatePickerPopover,
+    DateRangePicker,
+    type FieldVariant,
+} from "../../components/Input";
 
 export const RenderDateRangePicker = ({
     isInvalid,
@@ -7,7 +12,7 @@ export const RenderDateRangePicker = ({
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
-    variant?: InputVariant;
+    variant?: FieldVariant;
 }) => {
     return (
         <DateRangePicker
@@ -16,8 +21,11 @@ export const RenderDateRangePicker = ({
             description="Select date range"
             isInvalid={isInvalid}
             isDisabled={isDisabled}
-            showDescriptionOnInvalid={isInvalid}
-        />
+        >
+            <DatePickerPopover>
+                <RangeCalendar />
+            </DatePickerPopover>
+        </DateRangePicker>
     );
 };
 
