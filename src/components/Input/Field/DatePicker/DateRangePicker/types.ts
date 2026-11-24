@@ -16,4 +16,5 @@ export interface DateRangePickerProps<T extends DateValue>
     extends React.ComponentPropsWithRef<typeof DateRangePicker<T>>,
         CoreFieldGroupProps,
         Omit<CoreFieldProps, "leading">,
-        RefProp<typeof DateInput, "dateInputRef"> {}
+        RefProp<typeof DateInput, "startDateInputRef">,
+        RefProp<typeof DateInput, "endDateInputRef"> {}

@@ -34,7 +34,8 @@ export const DateRangePicker = <T extends DateValue>({
     variant,
     trailing,
 
-    dateInputRef,
+    startDateInputRef,
+    endDateInputRef,
     ...props
 }: DateRangePickerProps<T>) => {
     return (
@@ -58,13 +59,13 @@ export const DateRangePicker = <T extends DateValue>({
                             isInvalid={isInvalid}
                             isDisabled={isDisabled}
                         >
-                            <DateInput slot="start" ref={dateInputRef}>
+                            <DateInput slot="start" ref={startDateInputRef}>
                                 {(segment) => <DateSegment segment={segment} />}
                             </DateInput>
 
                             <span aria-hidden={true}>-</span>
 
-                            <DateInput slot="end" ref={dateInputRef}>
+                            <DateInput slot="end" ref={endDateInputRef}>
                                 {(segment) => <DateSegment segment={segment} />}
                             </DateInput>
                         </Field>
