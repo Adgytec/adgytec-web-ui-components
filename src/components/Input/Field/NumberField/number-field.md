@@ -2,10 +2,13 @@
 
 ## Configurable CSS Tokens
 
-| Token                                  | Default Value                                   | Description                                                  |
-| -------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------ |
-| `--md-textfield-focused-outline-color` | `var(--md-sys-color-primary)`                   | Color of the outline when the number field is focused.       |
-| `--md-textfield-background`            | `var(--md-sys-color-surface-container-highest)` | Background color for the filled variant of the number field. |
+| Token                              | Default Value                                   | Description                                           |
+| ---------------------------------- | ----------------------------------------------- | ----------------------------------------------------- |
+| `--md-field-color`                 | `var(--md-sys-color-on-surface)`                | Primary text and number color within the field.       |
+| `--md-field-infix-color`           | `var(--md-sys-color-on-surface-variant)`        | Color of stepper buttons and supporting icons.        |
+| `--md-field-background-color`      | `var(--md-sys-color-surface-container-highest)` | Background color for the filled variant.              |
+| `--md-field-focused-outline-color` | `var(--md-sys-color-primary)`                   | Color of the outline and caret when focused.          |
+| `--md-field-group-color`           | `var(--md-sys-color-on-surface-variant)`        | Color of supporting text (label, description, error). |
 
 The `NumberField` component allows users to enter, increment, and decrement numerical values using keyboard input, stepper buttons, or arrow keys. It implements Material 3 text field patterns with support for filled and outlined variants, custom stepper buttons, min/max constraints, step intervals, and internationalized number formatting.
 

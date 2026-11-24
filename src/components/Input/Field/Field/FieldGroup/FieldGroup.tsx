@@ -5,6 +5,12 @@ import { Label } from "../Label";
 import styles from "./fieldGroup.module.css";
 import type { FieldGroupProps } from "./types";
 
+/**
+ * Composable field wrapper grouping a label, the main input field, and supporting description or error messages.
+ *
+ * Coordinates accessibility states (`data-invalid`, `data-disabled`, `data-leading`, `data-trailing`)
+ * across sub-components according to Material Design 3 guidelines.
+ */
 export const FieldGroup: React.FC<FieldGroupProps> = ({
     label,
     description,

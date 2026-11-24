@@ -4,6 +4,36 @@ import { DateInput, DateSegment, Field } from "../Field";
 import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
 import type { TimeFieldProps } from "./types";
 
+/**
+ * An accessible time input field allowing users to enter and edit time values using keyboard navigation.
+ *
+ * Implements Material Design 3 Text Field container styling with segment-based time editing (hours,
+ * minutes, seconds, day period), internationalized formatting, and filled/outlined variants.
+ *
+ * @example
+ * ```tsx
+ * import { TimeField } from "@adgytec/web-ui-components";
+ * import { Time } from "@internationalized/date";
+ *
+ * <TimeField
+ *     label="Appointment Time"
+ *     description="Select preferred consultation time"
+ *     defaultValue={new Time(9, 30)}
+ * />
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // Outlined variant
+ * import { TimeField } from "@adgytec/web-ui-components";
+ *
+ * <TimeField
+ *     variant="outlined"
+ *     label="Meeting Time"
+ *     isRequired
+ * />
+ * ```
+ */
 export const TimeField = <T extends TimeValue>({
     label,
     errorMessage,
@@ -32,6 +62,8 @@ export const TimeField = <T extends TimeValue>({
                         leading={leading}
                         trailing={trailing}
                         variant={variant}
+                        isInvalid={isInvalid}
+                        isDisabled={isDisabled}
                     >
                         <DateInput ref={dateInputRef}>
                             {(segment) => <DateSegment segment={segment} />}

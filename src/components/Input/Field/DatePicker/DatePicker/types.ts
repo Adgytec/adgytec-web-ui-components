@@ -6,6 +6,12 @@ import type {
     DateInput,
 } from "../../Field";
 
+/**
+ * Props for the {@link DatePicker} component.
+ * Extends React Aria's `DatePicker` props, core field group props, and date input ref.
+ *
+ * @typeParam T - The date value type implementing {@link DateValue}.
+ */
 export interface DatePickerProps<T extends DateValue>
     extends React.ComponentPropsWithRef<typeof DatePicker<T>>,
         CoreFieldGroupProps,

@@ -16,7 +16,6 @@ export const RenderDateField = ({
             description="Add your appointment date"
             isDisabled={isDisabled}
             isInvalid={isInvalid}
-            showDescriptionOnInvalid={isInvalid}
             granularity="second"
         />
     );

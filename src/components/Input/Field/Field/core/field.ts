@@ -21,10 +21,16 @@ export interface CoreFieldGroupProps {
 }
 
 export interface CoreFieldProps {
+    /** Element, button, or icon placed at the start of the field container. */
     leading?: ReactNode;
 
+    /** Element, button, or icon placed at the end of the field container. */
     trailing?: ReactNode;
 
+    /**
+     * Visual styling variant of the field container.
+     * @default "filled"
+     */
     variant?: FieldVariant;
 }
 
@@ -33,10 +39,10 @@ type FieldButtonElementProps = React.ComponentProps<typeof FieldButton> & {
 };
 
 /**
- * Injects input validation and disabled states into child {@link InputButton} elements.
+ * Injects input validation and disabled states into child {@link FieldButton} elements.
  *
  * @param params - Configuration containing `node`, `isInvalid`, and `isDisabled`.
- * @returns Cloned element with attached state data attributes, or the original node if not an InputButton.
+ * @returns Cloned element with attached state data attributes, or the original node if not a FieldButton.
  */
 export function addStateAttrsToFieldButton({
     node,
@@ -59,11 +65,24 @@ export function addStateAttrsToFieldButton({
     });
 }
 
+/** Class name to unset native input styles. */
 export const UnsetFieldStyles = styles["unset"];
+
+/** Class name applying field editor color tokens. */
 export const FieldEditorColorStyles = styles["editor-color"];
+
+/** Typography preset applied to field editors and segments. */
 export const FieldTypography = typography.bodyLarge;
+
+/** Class name applying auto-sizing layout to field containers. */
 export const FieldAutoSizeStyles = styles["field-auto-size"];
 
+/**
+ * Creates a pointer-down event handler that focuses the target input ref when clicking anywhere on the container.
+ * Ignores clicks originating directly from interactive elements like buttons and links.
+ *
+ * @param ref - Ref to the input or textarea element to focus.
+ */
 export function focusOnPointerDown(ref: React.RefObject<HTMLElement | null>) {
     return (e: PointerEvent<HTMLElement>) => {
         const target = e.target as HTMLElement;

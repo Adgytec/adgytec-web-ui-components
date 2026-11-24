@@ -1,3 +1,12 @@
+/* configurable tokens
+*
+* --md-field-color
+* --md-field-infix-color
+* --md-field-background-color
+* --md-field-focused-outline-color
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .field {
         --_md-field-color: var(

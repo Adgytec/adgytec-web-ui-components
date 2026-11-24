@@ -1,3 +1,9 @@
+/* configurable tokens
+*
+* --md-field-group-color
+*
+* configurable tokens end */
+
 @layer adgytec.overrides {
     .error-disabled {
         color: var(--_color);

@@ -1,0 +1,75 @@
+# Time Field
+
+## Configurable CSS Tokens
+
+| Token                              | Default Value                                   | Description                                           |
+| ---------------------------------- | ----------------------------------------------- | ----------------------------------------------------- |
+| `--md-field-color`                 | `var(--md-sys-color-on-surface)`                | Primary text and segment color within the field.      |
+| `--md-field-infix-color`           | `var(--md-sys-color-on-surface-variant)`        | Color of icons, buttons, and placeholder segments.    |
+| `--md-field-background-color`      | `var(--md-sys-color-surface-container-highest)` | Background color for the filled variant.              |
+| `--md-field-focused-outline-color` | `var(--md-sys-color-primary)`                   | Color of the outline when focused.                    |
+| `--md-field-group-color`           | `var(--md-sys-color-on-surface-variant)`        | Color of supporting text (label, description, error). |
+
+The `TimeField` component allows users to enter and edit time values using keyboard navigation with segment-based input and validation. It implements [Material 3 Text Fields](https://m3.material.io/components/text-fields/overview) with support for filled and outlined variants.
+
+## Props
+
+The `TimeField` component extends [React Aria Components TimeField](https://react-spectrum.adobe.com/react-aria/TimeField.html) (excluding `children`).
+
+| Prop           | Type                                                | Default    | Description                                              |
+| -------------- | --------------------------------------------------- | ---------- | -------------------------------------------------------- |
+| `label`        | `ReactNode`                                         | —          | The accessible label displayed above the time input.     |
+| `description`  | `ReactNode`                                         | —          | Informative supporting text displayed below the input.   |
+| `errorMessage` | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —          | Error message displayed when validation fails.           |
+| `variant`      | `"filled" \| "outlined"`                            | `"filled"` | Visual styling variant of the input container.           |
+| `leading`      | `ReactNode`                                         | —          | Leading element (such as `FieldIcon` or `FieldButton`).  |
+| `trailing`     | `ReactNode`                                         | —          | Trailing element (such as `FieldButton` or `FieldIcon`). |
+| `dateInputRef` | `Ref<HTMLDivElement>`                               | —          | Ref passed directly to the `DateInput` container.        |
+
+### Common React Aria Props
+
+| Prop           | Type                     | Default | Description                                            |
+| -------------- | ------------------------ | ------- | ------------------------------------------------------ |
+| `value`        | `TimeValue`              | —       | The current time value (controlled).                   |
+| `defaultValue` | `TimeValue`              | —       | The default time value (uncontrolled).                 |
+| `onChange`     | `(v: TimeValue) => void` | —       | Handler called when the time changes.                  |
+| `minValue`     | `TimeValue`              | —       | The minimum permissible time value.                    |
+| `maxValue`     | `TimeValue`              | —       | The maximum permissible time value.                    |
+| `isDisabled`   | `boolean`                | `false` | Whether the time field is disabled.                    |
+| `isReadOnly`   | `boolean`                | `false` | Whether the time value is immutable.                   |
+| `isRequired`   | `boolean`                | `false` | Whether user input is required before form submission. |
+| `isInvalid`    | `boolean`                | `false` | Whether the input is currently in an invalid state.    |
+
+## Usage
+
+### Basic Filled Variant (Default)
+
+```tsx
+import { TimeField } from "@adgytec/web-ui-components";
+import { Time } from "@internationalized/date";
+
+<TimeField
+    label="Appointment Time"
+    description="Please select consultation time"
+    defaultValue={new Time(9, 30)}
+/>;
+```
+
+### Outlined Variant
+
+```tsx
+import { TimeField } from "@adgytec/web-ui-components";
+
+<TimeField variant="outlined" label="Meeting Time" isRequired />;
+```
+
+## Internal Structure
+
+`TimeField` integrates the following building blocks:
+- `FieldGroup`: Manages label, supporting text, and validation error layout.
+- `Field`: Renders container styling, borders, focus outline, and states.
+- `DateInput`: Container for individual editable time segments.
+- `DateSegment`: Renders and coordinates keyboard interaction for each time segment (hour, minute, second, day period).
+
+
+Generated by Gemini

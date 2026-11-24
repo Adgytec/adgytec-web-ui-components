@@ -19,6 +19,39 @@ import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
 import styles from "./textField.module.css";
 import type { TextFieldProps } from "./types";
 
+/**
+ * A single-line text input field implementing Material Design 3 Text Field specifications.
+ *
+ * Supports filled and outlined visual variants, leading and trailing icons or buttons,
+ * text prefixes and suffixes, labels, supporting descriptions, validation errors, and character counters.
+ * Built on React Aria's `TextField` for accessible keyboard interactions and form integration.
+ *
+ * @example
+ * ```tsx
+ * import { TextField } from "@adgytec/web-ui-components";
+ * import { Mail } from "lucide-react";
+ *
+ * <TextField
+ *     label="Email Address"
+ *     placeholder="you@example.com"
+ *     leading={<FieldIcon icon={Mail} />}
+ *     isRequired
+ * />
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // Outlined variant with character count
+ * import { TextField } from "@adgytec/web-ui-components";
+ *
+ * <TextField
+ *     variant="outlined"
+ *     label="Username"
+ *     maxLength={20}
+ *     showCharacterCount
+ * />
+ * ```
+ */
 export const TextField: React.FC<TextFieldProps> = ({
     label,
     description,
@@ -114,6 +147,8 @@ export const TextField: React.FC<TextFieldProps> = ({
                         trailing={trailing}
                         variant={variant}
                         onPointerDown={focusOnPointerDown(ref)}
+                        isDisabled={isDisabled}
+                        isInvalid={isInvalid}
                     >
                         <span
                             className={clsx(

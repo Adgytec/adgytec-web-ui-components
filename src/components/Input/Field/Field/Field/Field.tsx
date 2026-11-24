@@ -4,6 +4,12 @@ import { addStateAttrsToFieldButton } from "../core";
 import { FieldStyle, FieldVariantStyles } from "./field";
 import type { FieldProps } from "./types";
 
+/**
+ * Low-level field container component implementing Material Design 3 Text Field container styles.
+ *
+ * Provides the interactive surface (background, outline, hover/focus/disabled/invalid states)
+ * and slots for `leading` and `trailing` elements, wrapping input controls in an accessible `Group`.
+ */
 export const Field: React.FC<FieldProps> = ({
     variant = "filled",
     leading,

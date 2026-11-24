@@ -16,6 +16,41 @@ import {
 import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
 import type { NumberFieldProps } from "./types";
 
+/**
+ * A numeric input field allowing users to enter, increment, and decrement numerical values.
+ *
+ * Implements Material Design 3 Text Field specifications with support for filled and outlined variants,
+ * internationalized formatting, min/max limits, step values, and leading/trailing custom buttons.
+ * Built on React Aria's `NumberField` for full accessibility and keyboard increment/decrement interactions.
+ *
+ * @example
+ * ```tsx
+ * import { NumberField } from "@adgytec/web-ui-components";
+ *
+ * <NumberField
+ *     label="Quantity"
+ *     description="Enter quantity between 1 and 100"
+ *     defaultValue={1}
+ *     minValue={1}
+ *     maxValue={100}
+ * />
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // Outlined variant with currency formatting
+ * import { NumberField } from "@adgytec/web-ui-components";
+ *
+ * <NumberField
+ *     variant="outlined"
+ *     label="Price"
+ *     formatOptions={{
+ *         style: "currency",
+ *         currency: "USD",
+ *     }}
+ * />
+ * ```
+ */
 export const NumberField: React.FC<NumberFieldProps> = ({
     label,
     description,
@@ -55,6 +90,8 @@ export const NumberField: React.FC<NumberFieldProps> = ({
                         trailing={trailing}
                         variant={variant}
                         onPointerDown={focusOnPointerDown(ref)}
+                        isInvalid={isInvalid}
+                        isDisabled={isDisabled}
                     >
                         <Input
                             dir={editorDir}

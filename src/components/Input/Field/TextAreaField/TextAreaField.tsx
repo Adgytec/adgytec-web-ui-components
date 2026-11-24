@@ -18,6 +18,39 @@ import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
 import styles from "./textAreaField.module.css";
 import type { TextAreaFieldProps } from "./types";
 
+/**
+ * A multi-line text area input field implementing Material Design 3 Text Field specifications.
+ *
+ * Supports filled and outlined visual variants, rows/cols sizing, labels, supporting descriptions,
+ * validation errors, and character counters. Built on React Aria's `TextField` and `TextArea` for
+ * robust accessibility and auto-sizing capabilities.
+ *
+ * @example
+ * ```tsx
+ * import { TextAreaField } from "@adgytec/web-ui-components";
+ *
+ * <TextAreaField
+ *     label="Comments"
+ *     placeholder="Write your feedback here..."
+ *     rows={4}
+ *     maxLength={500}
+ *     showCharacterCount
+ * />
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // Outlined variant
+ * import { TextAreaField } from "@adgytec/web-ui-components";
+ *
+ * <TextAreaField
+ *     variant="outlined"
+ *     label="Description"
+ *     description="Provide a brief summary of the project."
+ *     isRequired
+ * />
+ * ```
+ */
 export const TextAreaField: React.FC<TextAreaFieldProps> = ({
     label,
     description,
@@ -105,6 +138,8 @@ export const TextAreaField: React.FC<TextAreaFieldProps> = ({
                     <Field
                         variant={variant}
                         onPointerDown={focusOnPointerDown(ref)}
+                        isInvalid={isInvalid}
+                        isDisabled={isDisabled}
                     >
                         <AriaTextArea
                             data-textarea

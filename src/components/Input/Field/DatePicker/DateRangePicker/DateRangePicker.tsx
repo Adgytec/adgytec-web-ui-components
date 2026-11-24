@@ -8,6 +8,24 @@ import { DateInput, DateSegment, Field, FieldButton } from "../../Field";
 import { FieldGroup } from "../../Field/FieldGroup/FieldGroup";
 import type { DateRangePickerProps } from "./types";
 
+/**
+ * A date range picker component combining keyboard date range inputs with a calendar dialog popover.
+ *
+ * Displays start and end date inputs separated by a dash within a Material Design 3 text field container.
+ * Supports filled and outlined variants, keyboard segment navigation, and visual calendar range selection.
+ *
+ * @example
+ * ```tsx
+ * import { DateRangePicker, DatePickerPopover } from "@adgytec/web-ui-components";
+ * import { RangeCalendar } from "@/components/Calendar";
+ *
+ * <DateRangePicker label="Trip Dates" description="Select check-in and check-out dates">
+ *     <DatePickerPopover>
+ *         <RangeCalendar />
+ *     </DatePickerPopover>
+ * </DateRangePicker>
+ * ```
+ */
 export const DateRangePicker = <T extends DateValue>({
     label,
     errorMessage,
@@ -37,6 +55,8 @@ export const DateRangePicker = <T extends DateValue>({
                             trailing={
                                 trailing || <FieldButton icon={CalendarDays} />
                             }
+                            isInvalid={isInvalid}
+                            isDisabled={isDisabled}
                         >
                             <DateInput slot="start" ref={dateInputRef}>
                                 {(segment) => <DateSegment segment={segment} />}

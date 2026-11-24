@@ -1,3 +1,11 @@
+/* configurable tokens
+*
+* --md-text-area-max-block-size
+* --md-text-area-max-inline-size
+* --md-text-area-resize
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .supporting-group {
         display: inline-flex;

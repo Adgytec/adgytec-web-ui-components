@@ -37,6 +37,7 @@ export const ComboBoxTrigger: React.FC<ComboBoxTriggerProps> = ({
     const ref = useObjectRef(inputRef);
 
     return (
+        // invalid and disabled state is handled by Combobox
         <Field
             variant={variant}
             trailing={

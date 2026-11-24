@@ -1,0 +1,75 @@
+# Date Field
+
+## Configurable CSS Tokens
+
+| Token                              | Default Value                                   | Description                                           |
+| ---------------------------------- | ----------------------------------------------- | ----------------------------------------------------- |
+| `--md-field-color`                 | `var(--md-sys-color-on-surface)`                | Primary text and segment color within the field.      |
+| `--md-field-infix-color`           | `var(--md-sys-color-on-surface-variant)`        | Color of icons, buttons, and placeholder segments.    |
+| `--md-field-background-color`      | `var(--md-sys-color-surface-container-highest)` | Background color for the filled variant.              |
+| `--md-field-focused-outline-color` | `var(--md-sys-color-primary)`                   | Color of the outline when focused.                    |
+| `--md-field-group-color`           | `var(--md-sys-color-on-surface-variant)`        | Color of supporting text (label, description, error). |
+
+The `DateField` component allows users to enter and edit date values using keyboard navigation with segment-based input and validation. It implements [Material 3 Text Fields](https://m3.material.io/components/text-fields/overview) with support for filled and outlined variants.
+
+## Props
+
+The `DateField` component extends [React Aria Components DateField](https://react-spectrum.adobe.com/react-aria/DateField.html) (excluding `children`).
+
+| Prop           | Type                                                | Default    | Description                                              |
+| -------------- | --------------------------------------------------- | ---------- | -------------------------------------------------------- |
+| `label`        | `ReactNode`                                         | —          | The accessible label displayed above the date input.     |
+| `description`  | `ReactNode`                                         | —          | Informative supporting text displayed below the input.   |
+| `errorMessage` | `ReactNode \| ((v: ValidationResult) => ReactNode)` | —          | Error message displayed when validation fails.           |
+| `variant`      | `"filled" \| "outlined"`                            | `"filled"` | Visual styling variant of the input container.           |
+| `leading`      | `ReactNode`                                         | —          | Leading element (such as `FieldIcon` or `FieldButton`).  |
+| `trailing`     | `ReactNode`                                         | —          | Trailing element (such as `FieldButton` or `FieldIcon`). |
+| `dateInputRef` | `Ref<HTMLDivElement>`                               | —          | Ref passed directly to the `DateInput` container.        |
+
+### Common React Aria Props
+
+| Prop           | Type                     | Default | Description                                            |
+| -------------- | ------------------------ | ------- | ------------------------------------------------------ |
+| `value`        | `DateValue`              | —       | The current date value (controlled).                   |
+| `defaultValue` | `DateValue`              | —       | The default date value (uncontrolled).                 |
+| `onChange`     | `(v: DateValue) => void` | —       | Handler called when the date changes.                  |
+| `minValue`     | `DateValue`              | —       | The minimum permissible date value.                    |
+| `maxValue`     | `DateValue`              | —       | The maximum permissible date value.                    |
+| `isDisabled`   | `boolean`                | `false` | Whether the date field is disabled.                    |
+| `isReadOnly`   | `boolean`                | `false` | Whether the date value is immutable.                   |
+| `isRequired`   | `boolean`                | `false` | Whether user input is required before form submission. |
+| `isInvalid`    | `boolean`                | `false` | Whether the input is currently in an invalid state.    |
+
+## Usage
+
+### Basic Filled Variant (Default)
+
+```tsx
+import { DateField } from "@adgytec/web-ui-components";
+import { getLocalTimeZone, today } from "@internationalized/date";
+
+<DateField
+    label="Birth Date"
+    description="Please enter your date of birth"
+    defaultValue={today(getLocalTimeZone())}
+/>;
+```
+
+### Outlined Variant
+
+```tsx
+import { DateField } from "@adgytec/web-ui-components";
+
+<DateField variant="outlined" label="Event Date" isRequired />;
+```
+
+## Internal Structure
+
+`DateField` integrates the following building blocks:
+- `FieldGroup`: Manages label, supporting text, and validation error layout.
+- `Field`: Renders container styling, borders, focus outline, and states.
+- `DateInput`: Container for individual editable date segments.
+- `DateSegment`: Renders and coordinates keyboard interaction for each date segment (day, month, year).
+
+
+Generated by Gemini
