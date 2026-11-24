@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { type InputVariant, TextArea } from "../../components/Input";
+import {
+    type InputVariant,
+    TextAreaField as TextArea,
+} from "../../components/Input";
 
 export const RenderTextArea = ({
     isInvalid,
@@ -16,22 +19,23 @@ export const RenderTextArea = ({
             variant={variant}
             label="Issue"
             maxLength={1024}
-            rows={4}
+            rows={5}
+            cols={100}
             description="Describe your issue"
             showCharacterCount
             value={val}
             onChange={setVal}
             isInvalid={isInvalid}
-            showDescriptionOnInvalid={isInvalid}
             isDisabled={isDisabled}
             placeholder="Define your issue..."
+            errorMessage={isInvalid && "sample error message"}
         />
     );
 };
 
 export const TextAreaPreview = () => {
     return (
-        <div className="items-grid">
+        <div className="items-grid textarea">
             <div className="items">
                 <RenderTextArea />
                 <RenderTextArea variant="outlined" />

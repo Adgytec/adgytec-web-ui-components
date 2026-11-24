@@ -1,0 +1,42 @@
+@layer adgytec.comps {
+    .supporting-group {
+        display: inline-flex;
+        gap: var(--md-sys-layout-space-16);
+
+        align-items: flex-start;
+        justify-content: space-between;
+
+        inline-size: 100%;
+    }
+
+    .character-count {
+        margin-inline-start: auto;
+    }
+
+    .textarea {
+        --_md-text-area-max-block-size: var(
+            --md-text-area-max-block-size,
+            none
+        );
+        --_md-text-area-max-inline-size: var(
+            --md-text-area-max-inline-size,
+            none
+        );
+
+        --_md-text-area-resize: var(--md-text-area-resize, none);
+
+        cursor: text;
+        resize: var(--_md-text-area-resize);
+
+        min-block-size: var(--md-sys-layout-space-24);
+        max-block-size: var(--_md-text-area-max-block-size);
+
+        min-inline-size: var(--md-sys-layout-space-128);
+        max-inline-size: var(--_md-text-area-max-inline-size);
+
+        &[data-disabled] {
+            resize: none;
+            cursor: default;
+        }
+    }
+}

@@ -881,3 +881,8 @@
         border-radius: var(--md-sys-shape-corner-radius-large);
     }
 }
+
+.textarea {
+    --md-text-area-resize: vertical;
+    --md-text-area-max-block-size: 50dvh;
+}

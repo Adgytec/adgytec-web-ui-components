@@ -4,5 +4,4 @@ export * from "./DatePicker";
 export * from "./Field";
 export * from "./Selection";
 export * from "./Slider";
-export * from "./TextArea";
 export * from "./TimeField";
