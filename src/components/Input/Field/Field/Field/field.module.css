@@ -71,12 +71,22 @@
         --_state-color: var(--md-sys-color-on-surface);
         --_state-opacity: 0;
 
+        --_md-field-focus-indicator-color: var(--md-sys-color-secondary);
+        --_md-date-segment-focus-indicator-color: var(--md-sys-color-secondary);
+        --_md-date-segment-focus-indicator-invalid-color: var(
+            --md-sys-color-on-error-container
+        );
+
         background-color: var(--_background-color);
 
         &[data-invalid] {
             --_background-color: var(--md-sys-color-error-container);
             --_caret-color: var(--md-sys-color-on-error-container);
             --_md-field-button-color: var(--md-sys-color-on-error-container);
+
+            --_md-field-focus-indicator-color: var(
+                --md-sys-color-on-error-container
+            );
         }
 
         &[data-hovered] {
@@ -99,7 +109,7 @@
     .filled:is([data-focus-within], [data-focus-visible], [data-pressed]) {
         --focus-indicator-thickness: calc(3 * var(--dp, 1px));
         --focus-indicator-offset: calc(2 * var(--dp, 1px));
-        --focus-indicator-color: var(--md-sys-color-primary);
+        --focus-indicator-color: var(--_md-field-focus-indicator-color);
 
         outline-width: var(--focus-indicator-thickness);
         outline-style: solid;
@@ -148,6 +158,13 @@
 
         --_outline-width: calc(1 * var(--dp, 1px));
         --_outline-color: var(--md-sys-color-outline);
+
+        --_md-date-segment-focus-indicator-color: var(
+            --_md-field-focused-outline-color
+        );
+        --_md-date-segment-focus-indicator-invalid-color: var(
+            --md-sys-color-error
+        );
 
         border: var(--_outline-width) solid var(--_outline-color);
 

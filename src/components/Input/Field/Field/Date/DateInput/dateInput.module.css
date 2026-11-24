@@ -1,0 +1,6 @@
+@layer adgytec.comps {
+    .input {
+        display: inline-flex;
+        gap: var(--md-sys-layout-space-4);
+    }
+}

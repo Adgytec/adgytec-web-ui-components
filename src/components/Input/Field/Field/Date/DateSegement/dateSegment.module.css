@@ -1,0 +1,24 @@
+@layer adgyetec.comps {
+    .segment {
+        border-radius: var(--md-sys-shape-corner-radius-small);
+
+        &[data-focused] {
+            --focus-indicator-thickness: calc(2 * var(--dp, 1px));
+            --focus-indicator-offset: calc(2 * var(--dp, 1px));
+            --focus-indicator-color: var(
+                --_md-date-segment-focus-indicator-color
+            );
+
+            outline-width: var(--focus-indicator-thickness);
+            outline-style: solid;
+            outline-offset: var(--focus-indicator-offset);
+            outline-color: var(--focus-indicator-color);
+        }
+
+        &[data-invalid] {
+            --focus-indicator-color: var(
+                --_md-date-segment-focus-indicator-invalid-color
+            );
+        }
+    }
+}

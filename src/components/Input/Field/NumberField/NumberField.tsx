@@ -17,15 +17,18 @@ import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
 import type { NumberFieldProps } from "./types";
 
 export const NumberField: React.FC<NumberFieldProps> = ({
-    placeholder,
     label,
     description,
     errorMessage,
+
     variant,
     leading,
     trailing,
+
     inputRef,
+    placeholder,
     editorDir,
+
     ...props
 }) => {
     const ref = useObjectRef(inputRef);

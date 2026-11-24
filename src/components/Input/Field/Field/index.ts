@@ -1,5 +1,6 @@
 export * from "./CharacterCount";
 export * from "./core";
+export * from "./Date";
 export * from "./Description";
 export * from "./Field";
 export * from "./FieldButton";
