@@ -29,6 +29,7 @@ import type { SearchFieldProps } from "./types";
  */
 export const SearchField: React.FC<SearchFieldProps> = ({
     placeholder = "Search",
+    inputRef,
     ...props
 }) => {
     return (
@@ -43,6 +44,7 @@ export const SearchField: React.FC<SearchFieldProps> = ({
                     <Icon icon={Search} size={24} data-search-icon />
 
                     <Input
+                        ref={inputRef}
                         className={clsx(styles["input"], typography.bodyLarge)}
                         placeholder={placeholder}
                     />

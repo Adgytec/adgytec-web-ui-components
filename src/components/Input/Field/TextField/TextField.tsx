@@ -91,7 +91,6 @@ export const TextField: React.FC<TextFieldProps> = ({
             )}
             maxLength={maxLength}
             value={currentValue}
-            defaultValue={defaultValue}
             onChange={setValue}
         >
             {({ isInvalid, isDisabled }) => (
