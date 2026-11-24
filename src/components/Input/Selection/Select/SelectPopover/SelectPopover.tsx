@@ -13,7 +13,7 @@ export interface SelectPopoverProps
 /**
  * Floating dropdown container for displaying {@link SelectList} items.
  */
-export const SelectPopover: React.FC<SelectPopoverProps> = ({ ...props }) => {
+export const SelectPopover: React.FC<SelectPopoverProps> = (props) => {
     return (
         <Popover
             {...props}

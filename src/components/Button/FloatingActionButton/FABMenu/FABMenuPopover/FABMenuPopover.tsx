@@ -32,7 +32,7 @@ export interface FABMenuPopoverProps
  * </FABMenuPopover>
  * ```
  */
-export const FABMenuPopover: React.FC<FABMenuPopoverProps> = ({ ...props }) => {
+export const FABMenuPopover: React.FC<FABMenuPopoverProps> = (props) => {
     return (
         <Popover
             shouldFlip={false}

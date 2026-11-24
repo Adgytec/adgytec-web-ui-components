@@ -39,7 +39,7 @@ export interface PopoverProps
  * </DialogTrigger>
  * ```
  */
-export const Popover: React.FC<PopoverProps> = ({ ...props }) => {
+export const Popover: React.FC<PopoverProps> = (props) => {
     return (
         <AriaPopover
             {...props}

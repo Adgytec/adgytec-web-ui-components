@@ -24,7 +24,7 @@ export interface MenuPopoverProps
  * </MenuPopover>
  * ```
  */
-export const MenuPopover: React.FC<MenuPopoverProps> = ({ ...props }) => {
+export const MenuPopover: React.FC<MenuPopoverProps> = (props) => {
     return (
         <Popover
             {...props}
