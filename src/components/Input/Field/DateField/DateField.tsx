@@ -33,7 +33,7 @@ export const DateField = <T extends DateValue>({
                         trailing={trailing}
                         variant={variant}
                     >
-                        <DateInput>
+                        <DateInput ref={dateInputRef}>
                             {(segment) => <DateSegment segment={segment} />}
                         </DateInput>
                     </Field>
