@@ -1,7 +1,9 @@
 @layer adgytec.comps {
     .base {
         all: unset;
+    }
 
+    .color {
         color: var(--_md-field-color);
     }
 }

@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { composeRenderProps, Group } from "react-aria-components";
 import { addStateAttrsToFieldButton } from "../core";
-import styles from "./field.module.css";
+import { FieldStyle, FieldVariantStyles } from "./field";
 import type { FieldProps } from "./types";
 
 export const Field: React.FC<FieldProps> = ({
@@ -14,7 +14,7 @@ export const Field: React.FC<FieldProps> = ({
         <Group
             {...props}
             className={composeRenderProps(props.className, (className) =>
-                clsx(styles["field"], styles[variant], className)
+                clsx(FieldStyle, FieldVariantStyles(variant), className)
             )}
             data-leading={leading ? true : undefined}
             data-trailing={trailing ? true : undefined}

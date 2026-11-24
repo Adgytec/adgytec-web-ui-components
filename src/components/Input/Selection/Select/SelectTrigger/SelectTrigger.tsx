@@ -10,8 +10,10 @@ import {
 import {
     BaseFieldStyles,
     type CoreFieldProps,
-    Field,
+    FieldColorStyles,
     FieldIcon,
+    FieldStyle,
+    FieldVariantStyles,
 } from "@/components/Input/Field";
 import styles from "./selectTrigger.module.css";
 
@@ -27,7 +29,7 @@ export interface SelectTriggerProps
  * The clickable input trigger button that displays the selected value and toggles the select dropdown menu.
  */
 export const SelectTrigger: React.FC<SelectTriggerProps> = ({
-    variant,
+    variant = "filled",
     ...props
 }) => {
     const selectContextVal = useContext(SelectStateContext);
@@ -37,37 +39,39 @@ export const SelectTrigger: React.FC<SelectTriggerProps> = ({
         <Button
             {...props}
             className={composeRenderProps(props.className, (className) =>
-                clsx(BaseFieldStyles, styles["trigger"], className)
+                clsx(
+                    BaseFieldStyles,
+                    FieldStyle,
+                    FieldVariantStyles(variant),
+                    styles["trigger"],
+                    className
+                )
             )}
+            data-variant={variant}
+            data-trailing={true}
+            data-invalid={invalid || undefined}
         >
-            {({ isDisabled, isFocusVisible, isPressed }) => {
-                return (
-                    <Field
-                        variant={variant}
-                        isDisabled={isDisabled}
-                        isInvalid={invalid}
-                        trailing={
-                            <FieldIcon
-                                className={clsx(styles["icon"])}
-                                icon={ChevronDown}
-                            />
-                        }
-                        data-focused-override={
-                            isFocusVisible || isPressed || undefined
+            {({ isPressed }) => (
+                <>
+                    <SelectValue
+                        className={({ isPlaceholder }) =>
+                            clsx(
+                                styles["select-value"],
+                                !isPlaceholder && FieldColorStyles
+                            )
                         }
                     >
-                        <SelectValue className={clsx(styles["select-value"])}>
-                            {({
-                                selectedText,
-                                isPlaceholder,
-                                defaultChildren,
-                            }) =>
-                                isPlaceholder ? defaultChildren : selectedText
-                            }
-                        </SelectValue>
-                    </Field>
-                );
-            }}
+                        {({ selectedText, isPlaceholder, defaultChildren }) =>
+                            isPlaceholder ? defaultChildren : selectedText
+                        }
+                    </SelectValue>
+                    <FieldIcon
+                        className={clsx(styles["icon"])}
+                        icon={ChevronDown}
+                        data-rotate={isPressed || undefined}
+                    />{" "}
+                </>
+            )}
         </Button>
     );
 };

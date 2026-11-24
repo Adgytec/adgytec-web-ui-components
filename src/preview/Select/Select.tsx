@@ -29,7 +29,7 @@ export const RenderSelect = ({
             placeholder="Select Icecream"
             isInvalid={isInvalid}
             isDisabled={isDisabled}
-            showDescriptionOnInvalid={isInvalid}
+            selectionMode="multiple"
         >
             <SelectTrigger variant={variant} />
 
@@ -62,6 +62,7 @@ export const RenderComboBox = ({
             isInvalid={isInvalid}
             isDisabled={isDisabled}
             showDescriptionOnInvalid={isInvalid}
+            selectionMode="multiple"
         >
             <ComboBoxTrigger placeholder="Select Icecream" variant={variant} />
 

@@ -1,22 +1,26 @@
 @layer adgytec.overrides {
     .trigger {
-        --rotate: 0;
-
-        justify-content: space-between;
         cursor: pointer;
 
-        &[data-pressed] {
-            --rotate: 180deg;
+        &[data-disabled] {
+            cursor: default;
+        }
+    }
+
+    .icon {
+        --_rotate: 0deg;
+
+        rotate: var(--_rotate);
+
+        transition: rotate var(--md-sys-motion-expressive-fast-spatial)
+            var(--md-sys-motion-expressive-fast-spatial-duration);
+
+        @media (prefers-reduced-motion) {
+            transition: none;
         }
 
-        svg {
-            rotate: var(--rotate);
-            transition: rotate var(--md-sys-motion-expressive-fast-spatial)
-                var(--md-sys-motion-expressive-fast-spatial-duration);
-
-            @media (prefers-reduced-motion) {
-                transition: none;
-            }
+        &[data-rotate] {
+            --_rotate: 180deg;
         }
     }
 

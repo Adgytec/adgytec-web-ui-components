@@ -83,11 +83,7 @@
             --_state-opacity: var(--md-sys-state-hover);
         }
 
-        &[data-focus-within] {
-            --_state-opacity: var(--md-sys-state-focus);
-        }
-
-        &[data-focused-override] {
+        &:is([data-focus-within], [data-focus-visible], [data-pressed]) {
             --_state-opacity: var(--md-sys-state-focus);
         }
 
@@ -170,16 +166,7 @@
             }
         }
 
-        &[data-focus-within] {
-            --_outline-color: var(--_md-field-focused-outline-color);
-            --_outline-color-focus: var(--_outline-color);
-
-            &[data-invalid] {
-                --_outline-color: var(--md-sys-color-error);
-            }
-        }
-
-        &[data-focused-override] {
+        &:is([data-focus-within], [data-focus-visible], [data-pressed]) {
             --_outline-color: var(--_md-field-focused-outline-color);
             --_outline-color-focus: var(--_outline-color);
 

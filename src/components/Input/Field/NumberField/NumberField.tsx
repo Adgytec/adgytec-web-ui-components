@@ -1,7 +1,12 @@
 import clsx from "clsx";
 import { useObjectRef } from "react-aria";
 import { NumberField as AriaNumberField, Input } from "react-aria-components";
-import { BaseFieldStyles, Field, focusOnPointerDown } from "../Field";
+import {
+    BaseFieldStyles,
+    Field,
+    FieldColorStyles,
+    focusOnPointerDown,
+} from "../Field";
 import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
 import type { NumberFieldProps } from "./types";
 
@@ -33,7 +38,10 @@ export const NumberField: React.FC<NumberFieldProps> = ({
                     variant={variant}
                     onPointerDown={focusOnPointerDown(ref)}
                 >
-                    <Input className={clsx(BaseFieldStyles)} ref={ref} />
+                    <Input
+                        className={clsx(BaseFieldStyles, FieldColorStyles)}
+                        ref={ref}
+                    />
                 </Field>
             </FieldGroup>
         </AriaNumberField>
