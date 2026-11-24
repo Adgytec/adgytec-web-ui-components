@@ -95,6 +95,18 @@
         }
     }
 
+    /* focus indicator */
+    .filled:is([data-focus-within], [data-focus-visible], [data-pressed]) {
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-primary);
+
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
+    }
+
     /* state layer */
     .filled::before {
         content: "";
@@ -121,31 +133,25 @@
             var(--md-sys-color-primary)
         );
 
-        --_1dp: calc(1 * var(--dp, 1px));
-
         --padding-inline-start: calc(
             var(--padding-inline-start-core) -
-            var(--_1dp)
+            var(--_outline-width)
         );
         --padding-inline-end: calc(
             var(--padding-inline-end-core) -
-            var(--_1dp)
+            var(--_outline-width)
         );
-        --padding-block: calc(var(--padding-block-core) - var(--_1dp));
+        --padding-block: calc(
+            var(--padding-block-core) -
+            var(--_outline-width)
+        );
 
-        --outline-width: calc(1 * var(--dp, 1px));
-        --outline-width-focused: calc(2 * var(--dp, 1px));
-
+        --_outline-width: calc(1 * var(--dp, 1px));
         --_outline-color: var(--md-sys-color-outline);
-        --_outline-color-focus: transparent;
 
-        border: var(--outline-width) solid var(--_outline-color);
-        outline: var(--outline-width-focused) solid var(--_outline-color-focus);
+        border: var(--_outline-width) solid var(--_outline-color);
 
-        transition:
-            border-color var(--md-sys-motion-expressive-fast-effects)
-            var(--md-sys-motion-expressive-fast-effects-duration),
-            outline-color var(--md-sys-motion-expressive-fast-effects)
+        transition: border-color var(--md-sys-motion-expressive-fast-effects)
             var(--md-sys-motion-expressive-fast-effects-duration);
 
         @media (prefers-reduced-motion) {
@@ -169,6 +175,8 @@
         &:is([data-focus-within], [data-focus-visible], [data-pressed]) {
             --_outline-color: var(--_md-field-focused-outline-color);
             --_outline-color-focus: var(--_outline-color);
+
+            --_outline-width: calc(3 * var(--dp, 1px));
 
             &[data-invalid] {
                 --_outline-color: var(--md-sys-color-error);
