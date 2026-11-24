@@ -21,7 +21,6 @@ export const FieldGroup: React.FC<FieldGroupProps> = ({
     hasTrailing = false,
     className,
     children,
-    renderFieldErrorComp = true,
     ...props
 }) => {
     const dataAttrs = {

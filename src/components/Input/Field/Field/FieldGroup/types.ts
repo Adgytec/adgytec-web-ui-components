@@ -17,10 +17,4 @@ export interface FieldGroupProps
 
     /** Whether the field contains a trailing icon or button. */
     hasTrailing?: boolean;
-
-    /**
-     * Whether to render the `FieldError` supporting component.
-     * @default true
-     */
-    renderFieldErrorComp?: boolean;
 }
