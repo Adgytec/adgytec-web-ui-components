@@ -1,7 +1,6 @@
 import type { DateValue } from "react-aria";
 import { DateField as AriaDateField } from "react-aria-components";
-import { DateInput, DateSegment, Field } from "../Field";
-import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
+import { DateInput, DateSegment, Field, FieldGroup } from "../Field";
 import type { DateFieldProps } from "./types";
 
 /**

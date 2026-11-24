@@ -4,8 +4,13 @@ import {
     DatePicker as AriaDatePicker,
     composeRenderProps,
 } from "react-aria-components";
-import { DateInput, DateSegment, Field, FieldButton } from "../../Field";
-import { FieldGroup } from "../../Field/FieldGroup/FieldGroup";
+import {
+    DateInput,
+    DateSegment,
+    Field,
+    FieldButton,
+    FieldGroup,
+} from "../../Field";
 import type { DatePickerProps } from "./types";
 
 /**

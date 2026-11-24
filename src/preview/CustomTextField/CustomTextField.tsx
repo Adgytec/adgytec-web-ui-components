@@ -5,11 +5,11 @@ import { ToggleButton } from "@/components/Button";
 import {
     Field,
     FieldEditorColorStyles,
+    FieldGroup,
     FieldTypography,
     type FieldVariant,
     UnsetFieldStyles,
 } from "@/components/Input";
-import { FieldGroup } from "@/components/Input/Field/Field/FieldGroup/FieldGroup";
 
 export const CustomTextFieldPreview = () => {
     const [state, setState] = useState({

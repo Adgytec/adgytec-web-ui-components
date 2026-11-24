@@ -3,8 +3,7 @@ import {
     Select as AriaSelect,
     composeRenderProps,
 } from "react-aria-components";
-import { FieldAutoSizeStyles } from "@/components/Input/Field";
-import { FieldGroup } from "@/components/Input/Field/Field/FieldGroup/FieldGroup";
+import { FieldAutoSizeStyles, FieldGroup } from "@/components/Input/Field";
 import type { SelectProps } from "./types";
 
 /**

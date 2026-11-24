@@ -10,12 +10,12 @@ import {
     Field,
     FieldAutoSizeStyles,
     FieldEditorColorStyles,
+    FieldGroup,
     FieldTypography,
     focusOnPointerDown,
     UnsetFieldStyles,
     useControllableState,
 } from "../Field";
-import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
 import styles from "./textField.module.css";
 import type { TextFieldProps } from "./types";
 

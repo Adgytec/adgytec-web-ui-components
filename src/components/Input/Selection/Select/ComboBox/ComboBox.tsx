@@ -6,8 +6,7 @@ import {
     TagGroup,
     TagList,
 } from "react-aria-components";
-import { FieldAutoSizeStyles } from "@/components/Input/Field";
-import { FieldGroup } from "@/components/Input/Field/Field/FieldGroup/FieldGroup";
+import { FieldAutoSizeStyles, FieldGroup } from "@/components/Input/Field";
 import { Tag } from "@/components/Tag";
 import { typography } from "@/utils";
 import styles from "./comboBox.module.css";

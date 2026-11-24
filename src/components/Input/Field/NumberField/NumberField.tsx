@@ -9,11 +9,11 @@ import {
     Field,
     FieldAutoSizeStyles,
     FieldEditorColorStyles,
+    FieldGroup,
     FieldTypography,
     focusOnPointerDown,
     UnsetFieldStyles,
 } from "../Field";
-import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
 import type { NumberFieldProps } from "./types";
 
 /**

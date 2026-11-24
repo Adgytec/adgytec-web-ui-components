@@ -1,7 +1,6 @@
 import type { TimeValue } from "react-aria";
 import { TimeField as AriaTimeField } from "react-aria-components";
-import { DateInput, DateSegment, Field } from "../Field";
-import { FieldGroup } from "../Field/FieldGroup/FieldGroup";
+import { DateInput, DateSegment, Field, FieldGroup } from "../Field";
 import type { TimeFieldProps } from "./types";
 
 /**
