@@ -2,7 +2,6 @@ export * from "./core";
 export * from "./DateField";
 export * from "./DatePicker";
 export * from "./Field";
-export * from "./Input";
 export * from "./Selection";
 export * from "./Slider";
 export * from "./TextArea";
