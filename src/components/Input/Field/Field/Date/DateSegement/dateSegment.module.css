@@ -6,7 +6,7 @@
             --focus-indicator-thickness: calc(2 * var(--dp, 1px));
             --focus-indicator-offset: calc(2 * var(--dp, 1px));
             --focus-indicator-color: var(
-                --_md-date-segment-focus-indicator-color
+                --_md-field-segment-focus-indicator-color
             );
 
             outline-width: var(--focus-indicator-thickness);
@@ -17,7 +17,7 @@
 
         &[data-invalid] {
             --focus-indicator-color: var(
-                --_md-date-segment-focus-indicator-invalid-color
+                --_md-field-segment-focus-indicator-invalid-color
             );
         }
     }

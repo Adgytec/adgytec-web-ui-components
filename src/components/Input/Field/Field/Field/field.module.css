@@ -81,8 +81,11 @@
         --_state-opacity: 0;
 
         --_md-field-focus-indicator-color: var(--md-sys-color-secondary);
-        --_md-date-segment-focus-indicator-color: var(--md-sys-color-secondary);
-        --_md-date-segment-focus-indicator-invalid-color: var(
+
+        --_md-field-segment-focus-indicator-color: var(
+            --md-sys-color-secondary
+        );
+        --_md-field-segment-focus-indicator-invalid-color: var(
             --md-sys-color-on-error-container
         );
 
@@ -168,10 +171,10 @@
         --_outline-width: calc(1 * var(--dp, 1px));
         --_outline-color: var(--md-sys-color-outline);
 
-        --_md-date-segment-focus-indicator-color: var(
+        --_md-field-segment-focus-indicator-color: var(
             --_md-field-focused-outline-color
         );
-        --_md-date-segment-focus-indicator-invalid-color: var(
+        --_md-field-segment-focus-indicator-invalid-color: var(
             --md-sys-color-error
         );
 

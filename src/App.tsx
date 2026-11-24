@@ -16,6 +16,7 @@ import { CenteredSliderPreview } from "./preview/CenteredSlider";
 import { CheckboxPreview } from "./preview/Checkbox";
 import { ConfigPreview } from "./preview/Config";
 import { ConnectedButtonGroupPreview } from "./preview/ConnectedButtonGroup";
+import { CustomTextFieldPreview } from "./preview/CustomTextField";
 import { DateFieldPreview } from "./preview/DateField";
 import { DatePickerPreview } from "./preview/DatePicker";
 import { DateRangePickerPreview } from "./preview/DateRangePicker";
@@ -87,6 +88,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "custom-text-field",
+            label: "Custom TextField",
+            Component: CustomTextFieldPreview,
+        },
         {
             id: "number-field",
             label: "Number Field",
