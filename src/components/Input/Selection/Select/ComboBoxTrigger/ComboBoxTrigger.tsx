@@ -22,6 +22,7 @@ export interface ComboBoxTriggerProps
         RefProp<typeof Input, "inputRef"> {
     /** Placeholder text displayed when the combobox input is empty. */
     placeholder?: string;
+    editorDir?: string;
 }
 
 /**
@@ -31,6 +32,7 @@ export const ComboBoxTrigger: React.FC<ComboBoxTriggerProps> = ({
     placeholder,
     variant,
     inputRef,
+    editorDir,
 }) => {
     const ref = useObjectRef(inputRef);
 
@@ -46,6 +48,7 @@ export const ComboBoxTrigger: React.FC<ComboBoxTriggerProps> = ({
             onPointerDown={focusOnPointerDown(ref)}
         >
             <Input
+                dir={editorDir}
                 ref={ref}
                 placeholder={placeholder}
                 className={clsx(

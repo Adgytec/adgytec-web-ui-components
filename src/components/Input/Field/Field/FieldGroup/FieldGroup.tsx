@@ -15,6 +15,7 @@ export const FieldGroup: React.FC<FieldGroupProps> = ({
     hasTrailing = false,
     className,
     children,
+    renderFieldErrorComp = true,
     ...props
 }) => {
     const dataAttrs = {
@@ -40,7 +41,12 @@ export const FieldGroup: React.FC<FieldGroupProps> = ({
                 </Description>
             )}
 
-            <FieldError className={clsx(styles["supporting-text"])}>
+            <FieldError
+                className={clsx(
+                    styles["supporting-text"],
+                    isDisabled && styles["error-disabled"]
+                )}
+            >
                 {errorMessage}
             </FieldError>
         </div>

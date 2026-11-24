@@ -8,4 +8,5 @@ export interface NumberFieldProps
         CoreFieldProps,
         RefProp<typeof Input, "inputRef"> {
     placeholder?: string;
+    editorDir?: string;
 }

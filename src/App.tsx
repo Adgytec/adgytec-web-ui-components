@@ -26,7 +26,6 @@ import { FABPreview } from "./preview/FAB";
 import { FABMenuPreview } from "./preview/FABMenu";
 import { IconPreview } from "./preview/Icon";
 import { IconButtonPreview } from "./preview/IconButton";
-import { InputPreview } from "./preview/Input";
 import { LinkPreview } from "./preview/Link";
 import { ListPreview } from "./preview/List";
 import { LoadingIndicatorPreview } from "./preview/LoadingIndicator";
@@ -49,6 +48,7 @@ import { SwitchPreview } from "./preview/Switch";
 import { TabsPreview } from "./preview/Tabs";
 import { TagsPreview } from "./preview/Tags";
 import { TextAreaPreview } from "./preview/TextArea";
+import { TextFieldPreview } from "./preview/TextField";
 import { ThemeSelectorPreview } from "./preview/ThemeSelector";
 import { TimeFieldPreview } from "./preview/TimeField";
 import { ToolbarPreview } from "./preview/Toolbar";
@@ -210,7 +210,7 @@ const App = () => {
         { id: "date-field", label: "Date Field", Component: DateFieldPreview },
         { id: "time-field", label: "Time Field", Component: TimeFieldPreview },
         { id: "text-area", label: "Text Area", Component: TextAreaPreview },
-        { id: "input", label: "Input", Component: InputPreview },
+        { id: "text-field", label: "TextField", Component: TextFieldPreview },
         { id: "dialog", label: "Dialog", Component: DialogPreview },
         {
             id: "connected-button-group",

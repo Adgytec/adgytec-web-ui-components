@@ -1,19 +1,24 @@
 import { Armchair, Mail } from "lucide-react";
 import { useState } from "react";
-import { Input, InputButton, type InputVariant } from "../../components/Input";
+import {
+    FieldButton,
+    FieldIcon,
+    type FieldVariant,
+    TextField,
+} from "../../components/Input";
 
-export const RenderInput = ({
+export const RenderTextField = ({
     isInvalid,
     isDisabled,
     variant,
 }: {
     isInvalid?: boolean;
     isDisabled?: boolean;
-    variant?: InputVariant;
+    variant?: FieldVariant;
 }) => {
     const [val, setVal] = useState("");
     return (
-        <Input
+        <TextField
             variant={variant}
             label="Email"
             type="text"
@@ -21,9 +26,9 @@ export const RenderInput = ({
             placeholder="username"
             suffix={"@adgytec.in"}
             // editorDir="rtl"
-            leadingIcon={Mail}
+            leading={<FieldIcon icon={Mail} />}
             trailing={
-                <InputButton icon={Armchair} onPress={() => setVal("hello")} />
+                <FieldButton icon={Armchair} onPress={() => setVal("hello")} />
             }
             showCharacterCount
             value={val}
@@ -31,35 +36,35 @@ export const RenderInput = ({
             maxLength={64}
             isInvalid={isInvalid}
             isDisabled={isDisabled}
-            showDescriptionOnInvalid={isInvalid}
+            errorMessage={isInvalid ? "Invalid message sample" : undefined}
         />
     );
 };
 
-export const InputPreview = () => {
+export const TextFieldPreview = () => {
     return (
         <div className="items-grid">
             <div className="items">
-                <RenderInput />
-                <RenderInput variant="outlined" />
+                <RenderTextField />
+                <RenderTextField variant="outlined" />
             </div>
 
             <div className="items">
-                <RenderInput isInvalid />
-                <RenderInput isInvalid variant="outlined" />
+                <RenderTextField isInvalid />
+                <RenderTextField isInvalid variant="outlined" />
             </div>
 
             <div className="items">
-                <RenderInput isDisabled />
-                <RenderInput isDisabled variant="outlined" />
+                <RenderTextField isDisabled />
+                <RenderTextField isDisabled variant="outlined" />
             </div>
 
             <div className="items">
-                <RenderInput isInvalid isDisabled />
-                <RenderInput isInvalid isDisabled variant="outlined" />
+                <RenderTextField isInvalid isDisabled />
+                <RenderTextField isInvalid isDisabled variant="outlined" />
             </div>
         </div>
     );
 };
 
-export default InputPreview;
+export default TextFieldPreview;

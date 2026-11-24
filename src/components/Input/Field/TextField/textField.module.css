@@ -1,0 +1,26 @@
+@layer adgytec.comps {
+    .infix-group {
+        display: inline-flex;
+        align-items: center;
+
+        inline-size: 100%;
+    }
+
+    .input {
+        inline-size: 100%;
+    }
+
+    .supporting-group {
+        display: inline-flex;
+        gap: var(--md-sys-layout-space-16);
+
+        align-items: flex-start;
+        justify-content: space-between;
+
+        inline-size: 100%;
+    }
+
+    .character-count {
+        margin-inline-start: auto;
+    }
+}

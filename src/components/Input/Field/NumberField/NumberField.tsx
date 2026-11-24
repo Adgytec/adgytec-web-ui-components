@@ -20,6 +20,7 @@ export const NumberField: React.FC<NumberFieldProps> = ({
     leading,
     trailing,
     inputRef,
+    editorDir,
     ...props
 }) => {
     const ref = useObjectRef(inputRef);
@@ -43,6 +44,7 @@ export const NumberField: React.FC<NumberFieldProps> = ({
                         onPointerDown={focusOnPointerDown(ref)}
                     >
                         <Input
+                            dir={editorDir}
                             placeholder={placeholder}
                             className={clsx(
                                 BaseFieldStyles,

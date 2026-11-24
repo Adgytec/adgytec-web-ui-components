@@ -1,11 +1,12 @@
 import clsx from "clsx";
-import { type RefProp, typography } from "@/utils";
+import { typography } from "@/utils";
 import { CharacterCountStyles } from "../../../core";
 
 /**
  * Props for the {@link CharacterCount} component.
  */
-export interface CharacterCountProps extends RefProp<"span"> {
+export interface CharacterCountProps
+    extends React.ComponentPropsWithRef<"span"> {
     /**
      * Current character length of the input field.
      */
@@ -21,12 +22,17 @@ export const CharacterCount: React.FC<CharacterCountProps> = ({
     count,
     maxLength,
     ref,
+    className,
     ...props
 }) => {
     return (
         <span
             ref={ref}
-            className={clsx(CharacterCountStyles, typography.labelMedium)}
+            className={clsx(
+                CharacterCountStyles,
+                typography.labelMedium,
+                className
+            )}
             {...props}
         >
             {count}

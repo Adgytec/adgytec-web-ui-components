@@ -7,4 +7,5 @@ export interface FieldGroupProps
     isDisabled?: boolean;
     hasLeading?: boolean;
     hasTrailing?: boolean;
+    renderFieldErrorComp?: boolean;
 }
