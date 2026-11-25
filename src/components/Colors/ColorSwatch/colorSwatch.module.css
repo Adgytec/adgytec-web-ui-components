@@ -1,0 +1,67 @@
+@layer adgytec.comps {
+    .swatch {
+        display: inline-block;
+        inline-size: var(--_md-color-swatch-size);
+        aspect-ratio: 1 / 1;
+
+        border-radius: var(--_md-color-swatch-shape);
+    }
+
+    .square {
+        --_md-color-swatch-shape: var(--_md-color-swatch-square-shape);
+    }
+
+    .round {
+        --_md-color-swatch-shape: var(--_md-color-swatch-round-shape);
+    }
+
+    .extra-small {
+        --md-sys-shape-corner-radius-full: calc(10 * var(--dp, 1px));
+
+        --_md-color-swatch-size: var(--md-sys-layout-space-20);
+        --_md-color-swatch-square-shape: var(
+            --md-sys-shape-corner-radius-extra-small
+        );
+        --_md-color-swatch-round-shape: var(--md-sys-shape-corner-radius-full);
+    }
+
+    .small {
+        --md-sys-shape-corner-radius-full: calc(12 * var(--dp, 1px));
+
+        --_md-color-swatch-size: var(--md-sys-layout-space-24);
+        --_md-color-swatch-square-shape: var(
+            --md-sys-shape-corner-radius-small
+        );
+        --_md-color-swatch-round-shape: var(--md-sys-shape-corner-radius-full);
+    }
+
+    .medium {
+        --md-sys-shape-corner-radius-full: calc(16 * var(--dp, 1px));
+
+        --_md-color-swatch-size: var(--md-sys-layout-space-32);
+        --_md-color-swatch-square-shape: var(
+            --md-sys-shape-corner-radius-medium
+        );
+        --_md-color-swatch-round-shape: var(--md-sys-shape-corner-radius-full);
+    }
+
+    .large {
+        --md-sys-shape-corner-radius-full: calc(20 * var(--dp, 1px));
+
+        --_md-color-swatch-size: var(--md-sys-layout-space-40);
+        --_md-color-swatch-square-shape: var(
+            --md-sys-shape-corner-radius-medium
+        );
+        --_md-color-swatch-round-shape: var(--md-sys-shape-corner-radius-full);
+    }
+
+    .extra-large {
+        --md-sys-shape-corner-radius-full: calc(24 * var(--dp, 1px));
+
+        --_md-color-swatch-size: var(--md-sys-layout-space-48);
+        --_md-color-swatch-square-shape: var(
+            --md-sys-shape-corner-radius-large
+        );
+        --_md-color-swatch-round-shape: var(--md-sys-shape-corner-radius-full);
+    }
+}
