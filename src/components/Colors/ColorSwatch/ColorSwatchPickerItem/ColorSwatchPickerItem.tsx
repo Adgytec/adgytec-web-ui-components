@@ -9,6 +9,32 @@ import { TapTarget } from "@/utils";
 import styles from "./colorSwatchPickerItem.module.css";
 import type { ColorSwatchPickerItemProps } from "./types";
 
+/**
+ * An interactive item within a {@link ColorSwatchPicker} representing an individual selectable color.
+ *
+ * Wraps a {@link ColorSwatch} child element and provides:
+ * - Material Design 3 state layers (hover, focus-visible, and pressed scaling animations)
+ * - Calibrated focus ring indicator
+ * - Automatic high-contrast selection checkmark with `mix-blend-mode: difference`
+ * - Disabled item state styling
+ *
+ * @example
+ * ```tsx
+ * import { ColorSwatch, ColorSwatchPickerItem } from "@adgytec/web-ui-components";
+ *
+ * <ColorSwatchPickerItem color="#6750a4" aria-label="Purple">
+ *     <ColorSwatch />
+ * </ColorSwatchPickerItem>
+ * ```
+ *
+ * @example
+ * ```tsx
+ * // Disabled item
+ * <ColorSwatchPickerItem color="#ba1a1a" isDisabled aria-label="Unavailable red">
+ *     <ColorSwatch />
+ * </ColorSwatchPickerItem>
+ * ```
+ */
 export const ColorSwatchPickerItem: React.FC<ColorSwatchPickerItemProps> = (
     props
 ) => {
