@@ -1,4 +1,5 @@
 export * from "./CharacterCount";
+export * from "./ColorField";
 export * from "./core";
 export * from "./Date";
 export * from "./Description";
