@@ -1,6 +1,6 @@
 # Wave
 
-The `Wave` component family provides mathematical SVG sine wave generators designed for dynamic, fluid wave animations. They are used internally by components like [ProgressIndicator](../ProgressIndicator/progress-indicator.md) and [ProgressSlider](../ProgressSlider/doc.md), and can be used directly for custom visual indicators, charts, loaders, and decorative effects.
+The `Wave` component family provides mathematical SVG sine wave generators designed for dynamic, fluid wave animations. They are used internally by components like [ProgressIndicator](../ProgressIndicator/progress-indicator.md) and [ProgressSlider](../ProgressSlider/progress-slider.md), and can be used directly for custom visual indicators, charts, loaders, and decorative effects.
 
 All wave animations run via an optimized `requestAnimationFrame` loop using the `usePhase` hook.
 
