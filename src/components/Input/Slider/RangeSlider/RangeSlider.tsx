@@ -25,7 +25,7 @@ import type { RangeSliderProps, RangeSliderType } from "./types";
  * Allows users to choose a numeric range `[start, end]` using two independently draggable
  * thumbs. Displays an active filled track between the thumbs, supports step indicators
  * via [`SliderStops`](src/components/Input/Slider/SliderStops/SliderStops.tsx),
- * and handles thumb overlap transitions.
+ * thumb overlap transitions, and an enforced minimum track size of 128px.
  *
  * @example
  * ```tsx

@@ -54,6 +54,12 @@ All components extend [React Aria Components Slider](https://react-spectrum.adob
 | ------------ | -------- | ---------------------------------- |
 | `thumbLabel` | `string` | Accessibility label for the thumb. |
 
+## Layout & Sizing
+
+Sliders occupy 100% of their container's inline width (`inline-size: 100%`) by default. To maintain drag usability and prevent tracks from collapsing within flex or grid layouts, the track enforces a minimum dimension of `128px` (`var(--md-sys-layout-space-128)`):
+- **Horizontal**: `min-inline-size: var(--md-sys-layout-space-128)` (128px)
+- **Vertical**: `min-block-size: var(--md-sys-layout-space-128)` (128px)
+
 ## Usage
 
 ### Single Slider

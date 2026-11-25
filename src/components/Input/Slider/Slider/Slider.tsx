@@ -23,7 +23,8 @@ import type { SliderProps } from "./types";
  *
  * Allows users to choose a specific numeric value along a track using a draggable thumb.
  * Supports configurable sizes, step indicators via [`SliderStops`](src/components/Input/Slider/SliderStops/SliderStops.tsx),
- * inset icons with automatic minimum-value swapping, and custom output formatting.
+ * inset icons with automatic minimum-value swapping, custom output formatting, and an enforced
+ * minimum track size of 128px (horizontal width or vertical height).
  *
  * @example
  * ```tsx

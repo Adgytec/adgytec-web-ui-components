@@ -26,6 +26,7 @@ import type { CenteredSliderProps } from "./types";
  * Visualizes deviation from a central neutral point (the midpoint between `minValue` and `maxValue`).
  * The active track fills outward from the center towards the thumb in either direction,
  * making it ideal for balance, pan, exposure, or plus/minus adjustments.
+ * Supports configurable sizes, step indicators, and an enforced minimum track size of 128px.
  *
  * @example
  * ```tsx

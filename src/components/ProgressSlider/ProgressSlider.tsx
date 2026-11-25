@@ -24,6 +24,7 @@ const INACTIVE_OFFSET = 8; // px from the thumb center to where the inactive tra
  *   inactive tracks, ensuring seamless gap alignment and continuous wave oscillations during scrubbing.
  * - **Slider Thumb**: Integrates the unified {@link SliderThumb} component (with `size="extra-small"`),
  *   providing standardized drag state styling, high-visibility focus indicator rings, and smooth interaction.
+ * - **Minimum Dimensions**: Enforces a minimum inline width of 128px to ensure drag precision across compact player controls.
  * - **Accessibility**: Built on [React Aria Components Slider](https://react-spectrum.adobe.com/react-aria/Slider.html),
  *   providing full keyboard navigation, screen reader support, focus ring indicators, and ARIA attributes.
  *

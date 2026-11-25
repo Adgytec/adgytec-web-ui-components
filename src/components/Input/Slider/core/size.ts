@@ -10,13 +10,17 @@ export type SliderSize =
     | "large"
     | "extra-large";
 
-/** Base CSS class for the slider container. */
+/** Base CSS class for the slider container (`inline-size: 100%`, flex column layout). */
 export const SliderStyles = styles["slider"];
 
 /** CSS class for the track wrapper container. */
 export const TrackContainerStyles = styles["track-container"];
 
-/** CSS class for the interactive slider track. */
+/**
+ * CSS class for the interactive slider track.
+ * Enforces minimum track dimensions of 128px (`min-inline-size: 128px` for horizontal,
+ * `min-block-size: 128px` for vertical) to prevent collapsing in dense layouts.
+ */
 export const TrackStyles = styles["track"];
 
 /**

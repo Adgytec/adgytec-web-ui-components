@@ -16,6 +16,7 @@ The `ProgressSlider` component is an expressive progress seeker inspired by mode
 - **Smooth Edge Transitions**: Wave amplitude dynamically attenuates near track boundaries (0–5% and 95–100%) to provide seamless visual transitions as the thumb approaches minimum or maximum limits.
 - **Interactive Slider Thumb**: Uses the unified [`SliderThumb`](../Input/Slider/slider.md) component (`size="extra-small"`), styled with consistent focus indicator rings, state transitions, and responsive dragging feedback.
 - **Wavy State Toggling**: The `wavy` prop allows toggling between animated wave motion (e.g. playing media) and a clean solid flat track (e.g. paused media).
+- **Minimum Dimensions**: Enforces a minimum width of `128px` (`min-inline-size: var(--md-sys-layout-space-128)`) along the horizontal axis, preventing the scrubber track from collapsing in dense or flexible player layouts.
 - **Accessibility by Default**: Leverages React Aria Components `Slider` for comprehensive keyboard navigation (Arrow keys, Page Up/Down, Home, End), screen reader accessibility (`aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-orientation`), and high-visibility focus indicators.
 - **Motion & Accessibility Conscious**: Automatically respects user preferences for reduced motion (`prefers-reduced-motion`) by disabling layout transitions.
 
