@@ -18,7 +18,7 @@
             var(--md-sys-color-on-surface-variant)
         );
 
-        --_md-field-button-color: var(--_md-field-infix-color);
+        --_md-field-button-color: var(--_md-field-color);
 
         --padding-inline-start-core: var(--md-sys-layout-space-16);
         --padding-inline-end-core: var(--md-sys-layout-space-16);
