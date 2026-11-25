@@ -1,0 +1,10 @@
+@layer adgytec.comps {
+    .picker {
+        display: inline-flex;
+        gap: var(--md-sys-layout-space-16);
+
+        &[data-layout="stack"] {
+            flex-direction: column;
+        }
+    }
+}

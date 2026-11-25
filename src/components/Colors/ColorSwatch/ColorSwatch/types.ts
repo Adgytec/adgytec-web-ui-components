@@ -1,5 +1,5 @@
 import type { ColorSwatch as AriaColorSwatch } from "react-aria-components";
-import type { ColorSwatchShape, ColorSwatchSize } from "../core";
+import type { BaseColorSwatchProps } from "../core";
 
 /**
  * Props for the {@link ColorSwatch} component.
@@ -10,18 +10,5 @@ import type { ColorSwatchShape, ColorSwatchSize } from "../core";
  * - `--md-color-swatch-shape`: Overrides the computed border-radius.
  */
 export interface ColorSwatchProps
-    extends React.ComponentPropsWithRef<typeof AriaColorSwatch> {
-    /**
-     * Sizing variant defining dimensions and corner radii.
-     *
-     * @default "small"
-     */
-    size?: ColorSwatchSize;
-
-    /**
-     * Shape preset for the color swatch container.
-     *
-     * @default "round"
-     */
-    shape?: ColorSwatchShape;
-}
+    extends React.ComponentPropsWithRef<typeof AriaColorSwatch>,
+        BaseColorSwatchProps {}
