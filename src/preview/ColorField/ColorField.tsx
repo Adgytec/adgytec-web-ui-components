@@ -1,10 +1,12 @@
 import { Palette, Pipette } from "lucide-react";
 import { useState } from "react";
 import { ColorPicker, ColorSwatch, parseColor } from "react-aria-components";
+import { COLOR_ADGYTEC_BLUE, COLOR_ADGYTEC_YELLOW } from "@/utils";
 import {
     ColorField,
     FieldButton,
     FieldIcon,
+    FieldNode,
     type FieldVariant,
 } from "../../components/Input";
 
@@ -12,7 +14,7 @@ export const RenderColorField = ({
     isInvalid,
     isDisabled,
     variant,
-    defaultValue = "#6750a4",
+    defaultValue = COLOR_ADGYTEC_YELLOW,
     leadingType = "swatch",
     label = "Theme Color",
     description = "Enter a hex color code",
@@ -38,17 +40,18 @@ export const RenderColorField = ({
                 }
                 leading={
                     leadingType === "swatch" ? (
-                        <ColorSwatch
-                            style={{
-                                width: 24,
-                                height: 24,
-                                marginBlock: "8px",
-                                borderRadius:
-                                    "var(--md-sys-shape-corner-radius-extra-small, 4px)",
-                                border: "1px solid var(--md-sys-color-outline-variant, rgba(0, 0, 0, 0.2))",
-                                boxSizing: "border-box",
-                            }}
-                        />
+                        <FieldNode>
+                            <ColorSwatch
+                                style={{
+                                    width: 24,
+                                    height: 24,
+                                    borderRadius:
+                                        "var(--md-sys-shape-corner-radius-extra-small, 4px)",
+                                    border: "1px solid var(--md-sys-color-outline-variant, rgba(0, 0, 0, 0.2))",
+                                    boxSizing: "border-box",
+                                }}
+                            />
+                        </FieldNode>
                     ) : leadingType === "icon" ? (
                         <FieldIcon icon={Palette} />
                     ) : undefined
@@ -67,17 +70,18 @@ export const ControlledColorField = () => {
                 label="Custom Brand Color"
                 description={`Current value: ${color.toString("hex")}`}
                 leading={
-                    <ColorSwatch
-                        style={{
-                            width: 24,
-                            height: 24,
-                            marginBlock: 8,
-                            borderRadius:
-                                "var(--md-sys-shape-corner-radius-extra-small, 4px)",
-                            border: "1px solid var(--md-sys-color-outline-variant, rgba(0, 0, 0, 0.2))",
-                            boxSizing: "border-box",
-                        }}
-                    />
+                    <FieldNode>
+                        <ColorSwatch
+                            style={{
+                                width: 24,
+                                height: 24,
+                                borderRadius:
+                                    "var(--md-sys-shape-corner-radius-extra-small, 4px)",
+                                border: "1px solid var(--md-sys-color-outline-variant, rgba(0, 0, 0, 0.2))",
+                                boxSizing: "border-box",
+                            }}
+                        />
+                    </FieldNode>
                 }
                 trailing={
                     <FieldButton
@@ -96,20 +100,22 @@ export const ColorFieldPreview = () => {
         <div className="items-grid">
             <div className="items">
                 <RenderColorField />
-                <RenderColorField variant="outlined" />
+                <RenderColorField
+                    variant="outlined"
+                    defaultValue={COLOR_ADGYTEC_BLUE}
+                />
             </div>
 
             <div className="items">
                 <RenderColorField
                     leadingType="icon"
                     label="Accent Color"
-                    defaultValue="#9c27b0"
+                    defaultValue={COLOR_ADGYTEC_BLUE}
                 />
                 <RenderColorField
                     variant="outlined"
                     leadingType="icon"
                     label="Accent Color"
-                    defaultValue="#9c27b0"
                 />
             </div>
 
@@ -124,11 +130,19 @@ export const ColorFieldPreview = () => {
 
             <div className="items">
                 <RenderColorField isDisabled />
-                <RenderColorField isDisabled variant="outlined" />
+                <RenderColorField
+                    isDisabled
+                    variant="outlined"
+                    defaultValue={COLOR_ADGYTEC_BLUE}
+                />
             </div>
 
             <div className="items">
-                <RenderColorField isInvalid isDisabled />
+                <RenderColorField
+                    isInvalid
+                    isDisabled
+                    defaultValue={COLOR_ADGYTEC_BLUE}
+                />
                 <RenderColorField isInvalid isDisabled variant="outlined" />
             </div>
 

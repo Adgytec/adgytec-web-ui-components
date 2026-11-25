@@ -8,5 +8,6 @@ export * from "./FieldButton";
 export * from "./FieldError";
 export * from "./FieldGroup";
 export * from "./FieldIcon";
+export * from "./FieldNode";
 export * from "./hooks";
 export * from "./Label";

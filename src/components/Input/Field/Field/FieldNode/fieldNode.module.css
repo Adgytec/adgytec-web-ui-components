@@ -1,10 +1,10 @@
 @layer adgytec.comps {
-    .icon-group {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
+    .node {
         /* size similar to icon button(small) for easier handling of padding-block with FieldButton */
         block-size: var(--md-sys-layout-space-40);
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 }
