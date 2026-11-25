@@ -29,6 +29,8 @@
             var(--_md-slider-active-track-color)
         );
 
+        min-inline-size: var(--md-sys-layout-space-128);
+
         &[data-disabled] {
             --_md-slider-active-track-color: rgb(
                 from var(--md-sys-color-on-surface) r g b /

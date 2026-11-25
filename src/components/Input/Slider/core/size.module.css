@@ -8,6 +8,7 @@
         gap: var(--md-sys-layout-space-4);
 
         block-size: 100%;
+        inline-size: 100%;
     }
 
     .track-container {
@@ -26,11 +27,15 @@
         --_inactive-track-color: var(--_md-slider-inactive-track-color);
 
         &[data-orientation="horizontal"] {
+            min-inline-size: var(--md-sys-layout-space-128);
+
             inline-size: 100%;
             block-size: var(--_md-slider-track-size);
         }
 
         &[data-orientation="vertical"] {
+            min-block-size: var(--md-sys-layout-space-128);
+
             block-size: 100%;
             inline-size: var(--_md-slider-track-size);
         }
