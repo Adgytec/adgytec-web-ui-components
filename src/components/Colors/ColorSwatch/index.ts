@@ -1,2 +1,2 @@
 export * from "./ColorSwatch";
-export * from "./types";
+export * from "./core";
