@@ -3,6 +3,7 @@ import {
     ColorSwatch as AriaColorSwatch,
     composeRenderProps,
 } from "react-aria-components";
+import { useColorSwatchConfig } from "../core";
 import styles from "./colorSwatch.module.css";
 import type { ColorSwatchProps } from "./types";
 
@@ -43,15 +44,21 @@ import type { ColorSwatchProps } from "./types";
  * ```
  */
 export const ColorSwatch: React.FC<ColorSwatchProps> = ({
-    size = "small",
-    shape = "round",
+    size,
+    shape,
     ...props
 }) => {
+    const { swatchShape, swatchSize } = useColorSwatchConfig({ size, shape });
     return (
         <AriaColorSwatch
             {...props}
             className={composeRenderProps(props.className, (className) =>
-                clsx(styles["swatch"], styles[shape], styles[size], className)
+                clsx(
+                    styles["swatch"],
+                    styles[swatchShape],
+                    styles[swatchSize],
+                    className
+                )
             )}
             data-shape={shape}
             data-size={size}

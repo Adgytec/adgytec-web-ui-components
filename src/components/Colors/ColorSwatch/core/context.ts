@@ -11,14 +11,7 @@ export const ColorSwatchConfigContext =
     createContext<ColorSwatchConfigContextType | null>(null);
 
 export function useColorSwatchConfigContext() {
-    const ctx = useContext(ColorSwatchConfigContext);
-    if (!ctx) {
-        throw new Error(
-            "useColorSwatchConfigContext must be used within ColorSwatchConfigContext"
-        );
-    }
-
-    return ctx;
+    return useContext(ColorSwatchConfigContext);
 }
 
 type UseColorSwatchConfigOptions = {
@@ -31,10 +24,10 @@ export function useColorSwatchConfig({
     shape,
 }: UseColorSwatchConfigOptions) {
     const { size: configSize, shape: configShape } =
-        useColorSwatchConfigContext();
+        useColorSwatchConfigContext() ?? {};
 
-    const swatchSize = size ?? configSize;
-    const swatchShape = shape ?? configShape;
+    const swatchSize = size ?? configSize ?? "small";
+    const swatchShape = shape ?? configShape ?? "round";
 
     return { swatchSize, swatchShape };
 }
