@@ -20,17 +20,16 @@ import type { ColorFieldProps } from "./types";
  *
  * @example
  * ```tsx
- * import { ColorField } from "@adgytec/web-ui-components";
- * import { ColorSwatch } from "react-aria-components";
+ * import { ColorField, ColorSwatch, FieldNode } from "@adgytec/web-ui-components";
  *
  * <ColorField
  *     label="Accent Color"
  *     description="Enter a hex color code"
  *     defaultValue="#6750a4"
  *     leading={
- *         <ColorSwatch
- *             style={{ width: 20, height: 20, borderRadius: 4 }}
- *         />
+ *         <FieldNode>
+ *             <ColorSwatch size="small" shape="square" />
+ *         </FieldNode>
  *     }
  * />
  * ```

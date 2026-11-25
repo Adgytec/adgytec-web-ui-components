@@ -17,22 +17,14 @@ Extends standard HTML `<span>` attributes (`React.ComponentPropsWithRef<"span">`
 ### With ColorSwatch in ColorField
 
 ```tsx
-import { ColorField, FieldNode } from "@adgytec/web-ui-components";
-import { ColorSwatch } from "react-aria-components";
+import { ColorField, ColorSwatch, FieldNode } from "@adgytec/web-ui-components";
 
 <ColorField
     label="Theme Color"
     defaultValue="#6750a4"
     leading={
         <FieldNode>
-            <ColorSwatch
-                style={{
-                    width: 24,
-                    height: 24,
-                    borderRadius: 4,
-                    border: "1px solid rgba(0, 0, 0, 0.2)",
-                }}
-            />
+            <ColorSwatch size="small" shape="square" />
         </FieldNode>
     }
 />;

@@ -1,10 +1,20 @@
+/* configurable tokens
+*
+* --md-color-swatch-size
+* --md-color-swatch-shape
+*
+* configurable tokens end */
+
 @layer adgytec.comps {
     .swatch {
         display: inline-block;
-        inline-size: var(--_md-color-swatch-size);
+        inline-size: var(--md-color-swatch-size, var(--_md-color-swatch-size));
         aspect-ratio: 1 / 1;
 
-        border-radius: var(--_md-color-swatch-shape);
+        border-radius: var(
+            --md-color-swatch-shape,
+            var(--_md-color-swatch-shape)
+        );
     }
 
     .square {

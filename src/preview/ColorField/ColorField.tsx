@@ -1,6 +1,7 @@
 import { Palette, Pipette } from "lucide-react";
 import { useState } from "react";
 import { ColorPicker, parseColor } from "react-aria-components";
+import { ColorSwatch } from "@/components/Colors";
 import { COLOR_ADGYTEC_BLUE, COLOR_ADGYTEC_YELLOW } from "@/utils";
 import {
     ColorField,
@@ -9,7 +10,6 @@ import {
     FieldNode,
     type FieldVariant,
 } from "../../components/Input";
-import { ColorSwatch } from "@/components/Colors";
 
 export const RenderColorField = ({
     isInvalid,

@@ -15,13 +15,12 @@ export interface FieldNodeProps extends React.ComponentPropsWithRef<"span"> {}
  *
  * @example
  * ```tsx
- * import { Field, FieldNode } from "@adgytec/web-ui-components";
- * import { ColorSwatch } from "react-aria-components";
+ * import { ColorSwatch, Field, FieldNode } from "@adgytec/web-ui-components";
  *
  * <Field
  *     leading={
  *         <FieldNode>
- *             <ColorSwatch style={{ width: 24, height: 24 }} />
+ *             <ColorSwatch size="small" shape="square" />
  *         </FieldNode>
  *     }
  * >

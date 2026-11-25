@@ -1,8 +1,8 @@
 import clsx from "clsx";
+import { ColorPicker } from "react-aria-components";
 import { ColorSwatch } from "@/components/Colors";
 import { ColorField, FieldNode } from "@/components/Input";
 import { COLOR_ADGYTEC_BLUE, COLOR_ADGYTEC_YELLOW, typography } from "@/utils";
-import { ColorPicker } from "react-aria-components";
 
 const sampleColors = [
     COLOR_ADGYTEC_BLUE,
