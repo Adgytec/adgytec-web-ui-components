@@ -1,0 +1,65 @@
+@layer adgytec.comps {
+    .item {
+        --_state-scale: 0;
+
+        cursor: pointer;
+        outline: none;
+        position: relative;
+
+        &[data-hovered] {
+            --_state-scale: var(--md-sys-state-hover);
+        }
+
+        &[data-focus-visible] {
+            --_state-scale: var(--md-sys-state-focus);
+        }
+
+        &[data-pressed] {
+            --_state-scale: var(--md-sys-state-pressed);
+        }
+
+        &[data-disabled] {
+            cursor: not-allowed;
+
+            > [data-color-swatch] {
+                opacity: var(--md-sys-state-disabled-content);
+            }
+        }
+
+        > [data-color-swatch] {
+            scale: calc(1 + var(--_state-scale));
+
+            transition: scale var(--md-sys-motion-expressive-fast-spatial)
+                var(--md-sys-motion-expressive-fast-spatial-duration);
+
+            @media (prefers-reduced-motion) {
+                transition: none;
+            }
+        }
+    }
+
+    /* focus indicator */
+    .item[data-focus-visible] > [data-color-swatch] {
+        --focus-indicator-thickness: calc(3 * var(--dp, 1px));
+        --focus-indicator-offset: calc(2 * var(--dp, 1px));
+        --focus-indicator-color: var(--md-sys-color-secondary);
+
+        outline-width: var(--focus-indicator-thickness);
+        outline-style: solid;
+        outline-offset: var(--focus-indicator-offset);
+        outline-color: var(--focus-indicator-color);
+    }
+
+    .selection {
+        position: absolute;
+
+        inset-inline-start: 50%;
+        inset-block-start: 50%;
+
+        translate: -50% -50%;
+
+        color: white;
+        mix-blend-mode: difference;
+        z-index: 10;
+    }
+}

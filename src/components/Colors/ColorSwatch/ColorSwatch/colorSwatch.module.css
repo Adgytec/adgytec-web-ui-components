@@ -7,7 +7,6 @@
 
 @layer adgytec.comps {
     .swatch {
-        display: inline-block;
         inline-size: var(--md-color-swatch-size, var(--_md-color-swatch-size));
         aspect-ratio: 1 / 1;
 

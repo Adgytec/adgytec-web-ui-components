@@ -16,6 +16,7 @@ import { CenteredSliderPreview } from "./preview/CenteredSlider";
 import { CheckboxPreview } from "./preview/Checkbox";
 import { ColorFieldPreview } from "./preview/ColorField";
 import { ColorSwatchPreview } from "./preview/ColorSwatch";
+import { ColorSwatchPickerPreview } from "./preview/ColorSwatchPicker";
 import { ConfigPreview } from "./preview/Config";
 import { ConnectedButtonGroupPreview } from "./preview/ConnectedButtonGroup";
 import { CustomTextFieldPreview } from "./preview/CustomTextField";
@@ -90,6 +91,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "color-swatch-picker",
+            label: "Color Swatch Picker",
+            Component: ColorSwatchPickerPreview,
+        },
         {
             id: "color-swatch",
             label: "Color Swatch",

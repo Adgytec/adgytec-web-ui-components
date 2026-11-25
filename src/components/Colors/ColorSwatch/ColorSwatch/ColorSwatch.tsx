@@ -62,6 +62,7 @@ export const ColorSwatch: React.FC<ColorSwatchProps> = ({
             )}
             data-shape={shape}
             data-size={size}
+            data-color-swatch
         />
     );
 };
