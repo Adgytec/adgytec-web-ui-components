@@ -5,6 +5,7 @@ import {
     composeRenderProps,
 } from "react-aria-components";
 import { Icon } from "@/components/Icon";
+import { TapTarget } from "@/utils";
 import styles from "./colorSwatchPickerItem.module.css";
 import type { ColorSwatchPickerItemProps } from "./types";
 
@@ -15,7 +16,7 @@ export const ColorSwatchPickerItem: React.FC<ColorSwatchPickerItemProps> = (
         <AriaColorSwatchPickerItem
             {...props}
             className={composeRenderProps(props.className, (className) =>
-                clsx(styles["item"], className)
+                clsx(styles["item"], TapTarget, className)
             )}
         >
             {composeRenderProps(props.children, (children, { isSelected }) => (
