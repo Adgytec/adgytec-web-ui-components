@@ -14,6 +14,7 @@ import { CalendarPreview } from "./preview/Calendar";
 import { CardPreview } from "./preview/Card";
 import { CenteredSliderPreview } from "./preview/CenteredSlider";
 import { CheckboxPreview } from "./preview/Checkbox";
+import { ColorFieldPreview } from "./preview/ColorField";
 import { ConfigPreview } from "./preview/Config";
 import { ConnectedButtonGroupPreview } from "./preview/ConnectedButtonGroup";
 import { CustomTextFieldPreview } from "./preview/CustomTextField";
@@ -88,6 +89,11 @@ const App = () => {
             Component: ThemeSelectorPreview,
         },
 
+        {
+            id: "color-field",
+            label: "Color Field",
+            Component: ColorFieldPreview,
+        },
         {
             id: "custom-text-field",
             label: "Custom TextField",
