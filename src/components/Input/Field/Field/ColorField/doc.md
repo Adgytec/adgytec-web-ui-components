@@ -45,7 +45,7 @@ The `ColorField` component extends [React Aria Components ColorField](https://re
 ### Basic ColorField with ColorSwatch (Filled - Default)
 
 ```tsx
-import { ColorField } from "@adgytec/web-ui-components";
+import { ColorField, FieldNode } from "@adgytec/web-ui-components";
 import { ColorSwatch } from "react-aria-components";
 
 <ColorField
@@ -53,14 +53,16 @@ import { ColorSwatch } from "react-aria-components";
     description="Choose a hex color code"
     defaultValue="#6750a4"
     leading={
-        <ColorSwatch
-            style={{
-                width: 20,
-                height: 20,
-                borderRadius: 4,
-                border: "1px solid rgba(0, 0, 0, 0.2)",
-            }}
-        />
+        <FieldNode>
+            <ColorSwatch
+                style={{
+                    width: 24,
+                    height: 24,
+                    borderRadius: 4,
+                    border: "1px solid rgba(0, 0, 0, 0.2)",
+                }}
+            />
+        </FieldNode>
     }
 />;
 ```

@@ -19,9 +19,10 @@ The module consists of the following components and utilities:
 2. `FieldGroup`: Structural layout grouping `Label`, the interactive `Field`, and supporting `Description` or `FieldError`.
 3. `FieldButton`: An icon button preconfigured with standard sizing and colors for embedding inside a `Field`.
 4. `FieldIcon`: An icon wrapper preconfigured for placement inside a `Field`.
-5. `DateInput` & `DateSegment`: Composable segmented date and time editor components.
-6. `CharacterCount`: Renders character counter in `current / max` format.
-7. `Label`, `Description`, `FieldError`: Accessible typography elements for labels, hints, and error validation messages.
+5. `FieldNode`: A layout container for embedding custom non-button elements (such as color swatches, badges, or custom indicators) inside a `Field` with consistent 40px block sizing.
+6. `DateInput` & `DateSegment`: Composable segmented date and time editor components.
+7. `CharacterCount`: Renders character counter in `current / max` format.
+8. `Label`, `Description`, `FieldError`: Accessible typography elements for labels, hints, and error validation messages.
 
 ## Props
 
