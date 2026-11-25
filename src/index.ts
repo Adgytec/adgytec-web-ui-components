@@ -5,6 +5,7 @@ export * from "./components/Badge";
 export * from "./components/Button";
 export * from "./components/Calendar";
 export * from "./components/Card";
+export * from "./components/Colors";
 export * from "./components/Decorators";
 export * from "./components/Dialog";
 export * from "./components/Disclosure";

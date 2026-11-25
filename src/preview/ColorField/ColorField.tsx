@@ -1,6 +1,6 @@
 import { Palette, Pipette } from "lucide-react";
 import { useState } from "react";
-import { ColorPicker, ColorSwatch, parseColor } from "react-aria-components";
+import { ColorPicker, parseColor } from "react-aria-components";
 import { COLOR_ADGYTEC_BLUE, COLOR_ADGYTEC_YELLOW } from "@/utils";
 import {
     ColorField,
@@ -9,6 +9,7 @@ import {
     FieldNode,
     type FieldVariant,
 } from "../../components/Input";
+import { ColorSwatch } from "@/components/Colors";
 
 export const RenderColorField = ({
     isInvalid,
@@ -41,16 +42,7 @@ export const RenderColorField = ({
                 leading={
                     leadingType === "swatch" ? (
                         <FieldNode>
-                            <ColorSwatch
-                                style={{
-                                    width: 24,
-                                    height: 24,
-                                    borderRadius:
-                                        "var(--md-sys-shape-corner-radius-extra-small, 4px)",
-                                    border: "1px solid var(--md-sys-color-outline-variant, rgba(0, 0, 0, 0.2))",
-                                    boxSizing: "border-box",
-                                }}
-                            />
+                            <ColorSwatch shape="square" />
                         </FieldNode>
                     ) : leadingType === "icon" ? (
                         <FieldIcon icon={Palette} />
@@ -71,16 +63,7 @@ export const ControlledColorField = () => {
                 description={`Current value: ${color.toString("hex")}`}
                 leading={
                     <FieldNode>
-                        <ColorSwatch
-                            style={{
-                                width: 24,
-                                height: 24,
-                                borderRadius:
-                                    "var(--md-sys-shape-corner-radius-extra-small, 4px)",
-                                border: "1px solid var(--md-sys-color-outline-variant, rgba(0, 0, 0, 0.2))",
-                                boxSizing: "border-box",
-                            }}
-                        />
+                        <ColorSwatch size="medium" />
                     </FieldNode>
                 }
                 trailing={
