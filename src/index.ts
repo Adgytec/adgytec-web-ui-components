@@ -15,6 +15,7 @@ export * from "./components/Input";
 export * from "./components/List";
 export * from "./components/Loader";
 export * from "./components/LoadingIndicator";
+export * from "./components/Media";
 export * from "./components/Menu";
 export * from "./components/Navigation";
 export * from "./components/Popover";

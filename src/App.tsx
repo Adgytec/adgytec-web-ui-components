@@ -6,6 +6,7 @@ import { useLocalStorage } from "usehooks-ts";
 import { Button } from "./components/Button";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "./components/Tabs";
 import { AppBarPreview } from "./preview/AppBar";
+import { AudioPreview } from "./preview/Audio";
 import { BadgePreview } from "./preview/Badge";
 import { BottomSheetPreview } from "./preview/BottomSheet";
 import { ButtonPreview } from "./preview/Button";
@@ -89,6 +90,11 @@ const App = () => {
             id: "theme-selector",
             label: "Theme Selector",
             Component: ThemeSelectorPreview,
+        },
+        {
+            id: "audio",
+            label: "Audio",
+            Component: AudioPreview,
         },
 
         {
