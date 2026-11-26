@@ -29,114 +29,96 @@ export const SliderPreview = () => {
                     >
                         {sizes.map((size) => (
                             <Fragment key={size}>
-                                <div>
-                                    <Slider
-                                        label={`${o}--${size}`}
-                                        orientation={o}
-                                        size={size}
-                                        insetIcon={DollarSign}
-                                        minInsetIcon={HandCoins}
-                                        formatOptions={{
-                                            style: "currency",
-                                            currency: "USD",
-                                        }}
-                                    />
-                                </div>
+                                <Slider
+                                    orientation={o}
+                                    size={size}
+                                    insetIcon={DollarSign}
+                                    minInsetIcon={HandCoins}
+                                    formatOptions={{
+                                        style: "currency",
+                                        currency: "USD",
+                                    }}
+                                />
 
-                                <div>
-                                    <Slider
-                                        label={`${o}--${size}--custom-output`}
-                                        orientation={o}
-                                        size={size}
-                                        insetIcon={DollarSign}
-                                        minInsetIcon={HandCoins}
-                                        formatOptions={{
-                                            style: "currency",
-                                            currency: "USD",
-                                        }}
-                                        outputRenderer={({ thumbIndex }) => (
-                                            <SliderOutput>
-                                                {({ state }) => {
-                                                    const value =
-                                                        state.getThumbPercent(
-                                                            thumbIndex
-                                                        );
+                                <Slider
+                                    orientation={o}
+                                    size={size}
+                                    insetIcon={DollarSign}
+                                    minInsetIcon={HandCoins}
+                                    formatOptions={{
+                                        style: "currency",
+                                        currency: "USD",
+                                    }}
+                                    outputRenderer={({ thumbIndex }) => (
+                                        <SliderOutput>
+                                            {({ state }) => {
+                                                const value =
+                                                    state.getThumbPercent(
+                                                        thumbIndex
+                                                    );
 
-                                                    if (value < 0.5) {
-                                                        return "less";
-                                                    }
+                                                if (value < 0.5) {
+                                                    return "less";
+                                                }
 
-                                                    if (value > 0.5) {
-                                                        return "more";
-                                                    }
+                                                if (value > 0.5) {
+                                                    return "more";
+                                                }
 
-                                                    return "half";
-                                                }}
-                                            </SliderOutput>
-                                        )}
-                                    />
-                                </div>
+                                                return "half";
+                                            }}
+                                        </SliderOutput>
+                                    )}
+                                />
 
-                                <div>
-                                    <Slider
-                                        label={`${o}--${size}-no-output`}
-                                        outputRenderer={null}
-                                        orientation={o}
-                                        size={size}
-                                        insetIcon={DollarSign}
-                                        minInsetIcon={HandCoins}
-                                        formatOptions={{
-                                            style: "currency",
-                                            currency: "USD",
-                                        }}
-                                    />
-                                </div>
+                                <Slider
+                                    outputRenderer={null}
+                                    orientation={o}
+                                    size={size}
+                                    insetIcon={DollarSign}
+                                    minInsetIcon={HandCoins}
+                                    formatOptions={{
+                                        style: "currency",
+                                        currency: "USD",
+                                    }}
+                                />
 
-                                <div>
-                                    <Slider
-                                        label={`${o}--${size}--steps`}
-                                        orientation={o}
-                                        size={size}
-                                        minValue={0}
-                                        maxValue={1}
-                                        step={0.04}
-                                        maxStops={25}
-                                        formatOptions={{
-                                            style: "currency",
-                                            currency: "INR",
-                                        }}
-                                    />
-                                </div>
+                                <Slider
+                                    orientation={o}
+                                    size={size}
+                                    minValue={0}
+                                    maxValue={1}
+                                    step={0.04}
+                                    maxStops={25}
+                                    formatOptions={{
+                                        style: "currency",
+                                        currency: "INR",
+                                    }}
+                                />
 
-                                <div>
-                                    <Slider
-                                        label={`${o}--${size}--steps--not-aligned`}
-                                        orientation={o}
-                                        size={size}
-                                        minValue={0}
-                                        maxValue={10}
-                                        step={3}
-                                        formatOptions={{
-                                            style: "currency",
-                                            currency: "INR",
-                                        }}
-                                    />
-                                </div>
+                                <Slider
+                                    orientation={o}
+                                    size={size}
+                                    minValue={0}
+                                    maxValue={10}
+                                    step={3}
+                                    formatOptions={{
+                                        style: "currency",
+                                        currency: "INR",
+                                    }}
+                                />
 
-                                <div>
-                                    <Slider
-                                        label={`${o}--${size}--disabled`}
-                                        step={5}
-                                        defaultValue={33}
-                                        isDisabled
-                                        orientation={o}
-                                        size={size}
-                                        formatOptions={{
-                                            style: "currency",
-                                            currency: "USD",
-                                        }}
-                                    />
-                                </div>
+                                <Slider
+                                    step={5}
+                                    defaultValue={33}
+                                    isDisabled
+                                    orientation={o}
+                                    size={size}
+                                    formatOptions={{
+                                        style: "currency",
+                                        currency: "USD",
+                                    }}
+                                />
                             </Fragment>
                         ))}
                     </div>

@@ -28,41 +28,32 @@ export const RangeSliderPreview = () => {
                     >
                         {sizes.map((size) => (
                             <Fragment key={size}>
-                                <div>
-                                    <RangeSlider
-                                        label={`${o}--${size}`}
-                                        orientation={o}
-                                        size={size}
-                                        formatOptions={{
-                                            style: "currency",
-                                            currency: "USD",
-                                        }}
-                                    />
-                                </div>
+                                <RangeSlider
+                                    orientation={o}
+                                    size={size}
+                                    formatOptions={{
+                                        style: "currency",
+                                        currency: "USD",
+                                    }}
+                                />
 
-                                <div>
-                                    <RangeSlider
-                                        label={`${o}--${size}--steps`}
-                                        orientation={o}
-                                        size={size}
-                                        step={10}
-                                        formatOptions={{
-                                            style: "currency",
-                                            currency: "INR",
-                                        }}
-                                    />
-                                </div>
+                                <RangeSlider
+                                    orientation={o}
+                                    size={size}
+                                    step={10}
+                                    formatOptions={{
+                                        style: "currency",
+                                        currency: "INR",
+                                    }}
+                                />
 
-                                <div>
-                                    <RangeSlider
-                                        label={`${o}--${size}--disabled`}
-                                        isDisabled
-                                        orientation={o}
-                                        step={5}
-                                        size={size}
-                                        defaultValue={[30, 50]}
-                                    />
-                                </div>
+                                <RangeSlider
+                                    isDisabled
+                                    orientation={o}
+                                    step={5}
+                                    size={size}
+                                    defaultValue={[30, 50]}
+                                />
                             </Fragment>
                         ))}
                     </div>

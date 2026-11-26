@@ -28,55 +28,43 @@ export const CenteredSliderPreview = () => {
                     >
                         {sizes.map((size) => (
                             <Fragment key={size}>
-                                <div>
-                                    <CenteredSlider
-                                        label={`${o}--${size}`}
-                                        orientation={o}
-                                        size={size}
-                                        formatOptions={{
-                                            style: "currency",
-                                            currency: "USD",
-                                        }}
-                                    />
-                                </div>
+                                <CenteredSlider
+                                    orientation={o}
+                                    size={size}
+                                    formatOptions={{
+                                        style: "currency",
+                                        currency: "USD",
+                                    }}
+                                />
 
-                                <div>
-                                    <CenteredSlider
-                                        label={`${o}--${size}--steps-odd`}
-                                        orientation={o}
-                                        size={size}
-                                        step={10}
-                                        formatOptions={{
-                                            style: "currency",
-                                            currency: "INR",
-                                        }}
-                                    />
-                                </div>
+                                <CenteredSlider
+                                    orientation={o}
+                                    size={size}
+                                    step={10}
+                                    formatOptions={{
+                                        style: "currency",
+                                        currency: "INR",
+                                    }}
+                                />
 
-                                <div>
-                                    <CenteredSlider
-                                        label={`${o}--${size}--steps-even`}
-                                        orientation={o}
-                                        size={size}
-                                        step={11}
-                                        maxValue={33}
-                                        formatOptions={{
-                                            style: "currency",
-                                            currency: "INR",
-                                        }}
-                                    />
-                                </div>
+                                <CenteredSlider
+                                    orientation={o}
+                                    size={size}
+                                    step={11}
+                                    maxValue={33}
+                                    formatOptions={{
+                                        style: "currency",
+                                        currency: "INR",
+                                    }}
+                                />
 
-                                <div>
-                                    <CenteredSlider
-                                        label={`${o}--${size}--disabled`}
-                                        isDisabled
-                                        orientation={o}
-                                        step={5}
-                                        size={size}
-                                        defaultValue={35}
-                                    />
-                                </div>
+                                <CenteredSlider
+                                    isDisabled
+                                    orientation={o}
+                                    step={5}
+                                    size={size}
+                                    defaultValue={35}
+                                />
                             </Fragment>
                         ))}
                     </div>

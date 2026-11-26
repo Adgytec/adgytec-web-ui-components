@@ -1,5 +1,7 @@
 @layer adgytec.comps {
     .slider {
+        --_min-track-size: var(--md-sys-layout-space-48);
+
         --_track-gap: var(--md-sys-layout-space-16);
         --_orientation-inset: calc(-1 * calc(var(--_track-gap) / 2));
 
@@ -7,8 +9,13 @@
         flex-direction: column;
         gap: var(--md-sys-layout-space-4);
 
-        block-size: 100%;
-        inline-size: 100%;
+        &[data-orientation="horizontal"] {
+            min-inline-size: var(--_min-track-size);
+        }
+
+        &[data-orientation="vertical"] {
+            min-block-size: var(--_min-track-size);
+        }
     }
 
     .track-container {
@@ -16,6 +23,8 @@
         padding: calc(-1 * var(--_orientation-inset));
 
         &[data-orientation="vertical"] {
+            display: flex;
+            flex-direction: column;
             align-self: center;
         }
     }
@@ -27,15 +36,12 @@
         --_inactive-track-color: var(--_md-slider-inactive-track-color);
 
         &[data-orientation="horizontal"] {
-            min-inline-size: var(--md-sys-layout-space-128);
-
             inline-size: 100%;
             block-size: var(--_md-slider-track-size);
         }
 
         &[data-orientation="vertical"] {
-            min-block-size: var(--md-sys-layout-space-128);
-
+            flex: 1;
             block-size: 100%;
             inline-size: var(--_md-slider-track-size);
         }

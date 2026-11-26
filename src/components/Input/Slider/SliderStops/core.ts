@@ -1,7 +1,7 @@
 import type { SliderVariant } from "../core";
 import type { CalculateStops, Stop } from "./types";
 
-const DEFAULT_MAX_STOPS = 20;
+const DEFAULT_MAX_STOPS = 10;
 
 /**
  * Clamps a numeric value between minimum and maximum bounds.

@@ -1,1 +1,1 @@
-export * from "./Audio";
+export * from "./AudioPlayer";

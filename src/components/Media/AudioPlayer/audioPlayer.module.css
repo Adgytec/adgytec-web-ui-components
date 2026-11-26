@@ -1,0 +1,35 @@
+@layer adgytec.comps {
+    .player {
+        display: flex;
+        align-items: center;
+        gap: var(--md-sys-layout-space-16);
+
+        padding: var(--md-sys-layout-space-12);
+
+        background-color: var(--md-sys-color-surface-container);
+        color: var(--md-sys-color-on-surface);
+        border-radius: var(--md-sys-shape-corner-radius-full);
+    }
+
+    .seek-bar {
+        flex: 1;
+    }
+
+    .duration {
+        white-space: nowrap;
+    }
+
+    .volume {
+        display: flex;
+        gap: var(--md-sys-layout-space-8);
+        align-items: center;
+    }
+
+    .popover {
+        background-color: var(--md-sys-color-surface);
+        border-radius: var(--md-sys-shape-corner-radius-full);
+
+        padding: var(--md-sys-layout-space-8);
+        box-shadow: var(--md-sys-elevation-shadow-1);
+    }
+}

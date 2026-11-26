@@ -116,14 +116,13 @@
 }
 
 [data-slider-orientation="horizontal"] {
-    > div {
+    > * {
         inline-size: 20rem;
     }
 }
 
 [data-slider-orientation="vertical"] {
-    > div {
-        justify-items: center;
+    > * {
         block-size: 20rem;
     }
 }

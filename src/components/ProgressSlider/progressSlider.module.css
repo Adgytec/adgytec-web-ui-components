@@ -29,7 +29,7 @@
             var(--_md-slider-active-track-color)
         );
 
-        min-inline-size: var(--md-sys-layout-space-128);
+        min-inline-size: var(--md-sys-layout-space-48);
 
         &[data-disabled] {
             --_md-slider-active-track-color: rgb(
