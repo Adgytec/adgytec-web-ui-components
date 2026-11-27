@@ -45,6 +45,14 @@
 
     .track {
         position: relative;
+        cursor: pointer;
+
+        /* same as extra-small slider  */
+        block-size: var(--md-sys-layout-space-16);
+
+        &[data-disabled] {
+            cursor: default;
+        }
     }
 
     /* the SVG may be taller than the track, so center it on the track line */
