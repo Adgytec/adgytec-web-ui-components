@@ -2,6 +2,7 @@
  *
  * --md-slider-active-track-color
  * --md-slider-inactive-track-color
+ * --md-slider-buffer-range-color
  *
  * --md-slider-thumb-color
  *
@@ -22,6 +23,14 @@
         --_md-slider-inactive-track-color: var(
             --md-slider-inactive-track-color,
             var(--md-sys-color-secondary-container)
+        );
+        --_md-slider-buffer-range-color: var(
+            --md-slider-buffer-range-color,
+            color-mix(
+                in srgb,
+                var(--md-sys-color-primary) 38%,
+                var(--md-sys-color-secondary-container)
+            )
         );
 
         --_md-slider-thumb-color: var(

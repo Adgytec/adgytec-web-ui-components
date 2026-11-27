@@ -1,6 +1,13 @@
 import type { Slider } from "react-aria-components";
 import type { SineLinearProps } from "@/components/Wave";
 
+export interface BufferRange {
+    /** Range start, in the same units as the slider value */
+    start: number;
+    /** Range end, in the same units as the slider value */
+    end: number;
+}
+
 /**
  * Props for the {@link ProgressSlider} component.
  *
@@ -38,6 +45,21 @@ export interface ProgressSliderProps<T extends number>
      * @default true
      */
     wavy?: boolean;
+
+    /**
+     * Secondary ranges drawn behind the active progress, e.g. the buffered
+     * parts of a media file or the loaded parts of a download.
+     *
+     * - Uses the same units as `value`, `minValue` and `maxValue`.
+     * - Ranges are clamped to `minValue`/`maxValue`; empty or out-of-bounds
+     *   ranges are ignored.
+     * - Expected to be sorted and non-overlapping (merge them upstream).
+     * - Purely decorative: not interactive and not exposed to assistive tech.
+     * - Always rendered flat, regardless of `wavy`.
+     *
+     * @default []
+     */
+    bufferedRanges?: ReadonlyArray<BufferRange>;
 }
 
 const BASE_AMPLITUDE = 3;
