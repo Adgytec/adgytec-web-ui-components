@@ -30,7 +30,6 @@
             --md-sys-shape-corner-radius-extra-small
         );
         --_md-audio-player-segment-gap: var(--md-sys-layout-space-4);
-
         --_md-audio-player-segment-padding: var(--md-sys-layout-space-12);
 
         display: grid;
@@ -73,6 +72,18 @@
         gap: var(--md-sys-layout-space-16);
 
         padding-block-start: var(--md-sys-layout-space-16);
+    }
+
+    .seeker {
+        display: grid;
+        gap: var(--md-sys-layout-space-8);
+    }
+
+    .duration {
+        display: flex;
+        gap: var(--md-sys-layout-space-16);
+        align-items: center;
+        justify-content: space-between;
     }
 
     .media-controls {

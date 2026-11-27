@@ -35,6 +35,7 @@ export const AudioPlayer = () => {
                         selectedIcon={Pause}
                         defaultSelected
                         width="narrow"
+                        tooltip="Play / Pause"
                     />
                 </ButtonGroup>
 
@@ -67,10 +68,24 @@ export const AudioPlayer = () => {
             </div>
 
             <div className={clsx(styles["actions"])}>
-                <ProgressSlider
-                    className={clsx(styles["seeker"])}
-                    defaultValue={33}
-                />
+                <div className={clsx(styles["seeker"])}>
+                    <ProgressSlider
+                        className={clsx(styles["seeker"])}
+                        defaultValue={33}
+                        bufferedRanges={[{ start: 0, end: 60 }]}
+                    />
+
+                    <div
+                        className={clsx(
+                            styles["duration"],
+                            typography.labelMedium
+                        )}
+                    >
+                        <p>0:33</p>
+
+                        <p>5:32</p>
+                    </div>
+                </div>
 
                 <div className={clsx(styles["media-controls"])}>
                     <DialogTrigger>
@@ -79,6 +94,7 @@ export const AudioPlayer = () => {
                             icon={Gauge}
                             color="text"
                             size="extra-small"
+                            tooltip="Playback"
                         >
                             1x
                         </Button>
@@ -106,6 +122,7 @@ export const AudioPlayer = () => {
                             defaultSelected
                             size="extra-small"
                             width="wide"
+                            tooltip="Mute / Unmute"
                         />
 
                         <Slider
