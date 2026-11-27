@@ -1,35 +1,101 @@
+@layer adygtec.comps {
+    .volume-slider {
+        inline-size: var(--md-sys-layout-space-128);
+    }
+
+    .seeker {
+        min-inline-size: var(--md-sys-layout-space-128);
+    }
+}
+
 @layer adgytec.comps {
     .player {
+        --_md-audio-player-background: var(
+            --md-audio-player-background,
+            var(--md-sys-color-surface-container)
+        );
+        --_md-audio-player-label-color: var(
+            --md-audio-player-label-color,
+            var(--md-sys-color-on-surface)
+        );
+        --_md-audio-player-color: var(
+            --md-audio-player-color,
+            var(--md-sys-color-on-surface-variant)
+        );
+
+        --_md-audio-player-radius: var(
+            --md-sys-shape-corner-radius-large-increased
+        );
+        --_md-audio-player-internal-radius: var(
+            --md-sys-shape-corner-radius-extra-small
+        );
+        --_md-audio-player-segment-gap: var(--md-sys-layout-space-4);
+
+        --_md-audio-player-segment-padding: var(--md-sys-layout-space-12);
+
+        display: grid;
+        gap: var(--_md-audio-player-segment-gap);
+
+        border-radius: var(--_md-audio-player-radius);
+        overflow: clip;
+    }
+
+    .header,
+    .actions {
+        border-radius: inherit;
+
+        background-color: var(--_md-audio-player-background);
+        color: var(--_md-audio-player-color);
+
+        padding: var(--_md-audio-player-segment-padding);
+    }
+
+    .header {
+        border-end-start-radius: var(--_md-audio-player-internal-radius);
+        border-end-end-radius: var(--_md-audio-player-internal-radius);
+
         display: flex;
+        gap: var(--md-sys-layout-space-16);
         align-items: center;
+
+        padding-block-end: var(--md-sys-layout-space-16);
+    }
+
+    .progress-indicator {
+        margin-inline-start: auto;
+    }
+
+    .actions {
+        border-start-start-radius: var(--_md-audio-player-internal-radius);
+        border-start-end-radius: var(--_md-audio-player-internal-radius);
+
+        display: grid;
         gap: var(--md-sys-layout-space-16);
 
-        padding: var(--md-sys-layout-space-12);
-
-        background-color: var(--md-sys-color-surface-container);
-        color: var(--md-sys-color-on-surface);
-        border-radius: var(--md-sys-shape-corner-radius-full);
+        padding-block-start: var(--md-sys-layout-space-16);
     }
 
-    .seek-bar {
-        flex: 1;
-    }
-
-    .duration {
-        white-space: nowrap;
+    .media-controls {
+        display: flex;
+        gap: var(--md-sys-layout-space-16);
+        align-items: center;
+        justify-content: space-between;
     }
 
     .volume {
         display: flex;
-        gap: var(--md-sys-layout-space-8);
+        gap: var(--md-sys-layout-space-16);
         align-items: center;
     }
 
-    .popover {
-        background-color: var(--md-sys-color-surface);
-        border-radius: var(--md-sys-shape-corner-radius-full);
+    .label {
+        color: var(--_md-audio-player-label-color);
+    }
 
+    .playback {
+        border-radius: var(--md-sys-shape-corner-radius-full);
         padding: var(--md-sys-layout-space-8);
         box-shadow: var(--md-sys-elevation-shadow-1);
+        background-color: var(--md-sys-color-surface);
     }
 }
