@@ -4,6 +4,7 @@ import {
     Gauge,
     Pause,
     Play,
+    RefreshCcw,
     Volume2,
     VolumeOff,
 } from "lucide-react";
@@ -22,7 +23,11 @@ import { Popover } from "@/components/Popover";
 import { CircularProgressIndicator } from "@/components/ProgressIndicator";
 import { ProgressSlider } from "@/components/ProgressSlider";
 import { typography } from "@/utils";
-import { showProgressIndicator, useHTMLMediaPlayback } from "../core";
+import {
+    formatTime,
+    showProgressIndicator,
+    useHTMLMediaPlayback,
+} from "../core";
 import styles from "./audioPlayer.module.css";
 import { type AudioPlayerProps, DEFAULT_PLAYBACK_RATES } from "./types";
 
@@ -49,7 +54,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                         <ToggleIconButton
                             size="medium"
                             color="standard"
-                            icon={Play}
+                            icon={playback.ended ? RefreshCcw : Play}
                             selectedIcon={Pause}
                             isSelected={!playback.paused}
                             onPress={async () => {
@@ -125,10 +130,10 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                                 typography.labelMedium
                             )}
                         >
-                            <p>{playback.currentTime}</p>
+                            <p>{formatTime(playback.currentTime)}</p>
 
                             {Number.isFinite(playback.duration) && (
-                                <p>{playback.duration}</p>
+                                <p>{formatTime(playback.duration)}</p>
                             )}
                         </div>
                     </div>
