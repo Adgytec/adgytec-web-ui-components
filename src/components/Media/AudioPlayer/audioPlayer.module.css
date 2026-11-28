@@ -60,8 +60,12 @@
         padding-block-end: var(--md-sys-layout-space-16);
     }
 
-    .progress-indicator {
+    .indicator {
         margin-inline-start: auto;
+
+        &[data-error] {
+            color: var(--md-sys-color-error);
+        }
     }
 
     .actions {

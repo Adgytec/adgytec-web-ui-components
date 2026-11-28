@@ -30,3 +30,13 @@ export interface MediaPlaybackActions {
 export interface MediaPlayback
     extends MediaPlaybackState,
         MediaPlaybackActions {}
+
+export const showProgressIndicator = (status: MediaPlaybackState["status"]) => {
+    switch (status) {
+        case "loading":
+        case "buffering":
+            return true;
+        default:
+            return false;
+    }
+};

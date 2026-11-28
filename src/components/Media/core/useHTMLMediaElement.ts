@@ -188,7 +188,6 @@ export function useHTMLMediaPlayback(
             if (!el) return;
 
             el.muted = false;
-
             if (el.volume === 0) {
                 el.volume = DEFAULT_UNMUTE_VOLUME;
             }
