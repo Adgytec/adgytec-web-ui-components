@@ -61,8 +61,9 @@ export const AudioPlayer = () => {
                 )}
 
                 <CircularProgressIndicator
+                    wavy={false}
                     isIndeterminate
-                    size={40}
+                    size={32}
                     className={clsx(styles["progress-indicator"])}
                 />
             </div>
