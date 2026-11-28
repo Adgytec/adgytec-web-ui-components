@@ -9,6 +9,7 @@ import {
     VolumeOff,
 } from "lucide-react";
 import { useRef, useState } from "react";
+import { FocusScope } from "react-aria";
 import { DialogTrigger } from "react-aria-components";
 import {
     Button,
@@ -29,12 +30,17 @@ import {
     useHTMLMediaPlayback,
 } from "../core";
 import styles from "./audioPlayer.module.css";
-import { type AudioPlayerProps, DEFAULT_PLAYBACK_RATES } from "./types";
+import {
+    type AudioPlayerProps,
+    DEFAULT_PLAYBACK_RATES,
+    NO_LABELS,
+} from "./types";
 
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     label,
     description,
     playbackRates = DEFAULT_PLAYBACK_RATES,
+    controlLabels: labels = NO_LABELS,
     children,
 }) => {
     const ref = useRef<HTMLAudioElement | null>(null);
@@ -43,6 +49,10 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     const [scrubTime, setScrubTime] = useState<number | null>(null);
 
     const showInfo = label || description;
+
+    const playPauseLabel = playback.ended
+        ? (labels.replay ?? labels.playPause)
+        : labels.playPause;
 
     return (
         <>
@@ -61,7 +71,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                                 await playback.togglePlayPause();
                             }}
                             width="narrow"
-                            tooltip="Play / Pause"
+                            tooltip={playPauseLabel}
+                            aria-label={playPauseLabel}
                         />
                     </ButtonGroup>
 
@@ -91,6 +102,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                             wavy={false}
                             isIndeterminate
                             size={32}
+                            aria-label={labels.loading}
                             className={clsx(styles["indicator"])}
                         />
                     )}
@@ -100,6 +112,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                             className={clsx(styles["indicator"])}
                             icon={AudioLinesX}
                             data-error
+                            {...(labels.error
+                                ? { role: "img", "aria-label": labels.error }
+                                : {})}
                         />
                     )}
                 </div>
@@ -108,6 +123,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                     <div className={clsx(styles["seeker"])}>
                         <ProgressSlider
                             className={clsx(styles["seeker"])}
+                            aria-label={labels.seek}
                             minValue={0}
                             maxValue={playback.duration}
                             value={scrubTime ?? playback.currentTime}
@@ -122,6 +138,12 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                                 playback.seekTo(time);
                                 setScrubTime(null);
                             }}
+                            formatOptions={{
+                                style: "unit",
+                                unit: "second",
+                                unitDisplay: "long",
+                                maximumFractionDigits: 0,
+                            }}
                         />
 
                         <div
@@ -130,7 +152,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                                 typography.labelMedium
                             )}
                         >
-                            <p>{formatTime(playback.currentTime)}</p>
+                            <p>
+                                {formatTime(scrubTime ?? playback.currentTime)}
+                            </p>
 
                             {Number.isFinite(playback.duration) && (
                                 <p>{formatTime(playback.duration)}</p>
@@ -145,28 +169,36 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                                 icon={Gauge}
                                 color="text"
                                 size="extra-small"
-                                tooltip="Playback"
+                                tooltip={labels.playbackRate}
+                                aria-label={labels.playbackRate}
                             >
                                 {playback.playbackRate}x
                             </Button>
 
                             <Popover className={clsx(styles["playback"])}>
-                                <ConnectedButtonGroup
-                                    disallowEmptySelection
-                                    selectedKeys={[playback.playbackRate]}
-                                    onSelectionChange={(keys) => {
-                                        const [rate] = keys;
-                                        if (!rate) return;
-                                        playback.setPlaybackRate(Number(rate));
-                                    }}
-                                    size="extra-small"
-                                >
-                                    {playbackRates.map((speed) => (
-                                        <ConnectedButton key={speed} id={speed}>
-                                            {speed}x
-                                        </ConnectedButton>
-                                    ))}
-                                </ConnectedButtonGroup>
+                                <FocusScope autoFocus>
+                                    <ConnectedButtonGroup
+                                        disallowEmptySelection
+                                        selectedKeys={[playback.playbackRate]}
+                                        onSelectionChange={(keys) => {
+                                            const [rate] = keys;
+                                            if (!rate) return;
+                                            playback.setPlaybackRate(
+                                                Number(rate)
+                                            );
+                                        }}
+                                        size="extra-small"
+                                    >
+                                        {playbackRates.map((speed) => (
+                                            <ConnectedButton
+                                                key={speed}
+                                                id={speed}
+                                            >
+                                                {speed}x
+                                            </ConnectedButton>
+                                        ))}
+                                    </ConnectedButtonGroup>
+                                </FocusScope>
                             </Popover>
                         </DialogTrigger>
 
@@ -179,10 +211,12 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                                 onPress={() => playback.toggleMuteUnmute()}
                                 size="extra-small"
                                 width="wide"
-                                tooltip="Mute / Unmute"
+                                tooltip={labels.muteUnmute}
+                                aira-label={labels.muteUnmute}
                             />
 
                             <Slider
+                                aria-label={labels.volume}
                                 isDisabled={playback.muted}
                                 className={clsx(styles["volume-slider"])}
                                 size="extra-small"
