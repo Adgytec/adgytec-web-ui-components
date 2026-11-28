@@ -1,10 +1,13 @@
 import type { Slider } from "react-aria-components";
 import type { SineLinearProps } from "@/components/Wave";
 
+/**
+ * Represents a continuous buffered or loaded interval along a progress seeker track.
+ */
 export interface BufferRange {
-    /** Range start, in the same units as the slider value */
+    /** Range start position, in the same units as the slider value (`minValue`..`maxValue`). */
     start: number;
-    /** Range end, in the same units as the slider value */
+    /** Range end position, in the same units as the slider value (`minValue`..`maxValue`). */
     end: number;
 }
 
@@ -17,6 +20,7 @@ export interface BufferRange {
  * Configurable CSS tokens:
  * - `--md-slider-active-track-color`: Color of the active track portion and wavy sine wave (`var(--md-sys-color-primary)`).
  * - `--md-slider-inactive-track-color`: Color of the inactive background track (`var(--md-sys-color-secondary-container)`).
+ * - `--md-slider-buffer-range-color`: Color of buffered ranges behind active progress (`color-mix(...)`).
  * - `--md-slider-thumb-color`: Color of the slider thumb (`var(--_md-slider-active-track-color)`).
  *
  * @example

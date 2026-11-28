@@ -36,6 +36,31 @@ import {
     NO_LABELS,
 } from "./types";
 
+/**
+ * An expressive, accessible audio player widget implementing Material Design 3 styling.
+ *
+ * Provides a comprehensive playback interface featuring:
+ * - Play/Pause and Replay button states with responsive icons
+ * - Title and description metadata layout
+ * - Interactive seek bar powered by {@link ProgressSlider} with wave animation and buffered ranges
+ * - Dynamic elapsed and total duration readouts formatted via {@link formatTime}
+ * - Configurable playback speed popover selector
+ * - Volume control slider and instant mute/unmute toggle
+ * - Visual buffering and loading spinner (via {@link CircularProgressIndicator}) and error indicator icon
+ *
+ * Employs an inversion-of-control render-prop pattern via `children`, passing a React ref to be attached
+ * to the consumer's `<audio>` HTML media element.
+ *
+ * @example
+ * ```tsx
+ * <AudioPlayer
+ *     label="Episode 1"
+ *     description="Introduction to Design Systems"
+ * >
+ *     {(ref) => <audio ref={ref} src="/track.mp3" preload="metadata" />}
+ * </AudioPlayer>
+ * ```
+ */
 export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     label,
     description,
@@ -212,7 +237,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                                 size="extra-small"
                                 width="wide"
                                 tooltip={labels.muteUnmute}
-                                aira-label={labels.muteUnmute}
+                                aria-label={labels.muteUnmute}
                             />
 
                             <Slider

@@ -14,8 +14,12 @@ const DEFAULT_UNMUTE_VOLUME = 0.1;
 /* ------------------------------------------------------------------ */
 
 /**
- * Converts a TimeRanges snapshot into plain ranges, fusing ranges separated by
- * tiny gaps (MSE-based playback often reports many fragments).
+ * Converts a DOM `TimeRanges` snapshot into plain {@link BufferRange} objects,
+ * fusing ranges separated by tiny gaps (MSE-based playback often reports many fragments).
+ *
+ * @param ranges - The DOM `TimeRanges` collection from a media element.
+ * @param mergeGap - Maximum distance in seconds between consecutive ranges to be merged. Defaults to 0.3s.
+ * @returns An array of merged {@link BufferRange} intervals.
  */
 export function timeRangesToArray(
     ranges: TimeRanges,
@@ -35,6 +39,9 @@ export function timeRangesToArray(
     return out;
 }
 
+/**
+ * Compares two {@link BufferRange} lists to check if they have identical intervals.
+ */
 function sameRanges(a: BufferRange[], b: BufferRange[]) {
     return (
         a.length === b.length &&
@@ -78,7 +85,9 @@ const INITIAL_STATE: MediaPlaybackState = {
     status: "idle",
 };
 
-// Derived from the element itself, so there are no flags to keep in sync
+/**
+ * Derives the high-level {@link MediaPlaybackState.status} from an HTML media element's ready and network states.
+ */
 function readStatus(el: HTMLMediaElement): MediaPlaybackState["status"] {
     if (el.error) return "error";
     if (
@@ -133,14 +142,30 @@ function reconcile(
 /* ------------------------------------------------------------------ */
 
 /**
- * MediaPlayback implementation for a native <audio> / <video> element.
+ * React hook that connects to a native `<audio>` or `<video>` HTML media element ref,
+ * providing reactive {@link MediaPlaybackState} and stable {@link MediaPlaybackActions}.
  *
- *   const ref = useRef<HTMLAudioElement>(null);
- *   const playback = useHTMLMediaPlayback(ref);
- *   <audio ref={ref} src="/track.mp3" />
+ * Note: The media element must be rendered on the component's initial mount (not conditionally
+ * mounted later), because event listeners are attached once on mount.
  *
- * The element must be rendered on the player's first commit (not conditionally
- * mounted later), because listeners are attached once, on mount.
+ * @param ref - Ref object pointing to the HTML media element.
+ * @returns Unified {@link MediaPlayback} state and controller actions.
+ *
+ * @example
+ * ```tsx
+ * const audioRef = useRef<HTMLAudioElement>(null);
+ * const playback = useHTMLMediaPlayback(audioRef);
+ *
+ * return (
+ *     <div>
+ *         <audio ref={audioRef} src="/audio.mp3" />
+ *         <button onClick={() => playback.togglePlayPause()}>
+ *             {playback.paused ? "Play" : "Pause"}
+ *         </button>
+ *         <span>{playback.currentTime} / {playback.duration}</span>
+ *     </div>
+ * );
+ * ```
  */
 export function useHTMLMediaPlayback(
     ref: RefObject<HTMLMediaElement | null>

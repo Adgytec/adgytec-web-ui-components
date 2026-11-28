@@ -31,7 +31,7 @@ All components extend [React Aria Components Slider](https://react-spectrum.adob
 | `label`              | `ReactNode`                                                        | —         | The label for the slider.                                                                                                                                                                                   |
 | `size`               | `"extra-small" \| "small" \| "medium" \| "large" \| "extra-large"` | `"small"` | The thickness of the track and size of the thumb.                                                                                                                                                           |
 | `showInBetweenSteps` | `boolean`                                                          | `true`    | Whether to display indicators for each step.                                                                                                                                                                |
-| `maxStops`           | `number`                                                           | 20        | Maximum number of step indicators to show (prevents overcrowding).                                                                                                                                          |
+| `maxStops`           | `number`                                                           | 10        | Maximum number of step indicators to show (prevents overcrowding).                                                                                                                                          |
 | `outputRenderer`     | `OutputRenderer`                                                   | —         | Custom renderer or node for the floating value bubble badge. Accepts a render function `({ state, thumbIndex }) => ReactNode`, a static `ReactNode`, or explicit `null` to hide the output bubble entirely. |
 
 ### `Slider` Specific Props
@@ -56,9 +56,9 @@ All components extend [React Aria Components Slider](https://react-spectrum.adob
 
 ## Layout & Sizing
 
-Sliders occupy 100% of their container's inline width (`inline-size: 100%`) by default. To maintain drag usability and prevent tracks from collapsing within flex or grid layouts, the track enforces a minimum dimension of `128px` (`var(--md-sys-layout-space-128)`):
-- **Horizontal**: `min-inline-size: var(--md-sys-layout-space-128)` (128px)
-- **Vertical**: `min-block-size: var(--md-sys-layout-space-128)` (128px)
+Sliders occupy 100% of their container's inline width (`inline-size: 100%`) by default. To maintain drag usability and prevent tracks from collapsing within flex or grid layouts, the track enforces a minimum dimension of `48px` (`var(--md-sys-layout-space-48)`):
+- **Horizontal**: `min-inline-size: var(--md-sys-layout-space-48)` (48px)
+- **Vertical**: `min-block-size: var(--md-sys-layout-space-48)` (48px)
 
 ## Usage
 

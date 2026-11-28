@@ -22,7 +22,10 @@ const EMPTY_RANGES: ReadonlyArray<BufferRange> = []; // NEW: stable default refe
 // active one (set it next to INACTIVE_COLOR)
 const BUFFER_COLOR = "var(--_md-slider-buffer-range-color)";
 
-// NEW: convert value-space ranges into the SineLinear start/end space (0..1 of L)
+/**
+ * Converts value-space buffer ranges into normalized `SineLinear` track segment coordinates (`0..1` of track length `L`),
+ * clamping to inactive boundaries and discarding negligible slivers.
+ */
 function getBufferSegments(
     ranges: ReadonlyArray<BufferRange>,
     min: number,
@@ -62,13 +65,15 @@ function getBufferSegments(
  *   inactive tracks, ensuring seamless gap alignment and continuous wave oscillations during scrubbing.
  * - **Slider Thumb**: Integrates the unified {@link SliderThumb} component (with `size="extra-small"`),
  *   providing standardized drag state styling, high-visibility focus indicator rings, and smooth interaction.
- * - **Minimum Dimensions**: Enforces a minimum inline width of 128px to ensure drag precision across compact player controls.
+ * - **Buffered Ranges**: Supports secondary buffered/loaded segments rendered behind active progress via the `bufferedRanges` prop.
+ * - **Minimum Dimensions**: Enforces a minimum inline width of 48px to prevent track collapse across compact player controls.
  * - **Accessibility**: Built on [React Aria Components Slider](https://react-spectrum.adobe.com/react-aria/Slider.html),
  *   providing full keyboard navigation, screen reader support, focus ring indicators, and ARIA attributes.
  *
  * Configurable CSS tokens:
  * - `--md-slider-active-track-color`: Color of the active portion of the track and wavy sine wave (`var(--md-sys-color-primary)`).
  * - `--md-slider-inactive-track-color`: Color of the inactive background track (`var(--md-sys-color-secondary-container)`).
+ * - `--md-slider-buffer-range-color`: Color of buffered ranges rendered behind active progress.
  * - `--md-slider-thumb-color`: Color of the slider thumb (`var(--_md-slider-active-track-color)`).
  *
  * @example

@@ -1,6 +1,7 @@
 import type { SliderVariant } from "../core";
 import type { CalculateStops, Stop } from "./types";
 
+/** Default maximum number of stop indicators to render along the slider track. */
 const DEFAULT_MAX_STOPS = 10;
 
 /**

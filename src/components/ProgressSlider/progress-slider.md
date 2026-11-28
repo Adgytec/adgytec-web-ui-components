@@ -2,11 +2,12 @@
 
 ## Configurable CSS Tokens
 
-| Token                              | Default Value                             | Description                                                         |
-| ---------------------------------- | ----------------------------------------- | ------------------------------------------------------------------- |
-| `--md-slider-active-track-color`   | `var(--md-sys-color-primary)`             | Color of the active portion of the track and wavy sine wave stroke. |
-| `--md-slider-inactive-track-color` | `var(--md-sys-color-secondary-container)` | Color of the inactive portion of the background track.              |
-| `--md-slider-thumb-color`          | `var(--_md-slider-active-track-color)`    | Color of the slider thumb.                                          |
+| Token                              | Default Value                                                                                  | Description                                                         |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `--md-slider-active-track-color`   | `var(--md-sys-color-primary)`                                                                  | Color of the active portion of the track and wavy sine wave stroke. |
+| `--md-slider-inactive-track-color` | `var(--md-sys-color-secondary-container)`                                                      | Color of the inactive portion of the background track.              |
+| `--md-slider-buffer-range-color`   | `color-mix(in srgb, var(--md-sys-color-primary) 38%, var(--md-sys-color-secondary-container))` | Color of the buffered ranges drawn behind the active progress.      |
+| `--md-slider-thumb-color`          | `var(--_md-slider-active-track-color)`                                                         | Color of the slider thumb.                                          |
 
 The `ProgressSlider` component is an expressive progress seeker inspired by modern media player scrubbers (such as the Material You / Android playback seeker). Built on [React Aria Components Slider](https://react-spectrum.adobe.com/react-aria/Slider.html), it combines precise interactive scrub control with dynamic, fluid sine wave animation along the active track.
 
@@ -16,7 +17,8 @@ The `ProgressSlider` component is an expressive progress seeker inspired by mode
 - **Smooth Edge Transitions**: Wave amplitude dynamically attenuates near track boundaries (0–5% and 95–100%) to provide seamless visual transitions as the thumb approaches minimum or maximum limits.
 - **Interactive Slider Thumb**: Uses the unified [`SliderThumb`](../Input/Slider/slider.md) component (`size="extra-small"`), styled with consistent focus indicator rings, state transitions, and responsive dragging feedback.
 - **Wavy State Toggling**: The `wavy` prop allows toggling between animated wave motion (e.g. playing media) and a clean solid flat track (e.g. paused media).
-- **Minimum Dimensions**: Enforces a minimum width of `128px` (`min-inline-size: var(--md-sys-layout-space-128)`) along the horizontal axis, preventing the scrubber track from collapsing in dense or flexible player layouts.
+- **Buffered Track Ranges**: Supports rendering secondary buffered segments (such as media buffering or loaded file segments) behind active progress via the `bufferedRanges` prop.
+- **Minimum Dimensions**: Enforces a minimum width of `48px` (`min-inline-size: var(--md-sys-layout-space-48)`) along the horizontal axis, preventing the scrubber track from collapsing in dense or flexible player layouts.
 - **Accessibility by Default**: Leverages React Aria Components `Slider` for comprehensive keyboard navigation (Arrow keys, Page Up/Down, Home, End), screen reader accessibility (`aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-orientation`), and high-visibility focus indicators.
 - **Motion & Accessibility Conscious**: Automatically respects user preferences for reduced motion (`prefers-reduced-motion`) by disabling layout transitions.
 
@@ -41,12 +43,20 @@ The `ProgressSlider` component extends [React Aria Components Slider](https://re
 | `minValue`        | `number`                                            | `0`     | The minimum permissible value.                                                                   |
 | `maxValue`        | `number`                                            | `100`   | The maximum permissible value.                                                                   |
 | `step`            | `number`                                            | `1`     | The step increment for value changes.                                                            |
+| `bufferedRanges`  | `ReadonlyArray<BufferRange>`                        | `[]`    | Secondary ranges drawn behind active progress (e.g. buffered media). Always rendered flat.       |
 | `wavy`            | `boolean`                                           | `true`  | Whether the active progress track renders an animated sine wave (`false` renders a flat bar).    |
 | `isDisabled`      | `boolean`                                           | `false` | Whether the slider is disabled. Disables user interaction and renders flat disabled track/thumb. |
 | `aria-label`      | `string`                                            | —       | Accessible text label for screen readers.                                                        |
 | `aria-labelledby` | `string`                                            | —       | The ID of an element that labels the slider.                                                     |
 | `className`       | `string \| ((values: SliderRenderProps) => string)` | —       | Custom CSS class names applied to the slider container.                                          |
 | `style`           | `React.CSSProperties`                               | —       | Custom inline styles applied to the slider root element.                                         |
+
+### `BufferRange`
+
+| Property | Type     | Description                                                                    |
+| -------- | -------- | ------------------------------------------------------------------------------ |
+| `start`  | `number` | Range start position in the same units as the slider (`minValue`..`maxValue`). |
+| `end`    | `number` | Range end position in the same units as the slider (`minValue`..`maxValue`).   |
 
 ---
 
@@ -88,6 +98,33 @@ export function MediaPlayerScrubber() {
                 {isPlaying ? "Pause" : "Play"}
             </button>
         </div>
+    );
+}
+```
+
+### With Buffered Ranges
+
+Display loaded or buffered network media ranges behind active progress:
+
+```tsx
+import { useState } from "react";
+import { ProgressSlider } from "@adgytec/web-ui-components";
+
+export function BufferedMediaProgressSlider() {
+    const [currentTime, setCurrentTime] = useState(30);
+
+    return (
+        <ProgressSlider
+            aria-label="Buffered playback"
+            minValue={0}
+            maxValue={120}
+            value={currentTime}
+            onChange={setCurrentTime}
+            bufferedRanges={[
+                { start: 0, end: 55 },
+                { start: 70, end: 95 },
+            ]}
+        />
     );
 }
 ```

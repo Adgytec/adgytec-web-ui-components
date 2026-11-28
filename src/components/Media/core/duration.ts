@@ -1,3 +1,19 @@
+/**
+ * Formats a duration in seconds into a standard digital clock time string (`mm:ss` or `hh:mm:ss`).
+ *
+ * Non-finite, negative, or `NaN` values are safely clamped to zero (`"00:00"`).
+ *
+ * @param seconds - Duration or elapsed time in seconds.
+ * @returns Formatted time string, formatted as `mm:ss` (e.g. `"03:45"`) or `hh:mm:ss` (e.g. `"01:15:30"`) when exceeding 1 hour.
+ *
+ * @example
+ * ```ts
+ * formatTime(45); // "00:45"
+ * formatTime(125); // "02:05"
+ * formatTime(3665); // "01:01:05"
+ * formatTime(NaN); // "00:00"
+ * ```
+ */
 export function formatTime(seconds: number): string {
     // NaN / Infinity / negatives -> 0
     const total =
