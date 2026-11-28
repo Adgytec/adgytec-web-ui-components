@@ -1,5 +1,7 @@
-export interface MediaState {
-    buffered: TimeRanges;
+import type { BufferRange } from "@/components/ProgressSlider";
+
+export interface MediaPlaybackState {
+    buffered: BufferRange[];
     currentTime: number;
     duration: number;
     ended: boolean;
@@ -7,12 +9,13 @@ export interface MediaState {
     paused: boolean;
     playbackRate: number;
     volume: number;
+    status: "idle" | "loading" | "ready" | "buffering" | "error";
 }
 
-export interface MediaActions {
+export interface MediaPlaybackActions {
     pause(): void;
-    play(): void;
-    togglePlayPause(): void;
+    play(): Promise<void>;
+    togglePlayPause(): Promise<void>;
 
     seekTo(time: number): void;
     setPlaybackRate(rate: number): void;
@@ -24,4 +27,6 @@ export interface MediaActions {
     setVolume(value: number): void;
 }
 
-export interface Media extends MediaState, MediaActions {}
+export interface MediaPlayback
+    extends MediaPlaybackState,
+        MediaPlaybackActions {}
