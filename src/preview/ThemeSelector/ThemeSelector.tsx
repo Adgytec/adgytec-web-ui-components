@@ -1,14 +1,36 @@
 import { Variant } from "@material/material-color-utilities";
 import type { TernaryDarkMode } from "usehooks-ts";
+import { ConnectedButton, ConnectedButtonGroup } from "@/components/Button";
 import {
-    ButtonGroup,
-    ConnectedButton,
-    ConnectedButtonGroup,
-    ToggleButton,
-} from "@/components/Button";
-import { CenteredSlider } from "@/components/Input";
+    ColorSwatch,
+    ColorSwatchPicker,
+    ColorSwatchPickerItem,
+} from "@/components/Colors";
+import {
+    CenteredSlider,
+    Select,
+    SelectItem,
+    SelectList,
+    SelectPopover,
+    SelectTrigger,
+} from "@/components/Input";
 import { useTheme } from "@/components/Theme";
 import { COLOR_ADGYTEC_BLUE, COLOR_ADGYTEC_YELLOW } from "@/utils/theme";
+
+const colors = [
+    { label: "Adgytec Yellow", value: COLOR_ADGYTEC_YELLOW },
+    { label: "Adgytec Blue", value: COLOR_ADGYTEC_BLUE },
+    { label: "Deep Purple", value: "#6750a4" },
+    { label: "Crimson Red", value: "#ba1a1a" },
+    { label: "Forest Green", value: "#2e6c31" },
+    { label: "Amber Orange", value: "#d97706" },
+    { label: "Sky Blue", value: "#0284c7" },
+    { label: "Violet", value: "#7c3aed" },
+    { label: "Rose Pink", value: "#ec4899" },
+    { label: "Teal", value: "#006a6a" },
+    { label: "Olive Lime", value: "#556500" },
+    { label: "Slate Gray", value: "#475569" },
+];
 
 const schemes = [
     { label: "Content", value: Variant.CONTENT },
@@ -39,20 +61,24 @@ export const ThemeSelectorPreview = () => {
     return (
         <div className="items-grid">
             <div className="items">
-                <ButtonGroup
-                    selectedKeys={new Set([color])}
-                    onSelectionChange={(keys) => {
-                        if (keys.size > 0) {
-                            setColor([...keys][0] as string);
-                        }
-                    }}
+                <ColorSwatchPicker
+                    value={color}
+                    onChange={(newColor) => setColor(newColor.toString("hex"))}
+                    size="medium"
+                    shape="round"
+                    aria-label="Theme source color"
+                    style={{ flexWrap: "wrap", justifyContent: "center" }}
                 >
-                    <ToggleButton id={COLOR_ADGYTEC_YELLOW}>
-                        Yellow
-                    </ToggleButton>
-
-                    <ToggleButton id={COLOR_ADGYTEC_BLUE}>Blue</ToggleButton>
-                </ButtonGroup>
+                    {colors.map((c) => (
+                        <ColorSwatchPickerItem
+                            key={c.value}
+                            color={c.value}
+                            aria-label={c.label}
+                        >
+                            <ColorSwatch />
+                        </ColorSwatchPickerItem>
+                    ))}
+                </ColorSwatchPicker>
             </div>
 
             <div>
@@ -68,22 +94,31 @@ export const ThemeSelectorPreview = () => {
             </div>
 
             <div className="items">
-                <ConnectedButtonGroup
-                    selectionMode="single"
-                    color="tonal"
-                    selectedKeys={new Set([variant])}
-                    onSelectionChange={(keys) => {
-                        if (keys.size > 0) {
-                            setVariant([...keys][0] as Variant);
+                <Select
+                    shouldCloseOnSelect={false}
+                    label="Scheme"
+                    placeholder="Select scheme"
+                    value={variant}
+                    onChange={(key) => {
+                        if (key !== null) {
+                            setVariant(Number(key) as Variant);
                         }
                     }}
+                    style={{ minInlineSize: 240 }}
                 >
-                    {schemes.map((scheme) => (
-                        <ConnectedButton key={scheme.value} id={scheme.value}>
-                            {scheme.label}
-                        </ConnectedButton>
-                    ))}
-                </ConnectedButtonGroup>
+                    <SelectTrigger />
+                    <SelectPopover>
+                        <SelectList>
+                            {schemes.map((scheme) => (
+                                <SelectItem
+                                    key={scheme.value}
+                                    id={scheme.value}
+                                    label={scheme.label}
+                                />
+                            ))}
+                        </SelectList>
+                    </SelectPopover>
+                </Select>
             </div>
 
             <div className="items">

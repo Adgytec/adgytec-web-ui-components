@@ -1,17 +1,19 @@
 import { useState } from "react";
-import {
-    ButtonGroup,
-    ConnectedButton,
-    ConnectedButtonGroup,
-    ToggleButton,
-} from "../../components/Button";
+import { ConnectedButton, ConnectedButtonGroup } from "../../components/Button";
 import {
     GridBackgroundDecorator,
     RadialGlowDecorator,
     type RadialGlowDecoratorColor,
     type RadialGlowDecoratorVariant,
 } from "../../components/Decorators";
-import { Slider } from "../../components/Input";
+import {
+    Select,
+    SelectItem,
+    SelectList,
+    SelectPopover,
+    SelectTrigger,
+    Slider,
+} from "../../components/Input";
 
 const glowVariants: { id: RadialGlowDecoratorVariant; label: string }[] = [
     { id: "default", label: "Default" },
@@ -41,7 +43,7 @@ export const DecoratorsPreview = () => {
         useState<RadialGlowDecoratorVariant>("default");
     const [glowColor, setGlowColor] =
         useState<RadialGlowDecoratorColor>("multi");
-    const [zIndex, setZIndex] = useState<number>(0);
+    const [zIndex, setZIndex] = useState<number>(10);
     const [gridSize, setGridSize] = useState<number>(40);
 
     return (
@@ -113,65 +115,68 @@ export const DecoratorsPreview = () => {
             )}
 
             {selectedDecorator === "glow" && (
-                <>
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "0.5rem",
+                <div
+                    style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: "1rem",
+                        alignItems: "center",
+                    }}
+                >
+                    <Select
+                        shouldCloseOnSelect={false}
+                        label="Glow Arrangement"
+                        placeholder="Select arrangement"
+                        value={glowVariant}
+                        onChange={(key) => {
+                            if (key !== null) {
+                                setGlowVariant(
+                                    key as RadialGlowDecoratorVariant
+                                );
+                            }
                         }}
+                        style={{ minInlineSize: 240 }}
                     >
-                        <span style={{ fontWeight: 500 }}>
-                            Glow Arrangement:
-                        </span>
-                        <ConnectedButtonGroup
-                            selectionMode="single"
-                            color="tonal"
-                            selectedKeys={new Set([glowVariant])}
-                            onSelectionChange={(keys) => {
-                                if (keys.size > 0) {
-                                    setGlowVariant(
-                                        [
-                                            ...keys,
-                                        ][0] as RadialGlowDecoratorVariant
-                                    );
-                                }
-                            }}
-                        >
-                            {glowVariants.map((item) => (
-                                <ConnectedButton key={item.id} id={item.id}>
-                                    {item.label}
-                                </ConnectedButton>
-                            ))}
-                        </ConnectedButtonGroup>
-                    </div>
+                        <SelectTrigger />
+                        <SelectPopover>
+                            <SelectList>
+                                {glowVariants.map((item) => (
+                                    <SelectItem
+                                        key={item.id}
+                                        id={item.id}
+                                        label={item.label}
+                                    />
+                                ))}
+                            </SelectList>
+                        </SelectPopover>
+                    </Select>
 
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: "0.5rem",
+                    <Select
+                        shouldCloseOnSelect={false}
+                        label="Glow Color"
+                        placeholder="Select color"
+                        value={glowColor}
+                        onChange={(key) => {
+                            if (key !== null) {
+                                setGlowColor(key as RadialGlowDecoratorColor);
+                            }
                         }}
+                        style={{ minInlineSize: 200 }}
                     >
-                        <span style={{ fontWeight: 500 }}>Glow Color:</span>
-                        <ButtonGroup
-                            selectedKeys={new Set([glowColor])}
-                            onSelectionChange={(keys) => {
-                                if (keys.size > 0) {
-                                    setGlowColor(
-                                        [...keys][0] as RadialGlowDecoratorColor
-                                    );
-                                }
-                            }}
-                        >
-                            {glowColors.map((item) => (
-                                <ToggleButton key={item.id} id={item.id}>
-                                    {item.label}
-                                </ToggleButton>
-                            ))}
-                        </ButtonGroup>
-                    </div>
-                </>
+                        <SelectTrigger />
+                        <SelectPopover>
+                            <SelectList>
+                                {glowColors.map((item) => (
+                                    <SelectItem
+                                        key={item.id}
+                                        id={item.id}
+                                        label={item.label}
+                                    />
+                                ))}
+                            </SelectList>
+                        </SelectPopover>
+                    </Select>
+                </div>
             )}
 
             <div
