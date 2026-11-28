@@ -29,6 +29,7 @@ import {
     showProgressIndicator,
     useHTMLMediaPlayback,
 } from "../core";
+import { useCanSetVolume } from "../core/useCanSetVolume";
 import styles from "./audioPlayer.module.css";
 import {
     type AudioPlayerProps,
@@ -72,6 +73,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     const playback = useHTMLMediaPlayback(ref);
 
     const [scrubTime, setScrubTime] = useState<number | null>(null);
+
+    const volumeSettable = useCanSetVolume();
 
     const showInfo = label || description;
 
@@ -240,19 +243,21 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
                                 aria-label={labels.muteUnmute}
                             />
 
-                            <Slider
-                                aria-label={labels.volume}
-                                isDisabled={playback.muted}
-                                className={clsx(styles["volume-slider"])}
-                                size="extra-small"
-                                minValue={0}
-                                maxValue={1}
-                                step={0.01}
-                                showInBetweenSteps={false}
-                                formatOptions={{ style: "percent" }}
-                                value={playback.volume}
-                                onChange={playback.setVolume}
-                            />
+                            {volumeSettable && (
+                                <Slider
+                                    aria-label={labels.volume}
+                                    isDisabled={playback.muted}
+                                    className={clsx(styles["volume-slider"])}
+                                    size="extra-small"
+                                    minValue={0}
+                                    maxValue={1}
+                                    step={0.01}
+                                    showInBetweenSteps={false}
+                                    formatOptions={{ style: "percent" }}
+                                    value={playback.volume}
+                                    onChange={playback.setVolume}
+                                />
+                            )}
                         </div>
                     </div>
                 </div>
